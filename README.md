@@ -4,6 +4,6 @@ This repository hosts a work-in-progress decompilation of the "Sugary Spire: Exh
 # Compilation
 ## Needed Materials
 - GameMaker Studio version 2023.11 (any revision acceptable), runtime 2023.11.1.60
-- [FMOD Engine](https://www.fmod.com/download#fmodengine) (You may need to make an FMOD account to download.)
+- [FMOD Engine](https://www.fmod.com/download#fmodengine) version 2.02.26 (You may need to make an FMOD account to download.)
 
 From there, just load the project as you would any other, and press F5 to build!
