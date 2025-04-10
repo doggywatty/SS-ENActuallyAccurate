@@ -1,4 +1,4 @@
-if (instance_exists(ID))
+if instance_exists(ID)
 {
     x = ID.x;
     y = ID.y;

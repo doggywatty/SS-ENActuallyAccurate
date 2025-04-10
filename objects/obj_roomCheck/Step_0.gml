@@ -1,4 +1,4 @@
-with (obj_parent_player)
+with obj_parent_player
 {
     state = States.noclip;
     x = room_width / 2;

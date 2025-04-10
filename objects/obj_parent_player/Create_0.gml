@@ -1,5 +1,3 @@
-var i;
-
 scr_collision_init();
 scr_playersounds_init();
 hasSeenProgressionPrompt = false;
@@ -58,10 +56,8 @@ frozenSmash = 0;
 frozenHsp = 0;
 frozenVsp = 0;
 frozenJumpBuffer = 0;
-
-for (i = 0; i < 11; i++)
-    frozenAlarm[i] = -1;
-
+for (var i = 0; i < 11; i++)
+	frozenAlarm[i] = -1;
 costumeBlock = -4;
 costumeBlockDetails = 0;
 angle = 0;
@@ -191,10 +187,8 @@ sourBuddiesTimer = 60;
 surfaceWidth = 2;
 surfaceHeight = 10;
 surfacePallete = -1;
-
-if (!surface_exists(surfacePallete))
-    surfacePallete = surface_create(surfaceWidth, surfaceHeight);
-
+if !surface_exists(surfacePallete)
+	surfacePallete = surface_create(surfaceWidth, surfaceHeight);
 customSavedPalette = 1;
 characters = "Pizzelle";
 colorHeight = 8;
@@ -222,4 +216,3 @@ bumpCounter = 0;
 fire_afterimagetimer = 0;
 global.rocketLauncher = false;
 global.tempRocketLauncher = false;
-

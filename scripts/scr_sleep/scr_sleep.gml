@@ -1,35 +1,26 @@
-function scr_sleep(argument0 = undefined)
+function scr_sleep(_freezetime = undefined)
 {
-    with (obj_camera)
-    {
-        if (global.hitstunalarm <= -1 && !global.freezeframe)
-        {
-            if (is_undefined(argument0))
-            {
-                freezetype = false;
-            }
-            else
-            {
-                freezeval = argument0;
-                freezetype = true;
-            }
-            
-            NextFreeze = true;
-        }
-    }
+	with obj_camera
+	{
+		if (global.hitstunalarm <= -1 && !global.freezeframe)
+		{
+			if is_undefined(_freezetime)
+				freezetype = false;
+			else
+			{
+				freezeval = _freezetime;
+				freezetype = true;
+			}
+			NextFreeze = true;
+		}
+	}
 }
 
-function scr_sleep_ext(argument0)
+function scr_sleep_ext(miliseconds)
 {
-    var time, ms;
-    
-    time = current_time;
-    ms = argument0;
-    
-    do
-    {
-    }
-    until ((current_time - time) >= round(ms));
-    
-    return current_time - time;
+	var time = current_time;
+	var ms = miliseconds;
+	do {}
+	until current_time - time >= round(ms);
+	return current_time - time;
 }

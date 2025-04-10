@@ -1,6 +1,4 @@
-var _border;
-
-_border = 192;
+var _border = 192;
 draw_set_color(c_black);
 draw_rectangle(-_border, -_border, room_width, 0, false);
 draw_rectangle(-_border, room_height, room_width, room_height + _border, false);

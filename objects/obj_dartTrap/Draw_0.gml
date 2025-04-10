@@ -1,7 +1,6 @@
 draw_self();
-
-if (tauntBuffer)
+if tauntBuffer
 {
-    angerEffect.draw(x - (15 * image_xscale), y, 1, 1, 90 * image_xscale, 16777215, 1);
+    angerEffect.draw(x - (15 * image_xscale), y, 1, 1, 90 * image_xscale, c_white, 1);
     angerEffect.update();
 }

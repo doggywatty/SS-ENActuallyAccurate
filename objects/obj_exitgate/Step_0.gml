@@ -1,4 +1,4 @@
-if (global.panic)
+if global.panic
     sprite_index = openSpr;
 
 if (place_meeting(x, y, obj_parent_player) && obj_parent_player.state != States.comingoutdoor && sprite_index == openSpr && global.panic == 0 && obj_parent_player.sprite_index != obj_parent_player.spr_lookdoor && sprite_index != closedspr)
@@ -32,4 +32,3 @@ if (drop && drop_state == 0)
         camera_shake_add(15, 30);
     }
 }
-

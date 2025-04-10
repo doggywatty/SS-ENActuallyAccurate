@@ -1,4 +1,4 @@
-function scr_default_parallax(argument0 = false)
+function scr_default_parallax(_layerId = false)
 {
     scr_addParallaxLayer("Assets_BG1", defaultParallax, [0.25, 0.25]);
     scr_addParallaxLayer("Assets_BG2", defaultParallax, [0.15, 0.15]);

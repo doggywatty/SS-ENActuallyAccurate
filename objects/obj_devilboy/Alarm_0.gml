@@ -1,4 +1,3 @@
 following = false;
-
-with (cultistID)
+with cultistID
     sprite_index = spr_cultist;

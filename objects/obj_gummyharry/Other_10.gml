@@ -4,11 +4,10 @@ if (DestroyedBy.object_index == obj_parent_player || DestroyedBy.object_index ==
     {
         if (DestroyedBy.state == States.mach1 || DestroyedBy.state == States.mach2)
         {
-            with (DestroyedBy)
+            with DestroyedBy
             {
-                with (other.id)
+                with other.id
                     instance_destroy();
-                
                 hsp = xscale * -4;
                 vsp = -4;
                 machTwo = 0;
@@ -18,17 +17,10 @@ if (DestroyedBy.object_index == obj_parent_player || DestroyedBy.object_index ==
             }
         }
         else if (DestroyedBy.state == States.grabdash)
-        {
             instance_destroy();
-        }
         else
-        {
             instance_destroy();
-        }
     }
 }
 else
-{
     instance_destroy();
-}
-

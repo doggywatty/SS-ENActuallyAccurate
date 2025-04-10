@@ -3,14 +3,14 @@ scr_roomStart_SetPosition_player(id);
 if (global.Combo <= 0 && room != global.LevelFirstRoom && !instance_exists(obj_exitgate) && !instance_exists(obj_lapPortal))
     global.ComboLost = true;
 
-with (obj_coneball_timesUp)
+with obj_coneball_timesUp
 {
     x = other.x;
     y = other.y;
     image_alpha = 0;
 }
 
-with (obj_parent_confecti)
+with obj_parent_confecti
 {
     ds_queue_clear(followQueue);
     x = other.x;
@@ -21,7 +21,7 @@ with (obj_parent_confecti)
     magnitude = 0;
 }
 
-with (obj_spookey)
+with obj_spookey
 {
     x = other.x;
     y = other.y;

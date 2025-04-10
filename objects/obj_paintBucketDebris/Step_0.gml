@@ -4,7 +4,7 @@ if (vsp < 20)
 x += hsp;
 y += floor(vsp);
 
-if (!alarm[0])
+if !alarm[0]
     alarm[0] = 5;
 
 drawx = x;
@@ -16,7 +16,7 @@ if (place_meeting_collision(x + hsp, y + vsp))
     instance_create(x + hsp, y + vsp, obj_tilePaintSplatter);
     random_set_seed(global.RandomSeed + (x + hsp) + (y + vsp));
     
-    repeat (3)
+    repeat 3
         create_destroyable_smoke(x + hsp + irandom_range(-5, 5), y + vsp + irandom_range(-5, 5), choose(49240, 16273576, 16295984, 12512));
     
     random_set_seed(global.RandomSeed);

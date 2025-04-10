@@ -1,2 +1,2 @@
-draw_text_scribble_ext(32, 500, string("[fa_left][fa_middle][spr_npcfont][c_white]Version: {0}", "3.0.3.1"), 900);
+draw_text_scribble_ext(32, 500, string($"[fa_left][fa_middle][spr_npcfont][c_white]Version: {"3.0.3.1"}"), 900);
 draw_text_scribble_ext(480, 270, string_hash_to_newline("[fa_center][fa_middle][spr_npcfont][shake][c_red]HEY!##[c_white]This game expects you to have played Pizza Tower beforehand. Otherwise, you may have some trouble!#If you haven't played Pizza Tower...##[c_red]GO PLAY IT!##[c_white]Press any button to continue."), 900);

@@ -68,31 +68,31 @@ cameraShakeList = ds_list_create();
 painterdex = 0;
 pizdex = 0;
 
-addCameraShake = function(argument0, argument1, argument2) constructor
+addCameraShake = function(_shakeMag, _shakeDecel, _shakeTime) constructor
 {
-    shakeMag = argument0;
-    shakeDecel = argument1;
-    shakeTime = argument2;
+	shakeMag = _shakeMag;
+	shakeDecel = _shakeDecel;
+	shakeTime = _shakeTime;
 };
 
 cakeHud = 
 {
-    xstart: 121,
-    ystart: 78,
-    x: 121,
-    y: 78,
-    pointX: 16,
-    pointY: -65,
-    sprite_index: spr_cakehud,
-    image_number: sprite_get_number(spr_cakehud),
-    image_index: 0,
-    image_speed: 0,
-    hudBounce: [0, 1, 2, 3, 4, 5, 3, 0, -1, -2, -3, -2, -1, 0],
-    pointColors: [0]
+	xstart: 121,
+	ystart: 78,
+	x: 121,
+	y: 78,
+	pointX: 16,
+	pointY: -65,
+	sprite_index: spr_cakehud,
+	image_number: sprite_get_number(spr_cakehud),
+	image_index: 0,
+	image_speed: 0,
+	hudBounce: [0, 1, 2, 3, 4, 5, 3, 0, -1, -2, -3, -2, -1, 0],
+	pointColors: [0]
 };
 
-drawCakeHudTopping = function(argument0, argument1)
+drawCakeHudTopping = function(_sprite, _collect)
 {
-    if (global.Collect > argument1)
-        draw_sprite(argument0, cakeHud.image_index, cakeHud.x, cakeHud.y);
+	if (global.Collect > _collect)
+		draw_sprite(_sprite, cakeHud.image_index, cakeHud.x, cakeHud.y);
 };

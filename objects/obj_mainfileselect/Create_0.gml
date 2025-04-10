@@ -1,5 +1,3 @@
-var i;
-
 depth = 10;
 selectedFile = 0;
 activated = false;
@@ -19,26 +17,26 @@ filePresent = [];
 fileJudgment = [];
 fileOpened = [];
 
-for (i = 0; i < 3; i++)
+for (var i = 0; i < 3; i++)
 {
-    if (file_exists(savePath[i]))
-    {
-        ini_open(savePath[i]);
-        filePalette[i] = ini_read_real("Misc", string("playerPaletteIndex_{0}", scr_getCharacterPrefix(Characters.Pizzelle)), 2);
-        fileOpened[i] = ini_read_real("Game", "seconds", 0) != 0 || ini_read_real("Game", "minutes", 0) != 0;
-        ini_close();
-        filePercentage[i] = scr_completion_percent(savePath[i]);
-        filePresent[i] = true;
-        fileJudgment[i] = scr_judgment_read(savePath[i]);
-    }
-    else
-    {
-        filePalette[i] = 2;
-        filePercentage[i] = 0;
-        filePresent[i] = false;
-        fileJudgment[i] = scr_judgment_get("none");
-        fileOpened[i] = false;
-    }
+	if (file_exists(savePath[i]))
+	{
+		ini_open(savePath[i]);
+		filePalette[i] = ini_read_real("Misc", string($"playerPaletteIndex_{scr_getCharacterPrefix(Characters.Pizzelle)}"), 2);
+		fileOpened[i] = ini_read_real("Game", "seconds", 0) != 0 || ini_read_real("Game", "minutes", 0) != 0;
+		ini_close();
+		filePercentage[i] = scr_completion_percent(savePath[i]);
+		filePresent[i] = true;
+		fileJudgment[i] = scr_judgment_read(savePath[i]);
+	}
+	else
+	{
+		filePalette[i] = 2;
+		filePercentage[i] = 0;
+		filePresent[i] = false;
+		fileJudgment[i] = scr_judgment_get("none");
+		fileOpened[i] = false;
+	}
 }
 
 hudAlpha = 0;
@@ -61,21 +59,19 @@ fileDoodleSurf = [surface_create(fileDoodleW, fileDoodleH), surface_create(fileD
 
 doodle_surface_manage = function()
 {
-    var i;
-    
-    for (i = 0; i < array_length(fileDoodleSurf); i++)
-    {
-        if (!surface_exists(fileDoodleSurf[i]))
-        {
-            fileDoodleSurf[i] = surface_create(fileDoodleW, fileDoodleH);
-            surface_set_target(fileDoodleSurf[i]);
-            draw_clear_alpha(c_white, 1);
-            surface_reset_target();
-            
-            if (buffer_exists(fileDoodleBuffer[i]))
-                buffer_set_surface(fileDoodleBuffer[i], fileDoodleSurf[i], 0);
-        }
-    }
+	for (var i = 0; i < array_length(fileDoodleSurf); i++)
+	{
+		if !surface_exists(fileDoodleSurf[i])
+		{
+			fileDoodleSurf[i] = surface_create(fileDoodleW, fileDoodleH);
+			surface_set_target(fileDoodleSurf[i]);
+			draw_clear_alpha(c_white, 1);
+			surface_reset_target();
+			
+			if (buffer_exists(fileDoodleBuffer[i]))
+				buffer_set_surface(fileDoodleBuffer[i], fileDoodleSurf[i], 0);
+		}
+	}
 };
 
 fileDoodleBuffer = [-4, -4, -4];
@@ -86,4 +82,3 @@ mouseY = 0;
 lineSteps = 1;
 lineWidth = 5;
 loaded = true;
-

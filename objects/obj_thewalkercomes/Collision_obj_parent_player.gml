@@ -1,10 +1,9 @@
 if (!instance_exists(obj_thewalkercage))
 {
-    if (deadly)
+    if deadly
     {
         show_error("THE SUN IS LEAKING", true);
-        
-        with (other)
+        with other
         {
             hsp = 9 * other.xscale;
             state = States.gameover;

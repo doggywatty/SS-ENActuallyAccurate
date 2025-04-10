@@ -1,6 +1,6 @@
 if (DestroyedBy.object_index == obj_parent_player || DestroyedBy.object_index == obj_player1 || DestroyedBy.object_index == obj_player2)
 {
-    with (DestroyedBy)
+    with DestroyedBy
     {
         if (state == States.freefall || state == States.freefallland)
         {
@@ -10,7 +10,7 @@ if (DestroyedBy.object_index == obj_parent_player || DestroyedBy.object_index ==
             jumpAnim = true;
             jumpStop = false;
             
-            with (obj_parent_enemy)
+            with obj_parent_enemy
             {
                 if (bbox_in_camera(id, view_camera[0]) && grounded)
                 {
@@ -48,7 +48,7 @@ if (DestroyedBy.object_index == obj_parent_player || DestroyedBy.object_index ==
             create_particle((x - sprite_xoffset) + (sprite_width / 2), (y - sprite_yoffset) + (sprite_height / 2), spr_bangEffect, xscale, 1);
             freefallstart = 0;
             
-            with (obj_parent_enemy)
+            with obj_parent_enemy
             {
                 if (bbox_in_camera(id, view_camera[0]) && grounded)
                 {
@@ -58,13 +58,13 @@ if (DestroyedBy.object_index == obj_parent_player || DestroyedBy.object_index ==
                 }
             }
             
-            with (baddieGrabbedID)
+            with baddieGrabbedID
             {
                 x = other.x;
                 y = other.y;
                 scr_instakillEnemy(id, other.id);
             }
-            
+			
             baddieGrabbedID = -4;
         }
         else if (state == States.mach3 && sprite_index != spr_mach3hit)
@@ -76,8 +76,7 @@ if (DestroyedBy.object_index == obj_parent_player || DestroyedBy.object_index ==
         {
             mach3Roll = mach3RollMax;
             flash = false;
-            
-            if (grounded)
+            if grounded
             {
                 sprite_index = spr_machroll3intro;
                 image_index = 0;
@@ -87,4 +86,3 @@ if (DestroyedBy.object_index == obj_parent_player || DestroyedBy.object_index ==
 }
 
 instance_destroy();
-

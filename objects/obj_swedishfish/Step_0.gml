@@ -5,8 +5,7 @@ if (state == States.titlescreen && sprite_index == spr_swed_charge)
 {
     canBreakBlocks = true;
     doRedAfterImage = true;
-    
-    if (!instance_exists(hurtboxID))
+    if !instance_exists(hurtboxID)
     {
         with (instance_create(x, y, obj_forkhitbox, 
         {

@@ -1,16 +1,12 @@
-var i;
-
 accel = 0;
 canleave = 0;
 image_speed = 0;
-
 if (global.playerCharacter == Characters.Pizzelle)
-    sprite_index = spr_player_rankwait;
-
+	sprite_index = spr_player_rankwait;
 if (global.rank != "p")
-    alarm[3] = 180;
+	alarm[3] = 180;
 else
-    alarm[3] = 46;
+	alarm[3] = 46;
 
 depth = -6;
 totalalpha = 0;
@@ -75,10 +71,8 @@ hatmsgy = 600;
 stampsnd = 0;
 inicollect = global.Collect / 30;
 collected = "0";
-
-for (i = 0; i < 10; i++)
-    colors[i] = choose(0, 1, 2, 3, 4, 5, 6);
-
+for (var i = 0; i < 10; i++)
+	colors[i] = choose(0, 1, 2, 3, 4, 5, 6);
 bgx = 0;
 bgy = 0;
 bgspr = bg_rank;
@@ -95,47 +89,40 @@ otherjandraw = 0;
 clipy = 809;
 goup = false;
 
-if (global.Treasure)
+if global.Treasure
 {
-    janspr = spr_rankrudejanitor;
-    jandraw = 1;
+	janspr = spr_rankrudejanitor;
+	jandraw = 1;
 }
 else
-{
-    janspr = spr_null;
-}
+	janspr = spr_null;
 
 if (global.lapcount > 0)
 {
-    otherjanspr = spr_rankotherjanitor;
-    otherjandraw = 1;
+	otherjanspr = spr_rankotherjanitor;
+	otherjandraw = 1;
 }
 else
-{
-    otherjanspr = spr_null;
-}
+	otherjanspr = spr_null;
 
-setcolors = function(argument0, argument1, argument2, argument3, argument4, argument5)
+setcolors = function(_r, _g, _b, _r2, _g2, _b2)
 {
-    realcol = 
-    {
-        r: argument0,
-        g: argument1,
-        b: argument2,
-        r2: argument3,
-        g2: argument4,
-        b2: argument5
-    };
+	realcol = 
+	{
+		r: _r,
+		g: _g,
+		b: _b,
+		r2: _r2,
+		g2: _g2,
+		b2: _b2
+	};
 };
 
 afterimagesetup = function()
 {
-    var colorblend1, colorblend2;
-    
-    shader_set(shd_afterimage);
-    colorblend1 = shader_get_uniform(shd_afterimage, "blendcolor1");
-    shader_set_uniform_f(colorblend1, realcol.r / 255, realcol.g / 255, realcol.b / 255);
-    colorblend2 = shader_get_uniform(shd_afterimage, "blendcolor2");
-    shader_set_uniform_f(colorblend2, realcol.r2 / 255, realcol.g2 / 255, realcol.b2 / 255);
+	shader_set(shd_afterimage);
+	var colorblend1 = shader_get_uniform(shd_afterimage, "blendcolor1");
+	shader_set_uniform_f(colorblend1, realcol.r / 255, realcol.g / 255, realcol.b / 255);
+	var colorblend2 = shader_get_uniform(shd_afterimage, "blendcolor2");
+	shader_set_uniform_f(colorblend2, realcol.r2 / 255, realcol.g2 / 255, realcol.b2 / 255);
 };
-

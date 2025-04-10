@@ -1,4 +1,4 @@
-function particle_spawn_dustTrail(argument0 = 15)
+function particle_spawn_dustTrail(_pos = 15)
 {
-    create_particle(x, y, spr_cloudEffect, argument0);
+    create_particle(x, y, spr_cloudEffect, _pos);
 }

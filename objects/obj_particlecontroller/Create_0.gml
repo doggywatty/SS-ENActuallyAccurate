@@ -4,6 +4,7 @@ global.particlesMap = ds_map_create();
 global.particles = part_emitter_create(global.particleSystem);
 global.particleList = ds_list_create();
 global.collectParticleList = ds_list_create();
+
 particle_init(spr_parryeffect, 0.35, -100);
 particle_init(spr_landcloud, 0.35, 0);
 particle_init(spr_bangEffect, 0.35, 0);

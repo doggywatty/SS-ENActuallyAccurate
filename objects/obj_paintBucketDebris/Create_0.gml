@@ -1,19 +1,16 @@
-var p;
-
 vsp = random_range(-10, -18);
 hsp = sign(x - obj_parent_player.x) * random_range(10, 18);
 
 if (x != obj_parent_player.x)
-    image_xscale = sign(obj_parent_player.x - x);
+	image_xscale = sign(obj_parent_player.x - x);
 
-p = obj_parent_player;
-
+var p = obj_parent_player;
 if (place_meeting(x, y, p))
 {
-    if (p.vsp < -5 || p.vsp > 5)
-        vsp = p.vsp / 1.3;
-    
-    hsp += (p.hsp / 1.7);
+	if (p.vsp < -5 || p.vsp > 5)
+		vsp = p.vsp / 1.3;
+
+	hsp += (p.hsp / 1.7);
 }
 
 grav = 0.3;

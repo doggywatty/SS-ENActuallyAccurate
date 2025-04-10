@@ -1,7 +1,7 @@
-if (global.freezeframe)
+if global.freezeframe
     exit;
 
-with (other)
+with other
 {
     if (!player_complete_invulnerability() && state != States.cotton && state != States.cottondrill && state != States.door && state != States.cottonroll && state != States.cottondig)
     {

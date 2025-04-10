@@ -4,24 +4,23 @@ pauseStatus = false;
 specialToggle = false;
 musicPlaying = false;
 
-defineMusic = function(argument0, argument1, argument2 = "") constructor
+defineMusic = function(_eventPath, _songDesc, _specialText = "") constructor
 {
-    static add = function()
-    {
-        array_push(obj_soundTest.musicArray, self);
-        return self;
-    };
-    
-    eventPath = argument0;
-    eventInstance = undefined;
-    
-    if (!is_undefined(eventPath) && is_string(eventPath))
-        eventInstance = fmod_createEventInstance(eventPath);
-    
-    songDescription = argument1;
-    hasSpecial = argument2 != "";
-    specialText = argument2;
-    return add();
+	static add = function()
+	{
+		array_push(obj_soundTest.musicArray, self);
+		return self;
+	};
+	eventPath = _eventPath;
+	eventInstance = undefined;
+	
+	if !is_undefined(eventPath) && is_string(eventPath)
+		eventInstance = fmod_createEventInstance(eventPath);
+		
+	songDescription = _songDesc;
+	hasSpecial = _specialText != "";
+	specialText = _specialText;
+	return add();
 };
 
 musicArray = [];
@@ -50,19 +49,19 @@ new defineMusic("event:/music/Soundtest/credits", "Toodle-oo! - PaperKitty");
 ini_open(global.SaveFileName);
 
 if (ini_read_string("Game", "Judgment", "none") != "none")
-    new defineMusic("event:/music/Soundtest/painterBrain", "Painter's Brain - Stewart Keller");
+	new defineMusic("event:/music/Soundtest/painterBrain", "Painter's Brain - Stewart Keller");
 
 if (ini_read_string("Treasure", "mindpalace", "0") != "0")
 {
-    new defineMusic("event:/music/Soundtest/painterMixtape", "Painter's Mixtape - Stewart Keller", "OST Version");
-    new defineMusic("event:/music/Soundtest/spiresamba", "Samba de Spire - PaperKitty");
-    new defineMusic("event:/music/Soundtest/mountainA", "Aw, Fudge! (Bonus) - Pteracotta");
-    new defineMusic("event:/music/Soundtest/mountainB", "Fudge It All! (Bonus) - RodMod");
-    new defineMusic("event:/music/Soundtest/mountain_secret", "what the fudge? it's a secret! (Bonus) - Various");
-    new defineMusic("event:/music/Soundtest/runthedog", "Run the Dog (Bonus) - PaperKitty", "Marshmallow Mix");
-    new defineMusic("event:/music/Soundtest/sugarcubehailstorm", "Sugarcube Hailstorm (Bonus) - PaperKitty");
-    new defineMusic("event:/music/Soundtest/painterBoss", "Painter's Theme (Bonus) - CableChords");
-    new defineMusic("event:/music/Soundtest/stinky", "What's that Smell? (Bonus) - PaperKitty");
+	new defineMusic("event:/music/Soundtest/painterMixtape", "Painter's Mixtape - Stewart Keller", "OST Version");
+	new defineMusic("event:/music/Soundtest/spiresamba", "Samba de Spire - PaperKitty");
+	new defineMusic("event:/music/Soundtest/mountainA", "Aw, Fudge! (Bonus) - Pteracotta");
+	new defineMusic("event:/music/Soundtest/mountainB", "Fudge It All! (Bonus) - RodMod");
+	new defineMusic("event:/music/Soundtest/mountain_secret", "what the fudge? it's a secret! (Bonus) - Various");
+	new defineMusic("event:/music/Soundtest/runthedog", "Run the Dog (Bonus) - PaperKitty", "Marshmallow Mix");
+	new defineMusic("event:/music/Soundtest/sugarcubehailstorm", "Sugarcube Hailstorm (Bonus) - PaperKitty");
+	new defineMusic("event:/music/Soundtest/painterBoss", "Painter's Theme (Bonus) - CableChords");
+	new defineMusic("event:/music/Soundtest/stinky", "What's that Smell? (Bonus) - PaperKitty");
 }
 
 ini_close();

@@ -6,7 +6,7 @@ obj_parent_player.targetRoom = hub_demohallway;
 obj_parent_player.targetDoor = "A";
 obj_parent_player.state = States.door;
 
-if (!instance_exists(obj_fadeoutTransition))
+if !instance_exists(obj_fadeoutTransition)
 {
     instance_create(x, y, obj_fadeoutTransition, 
     {

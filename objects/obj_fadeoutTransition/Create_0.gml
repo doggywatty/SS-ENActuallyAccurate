@@ -1,5 +1,3 @@
-var t;
-
 fadealpha = 0;
 fadein = 0;
 fadespeed = 0.1;
@@ -12,16 +10,15 @@ groupArr = [];
 
 while (array_length(global.texturesToLoad) > 0)
 {
-    t = array_pop(global.texturesToLoad);
-    
-    if (!is_undefined(t))
-        array_push(groupArr, texturegroup_get_textures(t));
+	var t = array_pop(global.texturesToLoad);
+	if !is_undefined(t)
+		array_push(groupArr, texturegroup_get_textures(t));
 }
 
-if (goToHub)
-    alarm[1] = 1;
+if goToHub
+	alarm[1] = 1;
 else
-    unloaded = true;
+	unloaded = true;
 
 alarm[0] = 5;
 depth = -998;

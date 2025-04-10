@@ -10,7 +10,7 @@ if (place_meeting(x, y, obj_parent_player) && ds_list_find_index(global.SaveRoom
 if (ds_list_find_index(global.SaveRoom, id) != -1)
     showDoorLight = false;
 
-if (!useCustomSprite)
+if !useCustomSprite
 {
     sprite_index = spriteDoorDefault;
     image_index = global.doorindex;
@@ -21,7 +21,7 @@ else
     showDoorSprite = true;
 }
 
-if (is_tutorial())
+if is_tutorial()
 {
     sprite_index = spr_tutorialdoor;
     image_index = 0;

@@ -36,15 +36,10 @@ idletimer = 200;
 
 faceTowardsPlayerFunc = function()
 {
-    var target_player;
-    
-    target_player = get_nearestPlayer();
-    image_xscale = sign(target_player.x - x);
-    
-    if (image_xscale == 0)
-        image_xscale = target_player.image_xscale;
-    
-    if (image_xscale == 0)
-        image_xscale = 1;
+	var target_player = get_nearestPlayer();
+	image_xscale = sign(target_player.x - x);
+	if (image_xscale == 0)
+		image_xscale = target_player.image_xscale;
+	if (image_xscale == 0)
+		image_xscale = 1;
 };
-

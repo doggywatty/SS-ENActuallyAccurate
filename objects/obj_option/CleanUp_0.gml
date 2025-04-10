@@ -1,6 +1,6 @@
 kill_sounds([activeSFX]);
 
-with (obj_pause)
+with obj_pause
 {
     fmod_studio_event_instance_set_parameter_by_name(pauseMusic, "state", 0, false);
     alarm[0] = 3;
@@ -8,5 +8,5 @@ with (obj_pause)
     key_jump = false;
 }
 
-with (obj_mainfileselect)
+with obj_mainfileselect
     alarm[1] = 1;

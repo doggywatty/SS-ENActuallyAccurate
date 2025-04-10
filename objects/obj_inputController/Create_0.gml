@@ -1,11 +1,9 @@
-var i;
-
 depth = -99;
 
-if (instance_number(object_index) > 1)
+if instance_number(object_index) > 1
 {
-    instance_destroy();
-    exit;
+	instance_destroy();
+	exit;
 }
 
 queueDisconnectScreen = false;
@@ -26,14 +24,18 @@ vibrationDecay1 = 0;
 disconnect_text_x = 0;
 disconnected_bg = [new subSprite(bg_controllerdisconnect).setFunction(function()
 {
-    x--;
-    y -= 0.5;
-}), new subSprite(bg_controllerdisconnect_dark), new subSprite(bg_controllerdisconnect_smells), new subSprite(bg_controllerdisconnect_icon1), new subSprite(bg_controllerdisconnect_icon2), new subSprite(bg_controllerdisconnect_text1), new subSprite(bg_controllerdisconnect_text2), new subSprite(bg_controllerdisconnect_text3), new subSprite(bg_controllerdisconnect_text4), new subSprite(bg_controllerdisconnect_text5)];
+	x--;
+	y -= 0.5;
+}), new subSprite(bg_controllerdisconnect_dark), new subSprite(bg_controllerdisconnect_smells),
+	new subSprite(bg_controllerdisconnect_icon1), new subSprite(bg_controllerdisconnect_icon2),
+	new subSprite(bg_controllerdisconnect_text1), new subSprite(bg_controllerdisconnect_text2),
+	new subSprite(bg_controllerdisconnect_text3), new subSprite(bg_controllerdisconnect_text4),
+	new subSprite(bg_controllerdisconnect_text5)
+];
+
 global.PlayerInputDevice = -2;
-
-for (i = 0; i < gamepad_get_device_count(); i++)
+for (var i = 0; i < gamepad_get_device_count(); i++)
 {
-    if (gamepad_is_connected(i))
-        global.PlayerInputDevice = i;
+	if (gamepad_is_connected(i))
+		global.PlayerInputDevice = i;
 }
-

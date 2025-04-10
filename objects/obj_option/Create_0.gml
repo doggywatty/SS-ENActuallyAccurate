@@ -1,19 +1,19 @@
 handle_savedoption = function()
 {
-    if (!is_struct(savedSliderOption))
-        exit;
-    
-    if (activeSFX != -4)
-        kill_sounds([activeSFX]);
-    
-    activeSFX = -4;
-    savedSliderOption.moving = false;
-    
-    if (!is_undefined(savedSliderOption.on_stop))
-        savedSliderOption.on_stop(savedSliderOption.value);
-    
-    savedSliderOption = -4;
-    trace("Stopped");
+	if !is_struct(savedSliderOption)
+		exit;
+	
+	if activeSFX != -4
+		kill_sounds([activeSFX]);
+	
+	activeSFX = -4;
+	savedSliderOption.moving = false;
+	
+	if !is_undefined(savedSliderOption.on_stop)
+		savedSliderOption.on_stop(savedSliderOption.value);
+	
+	savedSliderOption = -4;
+	trace("Stopped");
 };
 
 options = [];

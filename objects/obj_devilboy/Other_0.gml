@@ -1,2 +1,2 @@
-if (!following)
+if !following
     instance_destroy();

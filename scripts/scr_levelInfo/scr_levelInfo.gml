@@ -1,27 +1,26 @@
 global.GameLevelMap = ds_map_create();
 global.InternalLevelName = "none";
-
-function scr_defineTitleCard(argument0, argument1 = "event:/music/w1/entryway_titlecard", argument2 = -4, argument3 = -4) constructor
+function scr_defineTitleCard(_img_ind, _music = "event:/music/w1/entryway_titlecard", _x = -4, _y = -4) constructor
 {
-    image_index = argument0;
-    music = argument1;
-    x = argument2;
-    y = argument3;
+	image_index = _img_ind;
+	music = _music;
+	x = _x;
+	y = _y;
 }
 
-function scr_defineLevel(argument0, argument1, argument2, argument3, argument4 = [], argument5 = 20000, argument6 = -4, argument7 = false)
+function scr_defineLevel(_levelWorld, _internalName, _visualName, _firstRoom, _groupArr = [], _sRankRequirement = 20000, _titleCardInfo = -4, _isBoss = false)
 {
-    ds_map_add(global.GameLevelMap, argument1, 
-    {
-        internalName: argument1,
-        levelWorld: argument0,
-        visualName: argument2,
-        groupArr: argument4,
-        firstRoom: argument3,
-        sRankRequirement: argument5,
-        titleCardInfo: argument6,
-        isBoss: argument7
-    });
+	ds_map_add(global.GameLevelMap, _internalName, 
+	{
+		internalName: _internalName,
+		levelWorld: _levelWorld,
+		visualName: _visualName,
+		groupArr: _groupArr,
+		firstRoom: _firstRoom,
+		sRankRequirement: _sRankRequirement,
+		titleCardInfo: _titleCardInfo,
+		isBoss: _isBoss
+	});
 }
 
 scr_defineLevel(0, "demohub", "Demo 2 Hub", hub_demohallway);
@@ -36,55 +35,88 @@ scr_defineLevel(1, "molasses", "Molasses Swamp", molasses_1, ["Molasses"]);
 scr_defineLevel(1, "cafe", "Chocoa Cafe", cafe_1, ["Cafe"]);
 scr_defineLevel(1, "boss_pizzabro", "Boss 2", rm_missing);
 
-function scr_gotoLevel(argument0)
+function scr_gotoLevel(_level)
 {
-    var level_info, first_room;
-    
-    level_info = ds_map_find_value(global.GameLevelMap, argument0);
-    first_room = level_info.firstRoom;
-    global.texturesToLoad = array_concat(global.texturesToLoad, level_info.groupArr);
-    global.InternalLevelName = level_info.internalName;
-    global.LevelFirstRoom = first_room;
-    global.srank = level_info.sRankRequirement;
-    global.arank = global.srank / 2;
-    global.brank = global.arank / 2;
-    global.crank = global.brank / 2;
+	var level_info = ds_map_find_value(global.GameLevelMap, _level);
+	var first_room = level_info.firstRoom;
+	global.texturesToLoad = array_concat(global.texturesToLoad, level_info.groupArr);
+	global.InternalLevelName = level_info.internalName;
+	global.LevelFirstRoom = first_room;
+	global.srank = level_info.sRankRequirement;
+	global.arank = global.srank / 2;
+	global.brank = global.arank / 2;
+	global.crank = global.brank / 2;
 }
 
-function scr_defineLevelMenuTune(argument0)
+function scr_defineLevelMenuTune(_note)
 {
-    var note_array;
-    
-    note_array = [];
-    
-    switch (argument0)
-    {
-        default:
-            note_array = [MusicNote.CS6, MusicNote.GS6, MusicNote.CS7, MusicNote.CS6, MusicNote.GS6, MusicNote.CS7, MusicNote.CS6, MusicNote.GS6, MusicNote.CS6, MusicNote.GS6, MusicNote.CS7, MusicNote.CS6, MusicNote.GS6, MusicNote.CS7, MusicNote.CS6, MusicNote.GS6, MusicNote.C6, MusicNote.G6, MusicNote.C7, MusicNote.C6, MusicNote.G6, MusicNote.C7, MusicNote.C6, MusicNote.G6, MusicNote.C6, MusicNote.G6, MusicNote.C7, MusicNote.C6, MusicNote.C7, MusicNote.G6, MusicNote.C6, MusicNote.G6];
-            break;
-        
-        case "tutorial":
-            note_array = [MusicNote.D5, MusicNote.DS5, MusicNote.E5, MusicNote.C6, MusicNote.E5, MusicNote.C6, MusicNote.E5, MusicNote.C6, MusicNote.C6, MusicNote.D6, MusicNote.DS6, MusicNote.E6, MusicNote.C6, MusicNote.D6, MusicNote.E6, MusicNote.B5, MusicNote.D6, MusicNote.C6, MusicNote.D5, MusicNote.DS5, MusicNote.E5, MusicNote.C6, MusicNote.E5, MusicNote.C6, MusicNote.E5, MusicNote.C6, MusicNote.A5, MusicNote.G5, MusicNote.FS5, MusicNote.A5, MusicNote.C6, MusicNote.E6, MusicNote.D6, MusicNote.C6, MusicNote.A5, MusicNote.D6];
-            break;
-        
-        case "entryway":
-            note_array = [MusicNote.FS5, MusicNote.A5, MusicNote.B5, MusicNote.CS6, MusicNote.B5, MusicNote.A5, MusicNote.FS5, MusicNote.D5, MusicNote.A5, MusicNote.B5, MusicNote.CS6, MusicNote.B5, MusicNote.E6, MusicNote.CS6, MusicNote.FS5, MusicNote.A5, MusicNote.B5, MusicNote.CS6, MusicNote.E6, MusicNote.A6, MusicNote.B6, MusicNote.B6, MusicNote.A6, MusicNote.B6, MusicNote.CS7, MusicNote.D7, MusicNote.CS7, MusicNote.FS6];
-            break;
-        
-        case "steamy":
-            note_array = [MusicNote.D6, MusicNote.F6, MusicNote.A6, MusicNote.AS6, MusicNote.GS6, MusicNote.A6, MusicNote.GS6, MusicNote.F6, MusicNote.D6, MusicNote.C6, MusicNote.F6, MusicNote.A6, MusicNote.AS6, MusicNote.GS6, MusicNote.A6, MusicNote.F7, MusicNote.E7, MusicNote.D7, MusicNote.AS5, MusicNote.D6, MusicNote.F6, MusicNote.A6, MusicNote.F6, MusicNote.GS6, MusicNote.G6, MusicNote.F6, MusicNote.AS5, MusicNote.A5, MusicNote.CS6, MusicNote.E6, MusicNote.G6, MusicNote.E6, MusicNote.A6, MusicNote.G6, MusicNote.F6, MusicNote.D6];
-            break;
-        
-        case "mineshaft":
-            note_array = [MusicNote.C6, MusicNote.D6, MusicNote.DS6, MusicNote.D6, MusicNote.B5, MusicNote.GS5, MusicNote.G5, MusicNote.F5, MusicNote.DS5, MusicNote.F5, MusicNote.GS5, MusicNote.C6, MusicNote.DS6, MusicNote.GS6, MusicNote.G6, MusicNote.F6, MusicNote.DS6, MusicNote.D6, MusicNote.DS6, MusicNote.D6, MusicNote.C6, MusicNote.DS6, MusicNote.D6, MusicNote.C6, MusicNote.DS6, MusicNote.D6, MusicNote.G5, MusicNote.DS6, MusicNote.D6, MusicNote.B5, MusicNote.G5, MusicNote.GS5, MusicNote.G5, MusicNote.F5, MusicNote.G5, MusicNote.GS5, MusicNote.DS5, MusicNote.C5, MusicNote.GS5, MusicNote.DS5, MusicNote.C5, MusicNote.GS5, MusicNote.DS5, MusicNote.GS5, MusicNote.GS5, MusicNote.DS6, MusicNote.D6, MusicNote.G6];
-            break;
-        
-        case "molasses":
-            note_array = [MusicNote.CS5, MusicNote.CS6, MusicNote.B5, MusicNote.GS5, MusicNote.FS5, MusicNote.E5, MusicNote.E5, MusicNote.E5, MusicNote.FS5, MusicNote.E5, MusicNote.GS5, MusicNote.FS5, MusicNote.CS5, MusicNote.CS5, MusicNote.E5, MusicNote.E5, MusicNote.FS5, MusicNote.CS5, MusicNote.GS5, MusicNote.B5, MusicNote.CS6, MusicNote.CS6, MusicNote.GS5, MusicNote.FS5, MusicNote.GS5, MusicNote.FS5, MusicNote.E5, MusicNote.FS5, MusicNote.GS5, MusicNote.CS5, MusicNote.CS5, MusicNote.E5, MusicNote.E5, MusicNote.GS5, MusicNote.CS6, MusicNote.B5, MusicNote.CS6, MusicNote.E6];
-            break;
-    }
-    
-    return note_array;
+	var note_array = [];
+	switch _note
+	{
+		default:
+			note_array = [
+				MusicNote.CS6, MusicNote.GS6, MusicNote.CS7, MusicNote.CS6, MusicNote.GS6, MusicNote.CS7,
+				MusicNote.CS6, MusicNote.GS6, MusicNote.CS6, MusicNote.GS6, MusicNote.CS7, MusicNote.CS6,
+				MusicNote.GS6, MusicNote.CS7, MusicNote.CS6, MusicNote.GS6, MusicNote.C6, MusicNote.G6,
+				MusicNote.C7, MusicNote.C6, MusicNote.G6, MusicNote.C7, MusicNote.C6, MusicNote.G6,
+				MusicNote.C6, MusicNote.G6, MusicNote.C7, MusicNote.C6, MusicNote.C7, MusicNote.G6,
+				MusicNote.C6, MusicNote.G6
+			];
+			break;
+		case "tutorial":
+			note_array = [
+				MusicNote.D5, MusicNote.DS5, MusicNote.E5, MusicNote.C6, MusicNote.E5, MusicNote.C6,
+				MusicNote.E5, MusicNote.C6, MusicNote.C6, MusicNote.D6, MusicNote.DS6, MusicNote.E6,
+				MusicNote.C6, MusicNote.D6, MusicNote.E6, MusicNote.B5, MusicNote.D6, MusicNote.C6,
+				MusicNote.D5, MusicNote.DS5, MusicNote.E5, MusicNote.C6, MusicNote.E5, MusicNote.C6,
+				MusicNote.E5, MusicNote.C6, MusicNote.A5, MusicNote.G5, MusicNote.FS5, MusicNote.A5,
+				MusicNote.C6, MusicNote.E6, MusicNote.D6, MusicNote.C6, MusicNote.A5, MusicNote.D6
+			];
+			break;
+		case "entryway":
+			note_array = [
+				MusicNote.FS5, MusicNote.A5, MusicNote.B5, MusicNote.CS6, MusicNote.B5, MusicNote.A5,
+				MusicNote.FS5, MusicNote.D5, MusicNote.A5, MusicNote.B5, MusicNote.CS6, MusicNote.B5,
+				MusicNote.E6, MusicNote.CS6, MusicNote.FS5, MusicNote.A5, MusicNote.B5, MusicNote.CS6,
+				MusicNote.E6, MusicNote.A6, MusicNote.B6, MusicNote.B6, MusicNote.A6, MusicNote.B6,
+				MusicNote.CS7, MusicNote.D7, MusicNote.CS7, MusicNote.FS6
+			];
+			break;
+		case "steamy":
+			note_array = [
+				MusicNote.D6, MusicNote.F6, MusicNote.A6, MusicNote.AS6, MusicNote.GS6, MusicNote.A6,
+				MusicNote.GS6, MusicNote.F6, MusicNote.D6, MusicNote.C6, MusicNote.F6, MusicNote.A6,
+				MusicNote.AS6, MusicNote.GS6, MusicNote.A6, MusicNote.F7, MusicNote.E7, MusicNote.D7,
+				MusicNote.AS5, MusicNote.D6, MusicNote.F6, MusicNote.A6, MusicNote.F6, MusicNote.GS6,
+				MusicNote.G6, MusicNote.F6, MusicNote.AS5, MusicNote.A5, MusicNote.CS6, MusicNote.E6,
+				MusicNote.G6, MusicNote.E6, MusicNote.A6, MusicNote.G6, MusicNote.F6, MusicNote.D6
+			];
+			break;
+		case "mineshaft":
+			note_array = [
+				MusicNote.C6, MusicNote.D6, MusicNote.DS6, MusicNote.D6, MusicNote.B5, MusicNote.GS5,
+				MusicNote.G5, MusicNote.F5, MusicNote.DS5, MusicNote.F5, MusicNote.GS5, MusicNote.C6,
+				MusicNote.DS6, MusicNote.GS6, MusicNote.G6, MusicNote.F6, MusicNote.DS6, MusicNote.D6,
+				MusicNote.DS6, MusicNote.D6, MusicNote.C6, MusicNote.DS6, MusicNote.D6, MusicNote.C6,
+				MusicNote.DS6, MusicNote.D6, MusicNote.G5, MusicNote.DS6, MusicNote.D6, MusicNote.B5,
+				MusicNote.G5, MusicNote.GS5, MusicNote.G5, MusicNote.F5, MusicNote.G5, MusicNote.GS5,
+				MusicNote.DS5, MusicNote.C5, MusicNote.GS5, MusicNote.DS5, MusicNote.C5, MusicNote.GS5,
+				MusicNote.DS5, MusicNote.GS5, MusicNote.GS5, MusicNote.DS6, MusicNote.D6, MusicNote.G6
+			];
+			break;
+		case "molasses":
+			note_array = [
+				MusicNote.CS5, MusicNote.CS6, MusicNote.B5, MusicNote.GS5, MusicNote.FS5, MusicNote.E5,
+				MusicNote.E5, MusicNote.E5, MusicNote.FS5, MusicNote.E5, MusicNote.GS5, MusicNote.FS5,
+				MusicNote.CS5, MusicNote.CS5, MusicNote.E5, MusicNote.E5, MusicNote.FS5, MusicNote.CS5,
+				MusicNote.GS5, MusicNote.B5, MusicNote.CS6, MusicNote.CS6, MusicNote.GS5, MusicNote.FS5,
+				MusicNote.GS5, MusicNote.FS5, MusicNote.E5, MusicNote.FS5, MusicNote.GS5, MusicNote.CS5,
+				MusicNote.CS5, MusicNote.E5, MusicNote.E5, MusicNote.GS5, MusicNote.CS6, MusicNote.B5,
+				MusicNote.CS6, MusicNote.E6
+			];
+			break;
+	}
+	return note_array;
 }
 
 global.MenuNoteArray = scr_defineLevelMenuTune("none");

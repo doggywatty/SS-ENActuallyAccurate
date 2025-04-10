@@ -1,2 +1,2 @@
-with (obj_mainfileselect)
+with obj_mainfileselect
     alarm[1] = 1;

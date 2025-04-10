@@ -1,2 +1,2 @@
-if (moving == true)
+if moving == true
     instance_destroy();

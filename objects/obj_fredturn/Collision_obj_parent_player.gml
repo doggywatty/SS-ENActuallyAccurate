@@ -1,4 +1,4 @@
-with (other)
+with other
 {
     if ((state == States.minecart || state == States.minecart_bump) && sprite_index != spr_player_PZ_minecart_turn && sprite_index != spr_player_PZ_minecart_turnidle && other.image_xscale == xscale)
     {

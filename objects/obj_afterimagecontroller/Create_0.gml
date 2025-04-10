@@ -1,49 +1,48 @@
 depth = 1;
 color_arr[AfterImageType.plain] = 
 {
-    light: 16777215,
-    dark: 0
+	light: c_white,
+	dark: c_black
 };
 color_arr[AfterImageType.mach3effect1] = 
 {
-    light: 16295984,
-    dark: 7944463
+	light: #30a8f8,
+	dark: #0f3979
 };
 color_arr[AfterImageType.mach3effect2] = 
 {
-    light: 9982184,
-    dark: 2099551
+	light: #e85098,
+	dark: #5f0920
 };
 color_arr[AfterImageType.fireass] = 
 {
-    light: 1601784,
-    dark: 16552
+	light: #f87018,
+	dark: #a84000
 };
 color_arr[AfterImageType.pureblue] = 
 {
-    light: 16295984,
-    dark: 16295984
+	light: #30a8f8,
+	dark: #30a8f8
 };
 color_arr[AfterImageType.purepink] = 
 {
-    light: 9982184,
-    dark: 9982184
+	light: #e85098,
+	dark: #e85098
 };
 color_arr[AfterImageType.wallkick] = 
 {
-    light: 13773959,
-    dark: 3736096
+	light: #872cd2,
+	dark: #200239
 };
 color_arr[AfterImageType.unknownorange] = 
 {
-    light: 1601784,
-    dark: 1601784
+	light: #f87018,
+	dark: #f87018
 };
 color_arr[AfterImageType.baddie] = 
 {
-    light: 12512,
-    dark: 12512
+	light: #e03000,
+	dark: #e03000
 };
 global.BlinkTrail = false;
 blinkingBuffer = 3;
-

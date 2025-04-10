@@ -1,11 +1,9 @@
 if (fadealpha > 1)
 {
     fadein = 1;
-    
     if (room != rank_room)
     {
         room_goto_fixed(rank_room);
-        
         with (obj_parent_player)
         {
             x = other.PlayerX;
@@ -19,7 +17,7 @@ if (fadein == 0)
 else if (fadein == 1)
     fadealpha -= 0.1;
 
-with (obj_parent_player)
+with obj_parent_player
 {
     if (room == rank_room && other.fadealpha <= 0)
     {

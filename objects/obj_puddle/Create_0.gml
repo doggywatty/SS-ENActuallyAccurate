@@ -12,28 +12,24 @@ slipped = 0;
 iceblock = new subSprite(spr_iceblock_puddle);
 paletteSprite = spr_juicePalette;
 
-switch (global.InternalLevelName)
+switch global.InternalLevelName
 {
-    case "entryway":
-        paletteSelect = 1;
-        break;
-    
-    default:
-        paletteSelect = 2;
-        break;
-    
-    case "molasses":
-        paletteSelect = 3;
-        break;
-    
-    case "mines":
-    case "mineshaft":
-        paletteSelect = 4;
-        break;
-    
-    case "fudge":
-        paletteSelect = 5;
-        break;
+	case "entryway":
+		paletteSelect = 1;
+		break;
+	default:
+		paletteSelect = 2;
+		break;
+	case "molasses":
+		paletteSelect = 3;
+		break;
+	case "mines":
+	case "mineshaft":
+		paletteSelect = 4;
+		break;
+	case "fudge":
+		paletteSelect = 5;
+		break;
 }
 
 depth = 10;

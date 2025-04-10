@@ -7,6 +7,5 @@ screen_draw_gui_surf();
 gpu_set_blendenable(true);
 gpu_set_blendmode(bm_normal);
 gpu_set_texfilter(false);
-
-if (window_has_focus())
+if window_has_focus()
     gameframe_draw();

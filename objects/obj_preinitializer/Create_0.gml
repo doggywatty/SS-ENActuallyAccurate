@@ -96,7 +96,7 @@ enum States
 	fling_launch = 93,
 	freeflight = 94,
 	burrow = 100,
-	charcherryrun = 101	
+	charcherryrun = 101
 }
 
 enum Characters
@@ -137,16 +137,6 @@ enum ComboState
 	Off = 0,
 	Dropping = 1,
 	On = 2
-}
-
-enum GnomeColors
-{
-	Red = 0,
-	Green = 1,
-	Blue = 2,
-	Orange = 3,
-	Peach = 4,
-	Purple = 5	
 }
 
 enum AfterImageType
@@ -315,19 +305,18 @@ enum UnknownTitlecard
 }
 
 #macro isDemo 0 + 1
-
-var temparray, i;
+#macro vk_capslock 20
 
 scr_gameInit();
 depth = 5;
 draw_flush();
 randomize();
 window_center();
-temparray = ["Player", "Baddies", "HUD", "Structure", "Hub", "effectsGroup", "titleGroup"];
+var temparray = ["Player", "Baddies", "HUD", "Structure", "Hub", "effectsGroup", "titleGroup"];
 textureLoaderList = ds_list_create();
 
-for (i = 0; i < array_length(temparray); i++)
-    ds_list_set(textureLoaderList, i, texturegroup_get_textures(temparray[i]));
+for (var i = 0; i < array_length(temparray); i++)
+	ds_list_set(textureLoaderList, i, texturegroup_get_textures(temparray[i]));
 
 DslistMax = ds_list_size(textureLoaderList);
 alarm[0] = 3;
@@ -337,3 +326,4 @@ imageIndexArray = array_create(loadSpriteCount + 1, 0);
 global.texturesToLoad = [];
 global.loadedTextures = [];
 texture_debug_messages(true);
+
