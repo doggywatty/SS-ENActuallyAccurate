@@ -1,8 +1,6 @@
-function pal_swap_init_system(argument0, argument1, argument2)
+function pal_swap_init_system(main_pal_shd, html5_spr_shd, html5_surf_shd)
 {
-    var swapper;
-    
-    swapper = 
+    var _swapper = 
     {
         shader: -4,
         html5: false,
@@ -23,107 +21,102 @@ function pal_swap_init_system(argument0, argument1, argument2)
             ds_map_destroy(layer_map);
         }
     };
-    swapper.html5 = false;
+    _swapper.html5 = false;
     
-    if (!swapper.html5)
+    if (!_swapper.html5)
     {
-        swapper.shader = argument0;
-        swapper.texel_size[0] = shader_get_uniform(argument0, "u_pixelSize");
-        swapper.uvs[0] = shader_get_uniform(argument0, "u_Uvs");
-        swapper.index[0] = shader_get_uniform(argument0, "u_paletteId");
-        swapper.texture[0] = shader_get_sampler_index(argument0, "u_palTexture");
+        _swapper.shader = main_pal_shd;
+        _swapper.texel_size[0] = shader_get_uniform(main_pal_shd, "u_pixelSize");
+        _swapper.uvs[0] = shader_get_uniform(main_pal_shd, "u_Uvs");
+        _swapper.index[0] = shader_get_uniform(main_pal_shd, "u_paletteId");
+        _swapper.texture[0] = shader_get_sampler_index(main_pal_shd, "u_palTexture");
     }
     else
     {
-        if (argument1 == undefined || argument2 == undefined)
+        if (html5_spr_shd == undefined || html5_surf_shd == undefined)
         {
             show_message("Must provide pal_swap_init_system() with 2 additional arguments for HTML5 Compatible Sprite and Surface Shaders");
             game_end();
         }
         
-        swapper.html5_sprite = argument1;
-        swapper.html5_surface = argument2;
-        swapper.texel_size[1] = shader_get_uniform(argument1, "u_pixelSize");
-        swapper.uvs[1] = shader_get_uniform(argument1, "u_Uvs");
-        swapper.index[1] = shader_get_uniform(argument1, "u_paletteId");
-        swapper.texture[1] = shader_get_sampler_index(argument1, "u_palTexture");
-        swapper.texel_size[2] = shader_get_uniform(argument2, "u_pixelSize");
-        swapper.uvs[2] = shader_get_uniform(argument2, "u_Uvs");
-        swapper.index[2] = shader_get_uniform(argument2, "u_paletteId");
-        swapper.texture[2] = shader_get_sampler_index(argument2, "u_palTexture");
+        _swapper.html5_sprite = html5_spr_shd;
+        _swapper.html5_surface = html5_surf_shd;
+		
+        _swapper.texel_size[1] = shader_get_uniform(html5_spr_shd, "u_pixelSize");
+        _swapper.uvs[1] = shader_get_uniform(html5_spr_shd, "u_Uvs");
+        _swapper.index[1] = shader_get_uniform(html5_spr_shd, "u_paletteId");
+        _swapper.texture[1] = shader_get_sampler_index(html5_spr_shd, "u_palTexture");
+		
+        _swapper.texel_size[2] = shader_get_uniform(html5_surf_shd, "u_pixelSize");
+        _swapper.uvs[2] = shader_get_uniform(html5_surf_shd, "u_Uvs");
+        _swapper.index[2] = shader_get_uniform(html5_surf_shd, "u_paletteId");
+        _swapper.texture[2] = shader_get_sampler_index(html5_surf_shd, "u_palTexture");
     }
     
-    swapper.layer_priority = ds_priority_create();
-    swapper.layer_temp_priority = ds_priority_create();
-    swapper.layer_map = ds_map_create();
-    global.retro_pal_swapper = swapper;
+    _swapper.layer_priority = ds_priority_create();
+    _swapper.layer_temp_priority = ds_priority_create();
+    _swapper.layer_map = ds_map_create();
+    global.retro_pal_swapper = _swapper;
 }
 
-function pal_swap_set(argument0, argument1, argument2)
+function pal_swap_set(spr, value, is_surface)
 {
-    var swapper, mode, tex, UVs, texel_x, texel_y, texel_hx, texel_hy;
+    var _swapper = global.retro_pal_swapper;
     
-    swapper = global.retro_pal_swapper;
-    
-    if (argument1 == 0)
+    if (value == 0)
         exit;
     
-    mode = 0;
+    var _mode = 0;
     
-    if (!argument2)
+    if (!is_surface)
     {
-        if (swapper.html5)
+        if (_swapper.html5)
         {
-            shader_set(swapper.html5_sprite);
-            mode = 1;
+            shader_set(_swapper.html5_sprite);
+            _mode = 1;
         }
         else
         {
-            shader_set(swapper.shader);
+            shader_set(_swapper.shader);
         }
         
-        tex = sprite_get_texture(argument0, 0);
-        UVs = sprite_get_uvs(argument0, 0);
-        texture_set_stage(swapper.texture[mode], tex);
-        texel_x = texture_get_texel_width(tex);
-        texel_y = texture_get_texel_height(tex);
-        texel_hx = texel_x * 0.5;
-        texel_hy = texel_y * 0.5;
-        shader_set_uniform_f(swapper.texel_size[mode], texel_x, texel_y);
-        shader_set_uniform_f(swapper.uvs[mode], UVs[0] + texel_hx, UVs[1] + texel_hy, UVs[2], UVs[3]);
-        shader_set_uniform_f(swapper.index[mode], argument1);
+        var _tex = sprite_get_texture(spr, 0);
+        var _UVs = sprite_get_uvs(spr, 0);
+        texture_set_stage(_swapper.texture[_mode], _tex);
+        var _texel_x = texture_get_texel_width(_tex);
+        var _texel_y = texture_get_texel_height(_tex);
+        var _texel_hx = _texel_x * 0.5;
+        var _texel_hy = _texel_y * 0.5;
+        shader_set_uniform_f(_swapper.texel_size[_mode], _texel_x, _texel_y);
+        shader_set_uniform_f(_swapper.uvs[_mode], _UVs[0] + _texel_hx, _UVs[1] + _texel_hy, _UVs[2], _UVs[3]);
+        shader_set_uniform_f(_swapper.index[_mode], value);
     }
     else
     {
-        if (swapper.html5)
+        if (_swapper.html5)
         {
-            shader_set(swapper.html5_surface);
-            mode = 2;
+            shader_set(_swapper.html5_surface);
+            _mode = 2;
         }
         else
         {
-            shader_set(swapper.shader);
+            shader_set(_swapper.shader);
         }
         
-        tex = surface_get_texture(argument0);
-        texture_set_stage(swapper.texture[mode], tex);
-        texel_x = texture_get_texel_width(tex);
-        texel_y = texture_get_texel_height(tex);
-        texel_hx = texel_x * 0.5;
-        texel_hy = texel_y * 0.5;
-        shader_set_uniform_f(swapper.texel_size[mode], texel_x, texel_y);
-        shader_set_uniform_f(swapper.uvs[mode], texel_hx, texel_hy, 1 + texel_hx, 1 + texel_hy);
-        shader_set_uniform_f(swapper.index[mode], argument1);
+        var _tex = surface_get_texture(spr);
+        texture_set_stage(_swapper.texture[_mode], _tex);
+        var _texel_x = texture_get_texel_width(_tex);
+        var _texel_y = texture_get_texel_height(_tex);
+        var _texel_hx = _texel_x * 0.5;
+        var _texel_hy = _texel_y * 0.5;
+        shader_set_uniform_f(_swapper.texel_size[_mode], _texel_x, _texel_y);
+        shader_set_uniform_f(_swapper.uvs[_mode], _texel_hx, _texel_hy, 1 + _texel_hx, 1 + _texel_hy);
+        shader_set_uniform_f(_swapper.index[_mode], value);
     }
 }
 
 function pal_swap_reset()
 {
-    var u_enabled;
-    
-    u_enabled = shader_get_uniform(shd_pal_swapper, "pattern_enabled");
-    shader_set_uniform_i(u_enabled, false);
-    
     if (shader_current() != -1)
         shader_reset();
 }
@@ -135,53 +128,47 @@ function pal_swap_layer_init()
     ds_priority_clear(global.retro_pal_swapper.layer_temp_priority);
 }
 
-function pal_swap_set_layer(argument0, argument1, argument2, argument3)
+function pal_swap_set_layer(spr, spr_index, value, is_surface)
 {
-    var data;
+    var _data = ds_map_find_value(global.retro_pal_swapper.layer_map, value);
     
-    data = ds_map_find_value(global.retro_pal_swapper.layer_map, argument2);
-    
-    if (data == undefined)
+    if (_data == undefined)
         exit;
     
-    ds_map_set(global.retro_pal_swapper.layer_map, _layer_index, 
+    ds_map_set(global.retro_pal_swapper.layer_map, value, 
     {
-        sprite: argument0,
-        index: argument1,
-        is_surf: argument3
+        sprite: spr,
+        index: spr_index,
+        is_surf: is_surface
     });
 }
 
-function pal_swap_enable_layer(argument0)
+function pal_swap_enable_layer(_layer)
 {
-    var data;
-    
-    if (!layer_exists(argument0))
+    if (!layer_exists(_layer))
         exit;
     
-    data = 
+    var _data = 
     {
         sprite: undefined,
         index: undefined,
         is_surf: undefined
     };
-    layer_script_begin(argument0, function()
+    layer_script_begin(_layer, function()
     {
-        var layer_id, data;
-        
         if (event_type == ev_draw)
         {
-            layer_id = ds_priority_delete_min(global.retro_pal_swapper.layer_priority);
-            data = ds_map_find_value(global.retro_pal_swapper.layer_map, layer_id);
+            var _id = ds_priority_delete_min(global.retro_pal_swapper.layer_priority);
+            var _data = ds_map_find_value(global.retro_pal_swapper.layer_map, _id);
             
-            if (data == "<undefined>")
+            if (_data == "<undefined>")
                 exit;
             
-            pal_swap_set(data.sprite, data.index, data.is_surf);
-            ds_priority_add(global.retro_pal_swapper.layer_temp_priority, layer_id, layer_get_depth(layer_id));
+            pal_swap_set(_data.sprite, _data.index, _data.is_surf);
+            ds_priority_add(global.retro_pal_swapper.layer_temp_priority, _id, layer_get_depth(_id));
         }
     });
-    layer_script_end(argument0, function()
+    layer_script_end(_layer, function()
     {
         if (event_type == ev_draw)
         {
@@ -194,6 +181,6 @@ function pal_swap_enable_layer(argument0)
             }
         }
     });
-    ds_map_set(global.retro_pal_swapper.layer_map, argument0, data);
-    ds_priority_add(global.retro_pal_swapper.layer_priority, argument0, layer_get_depth(argument0));
+    ds_map_set(global.retro_pal_swapper.layer_map, _layer, _data);
+    ds_priority_add(global.retro_pal_swapper.layer_priority, _layer, layer_get_depth(_layer));
 }

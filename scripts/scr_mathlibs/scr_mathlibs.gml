@@ -1,14 +1,14 @@
-function floor_ext(argument0, argument1)
+function floor_ext(value, precision)
 {
-    return floor(argument0 * argument1) / argument1;
+    return floor(value * precision) / precision;
 }
 
-function ceil_ext(argument0, argument1)
+function ceil_ext(value, precision)
 {
-    return ceil(argument0 * argument1) / argument1;
+    return ceil(value * precision) / precision;
 }
 
-function round_ext(argument0, argument1)
+function round_ext(value, precision)
 {
-    return round(argument0 * argument1) / argument1;
+    return round(value * precision) / precision;
 }

@@ -1,4 +1,4 @@
-function instance_create(argument0, argument1, argument2, argument3 = {})
+function instance_create(_x, _y, obj, init_data = {})
 {
-    return instance_create_depth(argument0, argument1, 0, argument2, argument3);
+    return instance_create_depth(_x, _y, 0, obj, init_data);
 }

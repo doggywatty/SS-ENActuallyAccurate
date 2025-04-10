@@ -1,7 +1,5 @@
-if (flash)
-{
-    draw_sprite_ext_flash(sprite_index, image_index, x + random_range(-5, 5), y + random_range(-5, 5), image_xscale, image_yscale, image_angle, 16777215, image_alpha);
-}
+if flash
+    draw_sprite_ext_flash(sprite_index, image_index, x + random_range(-5, 5), y + random_range(-5, 5), image_xscale, image_yscale, image_angle, c_white, image_alpha);
 else
 {
     pal_swap_set(paletteSprite, paletteSelect, 0);

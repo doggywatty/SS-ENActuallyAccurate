@@ -12,7 +12,6 @@ else
 {
     alarm[2] = -1;
     alarm[3] = 25;
-    
-    if (global.janitorRudefollow)
+    if global.janitorRudefollow
         alarm[6] = 25;
 }

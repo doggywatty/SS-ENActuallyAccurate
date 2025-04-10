@@ -1,4 +1,4 @@
-if (dunk)
+if dunk
 {
     alarm[0] = -1;
     drawy = approach(drawy, 1000, 5);

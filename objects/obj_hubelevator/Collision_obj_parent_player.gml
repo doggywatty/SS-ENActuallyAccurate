@@ -1,4 +1,5 @@
-if (state == States.frozen && other.state != States.comingoutdoor && other.hsp == 0 && other.grounded && other.key_up2)
+if (state == States.frozen && other.state != States.comingoutdoor
+&& other.hsp == 0 && other.grounded && other.key_up2)
 {
     state = States.normal;
     playerID = other.id;

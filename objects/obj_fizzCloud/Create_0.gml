@@ -1,13 +1,11 @@
-var i;
-
 event_inherited();
 
 enemyDeath_SpawnBody = function()
 {
-    instance_create(x, y, obj_thundercloudeffect, 
-    {
-        image_xscale: image_xscale
-    });
+	instance_create(x, y, obj_thundercloudeffect, 
+	{
+		image_xscale: image_xscale
+	});
 };
 
 grav = 0.5;
@@ -43,20 +41,18 @@ substate = 0;
 roomname = room_get_name(room);
 paletteSprite = spr_thundercloud_pal;
 
-for (i = 0; i < 11; i++)
+for (var i = 0; i < 11; i++)
 {
-    if (roomname == ("mountain_" + string(i)) && i < 7)
-        paletteSelect = 0;
-    
-    if (roomname == ("mountain_" + string(i)) && i > 6)
-    {
-        paletteSelect = 1;
-        
-        if (roomname == ("mountain_" + string(i)) && i > 7)
-            paletteSelect = 2;
-    }
+	if (roomname == ("mountain_" + string(i)) && i < 7)
+		paletteSelect = 0;
+	
+	if (roomname == ("mountain_" + string(i)) && i > 6)
+	{
+		paletteSelect = 1;
+		if (roomname == ("mountain_" + string(i)) && i > 7)
+			paletteSelect = 2;
+	}
 }
 
 if (roomname == "mountain_escape1")
-    paletteSelect = 2;
-
+	paletteSelect = 2;

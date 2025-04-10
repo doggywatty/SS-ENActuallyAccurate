@@ -1,12 +1,10 @@
-var _seed;
-
 image_speed = 0.1;
 movebuffer = 50;
 tgt_x = x;
 tgt_y = y;
 depth = 120;
 range = 100;
-_seed = global.RandomSeed;
+var _seed = global.RandomSeed;
 random_set_seed(xstart + (ystart * 2));
 type = choose(0, 1);
 random_set_seed(_seed);

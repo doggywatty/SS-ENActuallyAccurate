@@ -1,6 +1,5 @@
 count++;
 t = (t + 1) % 65535;
-
 if ((t % 6) == 0)
     camera_shake_add(irandom(2), 1);
 

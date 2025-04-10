@@ -1,9 +1,9 @@
-function scr_solid(argument0, argument1, argument2 = false)
+function scr_solid(_x, _y, _exclude = false)
 {
-    return place_meeting_collision(argument0, argument1, argument2);
+    return place_meeting_collision(_x, _y, _exclude);
 }
 
-function scr_solid_player(argument0, argument1, argument2 = false)
+function scr_solid_player(_x, _y, _exclude = false)
 {
-    return place_meeting_collision(argument0, argument1, argument2);
+    return place_meeting_collision(_x, _y, _exclude);
 }

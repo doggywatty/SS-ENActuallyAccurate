@@ -1,13 +1,12 @@
-canCollide = function(argument0 = obj_parent_player)
+canCollide = function(player = obj_parent_player)
 {
-    switch (argument0)
+    switch player
     {
         case obj_parent_player:
         case obj_player1:
         case obj_player2:
-            return argument0.state != States.cottondig && argument0.sprite_index != spr_player_PZ_werecotton_spin;
+            return player.state != States.cottondig && player.sprite_index != spr_player_PZ_werecotton_spin;
             break;
-        
         default:
             return true;
             break;

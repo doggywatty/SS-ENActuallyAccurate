@@ -6,6 +6,4 @@ if (animation_end_old())
     alarm[7] = -1;
 }
 else
-{
     alarm[7] = 3;
-}

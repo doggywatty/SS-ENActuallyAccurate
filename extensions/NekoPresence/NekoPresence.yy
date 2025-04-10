@@ -13,10 +13,10 @@
   "author": "",
   "classname": "",
   "copyToTargets": -1,
-  "date": "2024-12-29T17:00:14-08:00",
+  "date": "2025-04-01T23:28:14.8002189-03:00",
   "description": "",
   "exportToGame": true,
-  "extensionVersion": "1.3.0",
+  "extensionVersion": "0.0.1",
   "files": [
     {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"NekoPresence_x64.dll","constants":[],"copyToTargets":-1,"filename":"NekoPresence_x64.dll","final":"__np_shutdown","functions":[
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"__np_initdll","argCount":0,"args":[],"documentation":"","externalName":"np_initdll","help":"","hidden":false,"kind":1,"returnType":2,},
@@ -100,7 +100,7 @@
   "maclinkerflags": "",
   "macsourcedir": "",
   "options": [],
-  "optionsFile": "options.json",
+  "optionsFile": null,
   "packageId": "",
   "parent": {
     "name": "NekoPresence",

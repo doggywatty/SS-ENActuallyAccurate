@@ -1,4 +1,4 @@
-with (other)
+with other
 {
     if (state != States.actor && sprite_index != spr_gotTreasure)
     {

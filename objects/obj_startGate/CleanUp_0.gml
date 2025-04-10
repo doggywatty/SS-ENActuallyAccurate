@@ -1,8 +1,8 @@
-if (surface_exists(surf))
+if surface_exists(surf)
     surface_free(surf);
 
-if (!is_undefined(savedPaintSprite))
+if !is_undefined(savedPaintSprite)
 {
-    if (sprite_exists(savedPaintSprite))
+    if sprite_exists(savedPaintSprite)
         sprite_delete(savedPaintSprite);
 }

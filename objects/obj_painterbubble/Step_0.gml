@@ -1,6 +1,5 @@
 image_alpha = fade;
-
-if (global.PlayerPaletteIndex != savedPaletteIndex)
+if global.PlayerPaletteIndex != savedPaletteIndex
 {
     savedPaletteIndex = global.PlayerPaletteIndex;
     usePaletteThought = true;
@@ -12,12 +11,10 @@ if (global.PlayerPaletteIndex != savedPaletteIndex)
 if (bufferCooldown > 0)
 {
     bufferCooldown--;
-    
     if (bufferCooldown <= 0)
     {
         buffering = false;
-        
-        if (usePaletteThought)
+        if usePaletteThought
         {
             usePaletteThought = false;
             buffering = true;
@@ -25,8 +22,7 @@ if (bufferCooldown > 0)
             typist.reset();
         }
     }
-    
-    if (usePaletteThought)
+    if usePaletteThought
         typist.skip();
 }
 else if (buffering && typist.get_position() >= bufferLength)

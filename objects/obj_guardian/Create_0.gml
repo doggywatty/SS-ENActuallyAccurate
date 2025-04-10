@@ -35,12 +35,10 @@ depth = 0;
 with (instance_create(x, y, obj_icontracker))
 {
     target = other.id;
-    
     visible_cond = function()
     {
         return target.chaseActive == true;
     };
-    
     sprite_index = spr_guardian_icon;
 }
 

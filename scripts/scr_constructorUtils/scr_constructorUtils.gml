@@ -1,44 +1,41 @@
-function subSprite(argument0, argument1 = 0, argument2 = 0.35, argument3 = true) constructor
+function subSprite(_spr_ind, _img_ind = 0, _img_spd = 0.35, _doWrap = true) constructor
 {
-    static update = function(argument0 = image_speed)
+    static update = function(_img_spd = image_speed)
     {
         image_number = sprite_get_number(sprite_index);
-        image_index += argument0;
-        
-        if (doWrap)
+        image_index += _img_spd;
+        if doWrap
             image_index = wrap(image_index, 0, image_number);
         else
             image_index = clamp(image_index, 0, image_number);
-        
         return image_index;
     };
     
-    static setPosition = function(argument0, argument1)
+    static setPosition = function(_x, _y)
     {
-        x = argument0;
-        y = argument1;
+        x = _x;
+        y = _y;
         return self;
     };
     
-    static draw = function(argument0 = x, argument1 = y, argument2 = image_xscale, argument3 = image_yscale, argument4 = image_angle, argument5 = image_blend, argument6 = image_alpha)
+    static draw = function(_x = x, _y = y, _img_xscale = image_xscale, _img_yscale = image_yscale, _img_angle = image_angle, _img_blend = image_blend, _img_alpha = image_alpha)
     {
-        if (!visible)
+        if !visible
             exit;
-        
-        draw_sprite_ext(sprite_index, image_index, argument0, argument1, argument2, argument3, argument4, argument5, argument6);
+        draw_sprite_ext(sprite_index, image_index, _x, _y, _img_xscale, _img_yscale, _img_angle, _img_blend, _img_alpha);
         return self;
     };
     
-    static setFunction = function(argument0)
+    static setFunction = function(_func)
     {
-        custom_func = method(self, argument0);
+        custom_func = method(self, _func);
         return self;
     };
     
-    sprite_index = argument0;
-    image_index = argument1;
-    image_speed = argument2;
-    doWrap = argument3;
+    sprite_index = _spr_ind;
+    image_index = _img_ind;
+    image_speed = _img_spd;
+    doWrap = _doWrap;
     image_xscale = 1;
     image_yscale = 1;
     visible = true;

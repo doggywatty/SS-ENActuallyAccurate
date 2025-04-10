@@ -6,6 +6,6 @@ draw_set_color(c_white);
 
 if (fadealpha > 0 && !instance_exists(obj_rank))
 {
-    with (obj_parent_player)
+    with obj_parent_player
         draw_player_sprite(sprite_index, image_index, other.PlayerX, other.PlayerY);
 }

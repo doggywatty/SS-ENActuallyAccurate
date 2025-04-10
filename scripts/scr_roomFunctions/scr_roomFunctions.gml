@@ -1,7 +1,7 @@
 global.NextRoom = rm_missing;
 
-function room_goto_fixed(argument0)
+function room_goto_fixed(_room)
 {
-    global.NextRoom = argument0;
-    room_goto(argument0);
+    global.NextRoom = _room;
+    room_goto(_room);
 }

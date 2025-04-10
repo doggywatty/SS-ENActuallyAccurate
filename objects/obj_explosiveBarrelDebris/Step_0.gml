@@ -4,7 +4,7 @@ if (vsp < 20)
 x += hsp;
 y += floor(vsp);
 
-if (!alarm[0])
+if !alarm[0]
     alarm[0] = 5;
 
 drawx = x;

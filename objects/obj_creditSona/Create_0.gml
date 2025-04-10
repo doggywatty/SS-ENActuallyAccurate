@@ -13,7 +13,7 @@ playerPalette = false;
 
 onClick = function()
 {
-    if (dead)
+    if dead
         exit;
     
     dead = true;
@@ -23,7 +23,7 @@ onClick = function()
     image_speed = 0;
     image_index = 0;
     
-    with (obj_creditsDemo)
+    with obj_creditsDemo
     {
         if (currentCategory <= array_length(killCounterArr))
             killCounterArr[currentCategory]++;

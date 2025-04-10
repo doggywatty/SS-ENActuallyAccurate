@@ -1,4 +1,4 @@
-if (!instance_exists(obj_parent_player))
+if !instance_exists(obj_parent_player)
     exit;
 
 if (obj_parent_player.state == States.titlescreen)

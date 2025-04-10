@@ -1,11 +1,9 @@
-if (fadein)
+if fadein
 {
     fadealpha = approach(fadealpha, 0, 0.1);
-    
-    if (!doneJingle)
+    if !doneJingle
     {
         doneJingle = true;
-        
         if (info.music != -4)
             event_play_oneshot(info.music);
     }
@@ -13,8 +11,7 @@ if (fadein)
 else
 {
     fadealpha = approach(fadealpha, 1, 0.1);
-    
-    if (fadealpha)
+    if fadealpha
     {
         fadein = true;
         alarm[0] = 180;

@@ -15,34 +15,30 @@ outfitArr = [];
 outfitRows = 0;
 taskIcons = {};
 
-taskIcon = function(argument0, argument1 = false) constructor
+taskIcon = function(_task, _isCompleted = false) constructor
 {
-    static get = function(argument0)
-    {
-        return struct_get(task, argument0);
-    };
-    
-    x = 0;
-    y = 0;
-    task = argument0;
-    isCompleted = argument1;
+	static get = function(_task)
+	{
+		return struct_get(task, _task);
+	};
+	x = 0;
+	y = 0;
+	task = _task;
+	isCompleted = _isCompleted;
 };
 
-addTask = function(argument0, argument1)
+addTask = function(_task, _taskArr)
 {
-    var arr;
-    
-    if (is_undefined(variable_struct_get(taskIcons, argument0)))
-        variable_struct_set(taskIcons, argument0, []);
-    
-    arr = variable_struct_get(taskIcons, argument0);
-    array_push(arr, argument1);
-    return arr;
+	if (is_undefined(variable_struct_get(taskIcons, _task)))
+		variable_struct_set(taskIcons, _task, []);
+	var arr = variable_struct_get(taskIcons, _task);
+	array_push(arr, _taskArr);
+	return arr;
 };
 
-addOutfit = function(argument0)
+addOutfit = function(_outfit)
 {
-    array_push(outfitArr, argument0);
+	array_push(outfitArr, _outfit);
 };
 
 event_user(0);

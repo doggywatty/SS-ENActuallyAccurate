@@ -1,4 +1,4 @@
-with (other)
+with other
 {
     if (key_up && !place_meeting_collision(other.x + (other.sprite_width / 2), round(y), Exclude.MOVINGANDPLATFORMS) && !inputLadderBuffer && (state == States.normal || state == States.uppercut || state == States.mach2 || state == States.mach3 || state == States.mach1 || state == States.jump) && state != States.hurt && state != States.machslide && state != States.freefall && state != States.freefallland)
     {

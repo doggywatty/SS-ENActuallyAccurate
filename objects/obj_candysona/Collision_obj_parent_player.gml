@@ -1,4 +1,4 @@
-if (!instance_exists(candyID))
+if !instance_exists(candyID)
 {
     candyID = instance_create(x, y, obj_collect_giver);
     global.PizzaMeter += 5;
@@ -17,7 +17,6 @@ if (!instance_exists(candyID))
     vsp = random_range(-5, -10);
     ds_list_add(global.SaveRoom, id);
     hsp = sign(x - obj_parent_player.x) * random_range(10, 15);
-    
     if (x != obj_parent_player.x)
         image_xscale = sign(obj_parent_player.x - x);
 }

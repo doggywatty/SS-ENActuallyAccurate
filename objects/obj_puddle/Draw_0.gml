@@ -1,4 +1,4 @@
-if (!slipped)
+if !slipped
     iceblock.draw(x, y + 5).update();
 
 pal_swap_set(paletteSprite, paletteSelect, 0);

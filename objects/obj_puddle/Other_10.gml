@@ -8,7 +8,7 @@ obj_parent_player.state = States.puddle;
 obj_parent_player.vsp = -11;
 obj_parent_player.grounded = 0;
 
-with (obj_achievementTracker)
+with obj_achievementTracker
     constructHasSlipped = true;
 
 event_play_oneshot("event:/SFX/player/slip", x, y);
@@ -23,13 +23,11 @@ with (instance_create(x, y, obj_baddieDead))
     image_speed = 0;
 }
 
-if (!perma)
+if !perma
 {
     image_xscale = obj_parent_player.image_xscale;
     instance_destroy();
 }
 else
-{
     alarm[0] = 60;
-}
-
+	

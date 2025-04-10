@@ -1,5 +1,3 @@
-var k, dg, palette_array, i, key;
-
 image_speed = 0.35;
 fade = 0;
 bufferThought = lang_get("demopainter_thoughtbuffer");
@@ -15,16 +13,15 @@ typist = scribble_typist();
 typist.pause();
 typist.in(0.25, 1);
 
-for (k = 1; lang_key_exists(string("demopainter_idlethought_{0}", k)); k++)
+for (var k = 1; lang_key_exists($"demopainter_idlethought_{k}"); k++)
 {
-    dg = lang_get(string("demopainter_idlethought_{0}", k));
-    array_push(idleThoughts, dg);
+	var dg = lang_get($"demopainter_idlethought_{k}");
+	array_push(idleThoughts, dg);
 }
 
-palette_array = global.CharacterPalette[global.playerCharacter].palettes;
-
-for (i = 0; i < array_length(palette_array); i++)
+var palette_array = global.CharacterPalette[global.playerCharacter].palettes;
+for (var i = 0; i < array_length(palette_array); i++)
 {
-    key = palette_array[i].palName;
-    array_push(paletteThoughts, lang_get(string("{0}_thought", key)));
+	var key = palette_array[i].palName;
+	array_push(paletteThoughts, lang_get($"{key}_thought"));
 }

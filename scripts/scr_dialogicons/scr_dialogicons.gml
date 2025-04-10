@@ -1,49 +1,40 @@
-function scr_getDialogIcon(argument0, argument1 = "c_white", argument2 = "c_black")
+function scr_getDialogIcon(_dialogIcon, color1 = "c_white", color2 = "c_black")
 {
-    var spr, ind;
-    
-    argument0 = string_upper(argument0);
-    spr = "spr_null";
-    ind = "0";
-    
-    switch (argument0)
-    {
-        case "HARRY":
-            spr = "spr_icon_dialog";
-            ind = "1";
-            break;
-        
-        case "PIZZELLE":
-            spr = "spr_icon_dialog";
-            ind = "0";
-            break;
-        
-        case "LAPLAD":
-        case "LAP LAD":
-        case "POLKA":
-            spr = "spr_icon_dialog";
-            ind = "2";
-            break;
-        
-        case "INK":
-            spr = "spr_icon_dialog";
-            ind = "3";
-            break;
-        
-        case "RUDY":
-            spr = "spr_icon_dialog";
-            ind = "4";
-            break;     
-        case "SLUGGY":
-            spr = "spr_icon_dialog";
-            ind = "5";
-            break;
-        
-        case "COTTONWITCH":
-            spr = "spr_icon_dialog";
-            ind = "6";
-            break;
-    }
-    
-    return string("[{0}][{1}, {2}][{3}]", argument1, spr, ind, argument2);
+	_dialogIcon = string_upper(_dialogIcon);
+	var spr = "spr_null";
+	var ind = "0";
+	switch _dialogIcon
+	{
+		case "HARRY":
+			spr = "spr_icon_dialog";
+			ind = "1";
+			break;
+		case "PIZZELLE":
+			spr = "spr_icon_dialog";
+			ind = "0";
+			break;
+		case "LAPLAD":
+		case "LAP LAD":
+		case "POLKA":
+			spr = "spr_icon_dialog";
+			ind = "2";
+			break;
+		case "INK":
+			spr = "spr_icon_dialog";
+			ind = "3";
+			break;
+		case "RUDY":
+			spr = "spr_icon_dialog";
+			ind = "4";
+			break;
+		case "SLUGGY":
+			spr = "spr_icon_dialog";
+			ind = "5";
+			break;
+		case "COTTONWITCH":
+			spr = "spr_icon_dialog";
+			ind = "6";
+			break;
+	}
+	return string($"[{color1}][{spr}, {ind}][{color2}]");
 }

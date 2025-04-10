@@ -4,9 +4,7 @@ if (place_meeting_collision(x, y))
     vsp += grav;
 }
 else
-{
     scr_collision();
-}
 
 if (grounded)
 {
