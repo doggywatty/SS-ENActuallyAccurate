@@ -1,7 +1,7 @@
 # Sugary Spire: Exhibition Night (The Reproduction)
-This repository hosts a decompilation of the "Sugary Spire: Exhibition Night" demo.</br>It tries to make it as good as possible without using UA's old output.</br>It is close to 100% accurate to the original demo.
-If there's anything I missed, please make an issue or even better a PR!
+This repository hosts a decompilation of the "Sugary Spire: Exhibition Night" demo.</br>It tries to make it as good as possible without using UA's old output.</br>It is close to 100% accurate to the original demo.</br>
 
+If there's anything I missed, please make an issue or even better a PR!
 # Compilation
 ## Needed Materials
 - [GameMaker Studio v2023.11](https://gms.yoyogames.com/GameMaker-Installer-2023.11.1.129.exe), runtime 2023.11.1.160
