@@ -1,5 +1,6 @@
 # Sugary Spire: Exhibition Night (The Reproduction)
 This repository hosts a decompilation of the "Sugary Spire: Exhibition Night" demo.</br>It tries to make it as good as possible without using UA's old output.</br>It is close to 100% accurate to the original demo.
+If there's anything I missed, please make an issue or even better a PR!
 
 # Compilation
 ## Needed Materials
