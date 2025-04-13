@@ -18,7 +18,7 @@
   "exportToGame": true,
   "extensionVersion": "1.3.2",
   "files": [
-    {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"","constants":[],"copyToTargets":194,"filename":"","final":"","functions":[
+    {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"NekoPresence.gml","constants":[],"copyToTargets":194,"filename":"NekoPresence.gml","final":"","functions":[
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"np_get_avatar_url","argCount":0,"args":[
             1,
             1,
@@ -26,7 +26,7 @@
       ],"init":"","kind":2,"order":[
         {"name":"np_get_avatar_url","path":"extensions/NekoPresence/NekoPresence.yy",},
       ],"origname":"","ProxyFiles":[],"uncompress":false,"usesRunnerInterface":false,},
-    {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"","constants":[
+    {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"NekoPresence.dll","constants":[
         {"resourceType":"GMExtensionConstant","resourceVersion":"1.0","name":"np_steam_app_id","hidden":false,"value":"string(steam_get_app_id())",},
         {"resourceType":"GMExtensionConstant","resourceVersion":"1.0","name":"np_steam_app_id_empty","hidden":false,"value":"\"0\"",},
         {"resourceType":"GMExtensionConstant","resourceVersion":"1.0","name":"DISCORD_REPLY_NO","hidden":false,"value":"0",},
@@ -35,7 +35,7 @@
         {"resourceType":"GMExtensionConstant","resourceVersion":"1.0","name":"DISCORD_PARTY_PRIVACY_PRIVATE","hidden":false,"value":"0",},
         {"resourceType":"GMExtensionConstant","resourceVersion":"1.0","name":"DISCORD_PARTY_PRIVACY_PUBLIC","hidden":false,"value":"1",},
         {"resourceType":"GMExtensionConstant","resourceVersion":"1.0","name":"DISCORD_MAX_BUTTONS","hidden":false,"value":"2",},
-      ],"copyToTargets":194,"filename":"","final":"__np_shutdown","functions":[
+      ],"copyToTargets":194,"filename":"NekoPresence.dll","final":"__np_shutdown","functions":[
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"__np_initdll","argCount":0,"args":[],"documentation":"","externalName":"np_initdll","help":"__np_initdll()","hidden":false,"kind":1,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"__np_shutdown","argCount":0,"args":[],"documentation":"","externalName":"np_shutdown","help":"__np_shutdown()","hidden":false,"kind":1,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"np_initdiscord","argCount":0,"args":[
