@@ -6,8 +6,7 @@ if (playerID == -4)
 
 x = playerID.x;
 y = playerID.y - 100;
-
-if (refined)
+if refined
 {
     x += random_range(-2, 2);
     y += random_range(-2, 2);
@@ -15,7 +14,6 @@ if (refined)
 
 image_xscale = approach(image_xscale, 1, 0.05);
 image_yscale = approach(image_yscale, 1, 0.05);
-
 if (gemCount < 4)
 {
     image_index = gemCount;
@@ -27,7 +25,7 @@ else
     image_speed = 0.35;
 }
 
-if (collected)
+if collected
 {
     while (gemCount > 0)
     {
@@ -39,10 +37,8 @@ if (collected)
             ystart = y;
             hsp += other.playerID.hsp;
         }
-        
         gemCount--;
     }
-    
     collected = false;
     xstart = x;
     ystart = y;
@@ -55,7 +51,7 @@ if ((instance_exists(obj_minesgempiece) || collected) && playerID.state != State
 }
 else
 {
-    if (idleGem)
+    if idleGem
     {
         idleGem = false;
         leaveTimer = 0;
@@ -63,17 +59,14 @@ else
     }
     
     leaveTimer = approach(leaveTimer, 0, 1);
-    
     if (leaveTimer <= 0)
         leaving = true;
 }
 
 if (image_alpha < 1 && !leaving)
     image_alpha += 0.1;
-
-if (leaving)
+if leaving
     image_alpha -= 0.1;
-
 if (image_alpha <= 0 && leaving)
     instance_destroy();
 

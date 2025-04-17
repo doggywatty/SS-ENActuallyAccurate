@@ -1,2 +1,2 @@
-with (instance_create(x, y, obj_bombExplosionPlayer))
+with instance_create(x, y, obj_bombExplosionPlayer)
     frog = true;

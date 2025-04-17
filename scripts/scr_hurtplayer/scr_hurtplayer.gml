@@ -11,7 +11,6 @@ function scr_hurtplayer(player = obj_parent_player, mspd)
 			if sprite_index == spr_supertaunt1 || sprite_index == spr_supertaunt2
 			|| sprite_index == spr_supertaunt3 || sprite_index == spr_supertaunt4
 				continue;
-			
 			if (state == States.minecart)
 			{
 				sprite_index = spr_player_PZ_hitWall_mach3;

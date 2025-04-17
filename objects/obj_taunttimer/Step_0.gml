@@ -8,7 +8,7 @@ if ((obj_parent_player.x > (x - 200) && obj_parent_player.x < (x + 200)) && (y <
     
     if (timer == -2 && obj_parent_player.state != States.taunt)
     {
-        with (obj_parent_player)
+        with obj_parent_player
             scr_hurtplayer();
         
         if (obj_parent_player.state != States.hurt)

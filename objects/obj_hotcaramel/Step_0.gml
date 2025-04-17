@@ -7,7 +7,6 @@ if (place_meeting(x, y - 1, obj_parent_player))
 		{
 			if (state == States.cotton || state == States.cottondrill)
 				instance_create(x, y, obj_poofeffect);
-			
 			if (state == States.minecart)
 			{
 				instance_create(x, y, obj_bombExplosion);
@@ -17,13 +16,11 @@ if (place_meeting(x, y - 1, obj_parent_player))
 						image_index = i;
 				}
 			}
-			
 			image_index = 0;
 			sprite_index = spr_player_PZ_fireAss_intro;
 			state = States.fireass;
 			vsp = -20;
 			movespeed = hsp;
-			
 			if !event_instance_isplaying(sndFireass)
 				fmod_studio_event_instance_start(sndFireass);
 			event_play_oneshot("event:/SFX/player/burn", x, y);

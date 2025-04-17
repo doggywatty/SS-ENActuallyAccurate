@@ -67,7 +67,7 @@ function meta_game_speed()
 function sh_character(_char)
 {
 	var choosen_character = Characters.Pizzelle;
-	switch (_char[1])
+	switch _char[1]
 	{
 		default:
 			show_debug_message($"SHELL WARNING: [{_char[1]}] is not a valid character. Defaulting to Pizzelle.");
@@ -112,12 +112,10 @@ function sh_unlock(_typelevel)
 	{
 		var levels = ["tutorial", "entryway", "steamy", "mineshaft", "molasses"];
 		ini_open(global.SaveFileName);
-		
 		for (var i = 0; i < array_length(levels); i++)
 		{
 			var int_level = levels[i];
 			var level_info = ds_map_find_value(global.GameLevelMap, int_level);
-			
 			for (var z = 0; z < 3; z++)
 				ini_update_stat("Secret", string(int_level) + string(z + 1), true);
 			
@@ -234,7 +232,7 @@ function toggle_collision_function()
 	var length = array_length(array);
 	for (var i = length - 1; i >= 0; i--)
 	{
-	    with (array[i])
+	    with array[i]
 	    {
 	        if (object_index == array[i])
 	        {
@@ -289,8 +287,7 @@ function toggle_debugView(debug)
 {
 	global.DebugVisuals = debug;
 	show_debug_log(debug);
-	
-	if (global.DebugVisuals)
+	if global.DebugVisuals
 	{
 		show_debug_log(global.DebugVisuals);
 		global.PlayerDebugView = dbg_view("Player", true);

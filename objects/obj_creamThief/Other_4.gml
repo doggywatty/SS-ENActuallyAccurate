@@ -6,7 +6,7 @@ if _raceOver
 {
 	with obj_creamThiefLoseTrigger
 	{
-		other.x = bbox_left + ((bbox_right - bbox_left) / 2);
+		other.x = bbox_left + (bbox_width / 2);
 		other.y = y;
 	}
 	with obj_racelight

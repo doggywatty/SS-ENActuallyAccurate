@@ -11,7 +11,7 @@ if (!spawnEnemy && sprite_animation_end(sprite_index, image_index, 5))
 {
     spawnEnemy = true;
     
-    with (baddieID)
+    with baddieID
     {
         if (state != States.wallkick)
             exit;

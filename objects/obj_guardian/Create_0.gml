@@ -31,8 +31,7 @@ sndWake = fmod_createEventInstance("event:/SFX/enemies/guardian");
 alarm[0] = 1;
 image_speed = 0;
 depth = 0;
-
-with (instance_create(x, y, obj_icontracker))
+with instance_create(x, y, obj_icontracker)
 {
     target = other.id;
     visible_cond = function()
@@ -41,6 +40,5 @@ with (instance_create(x, y, obj_icontracker))
     };
     sprite_index = spr_guardian_icon;
 }
-
 returntimer = 0;
 

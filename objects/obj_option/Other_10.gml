@@ -76,7 +76,6 @@ switch optionMenu
 		backMenu = OptionMenu.Base;
 		backOption = 1;
 		alignCenter = false;
-		
 		var res = [];
 		for (var i = 0; i < array_length(global.resolutions); i++)
 			array_push(res, string($"{global.resolutions[i][0]}X{global.resolutions[i][1]}"));

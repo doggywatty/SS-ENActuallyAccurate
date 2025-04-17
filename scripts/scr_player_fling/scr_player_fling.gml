@@ -29,7 +29,7 @@ function state_player_fling_launch()
 			{
 				repeat 4
 				{
-					with (instance_create(x, y, obj_poofeffectsmall))
+					with instance_create(x, y, obj_poofeffectsmall)
 					{
 						depth -= 5;
 						sprite_index = choose(spr_flingparticle, spr_flingparticle2);
@@ -54,7 +54,7 @@ function state_player_fling_launch()
 	{
 		repeat 4
 		{
-			with (instance_create(x, y, obj_poofeffectsmall))
+			with instance_create(x, y, obj_poofeffectsmall)
 			{
 				depth -= 5;
 				sprite_index = choose(spr_flingparticle, spr_flingparticle2);
@@ -78,7 +78,7 @@ function state_player_fling_launch()
 			sprite_index = spr_crouchslip;
 			movespeed = min(abs(hsp), 12);
 			hsp = movespeed * xscale;
-			with (instance_create(x, y, obj_jumpdust))
+			with instance_create(x, y, obj_jumpdust)
 				image_xscale = other.xscale;
 		}
 	}
@@ -87,7 +87,7 @@ function state_player_fling_launch()
 	{
 		repeat 4
 		{
-			with (instance_create(x, y, obj_poofeffectsmall))
+			with instance_create(x, y, obj_poofeffectsmall)
 			{
 				depth -= 5;
 				sprite_index = choose(spr_flingparticle, spr_flingparticle2);

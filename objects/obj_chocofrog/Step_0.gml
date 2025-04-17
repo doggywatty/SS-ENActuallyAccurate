@@ -1,4 +1,4 @@
-with (instance_nearest(x, y, obj_parent_player))
+with instance_nearest(x, y, obj_parent_player)
 {
 	var bumpstates = [States.mach3, States.mach2, States.machroll, States.grabdash];
 	if ((place_meeting(x + hsp, y, other.id) || place_meeting(x + xscale, y, other.id)) && object_index != obj_chocofrogsmall && array_contains(bumpstates, state))
@@ -112,7 +112,6 @@ with obj_creamThief
 
 if (place_meeting(x, y, obj_bombExplosionPlayer) && instance_place(x, y, obj_bombExplosionPlayer).frog)
 	instance_destroy();
-
 if (sprite_animation_end())
 {
 	switch sprite_index

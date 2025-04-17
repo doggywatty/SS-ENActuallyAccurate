@@ -9,7 +9,6 @@ if (DestroyedBy.object_index == obj_parent_player || DestroyedBy.object_index ==
             state = States.freefallland;
             jumpAnim = true;
             jumpStop = false;
-            
             with obj_parent_enemy
             {
                 if (bbox_in_camera(id, view_camera[0]) && grounded)
@@ -18,14 +17,12 @@ if (DestroyedBy.object_index == obj_parent_player || DestroyedBy.object_index ==
                     hsp = 0;
                 }
             }
-            
             camera_shake_add(10, 30);
             combo = 0;
             bounce = 0;
             instance_create(x, y, obj_landcloud);
             freefallstart = 0;
             image_index = 0;
-            
             if (sprite_index == spr_groundPoundfall)
                 sprite_index = spr_groundPoundland;
             else
@@ -47,7 +44,6 @@ if (DestroyedBy.object_index == obj_parent_player || DestroyedBy.object_index ==
             bounce = 0;
             create_particle((x - sprite_xoffset) + (sprite_width / 2), (y - sprite_yoffset) + (sprite_height / 2), spr_bangEffect, xscale, 1);
             freefallstart = 0;
-            
             with obj_parent_enemy
             {
                 if (bbox_in_camera(id, view_camera[0]) && grounded)
@@ -57,14 +53,12 @@ if (DestroyedBy.object_index == obj_parent_player || DestroyedBy.object_index ==
                     hsp = 0;
                 }
             }
-            
             with baddieGrabbedID
             {
                 x = other.x;
                 y = other.y;
                 scr_instakillEnemy(id, other.id);
             }
-			
             baddieGrabbedID = -4;
         }
         else if (state == States.mach3 && sprite_index != spr_mach3hit)
@@ -84,5 +78,4 @@ if (DestroyedBy.object_index == obj_parent_player || DestroyedBy.object_index ==
         }
     }
 }
-
 instance_destroy();

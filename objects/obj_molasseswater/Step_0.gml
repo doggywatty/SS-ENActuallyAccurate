@@ -1,6 +1,6 @@
 if (place_meeting(x, y, obj_parent_player))
 {
-    with (obj_parent_player)
+    with obj_parent_player
     {
         if (place_meeting(x, y, other))
         {

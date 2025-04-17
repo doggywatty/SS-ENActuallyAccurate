@@ -13,7 +13,7 @@ if (global.InternalLevelName != "none")
     with obj_parent_player
         targetDoor = "A";
     
-    with (instance_create(x, y, obj_fadeoutTransition))
+    with instance_create(x, y, obj_fadeoutTransition)
     {
         fadealpha = 1;
         fadein = true;

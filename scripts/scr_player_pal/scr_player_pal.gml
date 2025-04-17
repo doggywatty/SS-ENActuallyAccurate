@@ -6,16 +6,14 @@ function state_player_pal()
     if (move != 0)
     {
         paletteSelect = wrap(paletteSelect + move, 1, sprite_get_width(paletteSprite) - 1);
-        
-        with (obj_palexample)
+        with obj_palexample
         {
             instance_create_depth(x, y, -6, obj_poofeffect);
             sprite_index = spr_pizzelleselectedpal;
             image_index = 0;
         }
     }
-    
-    if (key_jump)
+    if key_jump
     {
         event_play_oneshot("event:/SFX/ui/confirm");
         tate = States.normal;
@@ -23,7 +21,6 @@ function state_player_pal()
         targetDoor = "C";
         instance_create(x, y, obj_fadeoutTransition);
     }
-    
     sprite_index = spr_idle;
 }
 

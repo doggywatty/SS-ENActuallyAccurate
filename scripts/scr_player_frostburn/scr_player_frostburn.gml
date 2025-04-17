@@ -264,7 +264,7 @@ function state_player_frostburnjump()
 			{
 				movespeed = 11;
 				xscale = -slopeMomentum_direction();
-				with (instance_create(x, y, obj_jumpdust))
+				with instance_create(x, y, obj_jumpdust)
 					image_xscale = other.xscale;
 				state = States.frostburnslide;
 			}
@@ -299,7 +299,7 @@ function state_player_frostburnjump()
 			{
 				movespeed = 8;
 				xscale = -slopeMomentum_direction();
-				with (instance_create(x, y, obj_jumpdust))
+				with instance_create(x, y, obj_jumpdust)
 					image_xscale = other.xscale;
 				state = States.frostburnslide;
 			}

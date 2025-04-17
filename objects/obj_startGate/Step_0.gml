@@ -12,7 +12,6 @@ if (fade <= 0.45)
 		}
 	}
 }
-
 var all_text_landed = false;
 with gatePointDisplay
 {
@@ -35,36 +34,29 @@ with gateRankBubble
 	}
 	bubbleScale = approach(bubbleScale, 1, 0.3);
 }
-
 var gatelands = [spr_gatesecretsplat1, spr_gatesecretsplat2, spr_gatesecretsplat3];
 var gateloops = [spr_gatesecretloop1, spr_gatesecretloop2, spr_gatesecretloop3];
 var play_splat = false;
-
 for (var i = 0; i < 3; i++)
 {
 	if (secretcanspit && secrets[i])
 	{
-		with (secretCanvas[i])
+		with secretCanvas[i]
 		{
 			if (sprite_index == spr_null)
 				exit;
-			
 			visible = other.secretcanspit;
-			
 			if (sprite_index == spr_gatesecretfall)
 			{
 				if (vsp < 20)
 					vsp += 0.3;
 			}
-			
 			x += hsp;
 			y += vsp;
-			
 			if (y >= (other.y + 32) && sprite_index == spr_gatesecretfall)
 			{
 				hsp = 0;
 				vsp = 0;
-				
 				repeat 3
 					instance_create(x, y, obj_secretpoof);
 				
@@ -72,7 +64,6 @@ for (var i = 0; i < 3; i++)
 				image_index = 0;
 				play_splat = true;
 			}
-			
 			if (sprite_animation_end() && sprite_index != spr_gatesecretfall)
 				sprite_index = gateloops[i];
 			
@@ -80,6 +71,5 @@ for (var i = 0; i < 3; i++)
 		}
 	}
 }
-
 if play_splat
 	event_play_oneshot("event:/SFX/general/secretSplat", x, y + 32);

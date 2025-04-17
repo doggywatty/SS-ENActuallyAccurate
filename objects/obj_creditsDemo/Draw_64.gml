@@ -1,6 +1,5 @@
 draw_sprite_tiled_ext(bg_credits, 0, bgCredits.x, 0, 1, 1, bgCredits.image_blend, bgCredits.image_alpha);
 draw_sprite_ext(spr_biggnomestudios_logosimple, 0, 0, 0, 1, 1, 0, c_white, showLogo * logoAlpha);
-
 if (creditPhase == 1)
 {
 	if (currentCategory >= 0 && currentCategory < categoryCount)
@@ -23,7 +22,6 @@ if (creditPhase == 1)
 
 endScreenSpr.draw(0, 0);
 curtainSpr.draw();
-
 with pizzelleFlick
 {
 	palette_as_player();

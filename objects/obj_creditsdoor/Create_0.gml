@@ -9,6 +9,6 @@ DoorUnlock = entrywayrank != "none" && cottonrank != "none" && moleassrank != "n
 event_inherited();
 if !DoorUnlock
 {
-	with (instance_create(x, y, obj_doorblocked))
+	with instance_create(x, y, obj_doorblocked)
 		visible = false;
 }

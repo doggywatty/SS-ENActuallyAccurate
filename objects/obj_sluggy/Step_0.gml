@@ -7,7 +7,6 @@ if (state == States.titlescreen && sprite_index == spr_sluggy_jump)
 {
 	canBreakBlocks = true;
 	doRedAfterImage = true;
-	
 	if !instance_exists(hurtboxID)
 	{
 		with (instance_create(x, y, obj_forkhitbox, 

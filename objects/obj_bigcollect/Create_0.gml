@@ -15,7 +15,6 @@ switch global.playerCharacter
 			spr_bigcollect5P, spr_bigcollect6P);
 		break;
 }
-
 random_set_seed(global.RandomSeed);
 image_speed = 0.35;
 gotowardsPlayer = false;

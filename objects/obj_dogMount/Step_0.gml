@@ -1,7 +1,7 @@
 if (hsp != 0)
     hsp = approach(hsp, 0, 0.25);
 
-with (obj_parent_player)
+with obj_parent_player
 {
     if (sprite_index != spr_petdog)
         other.visible = true;

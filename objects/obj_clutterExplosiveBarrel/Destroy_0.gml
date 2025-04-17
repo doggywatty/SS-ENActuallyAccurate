@@ -1,6 +1,5 @@
 event_inherited();
-
-with (instance_create(x, y + 16, obj_explosiveBarrelDebris))
+with instance_create(x, y + 16, obj_explosiveBarrelDebris)
 {
     vsp = random_range(-7, -10);
     hsp = 11 * other.DestroyedBy.image_xscale;

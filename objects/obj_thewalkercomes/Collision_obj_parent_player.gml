@@ -1,4 +1,4 @@
-if (!instance_exists(obj_thewalkercage))
+if !instance_exists(obj_thewalkercage)
 {
     if deadly
     {

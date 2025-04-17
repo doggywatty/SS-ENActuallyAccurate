@@ -1,4 +1,4 @@
-with (obj_parent_player)
+with obj_parent_player
 {
     if (state != States.noclip && state != States.cotton && state != States.cottondrill && state != States.cottonroll && state != States.tumble && state != States.taunt && state != States.bump && state != States.actor && state != States.frozen)
     {

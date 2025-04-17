@@ -97,10 +97,10 @@ restore_inputs = function()
 {
 	for (var i = 0; i < array_length(inputs); i++)
 	{
-		with (inputs[i])
+		with inputs[i]
 		{
 			var p = parentInput;
-			if (!(array_equals(savedKeys, p.keyInputs) && array_equals(savedGPs, p.gpInputs)))
+			if !(array_equals(savedKeys, p.keyInputs) && array_equals(savedGPs, p.gpInputs))
 			{
 				p.keyInputs = savedKeys;
 				p.gpInputs = savedGPs;

@@ -10,4 +10,3 @@ if (other.state == States.doughmount || other.state == States.doughmountspin || 
     create_collect_effect(x, y, sprite_index, 10);
     instance_destroy();
 }
-

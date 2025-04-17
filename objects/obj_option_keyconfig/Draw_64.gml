@@ -35,7 +35,6 @@ if (reading || exiting)
 	draw_set_alpha(1);
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
-	
 	if reading
 		draw_text_color(480, 270, lang_get("opt_keyconfig_inputprompt"), c_white, c_white, c_white, c_white, 1);
 	else

@@ -1,11 +1,9 @@
 event_inherited();
 enemyAttack_TriggerEvent();
-
 if (state == States.titlescreen && sprite_index == spr_banana_charge)
 {
     canBreakBlocks = true;
     doRedAfterImage = true;
-    
     if !instance_exists(hurtboxID)
     {
         with (instance_create(x, y, obj_forkhitbox, 

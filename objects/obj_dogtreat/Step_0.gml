@@ -16,14 +16,12 @@ if (collectvanish && collectboxid.activated)
 }
 
 depth = (place_meeting(x, y, obj_destructibles) || place_meeting(x, y, obj_metalblock)) ? 102 : 2;
-
 var can_reach_player = !place_meeting(x, y, obj_destructibles) && !place_meeting(x, y, obj_metalblock) && !place_meeting(x, y, obj_gnomeTNTBlock);
 if (!collectvanish || can_reach_player)
 {
 	if (distance_to_object(obj_parent_player) < 26 && !gotowardsPlayer)
 		gotowardsPlayer = true;
 }
-
 if gotowardsPlayer
 {
 	move_towards_point(obj_parent_player.x, obj_parent_player.y, movespeed);

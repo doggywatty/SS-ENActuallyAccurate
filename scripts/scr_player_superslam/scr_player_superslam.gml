@@ -11,31 +11,26 @@ function state_player_superslam()
     }
     
     move = key_left + key_right;
-    
     if (move != 0)
         xscale = move;
     
     hsp = move * movespeed;
     movespeed = (move == 0) ? 0 : 5;
-    
     if (vsp >= 0)
     {
         vsp += 0.5;
-        
-        if (!mach3effect--)
+        if !mach3effect--
         {
             with (create_afterimage(choose(AfterImageType.mach3effect1, AfterImageType.mach3effect2), xscale, true))
                 basicAfterimage = false;
             
             mach3effect = 5;
         }
-        
-        if (!cloudeffect--)
+        if !cloudeffect--
         {
             create_particle(x + irandom_range(-25, 25), y + irandom_range(-10, 35), spr_cloudEffect);
             cloudeffect = 8;
         }
-        
         if (vsp >= 17 && !piledrivereffect--)
         {
             instance_create(x, y, obj_piledrivereffect, 
@@ -48,7 +43,7 @@ function state_player_superslam()
     
     if (freeFallSmash >= 10 && sprite_index != spr_piledriverland)
     {
-        if (!instance_exists(groundpoundEffect))
+        if !instance_exists(groundpoundEffect)
         {
             groundpoundEffect = instance_create(x, y + 32, obj_groundPoundEffect, 
             {
@@ -56,14 +51,12 @@ function state_player_superslam()
             });
         }
     }
-    
     if (sprite_index == spr_piledriver && vsp > 0)
         freeFallSmash++;
     else
         freeFallSmash = -14;
     
     machTwo = 0;
-    
     if (sprite_index == spr_piledriverIntro && sprite_animation_end())
     {
         sprite_index = spr_piledriver;
@@ -72,7 +65,6 @@ function state_player_superslam()
     
     move = 0;
     hsp = 0;
-    
     if (sprite_index == spr_piledriverIntro || sprite_index == spr_piledriver)
     {
         move = key_left + key_right;
@@ -91,12 +83,10 @@ function state_player_superslam()
         create_particle(x, y + 3, spr_groundpoundLandEffect);
         instance_create(x, y, obj_landcloud);
         freefallstart = 0;
-        
         if (freeFallSmash >= 10)
         {
             camera_shake_add(10, 30);
-            
-            with (obj_parent_enemy)
+            with obj_parent_enemy
             {
                 if (bbox_in_camera(id, view_camera[0]) && grounded && id != other.baddieGrabbedID)
                 {
@@ -109,16 +99,13 @@ function state_player_superslam()
             }
         }
         else
-        {
             camera_shake_add(20, 40);
-        }
     }
     
     jumpAnim = true;
     landAnim = false;
     machSlideAnim = true;
     crouchAnim = true;
-    
     if (sprite_index == spr_piledriverland)
     {
         if (sprite_animation_end())
@@ -130,14 +117,12 @@ function state_player_superslam()
             image_index = 0;
             vsp = -11;
             grav = 0.3;
-            
-            with (baddieGrabbedID)
+            with baddieGrabbedID
             {
                 x = other.x;
                 y = other.y;
                 scr_instakillEnemy(id, other.id);
             }
-            
             baddieGrabbedID = -4;
         }
     }
@@ -150,13 +135,10 @@ function state_player_superslam()
             movespeed = 6;
     }
     else
-    {
         movespeed = 0;
-    }
     
     if (movespeed > 6)
         movespeed -= 0.1;
-    
     if (vsp < 0)
         image_speed = 0.35;
     else

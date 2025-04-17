@@ -32,10 +32,8 @@ function scr_taunt_setVariables()
 function do_taunt(_State = state)
 {
 	static superTauntEffect = 0;
-	
 	if _State != state
 		exit;
-	
 	if (superTauntCharged && room != rank_room)
 	{
 		superTauntEffect--;
@@ -46,7 +44,7 @@ function do_taunt(_State = state)
 		}
 	}
 	
-	if (key_taunt2)
+	if key_taunt2
 	{
 		tauntTimer = 20;
 		scr_taunt_storeVariables();
@@ -76,26 +74,21 @@ function do_taunt(_State = state)
 				create_collect_effect(x, y, spr_taunteffect, val);
 				event_play_multiple("event:/SFX/general/collect", x, y);
 			}
-			
 			sprite_index = spr_taunt;
 			event_play_oneshot("event:/SFX/player/taunt", x, y);
 			image_index = irandom_range(0, sprite_get_number(spr_taunt));
 		}
-		
 		instance_create(x, y, obj_taunteffect);
-		
 		with obj_parent_enemy
 		{
 			if (point_in_rectangle(x, y, obj_parent_player.x - 480, obj_parent_player.y - 270, obj_parent_player.x + 480, obj_parent_player.y + 270))
 				tauntBuffer = true;
 		}
-		
 		with obj_dartTrap
 		{
 			if (point_in_rectangle(x, y, obj_parent_player.x - 480, obj_parent_player.y - 270, obj_parent_player.x + 480, obj_parent_player.y + 270))
 				tauntBuffer = true;
 		}
-		
 		return true;
 	}
 	return false;
@@ -105,7 +98,6 @@ function do_grab(_State = state)
 {
 	if (_State != state)
 		exit;
-	
 	if inputBufferSlap > 0
 	{
 		inputBufferSlap = 0;
@@ -117,8 +109,7 @@ function do_grab(_State = state)
 			state = States.rocketlauncher;
 			image_index = 0;
 			global.tempRocketLauncher = false;
-			
-			with (instance_create(x, y, obj_rocket))
+			with instance_create(x, y, obj_rocket)
 			{
 				image_xscale = other.xscale;
 				frog = true;
@@ -190,7 +181,6 @@ function do_uppercut()
 	sprite_index = spr_uppercutbegin;
 	image_index = 0;
 	event_play_oneshot("event:/SFX/player/uppercut", x, y);
-	
 	with instance_create(x, y, obj_puffEffect)
 		sprite_index = spr_highJumpCloud1;
 }
@@ -200,7 +190,6 @@ function do_clubswing()
 	state = States.swingclub;
 	sprite_index = spr_suplexdashIntro;
 	image_index = 0;
-	
 	with (instance_create(x, y, obj_swinghitbox, 
 	{
 		playerID: id
@@ -232,7 +221,6 @@ function snap_to_ledge(_xscale = xscale, _yscale = 32)
 {
 	var _ledge = false;
 	var _y = y;
-	
 	if !place_meeting_collision(x + _xscale, y - _yscale)
 	{
 		_ledge = true;
@@ -242,6 +230,5 @@ function snap_to_ledge(_xscale = xscale, _yscale = 32)
 		with obj_camera
 			cameraYOffset = _y - other.y;
 	}
-	
 	return _ledge;
 }

@@ -1,4 +1,4 @@
-with (instance_place(x, y, obj_collectablebox))
+with instance_place(x, y, obj_collectablebox)
 {
     if (ds_list_find_index(global.SaveRoom, id) == -1 && !activated)
     {
@@ -9,6 +9,5 @@ with (instance_place(x, y, obj_collectablebox))
         in_the_void = true;
     }
 }
-
 if (ds_list_find_index(global.SaveRoom, id) != -1)
     instance_destroy();

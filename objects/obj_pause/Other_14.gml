@@ -43,7 +43,7 @@ else if is_hub()
 		targetDoor = "A";
 	}
 	
-	with (instance_create(x, y, obj_fadeoutTransition))
+	with instance_create(x, y, obj_fadeoutTransition)
 	{
 		fadealpha = 1.5;
 		fadein = true;

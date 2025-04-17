@@ -5,7 +5,6 @@ if (ds_list_find_index(global.SaveRoom, id) == -1)
 		image_speed = 0.3;
 		sprite_index = spr_bigbreak2_dead;
 	}
-	
 	event_play_multiple("event:/SFX/general/breakblock", x, y);
 	event_play_multiple("event:/SFX/general/collect", x, y);
 	var val = 100;

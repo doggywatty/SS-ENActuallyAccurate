@@ -2,11 +2,11 @@ if (ds_list_find_index(global.SaveRoom, id) == -1)
 {
     if (place_meeting(x, y - 64, obj_parent_player))
     {
-        with (obj_parent_player)
+        with obj_parent_player
         {
             if (state == States.doughmount || state == States.doughmountspin)
             {
-                with (other)
+                with other
                     event_user(0);
                 
                 movespeed = abs(movespeed);

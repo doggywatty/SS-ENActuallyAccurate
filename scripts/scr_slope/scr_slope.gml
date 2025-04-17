@@ -28,7 +28,7 @@ function slopeMomentum_acceleration()
 {
 	if (place_meeting_slope(x, y + 1, false))
 	{
-		with (instance_place(x, y + 1, obj_slope))
+		with instance_place(x, y + 1, obj_slope)
 		{
 			var slope_acceleration = abs(image_yscale) / abs(image_xscale);
 			if (sign(image_xscale) >= 1)
@@ -39,7 +39,7 @@ function slopeMomentum_acceleration()
 	}
 	if (place_meeting_slopePlatform(x, y + 1))
 	{
-		with (instance_place(x, y + 1, obj_slopePlatform))
+		with instance_place(x, y + 1, obj_slopePlatform)
 		{
 			var slope_acceleration = abs(image_yscale) / abs(image_xscale);
 			if (sign(image_xscale) >= 1)
@@ -54,12 +54,12 @@ function slopeMomentum_direction()
 {
 	if (place_meeting_slope(x, y + 1, false))
 	{
-		with (instance_place(x, y + 1, obj_slope))
+		with instance_place(x, y + 1, obj_slope)
 			return sign(image_xscale);
 	}
 	if (place_meeting_slopePlatform(x, y + 1))
 	{
-		with (instance_place(x, y + 1, obj_slopePlatform))
+		with instance_place(x, y + 1, obj_slopePlatform)
 			return sign(image_xscale);
 	}
 	return -1;

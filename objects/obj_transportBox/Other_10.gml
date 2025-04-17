@@ -1,4 +1,4 @@
-if (!instance_exists(backPanel))
+if !instance_exists(backPanel)
 {
     backPanel = instance_create(x, y, obj_solid, 
     {

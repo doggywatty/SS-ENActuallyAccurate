@@ -2,7 +2,7 @@ if (collide == 1)
 {
     instance_destroy(id, false);
     
-    with (obj_parent_player)
+    with obj_parent_player
     {
         if (state != States.bottlerocket)
         {

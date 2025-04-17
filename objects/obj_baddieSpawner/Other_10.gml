@@ -1,6 +1,6 @@
-if (object_exists(content))
+if object_exists(content)
 {
-    with (instance_create(x, y - 20, content))
+    with instance_create(x, y - 20, content)
     {
         other.baddieid = id;
         image_xscale = sign(other.image_xscale);
@@ -16,6 +16,4 @@ if (object_exists(content))
         }
     }
 }
-
 refresh = 100;
-

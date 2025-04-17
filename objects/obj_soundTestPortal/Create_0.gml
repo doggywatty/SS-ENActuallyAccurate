@@ -14,7 +14,6 @@ for (var i = 0; i < array_length(level_array); i++)
 		}
 	}
 }
-
 if (ini_read_string("Game", "Judgment", "none") == "none")
 	secretActivated = false;
 if (secretActivated && ini_read_string("Treasure", "mindpalace", "0") == "1" && !ini_read_real("Game", "mixtape_prompt", false))
@@ -22,5 +21,4 @@ if (secretActivated && ini_read_string("Treasure", "mindpalace", "0") == "1" && 
 	scr_queueToolTipPrompt(lang_get("prompt_mixtape_soundtest"));
 	ini_write_real("Game", "mixtape_prompt", true);
 }
-
 ini_close();

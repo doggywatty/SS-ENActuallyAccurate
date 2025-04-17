@@ -81,7 +81,7 @@ function scr_roomStart_SetPosition_player(player = obj_player1)
 		
 		if (x == -1 || y == -1)
 		{
-			with (obj_doorA)
+			with obj_doorA
 			{
 				other.x = x + 16;
 				other.y = y - 14;
@@ -266,7 +266,7 @@ function cutscene_secretPortal_end()
 		isInSecretPortal = true;
 		image_speed = 0.35;
 		
-		with (instance_place(x, y, obj_secretPortal))
+		with instance_place(x, y, obj_secretPortal)
 		{
 			visible = false;
 			savedActivate = false;

@@ -36,7 +36,7 @@ function state_player_minecart()
 	
 	if (place_meeting(x, y + 1, obj_minecartRail_Slope))
 	{
-		with (instance_place(x, y + 1, obj_minecartRail_Slope))
+		with instance_place(x, y + 1, obj_minecartRail_Slope)
 		{
 			var slope_acceleration = abs(image_yscale) / abs(image_xscale);
 			if _xscale == sign(image_xscale)

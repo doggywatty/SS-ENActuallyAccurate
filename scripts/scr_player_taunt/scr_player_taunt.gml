@@ -101,7 +101,7 @@ function state_player_taunt()
 						instance_create(x, y, obj_baddieGibs);
 					}
 					instance_destroy();
-					with (instance_create(x, y, obj_shake))
+					with instance_create(x, y, obj_shake)
 					{
 						sprite_index = spr_dartFrog_dead;
 						alarm[0] = 20;

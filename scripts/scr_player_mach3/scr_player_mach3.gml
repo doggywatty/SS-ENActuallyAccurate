@@ -13,10 +13,8 @@ function state_player_mach3()
 		vsp /= 20;
 		jumpStop = true;
 	}
-	
 	if (grounded && vsp > 0)
 		jumpStop = false;
-	
 	if (inputBufferJump > 0 && can_jump && move != -xscale)
 	{
 		image_index = 0;
@@ -29,13 +27,11 @@ function state_player_mach3()
 			playerID: id
 		});
 	}
-	
-	if (grounded)
+	if grounded
 	{
 		if (slopeCheck(x, y) && hsp != 0 && movespeed > 12 && movespeed < 18)
 			player_slopeMomentum(0.2, 0);
 	}
-	
 	var maxspd = 20;
 	if (move == xscale && grounded)
 	{
@@ -45,19 +41,14 @@ function state_player_mach3()
 	
 	if (sprite_index == spr_mach3jump && floor(image_index) == (image_number - 1))
 		sprite_index = spr_mach3player;
-	
 	if (sprite_index == spr_wallJumpCancelIntro && sprite_animation_end())
 		sprite_index = spr_wallJumpCancel;
-	
 	if (sprite_index == spr_superjumpCancel && grounded)
 		sprite_index = spr_mach3player;
-	
 	if (sprite_animation_end() && (sprite_index == spr_rollgetup || sprite_index == spr_mach3hit || sprite_index == spr_machdashpad))
 		sprite_index = spr_mach3player;
-	
 	if (grounded && (sprite_index == spr_dive || sprite_index == spr_wallJumpCancelIntro || sprite_index == spr_wallJumpCancel))
 		sprite_index = spr_rollgetup;
-	
 	if (!grounded && !key_down && sprite_index == spr_dive)
 	{
 		vsp = 15;
@@ -69,8 +60,7 @@ function state_player_mach3()
 		machFourMode = true;
 		flash = true;
 		sprite_index = spr_crazyrun;
-		
-		with (create_debris(x, y, spr_slapstar))
+		with create_debris(x, y, spr_slapstar)
 		{
 			hsp = random_range(-5, 5);
 			vsp = random_range(-10, 10);
@@ -78,10 +68,8 @@ function state_player_mach3()
 	}
 	else if (movespeed <= 16 && sprite_index == spr_crazyrun)
 		sprite_index = spr_mach3player;
-	
 	if grounded
 		sJumpCanDoubleJump = true;
-	
 	if (scr_checksuperjump() && sprite_index != spr_machdashpad && sprite_index != spr_dive && can_jump)
 	{
 		sprite_index = spr_superjumpPrep;
@@ -104,7 +92,6 @@ function state_player_mach3()
 			image_index = 0;
 			state = States.machslide;
 		}
-		
 		if (move == -xscale)
 		{
 			event_play_oneshot("event:/SFX/player/machslideboost", x, y);
@@ -127,20 +114,18 @@ function state_player_mach3()
 		});
 		image_index = 0;
 		sprite_index = spr_machroll3intro;
-		
-		if (!grounded)
+		if !grounded
 		{
 			sprite_index = spr_dive;
 			fmod_studio_event_instance_start(sndDive);
 		}
-		
 		vsp = 10;
 	}
 	
-	if ((!grounded || slopeCheck(x + xscale, y)) && scr_solid(x + xscale, y, true) && !place_meeting(x + xscale, y, obj_destructibles) && !place_meeting(x + xscale, y, obj_metalblock))
+	if ((!grounded || slopeCheck(x + xscale, y)) && scr_solid(x + xscale, y, true)
+	&& !place_meeting(x + xscale, y, obj_destructibles) && !place_meeting(x + xscale, y, obj_metalblock))
 	{
 		verticalMovespeed = movespeed;
-		
 		if (vsp > 0 && place_meeting(x + xscale, y, obj_icyWall))
 			verticalMovespeed -= vsp;
 		
@@ -148,7 +133,8 @@ function state_player_mach3()
 		inputBufferJump = 0;
 		state = States.climbwall;
 	}
-	else if (scr_solid(x + xscale, y, true) && !place_meeting(x + xscale, y, obj_destructibles) && !place_meeting(x + xscale, y, obj_metalblock))
+	else if (scr_solid(x + xscale, y, true) && !place_meeting(x + xscale, y, obj_destructibles)
+	&& !place_meeting(x + xscale, y, obj_metalblock))
 	{
 		var _ledge = snap_to_ledge();
 		if !_ledge
@@ -156,8 +142,7 @@ function state_player_mach3()
 			event_play_oneshot("event:/SFX/player/groundpound", x, y);
 			camera_shake_add(20, 40);
 			image_speed = 0.35;
-			
-			with (obj_parent_enemy)
+			with obj_parent_enemy
 			{
 				if (bbox_in_camera(id, view_camera[0]) && grounded)
 				{
@@ -168,7 +153,6 @@ function state_player_mach3()
 					hsp = 0;
 				}
 			}
-			
 			flash = false;
 			combo = 0;
 			sprite_index = spr_mach3hitwall;
@@ -188,15 +172,13 @@ function state_player_mach3()
 			playerID: id
 		});
 	}
-	
-	if (!instance_exists(obj_crazyRunEffect))
+	if !instance_exists(obj_crazyRunEffect)
 	{
 		instance_create(x, y, obj_crazyRunEffect, 
 		{
 			playerID: id
 		});
 	}
-	
 	if (!instance_exists(obj_chargeEffect) && sprite_index != spr_dive)
 	{
 		instance_create(x, y, obj_chargeEffect, 
@@ -212,16 +194,13 @@ function state_player_mach3()
 			playerID: id
 		});
 	}
-	
 	image_speed = 0.4;
-	
 	if (sprite_index == spr_crazyrun)
 		image_speed = 0.7;
 	else if (sprite_index == spr_machdashpad)
 		image_speed = 0.3;
 	else if (sprite_index == spr_wallJumpCancel || sprite_index == spr_wallJumpCancelIntro)
 		image_speed = 0.35;
-	
 	if (sprite_index != spr_dive)
 	{
 		do_grab(States.mach3);

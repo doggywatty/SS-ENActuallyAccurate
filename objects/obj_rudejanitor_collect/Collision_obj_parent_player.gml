@@ -1,6 +1,6 @@
 if (ds_list_find_index(global.SaveRoom, id) == -1)
 {
-    with (instance_create(x, y, obj_rudejanitor))
+    with instance_create(x, y, obj_rudejanitor)
         global.janitorRudefollow = true;
     
     create_particle(x, y, spr_taunteffect).particle_depth(obj_rudejanitor.depth + 1);

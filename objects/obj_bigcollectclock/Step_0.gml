@@ -10,7 +10,6 @@ if (collectvanish && collectboxid.activated)
 }
 
 depth = (place_meeting(x, y, obj_destructibles) || place_meeting(x, y, obj_metalblock)) ? 102 : 2;
-
 if (laughing == true)
     image_alpha -= 0.05;
 if (image_alpha <= 0)
