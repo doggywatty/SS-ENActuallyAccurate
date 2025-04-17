@@ -306,6 +306,17 @@ enum UnknownTitlecard
 
 #macro isDemo 0 + 1
 #macro vk_capslock 20
+#macro vk_semicolon 186
+#macro vk_equals 187
+#macro vk_comma 188
+#macro vk_dash 189
+#macro vk_dot 190
+#macro vk_rightslash 191
+#macro vk_backtick 192
+#macro vk_leftbrace 219
+#macro vk_2leftslashes 220
+#macro vk_rightbracket 221
+#macro vk_apostrophe 222
 
 scr_gameInit();
 depth = 5;
