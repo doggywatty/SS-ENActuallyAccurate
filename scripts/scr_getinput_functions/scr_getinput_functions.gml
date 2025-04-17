@@ -236,16 +236,16 @@ function scr_initKeyNameMap()
 	ds_map_set(global.SpecialKeyNameMap, vk_decimal, ".");
 	ds_map_set(global.SpecialKeyNameMap, vk_divide, "/");
 	
-	ds_map_set(global.SpecialKeyNameMap, ord(";"), ";");
-	ds_map_set(global.SpecialKeyNameMap, ord("="), "=");
-	ds_map_set(global.SpecialKeyNameMap, ord(","), ",");
-	ds_map_set(global.SpecialKeyNameMap, ord("-"), "-");
-	ds_map_set(global.SpecialKeyNameMap, ord("."), ".");
-	ds_map_set(global.SpecialKeyNameMap, ord("/"), "/");
-	ds_map_set(global.SpecialKeyNameMap, ord("`"), "`");
-	ds_map_set(global.SpecialKeyNameMap, ord("{"), "{");
-	ds_map_set(global.SpecialKeyNameMap, ord("\\"), "\\");
-	ds_map_set(global.SpecialKeyNameMap, ord("]"), "]");
-	ds_map_set(global.SpecialKeyNameMap, ord("'"), "'");
+	ds_map_set(global.SpecialKeyNameMap, vk_semicolon, ";");
+	ds_map_set(global.SpecialKeyNameMap, vk_equals, "=");
+	ds_map_set(global.SpecialKeyNameMap, vk_comma, ",");
+	ds_map_set(global.SpecialKeyNameMap, vk_dash, "-");
+	ds_map_set(global.SpecialKeyNameMap, vk_dot, ".");
+	ds_map_set(global.SpecialKeyNameMap, vk_rightslash, "/");
+	ds_map_set(global.SpecialKeyNameMap, vk_backtick, "`");
+	ds_map_set(global.SpecialKeyNameMap, vk_leftbrace, "{");
+	ds_map_set(global.SpecialKeyNameMap, vk_2leftslashes, "\\");
+	ds_map_set(global.SpecialKeyNameMap, vk_rightbracket, "]");
+	ds_map_set(global.SpecialKeyNameMap, vk_apostrophe, "'");
 	ds_map_set(global.SpecialKeyNameMap, -1, lang_get("key_presskey"));
 }
