@@ -306,7 +306,6 @@ enum UnknownTitlecard
 
 #macro isDemo 0 + 1
 #macro vk_capslock 20
-#macro U
 
 scr_gameInit();
 depth = 5;

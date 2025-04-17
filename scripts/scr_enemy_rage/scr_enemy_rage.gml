@@ -289,7 +289,7 @@ function scr_enemy_rage()
 					}
 				}
 			}
-			if (animation_end_old(U, 5))
+			if (animation_end_old(undefined, 5))
 			{
 				movelocked = false;
 				sprite_index = spr_golfburger_walk;
