@@ -1,12 +1,10 @@
 if !global.panic && ds_list_size(global.KeyFollowerList) <= 0
 	exit;
-
 var target_player = get_nearestPlayer();
 switch state
 {
 	case States.frozen:
 		sprite_index = spr_wakeup;
-		
 		if (shaketime > 0)
 		{
 			shaketime--;
@@ -18,20 +16,16 @@ switch state
 			x = xstart;
 			y = ystart;
 		}
-		
 		if (((target_player.cutscene || target_player.state == States.gotkey) && !awoken) || offended)
 			exit;
-		
 		if !playedSound && !awoken
 		{
 			playedSound = true;
 			fmod_quick3D(sndWake);
 			fmod_studio_event_instance_start(sndWake);
 		}
-		
 		awoken = true;
 		image_speed = 0.35;
-		
 		if sprite_animation_end()
 		{
 			sprite_index = spr_aim;
@@ -48,7 +42,6 @@ switch state
 		pathxstart = x;
 		pathystart = y;
 		dir = point_direction(x, y, targetx, targety);
-		
 		if (aimtime > 0)
 			aimtime--;
 		else
@@ -100,7 +93,6 @@ switch state
 			movespeed = 0;
 			targetpassed = false;
 		}
-		
 		if !targetpassed
 		{
 			var _passedX = (sign(targetx - pathxstart) == -1) ? (x <= targetx) : (x >= targetx);
@@ -108,13 +100,11 @@ switch state
 			if (_passedX && _passedY)
 				targetpassed = true;
 		}
-		
 		if (sprite_index != spr_aim)
 		{
 			if (sprite_index != spr_aim || movespeed > 0)
 				sprite_index = spr_charge;
 		}
-		
 		x += lengthdir_x(movespeed, dir);
 		y += lengthdir_y(movespeed, dir);
 		break;
@@ -124,7 +114,6 @@ switch state
 			x = targetx + random_range(-2, 2);
 			y = targety + random_range(-2, 2);
 			stuntime--;
-			
 			if (stuntime <= 0)
 				dir = point_direction(targetx, targety, target_player.x, target_player.y) - 180;
 		}
@@ -133,7 +122,6 @@ switch state
 			x += lengthdir_x(movespeed, dir);
 			y += lengthdir_y(movespeed, dir);
 			movespeed = approach(movespeed, 0, 2 * accel);
-			
 			if (offended && movespeed == 0)
 			{
 				targetx = xstart;
@@ -156,7 +144,6 @@ switch state
 				targetpassed = false;
 			}
 		}
-		
 		break;
 	case States.stun:
 		sprite_index = spr_guardianohbye;
@@ -168,14 +155,12 @@ switch state
 		movespeed = approach(movespeed, 12, 0.2);
 		dir = point_direction(x, y, targetx, targety);
 		var dist = point_distance(x, y, targetx, targety);
-		
 		if (movespeed > dist)
 			movespeed = dist;
 		
 		image_xscale = sign(targetx - x);
 		x += lengthdir_x(movespeed, dir);
 		y += lengthdir_y(movespeed, dir);
-		
 		if (dist < 0.5)
 		{
 			x = xstart;
@@ -190,17 +175,14 @@ switch state
 		}
 		break;
 }
-
 if (state == States.frozen)
 	exit;
-
 var player_supertaunt = false;
 with target_player
 {
 	if ((sprite_index == spr_supertaunt1 || sprite_index == spr_supertaunt2 || sprite_index == spr_supertaunt3 || sprite_index == spr_supertaunt4) && state == States.taunt)
 		player_supertaunt = true;
 }
-
 if (state != States.charge && state != States.frozen && player_supertaunt && bbox_in_camera(id, view_camera[0]))
 {
 	state = States.charge;
@@ -215,7 +197,6 @@ if (state != States.charge && state != States.frozen && player_supertaunt && bbo
 	global.ComboTime = 60;
 	global.ComboFreeze = 15;
 	event_play_oneshot("event:/SFX/general/softkaboom", x, y);
-	
 	with obj_achievementTracker
 		guardianSupertaunted++;
 }
@@ -230,7 +211,7 @@ if (target_player.state == States.fling || target_player.state == States.fling_l
 	targety = y;
 }
 
-if (instance_exists(obj_coneball_timesUp))
+if instance_exists(obj_coneball_timesUp)
 {
 	state = States.stun;
 	if (instance_exists(obj_icontracker))

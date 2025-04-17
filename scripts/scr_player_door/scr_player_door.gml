@@ -23,7 +23,7 @@ function state_player_door()
 		var door_obj = door_objects[i];
 		if (place_meeting(x, y, door_obj))
 		{
-			with (instance_place(x, y, door_obj))
+			with instance_place(x, y, door_obj)
 			{
 				switch sprite_index
 				{

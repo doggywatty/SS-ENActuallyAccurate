@@ -1,8 +1,7 @@
 signatureShow = 1;
 signatureScale = 1;
-
 var drawSignature = info.x != -4 && info.y != -4;
-if (drawSignature)
+if drawSignature
 {
 	repeat 4
 		create_debris(info.x, info.y, spr_titlecardsignature_debris);

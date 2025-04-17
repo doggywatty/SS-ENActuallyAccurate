@@ -1,6 +1,6 @@
 helptimer = -1;
 
-with (other)
+with other
 {
     sprite_index = spr_creamthief_grab;
     image_index = 0;

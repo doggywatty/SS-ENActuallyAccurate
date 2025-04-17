@@ -2,7 +2,7 @@ alarm[0] = 60;
 shake = 12;
 sprite_index = spr_blotchsplotch_dead;
 
-with (instance_create(x, y, obj_baddieDead))
+with instance_create(x, y, obj_baddieDead)
 {
     canrotate = false;
     sprite_index = spr_blotchsplotch_deadwing;
@@ -12,7 +12,7 @@ with (instance_create(x, y, obj_baddieDead))
     hsp = -4;
 }
 
-with (instance_create(x, y, obj_baddieDead))
+with instance_create(x, y, obj_baddieDead)
 {
     canrotate = false;
     sprite_index = spr_blotchsplotch_deadwing;

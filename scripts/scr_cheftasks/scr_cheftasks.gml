@@ -118,10 +118,8 @@ function scr_task_notify(_taskKey, taskArr = [])
 	var arrays = [obj_achievementTracker.activeChefTasks, obj_achievementTracker.activeExhibitionNightSecretTasks];
 	var check_array = arrays[0];
 	var palette = false;
-	
 	if !instance_exists(obj_achievementTracker)
 		exit;
-	
 	for (var a = 0; a < array_length(arrays); a++)
 	{
 		for (var i = 0; i < array_length(arrays[a]); i++)
@@ -136,18 +134,15 @@ function scr_task_notify(_taskKey, taskArr = [])
 			}
 		}
 	}
-	
 	if is_undefined(task)
 		exit;
-	
 	trace($"Task Notified: {_taskKey}");
-	
 	with obj_achievementTracker
 	{
 		var ind = array_get_index(check_array, task);
 		if (ind >= 0 && task.conditionType == ConditionType.OnCheck && task.taskCondition(taskArr))
 		{
-			if (palette)
+			if palette
 				scr_award_palette(task.taskKey, task.taskCharacter);
 			else
 				scr_award_chef_task(task.taskKey, task.taskSprite, task.taskIndex);
@@ -186,22 +181,18 @@ function scr_get_palettes(statement = true)
 		var room_list_index = array_get_index(obj_achievementTracker.constructionClutterCleared, room);
 		if room_list_index < 0
 			return false;
-		
 		var instance_checks = [obj_parent_clutterDestroyable, obj_parent_clutterSmallDestroyable];
 		var found_instances = 0;
-		
 		for (var i = 0; i < array_length(instance_checks); i++)
 		{
-			with (instance_checks[i])
+			with instance_checks[i]
 			{
 				if (object_index != obj_paintertopper)
 					found_instances++;
 			}
 		}
-		
 		if (found_instances <= 0)
 			array_delete(obj_achievementTracker.constructionClutterCleared, room_list_index, 1);
-		
 		if (array_length(obj_achievementTracker.constructionClutterCleared) <= 0)
 			return true;
 		
@@ -222,7 +213,6 @@ function scr_get_palettes(statement = true)
 	{
 		return obj_achievementTracker.drownedEnemies >= 3;
 	})];
-	
 	if statement
 	{
 		ini_open("optionData.ini");
@@ -233,7 +223,6 @@ function scr_get_palettes(statement = true)
 		ini_close();
 		obj_achievementTracker.activeExhibitionNightSecretTasks = _palettes;
 	}
-	
 	return pals;
 }
 

@@ -9,7 +9,6 @@ function state_player_cottondrill()
     }
     
     move = key_left + key_right;
-    
     if (move != 0)
         xscale = move;
     
@@ -25,7 +24,6 @@ function state_player_cottondrill()
             verticalMovespeed = approach(verticalMovespeed, 20, 0.5);
             hsp = move;
         }
-        
         vsp = verticalMovespeed;
     }
     else
@@ -38,7 +36,6 @@ function state_player_cottondrill()
             sprite_index = spr_cottonDoubleJumpFall;
             state = States.cotton;
         }
-        
         hsp = move;
     }
     
@@ -46,7 +43,6 @@ function state_player_cottondrill()
     {
         doubleJumped = false;
         grav = 0.025;
-        
         if (slopeCheck(x, y))
         {
             movespeed = (verticalMovespeed > 15) ? 12 : 8;
@@ -54,17 +50,15 @@ function state_player_cottondrill()
             state = States.cottonroll;
             image_index = 0;
             sprite_index = spr_player_PZ_werecotton_roll;
-            
             if (scr_slope_ext(x, y + 1) && !scr_solid_slope(x, y + 1))
             {
-                with (instance_place(x, y + 1, obj_slope))
+                with instance_place(x, y + 1, obj_slope)
                     other.xscale = -sign(image_xscale);
-                
-                with (instance_place(x, y + 1, obj_slopePlatform))
+                with instance_place(x, y + 1, obj_slopePlatform)
                     other.xscale = -sign(image_xscale);
             }
         }
-        else if (!place_meeting(x, y, obj_cottonsolid))
+        else if !place_meeting(x, y, obj_cottonsolid)
         {
             state = States.cotton;
             sprite_index = spr_cottonLand;
@@ -111,7 +105,6 @@ function state_player_cottondrill()
             image_xscale = other.xscale;
             sprite_index = spr_cottonpoof;
         }
-        
         event_play_oneshot("event:/SFX/cotton/jump", x, y);
     }
 }

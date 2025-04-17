@@ -18,7 +18,6 @@ for (var a = layer_get_all(), i = 0, z = 0; i < array_length(a); i++)
 			safe_layer_set_depth(_lay, layer_get_depth(_lay) + 1000);
 		else
 			safe_layer_set_depth(_lay, min(layer_get_depth(_lay), -50));
-		
 		layerArray[z++] = 
 		{
 			id: _lay,
@@ -39,7 +38,6 @@ for (var a = layer_get_all(), i = 0, z = 0; i < array_length(a); i++)
 		};
 		layer_background_speed(back_id, 0);
 	}
-	
 	var asset_id = layer_asset_get_id(_lay);
 	if (asset_id != -1 && layer_get_visible(_lay))
 	{
@@ -58,7 +56,6 @@ for (var a = layer_get_all(), i = 0, z = 0; i < array_length(a); i++)
 					layer_sprite_change(_sp, _ls);
 				}
 			}
-			
 			var _parallax_value = undefined;
 			if (!is_undefined(ds_map_find_value(global.ParallaxMap, _lay)))
 				_parallax_value = ds_map_find_value(global.ParallaxMap, _lay).args;
@@ -66,7 +63,6 @@ for (var a = layer_get_all(), i = 0, z = 0; i < array_length(a); i++)
 				_parallax_value = ds_map_find_value(global.ParallaxMap, _n).args;
 			else
 				break;
-			
 			var original_x = layer_sprite_get_x(_sp);
 			var new_x = (original_x - (original_x * _parallax_value[0])) + ((global.CameraViewWidth / 4) * _parallax_value[0]);
 			var original_y = layer_sprite_get_y(_sp);
@@ -74,7 +70,6 @@ for (var a = layer_get_all(), i = 0, z = 0; i < array_length(a); i++)
 			layer_sprite_x(_sp, new_x);
 			layer_sprite_y(_sp, new_y);
 		}
-		
 		layerArray[z++] = 
 		{
 			id: _lay,
@@ -95,10 +90,8 @@ for (var a = layer_get_all(), i = 0, z = 0; i < array_length(a); i++)
 		};
 	}
 }
-
 lapDecoBag = [];
 ds_list_clear(lapDeco);
-
 if (get_panic() && global.lapcount && !instance_exists(global.cutsceneManager))
 {
 	repeat (irandom_range(7, 12))

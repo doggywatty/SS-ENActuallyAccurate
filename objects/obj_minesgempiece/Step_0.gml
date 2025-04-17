@@ -10,7 +10,6 @@ if !isCollect
 		if (gemCount >= other.count)
 			canCollect = true;
 	}
-	
 	dirAdj = approach(dirAdj, 1, 0.1);
 	dir = point_direction(x, y, px, py);
 	x += (lengthdir_x(movespeed, dir) * sign(dirAdj));
@@ -25,12 +24,11 @@ else
 	vsp += grav;
 	if (y > (ystart + 128))
 	{
-		with (instance_create(x, y, obj_collect_giver))
+		with instance_create(x, y, obj_collect_giver)
 		{
 			collect_sprite = spr_gem_points;
 			collect = 50;
 		}
-		
 		instance_create(x, y, obj_poofeffect);
 		instance_destroy();
 	}

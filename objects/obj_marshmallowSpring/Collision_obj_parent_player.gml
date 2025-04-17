@@ -1,4 +1,4 @@
-with (other)
+with other
 {
     if (!cutscene && !global.freezeframe && (state != States.taunt && state != States.freefall && state != States.freefallprep && state != States.freefallland))
     {
@@ -24,7 +24,7 @@ with (other)
             image_index = 0;
         }
         
-        with (other)
+        with other
         {
             if (sprite_index != spr_marshmallowSpring_active)
                 event_play_oneshot("event:/SFX/general/mallowbounce", x, y);

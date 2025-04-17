@@ -13,13 +13,13 @@ if (activated == true)
     exit;
 }
 
-with (obj_parent_player)
+with obj_parent_player
 {
     if (place_meeting_adjacent(other.id))
         other.activated = true;
 }
 
-with (obj_parent_enemy)
+with obj_parent_enemy
 {
     if (place_meeting_adjacent(other.id) && state != States.stun)
         other.activated = true;

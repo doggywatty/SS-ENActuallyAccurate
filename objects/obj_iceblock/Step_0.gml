@@ -37,7 +37,7 @@ switch state
 			visible = false;
 			if (content != -4)
 			{
-				with (instance_create(x + _old_hsp, y, content))
+				with instance_create(x + _old_hsp, y, content)
 				{
 					vsp = -10;
 					baddieStunTimer = 30;

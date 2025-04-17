@@ -3,12 +3,10 @@ rank = ini_read_string("Ranks", level, "none");
 var _rank = rank;
 highscore = ini_read_string("Highscore", level, "0");
 secrets = [false, false, false];
-
 for (var i = 0; i < 3; i++)
 	secrets[i] = ini_read_real("Secret", level + string(i + 1), 0) ? true : false;
 
 levelName = ds_map_find_value(global.GameLevelMap, level).visualName;
-
 for (var i = 0; i < array_length(confectiSprites); i++)
 {
 	var collected = ini_read_real("Confecti", level + string(i + 1), 0);
@@ -18,7 +16,6 @@ for (var i = 0; i < array_length(confectiSprites); i++)
 		instance_create(x + offset, y - 46, obj_gate_confecti, confectiSprites[i]);
 	}
 }
-
 for (var i = 0; i < array_length(secretCanvas); i++)
 {
 	var gatespeeds = [-1.1, 0, 1.1];
@@ -32,7 +29,6 @@ for (var i = 0; i < array_length(secretCanvas); i++)
 		secretCanvas[i].image_speed = 0.35;
 	}
 }
-
 for (var i = 0; i < string_length(highscore); i++)
 {
 	gatePointDisplay.pointText[i] = 
@@ -41,7 +37,6 @@ for (var i = 0; i < string_length(highscore); i++)
 		y: -64 * (i + 1)
 	};
 }
-
 with gateRankBubble
 {
 	visible = false;
@@ -56,5 +51,4 @@ with gateRankBubble
 		default: sprite_index = spr_rankbubble_d; break;
 	}
 }
-
 ini_close();

@@ -29,7 +29,7 @@ creditEntry = function() constructor
 		hsp = -2;
 		if spr_idle != spr_null
 		{
-			with (instance_create(x, y, obj_creditSona))
+			with instance_create(x, y, obj_creditSona)
 			{
 				sprite_index = other.spr_idle;
 				spr_dead = other.spr_dead;
@@ -55,20 +55,17 @@ creditEntry = function() constructor
 	{
 		x += hsp;
 		y += vsp;
-		
 		if (x <= freezePoint && !hasFroze)
 		{
 			hasFroze = true;
 			trace("Frozen");
 			obj_creditsDemo.alarm[0] = 5;
 		}
-		
 		if x < -200
 		{
 			visible = false;
 			active = false;
 		}
-		
 		if object_id != -4
 		{
 			if !object_id.dead
@@ -86,7 +83,6 @@ creditEntry = function() constructor
 	{
 		if !visible
 			exit;
-		
 		draw_set_color(c_white);
 		var imgspacing = 80;
 		var ilen = array_length(creditedImages);
@@ -110,7 +106,6 @@ creditEntry = function() constructor
 				sp.image_alpha = approach(sp.image_alpha, 0, 0.02);
 			}
 		}
-		
 		with object_id
 		{
 			visible = true;
@@ -204,5 +199,4 @@ with obj_parent_player
 	targetDoor = "A";
 	state = States.titlescreen;
 }
-
 event_user(0);

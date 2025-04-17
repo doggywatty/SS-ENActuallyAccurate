@@ -46,7 +46,7 @@ function state_player_victory()
 			sprite_index = spr_enterpainting;
 		else
 			sprite_index = spr_entergate;
-		with (instance_place(x, y, obj_startGate))
+		with instance_place(x, y, obj_startGate)
 		{
 			other.x = approach(other.x, x, 5);
 			other.y = approach(other.y, bbox_bottom - (other.bbox_bottom - other.y), 5);

@@ -14,12 +14,9 @@ else
 	else
 		draw_angle = min(draw_angle + 2.8125, 360);
 }
-
 if (grounded && sprite_index != spr_juicepuddledone)
 	sprite_index = spr_juicepuddlesplash;
-
 if (sprite_animation_end() && sprite_index == spr_juicepuddlesplash)
 	sprite_index = spr_juicepuddledone;
-
 if (scr_solid(x, y))
 	instance_destroy();

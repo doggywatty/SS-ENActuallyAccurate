@@ -41,7 +41,7 @@ enemyState_Attack = function()
 
 enemyDeath_SpawnBody = function()
 {
-	with (instance_create(x, y, obj_baddieDead))
+	with instance_create(x, y, obj_baddieDead)
 	{
 		image_xscale = other.image_xscale;
 		image_blend = other.image_blend;

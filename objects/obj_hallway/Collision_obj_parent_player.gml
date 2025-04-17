@@ -1,19 +1,17 @@
-with (other.id)
+with other.id
 {
     other.playerPosX ??= other.x + (other.sprite_width / 2);
     other.playerPosY ??= y;
     x = other.playerPosX;
     y = other.playerPosY;
-    
-    if (!instance_exists(obj_fadeoutTransition))
+    if !instance_exists(obj_fadeoutTransition)
     {
-        if (other.ResetSaveroom)
+        if other.ResetSaveroom
         {
             global.Collect = 0;
             ds_list_clear(global.SaveRoom);
             ds_list_clear(global.BaddieRoom);
         }
-        
         event_play_oneshot("event:/SFX/general/door");
         obj_parent_player.targetDoor = other.targetDoor;
         obj_parent_player.targetRoom = other.targetRoom;

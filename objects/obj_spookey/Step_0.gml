@@ -15,7 +15,6 @@ if (array_contains(supertaunts, obj_parent_player.sprite_index))
 	image_speed = 0;
 	exit;
 }
-
 if (get_primaryPlayer().sprite_index == spr_player_PZ_gotKey)
 {
 	x = get_primaryPlayer().x;
@@ -30,7 +29,6 @@ var target_object = (ds_list_find_index(global.KeyFollowerList, id) <= 0) ? get_
 var tgtX = target_object.x + (sign(target_object.image_xscale) * -((ds_list_find_index(global.KeyFollowerList, id) <= 0) ? 30 : 10));
 var tgtY = (ds_list_find_index(global.KeyFollowerList, id) <= 0) ? (target_object.y - 40) : (target_object.y - 3);
 var tgtMVSP = distance_to_point(tgtX, tgtY) / 200;
-
 if (get_primaryPlayer().state == States.gotkey)
 {
 	tgtMVSP = 0.8;
@@ -44,12 +42,10 @@ x = approach(x, tgtX, hsp);
 y = approach(y, tgtY, vsp);
 x = round(x);
 y = round(y);
-
 if (x != target_object.x)
 	image_xscale = abs(image_xscale) * getFacingDirection(x, target_object.x);
 
 image_speed = 0.35;
-
 if (x == xprevious)
 	sprite_index = spr_spookey;
 else

@@ -1,6 +1,6 @@
 if (place_meeting(x, y - 16, obj_parent_player))
 {
-    with (obj_parent_player)
+    with obj_parent_player
     {
         if (place_meeting(x, y + 16, other.id) && !scr_solid(x + xscale, y, true) && bbox_bottom <= other.bbox_top && xscale == sign(other.image_xscale))
         {

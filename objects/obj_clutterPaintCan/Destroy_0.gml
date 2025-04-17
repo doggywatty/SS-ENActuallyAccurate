@@ -1,6 +1,5 @@
 event_inherited();
-
-with (instance_create(x, y + 16, obj_paintBucketDebris))
+with instance_create(x, y + 16, obj_paintBucketDebris)
 {
     vsp = random_range(-7, -10);
     hsp = 8 * other.DestroyedBy.image_xscale;

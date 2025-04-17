@@ -105,7 +105,7 @@ enemyState_Attack = function()
 
 enemyDeath_SpawnBody = function()
 {
-	with (instance_create(x, y, obj_baddieDead))
+	with instance_create(x, y, obj_baddieDead)
 	{
 		image_xscale = other.image_xscale;
 		image_blend = other.image_blend;
@@ -113,7 +113,7 @@ enemyDeath_SpawnBody = function()
 		paletteSprite = other.paletteSprite;
 		paletteSelect = other.paletteSelect;
 	}
-	with (instance_create(x, y + 38, obj_clutterCottonWitch))
+	with instance_create(x, y + 38, obj_clutterCottonWitch)
 	{
 		sprite_index = spr_cottonwitch_debris;
 		image_xscale = other.image_xscale;

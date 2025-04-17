@@ -1,6 +1,5 @@
 if player == -4
 	exit;
-
 xscale = sign(image_xscale);
 var maxspd = movespeed * xscale * hurry;
 if !returning
@@ -13,7 +12,7 @@ if !returning
 	}
 	else
 	{
-		with (instance_place(x + hsp, y, obj_destructibles))
+		with instance_place(x + hsp, y, obj_destructibles)
 		{
 			if (object_index != obj_metalblock && instance_exists(self))
 			{
@@ -37,8 +36,7 @@ else
 	x += ((_vecx / len) * hsp);
 	y += ((_vecy / len) * hsp);
 }
-
-with (instance_place(x, y, obj_destructibles))
+with instance_place(x, y, obj_destructibles)
 {
 	if (object_index != obj_metalblock && instance_exists(self))
 	{
@@ -46,8 +44,7 @@ with (instance_place(x, y, obj_destructibles))
 		event_user(0);
 	}
 }
-
-with (instance_place(x, y, obj_parent_enemy))
+with instance_place(x, y, obj_parent_enemy)
 	instance_destroy();
 if (place_meeting(x, y, obj_parent_player) && instance_place(x, y, obj_parent_player).id == player && throwbuffer <= 0)
 	instance_destroy();

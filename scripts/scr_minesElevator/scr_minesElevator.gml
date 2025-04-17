@@ -154,13 +154,13 @@ function cutscene_elevator_preend()
 		event_play_oneshot("event:/SFX/elevator/open");
 		for (var i = 0; i < sprite_get_number(spr_minesElevatorDebris); i++)
 		{
-			with (instance_create(elevator.x + irandom_range(-40, 40), elevator.y - irandom_range(20, 60), obj_debris))
+			with instance_create(elevator.x + irandom_range(-40, 40), elevator.y - irandom_range(20, 60), obj_debris)
 			{
 				sprite_index = spr_minesElevatorDebris;
 				image_index = i;
 			}
 		}
-		with (instance_create(elevator.x, elevator.y, obj_baddieDead))
+		with instance_create(elevator.x, elevator.y, obj_baddieDead)
 		{
 			image_xscale = other.image_xscale;
 			image_blend = other.image_blend;

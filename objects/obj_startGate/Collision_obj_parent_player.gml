@@ -1,6 +1,5 @@
 if instance_exists(obj_titlecard)
 	exit;
-
 var enter_gate = false;
 with obj_parent_player
 {
@@ -10,14 +9,12 @@ with obj_parent_player
 	&& state != States.comingoutdoor)
 		enter_gate = true;
 }
-
 if enter_gate
 {
 	hasInteracted = true;
 	stop_music(false);
 	gotoLevel(level);
 }
-
 if !secretcanspit && array_contains(secrets, true) && level != "tutorial"
 {
 	secretcanspit = true;

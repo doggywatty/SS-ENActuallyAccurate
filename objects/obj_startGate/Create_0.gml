@@ -12,7 +12,6 @@ gotoLevel = function(level)
 {
 	scr_gotoLevel(level);
 	obj_camera.chargeCameraX = 0;
-	
 	with obj_parent_player
 	{
 		image_index = 0;
@@ -33,12 +32,10 @@ gotoLevel = function(level)
 		hubY = y;
 	}
 };
-
 surf = -4;
 easelSurf = -4;
 fadewhite = 1;
 details = [gate_createlayer(spr_default_startgate, 0), gate_createlayer(spr_default_startgate, 1)];
-
 defineConfecti = function(idle, run, taunt) constructor
 {
 	spr_idle = idle;
@@ -55,12 +52,10 @@ confectiSprites = [
 ];
 isEasel = false;
 savedPaintSprite = undefined;
-
 saveSurfaceSprite = function()
 {
 	if !surface_exists(surf)
 		exit;
-	
 	var sp = sprite_create_from_surface(surf, 0, 0, sprite_width, sprite_height, false, false, 0, 0);
 	if !is_undefined(savedPaintSprite) && sprite_exists(savedPaintSprite)
 	{
@@ -91,11 +86,9 @@ secretCanvas = [
 	new defineObject(x, y - 128)
 ];
 gatePointDisplay = new defineObject(x, y - 265);
-
 with gatePointDisplay
 {
 	targetY = other.y - 265;
 	landed = false;
 }
-
 gateRankBubble = new defineObject(x, y - 210);

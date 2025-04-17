@@ -1,4 +1,4 @@
-with (obj_teleporter)
+with obj_teleporter
 {
     if (trigger == other.trigger && reciever)
     {

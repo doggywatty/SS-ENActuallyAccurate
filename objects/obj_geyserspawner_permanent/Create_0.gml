@@ -1,8 +1,7 @@
 event_inherited();
-
-if (!instance_exists(SpoutID))
+if !instance_exists(SpoutID)
 {
-    with (instance_create(x, y, obj_geyservertical))
+    with instance_create(x, y, obj_geyservertical)
     {
         image_xscale = other.image_xscale;
         geysertimer = 300;

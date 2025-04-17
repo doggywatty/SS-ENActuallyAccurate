@@ -1,15 +1,12 @@
 showDoorLight = false;
-
 if (escapeBlockedDoor && global.panic)
 {
 	sprite_index = spriteDoorEscape;
 	exit;
 }
-
 sprite_index = spriteDoorUnlocked;
 if (ds_list_find_index(global.SaveRoom, other.id) == -1 || place_meeting(x, y, obj_doorblocked))
 	sprite_index = spriteDoorLocked;
-
 with obj_parent_player
 {
 	if (place_meeting(x, y, other.id) && !instance_exists(obj_fadeoutTransition) && key_up && grounded
@@ -19,13 +16,11 @@ with obj_parent_player
 	{
 		if (ds_list_size(global.KeyFollowerList) <= 0 && ds_list_find_index(global.SaveRoom, other.id) == -1)
 			exit;
-		
 		image_index = 0;
 		state = States.door;
 		targetDoor = other.targetDoor;
 		targetRoom = other.targetRoom;
 		obj_camera.chargeCameraX = 0;
-		
 		if (ds_list_find_index(global.SaveRoom, other.id) == -1)
 		{
 			var target_x = (x - sprite_xoffset) + (sprite_width / 2);
@@ -40,7 +35,6 @@ with obj_parent_player
 				});
 				instance_destroy();
 			}
-			
 			ds_list_delete(global.KeyFollowerList, 0);
 			instance_create((x - sprite_xoffset) + (sprite_width / 2), (y - sprite_yoffset) + (sprite_height / 2), obj_lock, 
 			{
@@ -50,7 +44,6 @@ with obj_parent_player
 			event_play_oneshot("event:/SFX/general/cheers", x, y);
 			event_play_oneshot("event:/SFX/general/keyunlock", x, y);
 			fmod_studio_event_instance_start(obj_parent_player.voiceCollect);
-			
 			with other
 			{
 				ds_list_add(global.SaveRoom, id);
@@ -58,7 +51,6 @@ with obj_parent_player
 				image_index = 0;
 				image_speed = 0.35;
 			}
-			
 			with obj_guardian
 				instance_destroy();
 		}

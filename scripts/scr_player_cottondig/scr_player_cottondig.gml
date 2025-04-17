@@ -23,7 +23,7 @@ function scr_player_CottonDashSprites(_sprs)
 		sprite_index = spr_cottondrill;
 		if (cottonDebrisTimer == 0)
 		{
-			with (instance_create(x, y, obj_machDustEffect))
+			with instance_create(x, y, obj_machDustEffect)
 				sprite_index = spr_cottondrillfade;
 			cottonDebrisTimer = 8;
 		}

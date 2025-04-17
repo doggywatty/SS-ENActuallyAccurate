@@ -1,7 +1,6 @@
 depth = -5;
 global.ScrollOffset = 0;
 lapDeco = ds_list_create();
-
 if instance_number(obj_parallax) > 1
 {
 	var _first = instance_find(obj_parallax, 0);
@@ -11,7 +10,6 @@ if instance_number(obj_parallax) > 1
 		exit;
 	}
 }
-
 layerArray = [];
 var i = 5;
 repeat 5
@@ -47,7 +45,6 @@ set_layer_depths = function()
 	ds_map_set(temp_map, "Assets_FG", -350);
 	ds_map_set(temp_map, "Assets_Foreground", -350);
 	ds_map_set(temp_map, "Effect_", -500);
-	
 	var a = layer_get_all();
 	for (var i = 0; i < array_length(a); i++)
 	{
@@ -56,7 +53,6 @@ set_layer_depths = function()
 		var nums = string_digits(layer_name);
 		var nums_at = string_last_pos(nums, layer_name);
 		var layer_check_name = (nums == "") ? layer_name : string_delete(layer_name, nums_at, real(nums));
-		
 		if (!is_undefined(ds_map_find_value(temp_map, layer_check_name)))
 		{
 			var sub = (string_digits(layer_name) == "") ? 0 : real(string_digits(layer_name));
@@ -73,26 +69,18 @@ createLapDeco = function(_deco = false)
 		lapDecoBag = [bg_lappingdeco1, bg_lappingdeco2, bg_lappingdeco3];
 		lapDecoBag = array_shuffle(lapDecoBag);
 	}
-	
 	with (instance_create(irandom(room_width), _deco ? irandom(room_height) : (room_height + 276), obj_lappingdeco))
 	{
 		sprite_index = array_shift(other.lapDecoBag);
 		vspeed = random_range(-2, -2.5);
-		
-		switch (sprite_index)
+		switch sprite_index
 		{
-			case bg_lappingdeco2:
-				vspeed = random_range(-1, -2);
-				break;
-			case bg_lappingdeco3:
-				vspeed = random_range(-0.5, -1);
-				break;
+			case bg_lappingdeco2: vspeed = random_range(-1, -2); break;
+			case bg_lappingdeco3: vspeed = random_range(-0.5, -1); break;
 		}
 	}
 };
-
 subLayerArray = [];
-
 defineSublayer = function(_mainLayer, _subLayers)
 {
 	array_push(subLayerArray, 
@@ -101,7 +89,6 @@ defineSublayer = function(_mainLayer, _subLayers)
 		subLayers: _subLayers
 	});
 };
-
 createSubLayers = function()
 {
 	var all_layers = layer_get_all();
@@ -134,7 +121,6 @@ createSubLayers = function()
 		}
 	}
 };
-
 defineSublayer(bg_cottonClock2, [bg_cottonClock2_water]);
 visualCooldown = 0;
 lapDecoBag = [];

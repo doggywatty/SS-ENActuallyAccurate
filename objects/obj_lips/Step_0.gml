@@ -11,15 +11,14 @@ if (suck == true)
 		{
 			sprite_index = spr_bump;
 			state = States.bump;
-			with (instance_create(x, y, obj_dogMount))
+			with instance_create(x, y, obj_dogMount)
 				state = 1;
 		}
 	}
 }
-
 if (place_meeting(x, y, pl) && suck == true)
 {
-	with (instance_nearest(x, y, obj_dogMount))
+	with instance_nearest(x, y, obj_dogMount)
 	{
 		state = 0;
 		image_blend = c_white;

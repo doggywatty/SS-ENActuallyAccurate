@@ -1,6 +1,6 @@
 if (other.state != States.actor && sprite_index == spr_lappingportal_idle && global.panic)
 {
-    with (other)
+    with other
     {
         x = other.x;
         y = other.y;
@@ -9,7 +9,6 @@ if (other.state != States.actor && sprite_index == spr_lappingportal_idle && glo
         image_index = 0;
         sprite_index = spr_lappingportal_enter;
     }
-    
     event_play_oneshot("event:/SFX/general/lapenter", x, y);
     global.ComboFreeze = 50;
     global.ComboTime = 60;

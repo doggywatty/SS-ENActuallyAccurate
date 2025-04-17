@@ -145,7 +145,6 @@ var unsetSprites = [
 	[spr_grandpacone, spr_grandpacone_speak]
 ];
 var set_last = array_length(unsetSprites) - 1;
-
 for (var c = 0; c < categoryCount; c++)
 {
 	var cat = creditEntries[c][1];

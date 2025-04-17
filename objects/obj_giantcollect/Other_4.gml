@@ -1,4 +1,4 @@
-with (instance_place(x, y, obj_collectablebox))
+with instance_place(x, y, obj_collectablebox)
 {
     if (ds_list_find_index(global.SaveRoom, id) == -1 && !activated)
     {

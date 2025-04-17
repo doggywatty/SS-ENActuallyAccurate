@@ -12,7 +12,6 @@ switch global.playerCharacter
 var guiObjects = [obj_camera, obj_hudManager];
 if !global.option_speedrun_timer
 	array_push(guiObjects, obj_gametimer);
-
 if (instance_exists(obj_screen) && surface_exists(obj_screen.guiSurface))
 	pausedSprite = sprite_create_from_surface(obj_screen.guiSurface, 0, 0, 960, 540, false, false, 0, 0);
 else
@@ -22,7 +21,7 @@ else
 	surface_set_target(pauseSurface);
 	for (var i = 0; i < array_length(guiObjects); i++)
 	{
-		with (guiObjects[i])
+		with guiObjects[i]
 		{
 			if (visible)
 				event_perform(ev_draw, ev_gui);

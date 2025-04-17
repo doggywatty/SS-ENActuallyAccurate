@@ -55,7 +55,6 @@ output = function()
 			image_index = 0;
 		}
 	}
-	
 	if (ds_list_find_index(flags.saveroom, id) == -1)
 		ds_list_add(flags.saveroom, id);
 	instance_destroy();

@@ -1,6 +1,6 @@
 if (sprite_index != spr_juicedead)
 {
-	with (instance_create(x, y, obj_baddieDead))
+	with instance_create(x, y, obj_baddieDead)
 	{
 		paletteSprite = other.paletteSprite;
 		paletteSelect = other.paletteSelect;
@@ -16,7 +16,7 @@ else
 	var i = 0;
 	repeat 10
 	{
-		with (instance_create(x, y, obj_juiceDebris))
+		with instance_create(x, y, obj_juiceDebris)
 		{
 			paletteSprite = other.paletteSprite;
 			paletteSelect = other.paletteSelect;
@@ -28,6 +28,5 @@ else
 	}
 	event_play_oneshot("event:/SFX/general/breakglass", x, y);
 }
-
 event_play_oneshot("event:/SFX/enemies/kill");
 instance_destroy();

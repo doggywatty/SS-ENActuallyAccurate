@@ -2,7 +2,7 @@ if (sprite_index == spr_fredturn && sprite_animation_end())
 {
     sprite_index = spr_fredturnidle;
     
-    with (obj_parent_player)
+    with obj_parent_player
     {
         if (state == States.minecart)
         {

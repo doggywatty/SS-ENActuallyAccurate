@@ -59,11 +59,10 @@ if !drawing
 	exit;
 }
 
-if (!surface_exists(mysurf))
+if !surface_exists(mysurf)
 	mysurf = surface_create(960, tgty);
-if (!surface_exists(mycut))
+if !surface_exists(mycut)
 	mycut = surface_create(960, tgty);
-
 if (surface_exists(mycut))
 {
 	surface_set_target(mycut);
@@ -74,7 +73,6 @@ if (surface_exists(mycut))
 	gpu_set_blendmode(bm_normal);
 	surface_reset_target();
 }
-
 if (surface_exists(mysurf))
 {
 	surface_set_target(mysurf);

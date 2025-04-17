@@ -4,7 +4,7 @@ state = 2;
 event_play_oneshot("event:/SFX/ui/tvswitchback");
 obj_camera.cameraLock = false;
 
-with (obj_parent_player)
+with obj_parent_player
 {
     scr_playerrespawn(false);
     hsp = 0;

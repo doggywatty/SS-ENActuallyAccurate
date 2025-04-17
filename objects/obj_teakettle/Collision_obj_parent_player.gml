@@ -1,4 +1,4 @@
-with (other)
+with other
 {
     vsp = approach(vsp, -12, 6);
     jumpStop = true;

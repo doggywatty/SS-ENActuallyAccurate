@@ -1,6 +1,5 @@
 var reserved_gates = [];
 var available_critics = [spr_paintCritic_1, spr_paintCritic_2, spr_paintCritic_3, spr_paintCritic_4];
-
 with obj_paintcritic
 {
 	var i = array_get_index(available_critics, sprite_index);
@@ -11,13 +10,11 @@ with obj_paintcritic
 			array_push(reserved_gates, targetGate);
 	}
 }
-
 var lv = "";
-with (instance_nearest(x, y, obj_startGate))
+with instance_nearest(x, y, obj_startGate)
 {
 	lv = level;
 	other.targetGate = id;
-	
 	if (array_contains(reserved_gates, id))
 	{
 		instance_destroy(other);

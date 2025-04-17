@@ -1,4 +1,4 @@
-with (instance_create(x, y, obj_baddieDead))
+with instance_create(x, y, obj_baddieDead)
 {
     canrotate = false;
     sprite_index = other.sprite_index;

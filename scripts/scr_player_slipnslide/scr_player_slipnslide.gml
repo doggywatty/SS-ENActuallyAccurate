@@ -38,7 +38,7 @@ function state_player_slipnslide()
     
     if (!instance_exists(obj_slidecloud) && grounded && movespeed > 1.5)
     {
-        with (instance_create(x, y, obj_slidecloud))
+        with instance_create(x, y, obj_slidecloud)
             image_xscale = other.xscale;
     }
 }

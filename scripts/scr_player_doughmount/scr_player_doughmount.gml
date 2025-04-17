@@ -60,7 +60,6 @@ function state_player_doughmount()
 		sprite_index = spr_player_PZ_dogMount;
 	if (sprite_index == spr_player_PZ_dogMount_inflate_jump && sprite_animation_end())
 		sprite_index = spr_player_PZ_dogMount_inflate_fall;
-	
 	if (inputBufferSlap > 0)
 	{
 		image_index = 0;
@@ -126,7 +125,7 @@ function state_player_doughmountballoon()
 		sprite_index = spr_player_PZ_dogMount_inflate_jump;
 		state = States.doughmount;
 		vsp = -20;
-		with (instance_create(x, y, obj_puffEffect))
+		with instance_create(x, y, obj_puffEffect)
 			sprite_index = spr_tornadocloud;
 	}
 }

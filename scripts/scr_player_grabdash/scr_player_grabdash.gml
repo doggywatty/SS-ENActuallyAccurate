@@ -12,7 +12,7 @@ function state_player_grabdash()
 		if (sparkle_effect-- < 0)
 		{
 			sparkle_effect = 5;
-			with (instance_create(x, y, obj_bangEffect))
+			with instance_create(x, y, obj_bangEffect)
 			{
 				depth = -8;
 				image_xscale = choose(1, -1);
@@ -145,7 +145,7 @@ function state_player_grabdash()
 		}
 	}
 	
-	if (inputBufferSlap > 0 && !key_down || !grounded && animation_end_old(undefined, 2))
+	if (inputBufferSlap > 0 && !key_down || !grounded && animation_end_old(u, 2))
 	{
 		fmod_studio_event_instance_start(sndCrouchslide);
 		sprite_index = spr_grabDashTumble;

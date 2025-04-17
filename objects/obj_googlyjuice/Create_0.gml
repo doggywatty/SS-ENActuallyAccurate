@@ -12,7 +12,7 @@ enemyDeath_SpawnBody = function()
 	var i = 0;
 	repeat 10
 	{
-		with (instance_create(x, y, obj_juiceDebris))
+		with instance_create(x, y, obj_juiceDebris)
 		{
 			paletteSprite = other.paletteSprite;
 			paletteSelect = other.paletteSelect;

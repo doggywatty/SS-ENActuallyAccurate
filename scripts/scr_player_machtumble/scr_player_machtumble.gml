@@ -222,7 +222,7 @@ function state_player_dodgetumble()
 			sprite_index = spr_grabDashTumble;
 			image_index = 0;
 			inputBufferSlap = 0;
-			with (instance_create(x, y, obj_jumpdust))
+			with instance_create(x, y, obj_jumpdust)
 				image_xscale = other.xscale;
 		}
 		else
@@ -237,7 +237,7 @@ function state_player_dodgetumble()
 	attack_afterimage_timer = max(attack_afterimage_timer - 1, 0);
 	if (attack_afterimage_timer <= 0 && vsp <= 0)
 	{
-		with (instance_create(x, y, obj_attackAfterEffect))
+		with instance_create(x, y, obj_attackAfterEffect)
 			playerID = other.id;
 		attack_afterimage_timer = 6;
 	}
