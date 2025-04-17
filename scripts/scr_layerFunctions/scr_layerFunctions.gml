@@ -14,7 +14,7 @@ function layer_type_get_id(_layerId, _element_id)
 
 function layer_tilemap_get_id_fixed(_layerId)
 {
-	return layer_type_get_id(_layerId, layerelementtype_oldtilemap);
+	return layer_type_get_id(_layerId, layerelementtype_tilemap);
 }
 
 function layer_background_get_id_fixed(_layerId)
@@ -24,7 +24,7 @@ function layer_background_get_id_fixed(_layerId)
 
 function layer_asset_get_id(_layerId)
 {
-	return layer_type_get_id(_layerId, layerelementtype_tilemap);
+	return layer_type_get_id(_layerId, layerelementtype_sprite);
 }
 
 function layer_get_all_sprites(_layerId)
@@ -35,7 +35,7 @@ function layer_get_all_sprites(_layerId)
 		var a = layer_get_all_elements(_layerId);
 		for (var i = 0; i < array_length(a); i++)
 		{
-			if (layer_get_element_type(a[i]) == layerelementtype_tilemap)
+			if (layer_get_element_type(a[i]) == layerelementtype_sprite)
 				array_push(temp_array, a[i]);
 		}
 	}
