@@ -23,7 +23,7 @@ else
 	{
 		with guiObjects[i]
 		{
-			if (visible)
+			if visible
 				event_perform(ev_draw, ev_gui);
 		}
 	}

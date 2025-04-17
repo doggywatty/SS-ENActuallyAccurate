@@ -306,7 +306,7 @@ enum UnknownTitlecard
 
 #macro isDemo 0 + 1
 #macro vk_capslock 20
-#macro u undefined
+#macro U
 
 scr_gameInit();
 depth = 5;
@@ -315,7 +315,6 @@ randomize();
 window_center();
 var temparray = ["Player", "Baddies", "HUD", "Structure", "Hub", "effectsGroup", "titleGroup"];
 textureLoaderList = ds_list_create();
-
 for (var i = 0; i < array_length(temparray); i++)
 	ds_list_set(textureLoaderList, i, texturegroup_get_textures(temparray[i]));
 

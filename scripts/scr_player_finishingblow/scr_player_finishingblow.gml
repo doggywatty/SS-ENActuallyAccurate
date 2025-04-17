@@ -23,7 +23,7 @@ function state_player_finishingblow()
 		movespeed = approach(movespeed, 0, 1);
 	else
 		movespeed = approach(movespeed, -xscale * 4, 0.5);
-	if (animation_end_old(u, throw_frame) && instance_exists(baddieGrabbedID))
+	if (animation_end_old(U, throw_frame) && instance_exists(baddieGrabbedID))
 	{
 		vsp = -5;
 		event_play_oneshot("event:/SFX/player/punch", x, y);
