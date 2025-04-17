@@ -145,7 +145,7 @@ function state_player_grabdash()
 		}
 	}
 	
-	if (inputBufferSlap > 0 && !key_down || !grounded && animation_end_old(u, 2))
+	if (inputBufferSlap > 0 && !key_down || !grounded && animation_end_old(U, 2))
 	{
 		fmod_studio_event_instance_start(sndCrouchslide);
 		sprite_index = spr_grabDashTumble;

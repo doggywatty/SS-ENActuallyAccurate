@@ -21,7 +21,7 @@ function scr_enemy_charge()
 		if (substate == 0)
 		{
 			movespeed = (sprite_index == spr_banana_chargestart) ? 0 : 8;
-			if (sprite_animation_end(u, 18) && sprite_index == spr_banana_chargestart)
+			if (sprite_animation_end(U, 18) && sprite_index == spr_banana_chargestart)
 				movespeed = 8;
 			if (place_meeting(x + sign(hsp), y, obj_solid) && !place_meeting(x + sign(hsp), y, obj_slope))
 				image_xscale *= -1;

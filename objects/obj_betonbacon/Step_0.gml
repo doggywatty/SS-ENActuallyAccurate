@@ -30,7 +30,7 @@ if (point_in_rectangle(obj_parent_player.x, obj_parent_player.y, x - 200, y - 50
     }
 }
 
-if (hitboxcreate == 0 && animation_end_old(u, 10) && state == States.titlescreen)
+if (hitboxcreate == 0 && animation_end_old(U, 10) && state == States.titlescreen)
 {
     hitboxcreate = 1;
     
