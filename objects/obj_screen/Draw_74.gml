@@ -1,12 +1,9 @@
-var surfW = 960;
-var surfH = 540;
-var guiW = display_get_gui_width();
-var guiH = display_get_gui_height();
-if (!surface_exists(finalApplicationSurface))
-	finalApplicationSurface = surface_create(960, 540);
-if (!surface_exists(guiSurface))
-	guiSurface = surface_create(guiW, guiH);
-if (surface_get_width(guiSurface) != guiW || surface_get_height(guiSurface) != guiH)
-	surface_resize(guiSurface, guiW, guiH);
+__display_set_gui_size_hook(960, 540);
+if !surface_exists(global.GameSurface)
+	global.GameSurface = surface_create(960, 540);
 
-screen_draw_app_surf();
+surface_set_target(global.GameSurface);
+draw_clear_alpha(c_black, 0);
+gpu_set_blendenable(false);
+draw_surface_stretched_ext(application_surface, 0, 0, 960, 540, c_white, 1);
+gpu_set_blendenable(true);

@@ -5,7 +5,7 @@ if fadein
 	var drawSignature = signatureShow && info.x != -4 && info.y != -4;
 	if drawSignature
 	{
-		draw_sprite_ext(spr_titlecardsignature, signatureStage, info.x, info.y, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(lang_get_sprite(spr_titlecardsignature), signatureStage, info.x, info.y, 1, 1, 0, c_white, 1);
 		signatureStage = approach(signatureStage, 8, 0.35);
 		for (var i = 0; i < ds_list_size(global.particleList); i++)
 		{

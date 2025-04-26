@@ -1,4 +1,5 @@
-if !instance_exists(obj_option_keyconfig) || instance_exists(obj_langSpriteLoader)
+if (!(instance_exists(obj_option_keyconfig) || instance_exists(obj_option_confirm)
+|| instance_exists(obj_option_lang) || instance_exists(obj_langSpriteLoader)))
 	scr_getinput_menu();
 else
 	scr_input_varinit();
@@ -8,29 +9,15 @@ if inputBuffer > 0
 	scr_input_varinit();
 	inputBuffer--;
 }
-
-if (scrollbuffer)
+if scrollbuffer
 	scrollbuffer--;
-
 var v_move = key_down2 - key_up2;
 var h_move = key_left2 + key_right2;
 var h_move2 = key_left + key_right;
-
-var j = 0;
-if (instance_exists(obj_option_keyconfig))
-	j = 4;
-if (optionMenu >= 5)
-	j = 4;
-else if (optionMenu == 2)
-	j = 1;
-else if (optionMenu == 3 || optionMenu == 4)
-	j = 3;
-else if (optionMenu == 1)
-	j = 2;
-
+var background_ind = optionBG[optionMenu];
 for (var i = 0; i < array_length(bg_alpha); i++)
 {
-	if (i == j)
+	if (i == background_ind)
 		bg_alpha[i] = approach(bg_alpha[i], 1, 0.1);
 	else
 		bg_alpha[i] = approach(bg_alpha[i], 0, 0.05);
@@ -41,10 +28,8 @@ bgy -= 1;
 var _total_options = array_length(options);
 var selOption = (_total_options <= 0) ? -4 : options[optionSelected];
 var selID = (_total_options <= 0) ? -4 : options[optionSelected].id;
-
 if (h_move2 == 0)
 	handle_savedoption();
-
 if savedDesc != selID
 {
 	savedDesc = selID;
@@ -52,7 +37,7 @@ if savedDesc != selID
 	{
 		old_desc = description;
 		descfadeout = true;
-		description = lang_get(string($"{savedDesc}_desc"));
+		description = lang_get($"{savedDesc}_desc");
 		showdesc = description != "" && !is_undefined(description);
 	}
 }

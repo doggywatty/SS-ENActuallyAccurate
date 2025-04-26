@@ -12,8 +12,8 @@ for (var i = 0; i < array_length(levelArr); i++)
 	
 	if (global.InternalLevelName == levelArr[i])
 		selectV = i;
-	else if (is_hub() && levelArr[i] == "demoEN")
-		selectV = i;
+	else
+		selectV = 0;
 }
 
 ini_close();

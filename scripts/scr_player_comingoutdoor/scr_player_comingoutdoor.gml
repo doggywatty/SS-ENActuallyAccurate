@@ -27,5 +27,5 @@ function state_player_comingoutdoor()
 		state = States.normal;
 		image_blend = c_white;
 	}
-	global.ComboFreeze = 15;
+	global.ComboFreeze = 2;
 }

@@ -39,6 +39,7 @@ score_total_colors = [];
 saved_total_string = "";
 score_highscore_index = 0;
 collect_sound = fmod_createEventInstance("event:/SFX/ui/rankCollect");
+spr_highscore = lang_get_sprite(spr_rank_highscore);
 combo_shown = false;
 damage_shown = false;
 flash = false;
@@ -115,7 +116,11 @@ showRank = function(_rank = global.rank)
 	image_index = 0;
 	x = camera_get_view_width(view_camera[0]) / 2;
 	y = camera_get_view_height(view_camera[0]) / 2;
-	var _text = [spr_rankD_text, spr_rankC_text, spr_rankB_text, spr_rankA_text, spr_rankS_text, -4];
+	var _text = [
+		lang_get_sprite(spr_rankD_text), lang_get_sprite(spr_rankC_text),
+		lang_get_sprite(spr_rankB_text), lang_get_sprite(spr_rankA_text),
+		lang_get_sprite(spr_rankS_text), -4
+	];
 	rankdex = rank_checker(_rank);
 	rank_text_sprite = lang_get_sprite(_text[rankdex]);
 	score_cake_index = rankdex;

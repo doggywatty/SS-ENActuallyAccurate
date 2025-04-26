@@ -40,7 +40,7 @@ updateFFT = function()
         if (fmod_last_result() != FMOD_RESULT.ERR_STUDIO_NOT_LOADED)
         {
             fmod_channel_control_add_dsp(channel_group, FMOD_CHANNELCONTROL_DSP_INDEX.HEAD, global.FMOD_DSP_FFT);
-            fmod_dsp_set_parameter_int(global.FMOD_DSP_FFT, FMOD_DSP_FFT.WINDOWTYPE, FMOD_DSP_FFT_WINDOW.RECT);
+            fmod_dsp_set_parameter_int(global.FMOD_DSP_FFT, FMOD_DSP_FFT.WINDOW_TYPE, FMOD_DSP_FFT_WINDOW_TYPE.RECT);
             var size = 16;
             fmod_dsp_set_parameter_int(global.FMOD_DSP_FFT, FMOD_DSP_FFT.WINDOWSIZE, size);
 			initializedDSP = true;
@@ -109,3 +109,5 @@ global.FMOD_OneShotList = ds_map_create();
 size = 0;
 set_volume_options();
 fmod_studio_system_set_parameter_by_name("speakerOption", global.speakerOption, true);
+global.MediaIsPlaying = false;
+StartMediaMonitor();

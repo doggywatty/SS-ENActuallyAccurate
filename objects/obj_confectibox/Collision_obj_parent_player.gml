@@ -23,7 +23,6 @@ if (object_get_parent(_content.object_index) == obj_parent_confecti)
 	global.Collect += 1000;
 	scr_queueTVAnimation(global.TvSprPlayer_Happy, 150);
 	create_small_number((x - sprite_xoffset) + (sprite_width / 2), (y - sprite_yoffset) + (sprite_height / 2), 1000);
-	global.ComboFreeze = 15;
 	global.ComboTime = 60;
 }
 repeat 6

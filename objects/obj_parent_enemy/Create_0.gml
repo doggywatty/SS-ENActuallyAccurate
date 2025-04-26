@@ -38,6 +38,7 @@ frozenMoveSpeed = 0;
 frozenGrav = 0.35;
 frozenHsp = 0;
 frozenVsp = 0;
+yscale = 1;
 hasSquashedX = false;
 squashValueX = 0;
 hasSquashedY = false;
@@ -91,7 +92,6 @@ enemyDeath_SpawnDeathFX = function()
 enemyDeath_awardPoints = function(_enemy = importantEnemy)
 {
 	global.ComboTime = 60;
-	global.ComboFreeze = 15;
 	if _enemy
 		exit;
 	obj_parent_player.superTauntBuffer++;

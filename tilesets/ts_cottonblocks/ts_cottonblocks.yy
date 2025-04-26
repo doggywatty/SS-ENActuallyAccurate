@@ -24,7 +24,7 @@
     "name": "Cottontown",
     "path": "texturegroups/Cottontown",
   },
-  "tile_count": 460,
+  "tile_count": 462,
   "tileAnimation": {
     "FrameData": [
       0,
@@ -487,6 +487,8 @@
       457,
       458,
       459,
+      460,
+      461,
     ],
     "SerialiseFrameCount": 1,
   },

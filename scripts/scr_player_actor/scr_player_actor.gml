@@ -1,6 +1,6 @@
 function state_player_actor()
 {
-    global.ComboFreeze = 15;
+    global.ComboFreeze = 2;
     if (sprite_index == spr_gotTreasure)
     {
         vsp = 0;
@@ -16,7 +16,7 @@ function state_player_titlescreen()
 function state_player_gotkey()
 {
     cutscene = true;
-    global.ComboFreeze = 15;
+    global.ComboFreeze = 2;
     hsp = approach(hsp, 0, 0.2);
     movespeed = 0;
     if (sprite_index == spr_player_PZ_freeFall_1 || sprite_index == spr_fall)

@@ -7,7 +7,7 @@ function scr_player_CottonDashSprites(_sprs)
 		spr_player_PZ_werecotton_drill_down, spr_player_PZ_werecotton_drill_ddown,
 		spr_player_PZ_werecotton_drill_h
 	];
-	if (!place_meeting(x, y, obj_cottonsolid))
+	if (!place_meeting(x, y, obj_cottonsolid) && !savedCottonSolid)
 	{
 		if (sprite_index == spr_cottonDashIntro)
 		{
@@ -76,7 +76,7 @@ function state_player_cottondig()
 			}
 		}
 	}
-	else
+	else if place_meeting(x, y, obj_cottonsolid)
 	{
 		movespeed = approach(movespeed, 14, 0.5);
 		var angle_diff = 0;
@@ -129,6 +129,8 @@ function state_player_cottondig()
 				cottonDirection = point_direction(0, 0, xscale, 1);
 			}
 			x += _ledge;
+			with obj_camera
+				cameraXOffset = -_ledge;			
 		}
 		else if !savedCottonSolid && !place_meeting(x, y + sign(vsp), obj_destructibles)
 			cottonDashTimer = 0;

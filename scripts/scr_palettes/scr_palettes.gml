@@ -3,6 +3,11 @@ function palette_as_player(sprite = sprite_index, frame = image_index, character
 {
     if !sprite_exists(sprite)
         exit;
+	if (!number_in_range(index, 0, array_length(global.CharacterPalette[character].palettes) - 1))
+	{
+		show_debug_message($"WARNING: PALETTE INDEX {index} IS OUT OF RANGE 0-{array_length(global.CharacterPalette[character].palettes) - 1}. DEFAULTING TO 0");
+		index = 0;
+	}
     var pal_spr = global.CharacterPalette[character].sprite;
     var pal_info = global.CharacterPalette[character].palettes[index];
     pal_swap_set(pal_spr, index, false);

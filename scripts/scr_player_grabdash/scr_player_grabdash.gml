@@ -28,11 +28,6 @@ function state_player_grabdash()
 	}
 	if ((sprite_index == spr_suplexdashFallIntro && sprite_animation_end()) || (!grounded && sprite_index == spr_suplexdashGround))
 		sprite_index = spr_suplexdashFall;
-	if (floatyGrab < 15 && key_down && vsp < 6)
-	{
-		vsp = 6;
-		floatyGrab = 0;
-	}
 	if (movespeed < 10)
 		movespeed = approach(movespeed, 10, 0.5);
 	
@@ -89,7 +84,6 @@ function state_player_grabdash()
 				if (vsp > 0 && place_meeting(x + xscale, y, obj_icyWall))
 					verticalMovespeed -= vsp;
 				grabClimbBuffer = 10;
-				inputBufferJump = 0;
 				state = States.climbwall;
 				floatyGrab = 18;
 			}
@@ -164,6 +158,8 @@ function state_player_grabdash()
 	}
 	if key_down
 	{
+		vsp = max(vsp, 6);
+		floatyGrab = 0;
 		if grounded
 		{
 			grav = 0.5;

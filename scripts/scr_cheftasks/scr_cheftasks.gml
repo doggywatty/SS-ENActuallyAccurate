@@ -15,7 +15,7 @@ function ChefTask(_taskKey, _conditionType, _taskSprite, _taskIndex, _taskCondit
 	return self;
 }
 
-function OutfitTask(_taskKey, _taskChar, _conditionType, _taskFunc) : ChefTask(_taskKey, _conditionType, spr_paletteUnlock, 0, _taskFunc) constructor
+function OutfitTask(_taskKey, _taskChar, _conditionType, _taskFunc) : ChefTask(_taskKey, _conditionType, lang_get_sprite(spr_paletteUnlock), 0, _taskFunc) constructor
 {
 	taskCharacter = _taskChar;
 }
@@ -66,7 +66,7 @@ function scr_award_palette(taskKey, taskChar)
 	obj_hudManager.saveAlpha = 10;
 	if !prevUnlocked
 	{
-		ds_queue_enqueue(obj_achievementTracker.chefUnlockQueue, [spr_paletteUnlock, taskKey, taskChar, 0]);
+		ds_queue_enqueue(obj_achievementTracker.chefUnlockQueue, [lang_get_sprite(spr_paletteUnlock), taskKey, taskChar, 0]);
 		with obj_paletteChangerMirror
 			event_perform(ev_create, 0);
 	}

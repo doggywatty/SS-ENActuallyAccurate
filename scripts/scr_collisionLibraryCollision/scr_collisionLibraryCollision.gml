@@ -9,35 +9,33 @@ global.MyCollisionList = ds_list_create();
 function instance_place_list_collision(xx, yy, exclude = Exclude.NONE, list = undefined) {
 	var collided = 0;
 	// Exclude specific types of collisions
-	var 
-	check_slopes = Exclude.SLOPES&exclude != Exclude.SLOPES,
-	check_solids = Exclude.SOLIDS&exclude != Exclude.SOLIDS,
-	check_platforms = Exclude.PLATFORMS&exclude != Exclude.PLATFORMS,
-	check_moving = Exclude.MOVING&exclude != Exclude.MOVING;
+	var check_slopes = !isCollisionFlagSet(exclude, Exclude.SLOPES),
+		check_solids = !isCollisionFlagSet(exclude, Exclude.SOLIDS),
+		check_platforms = !isCollisionFlagSet(exclude, Exclude.PLATFORMS),
+		check_moving = !isCollisionFlagSet(exclude, Exclude.MOVING);
 
 	
 	if (check_solids) { // Basic Solid Collisions and Backside of Slopes
-		collided += instance_place_list_solid(xx, yy, list);
-		collided += instance_place_list_slopeSolid(xx, yy, list);
+		collided += instance_place_list_solid(xx, yy, undefined, list);
+		collided += instance_place_list_slopeSolid(xx, yy, undefined, list);
 	}
 	
 	if (check_slopes) { // Sloped Collisions
-		
 		if (check_solids) {
-			collided += instance_place_list_slope(xx, yy, list);
+			collided += instance_place_list_slope(xx, yy, undefined, list);
 		}
 		
 		if (check_platforms) {
-			collided += instance_place_list_slopePlatform(xx, yy, list);		
+			collided += instance_place_list_slopePlatform(xx, yy, undefined, list);		
 		}
 	}
 	if (check_platforms) { // Semisolid Collisions
-		collided += instance_place_list_platform(xx, yy, list);
-		collided += instance_place_list_sidePlatform(xx, yy, list);
+		collided += instance_place_list_platform(xx, yy, undefined, list);
+		collided += instance_place_list_sidePlatform(xx, yy, undefined, list);
 	}
-	/*if (check_moving) { // Moving Platforms
-		collided += instance_place_list_movingPlatform(xx, yy, list);
-	}*/
+	if (check_moving) { // Moving Platforms
+		collided += instance_place_list_platform(xx, yy, obj_movingPlatform, list);
+	}
 	return collided;
 }
 
@@ -126,7 +124,7 @@ function instance_place_list_solid(xx, yy, obj = obj_solid, list = undefined)
             var col_object = ds_list_find_value(global.MyCollisionList, i);
             var special_colcheck = true;
             if (variable_instance_exists(col_object, "canCollide"))
-                special_colcheck = col_object.canCollide(object_index);
+                special_colcheck = col_object.canCollide(col_object, id);
             if special_colcheck
             {
                 collided++;
@@ -182,7 +180,7 @@ function instance_place_list_platform(xx, yy, obj = obj_platform, list = undefin
             var col_object = ds_list_find_value(global.MyCollisionList, i);
             var special_colcheck = true;
             if variable_instance_exists(col_object, "canCollide")
-                special_colcheck = col_object.canCollide(object_index);
+                special_colcheck = col_object.canCollide(col_object, id);
             
             var platform_check = (sign(col_object.image_yscale) <= -1) ? (yy <= y) : (yy >= y);
             if (special_colcheck && platform_check && !place_meeting(xx, y, col_object))
@@ -216,7 +214,7 @@ function instance_place_list_sidePlatform(xx, yy, obj = obj_sidePlatform, list =
 			var col_object = ds_list_find_value(global.MyCollisionList, i);
 			var special_colcheck = true;
 			if variable_instance_exists(col_object, "canCollide")
-				special_colcheck = col_object.canCollide(object_index);
+				special_colcheck = col_object.canCollide(col_object, id);
 			
 			var s_platform_check = (sign(col_object.image_xscale) < 0) ? (xx >= x) : (xx <= x);
 			if special_colcheck && s_platform_check && !place_meeting(x, yy, col_object)
@@ -287,57 +285,57 @@ function position_meeting_sidePlatform(xx, yy, obj = obj_sidePlatform)
 /// @param {Asset.GMObject|Id.Instance} [obj] The object to check for. (Optional)
 /// @param {ID.DsList} [list] The DS list to use to store the IDs of colliding sloped platforms. (Optional)
 /// @returns {real} The number of instances found to be in collision.
-function instance_place_list_slopePlatform(xx, yy, obj = obj_slopePlatform, list = undefined)
-{   
-    var old_x = x;
-    var old_y = y;
-    var old_bbox_top = bbox_top;
-    var old_bbox_bottom = bbox_bottom;
-    x = xx;
-    y = yy;
-    var collided = 0;
-    var slopeplatform_number = instance_place_list(x, y, obj, global.MyCollisionList, false);
-    if (slopeplatform_number > 0)
-    {
-        for (var i = 0; i < slopeplatform_number; i++)
-        {
-            var slopeplatform_object = ds_list_find_value(global.MyCollisionList, i);
-            var _can_collide = true;
-            if variable_instance_exists(slopeplatform_object, "canCollide")
-                _can_collide = slopeplatform_object.canCollide(object_index);
-            if _can_collide
-            {
-                var object_side = (slopeplatform_object.image_xscale > 0) ? bbox_right : bbox_left;
-                object_side = (object_side - x) + old_x;
-                var player_pos = point_direction(slopeplatform_object.x + slopeplatform_object.sprite_width, slopeplatform_object.y + slopeplatform_object.sprite_height, x, y);
-                
-                if (slopeplatform_object.image_yscale > 0)
-                    var _check1 = (slopeplatform_object.image_xscale > 0) ? (player_pos <= 180 && player_pos >= 90) : (player_pos <= 90 && player_pos >= 0);
-                else
-                    _check1 = (slopeplatform_object.image_xscale > 0) ? (player_pos <= 270 && player_pos >= 180) : ((player_pos <= 360 || player_pos <= 0) && player_pos >= 270);
-                
-                var _check2 = !triangle_meeting(old_x, old_y, slopeplatform_object.x, slopeplatform_object.y + slopeplatform_object.sprite_height, slopeplatform_object.x + slopeplatform_object.sprite_width, slopeplatform_object.y, slopeplatform_object.x + slopeplatform_object.sprite_width, slopeplatform_object.y + slopeplatform_object.sprite_height);
-                var _check3 = (slopeplatform_object.image_xscale > 0) ? (object_side <= slopeplatform_object.bbox_left) : (object_side >= slopeplatform_object.bbox_right);
-                if (_check1 && (_check2 || _check3) && ((slopeplatform_object.image_yscale > 0)
-				? (old_bbox_bottom <= slopeplatform_object.bbox_bottom) : (old_bbox_top >= slopeplatform_object.bbox_top))
-				&& triangle_meeting(x, y, slopeplatform_object.x, slopeplatform_object.y + slopeplatform_object.sprite_height,
-				slopeplatform_object.x + slopeplatform_object.sprite_width, slopeplatform_object.y,
-				slopeplatform_object.x + slopeplatform_object.sprite_width,
-				slopeplatform_object.y + slopeplatform_object.sprite_height))
-                {
-                    collided++;
-                    if !is_undefined(list)
-                        ds_list_add(list, slopeplatform_object.id);
-                    else
-                        break;
-                }
-            }
-        }
-        ds_list_clear(global.MyCollisionList);
-    }
-    x = old_x;
-    y = old_y;
-    return collided;
+function instance_place_list_slopePlatform(xx, yy, _exclude = obj_slopePlatform, list = undefined)
+{
+	var old_x = x;
+	var old_y = y;
+	var old_bbox_top = bbox_top;
+	var old_bbox_bottom = bbox_bottom;
+	x = xx;
+	y = yy;
+	var collided = 0;
+	var slopeplatform_number = instance_place_list(x, y, _exclude, global.MyCollisionList, false);
+	if (slopeplatform_number > 0)
+	{
+		for (var i = 0; i < slopeplatform_number; i++)
+		{
+			var col_object = ds_list_find_value(global.MyCollisionList, i);
+			var _can_collide = true;
+			if (variable_instance_exists(col_object, "canCollide"))
+				_can_collide = col_object.canCollide(col_object, id);
+			if (_can_collide)
+			{
+				var object_side = (col_object.image_xscale > 0) ? bbox_right : bbox_left;
+				object_side = (object_side - x) + old_x;
+				var player_pos = point_direction(col_object.x + col_object.sprite_width, col_object.y + col_object.sprite_height, x, y);
+				var _xx = col_object.x + sign(col_object.image_xscale);
+				var _yy = col_object.y;
+				var w = col_object.sprite_width;
+				var h = col_object.sprite_height;
+				var _check1;
+				if (col_object.image_yscale > 0)
+					_check1 = (col_object.image_xscale > 0) ? (player_pos <= 180 && player_pos >= 90) : (player_pos <= 90 && player_pos >= 0);
+				else
+					_check1 = (col_object.image_xscale > 0) ? (player_pos <= 270 && player_pos >= 180) : ((player_pos <= 360 || player_pos <= 0) && player_pos >= 270);
+				var _check2 = !triangle_meeting(old_x, old_y, _xx, _yy + h, _xx + w, _yy, _xx + w, _yy + h);
+				var _check3 = (col_object.image_xscale > 0) ? (object_side <= col_object.bbox_left) : (object_side >= col_object.bbox_right);
+				if (_check1 && (_check2 || _check3) && ((col_object.image_yscale > 0)
+				? (old_bbox_bottom <= col_object.bbox_bottom) : (old_bbox_top >= col_object.bbox_top))
+				&& triangle_meeting(x, y, _xx, _yy + h, _xx + w, _yy, _xx + w, _yy + h))
+				{
+					collided++;
+					if (!is_undefined(list))
+						ds_list_add(list, col_object.id);
+					else
+						break;
+				}
+			}
+		}
+		ds_list_clear(global.MyCollisionList);
+	}
+	x = old_x;
+	y = old_y;
+	return collided;
 }
 
 /// @desc With this function you can check a place for sloped platform collision objects.
@@ -381,8 +379,8 @@ function instance_place_list_slope(xpos, ypos, _object = obj_slope, list = undef
 			var col_object = ds_list_find_value(global.MyCollisionList, i);
 			var special_colcheck = true;
 			if variable_instance_exists(col_object, "canCollide")
-				special_colcheck = col_object.canCollide(object_index);
-			var _xx = col_object.x;
+				special_colcheck = col_object.canCollide(col_object, id);
+			var _xx = col_object.x + sign(col_object.image_xscale);
 			var _yy = col_object.y;
 			var w = col_object.sprite_width;
 			var h = col_object.sprite_height;
@@ -443,11 +441,16 @@ function instance_place_list_slopeSolid(xx, yy, obj = obj_slope, list = undefine
 			var col_object = ds_list_find_value(global.MyCollisionList, i);
 			var special_colcheck = true;
 			if variable_instance_exists(col_object, "canCollide")
-				special_colcheck = col_object.canCollide(object_index);
+				special_colcheck = col_object.canCollide(col_object, id);
 			var check_dir = xx - x;
 			var check_1 = sign(col_object.image_xscale) == -check_dir;
 			var check_2 = (col_object.image_yscale < 0) ? (bbox_bottom <= col_object.bbox_top) : (bbox_top >= col_object.bbox_bottom);
-			if (special_colcheck && (check_1 || check_2) && triangle_meeting(xx, yy, col_object.x, col_object.y + col_object.sprite_height, col_object.x + col_object.sprite_width, col_object.y, col_object.x + col_object.sprite_width, col_object.y + col_object.sprite_height))
+			var _xx = col_object.x + sign(col_object.image_xscale);
+			var _yy = col_object.y;
+			var w = col_object.sprite_width;
+			var h = col_object.sprite_height;
+			if (special_colcheck && (check_1 || check_2)
+			&& triangle_meeting(xx, yy, _xx, _yy + h, _xx + w, _yy, _xx + w, _yy + h))
 			{
 				collided++;
 				if !is_undefined(list)

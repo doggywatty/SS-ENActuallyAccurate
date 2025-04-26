@@ -24,7 +24,6 @@ if (ds_list_find_index(global.SaveRoom, id) == -1)
 	event_play_oneshot("event:/SFX/general/escaperumble");
 	event_play_oneshot("event:/SFX/enemies/kill");
 	scr_sleep();
-	global.ComboFreeze = 15;
 	global.ComboTime = 60;
 	global.Combo++;
 	ds_list_add(global.SaveRoom, id);

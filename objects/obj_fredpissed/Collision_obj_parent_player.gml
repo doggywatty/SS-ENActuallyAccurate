@@ -1,7 +1,7 @@
 with other
 {
 	if ((state == States.minecart || state == States.minecart_bump || (state == States.minecart_launched
-	&& vsp > 0)) && sprite_index != spr_player_PZ_minecart_bounce)
+	&& vsp > 0)) && sprite_index != spr_player_PZ_minecart_bounce && !global.freezeframe)
 	{
 		var _x = x;
 		var _y = y;

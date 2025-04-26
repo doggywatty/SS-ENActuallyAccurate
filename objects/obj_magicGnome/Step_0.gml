@@ -5,7 +5,7 @@ if (distance_to_object(target_player) <= 350 || global.LevelMinutes >= 1)
 	{
 		ds_list_add(global.SaveRoom, id);
 		event_play_oneshot("event:/SFX/general/teleporterstart", x, y);
-		create_particle(x, y, spr_parryeffect);
+		create_particle(x, y, spr_teleportEffect);
 	}
 	instance_destroy();
 }

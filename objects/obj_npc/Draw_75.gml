@@ -2,7 +2,7 @@ var old = draw_get_font();
 var wave_x = wave(-5, 5, 5, 20);
 draw_set_font(global.npcfont);
 var msg = text;
-var textheight = string_height_scribble_ext("[wave][c_black][spr_npcfont]" + text, 800);
+var textheight = string_height_scribble_ext("[wave][c_black][npcfont]" + text, 800);
 var total_lines = round(textheight / 32);
 var my_height = (total_lines + 1) * 32;
 var tgty;

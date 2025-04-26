@@ -31,7 +31,7 @@ function scr_savelevelDetails(_leveldetails = true)
 	}
 	
 	ini_open(global.SaveFileName);
-	ini_update_stat("Game", string($"damage_{scr_getCharacterPrefix(global.playerCharacter)}"), global.HurtCounter);
+	ini_update_stat("Game", $"damage_{scr_getCharacterPrefix(global.playerCharacter)}", global.HurtCounter);
 	global.HurtMilestone = global.HurtCounter;
 	ini_update_stat("Time", string(global.InternalLevelName), level_sec, true);
 	for (var i = 0; i < 3; i++)

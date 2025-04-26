@@ -17,7 +17,6 @@ if (bufferCooldown > 0)
         if usePaletteThought
         {
             usePaletteThought = false;
-            buffering = true;
             bufferCooldown = 180;
             typist.reset();
         }

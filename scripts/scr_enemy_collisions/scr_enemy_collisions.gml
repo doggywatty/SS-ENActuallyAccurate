@@ -30,7 +30,10 @@ function scr_finishingBlow(player, scale)
 		create_particle(x, y, spr_bangEffect);
 		create_particle(x, y, spr_parryeffect);
 		repeat 6
+		{
+			create_radiating_particle(x, y, spr_fuckassOrb, 0, false, 7, 10, 10);
 			create_baddiedebris();
+		}
 	}
 }
 
@@ -42,8 +45,6 @@ function scr_instakillEnemy(player, scale)
 		exit;
 	with player
 	{
-		if (object_index == obj_sluggy && sprite_index == spr_sluggy_jump && !grounded)
-			killedInAir = true;
 		event_play_oneshot("event:/SFX/player/punch", x, y);
 		camera_shake_add(3, 3);
 		global.ComboTime = 60;
@@ -61,7 +62,10 @@ function scr_instakillEnemy(player, scale)
 		create_particle(x, y, spr_kungfuEffect);
 		create_particle(x, y, spr_parryeffect);
 		repeat 6
+		{
 			create_baddiedebris();
+			create_radiating_particle(x, y, spr_fuckassOrb, 0, false, 7, 10, 10);
+		}
 	}
 }
 
@@ -304,6 +308,7 @@ function baddieOnSwingCollisions()
 	camera_shake_add(3, 3);
 	repeat 3
 	{
+		create_radiating_particle(x, y, spr_fuckassOrb, 0, false, 7, 10, 10);		
 		instance_create(x, y, obj_slapstar);
 		instance_create(x, y, obj_baddieGibs);
 	}

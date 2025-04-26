@@ -2,12 +2,18 @@
 # Basic Information
 #-----------------------#
 
-# Game Version
-"version" :	"v2.7.1.0"
+# Game Version.
+"version" :	"v4.0.0.0"
+# This value matches the version of the game the lang file was last updated for.
+# It will not always match the in-game version number.
+
 # Translation Name
 "language" : "English"
 
 # Relative path to sprites folder
+"langFolder" : "EN"
+
+
 #-----------------------#
 #      Important Notes     
 #
@@ -43,7 +49,7 @@
 # [pPrompt] Tutorial Prompts
 
 #-----------------------#
-"langFolder" : "EN"
+
 
 
 
@@ -174,7 +180,7 @@
 "task_cc_all_breakables"         : "Every Nook and Cranny"
 "task_cc_all_breakables_desc"    : "Break every secret block in Crunchy Construction"
 "task_cc_speedrun"               : "Quick Delivery"
-"task_cc_speedrun_desc"          : "Reach Gummy Harry in less than 2 minutes\nin Crunchy Construction"
+"task_cc_speedrun_desc"          : "Reach [iGH] [#DB0A0A]Harry[c_white] in less than 2 minutes\nin Crunchy Construction"
 "task_cc_no_slip"                : "0 Days"
 "task_cc_no_slip_desc"           : "Avoid slipping in Crunchy Construction"
 
@@ -192,15 +198,15 @@
 "task_sm_minecart_nohit"         : "Mined The Gap"
 "task_sm_minecart_nohit_desc"    : "Avoid getting hit or falling off the track on the Minecart in Sugarshack Mines"
 "task_sm_slug"                   : "Whack-A-Slug"
-"task_sm_slug_desc"              : "Kill at least 5 airborne [iSl] [#ed2c48]sluggies[c_white] in Sugarshack Mines"
+"task_sm_slug_desc"              : "Kill at least 5 airborne [iSl] [#ed2c48]Sluggies[c_white] in Sugarshack Mines"
 
 # Molasses Swamp
 "task_ms_all_geyser"             : "On The Rocks"
 "task_ms_all_geyser_desc"        : "Activate all dormant geysers\nin Molasses Swamp"
 "task_ms_guardian_parry"         : "Home Insecurity"
-"task_ms_guardian_parry_desc"    : "Supertaunt the Guardian three times\nin Molasses Swamp"
+"task_ms_guardian_parry_desc"    : "Supertaunt the [iGu] [#893b3b]Guardian[c_white] three times\nin Molasses Swamp"
 "task_ms_catch"                  : "Leapfrog"
-"task_ms_catch_desc"             : "Play catch with two fling frogs\nin Molasses Swamp"
+"task_ms_catch_desc"             : "Play catch with two [iFf] [#006858]Fling Frogs[c_white]\nin Molasses Swamp"
 
 
 
@@ -256,7 +262,7 @@
 "palette_PZ_exhibitionentryway_hint"     : "Try cleaning up the construction site..."
 
 "palette_PZ_exhibitionsteamy"            : "Cotton Candy"
-"palette_PZ_exhibitionsteamy_desc"       : "Unlocked by digging into a Cotton Block\nfor 10 seconds straight"
+"palette_PZ_exhibitionsteamy_desc"       : "Unlocked by digging into a Cotton Block\nfor 5 seconds straight"
 "palette_PZ_exhibitionsteamy_thought"    : "Good for her!"
 "palette_PZ_exhibitionsteamy_hint"       : "Try digging around for a bit longer..."
 
@@ -417,8 +423,29 @@
 "winname_rank"        : "Did you do it? Exhibition Night!"
 "winname_credit"	  : "Behind the scenes of the Exhibition Night"
 
-
-
+#-----------------------#
+# Credit Category Names
+#-----------------------#
+"credits_lead"			: "Lead Director and Project Manager"
+"credits_directors"		: "Directors"
+"credits_programmers"		: "Programmers"
+"credits_artists"		: "Artists"
+"credits_levels"		: "Level Design"
+"credits_music"			: "Musicians"
+"credits_sfx"			: "SFX Design"
+"credits_qa"			: "Quality Assurance"
+"credits_langhead"		: "Localization Heads"
+"credits_langES"		: "LATAM Spanish Localization"
+"credits_langRU"		: "Russian Localization"
+"credits_langPTBR"		: "Brazilian Portuguese Localization"
+"credits_voice"			: "Voicework"
+"credits_trailer"		: "Trailer Animation"
+"credits_website"		: "Website"
+"credits_playtest"		: "Playtesting"
+"credits_thanks"		: "Special Thanks"
+"credits_tdp"			: "Tour de Pizza"
+"credits_and"			: "And..."
+"credits_you"			: "You!"
 #-----------------------#
 # Menu Text
 #-----------------------#
@@ -450,10 +477,11 @@
 "opt_video"         : "VIDEO"
 "opt_game"          : "GAME"
 "opt_controls"      : "CONTROLS"
-"opt_accessibility" : "ACCESSIBILITY"
+"opt_language" 	    : "LANGUAGE"
 "opt_back"          : "BACK"
 "opt_on"            : "ON"
 "opt_off"           : "OFF"
+"opt_confirm"       : "CONFIRM SETTING\nREVERTING IN /1..."
 
 # Video Submenu
 "opt_vid_windowmode"            : "WINDOW MODE"
@@ -461,6 +489,10 @@
 "opt_vid_windowmode_exclusive"  : "EXCLUSIVE"
 "opt_vid_windowmode_borderless" : "BORDERLESS"
 "opt_vid_resolution"            : "RESOLUTION"
+"opt_vid_letterbox"            	: "LETTERBOX"
+"opt_vid_letterbox_simple"	: "SIMPLE"
+"opt_vid_letterbox_doodle"	: "DOODLE"
+"opt_vid_letterbox_dynamic"	: "DYNAMIC"
 "opt_vid_vsync"                 : "VSYNC"
 "opt_vid_texturefilter"         : "TEXTURE FILTERING"
 "opt_vid_showHUD"               : "SHOW HUD" 
@@ -470,6 +502,7 @@
 "opt_aud_music"   : "MUSIC"
 "opt_aud_sfx"     : "SFX"
 "opt_aud_focus"   : "UNFOCUSED MUTE"
+"opt_aud_attenuation"   : "MUSIC ATTENUATION"
 "opt_aud_speaker" : "SPEAKER MODE"
 "opt_aud_stereo"  : "STEREO"
 "opt_aud_mono"    : "MONO"
@@ -502,9 +535,10 @@
 "opt_game_timer_type_save"  : "PER SAVE"
 "opt_game_timer_type_both"  : "BOTH"
 "opt_game_timerspeedrun"    : "SPEEDRUN TIMER"
-"opt_game_livesplit"        : "AUTO LIVESPLIT"
+"opt_game_reset_clothes"    : "RESET CLOTHES PROGRESS"
+"reset_clothes_confirm"     : "RESET CLOTHES PROGRESS"
 
-# Accessibility Submenu
+# Language Submenu
 "opt_access_lang" : "LANGUAGE"
 
 # Keyconfig Input Names
@@ -611,3 +645,4 @@
 # Debug stuff
 #-----------------------#
 "loadingSprites": "LOADING TRANSLATION..."
+"loadingGeneric": "LOADING..."

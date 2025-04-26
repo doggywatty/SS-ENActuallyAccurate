@@ -104,7 +104,7 @@ addLevel = function(_level, _pages, _hasConfecti = true, _hasSecrets = true, _ha
 	if _hasConfecti
 	{
 		for (var i = 0; i < array_length(p.confectiArr); i++)
-			p.confectiArr[i] = ini_read_real("Confecti", string($"{_level}{i + 1}"), false);
+			p.confectiArr[i] = ini_read_real("Confecti", $"{_level}{i + 1}", false);
 	}
 	if _hasSecrets
 	{

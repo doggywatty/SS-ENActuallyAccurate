@@ -1,14 +1,22 @@
 depth = 90;
-image_speed = 0;
-scale = 0.25;
+image_speed = 0.4;
+scale = 0.15;
 random_set_seed(global.RandomSeed + x + y);
 if is_undefined(blendColor)
-	blendColor = choose(#58c000, #a850f8, #30a8f8, #e03000);
+	blendColor = choose(#58c000, #cc297a, #30a8f8, #e03000);
 
-image_index = irandom(image_number);
-angle = irandom(360);
+image_index = irandom_range(0, 6) * 3;
+end_image_index = image_index + 2;
+angle = choose(0, 90, 180, 270);
 random_set_seed(global.RandomSeed);
 splatSurface = -4;
+if createSplash
+{
+	create_particle((x - sprite_xoffset) + (sprite_width / 2), (y - sprite_yoffset) + (sprite_height / 2), spr_paintSplash, undefined, undefined, undefined, 
+	{
+		image_blend: blendColor
+	});
+}
 tileLayerArr = [];
 
 var all_layers = layer_get_all();

@@ -265,6 +265,8 @@ function scr_levelSet()
 			targetEscapeTime = 0;
 			elm_coneBall.sprite_index = spr_bartimer_normalFront;
 			elm_coneBall.image_index = 0;
+			elm_coneBallText.image_index = 0;
+			elm_coneBallText.lastFrame = 0;			
 		}
 		with HUDObject_tooltipPrompts
 		{
@@ -276,6 +278,7 @@ function scr_levelSet()
 	
 	stop_music(true);
 	fmod_studio_system_set_parameter_by_name("transfo", false, true);
+	fmod_studio_system_set_parameter_by_name("musicFade", 0, true);
 	global.MenuNoteArraySelect = 0;
 	global.MenuNoteArray = scr_defineLevelMenuTune(global.InternalLevelName);
 	

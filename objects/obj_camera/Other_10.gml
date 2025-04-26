@@ -1,8 +1,6 @@
 global.hitstunalarm = round(freezeval);
-
 if !freezetype
 	global.hitstunalarm = 5;
-
 if !global.freezeframe
 {
 	with obj_parent_player
@@ -27,7 +25,7 @@ if !global.freezeframe
 	}
 	with obj_parent_enemy
 	{
-		if (state != States.freezeframe)
+		if (state != States.freezeframe && state != States.wallkick)
 		{
 			frozenState = state;
 			frozenSpriteIndex = sprite_index;

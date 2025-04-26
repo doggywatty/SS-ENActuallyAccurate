@@ -3,7 +3,8 @@ if (!reciever && !active && obj_parent_player.state != States.donothing && !glob
     alarm[0] = 25;
     active = true;
     event_play_oneshot("event:/SFX/general/teleporterstart", x, y);
-    with obj_parent_player
+	create_particle(x, y, spr_teleportEffect);
+	with obj_parent_player
     {
         visible = false;
         other.storedstate = state;

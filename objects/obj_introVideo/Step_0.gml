@@ -1,6 +1,5 @@
 scr_getinput_menu();
-video_set_volume((!global.unfocusedMute || window_has_focus()) ? real_volume : 0);
-
+updateVolume();
 if (video_get_status() == 2)
 {
     if (!showText && key_jump)

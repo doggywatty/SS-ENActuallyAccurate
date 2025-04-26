@@ -121,7 +121,7 @@ with HUDObject_TV
 
 with HUDObject_comboMeter
 {
-	sprite_index = spr_tvHUD_comboMeter;
+	sprite_index = lang_get_sprite(spr_tvHUD_comboMeter);
 	y = ystart + other.moveUpY + displayY;
 	x = xstart + wave(-5, 5, 2, 20);
 	if (!(global.ComboTime > 0 && global.Combo > 0))
@@ -194,7 +194,7 @@ with HUDObject_timer
 	
 	y -= ystart;
 	if (!get_panic())
-		y = approach(y, 150, 4);
+		y = approach(y, 156, 4);
 	else if (targetEscapeTime > 0)
 		y = approach(y, 0, 1);
 	
@@ -208,7 +208,7 @@ with HUDObject_timer
 			if (sprite_index == coneballtimesup)
 			{
 				image_index = sprite_image_number - 1;
-				other.y = approach(other.y, 150, 1);
+				other.y = approach(other.y, 250, 1);
 			}
 		}
 		if (other.targetEscapeTime <= 0)

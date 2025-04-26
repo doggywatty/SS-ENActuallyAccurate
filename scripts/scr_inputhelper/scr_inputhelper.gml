@@ -101,7 +101,7 @@ function scr_input_icon_add(_Input, _sprite, _ind_ico)
 	{
 		var input = _Input[i];
 		ds_map_set(global.input_icons, input, [_sprite, _ind_ico]);
-		trace("Added ", sprite_get_name(_sprite), string($" (frame: {_ind_ico}) to input icon map for {input}."));
+		trace("Added ", sprite_get_name(_sprite), $" (frame: {_ind_ico}) to input icon map for {input}.");
 	}
 }
 
@@ -158,19 +158,19 @@ function get_control_sprite(_inputKey, _spr_ico = false)
 			break;
 		case "dialogSJ":
 			var _enabled = _controller ? global.option_sjump_gp : global.option_sjump_key;
-			_inputKey = _enabled ? "superjump" : "up";
+			_inputKey = !_enabled ? "superjump" : "up";
 			break;
 		case "dialogGP":
 			var _enabled = _controller ? global.option_groundpound_gp : global.option_groundpound_key;
-			_inputKey = _enabled ? "groundpound" : "down";
+			_inputKey = !_enabled ? "groundpound" : "down";
 			break;
 	}
 	var icon = scr_input_get_icon(_inputKey);
 	if _spr_ico
 		return icon;
-	var str = string($"[{sprite_get_name(icon[0]) + ", " + string(floor(icon[1]))}]");
+	var str = $"[{sprite_get_name(icon[0]) + ", " + string(floor(icon[1]))}]";
 	if (icon[0] == spr_key_empty)
-		str += string($"[spr_keyDrawFont]{scr_keyname(icon[2])}");
+		str += $"[keyDrawFont]{scr_keyname(icon[2])}";
 	return str;
 }
 

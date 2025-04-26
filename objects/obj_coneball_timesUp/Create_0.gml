@@ -1,4 +1,4 @@
-depth = -100;
+depth = -151;
 sndMoving = fmod_createEventInstance("event:/SFX/coneball/moving");
 mySoundArray = [sndMoving];
 image_speed = 0.35;

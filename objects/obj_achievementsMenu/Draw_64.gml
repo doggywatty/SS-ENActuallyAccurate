@@ -1,5 +1,5 @@
 draw_sprite_tiled(bg_pausescreenTile, 0, bgx--, bgy--);
-draw_set_font(global.font);
+draw_set_font(global.fontDefault);
 var rowTotal = array_length(levelArr);
 var ylen = (taskPadY * (rowTotal - 1) * (outfitRows - 1)) + 32;
 draw_sprite_stretched_ext(spr_achmenu_body, 0, 0, scrollFactor, 960, ylen, c_ltgray, 1);
@@ -23,9 +23,9 @@ for (var i = 0; i < rowTotal; i++)
 	else
 		nm = string_upper(lang_get($"level_{levelArr[i]}"));
 	
-	draw_set_font(global.font);
+	draw_set_font(global.fontDefault);
 	draw_set_color(rowSelected ? c_white : c_dkgray);
-	draw_text_scribble(camera_get_view_width(view_camera[0]) / 2, rowY - string_height("A") - 32, string($"[fa_bottom][fa_center]{nm}"));
+	draw_text_scribble(camera_get_view_width(view_camera[0]) / 2, rowY - string_height("A") - 32, $"[fa_bottom][fa_center]{nm}");
 	var len = array_length(taskArr);
 	
 	for (var j = 0; j < len; j++)
@@ -69,10 +69,10 @@ for (var i = 1; i <= array_length(outfitArr); i++)
 {
 	var currentRow = ceil(i / 3) - 1;
 	var rowY = by + (currentRow * taskPadY);
-	draw_set_font(global.font);
+	draw_set_font(global.fontDefault);
 	
 	if (i == 1)
-		draw_text_scribble(camera_get_view_width(view_camera[0]) / 2, rowY - string_height("A") - 24, string($"[fa_bottom][fa_center]{lang_get("menutask_clothes")}"));
+		draw_text_scribble(camera_get_view_width(view_camera[0]) / 2, rowY - string_height("A") - 24, $"[fa_bottom][fa_center]{lang_get("menutask_clothes")}");
 	
 	var rowSelected = (currentRow + rowTotal) == selectV;
 	draw_set_color(rowSelected ? c_white : c_dkgray);
@@ -181,10 +181,10 @@ draw_set_color(c_white);
 if (array_length(textArr) > 0)
 {
 	draw_sprite_general(spr_darttrap_lightgradient, 0, 0, 0, 300, 300, 0, camera_get_view_height(view_camera[0]), 0.65, 4, 90, c_black, c_black, c_black, c_black, 1);
-	var txt = "[fa_middle][spr_promptfont][fa_center]";
+	var txt = "[fa_middle][promptfont][fa_center]";
 	
 	for (var i = 0; i < array_length(textArr); i++)
-		txt += string($"{textArr[i]}\n");
+		txt += $"{textArr[i]}\n";
 	
 	var scrib = scribble(txt);
 	scrib.wrap(camera_get_view_width(view_camera[0]) - 200);

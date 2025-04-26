@@ -33,6 +33,8 @@ ds_map_set(pause_map, "pause_tasks", 3);
 ds_map_set(pause_map, "pause_exit", 4);
 ds_map_set(pause_map, "pause_menu", 4);
 
+inputBufferDown = 0;
+inputBufferUp = 0;
 roomMusicPause = false;
 secretPause = false;
 escapeMusicPause = false;

@@ -1,11 +1,5 @@
 global.gamePauseState = 0;
 pausecount = -1;
-
-if (surface_exists(pauseSurface))
-	surface_free(pauseSurface);
-if (sprite_exists(pausedSprite))
-	sprite_delete(pausedSprite);
-
 scr_unpause_instances(true);
 fmod_studio_event_instance_stop(pauseMusic, false);
 fmod_studio_event_instance_set_paused(pauseMusic, true);

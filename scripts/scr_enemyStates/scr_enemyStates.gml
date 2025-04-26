@@ -133,7 +133,7 @@ function state_enemyHit()
 	hsp = hitHsp;
 	vsp = hitVsp;
 	var impact_test = false;
-	if (hitHsp != 0 && (place_meeting_collision(x + sign(hitHsp), y) || place_meeting(x + sign(hitHsp), y, obj_hallway)) && !place_meeting(x + sign(hitHsp), y, obj_destructibles))
+	if (hitHsp != 0 && (place_meeting_collision(x + sign(hitHsp), y, Exclude.SLOPES) || place_meeting(x + sign(hitHsp), y, obj_hallway)) && !place_meeting(x + sign(hitHsp), y, obj_destructibles))
 	{
 		vsp = -5;
 		impact_test = true;

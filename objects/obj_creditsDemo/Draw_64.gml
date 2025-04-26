@@ -15,7 +15,7 @@ if (creditPhase == 1)
 		draw_set_color(c_white);
 		if (killCounterArr[currentCategory] == array_length(creditEntries[currentCategory][1]))
 			draw_set_color(c_yellow);
-		draw_text_scribble(camera_get_view_width(view_camera[0]) / 2, 100, string($"[fa_center][fa_middle][spr_smallfont]{string_upper(creditEntries[currentCategory][0])}"));
+		draw_text_scribble(camera_get_view_width(view_camera[0]) / 2, 100, $"[fa_center][fa_middle][smallfont]{string_upper(creditEntries[currentCategory][0])}");
 		draw_set_color(c_white);
 	}
 }

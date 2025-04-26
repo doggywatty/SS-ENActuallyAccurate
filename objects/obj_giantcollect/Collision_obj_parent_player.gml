@@ -5,7 +5,6 @@ scr_queueTVAnimation(global.TvSprPlayer_Happy, 200);
 global.Collect += 1000;
 global.PizzaMeter += 5;
 create_small_number(x, y, "1000");
-global.ComboFreeze = 15;
 global.ComboTime = 60;
 create_collect_effect(x, y, sprite_index, 1000);
 instance_destroy();

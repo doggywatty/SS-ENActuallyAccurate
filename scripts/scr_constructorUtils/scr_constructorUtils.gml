@@ -25,7 +25,15 @@ function subSprite(_spr_ind, _img_ind = 0, _img_spd = 0.35, _doWrap = true) cons
         draw_sprite_ext(sprite_index, image_index, _x, _y, _img_xscale, _img_yscale, _img_angle, _img_blend, _img_alpha);
         return self;
     };
-    
+	
+	static draw_lang = function(_x = x, _y = y, _img_xscale = image_xscale, _img_yscale = image_yscale, _img_angle = image_angle, _img_blend = image_blend, _img_alpha = image_alpha)
+	{
+		if !visible
+			exit;
+		draw_sprite_ext(lang_get_sprite(sprite_index), image_index, _x, _y, _img_xscale, _img_yscale, _img_angle, _img_blend, _img_alpha);
+		return self;
+	};
+
     static setFunction = function(_func)
     {
         custom_func = method(self, _func);
@@ -44,6 +52,8 @@ function subSprite(_spr_ind, _img_ind = 0, _img_spd = 0.35, _doWrap = true) cons
     image_alpha = 1;
     x = 0;
     y = 0;
+	xstart = 0;
+	ystart = 0;	
     image_number = sprite_get_number(sprite_index);
     finalFrame = image_number;
     custom_func = -4;

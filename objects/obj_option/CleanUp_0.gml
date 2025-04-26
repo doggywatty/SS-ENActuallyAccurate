@@ -10,3 +10,9 @@ with obj_pause
 
 with obj_mainfileselect
     alarm[1] = 1;
+
+if changedAnyOption
+{
+	with obj_hudManager
+		saveAlpha = 10;
+}

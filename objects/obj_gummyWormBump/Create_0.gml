@@ -1,4 +1,4 @@
-canCollide = function(player = obj_parent_player)
+canCollide = function(stpl, player = obj_parent_player)
 {
 	return false;
 };
@@ -11,7 +11,7 @@ DestroyedBy = -4;
 realBump = -4;
 bumpOffset = 0;
 linkedWorm = -4;
-bumpID = string($"bump{id}");
+bumpID = $"bump{id}";
 var x_component = -sign(image_xscale) * dcos(image_angle + ((sign(image_yscale) == -1) ? 270 : 90));
 var y_component = sign(image_yscale) * dsin(image_angle + ((sign(image_yscale) == -1) ? 270 : 90));
 linkedWorm = instance_place(x + x_component, y + y_component, obj_gummyWorm);

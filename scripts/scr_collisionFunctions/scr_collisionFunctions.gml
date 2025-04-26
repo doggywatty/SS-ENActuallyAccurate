@@ -133,6 +133,13 @@ function triangle_meeting(sx, sy, x1, y1, x2, y2, x3, y3)
 	return result;
 }
 
+function bbox_in_rectangle(sx1, dx1, dy1, dx2, dy2)
+{
+    if !instance_exists(sx1)
+        return false;
+    return rectangle_in_rectangle(sx1.bbox_left, sx1.bbox_top, sx1.bbox_right, sx1.bbox_bottom, dx1, dy1, dx2, dy2);
+}
+
 function conveyorBelt_hsp()
 {
 	if (place_meeting(x, y + 1, obj_conveyorBelt) && vsp >= 0 && grounded)
@@ -148,13 +155,6 @@ function scr_conveyorBeltKinematics()
     useConveyorFlag = true;
 }
 
-function bbox_in_rectangle(sx1, dx1, dy1, dx2, dy2)
-{
-    if !instance_exists(sx1)
-        return false;
-    return rectangle_in_rectangle(sx1.bbox_left, sx1.bbox_top, sx1.bbox_right, sx1.bbox_bottom, dx1, dy1, dx2, dy2);
-}
-
 function place_meeting_adjacent(obj)
 {
     return place_meeting(x, y, obj) || place_meeting(x - 1, y, obj)
@@ -164,3 +164,16 @@ function place_meeting_adjacent(obj)
 	|| place_meeting(x + 1, y + 1, obj);
 }
 
+function place_meeting_collision_adjacent(_exclude)
+{
+	return place_meeting_collision(x, y, _exclude) || place_meeting_collision(x - 1, y, _exclude)
+	|| place_meeting_collision(x + 1, y, _exclude) || place_meeting_collision(x, y - 1, _exclude)
+	|| place_meeting_collision(x, y + 1, _exclude) || place_meeting_collision(x - 1, y - 1, _exclude)
+	|| place_meeting_collision(x + 1, y - 1, _exclude) || place_meeting_collision(x - 1, y + 1, _exclude)
+	|| place_meeting_collision(x + 1, y + 1, _exclude);
+}
+
+function isCollisionFlagSet(_exclude1, _exclude2)
+{
+	return (_exclude1 & _exclude2) == _exclude2;
+}

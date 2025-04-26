@@ -1,4 +1,4 @@
-depth = -5;
+depth = -50;
 vspeed = -3;
 flash = true;
 numberScale = 1;

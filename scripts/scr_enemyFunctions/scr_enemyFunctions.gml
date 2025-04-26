@@ -9,13 +9,11 @@ function scr_enemy_playerisnear(dist_left = 350, dist_up = 60, dist_right = dist
 
 function scr_enemy_grabUpdatePosition(_pos)
 {
-	if global.freezeframe
-		exit;
 	image_xscale = -_pos.xscale;
 	if (baddieStunTimer < 200)
 		baddieStunTimer = 200;
 	_pos.baddieGrabbedID = id;
-	with obj_parent_player
+	with _pos
 	{
 		if !global.freezeframe && state != States.frozen && state != States.grab
 		&& state != States.finishingblow && state != States.charge && state != States.superslam
@@ -26,7 +24,8 @@ function scr_enemy_grabUpdatePosition(_pos)
 			other.image_index = 0;
 		}
 	}
-	if (_pos.state == States.grab)
+	var player_state = global.freezeframe ? _pos.frozenState : _pos.state;
+	if (player_state == States.grab)
 	{
 		var walk_bobbingy = 0;
 		var walk_bobbingx = 0;
@@ -62,7 +61,7 @@ function scr_enemy_grabUpdatePosition(_pos)
 		x = _pos.x + walk_bobbingx;
 		image_xscale = -_pos.xscale;
 	}
-	if (_pos.state == States.charge)
+	if (player_state == States.charge)
 	{
 		x = _pos.x;
 		switch (floor(_pos.image_index))
@@ -85,12 +84,13 @@ function scr_enemy_grabUpdatePosition(_pos)
 		}
 		y = _pos.y;
 	}
-	if (_pos.state == States.superslam)
+	yscale = (player_state == States.superslam) ? -1 : 1;
+	if (player_state == States.superslam)
 	{
 		if (_pos.sprite_index != _pos.spr_piledriverland)
 		{
 			x = _pos.x - (_pos.xscale * 10);
-			y = _pos.y - 70;
+			y = _pos.y - 60;
 		}
 		else
 		{
@@ -98,7 +98,7 @@ function scr_enemy_grabUpdatePosition(_pos)
 			y = _pos.y;
 		}
 	}
-	if (_pos.state == States.finishingblow && state != States.climbwall)
+	if (player_state == States.finishingblow && state != States.climbwall)
 	{
 		x = _pos.x + (60 * _pos.xscale);
 		y = _pos.y;
@@ -108,29 +108,15 @@ function scr_enemy_grabUpdatePosition(_pos)
 
 function scr_enemyFinishingBlowPos(_pos)
 {
-	if place_meeting_collision(x, y)
+	var _dist = abs(x - _pos.x);
+	x = _pos.x;
+	var try_x = 0;
+	while !place_meeting_collision(x + _pos.xscale, y)
 	{
-		var _dist = abs(x - _pos.x);
-		x = _pos.x;
-		y = _pos.y;
-		if place_meeting_collision(x + _pos.xscale, y)
-			exit;
-		var try_x = 0;
-		while !place_meeting_collision(x + _pos.xscale, y)
-		{
-			x += _pos.xscale;
-			try_x++;
-			if (try_x > _dist)
-				break;
-		}
-		try_x = 0;
-		while (place_meeting_collision(x, y))
-		{
-			x -= _pos.xscale;
-			try_x++;
-			if (try_x > _dist)
-				break;
-		}
+		try_x++;
+		if (try_x > _dist)
+			break;
+		x += _pos.xscale;
 	}
 }
 

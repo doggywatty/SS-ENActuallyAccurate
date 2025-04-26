@@ -1,1 +1,2 @@
-alarm[0] = 5;
+parryTimer = 8;
+parryCount = 8;

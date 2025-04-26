@@ -6,7 +6,7 @@ baddieSpriteScared = spr_sluggy_scared;
 baddieSpriteTurn = undefined;
 baddieSpriteHit = undefined;
 baddieSpriteDead = spr_sluggy_dead;
-killedInAir = false;
+wasInAir = false;
 slide = 0;
 burrowTimerMax = 50;
 burrowTimer = burrowTimerMax;
@@ -17,6 +17,8 @@ jumpEvent = function(statement = true)
 {
 	if event_instance_isplaying(sndSluggyDig)
 		fmod_studio_event_instance_stop(sndSluggyDig, false);
+	else if (state != States.burrow)
+		event_play_oneshot("event:/SFX/enemies/sluggyJump", x, y);		
 	enemyAttackTimer = enemyAttackTimerMax;
 	if statement
 	{

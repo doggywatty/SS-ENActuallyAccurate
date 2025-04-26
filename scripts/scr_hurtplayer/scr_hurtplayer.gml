@@ -90,7 +90,10 @@ function scr_hurtplayer(player = obj_parent_player, mspd)
 				}
 				instance_create(x, y, obj_spikehurteffect);
 				repeat 5
+				{
+					create_radiating_particle(x, y, spr_fuckassOrb, 0, false, 7, 10, 10);
 					instance_create(x, y, obj_hurtStars);
+				}
 				image_index = 0;
 				flash = true;
 				vsp = -12;

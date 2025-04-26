@@ -1,4 +1,4 @@
-if (sprite_index != spr_juicedead)
+if (sprite_index != spr_juicedead && sprite_index != spr_coneboy)
 {
 	with instance_create(x, y, obj_baddieDead)
 	{
@@ -9,6 +9,25 @@ if (sprite_index != spr_juicedead)
 		canrotate = true;
 		vsp = irandom_range(-5, -15);
 		hsp = choose(1, -1) * irandom_range(5, 15);
+	}
+}
+else if (sprite_index == spr_coneboy)
+{
+	var i = 0;
+	repeat 3
+	{
+		with (instance_create(x, y, obj_juiceDebris))
+		{
+			paletteSprite = other.paletteSprite;
+			paletteSelect = other.paletteSelect;
+			vsp = random_range(-10, 10);
+			hsp = random_range(-10, 10);
+			image_angle = 0;
+			image_speed = 0;
+			sprite_index = spr_coneboydebris;
+			image_index = i;
+		}
+		i++;
 	}
 }
 else

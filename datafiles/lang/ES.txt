@@ -1,0 +1,650 @@
+#-----------------------#
+# Basic Information
+#-----------------------#
+
+# Game Version.
+"version" :	"v4.0.1.0"
+# This value matches the version of the game the lang file was last updated for.
+# It will not always match the in-game version number.
+
+# Translation Name
+"language" : "Español"
+
+# Relative path to sprites folder
+"langFolder" : "ES"
+
+
+#-----------------------#
+#      Important Notes     
+#
+# This folder must contain a Dictionary.json file
+# which lists sprites, keys, or fonts to be taken
+# from the given paths. Note that sprites 
+# without text are not supported for replacement.
+#
+# Animated sprites, fonts, and keys should utilize 
+# sprite strips with no additional padding or offsets.
+
+# -------------
+# GAMEPAD ICONS
+# -------------
+# [kU] Up
+# [kL] Left
+# [kR] Right
+# [kD] Down
+# [kF] Forward
+# [kB] Backwards
+# [kG] Grab
+# [kM] Mach
+# [kJ] Jump
+# [kT] Taunt
+# [kGP] Groundpound
+# [kSJ] Superjump
+# [kFWD] Forwards
+# [kBCK] Backwards
+# -------------
+# DIALOG PROFILES
+# -------------
+# [pNPC] Ice Pop / NPC dialog
+# [pPrompt] Tutorial Prompts
+
+#-----------------------#
+
+
+
+
+
+
+#-----------------------#
+# Dialogue
+#-----------------------#
+
+# Ice Pop's Dialogue
+# Default Line (Can Be Overridden)
+"icepop_hub_default" : "Te daré mi cigarro, ¡si me das el tuyo!"
+
+# Default Escape Line (Currently Hardcoded)
+"icepop_default_escape" : "¡¡MADRE SANTA!!"
+
+# Tutorial Dialogue
+"icepop_tut_1" : "¡Jo jo! Bienvenido mija, ¡soy tu Ice pop! ¡Estoy aquí para enseñarte algunas cosas nuevas que deberías de saber! Pero, antes de eso, quiero que atravieses esta sala rápidamente. No es problema, ¿verdad?"
+"icepop_tut_2" : "Usualmente, hay criaturitas de golosina en estas cosas, ¡pero metí a mis nietos maleducados en ellas en su lugar! Procúrate de agarrarlos cuando los veas."
+"icepop_tut_3" : "¿Esas malditas rompemuelas están en tu camino? ¡No te preocupes! ¡Tu Super Salto [kSJ] es capaz de romper esos bloques! También puedes ajustarte un poco hacia la izquierda o derecha mientras vas para arriba."
+"icepop_tut_4" : "¡Olé olé! El patán de mi hijo, Ice Pop, no te dirá esto, pero yo, Grandpa Cone, sí. Una chica como vos puede flotar en el aire con [kG]. ¡Presionándolo dos veces hará un ataque voltereta genial!"
+"icepop_tut_5" : "Con suficiente velocidad de tu Carrera Mach, ¡puedes presionar [kD] para deslizarte a través de rompemuelas! Dale mija, ¡inténtalo!"
+"icepop_tut_6" : "Si presionas [kJ] mientras andas trepando una pared, ¡puedes saltar de ella y moverte libremente! Esto podrá romper bloques débiles. Cuando aterrices, ¡esto te impulsará hacia adelante si mantienes [kM] presionado!"
+"icepop_tut_7" : "Mientras haces tu salto de pared, ¡presiona [kD] para caer más rápido! ¡A por ellos, campeona!"
+"icepop_tut_8" : "¡Ah, acaba de recordar! Si alguna vez ves a /1 Rudy, ¡dile hola de mi parte! Él tiene las llaves de todas las puertas cerradas por estos lugares, estoy seguro que te dará una mano si le preguntas de buena manera. Sé lo tanto que a los jóvenes como tú les gusta coleccionar artefactos y cosas así..."
+"icepop_tut_9" : "Ese chico grande de ahí es /1 Harry. Si le pegas, ¡la puerta de donde tu entraste se volverá a abrir! Una vez que eso pase, ¡más te vale que recuerdes por donde viniste, y rápido! Si eres lo suficientemente rápida, puedes visitar a /2 Polka y darle otra vuelta a la manzana, ¡mocosa escabullida!"
+"icepop_tut_10" : "Durante un salto de pared, ¡presiona [kG] mientras aún estás en el aire para cancelarlo hacia una Carrera Mach! ¡Puedes usar esto para romper bloques de rompemuelas!"
+
+
+# Painter's Demo Dialogue
+# Painter is supposed to talk like he's from Spain in the spanish translation, hence why the use of voseo for him.
+# Additionally, for spanish he's supposed to use a lot of sayings from various spanish-speaking countries to portray how he feels.
+
+# Main Hub Dialogue
+"demopainter_newfile"        : "Hmm... ¡Sos la que ha esparcido toda mi preciosa /1 TINTA! Los Críticos están para llegar en cualquier momento... Vale, que el que la hace, la paga, más te vale que traigas mi TINTA de vuelta antes que lleguen."
+"demopainter_nosecrets"      : "Hmm... Que paciencia no tengo mucha, doña dona. Encuentra mi /1 TINTA."
+"demopainter_fewsecrets"     : "Hmm... Veo que has empezado a recolectar parte de mi /1 TINTA, pero no podés tapar el sol con un dedo, que aún te falta bastante por recoger. Y que tampoco tengo mucho tiempo para charlar, lo lamento, que mira que estoy ocupado preparando el show..."
+"demopainter_3secrets"       : "Hmm... ¿Les has visto? Mira sus pequeños ojos brillantes... ¿Quiénes se creen para criticarme? ¿Dalí? Bah."
+"demopainter_6secrets"       : "Hmm... Vas por la mitad, confitera, pero el tiempo es oro. Si los Críticos se enteran que no tengo la mitad de mi TINTA, me temo que se lo harán saber a todos toditos, y no quiero quedar mal en las revistas que encuentras en la tienda de la esquina..."
+"demopainter_9secrets"       : "Hmm... Talvez te he juzgado muy fuerte, confitera. Un grano no hace granero, pero ayuda al compañero, a pesar de la que habéis liado, los Críticos se les ve que aprecian tu maliciosa sonrisa y travesuras..."
+"demopainter_allsecrets"     : "Hmm... Enhorabuena, ¡has recuperado toda mi /1 TINTA! Dale, madame, disfruta del show."
+"demopainter_invalidsecrets" : "Hmm... ¿Mi mayor miedo? Mi mayor miedo es ir manejando y que Spotify me lance una canción de Pizza Tower, que choque, me muera, piensen que fui fan de Pizza Tower y que hagan un '#SeNosFueUnPizzaTowero', que McPig se entere y que me haga un juego que se llame \"El mejor fan\""
+
+# Dialogue for After the Allotted 1 Hour of Playtime
+"demopainter_overtimeallsecrets"    : "Hmm... Mira, podrá ser que tu tiempo en la exhibición se haya acabado, confitera, ¡pero ruego que disfrutes el arte por todo el tiempo que quieras! El tiempo es la cosa más preciosa del mundo, y me has hecho grandes favores, y no me molestaría para nada si decidís quedarte un poco más."
+"demopainter_overtimenotallsecrets" : "Hmm... Mira, podrá ser que hayas comprado un tiquete, confitera, pero solo te debo 60 cortos minutos de mi grandeza. Dale, que el tiempo vuela como el viento, y más te vale que tu y tu trasero inservible desaparezcan antes que alguien note que tu tiempo ya ha expirado..."
+
+
+# Molasses Room Dialogue
+# This is placeholder for now, unsure if we need a line for this.
+"demopainter_molasses"              : "¡No! ¡Lo que sea menos The Frog! Sin The Frog, ahora todas mis pinturas están arruinadas..."
+"demopainter_molasses_gotsecrets_a" : "Hmm... Mi amado The Frog, ¡enhorabuena has sido restaurado a tu máximo esplendor! Te prometo mantener mi ojo encima tuyo por siempre..."
+"demopainter_molasses_gotsecrets_b" : "Hmm... Me impresiona la calidad y elegancia de tus gustos, confitera. Quiero que sepas que esta pieza es mi Magnum Ocolus, por lo que era de esperar que su aura os atrajera fuertemente."
+"demopainter_molasses_sleeping"     : "Zzz... Hasta los artistas famélicos como yo necesitan una siesta reparadora también..."
+
+
+# Holiday Dialogue
+"demopainter_newyears"   : "Hmm... Sigo sin entender el por qué de toda la conmoción. Con costo puedo ver a través de estos lentes..."
+"demopainter_valentines" : "Hmm... Todas las cartas en la tienda dicen cosas como \"Te quiero mucho\" y \"Sos mi corazón\". ¿Dónde están las cartas que dicen \"Admiro tus composiciones originales y aprecio sus significados subtextuales más profundos\"? Espero aún el día que alguien me trajera una de esas..."
+
+
+# Small Thoughts
+"demopainter_thoughtbuffer"  : "Hmm..."
+"demopainter_idlethought_1"  : "Hmm... ¿Block artsanal?\n¡Dile maldición artesanal!\nEso es lo que es..."
+"demopainter_idlethought_2"  : "Hmm... Si todo va mal\nen peor, siempre podré\nregresar a los campos..."
+"demopainter_idlethought_3"  : "Hmm... Tal vez esto\nhará que los jóvenes\ndejen sus teléfonos..."
+"demopainter_idlethought_4"  : "Hmm... ¿La lavadora\nquitará tinta mágica?\n¿O sólo tinta normal?"
+"demopainter_idlethought_5"  : "Hmm... El inodoro no\nllegará. Espero que\nnadie ocupe ir."
+"demopainter_idlethought_6"  : "Hmm... Me pregunto si\npueda escribir un\nlibro acerca de esto..."
+
+
+# Critic Dialogue
+"democritic_1_d" : "Ah... Esta pintura,\nmejor en la basura..."
+"democritic_1_c" : "Ah... Es... algo..."
+"democritic_1_b" : "Ah... Se ve\nque es reiterativa..."
+"democritic_1_a" : "Ah... Pinceladas\ninteresantes..."
+"democritic_1_s" : "Ah... Esta pieza es\nmaravillosamente\nabstracta..."
+"democritic_1_p" : "Ah... ¡Ya lo entiendo!"
+
+"democritic_2_d" : "Er... El Painter parece\nque lo hizo con un\nojo cerrado..."
+"democritic_2_c" : "Er... Se ve raro..."
+"democritic_2_b" : "Er... ¿Qué es esto?...\n¿Una pesadilla...?"
+"democritic_2_a" : "Er... Funciona..."
+"democritic_2_s" : "Er... Es bastante\nerudita."
+"democritic_2_p" : "Er... Es demasiado bueno,\n¡hasta para mí!"
+
+"democritic_3_d" : "Umm... Se ve muy...\n¿\"Otaku\"?"
+"democritic_3_c" : "Umm... ¡Sería mejor si\nEl Painter me\ndibujara!"
+"democritic_3_b" : "Umm... Yo lo hubiera\nhecho mejor..."
+"democritic_3_a" : "Umm... Un estilo único,\nsupongo..."
+"democritic_3_s" : "Umm... ¡Los colores aquí\nson impecables!"
+"democritic_3_p" : "Umm... ¡No puedo dejar\nde ver esta pieza!"
+
+"democritic_4_d" : "Oui... Que alguien\ntraiga mi machete..."
+"democritic_4_c" : "Oui... Hasta un niño\npodría dibujarlo..."
+"democritic_4_b" : "Oui... Necesita más\nsombras..."
+"democritic_4_a" : "Oui... Está \"bien\"...\n¡bien mediocre!..."
+"democritic_4_s" : "Oui... Esta pieza es\nbastante delectable..."
+"democritic_4_p" : "Oui... C'est trop beau\npour mes propres\nyeux!"
+
+"democritic_icepop" : "Lo vez bien... Yo,\nGrandpa Cone, le he\nacertado, ¿cómo crees?"
+
+# Judgement Hint Prompt
+
+"demo_judgement_hint" : "El Painter te espera en la sala de The Frog..."
+
+#-----------------------#
+# Level Names
+#-----------------------#
+
+"floor_demoEN"    : "Exhibición Nocturna"
+"level_entryway"  : "Construcción Crocante"
+"level_steamy"    : "Algodópolis"
+"level_mineshaft" : "Rompe-mandi-minas"
+"level_molasses"  : "Melaza Marismal"
+
+
+
+#-----------------------#
+# Achievements
+#-----------------------#
+
+# Exhibition Night
+"task_en_all_s" 		 : "Rango S"
+"task_en_all_s_desc" 		 : "Obten todos los rangos S en la demo"
+"task_en_all_p" 		 : "Rango P"
+"task_en_all_p_desc" 		 : "Obten todos los rangos P en la demo"
+
+# Crunchy Construction
+"task_cc_all_breakables" 	 : "Cada Rincón y Grieta"
+"task_cc_all_breakables_desc" 	 : "Revela todos los pasadizos ocultos en Construcción Crocante"
+"task_cc_speedrun" 		 : "Entrega Rápida"
+"task_cc_speedrun_desc" 	 : "Llega a [iGH] [#DB0A0A]Harry[c_white] en menos de 2 minutos en Construcción Crocante"
+"task_cc_no_slip" 		 : "0 días"
+"task_cc_no_slip_desc" 		 : "No te tropiezes en Construcción Crocante"
+
+# Cottontown
+"task_ct_clock_room" 		 : "Lo Que El Tiempo No Dirá"
+"task_ct_clock_room_desc" 	 : "Encuentra la sala de relojes en Algodópolis"
+"task_ct_all_witches" 		 : "Caza Brujas"
+"task_ct_all_witches_desc" 	 : "Elimina cada [iCw] [#ef91da]Brujalgodón[c_white] en Algodópolis"
+"task_ct_few_cotton_blocks" 	 : "No, Gracias"
+"task_ct_few_cotton_blocks_desc" : "Taladra hacia 10 (o menos) bloques de algodón ántes del escape en Algodópolis"
+
+# Sugarshack Mines
+"task_sm_all_miners" 		 : "Externalización"
+"task_sm_all_miners_desc" 	 : "Dale una gema completa a cada gnomo en Rompe-Mandi-Minas"
+"task_sm_minecart_nohit" 	 : "Cuidado Con La Brecha"
+"task_sm_minecart_nohit_desc" 	 : "No seas golpeado o caigas dentro de agujeros mientras usas la Vagoneta en Rompe-Mandi-Minas"
+"task_sm_slug" 			 : "Whac-A-Sluggy"
+"task_sm_slug_desc" 		 : "Elimina al menos 5 [iSl] [#ed2c48]Algocróbatas[c_white] que esten en el aire en Rompe-Mandi-Minas"
+
+# Molasses Swamp
+"task_ms_all_geyser" 		 : "Destapagéiseres"
+"task_ms_all_geyser_desc" 	 : "Activa todos los géiseres inactivos en Melaza Marismal"
+"task_ms_guardian_parry" 	 : "Tercera Es La Vencida"
+"task_ms_guardian_parry_desc" 	 : "Hazle la Superburla al [iGu] [#893b3b]Guardián[c_white] 3 veces en Melaza Marismal"
+"task_ms_catch" 		 : "De Sapo a Sapo"
+"task_ms_catch_desc" 	   	 : "Juega a atrapar con 2 [iFf] [#006858]Ranas Arrojadoras[c_white] en Melaza Marismal"
+
+
+
+#-----------------------#
+# Palettes
+#-----------------------#
+"palette_PZ_classic"                    : "Trapos clásicos"
+"palette_PZ_classic_desc"               : "Vino con tu nacimiento"
+"palette_PZ_classic_thought"		: "¡Un clásico!"
+
+"palette_PZ_exhibitionnight"            : "Trapos de Exhibición"
+"palette_PZ_exhibitionnight_desc"       : "Desbloqueado por atender la Exhibición Nocturna"
+"palette_PZ_exhibitionnight_thought"    : "¡A tiempo!"
+
+"palette_PZ_exhibitionred"              : "Painter Rojo"
+"palette_PZ_exhibitionred_desc"         : "Desbloqueado al encontrar 3 Secretos durante la Exhibición Nocturna"
+"palette_PZ_exhibitionred_thought"      : "¡Resaltante!"
+"palette_PZ_exhibitionred_hint"		: "Intenta encontrar TINTA..."
+
+"palette_PZ_exhibitionblack"            : "Painter Negro"
+"palette_PZ_exhibitionblack_desc"       : "Desbloqueado al encontrar 6 Secretos durante la Exhibición Nocturna"
+"palette_PZ_exhibitionblack_thought"    : "¡Elegante!"
+"palette_PZ_exhibitionblack_hint"	: "Intenta encontrar más TINTA..."
+
+"palette_PZ_exhibitionpurple"           : "Painter Morado"
+"palette_PZ_exhibitionpurple_desc"      : "Desbloqueado al encontrar 9 Secretos durante la Exhibición Nocturna"
+"palette_PZ_exhibitionpurple_thought"   : "¡Regia!"
+"palette_PZ_exhibitionpurple_hint"	: "Intenta encontrar aún más TINTA..."
+
+"palette_PZ_noise"                      : "Noise"
+"palette_PZ_noise_desc"                 : "Desbloqueado al encontrar todos los Secretos durante la Exhibición Nocturna"
+"palette_PZ_noise_thought"              : "¡Copyright\nTour de Pizza!"
+"palette_PZ_noise_hint"			: "Intenta encontrar toda la TINTA perdida..."
+
+"palette_PZ_exhibitionpaper"             : "Cuaderno"
+"palette_PZ_exhibitionpaper_desc"        : "Desbloqueado al hacer una épica encesta de 3 puntos\nen la Galería del Painter"
+"palette_PZ_exhibitionpaper_thought"     : "¡Abran las escuelas!"
+"palette_PZ_exhibitionpaper_hint"        : "Trata de encestar algo..."
+
+"palette_PZ_exhibitionbrain"            : "Trapos Sabelotodo"
+"palette_PZ_exhibitionbrain_desc"       : "Desbloqueado al enfrentar un Juicio"
+"palette_PZ_exhibitionbrain_thought"    : "¡Que lista!"
+"palette_PZ_exhibitionbrain_hint"	: "Intenta prepararte para una crítica..."
+
+"palette_PZ_exhibitionbraingold"        : "Trapos Sabelotodo Dorados"
+"palette_PZ_exhibitionbraingold_desc"   : "Desbloqueado al enfrentar el mejor Juicio"
+"palette_PZ_exhibitionbraingold_thought": "¡Brillante!"
+"palette_PZ_exhibitionbraingold_hint"   : "Intenta conseguir la mejor retroalimentación..."
+
+"palette_PZ_exhibitionentryway"         : "Piso Mojado"
+"palette_PZ_exhibitionentryway_desc"    : "Desbloqueado al limpiar toda la basura en Construcción Crocante"
+"palette_PZ_exhibitionentryway_thought" : "¡Peligrosa!"
+"palette_PZ_exhibitionentryway_hint"    : "Intenta limpiar el sitio de construcción..."
+
+"palette_PZ_exhibitionsteamy"           : "Algodón de azúcar"
+"palette_PZ_exhibitionsteamy_desc"      : "Desbloqueado al taladrar dentro de un bloque de algodón por 5 segundos en Algodópolis"
+"palette_PZ_exhibitionsteamy_thought"   : "¡Bien por ella!"
+"palette_PZ_exhibitionsteamy_hint"      : "Intenta taladrar por un rato más..."
+
+"palette_PZ_exhibitionmineshaft"        : "Aprobado por Fred"
+"palette_PZ_exhibitionmineshaft_desc"   : "Desbloqueado al rebotar repetidamente sobre la cabeza de Fred el Gusano en Rompe-Mandi-Minas"
+"palette_PZ_exhibitionmineshaft_thought": "Gusanos..."
+"palette_PZ_exhibitionmineshaft_hint"   : "Intenta darle un dolor de cabeza a un gusano en particular..."
+
+"palette_PZ_exhibitionmolasses"         : "Pijamas de Rana"
+"palette_PZ_exhibitionmolasses_desc"    : "Desbloqueado al ahogar 3 Renacajas en Melaza Marismal"
+"palette_PZ_exhibitionmolasses_thought" : "¡Húmeda!"
+"palette_PZ_exhibitionmolasses_hint"    : "Intenta enseñarle a algunos anfibios a nadar..."
+
+
+
+#-----------------------#
+# Judgment
+#-----------------------#
+"judgment_title_none"		: "Ninguno"
+"judgment_title_disappointing"	: "Decepcionante"
+"judgment_title_fine"		: "Bien"
+"judgment_title_perfect"	: "Perfecto"
+"judgment_title_fast"		: "Rápido"
+"judgment_title_holyshit"	: "¡MADRE MÍA!"
+
+# Judgment Cutscene Dialogue
+"judgmentinfo_default"         : "[j_painter_pose,normal]¿Hmmm? ¿Quieres saber qué opino de tu actuación esta noche?"
+
+"judgmentinfo_disappointing_1" : "[j_painter_pose,upset]Mira, ni sé para qué te molestaste en venir en primer lugar..."
+"judgmentinfo_disappointing_2" : "Arte verdadero es para ser admirado, ¡imbécil! En lugar de mostrar una gota de respeto hacia mi genio creativo, anduviste correteando por todos lados como una rata, arruinando mis grandes obras con tus guantecitos sucios."
+"judgmentinfo_disappointing_3" : "Esperaba más de ti, confitera. Que desagradable..."
+
+"judgmentinfo_fine_1"          : "[j_painter_pose,normal]Fue... adecuado, diría mi madre."
+"judgmentinfo_fine_2"          : "[j_painter_pose,upset]Pero, ¿acaso no sentiste algo más en mis pinturas? [delay][j_painter_pose,normal]Me entristece que has fallado en apreciar la profundidad de cada una de ellas."
+"judgmentinfo_fine_3"          : "[j_painter_pose,devious]Independientemente, confitera, lo has hecho aceptablemente."
+
+"judgmentinfo_perfect_1"       : "[j_painter_pose,devious]No solo has logrado recuperar toda mi preciosa TINTA, ¡sino que también lo has hecho con niveles grandes de elegancia!"
+"judgmentinfo_perfect_2"       : "[j_painter_pose,devious]Temía que tu metida de pata haría enfurecer a los Críticos, ¡pero nunca antes los había visto tan enamorados!"
+"judgmentinfo_perfect_3"       : "[j_painter_pose,normal]Y no me equivocaría en decir que vos saliste feliz también, ¿no?  [j_painter_pose,upset]¡No creas que no te he cachado mientras llenabas tus bolsillos mientras estabas ocupada \"admirando\" mis pinturas!"
+"judgmentinfo_perfect_4"       : "[j_painter_pose,devious]¡Ja! Bromeo. Te lo has ganado, confitera. ¡Tu actuación esta noche fue más que maravillosa!"
+
+"judgmentinfo_fast_1"          : "[j_painter_pose,devious]¡Ni me has dado tiempo para poder pensarlo! Siento que-"
+"judgmentinfo_fast_2"          : "[j_painter_pose,upset]¡Deja de mirar tu reloj y préstame más atención, maldita sea!"
+"judgmentinfo_fast_3"          : "[j_painter_pose,normal]Deberías de relajarte de vez en cuando, tal vez te haga bien."
+
+"judgmentinfo_holyshit_1"      : "[j_painter_pose,surprised]¡Hala, mis expectativas han sido completamente y profundamente excedidas!"
+"judgmentinfo_holyshit_2"      : "[j_painter_pose,devious]¡Oh, magnífico![delay] ¡Bellísimo![delay] [j_painter_pose,normal]Confitera, ¡simplemente me has dejado sin palabras!"
+"judgmentinfo_holyshit_3"      : "[j_painter_pose,upset]Si solo los demás pudieran apreciar mi arte como tú lo haces, el mundo sería mejor. Pero se vale soñar..."
+
+"judgmentinfo_ending"          : "[j_painter_pose,normal]Vale, ahora si me permites, tengo algunas meditaciones importantes a las cuales regresar..."
+"judgmentinfo_additional"      : "[j_painter_pose,devious]Ehm, de casualidad no sabrías nada al respecto, ¿o sí...?"
+
+
+
+#-----------------------#
+# Prompts
+#-----------------------#
+
+# NOTE: Basically all of these go to scribble draw commands.
+
+
+# Character Name.
+"prompt_PZ" : "Pizzelle"
+"prompt_PN" : "Pizzano"
+"prompt_JB" : "Jesús Barrero"
+
+# Control prompts.
+# These are fragments used in the pop-ups that explain transfo controls.
+"prompt_jump"      : "Saltar"
+"prompt_doublejump": "Doble Salto"
+"prompt_dash"      : "Correr"
+"prompt_crouch"    : "Agacharse"
+"prompt_pullback"  : "Echar para atrás"
+"prompt_test" 		: "[kL][kD][kU] Probando [kL][kL]"
+
+"prompt_werecotton" : "[kJ][kJ] Doble Salto [kG] Taladrar"
+"prompt_minecart" : "[kJ] Saltar [kD] Agacharse"
+"prompt_fling" : "[kL][kD][kR] Echar para atrás"
+"prompt_fireass" : "[kG] Impulsar"
+
+# Tutorial prompt.
+"prompt_lap_unlockall" : "¡Todos los portales de 2da vuelta desbloqueados!"
+"prompt_lap_unlock"    : "¡Portal de 2da vuelta desbloqueado!"
+
+# Skip prompt.
+"prompt_intro_skip" : "Saltar"
+
+# Hurt Milestone Prompt.
+"prompt_hurt" : "Has lastimado /1 /2 veces..."
+
+# Progress-related prompts.
+"prompt_confecti_found"      : "¡Has encontrado /1 Confecti de 5!"
+"prompt_last_confecti_found" : "¡Has encontrado los 5 Confecti!"
+
+# Slightly different prompt for the tutorial.
+# Ice Pop's grandkids aren't "real" confecti, hence the use of air quotes.
+"prompt_tut_confecti_found"      : "¡Has encontrado /1 \"Confecti\" de 5!"
+"prompt_tut_last_confecti_found" : "¡Has encontrado los 5 \"Confecti\"!"
+
+"prompt_secret_found"     : "Has encontrado el /1 Secreto. ¡/2 de 3!"
+
+# Ordinals used in some prompts.
+"prompt_ord_first" : "Primer"
+"prompt_ord_second": "Segundo"
+"prompt_ord_third" : "Tercer"
+
+# Singular and plural versions of the same word.
+"prompt_secret_singular": "Secreto"
+"prompt_secret_plural"  : "Secretos"
+
+# Painter Mixtape prompts.
+"prompt_mixtape_nosoundtest" : "Esto sería más util con toda la /1 TINTA..."
+"prompt_mixtape_soundtest" : "¡Tienes más música para escuchar!"
+
+# Miscellaneous Prompt
+"prompt_guilttrip": "¿Pero que te ha hecho...?"
+
+
+
+#-----------------------#
+# Room Names
+#-----------------------#
+
+# Currently, only hub rooms use names.
+"romname_missing": "¿SALA AUSENTE? ¡DILE QUE SE PRESENTE!"
+"romname_hallway": "Exhibición Nocturna"
+"romname_mainhub": "Bella Galería Mística"
+"romname_molasses": "Pintura Rara Mística"
+
+
+
+#-----------------------#
+# Game Window Name
+#-----------------------#
+
+# Levels
+"winname_tutorial": "Un calentamiendo rápido para la Exhibición Nocturna"
+"winname_entryway": "Una ciudad bajo construcción en la Exhibición Nocturna"
+"winname_cotton"  : "Una muy vaporosa y algonodera Exhibición Nocturna"
+"winname_mines"   : "Una cueva oscura y aterradora debajo de la Exhibición Nocturna"
+"winname_swamp"   : "Un pantano pegajoso y lleno de mierda, igual que la Exhibición Nocturna"
+
+# Hub
+"winname_hub": "¡Bienvenido a la Exhibición Nocturna!"
+"winname_mind": "Hmmm.... Exhibición Nocturna..."
+
+
+
+# Menus/Misc Rooms
+"winname_init"       : "Sugary Spire: Exhibición Nocturna"
+"winname_intro"      : "Exhibición Nocturna: La Película"
+"winname_logos"      : "La pintura está por secarse en la Exhibición Nocturna"
+"winname_disclaimer" : "Una advertencia antes de la Exhibición Nocturna"
+"winname_fileselect" : "Has una oferta en la Exhibición Nocturna"
+"winname_levelselect": "Escogiendo tu pintura favorita en la Exhibición Nocturna"
+"winname_devroom"    : "Las pinceladas detrás de la Exhibición Nocturna"
+"winname_titlecard"  : "¿Te gusta lo que vez en la Exhibición Nocturna?"
+"winname_rank"       : "¿Lo hiciste? ¡Exhibición Nocturna!"
+"winname_credit"     : "Detrás de cámaras de la Exhibición Nocturna"
+
+#-----------------------#
+# Credit Category Names
+#-----------------------#
+"credits_lead"			: "Director Principal y Mánager del Proyecto"
+"credits_directors"		: "Directores"
+"credits_programmers"	: "Programadores"
+"credits_artists"		: "Artistas"
+"credits_levels"		: "Diseño de Nivel"
+"credits_music"			: "Músicos"
+"credits_sfx"			: "Diseño de Efectos de Sonido"
+"credits_qa"			: "Control de Calidad"
+"credits_langhead"		: "Cabezas de Localización"
+"credits_langES"		: "Localización Español LATAM"
+"credits_langRU"		: "Localización Rusa"
+"credits_langPTBR"		: "Localización Portugués Brasileña"
+"credits_voice"			: "Actores de voz"
+"credits_trailer"		: "Animación del Tráiler"
+"credits_website"		: "Sitio Web"
+"credits_playtest"		: "Prueba del Juego"
+"credits_thanks"		: "Agradecimientos Especiales"
+"credits_tdp"			: "Tour de Pizza"
+"credits_and"			: "Y..."
+"credits_you"			: "¡Tú!"
+#-----------------------#
+# Menu Text
+#-----------------------#
+# Controller Prompts.
+"controller_connect"    : "Control Encontrado."
+"controller_disconnect" : "Control Desconectado."
+"controller_prompt"     : "Presiona /1 para Reconectar."
+
+# File Delete
+"main_menu_filedelete"  : "¿BORRAR EL GUARDADO /1?"
+"main_menu_leavegame"   : "¿SALIR DEL JUEGO?"
+"main_menu_yes"         : "SÍ"
+"main_menu_no"          : "NO"
+
+# Pause Menu
+"pause_resume" : "CONTINUAR"
+"pause_options": "OPCIONES"
+"pause_retry"  : "REINICIAR"
+"pause_tasks"  : "TAREAS"
+"pause_exit"   : "SALIR"
+"pause_menu"   : "MENÚ PRINCIPAL"
+
+# Tasks Menu
+"menutask_clothes"	: "TRAPOS"
+"menutask_unknown"	: "???"
+
+# Options Menu
+"opt_audio"        : "AUDIO"
+"opt_video"        : "VIDEO"
+"opt_game"         : "JUEGO"
+"opt_controls"     : "CONTROLES"
+"opt_language"	   : "LENGUAJE"
+"opt_back"         : "ATRÁS"
+"opt_on"           : "SÍ"
+"opt_off"          : "NO"
+"opt_confirm"       : "CONFIRMAR CAMBIOS\nRESTABLECIENDO EN /1..."
+
+# Video Submenu
+"opt_vid_windowmode"  		: "MODO VENTANA"
+"opt_vid_windowmode_windowed"   : "EN VENTANA"
+"opt_vid_windowmode_exclusive"  : "EXCLUSIVA"
+"opt_vid_windowmode_borderless" : "SIN BORDE"
+"opt_vid_resolution"  		: "RESOLUCIÓN"
+"opt_vid_letterbox"            	: "LETTERBOX"
+"opt_vid_letterbox_simple"	: "SIMPLE"
+"opt_vid_letterbox_doodle"	: "DIBUJOS"
+"opt_vid_letterbox_dynamic"	: "DINÁMICO"
+"opt_vid_vsync"			: "SINCRONIZACIÓN VERTICAL"
+"opt_vid_texturefilter"		: "FILTRO DE TEXTURAS"
+"opt_vid_showHUD"		: "MOSTRAR HUD" 
+
+# Audio Submenu
+"opt_aud_master"	: "MAESTRO"
+"opt_aud_music" 	: "MÚSICA"
+"opt_aud_sfx"   	: "SFX"
+"opt_aud_focus" 	: "SILENCIADO POR DESENFOQUE"
+"opt_aud_attenuation"   : "ATENUACIÓN MUSICAL"
+"opt_aud_speaker" 	: "MODO SPEAKER"
+"opt_aud_stereo" 	: "ESTÉREO"
+"opt_aud_mono" 		: "MONO"
+
+# Controller Submenu
+
+"opt_ctrl_keyboard"             : "TECLADO"
+"opt_ctrl_controller"           : "MANDO"
+"opt_ctrl_bindings"             : "CONFIGURACIÓN DE TECLAS"
+"opt_ctrl_keyboardsuperjump"    : "SUPERSALTO SEPARADO"
+"opt_ctrl_keyboardgroundpound"  : "PANZASO SEPARADO"
+"opt_ctrl_deadzones"            : "ZONAS MUERTAS"
+"opt_ctrl_controllersuperjump"  : "SUPERSALTO SEPARADO"
+"opt_ctrl_controllergroundpound": "PANZASO SEPARADO"
+
+# Deadzone Setup Submenu
+"opt_ctrl_dz_gen"       : "GENERAL"
+"opt_ctrl_dz_vert"      : "VERTICAL"
+"opt_ctrl_dz_horiz"     : "HORIZONTAL"
+"opt_ctrl_dz_press"     : "PRESIONAR"
+"opt_ctrl_dz_superjump" : "SUPERSALTO"
+"opt_ctrl_dz_crouchwalk": "GATEO"
+
+# Game Settings Submenu
+"opt_game_vibrate"		: "VIBRACIÓN"
+"opt_game_screenshake"		: "SACUDIDO DE PANTALLA"
+"opt_game_timer"  		: "CRONÓMETRO"
+"opt_game_timer_type"  		: "TIPO DE CRONÓMETRO"
+"opt_game_timer_type_level"	: "POR NIVEL"
+"opt_game_timer_type_save"  	: "POR GUARDADO"
+"opt_game_timer_type_both"  	: "AMBOS"
+"opt_game_timerspeedrun"  	: "CRONÓMETRO PARA SPEEDRUN"
+"opt_game_reset_clothes"    : "BORRAR PROGRESO DE TRAPOS"
+"reset_clothes_confirm"     : "BORRAR PROGRESO DE TRAPOS"
+
+# Language Submenu
+"opt_access_lang": "LENGUAJE"
+
+# Keyconfig Input Names
+"opt_keyconfig_up"           : "up"
+"opt_keyconfig_down"         : "down"
+"opt_keyconfig_left"         : "left"
+"opt_keyconfig_right"        : "right"
+"opt_keyconfig_jump"         : "jump"
+"opt_keyconfig_slap"         : "grab"
+"opt_keyconfig_taunt"        : "taunt"
+"opt_keyconfig_shoot"        : "shoot"
+"opt_keyconfig_attack"       : "run"
+"opt_keyconfig_superjump"    : "superjump"
+"opt_keyconfig_groundpound"  : "groundpound"
+"opt_keyconfig_start"        : "start"
+
+"opt_keyconfig_menuup"		 : "menu up"
+"opt_keyconfig_menudown"	 : "menu down"
+"opt_keyconfig_menuleft"	 : "menu left"
+"opt_keyconfig_menuright"	 : "menu right"
+"opt_keyconfig_menuconfirm"	 : "confirm"
+"opt_keyconfig_menuback"	 : "exit"
+"opt_keyconfig_menudelete"	 : "delete"
+
+"opt_keyconfig_cancel"		 : "CANCELAR"
+"opt_keyconfig_deny"		 : "SALIR SIN GUARDAR"
+"opt_keyconfig_save"		 : "GUARDAR CAMBIOS"
+
+# Keyconfig Controller Input Names
+"opt_keyconfig_upc"          : "upc"
+"opt_keyconfig_downc"        : "downc"
+"opt_keyconfig_leftc"        : "leftc"
+"opt_keyconfig_rightc"       : "rightc"
+"opt_keyconfig_jumpc"        : "jumpc"
+"opt_keyconfig_slapc"        : "slapc"
+"opt_keyconfig_tauntc"       : "tauntc"
+"opt_keyconfig_shootc"       : "shootc"
+"opt_keyconfig_attackc"      : "attackc"
+"opt_keyconfig_superjumpc"   : "superjumpc"
+"opt_keyconfig_groundpoundc" : "groundpoundc"
+"opt_keyconfig_startc"       : "startc"
+"opt_keyconfig_specialc"     : "specialc"
+
+# Keyconfig UI Text
+"opt_keyconfig_inputprompt": "PRESIONA CUALQUIER BOTÓN"
+"opt_keyconfig_bind"       : "CONFIGURACIÓN"
+"opt_keyconfig_clear"      : "DESPEJAR"
+"opt_keyconfig_reset"      : "RESTABLECER"
+
+# Key Names
+# Keyboard
+"key_left"       : "IZQUIERDA"
+"key_right"      : "DERECHA"
+"key_up"         : "ARRIBA"
+"key_down"       : "ABAJO"
+"key_enter"      : "ENTER"
+"key_escape"     : "ESCAPE"
+"key_space"      : "ESPACIO"
+"key_shift"      : "SHIFT"
+"key_control"    : "CONTROL"
+"key_alt"        : "ALT"
+"key_backspace"  : "BACKSPACE"
+"key_tab"        : "TAB"
+"key_home"       : "HOME"
+"key_end"        : "END"
+"key_delete"     : "DELETE"
+"key_insert"     : "INSERT"
+"key_pageup"     : "PAGE UP"
+"key_pagedown"   : "PAGE DOWN"
+"key_pause"      : "PAUSE"
+"key_printscreen": "PRINTSCREEN"
+"key_numpad0"    : "NP0"
+"key_numpad1"    : "NP1"
+"key_numpad2"    : "NP2"
+"key_numpad3"    : "NP3"
+"key_numpad4"    : "NP4"
+"key_numpad5"    : "NP5"
+"key_numpad6"    : "NP6"
+"key_numpad7"    : "NP7"
+"key_numpad8"    : "NP8"
+"key_numpad9"    : "NP9"
+"key_multiply"   : "*"
+"key_divide"     : "/"
+"key_add"        : "+"
+"key_subtract"   : "-"
+"key_decimal"    : "."
+
+# Controller
+"key_select"  : "SELECT"
+"key_start"   : "START"
+"key_stickl"  : "ANÁLOGO IZQUIERDO"
+"key_stickr"  : "ANÁLOGO DERECHO"
+"key_padup"   : "ARRIBA"
+"key_padleft" : "IZQUIERDA"
+"key_padright": "DERECHA"
+"key_paddown" : "ABAJO"
+
+# Undefined
+"key_presskey" : "PRESIONA UNA TECLA"
+
+
+
+#-----------------------#
+# Debug stuff
+#-----------------------#
+"loadingSprites": "CARGANDO TRADUCCIÓN..."
+"loadingGeneric": "CARGANDO..."

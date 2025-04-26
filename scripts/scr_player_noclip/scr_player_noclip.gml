@@ -8,23 +8,21 @@ function state_player_noclip()
     vspCarry = 0;
     move = key_left + key_right;
     sprite_index = spr_noclip;
-    
-    if (key_attack)
+    if key_attack
         movespeed = 18;
     else if (key_slap)
         movespeed = 6;
     else
         movespeed = 12;
-    
-    if (key_jump)
+    if key_jump
         state = States.normal;
     
     x += (move * movespeed);
-    
-    if (key_up)
+    if key_up
         y -= movespeed;
-    else if (key_down)
+    else if key_down
         y += movespeed;
+	global.ComboFreeze = 2;
 }
 
 function state_player_freeflight()
@@ -32,16 +30,14 @@ function state_player_freeflight()
     move = key_left + key_right;
     move2 = key_down - key_up;
     sprite_index = spr_noclip;
-    
-    if (!key_slap)
+    if !key_slap
     {
-        if (key_attack)
+        if key_attack
             movespeed = 18;
-        else if (key_slap)
+        else if key_slap
             movespeed = 6;
         else
             movespeed = 12;
-        
         hsp = move * movespeed;
         vsp = move2 * movespeed;
     }
@@ -52,8 +48,6 @@ function state_player_freeflight()
         hsp = move;
         vsp = move2;
     }
-    
-    if (key_jump)
+    if key_jump
         state = States.normal;
 }
-

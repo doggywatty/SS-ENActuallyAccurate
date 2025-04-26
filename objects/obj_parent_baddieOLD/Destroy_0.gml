@@ -20,7 +20,6 @@ if (global.InternalLevelName == "dance")
 event_play_oneshot("event:/SFX/player/punch", x, y);
 event_play_oneshot("event:/SFX/enemies/kill", x, y);
 global.ComboTime = 60;
-global.ComboFreeze = 15;
 
 if importantEnemy
 	exit;

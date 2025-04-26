@@ -47,6 +47,13 @@ with HUDObject_TV
 	tvAnimations = function(_Player)
 	{
 		var player_state = global.freezeframe ? _Player.frozenState : _Player.state;
+		if (player_state == States.machslide)
+		{
+			if (_Player.sprite_index == _Player.spr_machslideboost3)
+				player_state = States.mach3;
+			else
+				player_state = States.mach2;
+		}		
 		if (sprite_index == spr_tvHUD_turningOn && !sprite_animation_end(,, sprite_image_number))
 			exit;
 		
@@ -105,8 +112,6 @@ with HUDObject_TV
 				if (global.Combo >= 50 && !get_panic())
 					queuedSprite = global.TvSprPlayer_HighCombo;
 				break;
-			case States.mach1:
-			case States.mach2:
 			case States.mach3:
 			case States.wallkick:
 			case States.machslide:
@@ -117,15 +122,15 @@ with HUDObject_TV
 				if (player_state == States.climbwall)
 					my_mvsp = global.freezeframe ? abs(_Player.frozenVerticalMovespeed) : abs(_Player.verticalMovespeed);
 				var _oldQueue = queuedSprite;
-				if (player_state == States.mach3 || (player_state == States.climbwall && my_mvsp >= 12)
+				if (player_state == States.wallkick || player_state == States.machslide)
+					queuedSprite = global.TvSprPlayer_Mach2;
+				if (player_state == States.mach3 || player_state == States.climbwall
 				|| (player_state == States.machslide && _Player.sprite_index == _Player.spr_machslideboost3)
-				|| (player_state == States.machroll && _Player.mach3Roll > 0))
+				|| player_state == States.machroll)
 					queuedSprite = global.TvSprPlayer_Mach3;
 				if (_Player.sprite_index == _Player.spr_crazyrun || (player_state == States.climbwall
-				&& my_mvsp >= 20) || (player_state == States.machroll && _Player.mach3Roll > 0 && my_mvsp >= 20))
+				&& my_mvsp >= 16) || (player_state == States.machroll && _Player.mach3Roll > 0 && my_mvsp >= 16))
 					queuedSprite = global.TvSprPlayer_Mach4;
-				if (player_state == States.wallkick)
-					queuedSprite = global.TvSprPlayer_Mach2;
 				if (queuedSprite != _oldQueue)
 					tvForceTransition = true;
 				break;
@@ -242,6 +247,8 @@ with HUDObject_timer
 		image_index: 0,
 		image_speed: 0.35
 	};
+	elm_coneBallText = new subSprite(spr_bartimer_blotchspotshowtime_text, 0, 0, false);
+	elm_coneBallText.lastFrame = 0;	
 	elm_clockTimer = 
 	{
 		image_index: 0,

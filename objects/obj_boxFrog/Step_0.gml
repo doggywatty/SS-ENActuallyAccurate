@@ -1,4 +1,4 @@
-if (!wearingBox)
+if !wearingBox
 {
     baddieSpriteIdle = spr_boxfrog_idle;
     baddieSpriteWalk = spr_boxfrog_idle;
@@ -10,15 +10,12 @@ else
 }
 
 event_inherited();
-
-if (!global.freezeframe)
+if !global.freezeframe
     canGetScared = !(state == States.titlescreen || wearingBox);
 
 enemyAttack_TriggerEvent();
-
 if (state != States.frozen && !global.freezeframe)
     wearingBox = false;
-
 if (oldWearingBox != wearingBox)
 {
     oldWearingBox = wearingBox;
@@ -26,16 +23,13 @@ if (oldWearingBox != wearingBox)
     {
         image_xscale: image_xscale
     });
+	event_play_oneshot("event:/SFX/enemies/boxfrogDiscardBox", x, y);	
 }
 
 if (state == States.titlescreen && (sprite_index == spr_boxfrog_jump || sprite_index == spr_boxfrog_fall))
 {
-    if (!place_meeting(x, y, obj_clutterFrog))
-        canBreakBlocks = true;
-    
     doRedAfterImage = true;
-    
-    if (!instance_exists(hurtboxID))
+    if !instance_exists(hurtboxID)
     {
         with (instance_create(x, y, obj_forkhitbox, 
         {
@@ -52,7 +46,3 @@ if (state == States.titlescreen && (sprite_index == spr_boxfrog_jump || sprite_i
         }
     }
 }
-
-if (place_meeting(x, y, obj_clutterFrog))
-    canBreakBlocks = false;
-

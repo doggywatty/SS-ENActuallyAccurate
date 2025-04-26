@@ -195,7 +195,6 @@ if (state != States.charge && state != States.frozen && player_supertaunt && bbo
 	targetx = x;
 	targety = y;
 	global.ComboTime = 60;
-	global.ComboFreeze = 15;
 	event_play_oneshot("event:/SFX/general/softkaboom", x, y);
 	with obj_achievementTracker
 		guardianSupertaunted++;
@@ -225,5 +224,4 @@ if (state == States.run || state == States.titlescreen)
 }
 else
 	fmod_studio_event_instance_stop(sndMoving, false);
-
 fmod_quick3D(sndMoving);

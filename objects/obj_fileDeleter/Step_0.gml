@@ -3,7 +3,10 @@ var old_selection = optionSelection;
 optionSelection += (key_right2 + key_left2);
 optionSelection = clamp(optionSelection, 0, 1);
 if (optionSelection != old_selection)
+{
 	event_play_oneshot("event:/SFX/ui/step");
+	deleteFileBuffer = 0;
+}
 if (deleteFileBuffer >= deleteFileBufferMax)
 {
 	camera_shake_add(4, 5);
@@ -39,6 +42,6 @@ else if (key_slap2 || key_start2)
 else
 	deleteFileBuffer = 0;
 
-image_speed = deleteFileBuffer / (deleteFileBufferMax - 50);
+image_speed = max((deleteFileBuffer / (deleteFileBufferMax - 50)) * 0.65, 0.25);
 if (image_speed <= 0)
 	image_index = 0;

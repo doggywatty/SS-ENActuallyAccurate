@@ -16,16 +16,31 @@ switch optionMenu
 		options = [new option_button("opt_audio", function()
 		{
 			option_goto(OptionMenu.Audio);
-		}).add_icon(spr_newpause_icons, 5), new option_button("opt_video", function()
+		})
+		.add_icon(spr_newpause_icons, 5), new option_button("opt_video", function()
 		{
 			option_goto(OptionMenu.Video);
-		}).add_icon(spr_newpause_icons, 6), new option_button("opt_game", function()
+		})
+		.add_icon(spr_newpause_icons, 6), new option_button("opt_game", function()
 		{
 			option_goto(OptionMenu.Game);
-		}).add_icon(spr_newpause_icons, 8), new option_button("opt_controls", function()
+		})
+		.add_icon(spr_newpause_icons, 8), new option_button("opt_controls", function()
 		{
 			option_goto(OptionMenu.Controls);
-		}).add_icon(spr_newpause_icons, 7)];
+		})
+		.add_icon(spr_newpause_icons, 7)];
+		if (room == rm_mainmenu)
+		{
+			var lang_menu = new option_button("opt_language", function()
+			{
+				option_goto(OptionMenu.Language);
+				instance_create(0, 0, obj_option_lang);
+				scr_input_varinit();
+			});
+			lang_menu.add_icon(spr_newpause_icons, 9);
+			array_push(options, lang_menu);
+		}		
 		break;
 	case OptionMenu.Audio:
 		backMenu = OptionMenu.Base;
@@ -65,7 +80,11 @@ switch optionMenu
 		{
 			quick_write_option("Settings", "unfocusmute", val);
 			global.unfocusedMute = val;
-		}, global.unfocusedMute), new option_normal("opt_aud_speaker", speaker_options, function(val)
+		}, global.unfocusedMute), new option_normal("opt_aud_attenuation", onOffToggle, function(val)
+		{
+			quick_write_option("Settings", "musicAttenuation", val);
+			global.musicAttenuation = val;
+		}, global.musicAttenuation), new option_normal("opt_aud_speaker", speaker_options, function(val)
 		{
 			quick_write_option("Settings", "speaker", val);
 			global.speakerOption = val;
@@ -78,20 +97,28 @@ switch optionMenu
 		alignCenter = false;
 		var res = [];
 		for (var i = 0; i < array_length(global.resolutions); i++)
-			array_push(res, string($"{global.resolutions[i][0]}X{global.resolutions[i][1]}"));
+			array_push(res, $"{global.resolutions[i][0]}X{global.resolutions[i][1]}");
 		
-		options = [toMainPage, new option_normal("opt_vid_windowmode", ["opt_vid_windowmode_windowed", "opt_vid_windowmode_exclusive", "opt_vid_windowmode_borderless"], function(val)
+		var letterbox_option = ["opt_off", "opt_vid_letterbox_simple", "opt_vid_letterbox_doodle", "opt_vid_letterbox_dynamic"];
+		options = [toMainPage, new option_button("opt_vid_windowmode", function()
 		{
-			quick_write_option("Settings", "fullscrn", val);
-			global.fullscreen = val;
-			with obj_screen
-				alarm[0] = 1;
-		}, global.fullscreen), new option_normal("opt_vid_resolution", res, function(val)
+			option_goto(OptionMenu.Window);
+		}), new option_normal("opt_vid_resolution", res, function(val)
 		{
-			quick_write_option("Settings", "resolution", val);
+			quick_write_option("Settings", "opt_resolution", val);
 			global.selectedResolution = val;
-			set_resolution_option(global.selectedResolution);
-		}, global.selectedResolution, false), new option_normal("opt_vid_vsync", onOffToggle, function(val)
+			if !global.fullscreen
+			{
+				set_resolution_option(global.selectedResolution);
+				gameframe_restore();
+			}
+		}, global.selectedResolution, false), new option_normal("opt_vid_letterbox", letterbox_option, function(val)
+		{
+			quick_write_option("Settings", "letterbox", val);
+			global.Letterbox = val;
+			with obj_screen
+				event_user(1);
+		}, global.Letterbox), new option_normal("opt_vid_vsync", onOffToggle, function(val)			
 		{
 			quick_write_option("Settings", "vsync", val);
 			display_reset(0, global.Vsync);
@@ -106,11 +133,26 @@ switch optionMenu
 			global.ShowHUD = val;
 		}, global.ShowHUD)];
 		break;
+	case OptionMenu.Window:
+		backMenu = OptionMenu.Video;
+		backOption = 1;
+		alignCenter = false;
+		options = [toMainPage, new option_button("opt_vid_windowmode_windowed", function()
+		{
+			set_fullscreen_option(0);
+		}), new option_button("opt_vid_windowmode_exclusive", function()
+		{
+			set_fullscreen_option(1);
+		}), new option_button("opt_vid_windowmode_borderless", function()
+		{
+			set_fullscreen_option(2);
+		})];
+		break;
 	case OptionMenu.Game:
 		backMenu = OptionMenu.Base;
 		backOption = 2;
 		alignCenter = false;
-		var timer_options = ["opt_game_timer_type_level", "opt_game_timer_type_save", "opt_game_timer_type_both"];
+		var timer_options = ["opt_off", "opt_game_timer_type_level", "opt_game_timer_type_save", "opt_game_timer_type_both"];
 		options = [toMainPage, new option_normal("opt_game_vibrate", onOffToggle, function(val)
 		{
 			quick_write_option("Settings", "vibration", val);
@@ -119,38 +161,28 @@ switch optionMenu
 		{
 			quick_write_option("Settings", "screenshake", val);
 			global.ScreenShake = val;
-		}, global.ScreenShake), new option_normal("opt_game_timer", onOffToggle, function(val)
+		}, global.ScreenShake), new option_normal("opt_game_timer_type", timer_options, function(val)
 		{
-			quick_write_option("Settings", "timer", val);
-			global.toggleTimer = val;
-		}, global.toggleTimer), new option_normal("opt_game_timerspeedrun", onOffToggle, function(val)
+			quick_write_option("Settings", "opt_timerType", val);
+			global.option_timer_type = val;
+		}, global.option_timer_type), new option_normal("opt_game_timerspeedrun", onOffToggle, function(val)
 		{
 			quick_write_option("Settings", "timerspeedrun", val);
 			global.option_speedrun_timer = val;
-		}, global.option_speedrun_timer), new option_normal("opt_game_timer_type", timer_options, function(val)
+		}, global.option_speedrun_timer)];
+		
+		if (room == rm_mainmenu)
 		{
-			quick_write_option("Settings", "timertype", val);
-			global.option_timer_type = val;
-		}, global.option_timer_type)];
+			array_push(options, new option_button("opt_game_reset_clothes", function()
+			{
+				instance_create(0, 0, obj_option_clothes);
+			}));
+		}
 		break;
 	case OptionMenu.Language:
-		backMenu = OptionMenu.Game;
-		backOption = 1;
+		backMenu = OptionMenu.Base;
+		backOption = 4;
 		alignCenter = false;
-		var lang_switcher = new option_normal("opt_access_lang", global.langFiles, function(val)
-		{
-			var f = global.langFiles[val];
-			if (f != string($"{global.langName}.txt"))
-			{
-				scr_lang_set_file(f);
-				quick_write_option("Settings", "lang", global.langName);
-				trace("Current language: ", lang_get("language"));
-			}
-		}, array_get_index(global.langFiles, string($"{global.langName}.txt")));
-		with lang_switcher
-			translate_opt = false;
-		var timer_options = ["PER LEVEL", "PER SAVE", "BOTH"];
-		options = [toMainPage, lang_switcher];
 		break;
 	case OptionMenu.Controls:
 		backMenu = OptionMenu.Base;
@@ -262,3 +294,6 @@ switch optionMenu
 		}, round(global.deadzones[Deadzones.Crouch] * 100))];
 		break;
 }
+
+trace("New Options");
+trace(options);

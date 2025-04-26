@@ -128,9 +128,7 @@ function state_player_mach3()
 		verticalMovespeed = movespeed;
 		if (vsp > 0 && place_meeting(x + xscale, y, obj_icyWall))
 			verticalMovespeed -= vsp;
-		
 		grabClimbBuffer = 0;
-		inputBufferJump = 0;
 		state = States.climbwall;
 	}
 	else if (scr_solid(x + xscale, y, true) && !place_meeting(x + xscale, y, obj_destructibles)
@@ -186,7 +184,6 @@ function state_player_mach3()
 			playerID: id
 		});
 	}
-	
 	if (!instance_exists(obj_superdashcloud) && grounded)
 	{
 		instance_create(x, y, obj_superdashcloud, 

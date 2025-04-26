@@ -72,6 +72,7 @@ function state_player_taunt()
 					create_particle(x, y, spr_parryeffect);
 					repeat 3
 					{
+						create_radiating_particle(x, y, spr_fuckassOrb, 0, false, 7, 10, 10);						
 						instance_create(x, y, obj_slapstar);
 						instance_create(x, y, obj_baddieGibs);
 					}

@@ -33,23 +33,23 @@ if (dp == lastPage)
 	var xx = (tvwidth / 8) + 32;
 	var tpad = 60;
 	draw_sprite(spr_tvdisplay_icon_conf, 0, xx, yy);
-	draw_text_scribble(xx + tpad, yy - 4, string($"[c_black]{p.confCount}/{p.confMax}"));
+	draw_text_scribble(xx + tpad, yy - 4, $"[c_black]{p.confCount}/{p.confMax}");
 	yy += ypad;
 	
 	draw_sprite(spr_tvdisplay_icon_secret, 0, xx, yy);
-	draw_text_scribble(xx + tpad, yy - 4, string($"[c_black]{p.secCount}/{p.secMax}"));
+	draw_text_scribble(xx + tpad, yy - 4, $"[c_black]{p.secCount}/{p.secMax}");
 	yy += ypad;
 	
 	draw_sprite(spr_tvdisplay_icon_treasure, 0, xx, yy);
-	draw_text_scribble(xx + tpad, yy - 4, string($"[c_black]{p.treasureCount}/{p.treasureMax}"));
+	draw_text_scribble(xx + tpad, yy - 4, $"[c_black]{p.treasureCount}/{p.treasureMax}");
 	yy += ypad;
 	
 	draw_sprite(spr_tvdisplay_icon_misc, 2, xx, yy);
-	draw_text_scribble(xx + tpad, yy - 4, string($"[c_black]{p.palCount}/{p.palMax}"));
+	draw_text_scribble(xx + tpad, yy - 4, $"[c_black]{p.palCount}/{p.palMax}");
 	yy += ypad;
 	
 	draw_sprite(spr_tvdisplay_icon_misc, 4, xx, yy);
-	draw_text_scribble(xx + tpad, yy - 4, string($"[c_black]{p.taskCount}/{p.taskMax}"));
+	draw_text_scribble(xx + tpad, yy - 4, $"[c_black]{p.taskCount}/{p.taskMax}");
 }
 else
 	drawLevel(l);

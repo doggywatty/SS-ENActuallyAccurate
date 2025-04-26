@@ -19,5 +19,5 @@ if !secretcanspit && array_contains(secrets, true) && level != "tutorial"
 {
 	secretcanspit = true;
 	repeat 5
-		instance_create(x, y - 128, obj_secretpoof);
+		create_radiating_particle(x, y - 128, spr_secretpoof);
 }

@@ -9,13 +9,12 @@ else
 	typist.pause();
 
 draw_set_halign(fa_left);
-draw_set_valign(fa_middle);
 draw_set_alpha(dialogAlpha);
 draw_set_color(c_white);
 draw_sprite(spr_dialobox_temp, 0, 0, 0);
 
 if (!chatty && dialogAlpha >= 1)
-	continueIcon.draw(850, 150).update();
+	continueIcon.draw(870, 160).update();
 
 if (array_length(dialogEvents) > 0)
 {

@@ -1,7 +1,7 @@
 var _raceOver = ds_list_find_index(global.SaveRoom, id) != -1;
 var _ind = ds_list_find_index(global.SaveRoom, id);
 var _won = ds_list_find_value(global.SaveRoom, _ind + 1);
-var _killed = ds_list_find_index(global.SaveRoom, string($"{id}Killed")) != -1;
+var _killed = ds_list_find_index(global.SaveRoom, $"{id}Killed") != -1;
 if _raceOver
 {
 	with obj_creamThiefLoseTrigger

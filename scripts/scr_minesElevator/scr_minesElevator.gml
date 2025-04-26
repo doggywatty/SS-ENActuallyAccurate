@@ -3,7 +3,7 @@ function cutscene_elevator_prestart()
 	colorID = 0;
 	var elevator = cutscene_get_actor("ELEVATOR");
 	var finished = false;
-	global.ComboFreeze = 15;
+	global.ComboFreeze = 2;
 	with obj_parent_player
 	{
 		state = States.actor;
@@ -40,7 +40,7 @@ function cutscene_elevator_start()
 {
 	var elevator = cutscene_get_actor("ELEVATOR");
 	var finished = false;
-	global.ComboFreeze = 15;
+	global.ComboFreeze = 2;
 	with obj_parent_player
 	{
 		state = States.actor;
@@ -66,7 +66,7 @@ function cutscene_elevator_start()
 function cutscene_elevator_premiddle()
 {
 	var elevator = cutscene_get_actor("ELEVATOR");
-	global.ComboFreeze = 15;
+	global.ComboFreeze = 2;
 	with obj_parent_player
 	{
 		state = States.actor;
@@ -90,7 +90,7 @@ function cutscene_elevator_premiddle()
 function cutscene_elevator_middle()
 {
 	var finished = false;
-	global.ComboFreeze = 15;
+	global.ComboFreeze = 2;
 	with obj_parent_player
 	{
 		state = States.actor;
@@ -174,7 +174,7 @@ function cutscene_elevator_preend()
 
 function cutscene_elevator_end()
 {
-	global.ComboFreeze = 15;
+	global.ComboFreeze = 2;
 	obj_camera.cameraLock = false;
 	with obj_parent_player
 	{

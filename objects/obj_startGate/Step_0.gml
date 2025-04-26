@@ -58,15 +58,13 @@ for (var i = 0; i < 3; i++)
 				hsp = 0;
 				vsp = 0;
 				repeat 3
-					instance_create(x, y, obj_secretpoof);
-				
+					create_radiating_particle(x, y, spr_secretpoof);
 				sprite_index = gatelands[i];
 				image_index = 0;
 				play_splat = true;
 			}
 			if (sprite_animation_end() && sprite_index != spr_gatesecretfall)
 				sprite_index = gateloops[i];
-			
 			image_index += image_speed;
 		}
 	}

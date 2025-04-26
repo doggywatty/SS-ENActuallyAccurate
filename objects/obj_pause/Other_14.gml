@@ -1,8 +1,4 @@
-if (surface_exists(pauseSurface))
-	surface_free(pauseSurface);
-
 pausecount = -1;
-
 if (room != rank_room && !is_hub())
 {
 	global.gamePauseState = 0;

@@ -134,7 +134,7 @@ function sh_unlock(_typelevel)
 				if !ini_read_real("Misc", "lapunlockall", false)
 				{
 					ini_write_real("Misc", "lapunlockall", true);
-					scr_queueToolTipPrompt($"[spr_promptfont]{lang_get("prompt_lap_unlockall")}");
+					scr_queueToolTipPrompt($"[promptfont]{lang_get("prompt_lap_unlockall")}");
 				}
 			}
 			ini_write_string("Ranks", string(int_level), "p");
@@ -316,6 +316,7 @@ function toggle_debugView(debug)
 		dbg_watch(ref_create(obj_player1, "state"), "Player State");
 		dbg_watch(ref_create(obj_player1, "stateName"), "Player State Name");
 		dbg_watch(ref_create(obj_player1, "baddieGrabbedID"), "baddieGrabbedID");
+		dbg_watch(ref_create(global, "GLOBAL_FUN"), "Fun Value");		
 	}
 	else
 		dbg_view_delete(global.PlayerDebugView);
@@ -367,7 +368,7 @@ function sh_instance_create(object)
 {
 	var _obj = asset_get_index(object[1]);
 	if _obj > -1
-		instance_create(object[2] ?? mouse_x, object[3] ?? mouse_y, _obj);
+		instance_create(object[2] ?? get_mouse_x(), object[3] ?? get_mouse_y(), _obj);
 }
 
 function meta_instance_create()

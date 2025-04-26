@@ -35,6 +35,7 @@ function scr_gamecaptions(_room = room)
 			game_caption = "winname_hub";
 			break;
 		case hub_demohallway:
+		case hub_molassesB:		
 			game_caption = "winname_hub";
 			break;
 		case hub_molasses:
@@ -43,6 +44,9 @@ function scr_gamecaptions(_room = room)
 		case hub_mindpalace:
 			game_caption = "winname_mind";
 			break;
+		case tutorial_1:
+			game_caption = "winname_tutorial";
+			break;			
 		case entryway_1:
 			game_caption = "winname_entryway";
 			break;

@@ -3,6 +3,7 @@ if (!reciever && !active && !global.freezeframe)
     alarm[3] = 25;
     active = true;
     event_play_oneshot("event:/SFX/general/teleporterstart", x, y);
+	create_particle(x, y, spr_teleportEffect);
     with obj_dogMount
     {
         visible = false;

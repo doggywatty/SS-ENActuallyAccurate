@@ -73,19 +73,29 @@ function add_judgment(_judgment, _judgprops)
 	return j;
 }
 
+
 function scr_judgment_init()
 {
-	global.judgment_map = ds_map_create();
-	add_judgment("none", 
+	if !variable_global_exists("judgment_map")
 	{
-		title: "none",
-		titlespr: spr_null,
-		titleindex: 0,
-		splash: spr_null,
-		splashindex: 0,
-		filespr: spr_null,
-		fileindex: 0
-	});
+		global.judgment_map = ds_map_create();
+		add_judgment("none", 
+		{
+			title: "none",
+			titlespr: spr_null,
+			titleindex: 0,
+			splash: spr_null,
+			splashindex: 0,
+			filespr: spr_null,
+			fileindex: 0
+		});
+	}
+	else
+	{
+		var default_judgment = ds_map_find_value(global.judgment_map, "none");
+		ds_map_clear(global.judgment_map);
+		ds_map_set(global.judgment_map, "none", default_judgment);
+	}
 	add_judgment("disappointing", 
 	{
 		title: "disappointing",

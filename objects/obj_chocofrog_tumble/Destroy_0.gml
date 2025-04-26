@@ -10,13 +10,10 @@ if (ds_list_find_index(global.SaveRoom, id) == -1)
 	create_small_number(x, y, string(_score));
 	global.Collect += _score;
 	global.ComboTime = 60;
-	global.ComboFreeze = 15;
 	create_particle((x - sprite_xoffset) + (sprite_width / 2), (y - sprite_yoffset) + (sprite_height / 2), spr_bangEffect);
 	create_particle((x - sprite_xoffset) + (sprite_width / 2), (y - sprite_yoffset) + (sprite_height / 2), spr_enemypuncheffect);
 	create_particle((x - sprite_xoffset) + (sprite_width / 2), (y - sprite_yoffset) + (sprite_height / 2), (object_index == obj_chocofrogsmall) ? spr_smallpoof : spr_poofeffect);
-	
 	with (instance_create(x + (sprite_width / 2), y + (sprite_height / 2), obj_baddieDead))
 		sprite_index = other.deadSpr;
-	
 	ds_list_add(global.SaveRoom, id);
 }

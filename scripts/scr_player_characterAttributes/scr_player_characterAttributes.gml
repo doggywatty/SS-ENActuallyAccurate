@@ -8,7 +8,7 @@ function scr_getCharacterSprite(_sprite, _spr_index = "spr_player_", _char = glo
 {
 	var prefix_length = string_length(_spr_index);
 	var sprite_name = string_delete(sprite_get_name(_sprite), 1, prefix_length + 3);
-	var asset_string = string($"{_spr_index}{scr_getCharacterPrefix(_char)}_{sprite_name}");
+	var asset_string = $"{_spr_index}{scr_getCharacterPrefix(_char)}_{sprite_name}";
 	
 	if (asset_get_index(asset_string) <= -1)
 	{

@@ -187,15 +187,3 @@ else
 bubblescale = approach(bubblescale, 0, 0.2);
 global.screenflash -= 1;
 audio_listener_position(camera_get_view_x(view_camera[0]) + (cam_w / 2), camera_get_view_y(view_camera[0]) + (cam_h / 2), 0);
-
-with cakeHud
-{
-	var c_threshold = floor(global.Combo / 5);
-	var target_speed = clamp(c_threshold / sprite_get_number(spr_comboTitles), 0, 1);
-	if (target_speed != image_speed && (animation_end_old() || image_speed <= 0))
-	{
-		image_speed = target_speed;
-		image_index -= (image_number - 1);
-	}
-	image_index += image_speed;
-}

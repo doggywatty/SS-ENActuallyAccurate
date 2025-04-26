@@ -118,7 +118,7 @@ creditEntry = function() constructor
 		}
 		
 		draw_set_color(image_blend);
-		draw_text_scribble(x, y, string($"[fa_center][fa_top][spr_smallfont]{string_upper(name)}"));
+		draw_text_scribble(x, y, $"[fa_center][fa_top][smallfont]{string_upper(name)}");
 	};
 	
 	static addPaintTopper = function(paint_Topper)
@@ -188,7 +188,7 @@ addCredit = function(category, _name, _candysona = [spr_null, spr_null])
 addCategory = function(category)
 {
 	var arr = [];
-	array_push(creditEntries, [category, arr]);
+	array_push(creditEntries, [lang_get(category), arr]);
 	killCounterArr[categoryCount] = 0;
 	categoryCount++;
 	return arr;
