@@ -23,23 +23,8 @@ function scr_initinput()
 
 function scr_resetinput()
 {
-	var deadzoneSettings = [];
-    deadzoneSettings[Deadzones.Master] = ["deadzoneMaster", 0.4];
-    deadzoneSettings[Deadzones.Vertical] = ["deadzoneVertical", 0.5];
-    deadzoneSettings[Deadzones.Horizontal] = ["deadzoneHorizontal", 0.5];
-    deadzoneSettings[Deadzones.Press] = ["deadzonePress", 0.5];
-    deadzoneSettings[Deadzones.SJump] = ["deadzoneSJump", 0.8];
-    deadzoneSettings[Deadzones.Crouch] = ["deadzoneCrouch", 0.65];
 	ini_open("optionData.ini");
 	ini_section_delete("Control");
-	
-	for (var i = 0; i < array_length(deadzoneSettings); i++)
-	{
-		var set = deadzoneSettings[i];
-		ini_write_real("Settings", set[0], set[1]);
-		global.deadzones[i] = set[1];
-	}
-	
 	ini_close();
 	scr_input_create();
 }

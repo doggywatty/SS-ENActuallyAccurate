@@ -20,7 +20,7 @@ else
 draw_set_alpha(flash);
 draw_rectangle(0, 0, 960, 540, false);
 draw_set_alpha(1);
-draw_sprite_ext(spr_rankclipboard, 0, 716, 271 + clipy, 1, 1, 0, c_white, 1);
+draw_sprite_ext(lang_get_sprite(spr_rankclipboard), 0, 716, 271 + clipy, 1, 1, 0, c_white, 1);
 
 var i = 0;
 var _string = round(string(global.HighestCombo));

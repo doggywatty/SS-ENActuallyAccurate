@@ -15,10 +15,10 @@
   "author": "",
   "classname": "Fmod_iOS",
   "copyToTargets": 3035426153142681806,
-  "date": "2025-04-10T15:26:42.30848-03:00",
+  "date": "2025-04-20T05:10:18.2735434-03:00",
   "description": "",
   "exportToGame": true,
-  "extensionVersion": "1.0.1",
+  "extensionVersion": "1.0.6",
   "files": [
     {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"YYFMOD.ext","constants":[],"copyToTargets":2458965418019127502,"filename":"YYFMOD.ext","final":"","functions":[
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"fmod_channel_set_frequency","argCount":0,"args":[
@@ -2326,7 +2326,7 @@
     {"resourceType":"GMExtensionOption","resourceVersion":"1.0","name":"xboxOneSdkHash","defaultValue":"E35B15DF3C274EA413128DAEB8BCC1A3416460B4F8C025599961BE512BB74700","description":"","displayName":"","exportToINI":false,"extensionId":null,"guid":"0241cf78-dee9-407b-aa5a-486692e2d5f4","hidden":true,"listItems":[],"optType":2,},
     {"resourceType":"GMExtensionOption","resourceVersion":"1.0","name":"xboxSeriesSdkHash","defaultValue":"9FD1D273DA3B5BAE33C53A0AC3F37C76476F0DA20026C1E77F4698E65DF1E540","description":"","displayName":"","exportToINI":false,"extensionId":null,"guid":"779383e3-8598-4730-b0bd-1fbfe72ff5a8","hidden":true,"listItems":[],"optType":2,},
     {"resourceType":"GMExtensionOption","resourceVersion":"1.0","name":"switchSdkHash","defaultValue":"---","description":"","displayName":"","exportToINI":false,"extensionId":null,"guid":"5856746a-d3a1-4242-936d-015712faceb4","hidden":true,"listItems":[],"optType":2,},
-    {"resourceType":"GMExtensionOption","resourceVersion":"1.0","name":"sdkVersion","defaultValue":"2.02","description":"","displayName":"","exportToINI":false,"extensionId":null,"guid":"133d4f59-422a-4d29-bf7e-ba38791d00e7","hidden":true,"listItems":[],"optType":2,},
+    {"resourceType":"GMExtensionOption","resourceVersion":"1.0","name":"sdkVersion","defaultValue":"2.03","description":"","displayName":"","exportToINI":false,"extensionId":null,"guid":"133d4f59-422a-4d29-bf7e-ba38791d00e7","hidden":true,"listItems":[],"optType":2,},
     {"resourceType":"GMExtensionOption","resourceVersion":"1.0","name":"versionStable","defaultValue":"2023.11.0.0","description":"","displayName":"","exportToINI":false,"extensionId":null,"guid":"7bb0e749-5408-4eb5-a925-9d74038bbd92","hidden":true,"listItems":[],"optType":2,},
     {"resourceType":"GMExtensionOption","resourceVersion":"1.0","name":"versionBeta","defaultValue":"2023.1100.0.0","description":"","displayName":"","exportToINI":false,"extensionId":null,"guid":"c23a4782-1be6-4006-92d8-fd87750bb481","hidden":true,"listItems":[],"optType":2,},
     {"resourceType":"GMExtensionOption","resourceVersion":"1.0","name":"versionDev","defaultValue":"9.9.1.611","description":"","displayName":"","exportToINI":false,"extensionId":null,"guid":"670daf0c-b9c8-40b6-a8a8-12580e85dd69","hidden":true,"listItems":[],"optType":2,},
@@ -2336,8 +2336,8 @@
   "optionsFile": "options.json",
   "packageId": "",
   "parent": {
-    "name": "FMOD",
-    "path": "folders/Extensions/FMOD.yy",
+    "name": "Extensions",
+    "path": "folders/Extensions/FMOD/Extensions.yy",
   },
   "productId": "",
   "sourcedir": "",

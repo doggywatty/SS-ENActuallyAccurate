@@ -3,8 +3,7 @@ function state_player_fling()
 	image_speed = 0.35;
 	hsp = 0;
 	vsp = 0;
-	global.ComboFreeze = 15;
-	
+	global.ComboFreeze = 2;
 	if (sprite_index == spr_player_PZ_flinged_start && sprite_animation_end())
 		sprite_index = spr_player_PZ_flinged;
 }
@@ -117,7 +116,6 @@ function state_player_fling_launch()
 				if (vsp > 0 && place_meeting(x + xscale, y, obj_icyWall))
 					verticalMovespeed -= vsp;
 				grabClimbBuffer = 0;
-				inputBufferJump = 0;
 				state = States.climbwall;
 			}
 			else

@@ -49,7 +49,6 @@ function do_taunt(_State = state)
 		tauntTimer = 20;
 		scr_taunt_storeVariables();
 		state = States.taunt;
-		
 		if (superTauntCharged && key_up)
 		{
 			event_play_oneshot("event:/SFX/player/supertaunt", x, y);
@@ -65,7 +64,8 @@ function do_taunt(_State = state)
 		}
 		else
 		{
-			if (place_meeting(x, y, obj_exitgate) && global.ExitGateTaunt < 10 && get_panic())
+			if (place_meeting(x, y, obj_exitgate) && global.ComboTime > 0
+			&& global.ExitGateTaunt < 10 && get_panic())
 			{
 				var val = 25;
 				global.Collect += val;
@@ -101,7 +101,6 @@ function do_grab(_State = state)
 	if inputBufferSlap > 0
 	{
 		inputBufferSlap = 0;
-		
 		if key_up || key_up2
 			do_uppercut();
 		else if (global.rocketLauncher || global.tempRocketLauncher)
@@ -150,20 +149,35 @@ function do_grab(_State = state)
 			}
 			else
 				sprite_index = spr_suplexdashFallIntro;
-			
 			instance_create(x, y, obj_slaphitbox);
 			flash = (floatyGrab > 0) ? true : false;
 			vsp = 0;
 			instance_create(x, y, obj_jumpdust);
 			image_index = 0;
-			
 			if (state == States.normal || state == States.jump)
 				movespeed = 8;
 			else
 				movespeed = max(movespeed, 5);
-			
 			state = States.grabdash;
 			fmod_studio_event_instance_start(sndSuplex);
+			if key_down
+			{
+				vsp = max(vsp, 6);
+				floatyGrab = 0;
+				if grounded
+				{
+					grav = 0.5;
+					sprite_index = spr_crouchslipintro;
+					image_index = 0;
+					fmod_studio_event_instance_start(sndCrouchslide);
+					state = States.machroll;
+					with instance_create(x, y, obj_jumpdust)
+						image_xscale = other.xscale;
+					movespeed = 11;
+					crouchSlipBuffer = 25;
+					crouchSlipAntiBuffer = 0;
+				}
+			}			
 		}
 		return true;
 	}

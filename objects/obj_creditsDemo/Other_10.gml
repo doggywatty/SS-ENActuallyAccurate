@@ -1,18 +1,22 @@
-var catSoda = addCategory("Lead Director and Project Manager");
-var catDirectors = addCategory("Directors");
-var catProgrammers = addCategory("Programmers");
-var catArtist = addCategory("Artists");
-var catLevels = addCategory("Level Design");
-var catMusicians = addCategory("Musicians");
-var catSFX = addCategory("SFX Design");
-var catQA = addCategory("Quality Assurance");
-var catVoicework = addCategory("Voicework");
-var catBredi = addCategory("Trailer Animation");
-var catWebsite = addCategory("Website");
-var catPlaytest = addCategory("Playtesting");
-var catSpecial = addCategory("Special Thanks");
-var catPizza = addCategory("Tour de Pizza");
-var catYou = addCategory("And...");
+var catSoda = addCategory("credits_lead");
+var catDirectors = addCategory("credits_directors");
+var catProgrammers = addCategory("credits_programmers");
+var catArtist = addCategory("credits_artists");
+var catLevels = addCategory("credits_levels");
+var catMusicians = addCategory("credits_music");
+var catSFX = addCategory("credits_sfx");
+var catQA = addCategory("credits_qa");
+var catLocalizationHead = addCategory("credits_langhead");
+var catLocalizationES = addCategory("credits_langES");
+var catLocalizationRU = addCategory("credits_langRU");
+var catLocalizationPTBR = addCategory("credits_langPTBR");
+var catVoicework = addCategory("credits_voice");
+var catBredi = addCategory("credits_trailer");
+var catWebsite = addCategory("credits_website");
+var catPlaytest = addCategory("credits_playtest");
+var catSpecial = addCategory("credits_thanks");
+var catPizza = addCategory("credits_tdp");
+var catYou = addCategory("credits_and");
 
 addCredit(catSoda, "Sodamang", [spr_candysona_idle6, spr_candysona_dead6]);
 
@@ -45,6 +49,7 @@ addCredit(catArtist, "Sappy", [spr_candysona_idle3, spr_candysona_dead3]).addPai
 addCredit(catArtist, "Ufra", [spr_candysona_idle32, spr_candysona_dead32]).addPaintTopper([28, 29, 30, 31]);
 addCredit(catArtist, "Catherine \"welegi\" Welegi", [spr_candysona_idle39, spr_candysona_dead39]).addPaintTopper([7, 8, 24]);
 addCredit(catArtist, "ZPERKZ", [spr_candysona_idle4, spr_candysona_dead4]).addPaintTopper([39, 40, 44, 45]);
+
 addCredit(catLevels, "Capn_Mongo", [spr_candysona_idle31, spr_candysona_dead31]).addPaintTopper([18, 19, 20]);
 addCredit(catLevels, "HyperTem", [spr_candysona_idle17, spr_candysona_dead17]);
 addCredit(catLevels, "McDoodle", [spr_candysona_idle30, spr_candysona_dead30]).addPaintTopper([50, 51]);
@@ -52,7 +57,7 @@ addCredit(catLevels, "Only1indigo", [spr_candysona_idle5, spr_candysona_dead5]).
 
 addCredit(catMusicians, "CableChords", [spr_candysona_idle20, spr_candysona_dead20]);
 addCredit(catMusicians, "PaperKitty", [spr_candysona_idle23, spr_candysona_dead23]);
-addCredit(catMusicians, "Pterracotta", [spr_candysona_idle22, spr_candysona_dead22]);
+addCredit(catMusicians, "Pteracotta", [spr_candysona_idle22, spr_candysona_dead22]);
 addCredit(catMusicians, "RedTV53", [spr_candysona_idle16, spr_candysona_dead16]);
 addCredit(catMusicians, "RodMod", [spr_candysona_idle15, spr_candysona_dead15]);
 addCredit(catMusicians, "Stewart Keller", [spr_candysona_idle41, spr_candysona_dead41]);
@@ -66,6 +71,25 @@ addCredit(catSFX, "SCOUT-THE-SNOW", [spr_candysona_idle26, spr_candysona_dead26]
 addCredit(catQA, "Alejandro \"LOSTMAN\" Vargas", [spr_candysona_idle21, spr_candysona_dead21]);
 addCredit(catQA, "OSP", [spr_candysona_idle18, spr_candysona_dead18]).addPaintTopper([1, 2, 3, 4, 5, 6]);
 addCredit(catQA, "Puffballspeakerbox", [spr_candysona_idle28, spr_candysona_dead28]).addPaintTopper([11, 12, 13, 14]);
+
+addCredit(catLocalizationHead, "Sodamang", [spr_candysona_idle6, spr_candysona_dead6]);
+addCredit(catLocalizationHead, "Alejandro \"LOSTMAN\" Vargas", [spr_candysona_idle21, spr_candysona_dead21]);
+addCredit(catLocalizationHead, "PierRoulette", [spr_candysona_idle25, spr_candysona_dead25]);
+addCredit(catLocalizationHead, "Zhakich");
+
+addCredit(catLocalizationES, "902", [spr_candysona_idle19, spr_candysona_dead19]);
+addCredit(catLocalizationES, "Embo");
+addCredit(catLocalizationES, "Glub", [spr_candysona_idle27, spr_candysona_dead27]).addPaintTopper([25, 26, 27]);
+addCredit(catLocalizationES, "JoeGriddleCake");
+addCredit(catLocalizationES, "Alejandro \"LOSTMAN\" Vargas", [spr_candysona_idle21, spr_candysona_dead21]);
+addCredit(catLocalizationES, "SaltyPow");
+
+addCredit(catLocalizationRU, "Bepiou");
+addCredit(catLocalizationRU, "Polmups");
+addCredit(catLocalizationRU, "Zhakich");
+
+addCredit(catLocalizationPTBR, "Bredi", [spr_candysona_idle11, spr_candysona_dead11]);
+addCredit(catLocalizationPTBR, "Capn_Mongo", [spr_candysona_idle31, spr_candysona_dead31]).addPaintTopper([18, 19, 20]);
 
 addCredit(catVoicework, "RedTV53", [spr_candysona_idle16, spr_candysona_dead16]);
 addCredit(catVoicework, "HyperTem", [spr_candysona_idle17, spr_candysona_dead17]);
@@ -103,8 +127,9 @@ addCredit(catSpecial, "AmyAcket");
 addCredit(catSpecial, "BrownSugar");
 addCredit(catSpecial, "CRUST");
 addCredit(catSpecial, "DanDoesThings");
+addCredit(catSpecial, "Emmet");
 addCredit(catSpecial, "EpicMegaCookie").addPaintTopper([17]);
-addCredit(catSpecial, "extended_tangent");
+addCredit(catSpecial, "Extended-Tangent");
 addCredit(catSpecial, "FrozenCowJuice");
 addCredit(catSpecial, "Foushe", [spr_candysona_idle14, spr_candysona_dead14]);
 addCredit(catSpecial, "H.");
@@ -122,11 +147,12 @@ addCredit(catSpecial, "Ollenpac");
 addCredit(catSpecial, "Oni");
 addCredit(catSpecial, "Porky");
 addCredit(catSpecial, "Randy.");
-addCredit(catSpecial, "SaltyNick");
+addCredit(catSpecial, "SaltyPow");
 addCredit(catSpecial, "ScrapHat");
 addCredit(catSpecial, "ScurvyBiscuit");
 addCredit(catSpecial, "Somniac");
 addCredit(catSpecial, "Swanky");
+addCredit(catSpecial, "u4mhh");
 addCredit(catSpecial, "Wormdotcom");
 addCredit(catSpecial, "Yabcab", [spr_candysona_idle38, spr_candysona_dead38]);
 
@@ -136,7 +162,7 @@ addCredit(catPizza, "ClascyJitto");
 addCredit(catPizza, "Mr. Sauceman");
 addCredit(catPizza, "Post Elvis");
 
-addCredit(catYou, "You!", [spr_player_PZ_idleAnim_credits, spr_player_PZ_stun]).playerPalette = true;
+addCredit(catYou, lang_get("credits_you"), [spr_player_PZ_idleAnim_credits, spr_player_PZ_stun]).playerPalette = true;
 
 var cindex = 0;
 var unsetSprites = [

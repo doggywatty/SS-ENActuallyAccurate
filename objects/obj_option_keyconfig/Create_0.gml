@@ -44,7 +44,7 @@ function inputDisplay(_name, _iconInd) constructor
 		
 		for (var i = 0; i < iconLen; i++)
 		{
-			txt += string($"[{sprite_get_name(inputIcons[i][0])},{inputIcons[i][1]}]");
+			txt += $"[{sprite_get_name(inputIcons[i][0])},{inputIcons[i][1]}]";
 			
 			var ii = i + 1;
 			if ((ii % 3) == 0)

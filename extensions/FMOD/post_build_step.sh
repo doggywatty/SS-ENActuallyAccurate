@@ -24,19 +24,41 @@ setupmacOS() {
         # Assert if xcode-tools are installed (required)
         assertXcodeToolsInstalled
 
+        # Code sign the original library binary
+        codesign -s "${YYPLATFORM_option_mac_signing_identity}" -f --timestamp --verbose --options runtime "./libYYFMOD.dylib"
+
+        # Copy and code sign dependencies
         itemCopyTo "$SDK_CORE_SOURCE" "./libfmodL.dylib"
         codesign -s "${YYPLATFORM_option_mac_signing_identity}" -f --timestamp --verbose --options runtime "./libfmodL.dylib"
+        itemCopyTo "$SDK_STUDIO_SOURCE" "./libfmodstudioL.dylib"
+        codesign -s "${YYPLATFORM_option_mac_signing_identity}" -f --timestamp --verbose --options runtime "./libfmodstudioL.dylib"
 
-        if [[ $ENABLE_STUDIO_FLAG == 1 ]]; then
-            itemCopyTo "$SDK_STUDIO_SOURCE" "./libfmodstudioL.dylib"
-            codesign -s "${YYPLATFORM_option_mac_signing_identity}" -f --timestamp --verbose --options runtime "./libfmodstudioL.dylib"
+        # If there is an extra game.zip file here then this is a package command
+        # Update the libraries inside the zip file (used for packaging)
+        if [ -f "./game.zip" ]; then
+            TEMP_FOLDER="${YYprojectName}___temp___"
+
+            mkdir "./${TEMP_FOLDER}"
+
+            itemCopyTo "./libYYFMOD.dylib" "${TEMP_FOLDER}/assets/libYYFMOD.dylib"
+            itemCopyTo "./libfmodL.dylib" "${TEMP_FOLDER}/assets/libfmodL.dylib"
+            itemCopyTo "./libfmodstudioL.dylib" "${TEMP_FOLDER}/assets/libfmodstudioL.dylib"
+    
+            zipUpdate "${TEMP_FOLDER}" "game.zip"
+            rm -r ${TEMP_FOLDER}
         fi
     else
-        itemCopyTo "$SDK_CORE_SOURCE" "${YYprojectName}/${YYprojectName}/Supporting Files/libfmodL.dylib"
 
-        if [[ $ENABLE_STUDIO_FLAG == 1 ]]; then
-            itemCopyTo "$SDK_STUDIO_SOURCE" "${YYprojectName}/${YYprojectName}/Supporting Files/libfmodstudioL.dylib"
+        # When running from CI the 'YYprojectName' will not be set use 'YYprojectPath' instead.
+        if [ -z "$YYprojectName" ]; then
+            YYprojectName=$(basename "${YYprojectPath%.*}")
         fi
+
+        # Replace spaces with underscores (this matches the assetcompiler output)
+        YYfixedProjectName="${YYprojectName// /_}"
+
+        itemCopyTo "$SDK_CORE_SOURCE" "${YYfixedProjectName}/${YYfixedProjectName}/Supporting Files/libfmodL.dylib"
+        itemCopyTo "$SDK_STUDIO_SOURCE" "${YYfixedProjectName}/${YYfixedProjectName}/Supporting Files/libfmodstudioL.dylib"
     fi
 }
 
@@ -58,6 +80,9 @@ setupLinux() {
     if [ -z "$YYprojectName" ]; then
         YYprojectName=$(basename "${YYprojectPath%.*}")
     fi
+
+    # Replace spaces with underscores (this matches the assetcompiler output)
+    YYfixedProjectName="${YYprojectName// /_}"
 
     fileExtract "${YYprojectName}.zip" "_temp"
 

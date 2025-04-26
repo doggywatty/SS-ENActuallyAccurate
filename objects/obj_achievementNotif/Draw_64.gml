@@ -1,6 +1,6 @@
-if (sprite_index != spr_paletteUnlock)
+if (sprite_index != lang_get_sprite(spr_paletteUnlock))
 {
-	draw_sprite(spr_achievementText, 0, x, y);
+	draw_sprite(lang_get_sprite(spr_achievementText), 0, x, y);
 	var _yy = y - 90;
 	if (sprite_index == spr_bakertasks_en_ranks)
 		_yy -= 20;

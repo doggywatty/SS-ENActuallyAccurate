@@ -6,6 +6,7 @@ function state_player_machroll()
 	machTwo = 100;
 	machSlideAnim = true;
 	move = key_right + key_left;
+	mask_index = spr_crouchmask;
 	if !instance_exists(obj_puffEffect) && grounded
 		instance_create(x, y + 43, obj_puffEffect);
 	if (grounded && sprite_index != spr_crouchslipintro && sprite_index != spr_crouchslip && sprite_index != spr_crouchslipfall)
@@ -77,13 +78,37 @@ function state_player_machroll()
 		freeFallSmash = 0;
 	}
 	
-	var mach3_check = (movespeed >= 12 && !place_meeting(x + xscale, y, obj_metalblock)) || movespeed < 12;
 	if (scr_solid(x + xscale, y, true) && !place_meeting(x + xscale, y, obj_destructibles))
 	{
-		state = States.bump;
-		image_index = 0;
-		sprite_index = spr_splat;
-		event_play_oneshot("event:/SFX/player/splat", x, y);
+		var old_x = x;
+		var old_y = y;
+		var attempt = 0;
+		var will_splat = true;
+		while (place_meeting_collision(x + xscale, y, true) && !grounded)
+		{
+			will_splat = false;
+			attempt++;
+			y++;
+			if (attempt > 10)
+			{
+				y = old_y;
+				will_splat = true;
+				break;
+			}
+		}
+		
+		if will_splat
+		{
+			state = States.bump;
+			image_index = 0;
+			sprite_index = spr_splat;
+			event_play_oneshot("event:/SFX/player/splat", x, y);
+		}
+		else
+		{
+			with obj_camera
+				cameraYOffset = other.y - old_y;
+		}
 	}
 	
 	if (sprite_index == spr_crouchslip || sprite_index == spr_crouchslipfall || sprite_index == spr_crouchslipintro || sprite_index == spr_machroll || sprite_index == spr_machroll3 || sprite_index == spr_machroll3intro)

@@ -7,7 +7,6 @@ ropetype = RopeType.bottom;
 ini_open(global.SaveFileName);
 
 if (ini_read_string("Game", "Judgment", "none") != "none")
-    instance_destroy();
+	instance_destroy();
 
 ini_close();
-

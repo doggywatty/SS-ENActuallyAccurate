@@ -3,7 +3,7 @@ if (event > 0)
 else
 	pal_swap_set(spr_rankpal, bgdex, 0);
 
-draw_sprite_tiled_ext(bg_rank, bgdex, bgx, bgy, 1, 1, c_white, bgAlpha);
+draw_sprite_tiled_ext(lang_get_sprite(bg_rank), bgdex, bgx, bgy, 1, 1, c_white, bgAlpha);
 shader_reset();
 
 if (event > 0)
@@ -30,15 +30,15 @@ draw_set_alpha(1);
 if event <= 0
 	exit;
 
-draw_sprite_ext(spr_rankclipboard, 0, 716, 271 + clipboardY, 1, 1, 0, c_white, 1);
+draw_sprite_ext(lang_get_sprite(spr_rankclipboard), 0, 716, 271 + clipboardY, 1, 1, 0, c_white, 1);
 var i = 0;
-var _text_scribble = "[c_red][fa_middle][fa_center][spr_font_dialogue]";
+var _text_scribble = "[c_red][fa_middle][fa_center][dialogfont]";
 if combo_shown
 {
 	var _cx = 894;
 	var _cy = 68 + clipboardY;
 	draw_sprite_ext(spr_rankclipboard_stamp, 0, _cx, _cy, 1, 1, 0, c_white, 1);
-	draw_text_scribble(_cx, _cy, string($"{_text_scribble}{global.HighestCombo}"));
+	draw_text_scribble(_cx, _cy, $"{_text_scribble}{global.HighestCombo}");
 }
 
 if (damage_shown)
@@ -46,7 +46,7 @@ if (damage_shown)
 	var _dx = 894;
 	var _dy = 142 + clipboardY;
 	draw_sprite_ext(spr_rankclipboard_stamp, 1, _dx, _dy, 1, 1, 0, c_white, 1);
-	draw_text_scribble(_dx, _dy, string($"{_text_scribble}{global.LocalHurtCounter}"));
+	draw_text_scribble(_dx, _dy, $"{_text_scribble}{global.LocalHurtCounter}");
 }
 
 draw_set_color(c_white);
@@ -101,4 +101,4 @@ shader_reset();
 draw_sprite_ext(spr_rankletter, rankdex + 1, 725, 108 + clipboardY, 1, 1, 0, c_white, 1);
 
 if (score_total_visual == score_total && global.NewHighScore)
-	draw_sprite_ext(spr_rank_highscore, score_highscore_index, 886, 450 + clipboardY, 1, 1, 0, c_white, 1);
+	draw_sprite_ext(spr_highscore, score_highscore_index, 886, 450 + clipboardY, 1, 1, 0, c_white, 1);

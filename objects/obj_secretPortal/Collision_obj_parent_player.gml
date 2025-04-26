@@ -14,7 +14,7 @@ if (secretActivated && visible && !place_meeting(x, y, obj_secretPortalexit))
 		sprite_index = spr_secretPortal_tele;
 		
 		repeat 5
-			instance_create(x, y, obj_secretpoof);
+			create_radiating_particle(x, y, spr_secretpoof);
 		
 		event_play_oneshot("event:/SFX/general/secretenter", x, y);
 		instance_create(x, y, obj_tilePaintSplatter, 

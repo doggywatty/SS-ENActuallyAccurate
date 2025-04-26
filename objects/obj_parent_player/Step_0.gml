@@ -79,16 +79,15 @@ if (sprite_index == spr_player_PZ_tired && state != States.normal)
 	windingAnim = 0;
 
 if !global.freezeframe
-{
-	global.ComboTime = clamp(global.ComboTime, 0, 60);
-	if (global.ComboFreeze <= 0)
-		global.ComboTime = approach(global.ComboTime, 0, 0.15);
-}
+	global.ComboFreeze--;
 
-global.ComboFreeze--;
-global.ComboFreeze = clamp(global.ComboFreeze, 0, 75);
+global.ComboFreeze = clamp(global.ComboFreeze, 0, 15);
+global.ComboTime = clamp(global.ComboTime, 0, 60);
+
+if (!global.freezeframe && !instance_exists(obj_fadeoutTransition) && global.ComboFreeze <= 0)
+	global.ComboTime = approach(global.ComboTime, 0, 0.15);
+
 var c_title = floor(global.Combo / 5);
-
 if (oldComboTitle != c_title && c_title > 0)
 {
 	instance_destroy(obj_comboTitleEffect);
@@ -129,11 +128,10 @@ if (inputBufferSecondJump < 8)
 	inputBufferSecondJump++;
 if (inputBufferHighJump < 8)
 	inputBufferHighJump++;
-
 inputBufferSecondJump = min(inputBufferSecondJump + 1, 8);
 inputBufferHighJump = min(inputBufferHighJump + 1, 8);
 
-if (keyParticles)
+if keyParticles
 	instance_create(x + irandom_range(-20, 20), y + irandom_range(-30, 30), obj_keyeffect);
 if !hurted
 	image_alpha = 1;
@@ -168,7 +166,7 @@ if (state != States.mach2)
 	machPunchAnim = false;
 if (state != States.jump)
 	ladderBuffer = 0;
-if (state != States.jump)
+if (state != States.jump && state != States.taunt)
 	stompAnim = false;
 if (state != States.puddle)
 	slipSlopeBounces = 7;

@@ -46,6 +46,7 @@ if (selected == -2)
 	}
 	selected = -1;
 	reading = false;
+	exit;	
 }
 else if !reading
 {
@@ -63,7 +64,7 @@ else if !reading
 		selected = 0;
 	else if (-key_left2)
 		selected = -1;
-	
+	input_is_valid = number_in_range(selected, 0, array_length(inputs) - 1);	
 	if (key_jump && input_is_valid && gamepad == device_is_gamepad)
 	{
 		if (array_length(inputs[selected].currentInputs) < 9)
@@ -85,6 +86,7 @@ else if !reading
 			select2 = 0;
 			exiting = true;
 		}
+		exit;		
 	}
 	
 	if key_taunt2
@@ -107,7 +109,11 @@ else if !reading
 	{
 		scr_resetinput();
 		for (var i = 0; i < array_length(inputs); i++)
+		{
+			var inp = input_get(inputs[i].name);
+			inputs[i].parentInput = input_get(inputs[i].name);
 			inputs[i].update();
+		}
 		prompt_changes = true;
 	}
 	

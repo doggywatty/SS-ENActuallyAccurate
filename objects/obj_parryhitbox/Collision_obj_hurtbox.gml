@@ -7,9 +7,12 @@ with playerID
 	{
 		sprite_index = choose(spr_parry1, spr_parry2, spr_parry3);
 		image_index = 0;
-		movespeed = -8;
+		image_speed = 0.35;
+		movespeed = 8;
 		flash = true;
 		create_particle(x, y, spr_parryeffect);
+		repeat 3
+			create_radiating_particle(x, y, spr_fuckassOrb, 0, false, 7, 10, 10);		
 		event_play_oneshot("event:/SFX/player/parry", x, y);
 		state = States.parry;
 	}
@@ -74,7 +77,7 @@ with other.id
 
 with obj_parent_enemy
 {
-	if (distance_to_object(other.id) < 84)
+	if (distance_to_object(other.id) <= 84)
 	{
 		hsp = other.image_xscale * 25;
 		vsp = 0;

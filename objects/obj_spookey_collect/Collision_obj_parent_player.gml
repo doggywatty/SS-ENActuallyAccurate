@@ -6,7 +6,6 @@ if (ds_list_find_index(global.SaveRoom, id) == -1)
     {
         if (state != States.gotkey && sprite_index != spr_player_PZ_gotKey && sprite_index != spr_player_PZ_pileDriver_jump)
         {
-            global.ComboFreeze = 15;
             global.ComboTime = 60;
             event_play_oneshot("event:/SFX/general/collectKey");
             image_index = 0;

@@ -1,6 +1,6 @@
 with instance_nearest(x, y, obj_parent_player)
 {
-	var bumpstates = [States.mach3, States.mach2, States.machroll, States.grabdash];
+	var bumpstates = [States.mach3, States.mach2, States.machroll, States.grabdash, States.machtumble2];
 	if ((place_meeting(x + hsp, y, other.id) || place_meeting(x + xscale, y, other.id)) && object_index != obj_chocofrogsmall && array_contains(bumpstates, state))
 	{
 		event_play_oneshot("event:/SFX/player/splat", x, y);

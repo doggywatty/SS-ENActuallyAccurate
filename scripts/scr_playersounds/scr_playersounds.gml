@@ -86,7 +86,7 @@ function scr_playersounds()
     if (event_instance_isplaying(sndSuplex) && saved_state != States.grabdash)
         fmod_studio_event_instance_stop(sndSuplex, true);
     
-    if (saved_state == States.wallkick && (sprite_index != spr_wallJumpFastFallIntro && sprite_index != spr_wallJumpFastFall))
+    if (saved_state == States.wallkick && (sprite_index == spr_wallJumpIntro || sprite_index == spr_wallJump))
     {
         if !event_instance_isplaying(sndWallkick)
             fmod_studio_event_instance_start(sndWallkick);

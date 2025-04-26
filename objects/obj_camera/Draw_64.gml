@@ -28,7 +28,7 @@ drawCakeHudTopping(spr_cranktopping, global.crank);
 drawCakeHudTopping(spr_branktopping, global.brank);
 drawCakeHudTopping(spr_aranktopping, global.arank);
 drawCakeHudTopping(spr_sranktopping, global.srank);
-var hud_bounce = cakeHud.hudBounce[clamp(floor(cakeHud.image_index), 0, array_length(cakeHud.hudBounce) - 1)];
+var hud_bounce = 0;
 var point_x = cakeHud.x + cakeHud.pointX;
 var point_y = cakeHud.y + cakeHud.pointY + hud_bounce;
 var point_string = string(visual_score);

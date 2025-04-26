@@ -10,7 +10,7 @@ if (ds_list_find_index(global.SaveRoom, id) == -1)
 		var ordinals = ["prompt_ord_first", "prompt_ord_second", "prompt_ord_third"];
 		with obj_hudManager
 		{
-			var _string = string($"{lang_get("prompt_secret_found", [lang_get(ordinals[secret_number]), global.secretfound])}");
+			var _string = $"{lang_get("prompt_secret_found", [lang_get(ordinals[secret_number]), global.secretfound])}";
 			var time = scr_queueToolTipPrompt(_string, 300);
 			showtext = 1;
 			scr_queueTVAnimation(global.TvSprPlayer_Secret, time);

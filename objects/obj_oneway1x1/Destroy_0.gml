@@ -19,5 +19,5 @@ if instance_exists(solidid)
 }
 
 ini_open(global.SaveFileName);
-ini_write_string("PlantBlocks", string($"Block{onewayRank}"), 1);
+ini_write_string("PlantBlocks", $"Block{onewayRank}", 1);
 ini_close();

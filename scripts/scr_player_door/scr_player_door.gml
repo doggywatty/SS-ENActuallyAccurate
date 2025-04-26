@@ -40,5 +40,5 @@ function state_player_door()
 			}
 		}
 	}
-	global.ComboFreeze = 15;
+	global.ComboFreeze = 2;
 }

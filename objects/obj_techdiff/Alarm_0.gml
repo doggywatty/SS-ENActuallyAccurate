@@ -7,6 +7,7 @@ obj_camera.cameraLock = false;
 with obj_parent_player
 {
     scr_playerrespawn(false);
+	movespeed = 0;
     hsp = 0;
     vsp = 0;
     

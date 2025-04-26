@@ -3,9 +3,7 @@ if ((place_meeting(x, y, obj_donut_mines_collect) || (place_meeting(x, y, obj_pa
 {
     with instance_place(x, y, obj_parent_donut)
         instance_destroy();
-    
     ds_list_add(global.SaveRoom, id);
-    global.ComboFreeze = 15;
     global.ComboTime = 60;
     sprite_index = spr_gnomeMinerBlowingUp;
     image_index = 0;

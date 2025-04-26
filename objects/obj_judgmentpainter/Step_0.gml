@@ -1,6 +1,7 @@
 if !active
 	exit;
 
+input_speed = input_check("jump") || input_check("up");
 input_advance = input_check_pressed("jump") || input_check_pressed("up");
 var painter_sprites = ds_map_find_value(painterExpressionMap, painterMood);
 if is_struct(painter_sprites)
@@ -36,16 +37,14 @@ switch progression
 		}
 		break;
 	case 1:
+		typist.in(1, 0);
 		targetpos.x = xstart + (60 * sin(global.CurrentTime / 1000));
 		targetpos.y = ((camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0])) - sprite_height) + 4;
 		var _end_of_text = typist.get_state() >= 1;
-		if input_advance
-		{
-			if _end_of_text
-				event_user(0);
-			else
-				typist.skip();
-		}
+		if (input_advance && _end_of_text)
+			event_user(0);
+		else if (!_end_of_text && input_speed)
+			typist.in(4, 0);
 		chatty = !_end_of_text;
 		break;
 	case 2:

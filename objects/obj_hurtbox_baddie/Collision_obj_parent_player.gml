@@ -1,4 +1,3 @@
-if (!canHurtPlayer)
+if !canHurtPlayer
     exit;
-
 scr_hurtplayer(other.id);

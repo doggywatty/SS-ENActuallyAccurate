@@ -35,13 +35,14 @@ drawBaddieSprite = function(_id = id)
 		}
 		
 		var _xs = (abs(image_xscale) + squashValueX) * sign(image_xscale);
-		var _ys = image_yscale - squashValueX;
+		var _ys = yscale - squashValueX;
 		if hasSquashedY
 		{
-			_xs = image_yscale - squashValueY;
+			_xs = yscale - squashValueY;
 			_ys = (abs(image_xscale) + squashValueY) * sign(image_xscale);
 		}
-		
+		if (yscale <= -1)
+			_drawy += 47;
 		if !is_undefined(paletteSprite)
 		{
 			pal_swap_set(paletteSprite, paletteSelect, false);

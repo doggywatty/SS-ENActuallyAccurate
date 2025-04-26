@@ -12,9 +12,8 @@ for (var i = 0; i < array_length(layerArray); i++)
 			y += yShift;
 			if (!is_undefined(ds_map_find_value(global.ParallaxMap, id)))
 				script_execute_ext(ds_map_find_value(global.ParallaxMap, id).func, ds_map_find_value(global.ParallaxMap, id).args);
-			else if (!is_undefined(ds_map_find_value(global.ParallaxMap, layerName)))
-				script_execute_ext(ds_map_find_value(global.ParallaxMap, layerName).func, ds_map_find_value(global.ParallaxMap, layerName).args);
-			
+			else if (!is_undefined(ds_map_find_value(global.ParallaxMap, parallaxType)))
+				script_execute_ext(ds_map_find_value(global.ParallaxMap, parallaxType).func, ds_map_find_value(global.ParallaxMap, parallaxType).args);
 			xShift += hspeed;
 			yShift += vspeed;
 			xprevious = layer_get_x(id);

@@ -1,7 +1,7 @@
 function cutscene_lapPortal_start()
 {
 	var finished = false;
-	global.ComboFreeze = 15;
+	global.ComboFreeze = 2;
 	with obj_parent_player
 	{
 		isInLapPortal = true;
@@ -53,7 +53,7 @@ function cutscene_lapPortal_middle()
 	static portal = -4;
 
 	var finished = false;
-	global.ComboFreeze = 15;
+	global.ComboFreeze = 2;
 	with obj_parent_player
 	{
 		isInLapPortal = true;
@@ -81,7 +81,7 @@ function cutscene_lapPortal_middle()
 function cutscene_lapPortal_end()
 {
 	var finished = false;
-	global.ComboFreeze = 15;
+	global.ComboFreeze = 2;
 	with obj_parent_player
 	{
 		isInLapPortal = true;

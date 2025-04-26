@@ -50,7 +50,7 @@ livesplitInit = function()
 		buffer_write(ls_buffer, buffer_u8, MAGIC[Mi]);
 	
 	buffer_seek(ls_buffer, buffer_seek_start, 0);
-	buffer_poke(ls_buffer, MAGICsize, buffer_text, "3.0.3.1");
+	buffer_poke(ls_buffer, MAGICsize, buffer_text, "4.0.1.0");
 	buffer_poke(ls_buffer, MAGICsize + 32, buffer_string, lang_get("version"));
 	ls_buffer_start = MAGICsize + 96;
 	show_debug_message("BUFFER ADDRESS = " + string(buffer_get_address(ls_buffer)));
@@ -70,15 +70,16 @@ makeString = function(str1, str2, str3)
 {
 	var s_str = "";
 	var m_str = "";
-	var dsec_str = string_format(str3 / 60, 1, 3);
+	var dsec_prec = global.option_speedrun_timer ? 3 : 2;
+	var dsec_str = string_format(str3 / 60, 1, dsec_prec);
 	dsec_str = string_delete(dsec_str, 1, 2);
 	
-	while (string_length(dsec_str) != 3)
+	while (string_length(dsec_str) != dsec_prec)
 	{
 		var len = string_length(dsec_str);
-		if (len < 3)
+		if (len < dsec_prec)
 			dsec_str += "0";
-		else if (len > 3)
+		else if (len > dsec_prec)
 			dsec_str = string_delete(dsec_str, string_length(dsec_str), 1);
 	}
 	
@@ -86,27 +87,27 @@ makeString = function(str1, str2, str3)
 	str1 = floor(str1 + floor(s_real / 60));
 	s_real = s_real % 60;
 	if (s_real < 10)
-		s_str = string($"0{s_real}");
+		s_str = $"0{s_real}";
 	else
 		s_str = string(s_real);
 	
 	var hours = floor(str1 / 60);
 	str1 %= 60;
 	if (str1 < 10)
-		m_str = string($"0{str1}");
+		m_str = $"0{str1}";
 	else
 		m_str = string(str1);
 	
 	var days = floor(hours / 24);
 	hours = hours % 24;
 	if (hours < 10)
-		hours = string($"0{hours}");
+		hours = $"0{hours}";
 	else
 		hours = string(hours);
 	
-	var timer_string = string($"{hours}:{m_str}:{s_str}.{dsec_str}");
+	var timer_string = $"{hours}:{m_str}:{s_str}.{dsec_str}";
 	if (days > 0)
-		timer_string = string($"{days}:{timer_string}");
+		timer_string = $"{days}:{timer_string}";
 	return timer_string;
 };
 

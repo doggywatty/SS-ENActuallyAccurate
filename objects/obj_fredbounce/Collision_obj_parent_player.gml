@@ -1,6 +1,7 @@
 with other
 {
-	if ((state == States.minecart || state == States.minecart_bump || (state == States.minecart_launched && vsp > 0)) && !other.holdingPlayer)
+	if ((state == States.minecart || state == States.minecart_bump || (state == States.minecart_launched
+	&& vsp > 0)) && !other.holdingPlayer && !global.freezeframe)
 	{
 		var _x = x;
 		var _y = y;

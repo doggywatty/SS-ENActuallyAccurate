@@ -28,6 +28,7 @@ function scr_escapebgs()
         layer_change_background(bg_minecaverns4, bg_minecaverns4_escape);
         layer_change_background(bg_minecavernsFG, bg_minecavernsFG_escape);
         layer_change_background(fg_molasses_rain, fg_molasses_rain_escape);
+		layer_change_background(bg_molassesforestsky, bg_molassesforestsky_Escape);		
         layer_change_background(bg_molassesTemple_sky, bg_molassesTemple_sky_escape);
         layer_change_tileset(ts_mountain1_night, ts_mountain1_day);
         layer_change_background(bg_fudgetop2_foreground, bg_fudgetop2_foreground_escape);

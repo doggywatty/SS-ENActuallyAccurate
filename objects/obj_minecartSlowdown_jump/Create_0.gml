@@ -1,6 +1,6 @@
-canCollide = function(player = obj_parent_player)
+canCollide = function(stpl, player = obj_parent_player)
 {
-    switch player
+	switch player.object_index
     {
         case obj_parent_player:
         case obj_player1:

@@ -8,7 +8,8 @@ if (ds_list_find_index(global.SaveRoom, id) == -1)
     {
         other.solidid = id;
         image_xscale = other.image_xscale;
-        image_yscale = other.sprite_height / 32;
+		image_yscale = (other.bbox_bottom - other.bbox_top) / 64;
+		sprite_index = spr_onewaysolidMASK;
         mask_index = spr_onewaysolidMASK;
     }
 }

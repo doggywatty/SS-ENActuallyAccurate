@@ -1,6 +1,9 @@
 if !loaded
 	exit;
 
+var _percent = filePercentage[selectedFile];
+var _mag = floor(abs(fileDisplayPercent - _percent) / 10);
+fileDisplayPercent = approach(fileDisplayPercent, _percent, max(_mag, 5));
 if !blockedInputs
 {
 	scr_getinput_menu();
@@ -9,8 +12,7 @@ if !blockedInputs
 }
 
 flashbuffer = min(flashbuffer - 1, 0);
-
-if (!flashbuffer)
+if !flashbuffer
 {
 	flashshake[0] = 0;
 	flashshake[1] = 0;
@@ -42,7 +44,7 @@ for (var i = 0; i < array_length(fileSelectHeightRatio); i++)
 }
 
 lightsOn = image_index == 4 || image_index > 6;
-var bg_asset = layer_sprite_get_id(layer_get_id("Assets_1"), "graphic_5C74AFEA");
+var bg_asset = layer_sprite_get_id(layer_get_id("Assets_1_Lang"), "graphic_E598CAF");
 layer_sprite_index(bg_asset, lightsOn);
 painterIndex += 0.35;
 
@@ -102,12 +104,13 @@ if (array_contains(saves_left, saves_sprite) || array_contains(saves_right, save
 	}
 }
 
+var play_emptyfile_sound = false;
 var _stepsDynamic, old_mouseX, old_mouseY;
-
 if (abletomove && !blockedInputs && !activated)
 {
 	if (!instance_exists(obj_option) && !instance_exists(obj_fileDeleter) && !instance_exists(obj_exitGame))
 	{
+		play_emptyfile_sound = !fileOpened[selectedFile];		
 		selectedFile += (key_right2 + key_left2);
 		
 		if (selectedFile < 0)
@@ -116,16 +119,10 @@ if (abletomove && !blockedInputs && !activated)
 			selectedFile = 0;
 		
 		if (key_right2 || -key_left2)
-			event_play_oneshot("event:/SFX/general/paperballhit");
-		
-		if (filePercentage[selectedFile] <= 0)
 		{
-			if !event_instance_isplaying(sndEmpty)
-				fmod_studio_event_instance_start(sndEmpty);
+			event_play_oneshot("event:/SFX/general/paperballhit");
+			fileDisplayPercent = 0;
 		}
-		else
-			fmod_studio_event_instance_stop(sndEmpty, true);
-		
 		if key_jump
 		{
 			with obj_music
@@ -136,10 +133,6 @@ if (abletomove && !blockedInputs && !activated)
 					fmod_studio_event_instance_stop(global.RoomMusic.secretMusicInst, true);
 				}
 			}
-			
-			if (event_instance_isplaying(sndEmpty))
-				fmod_studio_event_instance_stop(sndEmpty, true);
-			
 			event_play_oneshot("event:/SFX/general/collectbig");
 			event_play_oneshot("event:/SFX/fileselect/fileselect");
 			blockedInputs = true;
@@ -149,13 +142,13 @@ if (abletomove && !blockedInputs && !activated)
 			fileSelectHeightRatio[selectedFile] = 1;
 			ds_queue_clear(saves_queue);
 		}
-		else if (key_start2)
+		else if key_start2
 		{
 			blockedInputs = true;
 			instance_create(0, 0, obj_option);
 			exit;
 		}
-		else if (key_slap2)
+		else if key_slap2
 		{
 			blockedInputs = true;
 			instance_create(0, 0, obj_exitGame);
@@ -174,37 +167,31 @@ if (abletomove && !blockedInputs && !activated)
 	
 	old_mouseX = mouseX;
 	old_mouseY = mouseY;
-	mouseX = device_mouse_x_to_gui(0);
-	mouseY = device_mouse_y_to_gui(0);
+	mouseX = get_mouse_x_screen(0);
+	mouseY = get_mouse_y_screen(0);
 	_stepsDynamic = point_distance(old_mouseX, old_mouseY, mouseX, mouseY);
-	
 	if (_stepsDynamic < 1)
 		_stepsDynamic = 1;
-	
 	_stepsDynamic = round(_stepsDynamic);
 	var _scrollMove = mouse_wheel_up() - mouse_wheel_down();
 	lineWidth += _scrollMove;
 	lineWidth = round(clamp(lineWidth, 1, 20));
 }
 
-var _color = mouse_check_button(mb_right) ? c_white : 5183024;
+var _color = mouse_check_button(mb_right) ? c_white : #30164f;
 doodle_surface_manage();
-
 for (var i = 0; i < array_length(fileDoodleSurf); i++)
 {
 	fileDoodlePos[i][1] = (125 - round(60 * fileSelectHeightRatio[i])) + 23;
 	var _grid_x = fileDoodlePos[i][0];
 	var _grid_y = fileDoodlePos[i][1];
-	
 	if (surface_exists(fileDoodleSurf[i]) && (mouse_check_button(mb_left) || mouse_check_button(mb_right)) && abletomove && !blockedInputs && !activated)
 	{
 		surface_set_target(fileDoodleSurf[i]);
-		
 		for (var z = 0; z < _stepsDynamic; z++)
 		{
 			_xx = round(lerp(old_mouseX - _grid_x, mouseX - _grid_x, z / _stepsDynamic));
 			_yy = round(lerp(old_mouseY - _grid_y, mouseY - _grid_y, z / _stepsDynamic));
-			
 			if ((_xx >= 0 && _xx <= fileDoodleW) && (_yy >= 0 && _yy <= fileDoodleH))
 			{
 				draw_circle_color(_xx, _yy, lineWidth, _color, _color, false);
@@ -218,12 +205,21 @@ for (var i = 0; i < array_length(fileDoodleSurf); i++)
 	
 	var _xx = mouseX - _grid_x;
 	var _yy = mouseY - _grid_y;
-	
-	if ((_xx >= 0 && _xx <= fileDoodleW) && (_yy >= 0 && _yy <= fileDoodleH))
-		previewalpha = lerp(previewalpha, 1, 0.3);
-	else
-		previewalpha = lerp(previewalpha, 0, 0.3);
-	
 	if (!(abletomove && !blockedInputs && !activated))
 		previewalpha = 0;
+	else if ((_xx >= 0 && _xx <= fileDoodleW) && (_yy >= 0 && _yy <= fileDoodleH))
+	{
+		global.DefaultCursor = -3;
+		previewalpha = lerp(previewalpha, 1, 0.3);
+	}
+	else
+		previewalpha = lerp(previewalpha, 0, 0.3);
+}	
+
+if play_emptyfile_sound
+{
+	if !event_instance_isplaying(sndEmpty)
+		fmod_studio_event_instance_start(sndEmpty);
 }
+else if event_instance_isplaying(sndEmpty)
+	fmod_studio_event_instance_stop(sndEmpty, true);

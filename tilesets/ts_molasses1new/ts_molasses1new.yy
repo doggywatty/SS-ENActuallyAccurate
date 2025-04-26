@@ -24,7 +24,7 @@
     "name": "Molasses",
     "path": "texturegroups/Molasses",
   },
-  "tile_count": 2250,
+  "tile_count": 2256,
   "tileAnimation": {
     "FrameData": [
       0,
@@ -2277,6 +2277,12 @@
       2247,
       2248,
       2249,
+      2250,
+      2251,
+      2252,
+      2253,
+      2254,
+      2255,
     ],
     "SerialiseFrameCount": 1,
   },

@@ -2,7 +2,6 @@ scr_queueTVAnimation(global.TvSprPlayer_Happy, 150);
 global.Collect += 3000;
 global.PizzaMeter += 5;
 create_small_number(x, y, "3000");
-global.ComboFreeze = 15;
 global.ComboTime = 60;
 global.Treasure = true;
 with playerID

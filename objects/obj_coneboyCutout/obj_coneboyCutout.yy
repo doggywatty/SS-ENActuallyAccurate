@@ -19,7 +19,7 @@
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
   "physicsFriction": 0.2,
-  "physicsGroup": 1,
+  "physicsGroup": 0,
   "physicsKinematic": false,
   "physicsLinearDamping": 0.1,
   "physicsObject": false,
@@ -38,5 +38,8 @@
     "name": "spr_player_mask",
     "path": "sprites/spr_player_mask/spr_player_mask.yy",
   },
+  "tags": [
+    "Enemies",
+  ],
   "visible": true,
 }

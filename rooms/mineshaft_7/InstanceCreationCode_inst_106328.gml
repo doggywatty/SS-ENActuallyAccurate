@@ -1,1 +1,1 @@
-targetDoor = "S";
+targetRoom = mineshaft_7B;

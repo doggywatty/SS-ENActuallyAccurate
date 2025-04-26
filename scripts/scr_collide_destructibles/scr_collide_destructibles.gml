@@ -55,7 +55,9 @@ function scr_collide_destructibles()
 		check_and_destroy(x + xscale, y, obj_destructibles);
 	}
 	
-	if ((state == States.machroll && sprite_index == spr_dive) || (state == States.cotton && momentum && movespeed >= 12) || state == States.wallkick || state == States.geyser || state == States.cottondig || state == States.fling_launch)
+	if ((state == States.cotton && ((momentum && movespeed >= 12) || sprite_index == spr_player_PZ_werecotton_spin))
+	|| state == States.wallkick || state == States.geyser || state == States.cottondig
+	|| state == States.fling_launch)
 	{
 		check_and_destroy(x + hsp, y + vsp, obj_destructibles);
 		check_and_destroy(x + sign(hsp), y + sign(vsp), obj_destructibles);
@@ -76,20 +78,22 @@ function scr_collide_destructibles()
 			check_and_destroy(x, y + sign(vsp), obj_metalblock);
 			check_and_destroy(x, y + 1, obj_metalblock);
 		}
-		
 		check_and_destroy(x, y + vsp, obj_destructibles);
 		check_and_destroy(x, y + sign(vsp), obj_destructibles);
 		check_and_destroy(x, y + vsp + 2, obj_destructibles);
 	}
 	
-	if ((state == States.jump || state == States.Sjump || state == States.mach2 || state == States.mach3 || state == States.wallkick) && vsp <= grav)
+	if ((state == States.jump || state == States.Sjump || state == States.mach2 || state == States.mach3
+	|| state == States.wallkick) && vsp <= grav)
 	{
 		var ceiling_hit_head = check_and_destroy(x, y - 1, obj_destructibles, dont_break_worms);
-		if (ceiling_hit_head && (state == States.jump || state == States.mach2 || state == States.mach3) && !place_meeting(x, y - 1, obj_destructibles))
+		if (ceiling_hit_head && (state == States.jump || state == States.mach2 || state == States.mach3)
+		&& !place_meeting(x, y - 1, obj_destructibles))
 		{
 			vsp = grav;
 			jumpStop = true;
 		}
+		check_and_destroy(x, y - 1, obj_gummyWormBump);		
 	}
 	
 	if (state == States.grabdash)
@@ -104,17 +108,14 @@ function scr_collide_destructibles()
 			}
 		}
 	}
-	
 	if (state == States.machslide || state == States.climbwall)
 		check_and_destroy(x + sign(hsp), y + sign(vsp), obj_parent_clutterDestroyable);
-	
 	if (state == States.jump || state == States.normal)
 	{
 		check_and_destroy(x, y + 1, obj_parent_clutterDestroyable);
 		check_and_destroy(x, y + vsp, obj_parent_clutterDestroyable);
 		check_and_destroy(x, y + sign(vsp), obj_parent_clutterDestroyable);
 	}
-	
 	mask_index = old_mask;
 }
 

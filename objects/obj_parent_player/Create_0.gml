@@ -47,7 +47,7 @@ comboTitle = -4;
 scr_initinput();
 scr_getinput();
 frozenState = 0;
-frozenSpriteIndex = spr_player_PP_ACS;
+frozenSpriteIndex = spr_null;
 frozenImageIndex = 0;
 frozenImageSpeed = 0.35;
 frozenMoveSpeed = 0;

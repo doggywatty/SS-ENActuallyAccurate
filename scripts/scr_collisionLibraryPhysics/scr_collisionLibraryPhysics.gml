@@ -28,6 +28,7 @@ function scr_collision()
 	grounded = false;
 	groundedSlope = false;
 	onMovingPlatform = -4;
+	scr_movingPlatformsUpdate();	
 	var conveyor_hsp = 0;
 	if useConveyorFlag
 		conveyor_hsp = conveyorHsp;
@@ -126,6 +127,11 @@ function scr_collision()
 	}
 	prevHsp = hsp;
 	prevVsp = vsp;
+}
+
+// @desc Updates the MOVING PLATFORMS.
+function scr_movingPlatformsUpdate()
+{
 }
 
 /// @desc Handles movement of object affected by MOVING PLATFORMS.

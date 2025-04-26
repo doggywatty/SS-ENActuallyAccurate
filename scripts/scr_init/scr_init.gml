@@ -2,9 +2,10 @@ global.scribble_saved_profile = "[pPrompt]";
 
 function scribble_quick_button(button)
 {
-	return string($"[c_white]{get_control_sprite(button)}{global.scribble_saved_profile}");
+	return $"[c_white]{get_control_sprite(button)}{global.scribble_saved_profile}";
 }
 
+global.DefaultCursor = 0;
 scribble_add_macro("kL", function()
 {
 	return scribble_quick_button("left");
@@ -56,30 +57,42 @@ scribble_add_macro("kBCK", function()
 scribble_add_macro("pNPC", function()
 {
 	global.scribble_saved_profile = "[pNPC]";
-	return "[spr_npc_font][c_black]";
+	return "[npcfont][c_black]";
 });
 scribble_add_macro("pPrompt", function()
 {
 	global.scribble_saved_profile = "[pPrompt]";
-	return "[spr_promptfont][c_white]";
+	return "[promptfont][c_white]";
 });
 scribble_add_macro("iSl", function()
 {
 	return scr_getDialogIcon("SLUGGY", "c_white", "c_white");
 });
+scribble_add_macro("iGH", function()
+{
+	return scr_getDialogIcon("HARRY", "c_white", "c_white");
+});
 scribble_add_macro("iCw", function()
 {
 	return scr_getDialogIcon("COTTONWITCH", "c_white", "c_white");
 });
-
+scribble_add_macro("iGu", function()
+{
+	return scr_getDialogIcon("GUARDIAN", "c_white", "c_white");
+});
+scribble_add_macro("iFf", function()
+{
+	return scr_getDialogIcon("FLINGFROG", "c_white", "c_white");
+});
 global.allTexturePages = [
 	"Default", "Player", "Baddies", "HUD", "Backgrounds", "Unused", "Devs", 
 	"Entryway", "Cottontown", "Mines", "Molasses", "Hub", "Structure", "Cafe", "Fudgetop", "Sucrose",
 	"geyserwaves", "effectsGroup", "titleGroup", "testingGroup"
 ];
-global.MainMenuRefresh = false;
+global.langUpdated = false;
 randomize();
 global.RandomSeed = random_get_seed();
+global.GLOBAL_FUN = 0;
 
 function scr_gameInit()
 {
@@ -113,6 +126,7 @@ function scr_gameInit()
 	global.SaveFileName = "saveData1.ini";
 	global.NewFile = false;
 	global.PainterTopperIndex = irandom_range(0, sprite_get_number(spr_paintertopper) - 1);
+	global.PreviousRoom = rm_missing;	
 	global.RespawnBlockMoving = false;
 	global.challengemode = 0;
 	global.erank = 0;
@@ -158,29 +172,6 @@ function scr_gameInit()
 	global.CurrentTime = current_time;
 	global.minesProgress = false;
 	global.cutsceneManager = -4;
-	global.font = __scribble_font_add_sprite_ext(spr_font, "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ!¡.,1234567890:?¿ÁÉÍÓÚ", 1, 0);
-	global.smallfont = __scribble_font_add_sprite_ext(spr_smallfont, "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ.?!¡1234567890\"-:ÁÉÍÓÚ_", 1, 0);
-	global.smalltimerfont = __scribble_font_add_sprite_ext(spr_smalltimerfont, ".1234567890:", 1, 0);
-	global.creditsfont = __scribble_font_add_sprite_ext(spr_creditsfont, " ABCDEFGHIJKLMNOPQRSTUVWXYZ.!,abcdefghijklmnopqrstuvwxyz0123456789@#$%^&*(){}[]|:;'/`", 1, 0);
-	global.collectfont = __scribble_font_add_sprite_ext(spr_fontcollect, "0123456789", 1, 0);
-	global.candlefont = __scribble_font_add_sprite_ext(spr_fontcandle, "0123456789", 1, 0);
-	global.candleBigFont = __scribble_font_add_sprite_ext(spr_fontBigCandle, "0123456789", 1, 0);
-	global.rankcombofont = __scribble_font_add_sprite_ext(spr_fontrankcombo, "0123456789", 1, 0);
-	global.bubblefont = __scribble_font_add_sprite_ext(spr_bubblefont, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.!<>'?()[]", 1, 0);
-	global.npcsmallfont = __scribble_font_add_sprite_ext(spr_npcsmallfont, "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz!¡.,:0123456789'?¿-\"ÁÉÍÓÚáéíóú", true, 1);
-	global.timerfont = __scribble_font_add_sprite_ext(spr_timer_font, "1234567890", 0, 6);
-	global.combofont = __scribble_font_add_sprite_ext(spr_tvHUD_comboFont, "0123456789", 1, 2);
-	global.lapfont = __scribble_font_add_sprite_ext(spr_lap_font, "0123456789", 1, 2);
-	global.dialogfont = __scribble_font_add_sprite_ext(spr_font_dialogue, "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz,.!¡?¿:;\"`'/-_+=1234567890@#$%^&*()[]ÁÉÍÓÚáéíóú", 1, 2);
-	global.percentageFont = __scribble_font_add_sprite_ext(spr_fontPercentage, "1234567890%", 1, 2);
-	global.buttonfont = __scribble_font_add_sprite_ext(spr_buttonfont, "ABCDEFGHIJKLMNOPQRSTUVWXYZ$%&*()/", 1, 0);
-	global.promptfont = __scribble_font_add_sprite_ext(spr_promptfont, "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz.,:!¡0123456789?¿'\"ÁÉÍÓÚáéíóú_-[]▼()&#风雨廊桥전태양*яиБжидГзвбнль", 1, 0);
-	global.npcfont = __scribble_font_add_sprite_ext(spr_npcfont, "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz!¡,.:0123456789'?¿-()\"ÁÉÍÓÚáéíóú/", 1, 2);
-	global.cafefont = __scribble_font_add_sprite_ext(spr_cafefontbig, "0123456789:", 1, 0);
-	global.cafefontsmall = __scribble_font_add_sprite_ext(spr_cafefontsmall, "0123456789:", 1, 0);
-	global.keyDrawFont = __scribble_font_add_sprite_ext(spr_keyDrawFont, "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+=-*'`,./\\{];", true, 0);
-	global.MoneyFont = __scribble_font_add_sprite_ext(spr_moneyFont, "0123456789$-", true, 0);
-	global.smallnumberfont = __scribble_font_add_sprite_ext(spr_smallnumber, "1234567890-+", true, 0);
 	global.shellactivate = false;
 	global.showcollisions = false;
 	global.showtiles = true;
@@ -209,11 +200,11 @@ function scr_gameInit()
 	global.targetCamX = 0;
 	global.targetCamY = 0;
 	global.resolutions = [
-		[480, 270], [960, 540], [1024, 576], [1280, 720], [1600, 900], [1920, 1080]
+		[480, 270], [640, 360], [960, 540], [1024, 576], [1280, 720], [1600, 900], [1920, 1080],
+		[2560, 1440], [3840, 2160]
 	];
 	init_option();
 	scr_judgment_init();
-	gml_release_mode(global.DebugMode == DebugType.Dev);
 	global.doorsave = ds_list_create();
 	global.afterimage_list = ds_list_create();
 	global.doorindex = 0;

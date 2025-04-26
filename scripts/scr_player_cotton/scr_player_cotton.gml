@@ -7,7 +7,7 @@ function state_player_cotton()
 		vsp = 0;
 		movespeed = 0;
 		image_speed = 0.35;
-		global.ComboFreeze = 15;
+		global.ComboFreeze = 5;
 		if sprite_animation_end()
 		{
 			camera_shake_add(5, 10);
@@ -23,7 +23,7 @@ function state_player_cotton()
 		vsp = 0;
 		movespeed = 0;
 		image_speed = 0.35;
-		global.ComboFreeze = 15;
+		global.ComboFreeze = 5;
 		if sprite_animation_end()
 			sprite_index = spr_cottonIdle;
 		exit;

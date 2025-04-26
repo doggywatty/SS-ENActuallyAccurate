@@ -24,7 +24,7 @@
     "name": "Hub",
     "path": "texturegroups/Hub",
   },
-  "tile_count": 780,
+  "tile_count": 784,
   "tileAnimation": {
     "FrameData": [
       0,
@@ -807,6 +807,10 @@
       777,
       778,
       779,
+      780,
+      781,
+      782,
+      783,
     ],
     "SerialiseFrameCount": 1,
   },

@@ -1,7 +1,8 @@
 var next_room = firstRoom ? room_first : room;
 do
 	next_room = room_next(next_room);
-until (next_room == room_last || next_room == -1 || scr_roomcheck(next_room));
+until
+	(next_room == room_last || next_room == -1 || scr_roomcheck(next_room));
 
 if (next_room == room_last || next_room == -1)
 {

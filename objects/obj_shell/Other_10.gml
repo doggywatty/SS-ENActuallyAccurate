@@ -62,7 +62,7 @@ variable_global_set("sh_help", function(args) {
 				} else {
 					terminator = "\n";
 				}
-				output += functionName + terminator;
+				output += function_name + terminator;
 			}
 		}
 		return output;

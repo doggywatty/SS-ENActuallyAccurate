@@ -1,5 +1,5 @@
 image_alpha = 0;
-depth = -6;
+depth = -50;
 playerID = -4;
 gemCount = 0;
 leaveTimer = 60;

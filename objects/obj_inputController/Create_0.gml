@@ -29,8 +29,9 @@ disconnected_bg = [new subSprite(bg_controllerdisconnect).setFunction(function()
 }), new subSprite(bg_controllerdisconnect_dark), new subSprite(bg_controllerdisconnect_smells),
 	new subSprite(bg_controllerdisconnect_icon1), new subSprite(bg_controllerdisconnect_icon2),
 	new subSprite(bg_controllerdisconnect_text1), new subSprite(bg_controllerdisconnect_text2),
-	new subSprite(bg_controllerdisconnect_text3), new subSprite(bg_controllerdisconnect_text4),
-	new subSprite(bg_controllerdisconnect_text5)
+	new subSprite(lang_get_sprite(bg_controllerdisconnect_text3)),
+	new subSprite(lang_get_sprite(bg_controllerdisconnect_text4)),
+	new subSprite(lang_get_sprite(bg_controllerdisconnect_text5))
 ];
 
 global.PlayerInputDevice = -2;

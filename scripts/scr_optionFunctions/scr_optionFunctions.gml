@@ -67,6 +67,16 @@ function option_goto(_optionMenu, _optionSelected = 0)
 	event_user(0);
 }
 
+function option_create_confirm(_previousValue, _confirmFunc, _resetFunc)
+{
+	return instance_create(0, 0, obj_option_confirm, 
+	{
+		previousValue: _previousValue,
+		confirmFunc: _confirmFunc,
+		resetFunc: _resetFunc
+	});
+}
+
 function draw_option(_x, _y, _string, _color)
 {
 	draw_set_color(c_white);
@@ -76,11 +86,44 @@ function draw_option(_x, _y, _string, _color)
 	draw_set_color(c_white);
 }
 
+function update_option_format(_ver, _num)
+{
+	switch _ver
+	{
+		case 0:
+			if (ini_key_exists("Settings", "resolution"))
+			{
+				var cur_res = ini_read_real("Settings", "resolution", 1);
+				if (cur_res > 0)
+					ini_write_real("Settings", "opt_resolution", cur_res + 1);
+				global.selectedResolution = cur_res + 1;
+			}
+			
+			if (ini_key_exists("Settings", "timer") || ini_key_exists("Settings", "timertype"))
+			{
+				var cur_timer_type = ini_read_real("Settings", "timertype", 2);
+				var timer_enabled = ini_read_real("Settings", "timer", 1);
+				if !timer_enabled
+				{
+					ini_write_real("Settings", "opt_timerType", 0);
+					global.option_timer_type = 0;
+				}
+				else
+				{
+					ini_write_real("Settings", "opt_timerType", cur_timer_type + 1);
+					global.option_timer_type = cur_timer_type + 1;
+				}
+			}
+			break;
+	}
+}
+
 function init_option()
 {
 	ini_open("optionData.ini");
 	global.fullscreen = ini_read_real("Settings", "fullscrn", 0);
-	global.selectedResolution = ini_read_real("Settings", "resolution", 1);
+	global.selectedResolution = ini_read_real("Settings", "opt_resolution", 2);
+	global.Letterbox = ini_read_real("Settings", "letterbox", 0);
 	global.smoothcam = false;
 	global.hitstunEnabled = true;
 	global.Vsync = ini_read_real("Settings", "vsync", 1);
@@ -92,7 +135,8 @@ function init_option()
 	global.lowperformance = false;
 	global.TextureFiltering = ini_read_real("Settings", "TextureFiltering", 0);
 	global.unfocusedMute = ini_read_real("Settings", "unfocusmute", 1);
-	global.toggleTimer = ini_read_real("Settings", "timer", 1);
+	global.musicAttenuation = ini_read_real("Settings", "musicAttenuation", 0);
+	global.toggleTimer = 1;
 	global.controllerVibration = ini_read_real("Settings", "vibration", 1);
 	global.musicVolume = ini_read_real("Settings", "musicvol", 0.9);
 	global.dialogueVolume = ini_read_real("Settings", "dialoguevol", 1);
@@ -104,8 +148,18 @@ function init_option()
 	global.option_groundpound_key = ini_read_real("Settings", "dgroundpoundkey", 1);
 	global.option_groundpound_gp = ini_read_real("Settings", "dgroundpoundgp", 1);
 	global.option_speedrun_timer = ini_read_real("Settings", "timerspeedrun", 0);
-	global.option_timer_type = ini_read_real("Settings", "timertype", 2);
+	global.option_timer_type = ini_read_real("Settings", "opt_timerType", 3);
 	global.option_livesplit_enabled = ini_read_real("Settings", "livesplit", 0);
+	var cur_version = ini_read_real("FileFormat", "version", 0);
+	if (cur_version > 1)
+		show_debug_message($"WARNING: optionData.ini Version: {cur_version} is higher than game's expected optionData.ini version: {1}. Tomfoolery afoot.");
+	if (!ini_section_exists("FileFormat") || !ini_key_exists("FileFormat", "version") || cur_version < 1)
+	{
+		show_debug_message($"ALERT: Updating optionData.ini version... {cur_version} to {1}");
+		ini_write_real("FileFormat", "version", 1);
+		update_option_format(cur_version, 1);
+	}
+		
 	ini_close();
 	scr_setinput_init();
 	scr_input_create();
@@ -125,6 +179,8 @@ function quick_write_option(_section, _key, _strvalue)
 	else
 		ini_write_real(_section, _key, _strvalue);
 	ini_close();
+	with obj_option
+		changedAnyOption = true;	
 }
 
 function create_option_menu(_centered, _backto, _options, _xpad = camera_get_view_width(view_camera[0]) / 2, _ypad = 150, _textpad = 25)

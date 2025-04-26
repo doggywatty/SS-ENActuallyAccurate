@@ -60,6 +60,5 @@ function state_player_victory()
 			other.x = approach(other.x, (x - sprite_xoffset) + (sprite_width / 2), 2);
 	}
 	
-	global.ComboFreeze = 15;
-	global.ComboTime = 60;
+	global.ComboFreeze = 2;
 }

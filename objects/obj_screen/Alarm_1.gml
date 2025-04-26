@@ -1,1 +1,1 @@
-gameframe_set_fullscreen(global.fullscreen);
+gameframe_set_fullscreen(1);

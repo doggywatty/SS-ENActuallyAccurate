@@ -4,6 +4,7 @@ fadespeed = 0.1;
 gotonoplayer = 0;
 loaded = false;
 unloaded = false;
+lang_flushed = false;
 loading_text = false;
 titleCard = false;
 groupArr = [];
@@ -21,4 +22,5 @@ else
 	unloaded = true;
 
 alarm[0] = 5;
+alarm[2] = 2;
 depth = -998;

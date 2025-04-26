@@ -4,7 +4,7 @@ if (state == States.normal)
 	var yy = string_height(txt);
 	var length = array_length(hub_array);
 	draw_set_halign(fa_center);
-	draw_set_font(global.font);
+	draw_set_font(global.fontDefault);
 	if !surface_exists(surface2)
 		surface2 = surface_create(480, 240);
 	
@@ -28,7 +28,7 @@ if (state == States.normal)
 else if (state == States.titlescreen)
 {
 	draw_sprite_tiled(bg_menuTile, -1, drawx++, drawy++);
-	draw_set_font(global.font);
+	draw_set_font(global.fontDefault);
 	draw_set_halign(fa_center);
 	var msg = "I CANT DRAW! \nPUT A CUTSCENE HERE";
 	draw_text(480 + random_range(1, -1), 270 - (string_height(msg) / 2), msg);

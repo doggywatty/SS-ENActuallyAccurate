@@ -1,3 +1,9 @@
+if !markedForDeath
+{
+	var _state = global.freezeframe ? frozenState : state;
+	wasInAir = _state == States.titlescreen && !grounded;
+}
+
 event_inherited();
 canGetScared = grounded && state != States.titlescreen && state != States.burrow;
 enemyAttack_TriggerEvent();

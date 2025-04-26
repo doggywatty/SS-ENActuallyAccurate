@@ -1,3 +1,4 @@
+event_perform_object(obj_parent_enemy, ev_create, 0);
 depth = 0;
 isFlyingEnemy = false;
 canSpawnStunBird = true;

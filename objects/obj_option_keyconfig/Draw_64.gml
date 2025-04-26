@@ -1,4 +1,4 @@
-draw_set_font(global.font);
+draw_set_font(global.fontDefault);
 draw_set_alpha(1);
 draw_set_halign(fa_left);
 draw_set_valign(fa_middle);
@@ -22,8 +22,8 @@ for (var i = 0; i < array_length(inputs); i++)
 	if (ci.iconIndex > -1)
 		draw_sprite_ext(spr_optionBindings, ci.iconIndex, dx, dy, 1, 1, 0, c_hover, 1);
 	else
-		scribble(ci.text).align(0, 1).starting_format(font_get_name(global.font), c_hover).wrap(300).draw(dx - 16, dy);
-	
+		scribble(ci.text).align(0, 1).starting_format(font_get_name(global.fontDefault), c_hover).wrap(300).draw(dx - 16, dy);
+
 	ci.draw(928, dy, c_hover);
 }
 
@@ -39,28 +39,19 @@ if (reading || exiting)
 		draw_text_color(480, 270, lang_get("opt_keyconfig_inputprompt"), c_white, c_white, c_white, c_white, 1);
 	else
 	{
-		scribble(lang_get("opt_keyconfig_cancel")).starting_format(font_get_name(global.font), (select2 == 0) ? c_white : c_gray).align(1, 1).draw(480, 135);
-		scribble(lang_get("opt_keyconfig_deny")).starting_format(font_get_name(global.font), (select2 == 1) ? c_white : c_gray).align(1, 1).draw(480, 270);
-		scribble(lang_get("opt_keyconfig_save")).starting_format(font_get_name(global.font), (select2 == 2) ? c_white : c_gray).align(1, 1).draw(480, 405);
+		scribble(lang_get("opt_keyconfig_cancel")).starting_format(font_get_name(global.fontDefault), (select2 == 0) ? c_white : c_gray).align(1, 1).draw(480, 135);
+		scribble(lang_get("opt_keyconfig_deny")).starting_format(font_get_name(global.fontDefault), (select2 == 1) ? c_white : c_gray).align(1, 1).draw(480, 270);
+		scribble(lang_get("opt_keyconfig_save")).starting_format(font_get_name(global.fontDefault), (select2 == 2) ? c_white : c_gray).align(1, 1).draw(480, 405);
 	}
 }
 else
 {
-	draw_set_halign(fa_left);
-	draw_set_valign(fa_middle);
-	draw_set_color(c_white);
 	draw_set_alpha(1);
-	
-	var ty = 348;
-	draw_text_scribble(32, ty, string($"{lang_get("opt_keyconfig_bind")}:"));
-	draw_control_sprite(gamepad ? "menuconfirmC" : "menuconfirm", 224, ty);
-	
-	ty += (gamepad ? 64 : 50);
-	draw_text_scribble(32, ty, string($"{lang_get("opt_keyconfig_clear")}:"));
-	draw_control_sprite(gamepad ? "menudeleteC" : "menudelete", 224, ty);
-	
-	ty += (gamepad ? 64 : 50);
-	draw_text_scribble(32, ty, string($"{lang_get("opt_keyconfig_reset")}:"));
-	scribble("[spr_keyDrawFont][spr_key_empty]").align(1, 1).draw(224, ty);
-	scribble("F1").align(1, 1).starting_format(font_get_name(global.keyDrawFont), 0).draw(224, ty);
+	var ty = 415;
+	var menu_text = [lang_get("opt_keyconfig_bind"), lang_get("opt_keyconfig_clear"), lang_get("opt_keyconfig_reset")];
+	menu_text[0] += $": [c_white]{get_control_sprite(gamepad ? "menuconfirmC" : "menuconfirm")}";
+	menu_text[1] += $": [c_white]{get_control_sprite(gamepad ? "menudeleteC" : "menudelete")}";
+	menu_text[2] += ": [c_white][spr_key_empty][keyDrawFont][offset,-23,0]F1[offsetPop]";
+	var final_text = $"{menu_text[0]}\n{menu_text[1]}\n{menu_text[2]}";
+	scribble(final_text).starting_format(font_get_name(global.fontDefault), c_white).align(0, 1).line_spacing(gamepad ? "125%" : "150%").draw(25, ty);
 }

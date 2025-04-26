@@ -35,6 +35,14 @@ function scr_getDialogIcon(_dialogIcon, color1 = "c_white", color2 = "c_black")
 			spr = "spr_icon_dialog";
 			ind = "6";
 			break;
+		case "GUARDIAN":
+			spr = "spr_icon_dialog";
+			ind = "7";
+			break;
+		case "FLINGFROG":
+			spr = "spr_icon_dialog";
+			ind = "8";
+			break;			
 	}
-	return string($"[{color1}][{spr}, {ind}][{color2}]");
+	return $"[{color1}][{spr}, {ind}][{color2}]";
 }

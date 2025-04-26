@@ -10,7 +10,6 @@ if (other.state != States.actor && sprite_index == spr_lappingportal_idle && glo
         sprite_index = spr_lappingportal_enter;
     }
     event_play_oneshot("event:/SFX/general/lapenter", x, y);
-    global.ComboFreeze = 50;
     global.ComboTime = 60;
     global.Collect += 3000;
     create_small_number(x, y, "3000");

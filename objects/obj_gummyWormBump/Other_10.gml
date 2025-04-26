@@ -2,7 +2,7 @@ if (clone && instance_exists(realBump) && place_meeting(x, y, realBump))
 	exit;
 if (DestroyedBy.object_index == obj_parent_player || DestroyedBy.object_index == obj_player1 || DestroyedBy.object_index == obj_player2)
 {
-	if ((place_meeting(x, y - DestroyedBy.vsp, DestroyedBy) || place_meeting(x, y - sign(DestroyedBy.vsp), DestroyedBy)) && DestroyedBy.state == States.jump)
+	if (DestroyedBy.state == States.jump)
 	{
 	}
 	else if (place_meeting(x - DestroyedBy.hsp, y, DestroyedBy) && DestroyedBy.state == States.grabdash)

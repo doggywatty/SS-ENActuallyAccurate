@@ -137,7 +137,7 @@ function cutscene_secretPortal_start()
 {
 	var portal = cutscene_get_actor("SECRETPORTAL");
 	var finished = false;
-	global.ComboFreeze = 15;
+	global.ComboFreeze = 2;
 	scr_queueTVAnimation(global.TvSprPlayer_Secret, 80);
 	
 	with obj_parent_player
@@ -195,7 +195,7 @@ function cutscene_secretPortal_middle()
 {
 	var portal = cutscene_get_actor("SECRETPORTAL");
 	var finished = true;
-	global.ComboFreeze = 15;
+	global.ComboFreeze = 2;
 	
 	with obj_parent_player
 	{
@@ -224,7 +224,15 @@ function cutscene_secretPortal_preend()
 	static portal = -4;
 	
 	var finished = false;
-	global.ComboFreeze = 15;
+	global.ComboFreeze = 2;
+	if room == hub_soundTest
+	{
+		with obj_visualizer
+		{
+			var target_y = lerp(bottomY, topY, 0);
+			y = lerp(y, target_y, 0.3);
+		}
+	}
 	
 	with obj_parent_player
 	{
@@ -259,10 +267,11 @@ function cutscene_secretPortal_end()
 	
 	var portal = cutscene_get_actor("EXITPORTAL");
 	var finished = false;
-	global.ComboFreeze = 15;
+	global.ComboFreeze = 2;
 	
 	with obj_parent_player
 	{
+		visible = true;
 		isInSecretPortal = true;
 		image_speed = 0.35;
 		
@@ -307,7 +316,7 @@ function cutscene_secretPortal_end()
 			scale = 1;
 			
 			repeat 5
-				instance_create(x, y, obj_secretpoof);
+				create_radiating_particle(x, y, spr_secretpoof);
 			
 			if !place_meeting(x, y, obj_tilePaintSplatter)
 			{

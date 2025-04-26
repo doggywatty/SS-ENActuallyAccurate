@@ -107,14 +107,15 @@ enum Characters
 enum OptionMenu
 {
 	Base = 0,
-	Video = 1,
-	Audio = 2,
-	Game = 3,
-	Language = 4,
-	Controls = 5,
-	Keyboard = 6,
-	Gamepad = 7,
-	Deadzones = 8
+	Audio = 1,
+	Video = 2,
+	Window = 3,
+	Game = 4,
+	Language = 5,
+	Controls = 6,
+	Keyboard = 7,
+	Gamepad = 8,
+	Deadzones = 9
 }
 
 enum OldOptionType
@@ -302,6 +303,14 @@ enum UnknownTitlecard
 	Six,
 	Seven,
 	Eight
+}
+
+enum LetterboxMode
+{
+	Off,
+	Simple,
+	Doodle,
+	Dynamic
 }
 
 #macro isDemo 0 + 1

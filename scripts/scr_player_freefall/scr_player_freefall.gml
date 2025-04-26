@@ -8,6 +8,7 @@ function state_player_freefall()
 		exit;
 	
 	landAnim = true;
+	var is_divebomb = sprite_index == spr_diveBombstart || sprite_index == spr_diveBombfall;
 	if (vsp >= 2)
 	{
 		vsp += 0.5;
@@ -48,30 +49,20 @@ function state_player_freefall()
 			movespeed -= 0.05;
 		if (movespeed == 0)
 			momentum = false;
-		if ((move == 0 && !momentum) || scr_solid(x + hsp, y))
+		if (move != dir && move != 0)
 		{
+			dir = move;
 			movespeed = 0;
-			machTwo = 0;
 		}
+		if ((move == 0 && !momentum) || scr_solid(x + hsp, y))
+			movespeed = 0;		
 		if (move != 0 && movespeed < 7)
 			movespeed += 0.25;
 		if (movespeed > 7)
 			movespeed -= 0.05;
 		if (scr_solid(x + move, y) && move != 0)
 			movespeed = 0;
-		if (dir != xscale)
-		{
-			machTwo = 0;
-			dir = xscale;
-			movespeed = 0;
-		}
-		if (move == -xscale)
-		{
-			machTwo = 0;
-			movespeed = 0;
-			momentum = false;
-		}
-		if (move != 0)
+		if (move != 0 && !is_divebomb)
 			xscale = move;
 	}
 	if (sprite_index != spr_player_PZ_fall_outOfControl)

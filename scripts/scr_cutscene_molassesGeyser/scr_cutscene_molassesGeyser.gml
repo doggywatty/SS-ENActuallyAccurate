@@ -2,7 +2,7 @@ function cutscene_geyser_start()
 {
 	var geyser = cutscene_get_actor("GEYSER");
 	var finished = false;
-	global.ComboFreeze = 15;
+	global.ComboFreeze = 2;
 	obj_camera.chargeCameraX = 0;
 	with obj_parent_player
 	{
@@ -29,7 +29,7 @@ function cutscene_geyser_middle()
 {
 	var geyser = cutscene_get_actor("GEYSER");
 	var finished = false;
-	global.ComboFreeze = 15;
+	global.ComboFreeze = 2;
 	with obj_parent_player
 	{
 		state = States.actor;
@@ -60,7 +60,7 @@ function cutscene_geyser_end()
 {
 	var geyser = cutscene_get_actor("GEYSER");
 	var finished = false;
-	global.ComboFreeze = 15;
+	global.ComboFreeze = 2;
 	with obj_parent_player
 	{
 		sprite_index = spr_player_PZ_geyser;

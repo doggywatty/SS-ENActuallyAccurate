@@ -223,11 +223,11 @@ if (isOpen) {
 						// Enable mouse detection
 						var y1_col = y1 + (i * em_height);
 						var y2_col = y1 + (i * em_height) + em_height - 1 + autocompletePadding;
-						if (point_in_rectangle(device_mouse_x_to_gui(0) - 1, device_mouse_y_to_gui(0) - 1, x1, y1_col, x2, y2_col)) {
-							if (device_mouse_x_to_gui(0) != mousePreviousX || device_mouse_y_to_gui(0) != mousePreviousY) {
+						if (point_in_rectangle(get_mouse_x_screen(0) - 1, get_mouse_y_screen(0) - 1, x1, y1_col, x2, y2_col)) {
+							if (get_mouse_x_screen(0) != mousePreviousX || get_mouse_y_screen(0) != mousePreviousY) {
 								suggestionIndex = i + autocompleteScrollPosition;
-								mousePreviousX = device_mouse_x_to_gui(0);
-								mousePreviousY = device_mouse_y_to_gui(0);
+								mousePreviousX = get_mouse_x_screen(0);
+								mousePreviousY = get_mouse_y_screen(0);
 							}
 							if (mouse_check_button_pressed(mb_left)) {
 								if (suggestionIndex == i + autocompleteScrollPosition) {

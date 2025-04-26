@@ -1,6 +1,6 @@
 event_inherited();
 
-canCollide = function(player = obj_parent_player)
+canCollide = function(stpl, player = obj_parent_player)
 {
     return false;
 };

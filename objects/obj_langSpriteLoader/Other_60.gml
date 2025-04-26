@@ -7,10 +7,10 @@ if is_undefined(sDict)
 var s = asset_get_index(sDict);
 var sp = sprite_get_speed(s);
 var spT = sprite_get_speed_type(s);
-var xoff = sprite_get_xoffset(s);
-var yoff = sprite_get_yoffset(s);
-sprite_set_offset(sID, xoff, yoff);
+var xoff = sprite_get_xoffset(sID);
+var yoff = sprite_get_yoffset(sID);
 sprite_set_speed(sID, sp, spT);
 ds_map_set(global.langSprites, s, sID);
+ds_map_set(global.langSpriteKeys, sID, s);
 trace($"Set localized sprite for {sDict}, ID: {sID}, Offset: ({xoff}, {yoff})");
 lang_sprite_check_persistence(s, sID);

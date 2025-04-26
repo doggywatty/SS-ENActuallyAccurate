@@ -19,9 +19,9 @@ if disconnectScreen
 	if disconnectScreen || !device_found
 		_prefix = "controller_disconnect";
 	
-	_tex = string($"{lang_get(_prefix)} - {lang_get("controller_prompt", ["start"])} - ");
+	_tex = $"{lang_get(_prefix)} - {lang_get("controller_prompt", ["start"])} - ";
 	_tex = string_upper(_tex);
-	draw_set_font(global.font);
+	draw_set_font(global.fontDefault);
 	var _height = string_height("A");
 	var _str_length = string_width(_tex);
 	draw_rectangle_color(0, camera_get_view_height(view_camera[0]), camera_get_view_width(view_camera[0]), camera_get_view_height(view_camera[0]) - _height - 2, c_black, c_black, c_black, c_black, false);

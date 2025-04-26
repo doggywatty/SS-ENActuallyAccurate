@@ -52,7 +52,7 @@ function state_player_climbwall()
 		conveyorHsp = -6 * xscale;
 	}
 	
-	if !place_meeting_collision(x + xscale, y)
+	if !place_meeting_collision(x + xscale, y, Exclude.SLOPES)
 	{
 		instance_create(x, y, obj_jumpdust, 
 		{
@@ -60,14 +60,13 @@ function state_player_climbwall()
 		});
 		vsp = 0;
 		verticalMovespeed = max(verticalMovespeed, 6);
-		var old_x = x;
 		var old_y = y;
 		var attempt = 0;
 		while !place_meeting_collision(x + xscale, y)
 		{
 			attempt++;
 			y++;
-			if place_meeting_collision(x + xscale, y)
+			while place_meeting_collision(x + xscale, y)
 			{
 				y--;
 				if key_slap
@@ -92,10 +91,10 @@ function state_player_climbwall()
 		hsp = movespeed * xscale;
 	}
 	
-	if ((place_meeting_collision(x, y - 1, Exclude.SLOPES) && vsp <= 0)
+	if ((place_meeting_collision(x, y - 1) && vsp <= 0)
 	&& !place_meeting(x, y - 1, obj_transportBox) && !place_meeting(x, y - 1, obj_destructibles))
 	{
-		if (scr_slope_ext(x + xscale, y))
+		if (place_meeting_slope(x, y - 1))
 		{
 			vsp = 0;
 			xscale *= -1;
@@ -141,12 +140,7 @@ function state_player_climbwall()
 			hsp = movespeed;
 			dir = xscale;
 			repeat 5
-			{
-				instance_create(random_range(bbox_left, bbox_right), random_range(bbox_top, bbox_bottom), obj_secretpoof, 
-				{
-					sprite_index: spr_spinningFireParticle
-				});
-			}
+				create_radiating_particle(random_range(bbox_left, bbox_right), random_range(bbox_top, bbox_bottom), spr_spinningFireParticle);
 			with (instance_create(x, y, obj_jumpdust, 
 			{
 				playerID: id

@@ -1,4 +1,5 @@
-if (fadealpha > 1 && loaded && !fadein)
+var load_finished = loaded && unloaded && lang_flushed;
+if (fadealpha > 1 && load_finished && !fadein)
 {
 	fadein = 1;
 	var _hub_exit = false;
@@ -22,7 +23,7 @@ if (fadealpha > 1 && loaded && !fadein)
 		else
 		{
 			room_goto_fixed(rm_missing);
-			show_debug_message("Room \"" + string($"{string(target_room)}") + "\" does not exist. Sent Player to \"rm_missing\"");
+			show_debug_message("Room \"" + $"{string(target_room)}" + "\" does not exist. Sent Player to \"rm_missing\"");
 		}
 	}
 	
@@ -40,17 +41,17 @@ if (fadealpha > 1 && loaded && !fadein)
 
 if (fadein == 0)
 	fadealpha += fadespeed;
-else if (fadein == 1 && unloaded)
-	fadealpha -= fadespeed;
-
-if (fadein == 1 && fadealpha < 0)
-	instance_destroy();
-
-if (fadein == 0 && fadealpha > 1)
+if load_finished
 {
-	if (instance_exists(obj_titlecard))
-		instance_destroy(obj_titlecard);
+	if (fadein == 1)
+		fadealpha -= fadespeed;
+	if (fadein == 1 && fadealpha < 0)
+		instance_destroy();
+	if (fadein == 0 && fadealpha > 1)
+	{
+		if (instance_exists(obj_titlecard))
+			instance_destroy(obj_titlecard);
+	}
 }
-
-if (!loaded && titleCard && !fadein)
+if (!load_finished && titleCard && !fadein)
 	fadealpha = 0;

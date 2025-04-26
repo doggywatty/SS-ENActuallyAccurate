@@ -28,7 +28,6 @@ enemyDeath_SpawnDeathFX = function()
 enemyDeath_awardPoints = function()
 {
 	global.ComboTime = 60;
-	global.ComboFreeze = 15;
 	obj_parent_player.superTauntBuffer++;
 	global.Combo++;
 	var _score = 10 + floor(global.Combo / 2);

@@ -1,13 +1,3 @@
-function surface_prepare_aa_filter(_surf_filter)
-{
-	var surf_tex = surface_get_texture(_surf_filter);
-	var tw = texture_get_texel_width(surf_tex);
-	var th = texture_get_texel_height(surf_tex);
-	shader_set(shd_pixelscale);
-	gpu_set_texfilter(true);
-	shader_set_uniform_f_array(uRes, sRes);
-}
-
 function screen_draw_app_surf()
 {
 	var use_shader = false;

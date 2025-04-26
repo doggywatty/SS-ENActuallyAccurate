@@ -9,6 +9,6 @@ image_speed = 0.35;
 ini_open(global.SaveFileName);
 
 if (ini_read_string("Game", "Judgment", "none") != "none")
-    sprite_index = spr_door_mindpalace2;
+	sprite_index = spr_door_mindpalace2;
 
 ini_close();

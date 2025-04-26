@@ -1,4 +1,4 @@
-var deadID = string($"{id}Killed");
+var deadID = $"{id}Killed";
 if (ds_list_find_index(global.SaveRoom, deadID) != -1)
 	exit;
 repeat 3

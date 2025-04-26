@@ -3,4 +3,4 @@ if (sprite_index == spr_lappingportal_inactive)
 else
     draw_self();
 if (sprite_index == spr_lappingportal_idle)
-    draw_sprite_ext(spr_lappingportal_icon, 0, x, y + wave(-5, 5, 0.5, 5), 1, 1, 0, c_white, 1);
+	draw_sprite_ext(lang_get_sprite(spr_lappingportal_icon), 0, x, y + wave(-5, 5, 0.5, 5), 1, 1, 0, c_white, 1);

@@ -26,6 +26,7 @@ enemyAttack_TriggerEvent = function()
 		sprite_index = spr_boxfrog_jump;
 		image_index = 0;
 		wearingBox = false;
+		event_play_oneshot("event:/SFX/enemies/boxfrogJump", x, y);		
 	}
 };
 

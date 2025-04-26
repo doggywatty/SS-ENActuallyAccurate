@@ -88,7 +88,7 @@ addRoomMusic(steamy_1, "event:/music/w1/cottontown", "event:/music/w1/cottontown
 			break;
 	}
 	if !is_undefined(event_state)
-		fmod_studio_event_instance_set_parameter_by_name(_parameter, "state", event_state, false);
+		fmod_studio_event_instance_set_parameter_by_name(_parameter, "state", event_state, true);
 });
 addRoomMusic(molasses_1, "event:/music/w2/molasses", "event:/music/w2/molasses_secret", function(_room, _parameter, _musicFunc)
 {

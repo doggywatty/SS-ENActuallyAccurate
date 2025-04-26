@@ -1,3 +1,33 @@
+global.particleSystem = part_system_create();
+global.particlesMap = ds_map_create();
+global.particles = part_emitter_create(global.particleSystem);
+global.particleList = ds_list_create();
+global.collectParticleList = ds_list_create();
+particle_init(spr_parryeffect, 0.35, -100);
+particle_init(spr_landcloud, 0.35, 0);
+particle_init(spr_bangEffect, 0.35, 0);
+particle_init(spr_paintSplash, 0.35, 0);
+particle_init(spr_cloudEffect, 0.5, 0);
+particle_init(spr_highJumpCloud1, 0.5, 0);
+particle_init(spr_highJumpCloud2, 0.5, 0);
+particle_init(spr_jumpdust, 0.35, 0);
+particle_init(spr_genericPoofEffect, 0.35, 0);
+particle_init(spr_keyparticles, 0.35, 0);
+particle_init(spr_landcloud, 0.35, 0);
+particle_init(spr_groundpoundLandEffect, 0.35, 0);
+particle_init(spr_enemypuncheffect, 0.35, 0);
+particle_init(spr_kungfuEffect, 0.35, -99);
+particle_init(spr_stompEffect, 0.35, 0);
+particle_init(spr_grabRing, 0.35, -99);
+particle_init(spr_dirtDigEffect, 0.35, 0);
+particle_init(spr_groundPoundClouds, 0.35, 0);
+particle_init(spr_punchdust, 0.35, 0);
+particle_init(spr_poofeffect, 0.35, 0);
+particle_init(spr_teleportEffect, 0.35, 0);
+particle_init(spr_smallpoof, 0.35, 0);
+particle_init(spr_flingparticle, 0.35, 0);
+particle_init(spr_flingparticle2, 0.35, 0);
+
 function particle_init(_part, _img_spd, _depth)
 {
 	ds_map_set(global.particlesMap, _part, 
@@ -7,9 +37,9 @@ function particle_init(_part, _img_spd, _depth)
 	});
 }
 
-function create_particle(_x, _y, _spr_ind, _x1 = 0, _xscale = 1, _yscale = 1)
+function create_particle(_x, _y, _spr_ind, _x1 = 0, _xscale = 1, _yscale = 1, _curbracs = {})
 {
-	var particle_id = instance_create(_x + irandom_range(-_x1, _x1), _y + irandom_range(-_x1, _x1), obj_fade_particle);
+	var particle_id = instance_create(_x + irandom_range(-_x1, _x1), _y + irandom_range(-_x1, _x1), obj_fade_particle, _curbracs);
 	particle_id.sprite_index = _spr_ind;
 	particle_id.particle_scale(_xscale, _yscale);
 	var _Map = ds_map_find_value(global.particlesMap, _spr_ind);
@@ -19,6 +49,19 @@ function create_particle(_x, _y, _spr_ind, _x1 = 0, _xscale = 1, _yscale = 1)
 		particle_id.particle_imgspd(_Map.image_speed);
 	}
 	return particle_id;
+}
+
+function create_radiating_particle(_x, _y, _spr_ind, _img_spd = 0.25, _canRotate = true, _minSpd = 2, _maxSpd = 5, _lifeTime = -1)
+{
+	return instance_create(_x, _y, obj_radiating_particle, 
+	{
+		sprite_index: _spr_ind,
+		canRotate: _canRotate,
+		image_speed: _img_spd,
+		minSpd: _minSpd,
+		maxSpd: _maxSpd,
+		lifeTime: _lifeTime
+	});
 }
 
 function create_destroyable_smoke(x1, x2, _img_blend = #9E5402, y1 = 0, _img_xscale = 1, _img_yscale = _img_xscale)

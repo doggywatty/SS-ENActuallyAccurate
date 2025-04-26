@@ -65,7 +65,11 @@ function scr_playerrespawn(player = true, _drowned = false)
 		state = States.actor;
 	}
 	with obj_achievementTracker
-		hitInMinecart = true;
+	{
+		if (obj_parent_player.state == States.minecart || obj_parent_player.state == States.minecart_bump
+		|| obj_parent_player.state == States.minecart_launched)
+			hitInMinecart = true;
+	}
 }
 
 function scr_playerstate()
@@ -335,7 +339,7 @@ function scr_playerstate()
 			state_function = state_player_freeflight;
 			break;
 	}
-	stateName = string($"State : {state}");
+	stateName = $"State : {state}";
 	if !is_undefined(state_function)
 	{
 		state_function();

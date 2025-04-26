@@ -4,7 +4,7 @@ baddieSpriteWalk = spr_cottonwitch_walk;
 baddieSpriteStun = spr_cottonwitch_stunned;
 baddieSpriteScared = spr_cottonwitch_scared;
 baddieSpriteTurn = undefined;
-baddieSpriteHit = undefined;
+baddieSpriteHit = spr_cottonwitch_hit;
 baddieSpriteDead = spr_cottonwitch_dead;
 enemyAttackTimerMax = 300;
 
@@ -26,18 +26,20 @@ enemyState_Attack = function()
 	hsp = 0;
 	
 	if (sprite_index == spr_cottonwitch_vanish && sprite_animation_end())
+	{
 		sprite_index = spr_cottonwitch_invis;
-	
+		create_particle(x, y, spr_poofeffect);
+	}
 	if (sprite_index == spr_cottonwitch_invis)
 		vsp = 0;
-	
 	if (!place_meeting_collision(target_player.x, target_player.y) && sprite_index == spr_cottonwitch_invis)
 	{
-		instance_create(x, y, obj_poofeffect);
 		image_index = 0;
 		sprite_index = spr_cottonwitch_appear;
 		x = target_player.x;
 		y = target_player.y;
+		event_play_oneshot("event:/SFX/enemies/witchTeleport", x, y);
+		create_particle(x, y, spr_teleportEffect);
 	}
 	
 	if (sprite_index == spr_cottonwitch_appear && sprite_animation_end())

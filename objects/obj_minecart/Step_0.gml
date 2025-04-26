@@ -3,7 +3,6 @@ var player_minecart = scr_transformationCheck(_player.state) == "Minecart";
 if (place_meeting(x, y - 4, _player) && !player_minecart)
 {
 	grabbedMinecart = true;
-	global.ComboFreeze = 15;
 	_player.state = States.minecart;
 	if (_player.xscale == image_xscale)
 		_player.movespeed = clamp(_player.movespeed, 3, 12);
@@ -15,7 +14,8 @@ if (place_meeting(x, y - 4, _player) && !player_minecart)
 	_player.x = x;
 	_player.y = y;
 	_player.xscale = image_xscale;
-	
+	_player.hurted = false;
+
 	if !instance_exists(obj_poofeffect)
 		instance_create(x, y, obj_poofeffect);
 	

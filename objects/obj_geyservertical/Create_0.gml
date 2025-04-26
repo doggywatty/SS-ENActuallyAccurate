@@ -12,7 +12,7 @@ fmod_studio_event_instance_start(ambianceSND);
 
 solidCollideFunc = function(player = obj_parent_player)
 {
-	switch player
+	switch player.object_index
 	{
 		case obj_parent_player:
 		case obj_player1:
@@ -28,7 +28,7 @@ solidCollideFunc = function(player = obj_parent_player)
 
 nonsolidCollideFunc = function(player = obj_parent_player)
 {
-	switch player
+	switch player.object_index
 	{
 		case obj_parent_player:
 		case obj_player1:

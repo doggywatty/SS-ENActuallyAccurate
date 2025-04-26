@@ -5,7 +5,7 @@ bgy = 0;
 currentPage = 0;
 maxPage = 1;
 selectH = 0;
-selectV = -1;
+selectV = 0;
 taskPadX = 200;
 taskPadY = 200;
 scr_input_varinit();

@@ -17,8 +17,11 @@ if !global.freezeframe
 	{
 		if ((other.geysertimer > 0 || other.geyserPredeploy) && (!other.geyserSolid || y > other.bbox_top) && state != States.actor)
 		{
-			if (state == States.machslide || state == States.freefall || state == States.machroll
-			|| state == States.normal || state == States.jump || state == States.climbwall)
+			if (state == States.machslide || (state == States.wallkick && (key_down
+			|| sprite_index == spr_wallJumpFastFall || sprite_index == spr_wallJumpFastFallIntro))
+			|| state == States.freefall || state == States.machroll
+			|| state == States.normal || state == States.jump
+			|| state == States.climbwall)
 			{
 				sprite_index = spr_player_PZ_geyser;
 				state = States.jump;
