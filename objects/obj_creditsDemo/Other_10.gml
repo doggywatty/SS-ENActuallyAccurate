@@ -21,6 +21,7 @@ var catYou = addCategory("credits_and");
 addCredit(catSoda, "Sodamang", [spr_candysona_idle6, spr_candysona_dead6]);
 
 addCredit(catDirectors, "Fishibi", [spr_candysona_idle1, spr_candysona_dead1]);
+addCredit(catDirectors, "Glub", [spr_candysona_idle27, spr_candysona_dead27]);
 addCredit(catDirectors, "Alejandro \"LOSTMAN\" Vargas", [spr_candysona_idle21, spr_candysona_dead21]);
 addCredit(catDirectors, "MACKACHE", [spr_candysona_idle9, spr_candysona_dead9]);
 addCredit(catDirectors, "Mr. Unown", [spr_candysona_idle7, spr_candysona_dead7]);

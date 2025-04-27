@@ -6,5 +6,5 @@ else
 	draw_set_valign(fa_bottom);
 	draw_set_color(c_white);
 	draw_set_font(global.smallfont);
-	draw_text(952, 532, $"V{"4.0.1.0"}");
+	draw_text(952, 532, $"V{"4.0.1.1"}");
 }

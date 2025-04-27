@@ -1,2 +1,2 @@
-draw_text_scribble_ext(32, 500, $"[fa_left][fa_middle][npcfont][c_white]Version: {"4.0.1.0"} - Date: {date_time_string(GM_build_date)}", 900);
+draw_text_scribble_ext(32, 500, $"[fa_left][fa_middle][npcfont][c_white]Version: {"4.0.1.1"} - Date: {date_time_string(GM_build_date)}", 900);
 draw_text_scribble_ext(480, 270, string_hash_to_newline("[fa_center][fa_middle][npcfont][shake][c_red]HEY!##[c_white]This game expects you to have played Pizza Tower beforehand. Otherwise, you may have some trouble!#If you haven't played Pizza Tower...##[c_red]GO PLAY IT!##[c_white]Press any button to continue."), 900);
