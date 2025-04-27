@@ -329,6 +329,7 @@ for (var i = 0; i < array_length(global.CharacterPalette); i++)
 	surface_resize(palette_surface, array_length(char_pal_array), pal_height);
 	surface_set_target(palette_surface);
 	draw_clear_alpha(c_black, 0);
+	gpu_set_blendenable(false);	
 	draw_set_alpha(1);
 	
 	for (var z = 0; z < array_length(char_pal_array); z++)
@@ -336,21 +337,20 @@ for (var i = 0; i < array_length(global.CharacterPalette); i++)
 		var cur_index = char_pal_array[z].palColors;
 		var pal_pattern = char_pal_array[z].palTexture;
 		trace("INIT PALETTE : ", char_pal_array[z].palName);
-		
 		for (var u = 0; u < array_length(cur_index); u++)
 		{
 			var _color = cur_index[u];
 			if !is_undefined(pal_pattern) && sprite_exists(pal_pattern) && u == 1
-				draw_set_alpha(208 / 255);
+				draw_set_alpha(104 / 255);
 			if !is_undefined(_color)
 				draw_point_color(z, u, _color);
 			draw_set_alpha(1);
 		}
 	}
 	
+	gpu_set_blendenable(true);
 	surface_reset_target();
 	global.CharacterPalette[i].sprite = sprite_create_from_surface(palette_surface, 0, 0, surface_get_width(palette_surface), surface_get_height(palette_surface), false, false, 0, 0);
 	global.CharacterPalette[i].debug = ref_create(global.CharacterPalette[i], "sprite");
 }
-
 surface_free(palette_surface);

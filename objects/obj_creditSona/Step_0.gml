@@ -17,3 +17,5 @@ if dead
 		visible = false;
 	}
 }
+if (!dead && point_in_rectangle(get_mouse_x(), get_mouse_y(), bbox_left, bbox_top, bbox_right, bbox_bottom))
+	global.DefaultCursor = -21;

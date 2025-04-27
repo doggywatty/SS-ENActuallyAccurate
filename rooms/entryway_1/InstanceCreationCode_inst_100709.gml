@@ -1,1 +1,1 @@
-targetRoom = entryway_portal;
+targetRoom = entryway_2;

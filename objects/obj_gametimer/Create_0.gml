@@ -50,7 +50,7 @@ livesplitInit = function()
 		buffer_write(ls_buffer, buffer_u8, MAGIC[Mi]);
 	
 	buffer_seek(ls_buffer, buffer_seek_start, 0);
-	buffer_poke(ls_buffer, MAGICsize, buffer_text, "4.0.1.0");
+	buffer_poke(ls_buffer, MAGICsize, buffer_text, "4.0.1.1");
 	buffer_poke(ls_buffer, MAGICsize + 32, buffer_string, lang_get("version"));
 	ls_buffer_start = MAGICsize + 96;
 	show_debug_message("BUFFER ADDRESS = " + string(buffer_get_address(ls_buffer)));

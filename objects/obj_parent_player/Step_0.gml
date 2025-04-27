@@ -27,7 +27,9 @@ if (fireTrailBuffer > 0)
 	fireTrailBuffer -= ((movespeed / 24) * 26);
 if (fireTrailBuffer <= 0)
 {
-	if (movespeed >= 12 && sprite_index != spr_longJump && sprite_index != spr_longJump_intro && (state == States.mach2 || state == States.mach3 || (state == States.run && movespeed >= 12) || (state == States.machroll && mach3Roll > 0)))
+	if (movespeed >= 12 && sprite_index != spr_longJump && sprite_index != spr_longJump_intro
+	&& (state == States.mach2 || state == States.mach3 || (state == States.run && movespeed >= 12)
+	|| (state == States.machroll && mach3Roll > 0)))
 	{
 		instance_create(x, y, obj_flameCloud, 
 		{
@@ -46,7 +48,8 @@ if (abs(conveyor_hsp) > 0)
 else if (abs(conveyor_hsp) <= 0)
 	conveyorHsp = approach(conveyorHsp, 0, grounded ? 0.75 : 0.5);
 
-if (!hasSeenProgressionPrompt && (room == hub_demohallway || room == hub_paintstudio) && !instance_exists(obj_fadeoutTransition))
+if (!hasSeenProgressionPrompt && (room == hub_demohallway || room == hub_paintstudio)
+&& !instance_exists(obj_fadeoutTransition))
 {
 	hasSeenProgressionPrompt = true;
 	scr_queueToolTipPrompt(lang_get("demo_judgement_hint"));
@@ -60,7 +63,8 @@ if global.lapcount > 1
 	instance_create(x, y, obj_memLeak);
 
 var ceiling = inBackgroundLayer ? (-global.BgInstanceLayerOffset - 600) : -600;
-if ((y > (room_height + 400) || y < ceiling) && room != timesuproom && state != States.noclip && !instance_exists(obj_fadeoutTransition) && !instance_exists(obj_cutsceneManager))
+if ((y > (room_height + 400) || y < ceiling) && room != timesuproom && state != States.noclip
+&& !instance_exists(obj_fadeoutTransition) && !instance_exists(obj_cutsceneManager))
 	scr_playerrespawn();
 if (state != States.freefall && state != States.freefallprep && state != States.freefallland && state != States.superslam)
 	freeFallSmash = -14;
@@ -84,7 +88,8 @@ if !global.freezeframe
 global.ComboFreeze = clamp(global.ComboFreeze, 0, 15);
 global.ComboTime = clamp(global.ComboTime, 0, 60);
 
-if (!global.freezeframe && !instance_exists(obj_fadeoutTransition) && global.ComboFreeze <= 0)
+if (!global.freezeframe && !instance_exists(obj_fadeoutTransition)
+&& global.ComboFreeze <= 0 && !is_tutorial())
 	global.ComboTime = approach(global.ComboTime, 0, 0.15);
 
 var c_title = floor(global.Combo / 5);
