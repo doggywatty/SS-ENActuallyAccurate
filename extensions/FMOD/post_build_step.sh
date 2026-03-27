@@ -48,17 +48,8 @@ setupmacOS() {
             rm -r ${TEMP_FOLDER}
         fi
     else
-
-        # When running from CI the 'YYprojectName' will not be set use 'YYprojectPath' instead.
-        if [ -z "$YYprojectName" ]; then
-            YYprojectName=$(basename "${YYprojectPath%.*}")
-        fi
-
-        # Replace spaces with underscores (this matches the assetcompiler output)
-        YYfixedProjectName="${YYprojectName// /_}"
-
-        itemCopyTo "$SDK_CORE_SOURCE" "${YYfixedProjectName}/${YYfixedProjectName}/Supporting Files/libfmodL.dylib"
-        itemCopyTo "$SDK_STUDIO_SOURCE" "${YYfixedProjectName}/${YYfixedProjectName}/Supporting Files/libfmodstudioL.dylib"
+        itemCopyTo "$SDK_CORE_SOURCE" "${YYprojectName}/${YYprojectName}/Supporting Files/libfmodL.dylib"
+        itemCopyTo "$SDK_STUDIO_SOURCE" "${YYprojectName}/${YYprojectName}/Supporting Files/libfmodstudioL.dylib"
     fi
 }
 
@@ -80,9 +71,6 @@ setupLinux() {
     if [ -z "$YYprojectName" ]; then
         YYprojectName=$(basename "${YYprojectPath%.*}")
     fi
-
-    # Replace spaces with underscores (this matches the assetcompiler output)
-    YYfixedProjectName="${YYprojectName// /_}"
 
     fileExtract "${YYprojectName}.zip" "_temp"
 
