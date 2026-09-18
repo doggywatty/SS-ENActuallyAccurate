@@ -1,8 +1,8 @@
-if !instance_exists(obj_fadeoutTransition)
+if (!instance_exists(obj_fadeoutTransition))
 {
-    with instance_create(x, y, obj_fadeoutTransition)
-    {
-        levelStart = true;
-        titleCard = true;
-    }
+	with (instance_create(x, y, obj_fadeoutTransition))
+	{
+		levelStart = true;
+		titleCard = true;
+	}
 }

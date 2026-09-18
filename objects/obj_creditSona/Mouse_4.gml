@@ -1,1 +1,1 @@
-onClick();
+self.onClick();

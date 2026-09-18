@@ -1,5 +1,5 @@
 if (!global.ShowHUD)
-    exit;
+	exit;
 
 draw_set_font(global.MoneyFont);
 draw_set_halign(fa_center);

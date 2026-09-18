@@ -30,5 +30,8 @@
     "path": "sprites/spr_placeholder3/spr_placeholder3.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": false,
 }

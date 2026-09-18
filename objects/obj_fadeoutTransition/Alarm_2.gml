@@ -1,5 +1,4 @@
-if (!((variable_global_exists("langSpritesTemp") && array_length(global.langSpritesTemp) > 0)
-&& (titleCard || goToHub)))
+if (!((variable_global_exists("langSpritesTemp") && array_length(global.langSpritesTemp) > 0) && (titleCard || goToHub)))
 {
 	lang_flushed = true;
 	exit;
@@ -13,10 +12,12 @@ if (fadealpha < 1 && !titleCard)
 
 loading_text = true;
 var toDelete = max(15, ceil(array_length(global.langSpritesTemp) / 15));
-repeat toDelete
+
+repeat (toDelete)
 {
 	var s = array_pop(global.langSpritesTemp);
-	if !is_undefined(s)
+	
+	if (!is_undefined(s))
 		sprite_delete(s);
 }
 
@@ -26,4 +27,5 @@ if (array_length(global.langSpritesTemp) < 1)
 	lang_flushed = true;
 	exit;
 }
+
 alarm[2] = 1;

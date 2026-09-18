@@ -1,8 +1,10 @@
 accel = 0;
 canleave = 0;
 image_speed = 0;
-if (global.playerCharacter == Characters.Pizzelle)
+
+if (global.playerCharacter == characters.PZ)
 	sprite_index = spr_player_rankwait;
+
 if (global.rank != "p")
 	alarm[3] = 180;
 else
@@ -71,8 +73,10 @@ hatmsgy = 600;
 stampsnd = 0;
 inicollect = global.Collect / 30;
 collected = "0";
+
 for (var i = 0; i < 10; i++)
 	colors[i] = choose(0, 1, 2, 3, 4, 5, 6);
+
 bgx = 0;
 bgy = 0;
 bgspr = lang_get_sprite(bg_rank);
@@ -89,13 +93,15 @@ otherjandraw = 0;
 clipy = 809;
 goup = false;
 
-if global.Treasure
+if (global.Treasure)
 {
 	janspr = spr_rankrudejanitor;
 	jandraw = 1;
 }
 else
+{
 	janspr = spr_null;
+}
 
 if (global.lapcount > 0)
 {
@@ -103,18 +109,20 @@ if (global.lapcount > 0)
 	otherjandraw = 1;
 }
 else
+{
 	otherjanspr = spr_null;
+}
 
-setcolors = function(_r, _g, _b, _r2, _g2, _b2)
+setcolors = function(arg0, arg1, arg2, arg3, arg4, arg5)
 {
 	realcol = 
 	{
-		r: _r,
-		g: _g,
-		b: _b,
-		r2: _r2,
-		g2: _g2,
-		b2: _b2
+		r: arg0,
+		g: arg1,
+		b: arg2,
+		r2: arg3,
+		g2: arg4,
+		b2: arg5
 	};
 };
 

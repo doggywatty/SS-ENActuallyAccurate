@@ -12,8 +12,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Baddies",
+    "path": "folders/Objects/Baddies.yy",
   },
   "parentObjectId": {
     "name": "obj_hurtbox_baddie",
@@ -33,7 +33,7 @@
   "physicsShapePoints": [],
   "physicsStartAwake": true,
   "properties": [
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"baddieID","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"obj_null;","varType":4,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"baddieID","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"obj_null","varType":5,},
   ],
   "solid": false,
   "spriteId": {
@@ -44,5 +44,8 @@
     "name": "spr_crouchmask",
     "path": "sprites/spr_crouchmask/spr_crouchmask.yy",
   },
+  "tags": [
+    "Enemies",
+  ],
   "visible": true,
 }

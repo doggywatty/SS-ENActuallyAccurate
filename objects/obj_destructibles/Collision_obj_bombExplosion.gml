@@ -1,5 +1,5 @@
 if (other.image_index > 9)
-    exit;
+	exit;
 
 DestroyedBy = other.id;
 event_user(0);

@@ -7,6 +7,7 @@ else if (distance >= 96)
 	drawxscale = approach(drawxscale, 0.85, 0.15);
 else
 	drawxscale = approach(drawxscale, 0, 0.25);
+
 if (drawxscale == scale)
 	biggening = false;
 
@@ -16,7 +17,7 @@ drawy += lengthdir_y(16, angle);
 
 if (point_in_circle(drawx, drawy, targetx, targety, 32))
 {
-	with obj_camera
+	with (obj_camera)
 		pointCollectShake = clamp(pointCollectShake + 1, 2, 5);
 	
 	drawx = targetx;

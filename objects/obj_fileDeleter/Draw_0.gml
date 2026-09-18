@@ -4,8 +4,10 @@ draw_rectangle(-64, -64, 1024, 604, false);
 draw_set_alpha(1);
 draw_set_color(c_white);
 var _sprite = spr_fileDelete_snore;
+
 if (deleteFileBuffer > 0)
 	_sprite = spr_fileDelete_unlit;
+
 if (deleteFileBuffer > (deleteFileBufferMax / 2))
 	_sprite = spr_fileDelete;
 

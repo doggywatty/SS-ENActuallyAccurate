@@ -11,7 +11,8 @@ vsp = 0.2;
 slipped = 0;
 iceblock = new subSprite(spr_iceblock_puddle);
 paletteSprite = spr_juicePalette;
-switch global.InternalLevelName
+
+switch (global.InternalLevelName)
 {
 	case "entryway":
 		paletteSelect = 1;
@@ -30,5 +31,6 @@ switch global.InternalLevelName
 		paletteSelect = 5;
 		break;
 }
+
 depth = 10;
 perma = false;

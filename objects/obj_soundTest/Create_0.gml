@@ -4,7 +4,7 @@ pauseStatus = false;
 specialToggle = false;
 musicPlaying = false;
 
-defineMusic = function(_eventPath, _songDesc, _songComp, _special = "", _specialComp = _songComp) constructor
+defineMusic = function(arg0, arg1, arg2, arg3 = "", arg4 = arg2) constructor
 {
 	static add = function()
 	{
@@ -12,17 +12,17 @@ defineMusic = function(_eventPath, _songDesc, _songComp, _special = "", _special
 		return self;
 	};
 	
-	eventPath = _eventPath;
+	eventPath = arg0;
 	eventInstance = undefined;
 	
 	if (!is_undefined(eventPath) && is_string(eventPath))
 		eventInstance = fmod_createEventInstance(eventPath);
 	
-	songDescription = _songDesc;
-	songComposer = _songComp;
-	hasSpecial = _special != "";
-	specialDesc = _special;
-	specialComposer = _specialComp;
+	songDescription = arg1;
+	songComposer = arg2;
+	hasSpecial = arg3 != "";
+	specialDesc = arg3;
+	specialComposer = arg4;
 	return self.add();
 };
 

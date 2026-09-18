@@ -2,7 +2,8 @@ function scr_levelSet()
 {
 	randomize();
 	global.RandomSeed = random_get_seed();
-	switch global.InternalLevelName
+	
+	switch (global.InternalLevelName)
 	{
 		case "entryway":
 			global.doorindex = 1;
@@ -21,8 +22,10 @@ function scr_levelSet()
 	}
 	
 	instance_destroy(obj_endlevelfade);
+	
 	if (object_index != obj_fadeoutTransition)
 		instance_destroy(obj_fadeoutTransition);
+	
 	instance_destroy(obj_cutsceneManager);
 	instance_destroy(obj_coneball_timesUp);
 	instance_destroy(obj_snowwalkparticles);
@@ -34,11 +37,13 @@ function scr_levelSet()
 	instance_destroy(obj_collect_giver);
 	global.CafeDrawer = -4;
 	global.cutsceneManager = -4;
-	if instance_exists(obj_cutsceneManager)
+	
+	if (instance_exists(obj_cutsceneManager))
 		instance_destroy(obj_cutsceneManager);
+	
 	global.ExitGateTaunt = 0;
 	global.TransfoPrompt = "";
-	global.TransfoState = States.normal;
+	global.TransfoState = states.normal;
 	global.freezeframe = false;
 	global.greyscalefade = 0;
 	global.EscapeTime = 4000;
@@ -88,7 +93,8 @@ function scr_levelSet()
 	scr_reset_achievement_tracker();
 	scr_get_chef_tasks(global.InternalLevelName);
 	scr_get_palettes();
-	with obj_camera
+	
+	with (obj_camera)
 	{
 		global.currentrank = "D";
 		lastRank = "D";
@@ -124,7 +130,8 @@ function scr_levelSet()
 	ini_open(global.SaveFileName);
 	var pre_check = ini_read_string("Game", "Judgment", "none") == "none" && scr_check_completion();
 	ini_close();
-	with obj_parent_player
+	
+	with (obj_parent_player)
 	{
 		hasSeenProgressionPrompt = !pre_check;
 		wetTimer = 0;
@@ -162,7 +169,7 @@ function scr_levelSet()
 		groundedSlope = false;
 		targetDoor = "A";
 		fireTrailBuffer = 0;
-		state = States.comingoutdoor;
+		state = states.stunned;
 		image_index = 0;
 		sprite_index = spr_walkfront;
 		trace("Levelset");
@@ -175,8 +182,10 @@ function scr_levelSet()
 		superTauntBuffer = 0;
 		superTauntCharged = false;
 		scr_characterSprite();
+		
 		for (var i = 0; i < 11; i++)
 			alarm[i] = -1;
+		
 		grav = 0.5;
 		hsp = 0;
 		vsp = 0;
@@ -234,10 +243,12 @@ function scr_levelSet()
 	}
 	
 	global.TooltipPrompt = "";
-	with obj_hudManager
+	
+	with (obj_hudManager)
 	{
 		moveUpY = 0;
-		with HUDObject_TV
+		
+		with (HUDObject_TV)
 		{
 			y = ystart;
 			sprite_index = spr_tvHUD_turningOn;
@@ -254,21 +265,24 @@ function scr_levelSet()
 			tvDoingExpression = false;
 			tvPrevDoingExpression = tvDoingExpression;
 		}
-		with HUDObject_comboMeter
+		
+		with (HUDObject_comboMeter)
 		{
 			y = ystart;
 			displayY = displayYMax;
 		}
-		with HUDObject_timer
+		
+		with (HUDObject_timer)
 		{
 			y = ystart + 150;
 			targetEscapeTime = 0;
 			elm_coneBall.sprite_index = spr_bartimer_normalFront;
 			elm_coneBall.image_index = 0;
 			elm_coneBallText.image_index = 0;
-			elm_coneBallText.lastFrame = 0;			
+			elm_coneBallText.lastFrame = 0;
 		}
-		with HUDObject_tooltipPrompts
+		
+		with (HUDObject_tooltipPrompts)
 		{
 			y = ystart;
 			image_alpha = 0;
@@ -282,7 +296,7 @@ function scr_levelSet()
 	global.MenuNoteArraySelect = 0;
 	global.MenuNoteArray = scr_defineLevelMenuTune(global.InternalLevelName);
 	
-	with obj_music
+	with (obj_music)
 	{
 		global.RoomMusic = undefined;
 		global.RoomIsSecret = false;

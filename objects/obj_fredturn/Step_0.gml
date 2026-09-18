@@ -1,14 +1,18 @@
 var _bottom = (y + sprite_height) - peek;
-if !playerTarget
+
+if (!playerTarget)
 	_bottom = y + sprite_height;
+
 var _p = get_nearestPlayer();
+
 if (sprite_index == spr_fred_turn)
 {
-	with _p
+	with (_p)
 	{
 		if (sprite_index == spr_player_PZ_minecart_turn || sprite_index == spr_player_PZ_minecart_turnidle)
 		{
 			var _pos = 78;
+			
 			switch (floor(other.image_index))
 			{
 				case 0:
@@ -30,6 +34,7 @@ if (sprite_index == spr_fred_turn)
 			}
 			
 			x = other.x - (other.image_xscale * _pos);
+			
 			if (floor(other.image_index) >= 8)
 			{
 				event_play_oneshot("event:/SFX/general/fredbounce", x, y);
@@ -42,9 +47,9 @@ if (sprite_index == spr_fred_turn)
 		}
 	}
 	
-	if sprite_animation_end()
+	if (sprite_animation_end())
 		sprite_index = spr_fred_turnwave;
-		
+	
 	fred_y = lerp(fred_y, y, 0.3);
 	vsp = 0;
 	exit;
@@ -61,7 +66,9 @@ else
 {
 	var _tgt = clamp((_bottom - fred_y) / 100, 0, 1);
 	vsp = approach(vsp, 5 * _tgt, 0.5);
+	
 	if (sprite_index != spr_fred_turnwave || fred_y == (y + sprite_height))
 		sprite_index = spr_fred_turnidle;
 }
+
 fred_y = clamp(fred_y + vsp, y, y + sprite_height);

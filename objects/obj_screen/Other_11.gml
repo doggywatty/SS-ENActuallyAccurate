@@ -1,20 +1,23 @@
 var letterbox_spr = spr_letterboxBg_simple;
 var letterbox_ind = 0;
+
 if (room == rm_preinitializer || room == rm_initializer)
 	exit;
-switch global.Letterbox
+
+switch (global.Letterbox)
 {
 	default:
 		letterbox_spr = spr_letterboxBg_simple;
 		letterbox_ind = 0;
 		break;
-	case LetterboxMode.Doodle:
+	case (2 << 0):
 		letterbox_spr = spr_letterboxBg_doodle;
 		letterbox_ind = 0;
 		break;
-	case LetterboxMode.Dynamic:
+	case (3 << 0):
 		letterbox_spr = spr_letterboxBg_dynamic;
-		switch global.InternalLevelName
+		
+		switch (global.InternalLevelName)
 		{
 			default:
 				letterbox_ind = 0;
@@ -35,6 +38,7 @@ switch global.Letterbox
 				letterbox_ind = 5;
 				break;
 		}
+		
 		break;
 }
 

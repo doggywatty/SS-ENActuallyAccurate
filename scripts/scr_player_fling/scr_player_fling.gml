@@ -4,6 +4,7 @@ function state_player_fling()
 	hsp = 0;
 	vsp = 0;
 	global.ComboFreeze = 2;
+	
 	if (sprite_index == spr_player_PZ_flinged_start && sprite_animation_end())
 		sprite_index = spr_player_PZ_flinged;
 }
@@ -16,19 +17,21 @@ function state_player_fling_launch()
 	
 	if (sprite_index == spr_player_PZ_flinged_up_start && sprite_animation_end())
 		sprite_index = spr_player_PZ_flinged_up;
+	
 	if (sprite_index == spr_player_PZ_flinged_tilt_start && sprite_animation_end())
 		sprite_index = spr_player_PZ_flinged_tilt;
 	
 	if (flingDashTimer <= 0)
 	{
 		grav = 0.5;
+		
 		if (!grounded && vsp >= 0)
 		{
 			if (sprite_index == spr_player_PZ_flinged_straightup)
 			{
-				repeat 4
+				repeat (4)
 				{
-					with instance_create(x, y, obj_poofeffectsmall)
+					with (instance_create(x, y, obj_poofeffectsmall))
 					{
 						depth -= 5;
 						sprite_index = choose(spr_flingparticle, spr_flingparticle2);
@@ -36,8 +39,9 @@ function state_player_fling_launch()
 						vspeed = random_range(-8, 8);
 					}
 				}
+				
 				sprite_index = spr_player_PZ_geyser;
-				state = States.jump;
+				state = states.chainsawpogo;
 				jumpStop = true;
 			}
 			else if (sprite_index != spr_player_PZ_flinged_tilt_start && sprite_index != spr_player_PZ_flinged_tilt)
@@ -48,12 +52,15 @@ function state_player_fling_launch()
 		}
 	}
 	else
+	{
 		grav = 0;
+	}
+	
 	if (grounded && !place_meeting(x, y + 1, obj_destructibles))
 	{
-		repeat 4
+		repeat (4)
 		{
-			with instance_create(x, y, obj_poofeffectsmall)
+			with (instance_create(x, y, obj_poofeffectsmall))
 			{
 				depth -= 5;
 				sprite_index = choose(spr_flingparticle, spr_flingparticle2);
@@ -61,9 +68,10 @@ function state_player_fling_launch()
 				vspeed = random_range(-8, 8);
 			}
 		}
+		
 		if (abs(hsp) <= 5)
 		{
-			state = States.freefall;
+			state = states.slam;
 			movespeed = 0;
 			vsp = 12;
 			freeFallSmash = 20;
@@ -73,20 +81,22 @@ function state_player_fling_launch()
 		{
 			if (abs(hsp) <= 0 && slopeCheck(x, y))
 				xscale = -slopeMomentum_direction();
-			state = States.machroll;
+			
+			state = states.climbdownwall;
 			sprite_index = spr_crouchslip;
 			movespeed = min(abs(hsp), 12);
 			hsp = movespeed * xscale;
-			with instance_create(x, y, obj_jumpdust)
+			
+			with (instance_create(x, y, obj_jumpdust))
 				image_xscale = other.xscale;
 		}
 	}
 	
 	if (scr_solid(x, y - 1) && vsp < 0 && !place_meeting(x + hsp, y + vsp, obj_transportBox) && !place_meeting(x + hsp, y + vsp, obj_metalblock) && !place_meeting(x + hsp, y + vsp, obj_destructibles) && sprite_index != spr_superjumpCancelIntro)
 	{
-		repeat 4
+		repeat (4)
 		{
-			with instance_create(x, y, obj_poofeffectsmall)
+			with (instance_create(x, y, obj_poofeffectsmall))
 			{
 				depth -= 5;
 				sprite_index = choose(spr_flingparticle, spr_flingparticle2);
@@ -94,8 +104,9 @@ function state_player_fling_launch()
 				vspeed = random_range(-8, 8);
 			}
 		}
+		
 		sprite_index = spr_player_PZ_fall;
-		state = States.jump;
+		state = states.chainsawpogo;
 		vsp = -12;
 		verticalMovespeed = vsp;
 		freeFallSmash = 0;
@@ -103,27 +114,30 @@ function state_player_fling_launch()
 		inputBufferJump = 0;
 	}
 	
-	if (bump_wall(xscale) && !place_meeting(x + xscale, y, obj_destructibles)
-	&& !place_meeting(x + xscale, y, obj_metalblock))
+	if (bump_wall(xscale) && !place_meeting(x + xscale, y, obj_destructibles) && !place_meeting(x + xscale, y, obj_metalblock))
 	{
 		var _check = (vsp <= 0) ? 40 : 32;
 		var _ledge = snap_to_ledge(xscale, _check);
-		if !_ledge
+		
+		if (!_ledge)
 		{
 			if (!grounded || slopeCheck(x, y))
 			{
 				verticalMovespeed = movespeed;
+				
 				if (vsp > 0 && place_meeting(x + xscale, y, obj_icyWall))
 					verticalMovespeed -= vsp;
+				
 				grabClimbBuffer = 0;
-				state = States.climbwall;
+				state = states.cheesepep;
 			}
 			else
 			{
 				event_play_oneshot("event:/SFX/player/groundpound", x, y);
 				camera_shake_add(20, 40);
 				image_speed = 0.35;
-				with obj_parent_enemy
+				
+				with (obj_parent_enemy)
 				{
 					if (bbox_in_camera(id, view_camera[0]) && grounded)
 					{
@@ -134,9 +148,10 @@ function state_player_fling_launch()
 						hsp = 0;
 					}
 				}
+				
 				flash = false;
 				sprite_index = spr_mach3hitwall;
-				state = States.bump;
+				state = states.throwing;
 				hsp = -2.5 * xscale;
 				vsp = -3;
 				machTwo = 0;
@@ -145,6 +160,7 @@ function state_player_fling_launch()
 			}
 		}
 	}
-	if (state != States.fling_launch)
+	
+	if (state != states.parry)
 		grav = 0.5;
 }

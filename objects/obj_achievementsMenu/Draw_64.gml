@@ -16,8 +16,8 @@ for (var i = 0; i < rowTotal; i++)
 	var rowY = (i * taskPadY) + (camera_get_view_height(view_camera[0]) / 2) + scrollFactor;
 	var a = clamp((-rowY / 240) + 2.5, 0, 1);
 	draw_set_alpha(a);
-	
 	var nm = "";
+	
 	if (array_contains(floorArr, levelArr[i]))
 		nm = string_upper(lang_get($"floor_{levelArr[i]}"));
 	else
@@ -32,21 +32,25 @@ for (var i = 0; i < rowTotal; i++)
 	{
 		var task = taskArr[j];
 		var isSelected = rowSelected && j == selectH;
+		var c = 4210752;
 		
-		var c = c_dkgray;
-		if rowSelected
-			c = c_ltgray;
-		if isSelected
+		if (rowSelected)
+			c = 12632256;
+		
+		if (isSelected)
 		{
-			c = c_white;
+			c = 16777215;
 			task.y = round(lerp(task.y, -16, 0.3));
 		}
 		else
+		{
 			task.y = round(lerp(task.y, 0, 0.3));
+		}
 		
 		var spr = task.get("taskSprite") ?? spr_null;
 		var ind = task.get("taskIndex");
-		if !task.isCompleted
+		
+		if (!task.isCompleted)
 			ind += floor(sprite_get_number(spr) / 2);
 		
 		var xlen = (len - 1) * taskPadX;
@@ -55,7 +59,7 @@ for (var i = 0; i < rowTotal; i++)
 		var taskY = rowY + task.y + 20;
 		draw_sprite_ext(spr, ind, taskX, taskY, 1, 1, 0, c, a);
 		
-		if isSelected
+		if (isSelected)
 		{
 			array_push(textArr, lang_get(task.get("taskKey")));
 			array_push(textArr, lang_get($"{task.get("taskKey")}_desc"));
@@ -89,26 +93,29 @@ for (var i = 1; i <= array_length(outfitArr); i++)
 	var XS = (camera_get_view_width(view_camera[0]) - xlen) / 2;
 	var taskX = XS + (xind * taskPadX) + task.x + (irandom_range(-1, 1) * isSelected);
 	var taskY = rowY + task.y + (irandom_range(-1, 1) * isSelected) + 20;
+	var c = 4210752;
 	
-	var c = c_dkgray;
-	if rowSelected
-		c = c_ltgray;
-	if isSelected
+	if (rowSelected)
+		c = 12632256;
+	
+	if (isSelected)
 	{
-		c = c_white;
+		c = 16777215;
 		task.y = round(lerp(task.y, -16, 0.3));
 	}
 	else
+	{
 		task.y = round(lerp(task.y, 0, 0.3));
+	}
 	
 	var palind = 0;
 	var palpattern = -4;
 	var ind = 0;
 	
-	if !task.isCompleted
+	if (!task.isCompleted)
 		c = 0;
 	
-	switch task.get("taskKey")
+	switch (task.get("taskKey"))
 	{
 		case "palette_PZ_exhibitionred":
 			ind = 5;
@@ -160,9 +167,9 @@ for (var i = 1; i <= array_length(outfitArr); i++)
 	draw_sprite_ext(spr_outfitpatches, ind, taskX, taskY, 1, 1, 0, c, a);
 	shader_reset();
 	
-	if isSelected
+	if (isSelected)
 	{
-		if task.isCompleted
+		if (task.isCompleted)
 		{
 			array_push(textArr, lang_get(task.get("taskKey")));
 			array_push(textArr, lang_get($"{task.get("taskKey")}_desc"));

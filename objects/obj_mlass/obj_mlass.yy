@@ -12,8 +12,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Molasses",
+    "path": "folders/Objects/Molasses.yy",
   },
   "parentObjectId": {
     "name": "obj_parent_clutterSmallDestroyable",
@@ -39,5 +39,8 @@
     "path": "sprites/spr_mlass/spr_mlass.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": true,
 }

@@ -11,8 +11,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Mines",
+    "path": "folders/Objects/Mines.yy",
   },
   "parentObjectId": {
     "name": "obj_parent_door",
@@ -22,7 +22,7 @@
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
   "physicsFriction": 0.2,
-  "physicsGroup": 1,
+  "physicsGroup": 0,
   "physicsKinematic": false,
   "physicsLinearDamping": 0.1,
   "physicsObject": false,
@@ -32,10 +32,10 @@
   "physicsShapePoints": [],
   "physicsStartAwake": true,
   "properties": [
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"showDoorLight","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"true;","varType":4,},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"showDoorSprite","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"true;","varType":4,},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"escapeBlockedDoor","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"false;","varType":4,},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"doorLocked","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"false;","varType":4,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"showDoorLight","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"true","varType":3,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"showDoorSprite","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"true","varType":3,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"escapeBlockedDoor","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"false","varType":3,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"doorLocked","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"false","varType":3,},
   ],
   "solid": false,
   "spriteId": {
@@ -46,5 +46,8 @@
     "name": "spr_minesElevator",
     "path": "sprites/spr_minesElevator/spr_minesElevator.yy",
   },
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": true,
 }

@@ -1,7 +1,10 @@
 var pw = sprite_width / 2;
 var ph = sprite_height / 2;
-if !surface_exists(splatSurface)
+
+if (!surface_exists(splatSurface))
+{
 	splatSurface = surface_create(sprite_width, sprite_height);
+}
 else
 {
 	surface_set_target(splatSurface);
@@ -9,6 +12,7 @@ else
 	shader_set(shd_greyscale);
 	var fade = shader_get_uniform(shd_greyscale, "fade");
 	shader_set_uniform_f(fade, 1);
+	
 	for (var i = 0; i < array_length(tileLayerArr); i++)
 	{
 		var tile_id = layer_tilemap_get_id_fixed(tileLayerArr[i]);

@@ -5,20 +5,20 @@ reverse_output = -4;
 
 default_condition = function()
 {
-    return place_meeting(x, y, obj_parent_player);
+	return place_meeting(x, y, obj_parent_player);
 };
 
 default_output = function()
 {
-    show_debug_message("Event Trigger:" + string(id) + " - Has missing Output");
+	show_debug_message("Event Trigger:" + string(id) + " - Has missing Output");
 };
 
 flags = 
 {
-    do_once: true,
-    do_save: true,
-    do_once_per_save: false,
-    saveroom: global.SaveRoom
+	do_once: true,
+	do_save: true,
+	do_once_per_save: false,
+	saveroom: global.SaveRoom
 };
 activated = false;
 condition = default_condition;

@@ -20,8 +20,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Player",
+    "path": "folders/Objects/Player.yy",
   },
   "parentObjectId": null,
   "persistent": false,
@@ -38,11 +38,11 @@
   "physicsShapePoints": [],
   "physicsStartAwake": true,
   "properties": [
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"importantEnemy","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"false;","varType":4,},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"escapeEnemy","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"false;","varType":4,},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"eliteEnemy","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"false;","varType":4,},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"pizzanoEnemy","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"false;","varType":4,},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"escapeEnemyUnStun","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"false;","varType":4,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"importantEnemy","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"false","varType":3,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"escapeEnemy","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"false","varType":3,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"eliteEnemy","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"false","varType":3,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"pizzanoEnemy","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"false","varType":3,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"escapeEnemyUnStun","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"false","varType":3,},
   ],
   "solid": false,
   "spriteId": {

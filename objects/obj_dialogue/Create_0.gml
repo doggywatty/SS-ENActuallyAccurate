@@ -8,9 +8,9 @@ text = "ballsack";
 textheight = string_height_ext(text, 0, 800) / 96;
 
 if (textheight > 2)
-    height = textheight;
+	height = textheight;
 else
-    height = 2;
+	height = 2;
 
 mytex = spr_icepopbg;
 mytex_x = 0;

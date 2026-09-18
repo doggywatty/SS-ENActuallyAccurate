@@ -44,11 +44,11 @@ flickpwr = 0;
 flickspr = new subSprite(spr_brainpainterhandidle, 0, 0.15, false);
 flickspr.visible = false;
 continueIcon = new subSprite(spr_dialogbox_next, 0, 0.08, true);
-scribble_typists_add_event("j_painter_pose", function(arg0, Mood, arg2)
+scribble_typists_add_event("j_painter_pose", function(arg0, arg1, arg2)
 {
-	with obj_judgmentpainter
+	with (obj_judgmentpainter)
 	{
-		var _mood = string(Mood[0]);
+		var _mood = string(arg1[0]);
 		painterMood = _mood;
 	}
 });
@@ -59,6 +59,7 @@ typist.in(1, 0);
 typist.function_per_char(function()
 {
 	static buffer = 0;
+	
 	if (buffer >= 3)
 	{
 		fmod_studio_event_instance_stop(current_talk_inst, false);
@@ -67,6 +68,7 @@ typist.function_per_char(function()
 		fmod_studio_event_instance_start(current_talk_inst);
 		buffer = 0;
 	}
+	
 	buffer++;
 });
 input_advance = false;

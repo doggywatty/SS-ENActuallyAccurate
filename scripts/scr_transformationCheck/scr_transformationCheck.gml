@@ -1,76 +1,80 @@
-function scr_setTransfoTip(_transfo_state)
+function scr_setTransfoTip(arg0)
 {
-	switch _transfo_state
+	switch (arg0)
 	{
-		case States.cotton:
-		case States.cottondrill:
-		case States.cottonroll:
-		case States.cottondig:
+		case states.bossintro:
+		case (56 << 0):
+		case (57 << 0):
+		case (58 << 0):
 			global.TransfoPrompt = "prompt_werecotton";
 			break;
-		case States.minecart:
-		case States.minecart_bump:
-		case States.minecart_launched:
+		case (61 << 0):
+		case (63 << 0):
+		case (62 << 0):
 			global.TransfoPrompt = "prompt_minecart";
 			break;
-		case States.fling:
+		case (59 << 0):
 			global.TransfoPrompt = "prompt_fling";
 			break;
-		case States.fireass:
-		case States.fireassdash:
+		case (67 << 0):
+		case (68 << 0):
 			global.TransfoPrompt = "prompt_fireass";
 			break;
 		default:
 			global.TransfoPrompt = "";
 			break;
 	}
-	global.TransfoState = _transfo_state;
+	
+	global.TransfoState = arg0;
 	return global.TransfoPrompt;
 }
 
-function scr_transformationCheck(_transfo_state)
+function scr_transformationCheck(arg0)
 {
 	var transfo = undefined;
-	if _transfo_state == States.oldtaunt
-		_transfo_state = tauntStored.state;
-	switch _transfo_state
+	
+	if (arg0 == (74 << 0))
+		arg0 = tauntStored.state;
+	
+	switch (arg0)
 	{
 		default:
 			transfo = undefined;
 			break;
-		case States.tumble:
+		case (54 << 0):
 			transfo = "Ball";
 			break;
-		case States.cotton:
-		case States.cottondrill:
-		case States.cottonroll:
-		case States.cottondig:
+		case states.bossintro:
+		case (56 << 0):
+		case (57 << 0):
+		case (58 << 0):
 			transfo = "Werecotton";
 			break;
-		case States.fling:
-		case States.fling_launch:
+		case (59 << 0):
+		case (93 << 0):
 			transfo = "Fling";
 			break;
-		case States.minecart:
-		case States.minecart_bump:
-		case States.minecart_launched:
+		case (61 << 0):
+		case (63 << 0):
+		case (62 << 0):
 			transfo = "Minecart";
 			break;
-		case States.frostburnnormal:
-		case States.frostburnjump:
-		case States.frostburnslide:
-		case States.frostburnstick:
+		case (88 << 0):
+		case (90 << 0):
+		case (89 << 0):
+		case (91 << 0):
 			transfo = "Frostburn";
 			break;
-		case States.doughmount:
-		case States.doughmountspin:
-		case States.doughmountjump:
-		case States.doughmountballoon:
+		case (41 << 0):
+		case (42 << 0):
+		case (43 << 0):
+		case (44 << 0):
 			transfo = "Marshdog";
 			break;
-		case States.bottlerocket:
+		case (81 << 0):
 			transfo = "Rocket";
 			break;
 	}
+	
 	return transfo;
 }

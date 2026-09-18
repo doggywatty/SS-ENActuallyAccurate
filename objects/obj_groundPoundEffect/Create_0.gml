@@ -3,9 +3,9 @@ depth = -30;
 
 updateEffectPosition = function()
 {
-    x = playerID.x;
-    y = playerID.y + 16;
-    image_xscale = playerID.image_xscale;
+	x = playerID.x;
+	y = playerID.y + 16;
+	image_xscale = playerID.image_xscale;
 };
 
 updateEffectPosition();

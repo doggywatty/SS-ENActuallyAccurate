@@ -1,5 +1,5 @@
 if (tossCooldown > 0)
-    exit;
+	exit;
 
 event_play_oneshot("event:/SFX/general/paperballhit");
 vsp = random_range(-8, -10);

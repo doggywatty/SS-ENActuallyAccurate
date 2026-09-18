@@ -15,5 +15,6 @@ sound = -4;
 depth = -990;
 alarm[1] = 60;
 doneJingle = false;
-with obj_screen
-    event_user(0);
+
+with (obj_screen)
+	event_user(0);

@@ -1,17 +1,15 @@
-if !variable_instance_exists(self, "chefUnlockQueue")
+if (!variable_instance_exists(self, "chefUnlockQueue"))
 	chefUnlockQueue = ds_queue_create();
 
 activeChefTasks = [];
-if !variable_instance_exists(self, "persistentTasks")
+
+if (!variable_instance_exists(self, "persistentTasks"))
 	persistentTasks = [];
 else
 	activeChefTasks = array_concat(activeChefTasks, persistentTasks);
 
 activeExhibitionNightSecretTasks = [];
-constructionBreakablesRooms = [
-	entryway_1, entryway_2, entryway_3, entryway_4, entryway_5, entryway_6,
-	entryway_6b, entryway_7, entryway_8, entryway_9, entryway_10, entryway_11
-];
+constructionBreakablesRooms = [entryway_1, entryway_2, entryway_3, entryway_4, entryway_5, entryway_6, entryway_6b, entryway_7, entryway_8, entryway_9, entryway_10, entryway_11];
 constructHasSlipped = false;
 constructionClutterCleared = array_concat(constructionBreakablesRooms, [entryway_portal]);
 cottonBlocksUsed = 0;

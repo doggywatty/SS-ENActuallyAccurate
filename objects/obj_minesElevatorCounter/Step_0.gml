@@ -1,7 +1,8 @@
 count++;
 t = (t + 1) % 65535;
+
 if ((t % 6) == 0)
-    camera_shake_add(irandom(2), 1);
+	camera_shake_add(irandom(2), 1);
 
 gnome_index += 0.35;
 gnome_index %= sprite_get_number(gnome_sprite[dark]);

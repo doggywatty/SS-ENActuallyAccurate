@@ -12,8 +12,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Structure",
+    "path": "folders/Objects/Structure.yy",
   },
   "parentObjectId": null,
   "persistent": false,
@@ -39,5 +39,8 @@
     "name": "spr_secretTile_cutoff",
     "path": "sprites/spr_secretTile_cutoff/spr_secretTile_cutoff.yy",
   },
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": true,
 }

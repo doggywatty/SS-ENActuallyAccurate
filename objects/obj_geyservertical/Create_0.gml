@@ -10,15 +10,15 @@ sound = event_play_oneshot("event:/SFX/general/geyser", (x - sprite_xoffset) + (
 ambianceSND = fmod_createEventInstance("event:/SFX/general/geyserambiance");
 fmod_studio_event_instance_start(ambianceSND);
 
-solidCollideFunc = function(player = obj_parent_player)
+solidCollideFunc = function(arg0 = obj_parent_player)
 {
-	switch player.object_index
+	switch (arg0.object_index)
 	{
 		case obj_parent_player:
 		case obj_player1:
 		case obj_player2:
-			var _state = global.freezeframe ? player.frozenState : player.state;
-			return _state != States.ladder;
+			var _state = global.freezeframe ? arg0.frozenState : arg0.state;
+			return _state != states.grabbing;
 			break;
 		default:
 			return true;
@@ -26,9 +26,9 @@ solidCollideFunc = function(player = obj_parent_player)
 	}
 };
 
-nonsolidCollideFunc = function(player = obj_parent_player)
+nonsolidCollideFunc = function(arg0 = obj_parent_player)
 {
-	switch player.object_index
+	switch (arg0.object_index)
 	{
 		case obj_parent_player:
 		case obj_player1:

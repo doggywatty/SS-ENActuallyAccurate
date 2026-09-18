@@ -13,12 +13,12 @@ enemyAttack_TriggerEvent = function()
 {
 	var target_player = get_nearestPlayer();
 	var facing_xscale = -getFacingDirection(target_player.x, x);
-	if (enemyAttackTimer <= 0 && scr_enemy_playerisnear(100, 200) && !target_player.cutscene
-	&& image_xscale == facing_xscale && grounded && state == States.frozen)
+	
+	if (enemyAttackTimer <= 0 && scr_enemy_playerisnear(100, 200) && !target_player.cutscene && image_xscale == facing_xscale && grounded && state == states.frozen)
 	{
 		movespeed = 0;
 		enemyAttackTimer = enemyAttackTimerMax;
-		state = States.titlescreen;
+		state = states.titlescreen;
 		image_xscale = facing_xscale;
 		sprite_index = spr_crackerkicker_kick;
 		image_index = 0;

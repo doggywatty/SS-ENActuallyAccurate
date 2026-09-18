@@ -13,16 +13,16 @@
   "edgeFiltering": false,
   "For3D": false,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"42da778a-79a8-4f17-8bdc-7dbec460630f",},
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"4e411750-5178-454c-bdb2-6ba871e867ab",},
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"fa21a32e-bb5a-4ee1-ae88-4ea2b0b08ee8",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"b09f1fa0-ced7-4b17-8c65-5796c5d8fdb0",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"858f7d1f-0e31-4f51-a4a3-fa21e18df813",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"797222d2-afe0-4814-a600-df23566fc741",},
   ],
   "gridX": 0,
   "gridY": 0,
   "height": 100,
   "HTile": false,
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"af8f14b3-17c1-4415-ad53-bdb55142fca0","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"0e512350-9802-449d-a66f-08d4bb191fb9","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
   ],
   "nineSlice": null,
   "origin": 4,
@@ -55,10 +55,10 @@
     "showBackdropImage": false,
     "timeUnits": 1,
     "tracks": [
-      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"42da778a-79a8-4f17-8bdc-7dbec460630f","path":"sprites/spr_coneboydebris/spr_coneboydebris.yy",},},},"Disabled":false,"id":"109d35a3-1877-4988-aa1e-a7e2c9623eed","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"4e411750-5178-454c-bdb2-6ba871e867ab","path":"sprites/spr_coneboydebris/spr_coneboydebris.yy",},},},"Disabled":false,"id":"c5d892b7-d423-4ee0-8544-c2596b732c7c","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"fa21a32e-bb5a-4ee1-ae88-4ea2b0b08ee8","path":"sprites/spr_coneboydebris/spr_coneboydebris.yy",},},},"Disabled":false,"id":"4655af99-3d83-4cb1-bcfa-0894bc3d79f9","IsCreationKey":false,"Key":2.0,"Length":1.0,"Stretch":false,},
+      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":-1,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"b09f1fa0-ced7-4b17-8c65-5796c5d8fdb0","path":"sprites/spr_coneboydebris/spr_coneboydebris.yy",},},},"Disabled":false,"id":"10c817bc-51c0-4701-a99e-f60810ef1317","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"858f7d1f-0e31-4f51-a4a3-fa21e18df813","path":"sprites/spr_coneboydebris/spr_coneboydebris.yy",},},},"Disabled":false,"id":"9f6c7c6f-a47d-4b62-b3f0-6a6114c2a84c","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"797222d2-afe0-4814-a600-df23566fc741","path":"sprites/spr_coneboydebris/spr_coneboydebris.yy",},},},"Disabled":false,"id":"8e46991c-f29c-4651-bec9-09ebe2d79af9","IsCreationKey":false,"Key":2.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,

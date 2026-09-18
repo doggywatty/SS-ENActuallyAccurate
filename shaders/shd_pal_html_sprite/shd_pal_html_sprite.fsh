@@ -11,15 +11,12 @@
 #define PalHeight ColorCount * PixelSize
 #define Transparent vec4(.0,.0,.0,.0)
 #define Tolerance 0.004
-
 varying vec2 v_vTexcoord;
 varying vec4 v_vColour;
-
 uniform sampler2D u_palTexture;
 uniform vec4 u_Uvs;
 uniform float u_paletteId;
 uniform vec2 u_pixelSize;
-
 vec4 findAltColor(vec4 inCol, vec2 corner)
 {
   if(inCol.a == 0.) return Transparent;
@@ -40,7 +37,6 @@ vec4 findAltColor(vec4 inCol, vec2 corner)
   }
   return inCol;
 }
-
 void main()
 {
   vec4 col = texture2D( gm_BaseTexture, v_vTexcoord);
@@ -48,4 +44,3 @@ void main()
   col = findAltColor(col, u_Uvs.xy);
   gl_FragColor = v_vColour * col;
 }
-

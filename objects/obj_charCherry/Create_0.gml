@@ -1,5 +1,5 @@
 event_inherited();
-state = States.burrow;
+state = states.breakdance;
 canGetScared = false;
 baddieSpriteIdle = spr_charcherry_popout;
 baddieSpriteWalk = spr_charcherry_run;
@@ -11,8 +11,10 @@ baddieSpriteDead = spr_charcherry_dead;
 
 enemyDeath_SpawnBody = function()
 {
-	if (state == States.charcherryrun)
+	if (state == states.minecart)
+	{
 		instance_create(x, y, obj_bombExplosionMini);
+	}
 	else
 	{
 		instance_create(x, y, obj_bombExplosionMini, 
@@ -24,7 +26,7 @@ enemyDeath_SpawnBody = function()
 
 enemyAttack_TriggerEvent = function()
 {
-	if (scr_enemy_playerisnear(400, 60) && grounded && state == States.burrow)
+	if (scr_enemy_playerisnear(400, 60) && grounded && state == states.breakdance)
 	{
 		var _player = get_nearestPlayer();
 		image_xscale = -getFacingDirection(_player.x, x);
@@ -32,34 +34,41 @@ enemyAttack_TriggerEvent = function()
 		image_index = 0;
 	}
 };
+
 slide = 0;
+
 enemyCustomStates = function()
 {
-	switch state
+	switch (state)
 	{
-		case States.burrow:
+		case states.breakdance:
 			scr_conveyorBeltKinematics();
 			var player_object = get_nearestPlayer(x, y);
 			image_speed = 0.35;
 			hsp = 0;
+			
 			if (sprite_index == spr_charcherry_popout)
 			{
 				if (sprite_animation_end())
-					state = States.charcherryrun;
+					state = states.minecart;
+				
 				exit;
 			}
+			
 			if (grounded || place_meeting_collision(x, y + vsp))
 				sprite_index = spr_charcherry_wait;
 			else
 				sprite_index = spr_charcherry_waitair;
+			
 			enemyAttack_TriggerEvent();
 			break;
-		case States.charcherryrun:
+		case states.minecart:
 			image_speed = 0.35;
 			sprite_index = spr_charcherry_run;
 			scr_conveyorBeltKinematics();
 			var targetplayer = get_nearestPlayer(x, y);
 			var playerposition = x - targetplayer.x;
+			
 			if (x != targetplayer.x && image_xscale != -sign(playerposition))
 			{
 				movespeed = 10;
@@ -70,10 +79,13 @@ enemyCustomStates = function()
 			movespeed = approach(movespeed, 12, 0.5);
 			slide = approach(slide, 0, 0.2);
 			hsp = (image_xscale * movespeed) + slide;
+			
 			if (grounded && scr_solid(x + image_xscale, y))
 				vsp -= 8;
+			
 			if (place_meeting(x, y, targetplayer))
 				instance_destroy();
+			
 			break;
 	}
 };

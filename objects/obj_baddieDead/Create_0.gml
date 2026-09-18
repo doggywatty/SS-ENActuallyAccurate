@@ -1,5 +1,6 @@
 var player_obj = get_nearestPlayer();
 hsp = sign(x - player_obj.x) * random_range(10, 18);
+
 if (player_obj.x != x)
 	image_xscale = -sign(x - player_obj.x);
 

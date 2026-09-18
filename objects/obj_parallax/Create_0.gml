@@ -1,18 +1,22 @@
 depth = -5;
 global.ScrollOffset = 0;
 lapDeco = ds_list_create();
-if instance_number(obj_parallax) > 1
+
+if (instance_number(obj_parallax) > 1)
 {
 	var _first = instance_find(obj_parallax, 0);
-	if id != _first
+	
+	if (id != _first)
 	{
 		instance_destroy();
 		exit;
 	}
 }
+
 layerArray = [];
 var i = 5;
-repeat 5
+
+repeat (5)
 	layers[i--] = -4;
 
 asset_layers = array_create(5, undefined);
@@ -28,10 +32,10 @@ scroll1 = 0;
 RealSurface = -4;
 use_war = false;
 
-safe_layer_set_depth = function(_layer_id, _depth)
+safe_layer_set_depth = function(arg0, arg1)
 {
-	if (layer_exists(_layer_id) && number_in_range(_depth, -16000, 16000))
-		layer_depth(_layer_id, _depth);
+	if (layer_exists(arg0) && number_in_range(arg1, -16000, 16000))
+		layer_depth(arg0, arg1);
 };
 
 set_layer_depths = function()
@@ -46,6 +50,7 @@ set_layer_depths = function()
 	ds_map_set(temp_map, "Assets_Foreground", -350);
 	ds_map_set(temp_map, "Effect_", -500);
 	var a = layer_get_all();
+	
 	for (var i = 0; i < array_length(a); i++)
 	{
 		var layer_id = a[i];
@@ -53,55 +58,69 @@ set_layer_depths = function()
 		var nums = string_digits(layer_name);
 		var nums_at = string_last_pos(nums, layer_name);
 		var layer_check_name = (nums == "") ? layer_name : string_delete(layer_name, nums_at, real(nums));
+		
 		if (!is_undefined(ds_map_find_value(temp_map, layer_check_name)))
 		{
 			var sub = (string_digits(layer_name) == "") ? 0 : real(string_digits(layer_name));
 			safe_layer_set_depth(a[i], ds_map_find_value(temp_map, layer_check_name) - sub);
 		}
 	}
+	
 	ds_map_destroy(temp_map);
 };
 
-createLapDeco = function(_deco = false)
+createLapDeco = function(arg0 = false)
 {
 	if (array_length(lapDecoBag) <= 0)
 	{
 		lapDecoBag = [bg_lappingdeco1, bg_lappingdeco2, bg_lappingdeco3];
 		lapDecoBag = array_shuffle(lapDecoBag);
 	}
-	with (instance_create(irandom(room_width), _deco ? irandom(room_height) : (room_height + 276), obj_lappingdeco))
+	
+	with (instance_create(irandom(room_width), arg0 ? irandom(room_height) : (room_height + 276), obj_lappingdeco))
 	{
 		sprite_index = array_shift(other.lapDecoBag);
 		vspeed = random_range(-2, -2.5);
-		switch sprite_index
+		
+		switch (sprite_index)
 		{
-			case bg_lappingdeco2: vspeed = random_range(-1, -2); break;
-			case bg_lappingdeco3: vspeed = random_range(-0.5, -1); break;
+			case bg_lappingdeco2:
+				vspeed = random_range(-1, -2);
+				break;
+			case bg_lappingdeco3:
+				vspeed = random_range(-0.5, -1);
+				break;
 		}
 	}
 };
+
 subLayerArray = [];
-defineSublayer = function(_mainLayer, _subLayers)
+
+defineSublayer = function(arg0, arg1)
 {
 	array_push(subLayerArray, 
 	{
-		mainLayer: _mainLayer,
-		subLayers: _subLayers
+		mainLayer: arg0,
+		subLayers: arg1
 	});
 };
+
 createSubLayers = function()
 {
 	var all_layers = layer_get_all();
 	var array_len = array_length(all_layers);
 	var i = 0;
+	
 	for (var l = 0; l < array_len; l++)
 	{
 		var cur_layer = all_layers[l];
 		var layer_name = layer_get_name(cur_layer);
 		var back_id = layer_background_get_id_fixed(cur_layer);
+		
 		if (back_id != -1 && layer_get_visible(cur_layer))
 		{
 			var layer_sprite = layer_background_get_sprite(back_id);
+			
 			for (i = 0; i < array_length(subLayerArray); i++)
 			{
 				if (subLayerArray[i].mainLayer == layer_sprite)
@@ -121,6 +140,7 @@ createSubLayers = function()
 		}
 	}
 };
+
 defineSublayer(bg_cottonClock2, [bg_cottonClock2_water]);
 visualCooldown = 0;
 lapDecoBag = [];

@@ -9,8 +9,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Fudgetop",
+    "path": "folders/Objects/Fudgetop.yy",
   },
   "parentObjectId": null,
   "persistent": false,

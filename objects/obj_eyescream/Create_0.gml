@@ -3,7 +3,7 @@ grav = 0;
 hsp = 0;
 vsp = 0;
 movespeed = 1;
-state = EnemyStates.eyescreampopout;
+state = enemystates.eyescreamInitial;
 lerpamt = 0.2;
 substate = 0;
 targety = 0;
@@ -38,8 +38,10 @@ faceTowardsPlayerFunc = function()
 {
 	var target_player = get_nearestPlayer();
 	image_xscale = sign(target_player.x - x);
+	
 	if (image_xscale == 0)
 		image_xscale = target_player.image_xscale;
+	
 	if (image_xscale == 0)
 		image_xscale = 1;
 };

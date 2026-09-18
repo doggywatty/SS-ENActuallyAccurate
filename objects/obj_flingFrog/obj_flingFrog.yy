@@ -11,8 +11,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Molasses",
+    "path": "folders/Objects/Molasses.yy",
   },
   "parentObjectId": null,
   "persistent": false,
@@ -38,5 +38,8 @@
     "name": "spr_player_mask",
     "path": "sprites/spr_player_mask/spr_player_mask.yy",
   },
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": true,
 }

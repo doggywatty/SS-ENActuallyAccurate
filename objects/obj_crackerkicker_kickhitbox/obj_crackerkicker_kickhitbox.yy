@@ -9,10 +9,12 @@
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":{"name":"obj_parent_player","path":"objects/obj_parent_player/obj_parent_player.yy",},"eventNum":0,"eventType":4,"isDnD":false,},
   ],
   "managed": true,
-  "overriddenProperties": [],
+  "overriddenProperties": [
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_hurtbox_baddie","path":"objects/obj_hurtbox_baddie/obj_hurtbox_baddie.yy",},"propertyId":{"name":"baddieID","path":"objects/obj_hurtbox_baddie/obj_hurtbox_baddie.yy",},"value":"0",},
+  ],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Baddies",
+    "path": "folders/Objects/Baddies.yy",
   },
   "parentObjectId": {
     "name": "obj_hurtbox_baddie",
@@ -22,7 +24,7 @@
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
   "physicsFriction": 0.2,
-  "physicsGroup": 1,
+  "physicsGroup": 0,
   "physicsKinematic": false,
   "physicsLinearDamping": 0.1,
   "physicsObject": false,
@@ -31,9 +33,7 @@
   "physicsShape": 1,
   "physicsShapePoints": [],
   "physicsStartAwake": true,
-  "properties": [
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"baddieID","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"0;","varType":4,},
-  ],
+  "properties": [],
   "solid": false,
   "spriteId": {
     "name": "spr_crackerkicker_kickhitbox",
@@ -43,5 +43,8 @@
     "name": "spr_crackerkicker_kickhitbox",
     "path": "sprites/spr_crackerkicker_kickhitbox/spr_crackerkicker_kickhitbox.yy",
   },
+  "tags": [
+    "Enemies",
+  ],
   "visible": false,
 }

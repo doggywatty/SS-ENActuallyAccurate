@@ -7,6 +7,7 @@ function state_player_run()
 	if (hsp != 0 && grounded && vsp > 0)
 	{
 		stepBuffer--;
+		
 		if (stepBuffer <= 0 && grounded && vsp > 0)
 		{
 			stepBuffer = 16;
@@ -21,11 +22,13 @@ function state_player_run()
 	if (move != 0 && key_attack)
 	{
 		if (move == xscale)
+		{
 			movespeed = approach(movespeed, 12, 0.35);
+		}
 		else if (movespeed > 2)
 		{
 			xscale = move;
-			state = States.machslide;
+			state = states.machfreefall;
 			sprite_index = spr_runskid;
 		}
 		else
@@ -37,8 +40,9 @@ function state_player_run()
 	else
 	{
 		movespeed = approach(movespeed, 0, 0.5);
+		
 		if (grounded && movespeed <= 7)
-			state = States.normal;
+			state = states.normal;
 	}
 	
 	if (!key_jump2 && !jumpStop && vsp < 0.5)
@@ -62,7 +66,7 @@ function state_player_run()
 	
 	if (movespeed >= 12)
 	{
-		if !instance_exists(obj_chargeEffect)
+		if (!instance_exists(obj_chargeEffect))
 		{
 			instance_create(x, y, obj_chargeEffect, 
 			{
@@ -73,12 +77,14 @@ function state_player_run()
 		if (scr_solid(x + xscale, y, true) && !place_meeting(x + xscale, y, obj_destructibles) && !place_meeting(x + xscale, y, obj_metalblock))
 		{
 			var _ledge = snap_to_ledge();
-			if !_ledge
+			
+			if (!_ledge)
 			{
 				event_play_oneshot("event:/SFX/player/groundpound", x, y);
 				camera_shake_add(20, 40);
 				image_speed = 0.35;
-				with obj_parent_enemy
+				
+				with (obj_parent_enemy)
 				{
 					if (bbox_in_camera(id, view_camera[0]) && grounded)
 					{
@@ -89,10 +95,11 @@ function state_player_run()
 						hsp = 0;
 					}
 				}
+				
 				flash = false;
 				combo = 0;
 				sprite_index = spr_mach3hitwall;
-				state = States.bump;
+				state = states.throwing;
 				hsp = -2.5 * xscale;
 				vsp = -3;
 				machTwo = 0;
@@ -104,7 +111,7 @@ function state_player_run()
 	else if (scr_solid(x + xscale, y, true) && !place_meeting(x + xscale, y, obj_destructibles))
 	{
 		movespeed = 0;
-		state = States.normal;
+		state = states.normal;
 	}
 	
 	if (movespeed > 4)

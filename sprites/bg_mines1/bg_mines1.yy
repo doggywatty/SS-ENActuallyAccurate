@@ -13,16 +13,16 @@
   "edgeFiltering": false,
   "For3D": false,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"efae80d8-d68a-4a2a-82e9-9a4b11c32bb0",},
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"187a7b46-a0fd-4cf9-b78d-a70d1d8b14fa",},
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"e03efa25-ed00-4c9e-9846-aa4e3709f945",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"096c3f7e-f1cb-4df4-936c-1d9077e05e4f",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"5645d194-4143-4a93-a2a2-35c877b5ad9e",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"339cb7a5-edd2-4d96-a193-c9e64cbacbb8",},
   ],
   "gridX": 0,
   "gridY": 0,
   "height": 540,
   "HTile": false,
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"3d7a1d4d-bc94-4899-8617-7b7bfeebb4a1","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"7de9dcab-4143-4d4f-9faf-e6d6e52782fa","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
   ],
   "nineSlice": {
     "resourceType": "GMNineSliceData",
@@ -30,6 +30,7 @@
     "bottom": 0,
     "enabled": false,
     "guideColour": [
+      4294902015,
       4294902015,
       4294902015,
       4294902015,
@@ -50,8 +51,8 @@
   },
   "origin": 0,
   "parent": {
-    "name": "Sugarshack Mines",
-    "path": "folders/Sprites/Backgrounds/Sugarshack Mines.yy",
+    "name": "Mines",
+    "path": "folders/Sprites/Mines.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {
@@ -61,7 +62,7 @@
     "autoRecord": true,
     "backdropHeight": 768,
     "backdropImageOpacity": 0.5,
-    "backdropImagePath": "True",
+    "backdropImagePath": "",
     "backdropWidth": 1366,
     "backdropXOffset": 0.0,
     "backdropYOffset": 0.0,
@@ -75,13 +76,13 @@
     "playbackSpeed": 0.2,
     "playbackSpeedType": 1,
     "showBackdrop": true,
-    "showBackdropImage": true,
+    "showBackdropImage": false,
     "timeUnits": 1,
     "tracks": [
-      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"efae80d8-d68a-4a2a-82e9-9a4b11c32bb0","path":"sprites/bg_mines1/bg_mines1.yy",},},},"Disabled":false,"id":"0eeda0d7-8388-4ee9-801e-6772f84fecf5","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"187a7b46-a0fd-4cf9-b78d-a70d1d8b14fa","path":"sprites/bg_mines1/bg_mines1.yy",},},},"Disabled":false,"id":"99f7cb4b-9f24-4bfa-aece-a68db5b434d6","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"e03efa25-ed00-4c9e-9846-aa4e3709f945","path":"sprites/bg_mines1/bg_mines1.yy",},},},"Disabled":false,"id":"7722a513-b320-4e68-992c-669e5d277304","IsCreationKey":false,"Key":2.0,"Length":1.0,"Stretch":false,},
+      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":-1,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"096c3f7e-f1cb-4df4-936c-1d9077e05e4f","path":"sprites/bg_mines1/bg_mines1.yy",},},},"Disabled":false,"id":"8071b16d-2869-48ac-ad24-074062e336ec","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"5645d194-4143-4a93-a2a2-35c877b5ad9e","path":"sprites/bg_mines1/bg_mines1.yy",},},},"Disabled":false,"id":"9d7589ed-69eb-4a0e-b09d-2c41a7ea23b9","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"339cb7a5-edd2-4d96-a193-c9e64cbacbb8","path":"sprites/bg_mines1/bg_mines1.yy",},},},"Disabled":false,"id":"ecb79014-ede4-4453-a51a-0c2e69ee450f","IsCreationKey":false,"Key":2.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,

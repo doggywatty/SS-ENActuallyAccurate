@@ -12,12 +12,12 @@
   "out_tilehborder": 2,
   "out_tilevborder": 2,
   "parent": {
-    "name": "Tilesets",
-    "path": "folders/Tilesets.yy",
+    "name": "Entryway",
+    "path": "folders/Tile Sets/Entryway.yy",
   },
   "spriteId": {
-    "name": "tilespr_ts_entrywayclouds",
-    "path": "sprites/tilespr_ts_entrywayclouds/tilespr_ts_entrywayclouds.yy",
+    "name": "_decompiled_ts_entrywayclouds",
+    "path": "sprites/_decompiled_ts_entrywayclouds/_decompiled_ts_entrywayclouds.yy",
   },
   "spriteNoExport": true,
   "textureGroupId": {
@@ -1057,9 +1057,9 @@
   "tileAnimationFrames": [],
   "tileAnimationSpeed": 15.00015,
   "tileHeight": 32,
-  "tilehsep": 4,
-  "tilevsep": 4,
+  "tilehsep": 0,
+  "tilevsep": 0,
   "tileWidth": 32,
-  "tilexoff": 2,
-  "tileyoff": 2,
+  "tilexoff": 0,
+  "tileyoff": 0,
 }

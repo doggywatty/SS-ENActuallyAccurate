@@ -1,4 +1,4 @@
-if grounded
+if (grounded)
 {
 	event_play_multiple("event:/SFX/general/collect", (x - sprite_xoffset) + (sprite_width / 2), (y - sprite_yoffset) + (sprite_height / 2));
 	scr_queueTVAnimation(global.TvSprPlayer_Happy, 150);

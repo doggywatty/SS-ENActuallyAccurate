@@ -1,6 +1,6 @@
-function create_afterimage(_color, img_xscale = image_xscale, _blink = false)
+function create_afterimage(arg0, arg1 = image_xscale, arg2 = false)
 {
-	if !instance_exists(id)
+	if (!instance_exists(id))
 		exit;
 	
 	var parent = object_index;
@@ -8,30 +8,30 @@ function create_afterimage(_color, img_xscale = image_xscale, _blink = false)
 	var pal = [-4, -4];
 	var angle = afterimage_id.image_angle;
 	
-	if object_is_ancestor(parent, obj_parent_enemy)
+	if (object_is_ancestor(parent, obj_parent_enemy))
 		pal = [paletteSelect, paletteSprite];
 	
-	if object_is_ancestor(parent, obj_parent_player)
+	if (object_is_ancestor(parent, obj_parent_player))
 		angle = afterimage_id.draw_angle;
 	
 	var q = 
 	{
 		x: afterimage_id.x,
 		y: afterimage_id.y,
-		blink: _blink,
+		blink: arg2,
 		sprite_index: afterimage_id.sprite_index,
 		image_index: afterimage_id.image_index,
 		image_alpha: 1,
 		image_angle: angle,
-		image_xscale: img_xscale,
+		image_xscale: arg1,
 		image_yscale: 1,
 		visible: true,
 		alarm: [13, 30],
-		color_choose: _color,
+		color_choose: arg0,
 		hsp: 0,
 		vsp: 0,
 		identity: afterimage_id,
-		gonealpha: (_color == AfterImageType.plain) ? 0.85 : 1,
+		gonealpha: (arg0 == (0 << 0)) ? 0.85 : 1,
 		vanish: false,
 		paletteSelect: pal[0],
 		paletteSprite: pal[1],
@@ -41,43 +41,43 @@ function create_afterimage(_color, img_xscale = image_xscale, _blink = false)
 		fakeMach3Afterimage: false
 	};
 	
-	if _color == AfterImageType.baddie
+	if (arg0 == (7 << 0))
 		q.vanishSpd = 0.05;
 	
 	ds_list_add(global.afterimage_list, q);
 	return q;
 }
 
-function create_heat_afterimage(_color, img_xscale = image_xscale, verticalspd = 8)
+function create_heat_afterimage(arg0, arg1 = image_xscale, arg2 = 8)
 {
-	with create_afterimage(_color, img_xscale)
+	with (create_afterimage(arg0, arg1))
 	{
 		gonealpha = 0.85;
-		vsp = verticalspd;
+		vsp = arg2;
 		alarm[0] = 1;
 		alarm[1] = 60;
 	}
 	
-	with create_afterimage(_color, img_xscale)
+	with (create_afterimage(arg0, arg1))
 	{
 		gonealpha = 0.85;
-		vsp = -verticalspd;
+		vsp = -arg2;
 		alarm[0] = 1;
 		alarm[1] = 60;
 	}
 	
-	with create_afterimage(_color, img_xscale)
+	with (create_afterimage(arg0, arg1))
 	{
 		gonealpha = 0.85;
-		hsp = verticalspd;
+		hsp = arg2;
 		alarm[0] = 1;
 		alarm[1] = 60;
 	}
 	
-	with create_afterimage(_color, img_xscale)
+	with (create_afterimage(arg0, arg1))
 	{
 		gonealpha = 0.85;
-		hsp = -verticalspd;
+		hsp = -arg2;
 		alarm[0] = 1;
 		alarm[1] = 60;
 	}

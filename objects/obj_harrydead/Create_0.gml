@@ -4,4 +4,4 @@ grav = 0.4;
 alarm[0] = 5;
 
 if (x != obj_parent_player.x)
-    image_xscale = sign(obj_parent_player.x - x);
+	image_xscale = sign(obj_parent_player.x - x);

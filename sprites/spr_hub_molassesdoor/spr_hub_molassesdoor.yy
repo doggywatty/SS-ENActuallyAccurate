@@ -13,22 +13,22 @@
   "edgeFiltering": false,
   "For3D": false,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"afbfd146-1db6-465f-9f81-7752cb33824c",},
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"6d9561ef-24cf-4743-ae52-3af6d3caeb72",},
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"c166df3a-07c2-4388-8b05-32a3014f24d4",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"ced364dd-8f2f-4e73-bdcc-840e286fa812",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"57a700ad-3d0e-41c5-9592-c390fcc85a5d",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"eefe2d9e-a8d3-4a70-a34e-08bf396daaeb",},
   ],
   "gridX": 0,
   "gridY": 0,
   "height": 152,
   "HTile": false,
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"4755c823-9255-4931-825d-634fec636bc4","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"a9b61cda-6f4a-433a-ab52-327f88fb3438","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
   ],
   "nineSlice": null,
   "origin": 9,
   "parent": {
-    "name": "Sprites",
-    "path": "folders/Sprites.yy",
+    "name": "Hub",
+    "path": "folders/Sprites/Hub.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {
@@ -55,10 +55,10 @@
     "showBackdropImage": false,
     "timeUnits": 1,
     "tracks": [
-      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"afbfd146-1db6-465f-9f81-7752cb33824c","path":"sprites/spr_hub_molassesdoor/spr_hub_molassesdoor.yy",},},},"Disabled":false,"id":"72468470-c05b-4f92-9379-ec852bf95db8","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"6d9561ef-24cf-4743-ae52-3af6d3caeb72","path":"sprites/spr_hub_molassesdoor/spr_hub_molassesdoor.yy",},},},"Disabled":false,"id":"7955ef5b-71e3-4649-9e88-da2c1f80049c","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"c166df3a-07c2-4388-8b05-32a3014f24d4","path":"sprites/spr_hub_molassesdoor/spr_hub_molassesdoor.yy",},},},"Disabled":false,"id":"5a903db4-ce54-4333-a022-107fb3ed7929","IsCreationKey":false,"Key":2.0,"Length":1.0,"Stretch":false,},
+      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":-1,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"ced364dd-8f2f-4e73-bdcc-840e286fa812","path":"sprites/spr_hub_molassesdoor/spr_hub_molassesdoor.yy",},},},"Disabled":false,"id":"716f43da-11cd-49f3-986c-dcd4e5a663bf","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"57a700ad-3d0e-41c5-9592-c390fcc85a5d","path":"sprites/spr_hub_molassesdoor/spr_hub_molassesdoor.yy",},},},"Disabled":false,"id":"885f1ea4-2aa6-49e4-ae16-f5356aee6a76","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"eefe2d9e-a8d3-4a70-a34e-08bf396daaeb","path":"sprites/spr_hub_molassesdoor/spr_hub_molassesdoor.yy",},},},"Disabled":false,"id":"60c4e726-7f43-488f-8704-f5799ab89fcb","IsCreationKey":false,"Key":2.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,

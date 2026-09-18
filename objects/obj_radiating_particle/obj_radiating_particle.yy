@@ -11,8 +11,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "effectsGroup",
+    "path": "folders/Objects/effectsGroup.yy",
   },
   "parentObjectId": null,
   "persistent": false,
@@ -29,10 +29,10 @@
   "physicsShapePoints": [],
   "physicsStartAwake": true,
   "properties": [
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"canRotate","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"true","varType":4,},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"lifeTime","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"true","varType":4,},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"minSpd","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"2","varType":4,},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"maxSpd","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"5","varType":4,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"canRotate","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"true","varType":3,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"lifeTime","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"true","varType":3,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"minSpd","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"2","varType":1,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"maxSpd","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"5","varType":1,},
   ],
   "solid": false,
   "spriteId": {

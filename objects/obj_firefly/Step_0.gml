@@ -1,15 +1,17 @@
 if (lightIndex < 4)
 	lightIndex += 0.35;
 
-if (obj_parent_player.state == States.taunt)
+if (obj_parent_player.state == states.gottreasure)
 {
 	sprite_index = taunt_spr;
 	exit;
 }
 else
+{
 	sprite_index = idle_spr;
+}
 
-if !movebuffer--
+if (!movebuffer--)
 {
 	tgt_x = xstart + irandom_range(-range, range);
 	tgt_y = ystart + irandom_range(-range, range);

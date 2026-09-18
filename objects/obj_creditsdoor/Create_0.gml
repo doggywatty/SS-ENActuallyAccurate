@@ -7,8 +7,9 @@ var minesrank = ini_read_string("Ranks", "mines", "none");
 ini_close();
 DoorUnlock = entrywayrank != "none" && cottonrank != "none" && moleassrank != "none" && minesrank != "none";
 event_inherited();
-if !DoorUnlock
+
+if (!DoorUnlock)
 {
-	with instance_create(x, y, obj_doorblocked)
+	with (instance_create(x, y, obj_doorblocked))
 		visible = false;
 }

@@ -1,6 +1,5 @@
-if (other.state == States.crouch)
+if (other.state == states.facestomp)
 {
-    DestroyedBy = other.id;
-    event_user(0);
+	DestroyedBy = other.id;
+	event_user(0);
 }
-

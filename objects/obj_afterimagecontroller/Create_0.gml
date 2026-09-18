@@ -1,48 +1,48 @@
 depth = 1;
-color_arr[AfterImageType.plain] = 
+color_arr[(0 << 0)] = 
 {
-	light: c_white,
-	dark: c_black
+	light: 16777215,
+	dark: 0
 };
-color_arr[AfterImageType.mach3effect1] = 
+color_arr[(1 << 0)] = 
 {
-	light: #30a8f8,
-	dark: #0f3979
+	light: 16295984,
+	dark: 7944463
 };
-color_arr[AfterImageType.mach3effect2] = 
+color_arr[(2 << 0)] = 
 {
-	light: #e85098,
-	dark: #5f0920
+	light: 9982184,
+	dark: 2099551
 };
-color_arr[AfterImageType.fireass] = 
+color_arr[(3 << 0)] = 
 {
-	light: #f87018,
-	dark: #a84000
+	light: 1601784,
+	dark: 16552
 };
-color_arr[AfterImageType.pureblue] = 
+color_arr[(4 << 0)] = 
 {
-	light: #30a8f8,
-	dark: #30a8f8
+	light: 16295984,
+	dark: 16295984
 };
-color_arr[AfterImageType.purepink] = 
+color_arr[(5 << 0)] = 
 {
-	light: #e85098,
-	dark: #e85098
+	light: 9982184,
+	dark: 9982184
 };
-color_arr[AfterImageType.wallkick] = 
+color_arr[(8 << 0)] = 
 {
-	light: #872cd2,
-	dark: #200239
+	light: 13773959,
+	dark: 3736096
 };
-color_arr[AfterImageType.unknownorange] = 
+color_arr[(6 << 0)] = 
 {
-	light: #f87018,
-	dark: #f87018
+	light: 1601784,
+	dark: 1601784
 };
-color_arr[AfterImageType.baddie] = 
+color_arr[(7 << 0)] = 
 {
-	light: #e03000,
-	dark: #e03000
+	light: 12512,
+	dark: 12512
 };
 global.BlinkTrail = false;
 blinkingBuffer = 3;

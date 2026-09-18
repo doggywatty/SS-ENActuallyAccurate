@@ -12,12 +12,12 @@
   "out_tilehborder": 2,
   "out_tilevborder": 2,
   "parent": {
-    "name": "Tilesets",
-    "path": "folders/Tilesets.yy",
+    "name": "Sucrose",
+    "path": "folders/Tile Sets/Sucrose.yy",
   },
   "spriteId": {
-    "name": "tilespr_ts_teal",
-    "path": "sprites/tilespr_ts_teal/tilespr_ts_teal.yy",
+    "name": "_decompiled_ts_teal",
+    "path": "sprites/_decompiled_ts_teal/_decompiled_ts_teal.yy",
   },
   "spriteNoExport": true,
   "textureGroupId": {
@@ -357,9 +357,9 @@
   "tileAnimationFrames": [],
   "tileAnimationSpeed": 15.00015,
   "tileHeight": 32,
-  "tilehsep": 4,
-  "tilevsep": 4,
+  "tilehsep": 0,
+  "tilevsep": 0,
   "tileWidth": 32,
-  "tilexoff": 2,
-  "tileyoff": 2,
+  "tilexoff": 0,
+  "tileyoff": 0,
 }

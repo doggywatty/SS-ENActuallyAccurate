@@ -1,7 +1,8 @@
-with HUDObject_TV
+with (HUDObject_TV)
 {
 	tvBG = spr_tvHUD_bg;
-	switch global.InternalLevelName
+	
+	switch (global.InternalLevelName)
 	{
 		case "entryway":
 			tvBG_index = 0;
@@ -28,7 +29,8 @@ with HUDObject_TV
 			tvBG_index = 12;
 			break;
 	}
-	if instance_exists(obj_secretfound)
+	
+	if (instance_exists(obj_secretfound))
 	{
 		tvBG = spr_tvHUD_bg_secret;
 		tvBG_index = 0;

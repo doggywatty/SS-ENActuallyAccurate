@@ -9,8 +9,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Structure",
+    "path": "folders/Objects/Structure.yy",
   },
   "parentObjectId": {
     "name": "obj_slopePlatform",
@@ -39,5 +39,8 @@
     "name": "spr_MinecartrailSlopeEditor",
     "path": "sprites/spr_MinecartrailSlopeEditor/spr_MinecartrailSlopeEditor.yy",
   },
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": false,
 }

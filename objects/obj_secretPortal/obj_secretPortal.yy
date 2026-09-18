@@ -13,8 +13,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Structure",
+    "path": "folders/Objects/Structure.yy",
   },
   "parentObjectId": null,
   "persistent": false,
@@ -28,13 +28,18 @@
   "physicsRestitution": 0.1,
   "physicsSensor": false,
   "physicsShape": 1,
-  "physicsShapePoints": [],
+  "physicsShapePoints": [
+    {"x":-64.0,"y":-64.0,},
+    {"x":64.0,"y":-64.0,},
+    {"x":64.0,"y":64.0,},
+    {"x":-64.0,"y":64.0,},
+  ],
   "physicsStartAwake": true,
   "properties": [
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"targetRoom","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"rm_missing;","varType":4,},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"secretActivated","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"true;","varType":4,},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"functionState","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"defaultSecretState();","varType":4,},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"storedState","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"States.freefall;","varType":4,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"targetRoom","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"rm_missing","varType":5,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"secretActivated","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"true","varType":3,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"functionState","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"defaultSecretState()","varType":4,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"storedState","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"states.slam","varType":4,},
   ],
   "solid": false,
   "spriteId": {
@@ -45,5 +50,8 @@
     "name": "spr_secretPortal",
     "path": "sprites/spr_secretPortal/spr_secretPortal.yy",
   },
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": true,
 }

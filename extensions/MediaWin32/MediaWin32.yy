@@ -13,10 +13,10 @@
   "author": "",
   "classname": "",
   "copyToTargets": -1,
-  "date": "2025-04-19T17:25:38-04:00",
+  "date": "2026-09-17T23:35:17.7350319-03:00",
   "description": "",
   "exportToGame": true,
-  "extensionVersion": "1.0.0",
+  "extensionVersion": "0.0.1",
   "files": [
     {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"mediaWin32.dll","constants":[],"copyToTargets":-1,"filename":"mediaWin32.dll","final":"","functions":[
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"RegisterCallbacks","argCount":4,"args":[
@@ -49,11 +49,11 @@
   "maclinkerflags": "",
   "macsourcedir": "",
   "options": [],
-  "optionsFile": "options.json",
+  "optionsFile": null,
   "packageId": "",
   "parent": {
-    "name": "MediaWin32",
-    "path": "folders/Extensions/MediaWin32.yy",
+    "name": "Extensions",
+    "path": "folders/Extensions.yy",
   },
   "productId": "",
   "sourcedir": "",

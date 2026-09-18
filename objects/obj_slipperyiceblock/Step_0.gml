@@ -1,21 +1,24 @@
-if !global.freezeframe
+if (!global.freezeframe)
 {
 	var _player = instance_nearest(x, y, obj_parent_player);
-	if (place_meeting(x, y - 1, _player) && _player.grounded && !_player.cutscene && _player.state != States.noclip && _player.state != States.frozen)
+	
+	if (place_meeting(x, y - 1, _player) && _player.grounded && !_player.cutscene && _player.state != states.hang && _player.state != states.frozen)
 	{
-		with _player
+		with (_player)
 		{
-			if (state == States.frostburnnormal || state == States.frostburnjump || state == States.frostburnstick)
+			if (state == states.cotton || state == states.pal || state == states.shocked)
 			{
-				state = States.frostburnslide;
+				state = states.uppercut;
+				
 				if (move != 0)
 					xscale = move;
 				else if (hsp != 0)
 					xscale = sign(hsp);
 			}
-
-			if (state != States.frostburnslide)
-				state = States.slipnslide;
+			
+			if (state != states.uppercut)
+				state = states.bombpep;
+			
 			movespeed = clamp(movespeed, 12, 14);
 		}
 	}

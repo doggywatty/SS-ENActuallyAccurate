@@ -8,7 +8,7 @@ canBeStomped = true;
 canBeKilled = true;
 canBeGrabbed = true;
 canBreakBlocks = false;
-state = EnemyStates.idle;
+state = enemystates.idle;
 scr_collision_init();
 grav = 0.5;
 hitHsp = 0;
@@ -31,15 +31,15 @@ redAfterImagebufferMax = 10;
 
 enemyDeath_SpawnBody = function()
 {
-    with instance_create(x, y, obj_baddieDead)
-    {
-        canrotate = true;
-        image_xscale = other.image_xscale;
-        image_blend = other.image_blend;
-        sprite_index = other.baddieSpriteDead;
-        paletteSprite = other.paletteSprite;
-        paletteSelect = other.paletteSelect;
-    }
+	with (instance_create(x, y, obj_baddieDead))
+	{
+		canrotate = true;
+		image_xscale = other.image_xscale;
+		image_blend = other.image_blend;
+		sprite_index = other.baddieSpriteDead;
+		paletteSprite = other.paletteSprite;
+		paletteSelect = other.paletteSelect;
+	}
 };
 
 giveScore = true;
@@ -93,4 +93,3 @@ frozenGrav = 0.35;
 frozenHsp = 0;
 frozenVsp = 0;
 scr_enemySounds_init();
-

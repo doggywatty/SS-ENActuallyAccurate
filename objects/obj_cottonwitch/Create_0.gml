@@ -10,11 +10,11 @@ enemyAttackTimerMax = 300;
 
 enemyAttack_TriggerEvent = function()
 {
-	if (enemyAttackTimer <= 0 && scr_enemy_playerisnear(410, 130) && state == States.frozen)
+	if (enemyAttackTimer <= 0 && scr_enemy_playerisnear(410, 130) && state == states.frozen)
 	{
 		enemyAttackTimer = enemyAttackTimerMax;
 		hsp = 0;
-		state = States.titlescreen;
+		state = states.titlescreen;
 		sprite_index = spr_cottonwitch_vanish;
 		image_index = 0;
 	}
@@ -30,8 +30,10 @@ enemyState_Attack = function()
 		sprite_index = spr_cottonwitch_invis;
 		create_particle(x, y, spr_poofeffect);
 	}
+	
 	if (sprite_index == spr_cottonwitch_invis)
 		vsp = 0;
+	
 	if (!place_meeting_collision(target_player.x, target_player.y) && sprite_index == spr_cottonwitch_invis)
 	{
 		image_index = 0;
@@ -60,15 +62,18 @@ enemyState_Attack = function()
 	if (sprite_index == spr_cottonwitch_beam)
 	{
 		hsp = 0;
+		
 		if (image_index < 8)
 		{
 			var hitbox_exists = false;
-			with obj_cottonwitch_beambox
+			
+			with (obj_cottonwitch_beambox)
 			{
 				if (baddieID == other.id)
 					hitbox_exists = true;
 			}
-			if !hitbox_exists
+			
+			if (!hitbox_exists)
 			{
 				instance_create(x + (image_xscale * 50), y, obj_cottonwitch_beambox, 
 				{
@@ -79,14 +84,15 @@ enemyState_Attack = function()
 		}
 		else
 		{
-			with obj_cottonwitch_beambox
+			with (obj_cottonwitch_beambox)
 			{
 				if (baddieID == other.id)
 					instance_destroy();
 			}
+			
 			if (sprite_animation_end())
 			{
-				state = States.frozen;
+				state = states.frozen;
 				enemyAttackTimer = enemyAttackTimerMax;
 			}
 		}
@@ -95,19 +101,22 @@ enemyState_Attack = function()
 	if (sprite_index != spr_cottonwitch_beam)
 	{
 		image_speed = 0.5;
-		with obj_cottonwitch_beambox
+		
+		with (obj_cottonwitch_beambox)
 		{
 			if (baddieID == other.id)
 				instance_destroy();
 		}
 	}
 	else
+	{
 		image_speed = 0.35;
+	}
 };
 
 enemyDeath_SpawnBody = function()
 {
-	with instance_create(x, y, obj_baddieDead)
+	with (instance_create(x, y, obj_baddieDead))
 	{
 		image_xscale = other.image_xscale;
 		image_blend = other.image_blend;
@@ -115,7 +124,8 @@ enemyDeath_SpawnBody = function()
 		paletteSprite = other.paletteSprite;
 		paletteSelect = other.paletteSelect;
 	}
-	with instance_create(x, y + 38, obj_clutterCottonWitch)
+	
+	with (instance_create(x, y + 38, obj_clutterCottonWitch))
 	{
 		sprite_index = spr_cottonwitch_debris;
 		image_xscale = other.image_xscale;

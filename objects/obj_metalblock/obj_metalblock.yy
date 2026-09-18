@@ -12,8 +12,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Structure",
+    "path": "folders/Objects/Structure.yy",
   },
   "parentObjectId": {
     "name": "obj_solid",
@@ -23,7 +23,7 @@
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
   "physicsFriction": 0.2,
-  "physicsGroup": 1,
+  "physicsGroup": 0,
   "physicsKinematic": false,
   "physicsLinearDamping": 0.1,
   "physicsObject": false,
@@ -33,8 +33,8 @@
   "physicsShapePoints": [],
   "physicsStartAwake": true,
   "properties": [
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"debrisSprite","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"spr_metaldebris;","varType":4,},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"smokeColor","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"[ #A1C1F8, #F8A880, #F8E080, #A1C1F8 ];","varType":4,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"debrisSprite","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"spr_metaldebris","varType":5,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"smokeColor","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"[16302497, 8431864, 8446200, 16302497]","varType":4,},
   ],
   "solid": false,
   "spriteId": {
@@ -42,5 +42,8 @@
     "path": "sprites/spr_metalblock/spr_metalblock.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": true,
 }

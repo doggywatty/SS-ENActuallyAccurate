@@ -1,6 +1,6 @@
 if (ds_list_find_index(global.SaveRoom, id) == -1)
 {
-	repeat 2
+	repeat (2)
 	{
 		create_particle(x, y, spr_bangEffect);
 		create_debris(x, y, spr_slapstar);
@@ -13,12 +13,12 @@ if (ds_list_find_index(global.SaveRoom, id) == -1)
 	global.EscapeTime = time_in_frames(time_array[0], time_array[1]);
 	global.MaxEscapeTime = global.EscapeTime;
 	
-	with obj_hudManager.HUDObject_timer
+	with (obj_hudManager.HUDObject_timer)
 		targetEscapeTime = global.EscapeTime;
 	
 	instance_create(0, 0, obj_sugarrush);
 	
-	if !instance_exists(obj_panicchanger)
+	if (!instance_exists(obj_panicchanger))
 		instance_create(x, y, obj_panicchanger);
 	
 	event_play_oneshot("event:/SFX/general/escaperumble");

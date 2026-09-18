@@ -1,15 +1,14 @@
 depth = 4;
-canCollide = function(stpl, player = obj_parent_player)
+
+canCollide = function(arg0, arg1 = obj_parent_player)
 {
-	switch player.object_index
+	switch (arg1.object_index)
 	{
 		case obj_parent_player:
 		case obj_player1:
 		case obj_player2:
-			var _state = global.freezeframe ? player.frozenState : player.state;
-			return _state != States.noclip && _state != States.cotton && _state != States.cottondrill
-			&& _state != States.cottonroll && _state != States.tumble && _state != States.taunt
-			&& _state != States.bump && _state != States.actor && _state != States.frozen;
+			var _state = global.freezeframe ? arg1.frozenState : arg1.state;
+			return _state != states.hang && _state != states.bossintro && _state != states.keyget && _state != states.tackle && _state != states.runonball && _state != states.gottreasure && _state != states.throwing && _state != states.mach3 && _state != states.frozen;
 			break;
 		case obj_creamThief:
 		case obj_bigcherry:

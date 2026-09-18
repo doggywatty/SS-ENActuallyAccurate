@@ -1,6 +1,7 @@
 function state_player_normal()
 {
 	static breakdance_effect = 10;
+	
 	var idle_sprites = [spr_idle1, spr_idle2, spr_idle3, spr_idle4, spr_idle5, spr_idle6];
 	
 	if (dir != xscale)
@@ -13,11 +14,11 @@ function state_player_normal()
 	move = key_left + key_right;
 	hsp = move * movespeed;
 	scr_conveyorBeltKinematics();
-	
 	var _idle_spr = spr_idle;
 	var _move_spr = spr_move;
 	var _dontidle = false;
 	var _dontStep = false;
+	
 	if (global.InternalLevelName == "fudge")
 	{
 		_idle_spr = spr_player_PZ_idle_freezing;
@@ -25,36 +26,42 @@ function state_player_normal()
 	}
 	
 	var soundtest_check = instance_exists(obj_soundTest) && obj_soundTest.musicPlaying;
-	if soundtest_check
+	
+	if (soundtest_check)
 	{
 		_idle_spr = spr_player_PZ_idle_dance;
 		_move_spr = spr_player_PZ_walk_dance;
 		_dontidle = true;
 		_dontStep = true;
 	}
-	if global.panic
+	
+	if (global.panic)
 	{
 		_idle_spr = spr_player_PZ_idle_escape;
-		if instance_exists(obj_coneball_timesUp)
+		
+		if (instance_exists(obj_coneball_timesUp))
 			_idle_spr = spr_player_PZ_idle_timesUp;
 	}
+	
 	if (global.Combo >= 10)
 	{
 		_idle_spr = spr_smallComboIdle;
 		_move_spr = spr_smallComboWalk;
 	}
+	
 	if (global.Combo >= 50)
 	{
 		_idle_spr = spr_bigComboIdle;
 		_move_spr = spr_bigComboWalk;
 	}
+	
 	if (windingAnim > 0)
 	{
 		windingAnim -= 5;
 		_idle_spr = spr_player_PZ_tired;
 	}
 	
-	if key_taunt
+	if (key_taunt)
 	{
 		if (breakdanceBuffer++ >= 10)
 		{
@@ -68,6 +75,7 @@ function state_player_normal()
 			_move_spr = spr_player_PZ_idle_breakdance;
 			_dontidle = true;
 			_dontStep = true;
+			
 			if (array_contains(idle_sprites, sprite_index))
 			{
 				image_index = 0;
@@ -83,15 +91,17 @@ function state_player_normal()
 	
 	if (breakdanceSpeed >= 0.5)
 	{
-		if !instance_exists(obj_breakdanceBoomBox)
+		if (!instance_exists(obj_breakdanceBoomBox))
 		{
 			create_particle(x, y, spr_genericPoofEffect);
+			
 			with (instance_create(x, y, obj_breakdanceBoomBox, 
 			{
 				playerID: id
 			}))
 				vsp = -11;
 		}
+		
 		breakdance_effect--;
 	}
 	
@@ -105,11 +115,13 @@ function state_player_normal()
 	{
 		machSlideAnim = false;
 		landAnim = false;
+		
 		if (move == 0 && (!array_contains(idle_sprites, sprite_index) || sprite_animation_end()))
 		{
-			if slamHurt
+			if (slamHurt)
 			{
 				slamHurt--;
+				
 				if (sprite_animation_end() && sprite_index == spr_groundPoundEnd_intro)
 					sprite_index = (sprite_index == spr_groundPoundEnd_intro) ? spr_groundPoundEnd : spr_diveBombEnd;
 			}
@@ -117,19 +129,23 @@ function state_player_normal()
 			{
 				if (sprite_index != _idle_spr)
 					image_index = 0;
+				
 				sprite_index = _idle_spr;
 			}
 			
 			if (sprite_index != spr_player_PZ_walk_breakdance && sprite_index != spr_player_PZ_idle_breakdance && !_dontidle && sprite_index != spr_player_PZ_tired)
 			{
 				if (idle < 300)
+				{
 					idle++;
+				}
 				else
 				{
 					sprite_index = idle_sprites[irandom(array_length(idle_sprites) - 1)];
 					image_index = 0;
 					idle = 0;
-					if chance(25)
+					
+					if (chance(25))
 						fmod_studio_event_instance_start(voiceIdle);
 				}
 			}
@@ -138,28 +154,35 @@ function state_player_normal()
 		if (move != 0)
 		{
 			slamHurt = 0;
+			
 			if (sprite_index != _move_spr)
 				image_index = 0;
+			
 			sprite_index = _move_spr;
 		}
 	}
 	else
 	{
-		if slamHurt
+		if (slamHurt)
 			sprite_index = spr_diveBombEnd_intro;
-		if landAnim
+		
+		if (landAnim)
 			sprite_index = (move == 0) ? spr_land : spr_land2;
-		if machSlideAnim
+		
+		if (machSlideAnim)
 			sprite_index = spr_machslideend;
 	}
+	
 	if (scr_solid(x + move, y, true))
 		movespeed = 0;
+	
 	jumpStop = false;
-	if !grounded && !key_jump
+	
+	if (!grounded && !key_jump)
 	{
 		sprite_index = shotgunAnim ? spr_shotgun_fall : spr_fall;
 		jumpAnim = false;
-		state = States.jump;
+		state = states.chainsawpogo;
 		image_index = 0;
 	}
 	
@@ -173,7 +196,7 @@ function state_player_normal()
 		});
 		vsp = -11;
 		grav = 0.3;
-		state = States.jump;
+		state = states.chainsawpogo;
 		image_index = 0;
 		freefallstart = 0;
 		jumpAnim = true;
@@ -188,14 +211,19 @@ function state_player_normal()
 			movespeed = approach(movespeed, 7, 0.5);
 	}
 	else
+	{
 		movespeed = 0;
+	}
+	
 	if (movespeed > 7)
 		movespeed = approach(movespeed, 7, 0.1);
 	
 	momentum = false;
+	
 	if (move != 0)
 	{
 		xscale = move;
+		
 		if (movespeed < 3 && move != 0)
 			image_speed = 0.35;
 		else if (movespeed > 3 && movespeed < 6)
@@ -204,14 +232,16 @@ function state_player_normal()
 			image_speed = 0.6;
 	}
 	else
+	{
 		image_speed = 0.35;
+	}
+	
 	if (sprite_index == spr_player_PZ_walk_breakdance || sprite_index == spr_player_PZ_idle_breakdance)
 		image_speed = breakdanceSpeed;
 	
-	if ((key_down && grounded && !place_meeting(x, y, obj_hubDisplay)
-	&& !place_meeting(x, y, obj_paletteChangerMirror)) || scr_solid(x, y - 1))
+	if ((key_down && grounded && !place_meeting(x, y, obj_hubDisplay) && !place_meeting(x, y, obj_paletteChangerMirror)) || scr_solid(x, y - 1))
 	{
-		state = States.crouch;
+		state = states.facestomp;
 		landAnim = false;
 		crouchAnim = true;
 		image_index = 0;
@@ -220,11 +250,13 @@ function state_player_normal()
 	
 	if (grounded && move != 0 && vsp >= 0)
 	{
-		if !stepEffectBuffer--
+		if (!stepEffectBuffer--)
 		{
 			instance_create(x, y + 43, obj_puffEffect);
-			if !_dontStep
+			
+			if (!_dontStep)
 				event_play_oneshot("event:/SFX/player/step", x, y);
+			
 			if (sprite_index == spr_player_PZ_walk_dance)
 				stepEffectBuffer = 8;
 			else
@@ -232,11 +264,12 @@ function state_player_normal()
 		}
 	}
 	
-	do_grab(States.normal);
-	do_taunt(States.normal);
+	do_grab(states.normal);
+	do_taunt(states.normal);
+	
 	if (key_attack && grounded && !scr_solid(x + xscale, y, true))
 	{
-		switch global.playerCharacter
+		switch (global.playerCharacter)
 		{
 			default:
 				machTwo = 0;
@@ -244,10 +277,11 @@ function state_player_normal()
 				sprite_index = spr_mach1;
 				image_index = 0;
 				jumpAnim = true;
-				state = States.mach2;
+				state = states.pistol;
 				break;
 		}
 	}
-	if (prevSpriteIndex != sprite_index && sprite_index == spr_idle && state == States.normal)
+	
+	if (prevSpriteIndex != sprite_index && sprite_index == spr_idle && state == states.normal)
 		image_index = 0;
 }

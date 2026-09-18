@@ -27,9 +27,10 @@ creditEntry = function() constructor
 	static create = function()
 	{
 		hsp = -2;
-		if spr_idle != spr_null
+		
+		if (spr_idle != spr_null)
 		{
-			with instance_create(x, y, obj_creditSona)
+			with (instance_create(x, y, obj_creditSona))
 			{
 				sprite_index = other.spr_idle;
 				spr_dead = other.spr_dead;
@@ -55,64 +56,78 @@ creditEntry = function() constructor
 	{
 		x += hsp;
 		y += vsp;
+		
 		if (x <= freezePoint && !hasFroze)
 		{
 			hasFroze = true;
 			trace("Frozen");
 			obj_creditsDemo.alarm[0] = 5;
 		}
-		if x < -200
+		
+		if (x < -200)
 		{
 			visible = false;
 			active = false;
 		}
-		if object_id != -4
+		
+		if (object_id != -4)
 		{
-			if !object_id.dead
+			if (!object_id.dead)
 			{
 				object_id.x = x;
 				object_id.y = y - 50;
 				object_id.visible = visible;
 			}
 			else
+			{
 				image_blend = c_yellow;
+			}
 		}
 	};
 	
 	static draw = function()
 	{
-		if !visible
+		if (!visible)
 			exit;
+		
 		draw_set_color(c_white);
 		var imgspacing = 80;
 		var ilen = array_length(creditedImages);
-		if ilen > 4
+		
+		if (ilen > 4)
 			imgspacing = 50;
+		
 		var xs = x - (((ilen - 1) * imgspacing) / 2);
+		
 		for (var i = 0; i < ilen; i++)
 		{
 			if (x > freezePoint)
 				break;
+			
 			var sp = creditedImages[i];
 			sp.visible = true;
 			sp.image_xscale = approach(sp.image_xscale, 1, 0.25);
 			sp.image_yscale = approach(sp.image_yscale, 1, 0.25);
 			sp.draw(sp.x + xs + (i * imgspacing), sp.y + y + 96);
+			
 			if (sp.image_xscale > 1)
 				break;
-			if image_blend == c_yellow
+			
+			if (image_blend == c_yellow)
 			{
 				sp.y += 6 * (obj_creditsDemo.creditsSpeed / obj_creditsDemo.defaultSpeed);
 				sp.image_alpha = approach(sp.image_alpha, 0, 0.02);
 			}
 		}
-		with object_id
+		
+		with (object_id)
 		{
 			visible = true;
-			if flash
-				draw_self_flash(c_white);
+			
+			if (flash)
+				draw_self_flash(16777215);
 			else if (other.playerPalette)
-				draw_player_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha, Characters.Pizzelle, 2);
+				draw_player_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha, (0 << 0), 2);
 			else
 				draw_self();
 		}
@@ -121,13 +136,14 @@ creditEntry = function() constructor
 		draw_text_scribble(x, y, $"[fa_center][fa_top][smallfont]{string_upper(name)}");
 	};
 	
-	static addPaintTopper = function(paint_Topper)
+	static addPaintTopper = function(arg0)
 	{
-		if !is_array(paint_Topper) && is_real(paint_Topper)
-			paint_Topper = [paint_Topper];
-		for (var i = 0; i < array_length(paint_Topper); i++)
+		if (!is_array(arg0) && is_real(arg0))
+			arg0 = [arg0];
+		
+		for (var i = 0; i < array_length(arg0); i++)
 		{
-			var sp = new subSprite(spr_paintertopper, paint_Topper[i], 0, false);
+			var sp = new subSprite(spr_paintertopper, arg0[i], 0, false);
 			sp.image_xscale = 3;
 			sp.image_yscale = 3;
 			sp.visible = false;
@@ -135,7 +151,7 @@ creditEntry = function() constructor
 		}
 	};
 	
-	static setImages = function(imgs)
+	static setImages = function(arg0)
 	{
 		for (var i = 0; i < argument_count; i++)
 		{
@@ -172,31 +188,32 @@ creditEntry = function() constructor
 	return self;
 };
 
-addCredit = function(category, _name, _candysona = [spr_null, spr_null])
+addCredit = function(arg0, arg1, arg2 = [spr_null, spr_null])
 {
 	var c = new creditEntry();
-	c.name = _name;
-	c.spr_idle = _candysona[0];
-	c.spr_dead = _candysona[1];
+	c.name = arg1;
+	c.spr_idle = arg2[0];
+	c.spr_dead = arg2[1];
 	c.index = -1;
 	c.create();
-	array_push(category, c);
+	array_push(arg0, c);
 	creditLength++;
 	return c;
 };
 
-addCategory = function(category)
+addCategory = function(arg0)
 {
 	var arr = [];
-	array_push(creditEntries, [lang_get(category), arr]);
+	array_push(creditEntries, [lang_get(arg0), arr]);
 	killCounterArr[categoryCount] = 0;
 	categoryCount++;
 	return arr;
 };
 
-with obj_parent_player
+with (obj_parent_player)
 {
 	targetDoor = "A";
-	state = States.titlescreen;
+	state = states.titlescreen;
 }
+
 event_user(0);

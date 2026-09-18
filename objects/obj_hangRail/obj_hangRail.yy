@@ -37,5 +37,8 @@
     "name": "spr_hangRail",
     "path": "sprites/spr_hangRail/spr_hangRail.yy",
   },
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": false,
 }

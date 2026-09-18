@@ -2,7 +2,8 @@ var coneballtimesup = spr_bartimer_showtime;
 var coneballtimesup_text = spr_null;
 coneballtimesup = spr_bartimer_blotchspotshowtime;
 coneballtimesup_text = lang_get_sprite(spr_bartimer_blotchspotshowtime_text);
-if saveAlpha
+
+if (saveAlpha)
 {
 	saveAlpha = approach(saveAlpha, 0, 0.1);
 	var _yy = camera_get_view_height(view_camera[0]);
@@ -17,29 +18,34 @@ if saveAlpha
 		_yy -= _str_h;
 		_offset = -8;
 	}
+	
 	if (obj_gametimer.in_level && global.option_timer_type != 2)
 	{
 		_yy -= _str_h;
 		_offset = -8;
 	}
+	
 	draw_sprite_ext(spr_saveicon, save_index, camera_get_view_width(view_camera[0]), _yy + _offset, 1, 1, 0, c_white, saveAlpha);
 	save_index += 0.35;
 }
 
-if !global.ShowHUD
+if (!global.ShowHUD)
 	exit;
 
 if (!(is_hub() || is_tutorial() || !scr_roomcheck() || room == mineshaft_elevator))
 {
-	with HUDObject_comboMeter
+	with (HUDObject_comboMeter)
 	{
 		var _x = round(x);
 		var _y = round(y);
 		draw_sprite_ext(spr_tvHUD_comboMeter_back, 0, _x, _y, 1, 1, 0, c_white, 1);
 		var border_sprite = sprite_get_info(spr_tvHUD_comboMeter_back);
 		var meter_sprite = sprite_get_info(elm_meterFill.sprite_index);
-		if !surface_exists(comboSurface)
+		
+		if (!surface_exists(comboSurface))
+		{
 			comboSurface = surface_create(meter_sprite.width, meter_sprite.height);
+		}
 		else
 		{
 			surface_set_target(comboSurface);
@@ -62,26 +68,32 @@ if (!(is_hub() || is_tutorial() || !scr_roomcheck() || room == mineshaft_elevato
 		draw_text_scribble(_x - 17, _y + 26, $"[fa_right][fa_top][combofont]{comboDisplay}");
 	}
 	
-	with HUDObject_TV
+	with (HUDObject_TV)
 	{
 		draw_sprite_ext(tvBG, tvBG_index, x, y, 1, 1, 0, c_white, 1);
-		draw_player_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_white, 1);
+		draw_player_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, 16777215, 1);
+		
 		if (sprite_index != spr_tvHUD_turnedOff && sprite_index != spr_tvHUD_turningOn)
 		{
 			if (get_panic())
 				draw_sprite_ext(weakSignal.sprite_index, weakSignal.image_index, x, y, 1, 1, 0, c_white, 1);
+			
 			if (transition.activated)
 				draw_sprite_ext(spr_tvHUD_transitionStatic, transition.image_index, x, y, 1, 1, 0, c_white, 1);
+			
 			if (idleScreenSaver.activated)
 				draw_sprite_ext(lang_get_sprite(spr_tvHUD_logoBounce), 0, x + idleScreenSaver.x, y + idleScreenSaver.y, 1, 1, 0, c_white, 1);
+			
 			if (global.masterVolume <= 0 || (global.soundVolume <= 0 && global.musicVolume <= 0))
 				draw_sprite_ext(spr_tvHUD_muteIcon, 0, x, y, 1, 1, 0, c_white, muteIconAlpha);
 		}
 	}
-	with HUDObject_timer
+	
+	with (HUDObject_timer)
 	{
 		var percentage = clamp(1 - (targetEscapeTime / global.MaxEscapeTime), 0, 1);
 		var dist = clamp(percentage * 268, 0, 268);
+		
 		if (elm_coneBall.sprite_index != coneballtimesup)
 		{
 			draw_sprite_ext(spr_bartimer_normalBack, elm_coneBall.image_index, x, y, 1, 1, 0, c_white, 1);
@@ -91,8 +103,10 @@ if (!(is_hub() || is_tutorial() || !scr_roomcheck() || room == mineshaft_elevato
 			var time_in_seconds = floor(targetEscapeTime / 60);
 			var mins = abs(max(floor(time_in_seconds / 60), 0));
 			var secs = abs(max(time_in_seconds % 60, 0));
+			
 			if (secs < 10)
 				secs = "0" + string(secs);
+			
 			var timer_string = $"[fa_center][fa_top][promptfont][c_white]{mins}:{secs}";
 			draw_text_scribble(x, y, timer_string);
 			draw_sprite_ext(spr_clockTimer, elm_clockTimer.image_index, (x - string_width_scribble(timer_string)) + 16, y + 16, 1, 1, 0, c_white, 1);
@@ -104,21 +118,25 @@ if (!(is_hub() || is_tutorial() || !scr_roomcheck() || room == mineshaft_elevato
 			elm_coneBallText.visible = currentFrame > 16;
 			var frameArr = [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 63, 65, 67, 69];
 			var ind = array_get_index(frameArr, currentFrame);
+			
 			if (ind != -1)
 				targetFrame = ind;
+			
 			if (elm_coneBallText.lastFrame < currentFrame)
 			{
 				elm_coneBallText.lastFrame = currentFrame;
 				elm_coneBallText.image_index = targetFrame;
 			}
+			
 			elm_coneBallText.draw_lang(x, y);
-		}		
+		}
+		
 		draw_sprite_ext(elm_coneBall.sprite_index, elm_coneBall.image_index, x, y, 1, 1, 0, c_white, 1);
 	}
 }
 
-if !global.gamePauseState
+if (!global.gamePauseState)
 {
-	scribble($"[wave][pPrompt]{global.TooltipPrompt}").blend(c_white, HUDObject_tooltipPrompts.image_alpha).align(1, 1).draw(HUDObject_tooltipPrompts.x, HUDObject_tooltipPrompts.y);
+	scribble($"[wave][pPrompt]{global.TooltipPrompt}").blend(16777215, HUDObject_tooltipPrompts.image_alpha).align(1, 1).draw(HUDObject_tooltipPrompts.x, HUDObject_tooltipPrompts.y);
 	draw_set_alpha(1);
 }

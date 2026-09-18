@@ -1,11 +1,13 @@
 global.hitstunalarm = round(freezeval);
-if !freezetype
+
+if (!freezetype)
 	global.hitstunalarm = 5;
-if !global.freezeframe
+
+if (!global.freezeframe)
 {
-	with obj_parent_player
+	with (obj_parent_player)
 	{
-		if (state != States.frozen)
+		if (state != states.frozen)
 		{
 			frozenState = state;
 			frozenSpriteIndex = sprite_index;
@@ -18,14 +20,17 @@ if !global.freezeframe
 			frozenHsp = hsp;
 			frozenVsp = vsp;
 			frozenJumpBuffer = inputBufferJump;
+			
 			for (var i = 0; i < 10; i++)
 				frozenAlarm[i] = alarm_get(i);
-			state = States.frozen;
+			
+			state = states.frozen;
 		}
 	}
-	with obj_parent_enemy
+	
+	with (obj_parent_enemy)
 	{
-		if (state != States.freezeframe && state != States.wallkick)
+		if (state != states.boxxedpep && state != states.cheeseball)
 		{
 			frozenState = state;
 			frozenSpriteIndex = sprite_index;
@@ -35,25 +40,31 @@ if !global.freezeframe
 			frozenGrav = grav;
 			frozenHsp = hsp;
 			frozenVsp = vsp;
-			state = States.freezeframe;
+			state = states.boxxedpep;
 		}
 	}
-	with obj_panicPortal
+	
+	with (obj_panicPortal)
 		frozenImageIndex = image_index;
-	with obj_parent_aftereffect
+	
+	with (obj_parent_aftereffect)
 	{
 		for (var i = 0; i < 2; i++)
 			frozenAlarm[i] = alarm_get(i);
+		
 		frozen = true;
+		
 		for (var i = 0; i < 2; i++)
 		{
 			if (alarm_get(i) > -1)
 				alarm_set(i, -1);
 		}
 	}
+	
 	for (var i = 0; i < 3; i++)
 	{
 		frozenAlarm[i] = alarm_get(i);
+		
 		if (alarm_get(i) > -1)
 			alarm_set(i, -1);
 	}

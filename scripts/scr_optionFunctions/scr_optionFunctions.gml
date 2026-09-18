@@ -1,22 +1,23 @@
-function set_resolution_option(window)
+function set_resolution_option(arg0)
 {
-	window_set_size(global.resolutions[window][0], global.resolutions[window][1]);
+	window_set_size(global.resolutions[arg0][0], global.resolutions[arg0][1]);
 	window_center();
-	with obj_screen
+	
+	with (obj_screen)
 	{
 		previousMouseX = get_mouse_x_screen(0);
 		previousMouseY = get_mouse_y_screen(0);
 		captionBuffer = 100;
 		global.gameframe_default_cursor = global.DefaultCursor;
-	}	
+	}
 }
 
 function create_option() constructor
 {
-	static add_icon = function(spr_ind, img_ind)
+	static add_icon = function(arg0, arg1)
 	{
-		sprite_index = spr_ind;
-		image_index = img_ind;
+		sprite_index = arg0;
+		image_index = arg1;
 		return self;
 	};
 	
@@ -37,72 +38,76 @@ function create_option() constructor
 	icon_alpha = 0;
 }
 
-function option_normal(_id, _options, _on_toggle, _value, _translate_opt = true) : create_option() constructor
+function option_normal(arg0, arg1, arg2, arg3, arg4 = true) : create_option() constructor
 {
-	id = _id;
-	type = OptionType.Normal;
-	options = _options;
-	on_toggle = _on_toggle;
-	value = _value;
-	translate_opt = _translate_opt;
+	id = arg0;
+	type = (2 << 0);
+	options = arg1;
+	on_toggle = arg2;
+	value = arg3;
+	translate_opt = arg4;
 }
 
-function option_button(_id, _on_toggle) : create_option() constructor
+function option_button(arg0, arg1) : create_option() constructor
 {
-	id = _id;
-	on_toggle = _on_toggle;
-	type = OptionType.Button;
+	id = arg0;
+	on_toggle = arg1;
+	type = (6 << 0);
 }
 
-function option_slider(_id, _on_slide, _on_stop, _value, _sound = -4, _show_percent = false) : create_option() constructor
+function option_slider(arg0, arg1, arg2, arg3, arg4 = -4, arg5 = false) : create_option() constructor
 {
-	id = _id;
-	on_slide = _on_slide;
-	on_stop = _on_stop;
-	type = OptionType.Slider;
-	sound = _sound;
-	value = _value;
-	show_percent = _show_percent;
+	id = arg0;
+	on_slide = arg1;
+	on_stop = arg2;
+	type = (7 << 0);
+	sound = arg4;
+	value = arg3;
+	show_percent = arg5;
 }
 
-function option_goto(_optionMenu, _optionSelected = 0)
+function option_goto(arg0, arg1 = 0)
 {
 	var _OldMenu = optionMenu;
-	optionMenu = _optionMenu;
-	optionSelected = _optionSelected;
+	optionMenu = arg0;
+	optionSelected = arg1;
 	inputBuffer = 2;
 	event_user(0);
 }
 
-function option_create_confirm(_previousValue, _confirmFunc, _resetFunc)
+function option_create_confirm(arg0, arg1, arg2)
 {
 	return instance_create(0, 0, obj_option_confirm, 
 	{
-		previousValue: _previousValue,
-		confirmFunc: _confirmFunc,
-		resetFunc: _resetFunc
+		previousValue: arg0,
+		confirmFunc: arg1,
+		resetFunc: arg2
 	});
 }
 
-function draw_option(_x, _y, _string, _color)
+function draw_option(arg0, arg1, arg2, arg3)
 {
 	draw_set_color(c_white);
-	if !_color
+	
+	if (!arg3)
 		draw_set_color(#666666);
-	draw_text(_x, _y, _string);
+	
+	draw_text(arg0, arg1, arg2);
 	draw_set_color(c_white);
 }
 
-function update_option_format(_ver, _num)
+function update_option_format(arg0, arg1)
 {
-	switch _ver
+	switch (arg0)
 	{
 		case 0:
 			if (ini_key_exists("Settings", "resolution"))
 			{
 				var cur_res = ini_read_real("Settings", "resolution", 1);
+				
 				if (cur_res > 0)
 					ini_write_real("Settings", "opt_resolution", cur_res + 1);
+				
 				global.selectedResolution = cur_res + 1;
 			}
 			
@@ -110,7 +115,8 @@ function update_option_format(_ver, _num)
 			{
 				var cur_timer_type = ini_read_real("Settings", "timertype", 2);
 				var timer_enabled = ini_read_real("Settings", "timer", 1);
-				if !timer_enabled
+				
+				if (!timer_enabled)
 				{
 					ini_write_real("Settings", "opt_timerType", 0);
 					global.option_timer_type = 0;
@@ -121,6 +127,7 @@ function update_option_format(_ver, _num)
 					global.option_timer_type = cur_timer_type + 1;
 				}
 			}
+			
 			break;
 	}
 }
@@ -158,127 +165,136 @@ function init_option()
 	global.option_timer_type = ini_read_real("Settings", "opt_timerType", 3);
 	global.option_livesplit_enabled = ini_read_real("Settings", "livesplit", 0);
 	var cur_version = ini_read_real("FileFormat", "version", 0);
+	
 	if (cur_version > 1)
 		show_debug_message($"WARNING: optionData.ini Version: {cur_version} is higher than game's expected optionData.ini version: {1}. Tomfoolery afoot.");
+	
 	if (!ini_section_exists("FileFormat") || !ini_key_exists("FileFormat", "version") || cur_version < 1)
 	{
 		show_debug_message($"ALERT: Updating optionData.ini version... {cur_version} to {1}");
 		ini_write_real("FileFormat", "version", 1);
 		update_option_format(cur_version, 1);
 	}
-		
+	
 	ini_close();
 	scr_setinput_init();
 	scr_input_create();
 	scr_lang_init();
 	display_reset(0, global.Vsync);
 	set_resolution_option(global.selectedResolution);
-	with obj_screen
+	
+	with (obj_screen)
 		event_perform(ev_alarm, 0);
+	
 	scr_initKeyNameMap();
 }
 
-function quick_write_option(_section, _key, _strvalue)
+function quick_write_option(arg0, arg1, arg2)
 {
 	ini_open("optionData.ini");
-	if is_string(_strvalue)
-		ini_write_string(_section, _key, _strvalue);
+	
+	if (is_string(arg2))
+		ini_write_string(arg0, arg1, arg2);
 	else
-		ini_write_real(_section, _key, _strvalue);
+		ini_write_real(arg0, arg1, arg2);
+	
 	ini_close();
-	with obj_option
-		changedAnyOption = true;	
+	
+	with (obj_option)
+		changedAnyOption = true;
 }
 
-function create_option_menu(_centered, _backto, _options, _xpad = camera_get_view_width(view_camera[0]) / 2, _ypad = 150, _textpad = 25)
+function create_option_menu(arg0, arg1, arg2, arg3 = camera_get_view_width(view_camera[0]) / 2, arg4 = 150, arg5 = 25)
 {
 	return -4;
 	var q = 
 	{
-		centered: _centered,
-		backto: _backto,
-		options: _options,
-		xpad: _xpad,
-		ypad: _ypad,
-		textpad: _textpad
+		centered: arg0,
+		backto: arg1,
+		options: arg2,
+		xpad: arg3,
+		ypad: arg4,
+		textpad: arg5
 	};
 	return q;
 }
 
-function create_option_toggle(_option, _name, _desc, _func)
+function create_option_toggle(arg0, arg1, arg2, arg3)
 {
 	return -4;
 	var q = 
 	{
-		name: _name,
-		desc: _desc,
-		type: OldOptionType.Toggle,
+		name: arg1,
+		desc: arg2,
+		type: (0 << 0),
 		alpha: 1,
-		func: _func,
+		func: arg3,
 		value: 0
 	};
-	array_push(_option, q);
+	array_push(arg0, q);
 	return q;
 }
 
-function create_option_press(_option, _name, _desc, _func)
+function create_option_press(arg0, arg1, arg2, arg3)
 {
 	return -4;
 	var q = 
 	{
-		name: _name,
-		desc: _desc,
-		type: OldOptionType.Press,
+		name: arg1,
+		desc: arg2,
+		type: (3 << 0),
 		alpha: 1,
-		func: _func,
+		func: arg3,
 		value: 0
 	};
-	array_push(_option, q);
+	array_push(arg0, q);
 	return q;
 }
 
-function create_option_multichoice(_option, _name, _desc, _choices, _func)
+function create_option_multichoice(arg0, arg1, arg2, arg3, arg4)
 {
 	return -4;
 	var q = 
 	{
-		name: _name,
-		desc: _desc,
-		type: OldOptionType.MultiChoice,
+		name: arg1,
+		desc: arg2,
+		type: (2 << 0),
 		alpha: 1,
-		choices: _choices,
-		func: _func,
+		choices: arg3,
+		func: arg4,
 		value: 0
 	};
-	array_push(_option, q);
+	array_push(arg0, q);
 	return q;
 }
 
-function create_option_slider(_option, _name, _desc, _on_move, _on_stop, _sound = undefined)
+function create_option_slider(arg0, arg1, arg2, arg3, arg4, arg5 = undefined)
 {
 	return -4;
 	var q = 
 	{
-		name: _name,
-		desc: _desc,
-		type: OldOptionType.Slider,
+		name: arg1,
+		desc: arg2,
+		type: (1 << 0),
 		alpha: 1,
-		on_move: _on_move,
-		on_stop: _on_stop,
+		on_move: arg3,
+		on_stop: arg4,
 		value: 0,
 		moving: false,
 		sound: undefined
 	};
-	if !is_undefined(_sound)
-		q.sound = fmod_createEventInstance(_sound);
-	array_push(_option, q);
+	
+	if (!is_undefined(arg5))
+		q.sound = fmod_createEventInstance(arg5);
+	
+	array_push(arg0, q);
 	return q;
 }
 
-function goto_menu(_menu)
+function goto_menu(arg0)
 {
 	return -4;
-	selectedmenu = _menu;
+	selectedmenu = arg0;
 	optionselected = 0;
 	textScroll = -9999;
 	pgHeight = 0;

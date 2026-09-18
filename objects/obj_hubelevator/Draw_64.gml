@@ -1,20 +1,22 @@
-if (state == States.normal)
+if (state == states.normal)
 {
 	var txt = hub_array[selected][1];
 	var yy = string_height(txt);
 	var length = array_length(hub_array);
 	draw_set_halign(fa_center);
 	draw_set_font(global.fontDefault);
-	if !surface_exists(surface2)
+	
+	if (!surface_exists(surface2))
 		surface2 = surface_create(480, 240);
 	
 	surface_set_target(surface2);
 	draw_sprite_tiled(bg_menuTile, -1, drawx++, drawy++);
 	yy = 40;
+	
 	for (var i = 0; i < length; i++)
 	{
 		txt = hub_array[i][1];
-		var c = (selected == i) ? c_white : c_gray;
+		var c = (selected == i) ? 16777215 : 8421504;
 		draw_text_color(240, yy + ScrollY, txt, c, c, c, c, 1);
 		yy += 60;
 	}
@@ -25,7 +27,7 @@ if (state == States.normal)
 	surface_reset_target();
 	draw_surface(surface2, 240, 150);
 }
-else if (state == States.titlescreen)
+else if (state == states.titlescreen)
 {
 	draw_sprite_tiled(bg_menuTile, -1, drawx++, drawy++);
 	draw_set_font(global.fontDefault);

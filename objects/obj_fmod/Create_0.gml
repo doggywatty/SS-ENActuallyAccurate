@@ -1,6 +1,6 @@
 var _channels = 256;
-var _coreflags = FMOD_INIT.NORMAL;
-var _studioflags = FMOD_STUDIO_INIT.NORMAL;
+var _coreflags = (0 << 0);
+var _studioflags = (0 << 0);
 global.FMODSTUDIOSYSTEM = fmod_studio_system_create();
 show_debug_message("fmod_studio_system_create: " + string(fmod_last_result()));
 var settings_struct = new FmodSystemAdvancedSettings();
@@ -16,16 +16,17 @@ array_push(banks, "Master.strings.bank");
 array_push(banks, "Master.bank");
 array_push(banks, "music.bank");
 array_push(banks, "sfx.bank");
+
 for (var i = 0; i < array_length(banks); i++)
 {
 	var b = working_directory + path + plat + "/" + banks[i];
-	var bank = fmod_studio_system_load_bank_file(b, FMOD_STUDIO_LOAD_BANK.NORMAL);
-    show_debug_message("Bank Loaded: " + string(fmod_last_result()));
-    fmod_studio_bank_load_sample_data(bank);
-    show_debug_message("Bank Sample Data Load: " + string(fmod_last_result()));
+	var bank = fmod_studio_system_load_bank_file(b, (0 << 0));
+	show_debug_message("Bank Loaded: " + string(fmod_last_result()));
+	fmod_studio_bank_load_sample_data(bank);
+	show_debug_message("Bank Sample Data Load: " + string(fmod_last_result()));
 }
 
-global.FMOD_DSP_FFT = fmod_system_create_dsp_by_type(FMOD_DSP_TYPE.FFT);
+global.FMOD_DSP_FFT = fmod_system_create_dsp_by_type((29 << 0));
 musicBus = fmod_studio_system_get_bus("bus:/Stereo/Music");
 initializedDSP = false;
 fmod_studio_bus_lock_channel_group(musicBus);
@@ -34,29 +35,32 @@ global.FMOD_DSP_Value = ds_list_create();
 
 updateFFT = function()
 {
-	if !initializedDSP
+	if (!initializedDSP)
 	{
-        var channel_group = fmod_studio_bus_get_channel_group(musicBus);
-        if (fmod_last_result() != FMOD_RESULT.ERR_STUDIO_NOT_LOADED)
-        {
-            fmod_channel_control_add_dsp(channel_group, FMOD_CHANNELCONTROL_DSP_INDEX.HEAD, global.FMOD_DSP_FFT);
-            fmod_dsp_set_parameter_int(global.FMOD_DSP_FFT, FMOD_DSP_FFT.WINDOW_TYPE, FMOD_DSP_FFT_WINDOW_TYPE.RECT);
-            var size = 16;
-            fmod_dsp_set_parameter_int(global.FMOD_DSP_FFT, FMOD_DSP_FFT.WINDOWSIZE, size);
+		var channel_group = fmod_studio_bus_get_channel_group(musicBus);
+		
+		if (fmod_last_result() != (76 << 0))
+		{
+			fmod_channel_control_add_dsp(channel_group, (-1 << 0), global.FMOD_DSP_FFT);
+			fmod_dsp_set_parameter_int(global.FMOD_DSP_FFT, (1 << 0), (0 << 0));
+			var size = 16;
+			fmod_dsp_set_parameter_int(global.FMOD_DSP_FFT, (0 << 0), size);
 			initializedDSP = true;
 		}
+		
 		exit;
 	}
 	
 	ds_list_clear(global.FMOD_DSP_Value);
 	buffer_seek(global.FMOD_DSP_FFTBuffer, buffer_seek_start, 0);
+	var required_size = fmod_dsp_get_parameter_data(global.FMOD_DSP_FFT, (2 << 0), global.FMOD_DSP_FFTBuffer);
 	
-	var required_size = fmod_dsp_get_parameter_data(global.FMOD_DSP_FFT, FMOD_DSP_FFT.SPECTRUMDATA, global.FMOD_DSP_FFTBuffer);
 	if (buffer_get_size(global.FMOD_DSP_FFTBuffer) < required_size)
 		buffer_resize(global.FMOD_DSP_FFTBuffer, required_size);
 	
 	var data_size = buffer_read(global.FMOD_DSP_FFTBuffer, buffer_s32) / 2;
 	var data_channels = buffer_read(global.FMOD_DSP_FFTBuffer, buffer_s32);
+	
 	for (var i = 0; i < data_channels; i++)
 	{
 		for (var z = 0; z < data_size; z++)

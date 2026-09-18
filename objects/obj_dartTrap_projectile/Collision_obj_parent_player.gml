@@ -1,4 +1,4 @@
 if (!canHurtPlayer || parried)
-    exit;
+	exit;
 
 scr_hurtplayer(other.id);

@@ -1,4 +1,5 @@
 event_inherited();
+
 for (var i = 0; i < 2; i++)
 {
 	with (instance_create(x, y + 19, obj_baddieDead))

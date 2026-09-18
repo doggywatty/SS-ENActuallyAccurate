@@ -7,5 +7,6 @@ drawnImageIndex = 0;
 sprite_index = spr_treasure_entryway;
 var sprite_name = $"spr_treasure_{global.InternalLevelName}";
 var asset_index = asset_get_index(sprite_name);
+
 if (asset_index != -1)
 	sprite_index = asset_index;

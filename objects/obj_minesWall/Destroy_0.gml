@@ -1,7 +1,8 @@
 if (ds_list_find_index(global.SaveRoom, id) == -1)
 {
 	instance_create(x, y, obj_bombExplosion);
-	repeat 5
+	
+	repeat (5)
 	{
 		for (var i = 0; i < (sprite_get_number(spr_minecartdebris) - 1); i++)
 		{

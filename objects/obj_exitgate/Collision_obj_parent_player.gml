@@ -1,15 +1,16 @@
-if global.panic
+if (global.panic)
 {
-	with obj_parent_player
+	with (obj_parent_player)
 	{
-		if (grounded && (!other.drop || other.drop_state == 1) && key_up && (state == States.normal
-		|| state == States.mach1 || state == States.mach2 || state == States.mach3
-		|| state == States.Sjumpprep))
+		if (grounded && (!other.drop || other.drop_state == 1) && key_up && (state == states.normal || state == states.machroll || state == states.pistol || state == states.shotgun || state == states.chainsaw))
 		{
 			targetDoor = "none";
 			var use_music = true;
+			
 			if (global.InternalLevelName == "tutorial")
+			{
 				use_music = false;
+			}
 			else
 			{
 				global.NewFile = false;
@@ -20,17 +21,19 @@ if global.panic
 			scr_check_end_level_chef_tasks();
 			global.CompletedLevel = true;
 			
-			if (state != States.door)
+			if (state != states.grab)
 			{
 				sprite_index = spr_lookdoor;
-				state = States.door;
+				state = states.grab;
 				xscale = 1;
 				image_index = 0;
 			}
+			
 			instance_destroy(obj_minesgem);
-			if !instance_exists(obj_endlevelfade)
+			
+			if (!instance_exists(obj_endlevelfade))
 			{
-				with instance_create(x, y, obj_endlevelfade)
+				with (instance_create(x, y, obj_endlevelfade))
 				{
 					var _cam_x = camera_get_view_x(view_camera[0]);
 					var _cam_y = camera_get_view_y(view_camera[0]);
@@ -38,6 +41,7 @@ if global.panic
 					PlayerY = other.y - _cam_y;
 				}
 			}
+			
 			global.panic = false;
 			global.lapmusic = false;
 		}

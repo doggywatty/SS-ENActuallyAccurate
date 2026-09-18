@@ -6,10 +6,13 @@
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
   ],
   "managed": true,
-  "overriddenProperties": [],
+  "overriddenProperties": [
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_bombExplosion","path":"objects/obj_bombExplosion/obj_bombExplosion.yy",},"propertyId":{"name":"hurtPlayers","path":"objects/obj_bombExplosion/obj_bombExplosion.yy",},"value":"true",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_bombExplosion","path":"objects/obj_bombExplosion/obj_bombExplosion.yy",},"propertyId":{"name":"hurtBaddies","path":"objects/obj_bombExplosion/obj_bombExplosion.yy",},"value":"true",},
+  ],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "effectsGroup",
+    "path": "folders/Objects/effectsGroup.yy",
   },
   "parentObjectId": {
     "name": "obj_bombExplosion",
@@ -19,7 +22,7 @@
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
   "physicsFriction": 0.2,
-  "physicsGroup": 1,
+  "physicsGroup": 0,
   "physicsKinematic": false,
   "physicsLinearDamping": 0.1,
   "physicsObject": false,
@@ -28,10 +31,7 @@
   "physicsShape": 1,
   "physicsShapePoints": [],
   "physicsStartAwake": true,
-  "properties": [
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"hurtPlayers","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"true;","varType":4,},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"hurtBaddies","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"true;","varType":4,},
-  ],
+  "properties": [],
   "solid": false,
   "spriteId": {
     "name": "spr_bombexplosion",

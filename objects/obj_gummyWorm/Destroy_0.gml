@@ -4,9 +4,11 @@ if (ds_list_find_index(global.SaveRoom, id) == -1)
 	create_debris(random_range(bbox_left, bbox_right), random_range(bbox_top, bbox_bottom), spr_gummywormdebrishead);
 	create_debris(random_range(bbox_left, bbox_right), random_range(bbox_top, bbox_bottom), spr_gummywormdebristail);
 	var rep = 3 + round(sprite_width / 16);
-	repeat rep
+	
+	repeat (rep)
 		create_debris(random_range(bbox_left, bbox_right), random_range(bbox_top, bbox_bottom), spr_gummywormdebrisloop);
-	repeat 3
+	
+	repeat (3)
 	{
 		create_debris(random_range(bbox_left, bbox_right), random_range(bbox_top, bbox_bottom), spr_slapstar);
 		instance_create(random_range(bbox_left, bbox_right), random_range(bbox_top, bbox_bottom), obj_baddieGibs);
@@ -25,9 +27,9 @@ if (ds_list_find_index(global.SaveRoom, id) == -1)
 	global.ComboScore += _score;
 	ds_list_add(global.SaveRoom, id);
 	
-	with obj_gummyWormBump
+	with (obj_gummyWormBump)
 	{
-		if linkedWorm == other.id
+		if (linkedWorm == other.id)
 			instance_destroy(id, false);
 	}
 }

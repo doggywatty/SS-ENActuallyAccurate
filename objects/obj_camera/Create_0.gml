@@ -68,11 +68,11 @@ cameraShakeList = ds_list_create();
 painterdex = 0;
 pizdex = 0;
 
-addCameraShake = function(_shakeMag, _shakeDecel, _shakeTime) constructor
+addCameraShake = function(arg0, arg1, arg2) constructor
 {
-	shakeMag = _shakeMag;
-	shakeDecel = _shakeDecel;
-	shakeTime = _shakeTime;
+	shakeMag = arg0;
+	shakeDecel = arg1;
+	shakeTime = arg2;
 };
 
 cakeHud = 
@@ -91,8 +91,8 @@ cakeHud =
 	pointColors: [0]
 };
 
-drawCakeHudTopping = function(_sprite, _collect)
+drawCakeHudTopping = function(arg0, arg1)
 {
-	if (global.Collect > _collect)
-		draw_sprite(_sprite, cakeHud.image_index, cakeHud.x, cakeHud.y);
+	if (global.Collect > arg1)
+		draw_sprite(arg0, cakeHud.image_index, cakeHud.x, cakeHud.y);
 };

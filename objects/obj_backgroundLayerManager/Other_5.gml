@@ -6,7 +6,9 @@ layer_set_target_room(global.NextRoom);
 
 for (var i = 0; i < array_length(global.BgInstanceLayers); i++)
 {
-	var _arr = layer_get_all_instances(global.BgInstanceLayers[i]), z = 0;
+	var _arr = layer_get_all_instances(global.BgInstanceLayers[i]);
+	var z = 0;
+	
 	while (z < array_length(_arr))
 		ds_list_add(global.BgInstancesList, layer_instance_get_instance(_arr[z++]));
 }

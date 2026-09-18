@@ -1,7 +1,8 @@
 if (ds_list_find_index(global.SaveRoom, id) == -1)
 {
 	var rep = 3 + round(sprite_width / 16);
-	repeat rep
+	
+	repeat (rep)
 		create_debris(random_range(bbox_left, bbox_right), random_range(bbox_top, bbox_bottom), spr_blockdebris);
 	
 	create_destroyable_smoke(random_range(bbox_left, bbox_right), random_range(bbox_top, bbox_bottom), array_get_any(smokeColor));

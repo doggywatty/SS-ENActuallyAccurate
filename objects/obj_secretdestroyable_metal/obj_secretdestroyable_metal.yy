@@ -9,8 +9,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Structure",
+    "path": "folders/Objects/Structure.yy",
   },
   "parentObjectId": {
     "name": "obj_metalblock",
@@ -20,7 +20,7 @@
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
   "physicsFriction": 0.2,
-  "physicsGroup": 1,
+  "physicsGroup": 0,
   "physicsKinematic": false,
   "physicsLinearDamping": 0.1,
   "physicsObject": false,
@@ -30,7 +30,7 @@
   "physicsShapePoints": [],
   "physicsStartAwake": true,
   "properties": [
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"tiles","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"[\"Tiles_1\", \"Tiles_2\", \"Tiles_3\", \"Tiles_4\", \"Tiles_Foreground1\", \"Tiles_Foreground2\"];","varType":4,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"tiles","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"[\"Tiles_1\", \"Tiles_2\", \"Tiles_3\", \"Tiles_4\", \"Tiles_Foreground1\", \"Tiles_Foreground2\"]","varType":4,},
   ],
   "solid": false,
   "spriteId": {
@@ -38,5 +38,8 @@
     "path": "sprites/spr_secret_metalbreak_debug/spr_secret_metalbreak_debug.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": false,
 }

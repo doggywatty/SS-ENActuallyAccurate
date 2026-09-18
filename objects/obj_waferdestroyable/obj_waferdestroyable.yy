@@ -13,8 +13,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Molasses",
+    "path": "folders/Objects/Molasses.yy",
   },
   "parentObjectId": {
     "name": "obj_solid",
@@ -40,5 +40,8 @@
     "path": "sprites/spr_waferdestroyable/spr_waferdestroyable.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": true,
 }

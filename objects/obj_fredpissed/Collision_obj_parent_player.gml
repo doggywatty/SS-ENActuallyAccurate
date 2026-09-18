@@ -1,7 +1,6 @@
-with other
+with (other)
 {
-	if ((state == States.minecart || state == States.minecart_bump || (state == States.minecart_launched
-	&& vsp > 0)) && sprite_index != spr_player_PZ_minecart_bounce && !global.freezeframe)
+	if ((state == states.victory || state == states.Sjump || (state == states.comingoutdoor && vsp > 0)) && sprite_index != spr_player_PZ_minecart_bounce && !global.freezeframe)
 	{
 		var _x = x;
 		var _y = y;
@@ -10,7 +9,7 @@ with other
 		vsp = 0;
 		movespeed = 0;
 		
-		with obj_camera
+		with (obj_camera)
 		{
 			cameraXOffset = _x - other.x;
 			cameraYOffset = _y - other.y;
@@ -19,7 +18,7 @@ with other
 		event_play_oneshot("event:/SFX/general/fredcustcenehit");
 		sprite_index = spr_player_PZ_minecart_fredBump;
 		image_index = 0;
-		state = States.actor;
+		state = states.mach3;
 		other.sprite_index = spr_fred_pissed;
 		other.fred_y = other.y;
 		other.cutscene = true;

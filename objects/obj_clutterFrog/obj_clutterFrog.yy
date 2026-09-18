@@ -13,8 +13,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Baddies",
+    "path": "folders/Objects/Baddies.yy",
   },
   "parentObjectId": {
     "name": "obj_parent_clutterSmallDestroyable",
@@ -40,5 +40,8 @@
     "path": "sprites/spr_boxfrog_prop/spr_boxfrog_prop.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": true,
 }

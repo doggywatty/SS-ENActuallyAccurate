@@ -13,16 +13,16 @@
   "edgeFiltering": false,
   "For3D": false,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"d5757a29-9fc6-466f-8127-12223da77c4f",},
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"8f3e9d50-e7f9-47f7-8eaf-4fe011ad245e",},
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"2839d611-7417-4706-bb6f-4426461ee607",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"a3235443-d7ed-4b11-bf3d-7b66f6a42d74",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"25c5f2d5-1a09-4b82-808c-d5d3e68181b0",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"86499d25-25e8-4bb5-9575-fd65d8fe985b",},
   ],
   "gridX": 0,
   "gridY": 0,
   "height": 700,
   "HTile": false,
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"306fa62e-0a04-47b1-8b84-90db300b7d05","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"dbcceb95-080e-459b-85fc-13c1dc23d66f","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
   ],
   "nineSlice": {
     "resourceType": "GMNineSliceData",
@@ -30,6 +30,7 @@
     "bottom": 0,
     "enabled": false,
     "guideColour": [
+      4294902015,
       4294902015,
       4294902015,
       4294902015,
@@ -50,8 +51,8 @@
   },
   "origin": 0,
   "parent": {
-    "name": "Sugarshack Mines",
-    "path": "folders/Sprites/Backgrounds/Sugarshack Mines.yy",
+    "name": "Mines",
+    "path": "folders/Sprites/Mines.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {
@@ -61,7 +62,7 @@
     "autoRecord": true,
     "backdropHeight": 768,
     "backdropImageOpacity": 0.5,
-    "backdropImagePath": "True",
+    "backdropImagePath": "",
     "backdropWidth": 1366,
     "backdropXOffset": 0.0,
     "backdropYOffset": 0.0,
@@ -75,13 +76,13 @@
     "playbackSpeed": 0.35,
     "playbackSpeedType": 1,
     "showBackdrop": true,
-    "showBackdropImage": true,
+    "showBackdropImage": false,
     "timeUnits": 1,
     "tracks": [
-      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"d5757a29-9fc6-466f-8127-12223da77c4f","path":"sprites/bg_mines2_escape/bg_mines2_escape.yy",},},},"Disabled":false,"id":"df7e4594-2942-4140-901d-fb7aab5c4284","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"8f3e9d50-e7f9-47f7-8eaf-4fe011ad245e","path":"sprites/bg_mines2_escape/bg_mines2_escape.yy",},},},"Disabled":false,"id":"24617f26-d9c3-4f06-98f6-6f5edda54559","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"2839d611-7417-4706-bb6f-4426461ee607","path":"sprites/bg_mines2_escape/bg_mines2_escape.yy",},},},"Disabled":false,"id":"ad84e991-31c7-44d1-ad4c-d94e9e053162","IsCreationKey":false,"Key":2.0,"Length":1.0,"Stretch":false,},
+      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":-1,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"a3235443-d7ed-4b11-bf3d-7b66f6a42d74","path":"sprites/bg_mines2_escape/bg_mines2_escape.yy",},},},"Disabled":false,"id":"7c8f1a59-2bca-44ae-a92b-7736f3bd2944","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"25c5f2d5-1a09-4b82-808c-d5d3e68181b0","path":"sprites/bg_mines2_escape/bg_mines2_escape.yy",},},},"Disabled":false,"id":"99bf3c54-a680-430b-9fb1-8283d96cabac","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"86499d25-25e8-4bb5-9575-fd65d8fe985b","path":"sprites/bg_mines2_escape/bg_mines2_escape.yy",},},},"Disabled":false,"id":"b6998111-3170-4cf8-9a2a-cf0e01c41f6b","IsCreationKey":false,"Key":2.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,

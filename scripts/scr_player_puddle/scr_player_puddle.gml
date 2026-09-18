@@ -1,21 +1,24 @@
 function state_player_puddle()
 {
 	hsp = xscale * movespeed;
+	
 	if (scr_solid(x + xscale, y, true) && !place_meeting(x + xscale, y, obj_destructibles) && !place_meeting(x + xscale, y, obj_metalblock))
 	{
 		event_play_oneshot("event:/SFX/player/slipbump", x, y);
 		create_particle(x, y, spr_bangEffect);
 		xscale *= -1;
+		
 		if (sprite_index == spr_player_PZ_slipSlide)
 			movespeed = approach(movespeed, 0, 3);
+		
 		sprite_index = spr_player_PZ_fall_outOfControl;
 	}
 	
 	var _xscale = xscale;
+	
 	if (sprite_index == spr_player_PZ_slipSlide_intro || sprite_index == spr_player_PZ_fall_outOfControl)
 	{
-		if (grounded && vsp > -1 && !place_meeting(x + sign(hsp), y, obj_destructibles)
-		&& !place_meeting(x, y + 1, obj_metalblock) && !place_meeting(x, y + 1, obj_destructibles))
+		if (grounded && vsp > -1 && !place_meeting(x + sign(hsp), y, obj_destructibles) && !place_meeting(x, y + 1, obj_metalblock) && !place_meeting(x, y + 1, obj_destructibles))
 		{
 			if (sprite_index == spr_player_PZ_slipSlide_intro)
 			{
@@ -32,6 +35,7 @@ function state_player_puddle()
 				event_play_oneshot("event:/SFX/player/slipend", x, y);
 				sprite_index = spr_player_PZ_slipSlide_end;
 			}
+			
 			image_index = 0;
 			image_speed = 0.35;
 		}
@@ -41,9 +45,11 @@ function state_player_puddle()
 		image_speed = 0.35;
 		movespeed = approach(movespeed, 0, 0.5);
 		player_slopeMomentum(0.75, 0);
-		if sprite_animation_end()
-			state = States.normal;
-		if !grounded
+		
+		if (sprite_animation_end())
+			state = states.normal;
+		
+		if (!grounded)
 		{
 			event_play_oneshot("event:/SFX/player/slip", x, y);
 			sprite_index = spr_player_PZ_fall_outOfControl;

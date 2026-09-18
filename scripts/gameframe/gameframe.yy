@@ -5,7 +5,7 @@
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "Gameframe",
-    "path": "folders/Extensions/Gameframe.yy",
+    "name": "gameframe",
+    "path": "folders/Extensions/gameframe.yy",
   },
 }

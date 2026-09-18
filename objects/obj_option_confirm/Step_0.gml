@@ -1,4 +1,5 @@
 scr_getinput_menu();
+
 if (inputBuffer > 0)
 {
 	scr_input_varinit();
@@ -8,9 +9,11 @@ if (inputBuffer > 0)
 var old_selection = optionSelection;
 optionSelection += (key_right2 + key_left2);
 optionSelection = clamp(optionSelection, 0, 1);
+
 if (optionSelection != old_selection)
 	event_play_oneshot("event:/SFX/ui/step");
-if key_jump
+
+if (key_jump)
 {
 	if (optionSelection == 1)
 	{

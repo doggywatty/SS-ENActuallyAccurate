@@ -1,21 +1,25 @@
-switch state
+switch (state)
 {
-	case States.frozen:
+	case states.frozen:
 		hsp = 0;
-		if grounded
+		
+		if (grounded)
 			vsp = 0;
+		
 		if (sprite_index == spr_creamthief_grab && sprite_animation_end())
 		{
 			sprite_index = spr_creamthief_victory;
 			image_xscale = 1;
 		}
+		
 		image_speed = 0.35;
 		break;
-	case States.normal:
+	case states.normal:
 		if (grounded && vsp >= 0)
 		{
 			movespeed = approach(movespeed, 9, 0.2);
 			canRubberband = true;
+			
 			if (!bbox_in_camera(id, view_camera[0]))
 				rubberbandMovespeed = approach(rubberbandMovespeed, 4, 0.2);
 			else
@@ -23,15 +27,17 @@ switch state
 		}
 		
 		hsp = movespeed * image_xscale;
-		if canRubberband
+		
+		if (canRubberband)
 			hsp += (rubberbandMovespeed * image_xscale);
 		
 		instance_destroy(instance_place(x + hsp, y, obj_chocofrog));
 		
-		if grounded
+		if (grounded)
 		{
 			if (sprite_index != spr_creamthief_startRace)
 				sprite_index = spr_creamthief_walk;
+			
 			if (sprite_index == spr_creamthief_startRace && sprite_animation_end())
 				sprite_index = spr_creamthief_walk;
 			
@@ -39,14 +45,18 @@ switch state
 			var check1 = place_meeting_collision(x, y);
 			mask_index = spr_crouchmask;
 			var check2 = !place_meeting_collision(x, y);
-			if check1 && check2
+			
+			if (check1 && check2)
 				sprite_index = spr_creamthief_slide;
 		}
 		else if (sprite_index != spr_creamthief_jump || (sprite_animation_end() && sprite_index == spr_creamthief_jump))
+		{
 			sprite_index = spr_creamthief_fall;
+		}
+		
 		image_speed = 0.4;
 		break;
-	case States.titlescreen:
+	case states.titlescreen:
 		hsp = movespeed * image_xscale;
 		instance_destroy(instance_place(x + hsp, y, obj_destructibles));
 		
@@ -62,19 +72,22 @@ switch state
 		if ((sprite_animation_end() && sprite_index != spr_creamthief_grabbingStart) || sprite_index == spr_creamthief_grabbing)
 		{
 			if (grounded)
-				state = States.normal;
+				state = states.normal;
 		}
+		
 		image_speed = 0.3;
 		break;
-	case States.run:
+	case states.Nhookshot:
 		hsp = 0;
 		vsp = 0;
+		
 		if (tauntTimer <= 0)
 			scr_taunt_setVariables();
+		
 		tauntTimer--;
 		image_speed = 0;
 		break;
-	case States.stun:
+	case states.charge:
 		hsp = 0;
 		vsp = 0;
 		image_speed = 0.35;
@@ -82,26 +95,29 @@ switch state
 		if (floor(image_index) == 11)
 		{
 			movespeed = 16;
-			state = States.normal;
+			state = states.normal;
 		}
+		
 		break;
-	case States.charge:
+	case states.slap:
 		hsp = movespeed * image_xscale;
 		movespeed = approach(movespeed, 0, 0.4);
-		if sprite_animation_end()
+		
+		if (sprite_animation_end())
 		{
 			image_xscale *= -1;
 			image_index = 0;
 			sprite_index = spr_creamthief_walk;
 			movespeed = 8;
-			state = States.normal;
+			state = states.normal;
 		}
+		
 		break;
 }
 
 if (hsp != 0)
 {
-	with (create_afterimage(AfterImageType.plain, image_xscale))
+	with (create_afterimage(afterimagetypes.basic, image_xscale))
 	{
 		gonealpha = 0.45;
 		alarm[0] = 1;
@@ -112,16 +128,18 @@ if (hsp != 0)
 if ((instance_exists(obj_fadeoutTransition) || instance_exists(obj_techdiff)) && sprite_index != spr_creamthief_victory && sprite_index != spr_creamthief_grab && sprite_index != spr_creamthief_lose)
 {
 	sprite_index = spr_creamthief_idle;
-	if state != States.frozen
+	
+	if (state != states.frozen)
 	{
 		instance_create(x, y, obj_poofeffect);
-		state = States.frozen;
+		state = states.frozen;
 	}
 	
-	with obj_racelight
+	with (obj_racelight)
 	{
 		sprite_index = spr_racelight_deactive;
 		active = false;
+		
 		if (ds_list_find_index(global.SaveRoom, id))
 			ds_list_delete(global.SaveRoom, ds_list_find_index(global.SaveRoom, id));
 	}
@@ -131,6 +149,6 @@ if ((instance_exists(obj_fadeoutTransition) || instance_exists(obj_techdiff)) &&
 	x = xstart;
 	y = ystart;
 	
-	with obj_creamThiefGoTrigger
+	with (obj_creamThiefGoTrigger)
 		ds_list_delete(global.SaveRoom, ds_list_find_index(global.SaveRoom, id));
 }

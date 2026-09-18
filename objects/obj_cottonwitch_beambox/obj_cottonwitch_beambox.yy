@@ -9,8 +9,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Baddies",
+    "path": "folders/Objects/Baddies.yy",
   },
   "parentObjectId": {
     "name": "obj_hurtbox_baddie",
@@ -20,7 +20,7 @@
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
   "physicsFriction": 0.2,
-  "physicsGroup": 1,
+  "physicsGroup": 0,
   "physicsKinematic": false,
   "physicsLinearDamping": 0.1,
   "physicsObject": false,
@@ -30,7 +30,7 @@
   "physicsShapePoints": [],
   "physicsStartAwake": true,
   "properties": [
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"baddieID","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"obj_null;","varType":4,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"baddieID","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"obj_null","varType":5,},
   ],
   "solid": false,
   "spriteId": {
@@ -41,5 +41,8 @@
     "name": "spr_cottonwitch_beamhitbox",
     "path": "sprites/spr_cottonwitch_beamhitbox/spr_cottonwitch_beamhitbox.yy",
   },
+  "tags": [
+    "Enemies",
+  ],
   "visible": false,
 }

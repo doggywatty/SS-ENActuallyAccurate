@@ -1,4 +1,4 @@
 if (other.image_index > 9)
-    exit;
+	exit;
 
 instance_destroy();

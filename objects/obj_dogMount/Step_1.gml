@@ -1,2 +1,2 @@
 if (state == 0)
-    scr_collision();
+	scr_collision();

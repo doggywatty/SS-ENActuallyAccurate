@@ -1,5 +1,5 @@
 event_inherited();
-state = States.frozen;
+state = states.frozen;
 active = false;
 movespeed = 12;
 baddieStunTimer = 0;
@@ -21,4 +21,3 @@ slapped = 0;
 birdCreated = 0;
 boundbox = 0;
 grav = 0.5;
-

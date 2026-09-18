@@ -1,12 +1,9 @@
 varying vec2 v_vTexcoord;
 varying vec4 v_vColour;
-
 uniform float time;
 uniform float amplitude;
-
 #define SCALE 0.03
 #define SPEED 4.0
-
 void main()
 {
 	vec2 tx = v_vTexcoord;

@@ -1,4 +1,4 @@
-if following
+if (following)
 {
 	var tgtX = obj_parent_player.x;
 	var tgtY = obj_parent_player.y - 60;

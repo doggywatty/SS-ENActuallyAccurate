@@ -3,7 +3,7 @@ grav = 0.5;
 hsp = 1;
 vsp = 0;
 movespeed = 0;
-state = EnemyStates.float;
+state = enemystates.float;
 baddieStunTimer = 0;
 alarm[0] = 150;
 canRoam = true;
@@ -14,10 +14,10 @@ hitboxcreate = 0;
 
 enemyDeath_SpawnBody = function()
 {
-    instance_create(x, y, obj_candyCornEffect, 
-    {
-        image_xscale: image_xscale
-    });
+	instance_create(x, y, obj_candyCornEffect, 
+	{
+		image_xscale: image_xscale
+	});
 };
 
 thrown = 0;
@@ -38,4 +38,3 @@ boundbox = 0;
 idletimer = 200;
 substate = 0;
 enemyAttackTimer = 0;
-

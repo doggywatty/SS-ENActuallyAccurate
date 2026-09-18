@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "Extensions",
-    "path": "folders/Extensions/FMOD/Extensions.yy",
+    "path": "folders/Extensions/Fmod/Extensions.yy",
   },
 }

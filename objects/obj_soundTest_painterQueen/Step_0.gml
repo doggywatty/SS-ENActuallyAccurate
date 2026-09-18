@@ -1,4 +1,5 @@
 var target_x = xstart;
+
 if (obj_soundTest.pauseStatus)
 {
 	if (obj_soundTest.musicPlaying)
@@ -13,6 +14,8 @@ if (obj_soundTest.pauseStatus)
 	}
 }
 else
+{
 	sprite_index = spr_st_painterQueen_idle;
+}
 
 x = lerp(x, target_x, 0.3);

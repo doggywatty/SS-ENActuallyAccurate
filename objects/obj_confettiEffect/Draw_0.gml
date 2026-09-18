@@ -1,2 +1,2 @@
-if paperDunk
-    draw_self();
+if (paperDunk)
+	draw_self();

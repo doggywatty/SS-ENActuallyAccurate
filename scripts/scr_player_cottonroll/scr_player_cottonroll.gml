@@ -5,9 +5,10 @@ function state_player_cottonroll()
 	hsp = xscale * movespeed;
 	dir = xscale;
 	momentum = true;
+	
 	if (place_meeting_solid(x + xscale, y) && !place_meeting(x + xscale, y, obj_destructibles) && !place_meeting(x + xscale, y, obj_chocofrog))
 	{
-		state = States.cotton;
+		state = states.bossintro;
 		sprite_index = spr_player_PZ_werecotton_splat_intro;
 		image_index = 0;
 		movespeed = 0;
@@ -15,23 +16,26 @@ function state_player_cottonroll()
 	}
 	
 	movespeed = max(movespeed, 8);
+	
 	if (movespeed > 8 && movespeed < 14)
 		player_slopeMomentum(0.1, 1);
 	
 	if (grounded && !key_down && movespeed <= 8 && room_to_jump)
 	{
-		state = States.cotton;
+		state = states.bossintro;
 		sprite_index = spr_cottonIdle;
 		momentum = true;
 	}
+	
 	if (inputBufferJump > 0 && !can_jump)
 	{
 		momentum = true;
-		state = States.cotton;
+		state = states.bossintro;
 		vsp = -10;
 		grav = 0.025;
 		image_index = 0;
 		sprite_index = spr_cottonDoubleJump;
+		
 		with (instance_create(x, y, obj_highJumpCloud1, 
 		{
 			playerID: id
@@ -44,10 +48,11 @@ function state_player_cottonroll()
 		event_play_oneshot("event:/SFX/cotton/doublejump", x, y);
 		inputBufferJump = 0;
 	}
+	
 	if (inputBufferJump > 0 && grounded && !place_meeting_solid(x, y - 16) && !place_meeting_solid(x, y - 32))
 	{
 		momentum = true;
-		state = States.cotton;
+		state = states.bossintro;
 		vsp = -14;
 		grav = 0.025;
 		image_index = 0;
@@ -59,6 +64,7 @@ function state_player_cottonroll()
 		event_play_oneshot("event:/SFX/cotton/jump", x, y);
 		inputBufferJump = 0;
 	}
+	
 	if (inputBufferSlap > 0)
 	{
 		inputBufferSlap = 0;
@@ -69,7 +75,7 @@ function state_player_cottonroll()
 		vsp = grounded ? 0 : -5;
 		grav = 0.2;
 		grounded = false;
-		state = States.cotton;
+		state = states.bossintro;
 		event_play_oneshot("event:/SFX/cotton/attack", x, y);
 		groundedCot = false;
 	}

@@ -1,8 +1,9 @@
-function scr_escapetimes(_room = room)
+function scr_escapetimes(arg0 = room)
 {
 	var seconds = 0;
 	var minutes = 0;
-	switch _room
+	
+	switch (arg0)
 	{
 		case steamy_12:
 			minutes = 3;
@@ -37,6 +38,7 @@ function scr_escapetimes(_room = room)
 			seconds = 0;
 			break;
 	}
+	
 	var time_array;
 	time_array[0] = minutes;
 	time_array[1] = seconds;

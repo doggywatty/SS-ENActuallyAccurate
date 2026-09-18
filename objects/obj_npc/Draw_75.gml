@@ -6,6 +6,7 @@ var textheight = string_height_scribble_ext("[wave][c_black][npcfont]" + text, 8
 var total_lines = round(textheight / 32);
 var my_height = (total_lines + 1) * 32;
 var tgty;
+
 if (total_lines == 1)
 	tgty = max(my_height, 96);
 else
@@ -13,56 +14,66 @@ else
 
 var active = speaking;
 draw_set_font(old);
-switch ropetype
+
+switch (ropetype)
 {
-	case RopeType.top:
+	case ropetypes.above:
 		draw_sprite_ext(myrope, propdex, wave_x + 64, boxy - 15, 1, 1, 0, c_white, 1);
 		draw_sprite_ext(myrope, propdex, wave_x + 864, boxy - 15, 1, 1, 0, c_white, 1);
 		break;
-	case RopeType.bottom:
+	case ropetypes.below:
 		if (!(boxy <= -tgty))
 			draw_sprite_ext(myrope, propdex, wave_x + 432, boxy + tgty, 1, 1, 0, c_white, 1);
+		
 		break;
 }
 
 var drawing = true;
 boxy = max(boxy, -tgty);
-if active
+
+if (active)
 {
 	if (voice_cooldown <= 0 && talk_sound != -4)
 	{
 		voice_cooldown = 100;
 		event_play_oneshot(talk_sound, x, y);
 	}
+	
 	if (boxstate == 0)
 	{
 		boxvsp += 0.35;
 		boxy = approach(boxy, 50, boxvsp);
+		
 		if (boxy >= 50)
 			boxstate = 1;
 	}
 	else
+	{
 		boxy = lerp(boxy, 30 + wave(-2, 2, 4, 0), 0.2);
+	}
 }
 else
 {
 	boxstate = 0;
 	boxvsp = 0;
 	boxy = approach(boxy, -tgty, 5);
+	
 	if (boxy <= -tgty)
 		drawing = false;
 }
 
-if !drawing
+if (!drawing)
 {
 	event_perform(ev_cleanup, 0);
 	exit;
 }
 
-if !surface_exists(mysurf)
+if (!surface_exists(mysurf))
 	mysurf = surface_create(960, tgty);
-if !surface_exists(mycut)
+
+if (!surface_exists(mycut))
 	mycut = surface_create(960, tgty);
+
 if (surface_exists(mycut))
 {
 	surface_set_target(mycut);
@@ -73,6 +84,7 @@ if (surface_exists(mycut))
 	gpu_set_blendmode(bm_normal);
 	surface_reset_target();
 }
+
 if (surface_exists(mysurf))
 {
 	surface_set_target(mysurf);

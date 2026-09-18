@@ -132,8 +132,8 @@
   "size": 12.0,
   "styleName": "Regular",
   "textureGroupId": {
-    "name": "Backgrounds",
-    "path": "texturegroups/Backgrounds",
+    "name": "HUD",
+    "path": "texturegroups/HUD",
   },
   "TTFName": null,
   "usesSDF": false,

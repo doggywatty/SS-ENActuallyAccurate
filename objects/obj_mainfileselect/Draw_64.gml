@@ -1,5 +1,7 @@
-if !loaded
+if (!loaded)
+{
 	draw_text_scribble(952, 532, $"[fa_right][fa_bottom][c_white][fontDefault]{lang_get("loadingGeneric")}");
+}
 else
 {
 	draw_set_halign(fa_right);

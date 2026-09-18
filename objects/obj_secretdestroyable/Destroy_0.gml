@@ -2,7 +2,8 @@ if (ds_list_find_index(global.SaveRoom, id) == -1)
 {
 	sprite_get_destroyable_smoke(debrisSprite);
 	var rep = 2;
-	repeat rep
+	
+	repeat (rep)
 	{
 		if (place_meeting(x, y, obj_secretPortal) || instance_exists(obj_secretfound))
 			create_debris(random_range(bbox_left, bbox_right), random_range(bbox_top, bbox_bottom), spr_secretGoopDebris);

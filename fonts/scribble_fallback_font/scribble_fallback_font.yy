@@ -133,8 +133,8 @@
   "size": 11.0,
   "styleName": "Regular",
   "textureGroupId": {
-    "name": "Backgrounds",
-    "path": "texturegroups/Backgrounds",
+    "name": "Default",
+    "path": "texturegroups/Default",
   },
   "TTFName": "",
   "usesSDF": false,

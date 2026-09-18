@@ -3,10 +3,10 @@ save_index = 0;
 saveAlpha = 0;
 depth = -200;
 
-hudObject = function(_x, _y) constructor
+hudObject = function(arg0, arg1) constructor
 {
-	xstart = _x;
-	ystart = _y;
+	xstart = arg0;
+	ystart = arg1;
 	x = xstart;
 	y = ystart;
 	image_index = 0;
@@ -15,16 +15,17 @@ hudObject = function(_x, _y) constructor
 
 moveUpY = 0;
 global.TooltipPrompt = "";
-
 HUDObject_rankBubble = new hudObject(16, 16);
-with HUDObject_rankBubble
+
+with (HUDObject_rankBubble)
 {
 	scale = 1;
 	surface = undefined;
 }
 
 HUDObject_TV = new hudObject(845, 80);
-with HUDObject_TV
+
+with (HUDObject_TV)
 {
 	tvBG = spr_tvHUD_bg;
 	tvBG_index = 0;
@@ -44,35 +45,40 @@ with HUDObject_TV
 	tvDoingExpression = false;
 	tvPrevDoingExpression = tvDoingExpression;
 	
-	tvAnimations = function(_Player)
+	tvAnimations = function(arg0)
 	{
-		var player_state = global.freezeframe ? _Player.frozenState : _Player.state;
-		if (player_state == States.machslide)
+		var player_state = global.freezeframe ? arg0.frozenState : arg0.state;
+		
+		if (player_state == states.machfreefall)
 		{
-			if (_Player.sprite_index == _Player.spr_machslideboost3)
-				player_state = States.mach3;
+			if (arg0.sprite_index == arg0.spr_machslideboost3)
+				player_state = states.shotgun;
 			else
-				player_state = States.mach2;
-		}		
-		if (sprite_index == spr_tvHUD_turningOn && !sprite_animation_end(,, sprite_image_number))
+				player_state = states.pistol;
+		}
+		
+		if (sprite_index == spr_tvHUD_turningOn && !sprite_animation_end(undefined, undefined, sprite_image_number))
 			exit;
 		
 		tvDoingExpression = false;
+		
 		if (!is_undefined(tvExpressionSprite) && tvExpressionBuffer > 0)
 		{
 			tvDoingExpression = true;
 			queuedSprite = tvExpressionSprite;
 			var _count = true;
 			var _sprite_check = tvExpressionSprite;
+			
 			if (array_contains(global.TvSprPlayer_HurtExp, tvExpressionSprite))
 				_sprite_check = global.TvSprPlayer_Hurt;
-			switch _sprite_check
+			
+			switch (_sprite_check)
 			{
 				case global.TvSprPlayer_Hurt:
-					_count = obj_parent_player.state != States.hurt;
+					_count = obj_parent_player.state != states.superslam;
 					break;
 				case global.TvSprPlayer_KeyGot:
-					_count = obj_parent_player.state != States.gotkey;
+					_count = obj_parent_player.state != states.boulder;
 					break;
 				case global.TvSprPlayer_Secret:
 					_count = !obj_parent_player.isInSecretPortal;
@@ -84,22 +90,26 @@ with HUDObject_TV
 				tvExpressionSprite = undefined;
 				tvExpressionBuffer = 0;
 			}
+			
 			exit;
 		}
 		
 		tvNormalStates = false;
-		switch player_state
+		
+		switch (player_state)
 		{
 			default:
 				var from_transition = [global.TvSprPlayer_Mach2, global.TvSprPlayer_Mach3, global.TvSprPlayer_Mach4];
 				tvNormalStates = true;
 				
-				if ((queuedSprite == global.TvSprPlayer_IdleAnim1 || queuedSprite == global.TvSprPlayer_IdleAnim2) && !sprite_animation_end(,, sprite_image_number))
+				if ((queuedSprite == global.TvSprPlayer_IdleAnim1 || queuedSprite == global.TvSprPlayer_IdleAnim2) && !sprite_animation_end(undefined, undefined, sprite_image_number))
 					exit;
+				
 				if (array_contains(from_transition, sprite_index))
 					tvForceTransition = true;
 				
 				queuedSprite = get_panic() ? global.TvSprPlayer_EscapeIdle : global.TvSprPlayer_Idle;
+				
 				if (queuedSprite == global.TvSprPlayer_Idle && tvIdleAnimationBuffer-- <= 0 && global.Combo < 5)
 				{
 					tvIdleAnimationBuffer = choose(500, 450, 400, 550);
@@ -109,68 +119,76 @@ with HUDObject_TV
 				
 				if (global.Combo >= 10 && !get_panic())
 					queuedSprite = global.TvSprPlayer_Combo;
+				
 				if (global.Combo >= 50 && !get_panic())
 					queuedSprite = global.TvSprPlayer_HighCombo;
+				
 				break;
-			case States.mach3:
-			case States.wallkick:
-			case States.machslide:
-			case States.climbwall:
-			case States.machroll:
+			case states.shotgun:
+			case states.cheeseball:
+			case states.machfreefall:
+			case states.cheesepep:
+			case states.climbdownwall:
 				tvNormalStates = true;
-				var my_mvsp = global.freezeframe ? abs(_Player.frozenMoveSpeed) : abs(_Player.movespeed);
-				if (player_state == States.climbwall)
-					my_mvsp = global.freezeframe ? abs(_Player.frozenVerticalMovespeed) : abs(_Player.verticalMovespeed);
+				var my_mvsp = global.freezeframe ? abs(arg0.frozenMoveSpeed) : abs(arg0.movespeed);
+				
+				if (player_state == states.cheesepep)
+					my_mvsp = global.freezeframe ? abs(arg0.frozenVerticalMovespeed) : abs(arg0.verticalMovespeed);
+				
 				var _oldQueue = queuedSprite;
-				if (player_state == States.wallkick || player_state == States.machslide)
+				
+				if (player_state == states.cheeseball || player_state == states.machfreefall)
 					queuedSprite = global.TvSprPlayer_Mach2;
-				if (player_state == States.mach3 || player_state == States.climbwall
-				|| (player_state == States.machslide && _Player.sprite_index == _Player.spr_machslideboost3)
-				|| player_state == States.machroll)
+				
+				if (player_state == states.shotgun || player_state == states.cheesepep || (player_state == states.machfreefall && arg0.sprite_index == arg0.spr_machslideboost3) || player_state == states.climbdownwall)
 					queuedSprite = global.TvSprPlayer_Mach3;
-				if (_Player.sprite_index == _Player.spr_crazyrun || (player_state == States.climbwall
-				&& my_mvsp >= 16) || (player_state == States.machroll && _Player.mach3Roll > 0 && my_mvsp >= 16))
+				
+				if (arg0.sprite_index == arg0.spr_crazyrun || (player_state == states.cheesepep && my_mvsp >= 16) || (player_state == states.climbdownwall && arg0.mach3Roll > 0 && my_mvsp >= 16))
 					queuedSprite = global.TvSprPlayer_Mach4;
+				
 				if (queuedSprite != _oldQueue)
 					tvForceTransition = true;
+				
 				break;
-			case States.tumble:
+			case states.runonball:
 				queuedSprite = global.TvSprPlayer_Ball;
 				break;
-			case States.puddle:
+			case states.freefallprep:
 				queuedSprite = global.TvSprPlayer_Slipping;
 				break;
-			case States.oldtaunt:
+			case states.freefall:
 				queuedSprite = global.TvSprPlayer_Hooked;
-				if (_Player.sprite_index == spr_player_PZ_frostburn_hook)
+				
+				if (arg0.sprite_index == spr_player_PZ_frostburn_hook)
 					queuedSprite = global.TvSprPlayer_FrostBurn;
+				
 				break;
-			case States.minecart:
+			case states.victory:
 				queuedSprite = global.TvSprPlayer_Minecart;
 				break;
-			case States.fireass:
-			case States.fireassdash:
+			case states.crouchslide:
+			case states.mach1:
 				queuedSprite = global.TvSprPlayer_FireAss;
 				break;
-			case States.cotton:
-			case States.cottondrill:
-			case States.cottonroll:
-			case States.cottondig:
+			case states.bossintro:
+			case states.keyget:
+			case states.tackle:
+			case states.slipnslide:
 				queuedSprite = global.TvSprPlayer_WereCotton;
 				break;
-			case States.frostburnjump:
-			case States.frostburnnormal:
-			case States.frostburnslide:
-			case States.frostburnstick:
+			case states.pal:
+			case states.cotton:
+			case states.uppercut:
+			case states.shocked:
 				queuedSprite = global.TvSprPlayer_FrostBurn;
 				break;
-			case States.fling:
+			case states.ladder:
 				queuedSprite = global.TvSprPlayer_Croaked;
 				break;
-			case States.doughmount:
-			case States.doughmountspin:
-			case States.doughmountballoon:
-			case States.doughmountpancake:
+			case states.punch:
+			case states.backkick:
+			case states.shoulder:
+			case states.backbreaker:
 				queuedSprite = global.TvSprPlayer_MarshMount;
 				break;
 		}
@@ -199,17 +217,15 @@ with HUDObject_TV
 		image_speed: 0.5,
 		activated: true
 	};
-	
 	idleScreenSaver = 
 	{
 		activated: false,
-		keyPositions: [
-			[-62, -15], [-9, 39], [34, -4], [18, -21], [-45, 43], [-63, 28], [-17, -20]
-		],
+		keyPositions: [[-62, -15], [-9, 39], [34, -4], [18, -21], [-45, 43], [-63, 28], [-17, -20]],
 		playBackSpeed: 1,
 		playbackDirection: 1
 	};
-	with idleScreenSaver
+	
+	with (idleScreenSaver)
 	{
 		x = keyPositions[0][0];
 		y = keyPositions[0][1];
@@ -219,13 +235,14 @@ with HUDObject_TV
 }
 
 HUDObject_comboMeter = new hudObject(845, 165);
-with HUDObject_comboMeter
+
+with (HUDObject_comboMeter)
 {
 	displayYMax = -300;
 	displayY = displayYMax;
 	displayVSP = 0;
 	comboDisplay = 0;
-	displayState = ComboState.Off;
+	displayState = displaystates.entering;
 	comboTimeDisplay = 0;
 	combofillDisplay = 0;
 	comboSurface = -4;
@@ -238,7 +255,8 @@ with HUDObject_comboMeter
 }
 
 HUDObject_timer = new hudObject(480, 480);
-with HUDObject_timer
+
+with (HUDObject_timer)
 {
 	targetEscapeTime = 0;
 	elm_coneBall = 
@@ -248,7 +266,7 @@ with HUDObject_timer
 		image_speed: 0.35
 	};
 	elm_coneBallText = new subSprite(spr_bartimer_blotchspotshowtime_text, 0, 0, false);
-	elm_coneBallText.lastFrame = 0;	
+	elm_coneBallText.lastFrame = 0;
 	elm_clockTimer = 
 	{
 		image_index: 0,
@@ -257,7 +275,8 @@ with HUDObject_timer
 }
 
 HUDObject_tooltipPrompts = new hudObject(480, 500);
-with HUDObject_tooltipPrompts
+
+with (HUDObject_tooltipPrompts)
 {
 	image_alpha = 0;
 	promptTimer = 0;

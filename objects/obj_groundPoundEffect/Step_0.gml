@@ -1,8 +1,7 @@
 updateEffectPosition();
 
-if (playerID.state != States.freefall && playerID.state != States.frostburnjump && playerID.state != States.climbwall && playerID.state != States.Sjump && playerID.state != States.superslam)
-    instance_destroy();
+if (playerID.state != states.slam && playerID.state != states.pal && playerID.state != states.cheesepep && playerID.state != states.highjump && playerID.state != states.secondjump)
+	instance_destroy();
 
-if (playerID.state == States.superslam && playerID.sprite_index == playerID.spr_piledriverland)
-    instance_destroy();
-
+if (playerID.state == states.secondjump && playerID.sprite_index == playerID.spr_piledriverland)
+	instance_destroy();

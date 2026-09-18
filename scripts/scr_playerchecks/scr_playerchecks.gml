@@ -1,8 +1,5 @@
-function scr_player_check_normal(player)
+function scr_player_check_normal(arg0)
 {
-	var normalStates = [
-		States.normal, States.jump, States.mach1, States.mach2, States.mach3, States.machslide,
-		States.wallkick, States.grabdash, States.crouch, States.crouchjump
-	];
-	return array_contains(normalStates, player.state);
+	var normalStates = [(1 << 0), (24 << 0), (31 << 0), (32 << 0), (33 << 0), (34 << 0), (7 << 0), (10 << 0), (29 << 0), (30 << 0)];
+	return array_contains(normalStates, arg0.state);
 }

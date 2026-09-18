@@ -10,8 +10,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Baddies",
+    "path": "folders/Objects/Baddies.yy",
   },
   "parentObjectId": null,
   "persistent": false,
@@ -34,5 +34,8 @@
     "path": "sprites/spr_eyescreamsandwich_wait/spr_eyescreamsandwich_wait.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "Enemies",
+  ],
   "visible": true,
 }

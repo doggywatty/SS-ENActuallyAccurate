@@ -28,99 +28,102 @@ particle_init(spr_smallpoof, 0.35, 0);
 particle_init(spr_flingparticle, 0.35, 0);
 particle_init(spr_flingparticle2, 0.35, 0);
 
-function particle_init(_part, _img_spd, _depth)
+function particle_init(arg0, arg1, arg2)
 {
-	ds_map_set(global.particlesMap, _part, 
+	ds_map_set(global.particlesMap, arg0, 
 	{
-		image_speed: _img_spd,
-		depth: _depth
+		image_speed: arg1,
+		depth: arg2
 	});
 }
 
-function create_particle(_x, _y, _spr_ind, _x1 = 0, _xscale = 1, _yscale = 1, _curbracs = {})
+function create_particle(arg0, arg1, arg2, arg3 = 0, arg4 = 1, arg5 = 1, arg6 = {})
 {
-	var particle_id = instance_create(_x + irandom_range(-_x1, _x1), _y + irandom_range(-_x1, _x1), obj_fade_particle, _curbracs);
-	particle_id.sprite_index = _spr_ind;
-	particle_id.particle_scale(_xscale, _yscale);
-	var _Map = ds_map_find_value(global.particlesMap, _spr_ind);
-	if !is_undefined(_Map)
+	var particle_id = instance_create(arg0 + irandom_range(-arg3, arg3), arg1 + irandom_range(-arg3, arg3), obj_fade_particle, arg6);
+	particle_id.sprite_index = arg2;
+	particle_id.particle_scale(arg4, arg5);
+	var _Map = ds_map_find_value(global.particlesMap, arg2);
+	
+	if (!is_undefined(_Map))
 	{
 		particle_id.particle_depth(_Map.depth);
 		particle_id.particle_imgspd(_Map.image_speed);
 	}
+	
 	return particle_id;
 }
 
-function create_radiating_particle(_x, _y, _spr_ind, _img_spd = 0.25, _canRotate = true, _minSpd = 2, _maxSpd = 5, _lifeTime = -1)
+function create_radiating_particle(arg0, arg1, arg2, arg3 = 0.25, arg4 = true, arg5 = 2, arg6 = 5, arg7 = -1)
 {
-	return instance_create(_x, _y, obj_radiating_particle, 
+	return instance_create(arg0, arg1, obj_radiating_particle, 
 	{
-		sprite_index: _spr_ind,
-		canRotate: _canRotate,
-		image_speed: _img_spd,
-		minSpd: _minSpd,
-		maxSpd: _maxSpd,
-		lifeTime: _lifeTime
+		sprite_index: arg2,
+		canRotate: arg4,
+		image_speed: arg3,
+		minSpd: arg5,
+		maxSpd: arg6,
+		lifeTime: arg7
 	});
 }
 
-function create_destroyable_smoke(x1, x2, _img_blend = #9E5402, y1 = 0, _img_xscale = 1, _img_yscale = _img_xscale)
+function create_destroyable_smoke(arg0, arg1, arg2 = 152734, arg3 = 0, arg4 = 1, arg5 = arg4)
 {
-	var _x = random_range(x1 - y1, x1 + y1);
-	var _y = random_range(x2 - y1, x2 + y1);
+	var _x = random_range(arg0 - arg3, arg0 + arg3);
+	var _y = random_range(arg1 - arg3, arg1 + arg3);
 	return instance_create(_x, _y, obj_destroyableSmoke, 
 	{
-		image_blend: _img_blend,
-		image_xscale: _img_xscale,
-		image_yscale: _img_yscale
+		image_blend: arg2,
+		image_xscale: arg4,
+		image_yscale: arg5
 	});
 }
 
-function sprite_get_destroyable_smoke(_spr = debrisSprite)
+function sprite_get_destroyable_smoke(arg0 = debrisSprite)
 {
-	switch _spr
+	switch (arg0)
 	{
 		case spr_debris_entryway_wafer:
 		case spr_debris_entryway_metal:
 		case spr_debris_entryway_brick:
 		case spr_minesdebris_dirt:
-			smokeColor = [ #A74001 ];
+			smokeColor = [82087];
 			break;
 		case spr_towndebris:
-			smokeColor = [ #602040 ];
+			smokeColor = [4202592];
 			break;
 		case spr_clockdebris:
 		case spr_clockblockdebris:
-			smokeColor = [ #F8A880 ];
+			smokeColor = [8431864];
 			break;
 		case spr_minesdebris_stone_section1:
 		case spr_minesdebris_stone_section2:
 		case spr_minesdebris_dirt_section1:
-			smokeColor = [ #9090C0 ];
+			smokeColor = [12619920];
 			break;
 		case spr_debris_molasses_mud:
-			smokeColor = [ #71272D ];
+			smokeColor = [2959217];
 			break;
 		case spr_debris_molasses_temple:
-			smokeColor = [ #B03000, #803851 ];
+			smokeColor = [12464, 5322880];
 			break;
 	}
-	if place_meeting(x, y, obj_secretPortal)
-		smokeColor = [ #6F5BAB ];
+	
+	if (place_meeting(x, y, obj_secretPortal))
+		smokeColor = [11230063];
 }
 
-function create_debris(_x, _y, _spr, _spd = 0)
+function create_debris(arg0, arg1, arg2, arg3 = 0)
 {
-	var img_num = sprite_get_number(_spr);
+	var img_num = sprite_get_number(arg2);
 	var _struct = 
 	{
-		x: _x,
-		y: _y,
-		sprite_index: _spr,
+		x: arg0,
+		y: arg1,
+		sprite_index: arg2,
 		image_number: img_num,
 		image_index: irandom_range(0, img_num),
 		image_angle: random_range(0, 360),
-		image_speed: sprite_get_speed(_spr) * _spd,
+		image_speed: sprite_get_speed(arg2) * arg3,
 		image_xscale: 1,
 		image_yscale: 1,
 		image_blend: c_white,
@@ -139,38 +142,40 @@ function create_debris(_x, _y, _spr, _spd = 0)
 	return _struct;
 }
 
-function create_collect_effect(_x, _y, _spr_ind = undefined, _value, _pal = undefined)
+function create_collect_effect(arg0, arg1, arg2 = undefined, arg3, arg4 = undefined)
 {
-	if is_undefined(_spr_ind)
+	if (is_undefined(arg2))
 	{
-		switch global.playerCharacter
+		switch (global.playerCharacter)
 		{
 			default:
-				_spr_ind = choose(spr_collect1, spr_collect2, spr_collect3, spr_collect4, spr_collect5);
+				arg2 = choose(spr_collect1, spr_collect2, spr_collect3, spr_collect4, spr_collect5);
 				break;
 		}
-		if is_undefined(_pal)
-			_pal = irandom_range(1, 5);
+		
+		if (is_undefined(arg4))
+			arg4 = irandom_range(1, 5);
 	}
+	
 	var struct = 
 	{
-		sprite_index: _spr_ind,
+		sprite_index: arg2,
 		image_index: 0,
 		image_speed: 0.35,
-		x: _x - camera_get_view_x(view_camera[0]),
-		y: _y - camera_get_view_y(view_camera[0]),
-		paletteSelect: _pal,
-		usePalette: !is_undefined(_pal),
-		value: _value
+		x: arg0 - camera_get_view_x(view_camera[0]),
+		y: arg1 - camera_get_view_y(view_camera[0]),
+		paletteSelect: arg4,
+		usePalette: !is_undefined(arg4),
+		value: arg3
 	};
 	ds_list_add(global.collectParticleList, struct);
 	return struct;
 }
 
-function create_baddiedebris(_x = x, _y = y, _sprs = choose(spr_slapstar, spr_baddieGibs))
+function create_baddiedebris(arg0 = x, arg1 = y, arg2 = choose(spr_slapstar, spr_baddieGibs))
 {
-	var q = instance_create(_x, _y, obj_baddieGibs);
-	q.sprite_index = _sprs;
+	var q = instance_create(arg0, arg1, obj_baddieGibs);
+	q.sprite_index = arg2;
 	q.hsp = random_range(-5, 5);
 	q.vsp = random_range(-10, 10);
 	return q;

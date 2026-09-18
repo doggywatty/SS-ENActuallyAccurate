@@ -1,5 +1,6 @@
 draw_sprite_tiled_ext(bg_credits, 0, bgCredits.x, 0, 1, 1, bgCredits.image_blend, bgCredits.image_alpha);
 draw_sprite_ext(spr_biggnomestudios_logosimple, 0, 0, 0, 1, 1, 0, c_white, showLogo * logoAlpha);
+
 if (creditPhase == 1)
 {
 	if (currentCategory >= 0 && currentCategory < categoryCount)
@@ -7,14 +8,17 @@ if (creditPhase == 1)
 		for (var i = 0; i < categoryCount; i++)
 		{
 			var _nameArr = creditEntries[i][1];
-			array_foreach(_nameArr, function(_creditEntry, _category)
+			array_foreach(_nameArr, function(arg0, arg1)
 			{
-				_creditEntry.draw();
+				arg0.draw();
 			});
 		}
+		
 		draw_set_color(c_white);
+		
 		if (killCounterArr[currentCategory] == array_length(creditEntries[currentCategory][1]))
 			draw_set_color(c_yellow);
+		
 		draw_text_scribble(camera_get_view_width(view_camera[0]) / 2, 100, $"[fa_center][fa_middle][smallfont]{string_upper(creditEntries[currentCategory][0])}");
 		draw_set_color(c_white);
 	}
@@ -22,7 +26,8 @@ if (creditPhase == 1)
 
 endScreenSpr.draw(0, 0);
 curtainSpr.draw();
-with pizzelleFlick
+
+with (pizzelleFlick)
 {
 	palette_as_player();
 	draw();

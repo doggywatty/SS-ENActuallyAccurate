@@ -1,8 +1,8 @@
 var target_player = get_nearestPlayer();
-with target_player
+
+with (target_player)
 {
-	if (place_meeting(x, y, other.id) && (state == States.minecart || state == States.minecart_bump
-	|| (state == States.minecart_launched && vsp >= 0)))
+	if (place_meeting(x, y, other.id) && (state == states.victory || state == states.Sjump || (state == states.comingoutdoor && vsp >= 0)))
 	{
 		event_play_oneshot("event:/SFX/general/mallowbounce", x, y);
 		x = other.x;
@@ -10,7 +10,7 @@ with target_player
 		image_index = 0;
 		movespeed = 0;
 		vsp = -25;
-		state = States.minecart_launched;
+		state = states.comingoutdoor;
 		sprite_index = spr_player_PZ_minecart_jump;
 	}
 }

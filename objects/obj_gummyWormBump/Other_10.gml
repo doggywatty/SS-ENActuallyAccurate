@@ -1,57 +1,52 @@
 if (clone && instance_exists(realBump) && place_meeting(x, y, realBump))
 	exit;
+
 if (DestroyedBy.object_index == obj_parent_player || DestroyedBy.object_index == obj_player1 || DestroyedBy.object_index == obj_player2)
 {
-	if (DestroyedBy.state == States.jump)
+	if (DestroyedBy.state == states.chainsawpogo)
 	{
 	}
-	else if (place_meeting(x - DestroyedBy.hsp, y, DestroyedBy) && DestroyedBy.state == States.grabdash)
+	else if (place_meeting(x - DestroyedBy.hsp, y, DestroyedBy) && DestroyedBy.state == states.pistalaim)
 	{
-		with DestroyedBy
+		with (DestroyedBy)
 		{
-			with other.id
+			with (other.id)
 				instance_destroy();
+			
 			hsp = xscale * -4;
 			vsp = -4;
 			machTwo = 0;
 			image_index = 0;
 			
-			if (state == States.mach1)
+			if (state == states.machroll)
 				sprite_index = spr_canehit;
 			else
-				sprite_index = choose(
-					spr_player_PZ_blockbreak_1, spr_player_PZ_blockbreak_2, spr_player_PZ_blockbreak_3,
-					spr_player_PZ_blockbreak_4, spr_player_PZ_blockbreak_5, spr_player_PZ_blockbreak_6,
-					spr_player_PZ_blockbreak_7
-				);
-			state = States.tackle;
+				sprite_index = choose(spr_player_PZ_blockbreak_1, spr_player_PZ_blockbreak_2, spr_player_PZ_blockbreak_3, spr_player_PZ_blockbreak_4, spr_player_PZ_blockbreak_5, spr_player_PZ_blockbreak_6, spr_player_PZ_blockbreak_7);
+			
+			state = states.knightpepslopes;
 		}
 	}
 	else
 	{
-		with DestroyedBy
+		with (DestroyedBy)
 		{
 			if (freeFallSmash < 10)
 			{
-				if (state == States.freefall || state == States.freefallland)
+				if (state == states.slam || state == states.skateboard)
 				{
-					state = States.freefallland;
-					var landing_sprite_transitions = [
-						[spr_groundPoundfall, spr_groundPoundland],
-						[spr_groundPoundstart, spr_groundPoundland],
-						[spr_player_PZ_fall_outOfControl, spr_player_PZ_freeFall_land],
-						[spr_diveBombfall, spr_diveBombland],
-						[spr_diveBombstart, spr_diveBombland]
-					];
+					state = states.skateboard;
+					var landing_sprite_transitions = [[spr_groundPoundfall, spr_groundPoundland], [spr_groundPoundstart, spr_groundPoundland], [spr_player_PZ_fall_outOfControl, spr_player_PZ_freeFall_land], [spr_diveBombfall, spr_diveBombland], [spr_diveBombstart, spr_diveBombland]];
+					
 					for (var i = 0; i < array_length(landing_sprite_transitions); i++)
 					{
 						if (sprite_index == landing_sprite_transitions[i][0])
 							sprite_index = landing_sprite_transitions[i][1];
 					}
+					
 					image_index = 0;
 					vsp = 0;
 				}
-				else if (state == States.superslam)
+				else if (state == states.secondjump)
 				{
 					sprite_index = spr_piledriverland;
 					event_play_oneshot("event:/SFX/player/groundpound", x, y);
@@ -64,7 +59,8 @@ if (DestroyedBy.object_index == obj_parent_player || DestroyedBy.object_index ==
 					create_particle(x, y + 35, spr_bangEffect);
 					create_particle(x, y, spr_landcloud);
 					freefallstart = 0;
-					with obj_parent_enemy
+					
+					with (obj_parent_enemy)
 					{
 						if (bbox_in_camera(id, view_camera[0]) && grounded)
 						{
@@ -73,18 +69,23 @@ if (DestroyedBy.object_index == obj_parent_player || DestroyedBy.object_index ==
 							hsp = 0;
 						}
 					}
-					with baddieGrabbedID
+					
+					with (baddieGrabbedID)
 					{
 						x = other.x;
 						y = other.y;
 						scr_instakillEnemy(id, other.id);
 					}
+					
 					baddieGrabbedID = -4;
 				}
 			}
 		}
+		
 		instance_destroy();
 	}
 }
 else
+{
 	instance_destroy();
+}

@@ -1,4 +1,4 @@
-if !global.freezeframe
+if (!global.freezeframe)
 {
 	if (vanish == 1)
 	{
@@ -7,12 +7,14 @@ if !global.freezeframe
 		else
 			instance_destroy();
 	}
+	
 	visible = playerID.visible;
-	with realcol
+	
+	with (realcol)
 	{
-		switch other.color
+		switch (other.color)
 		{
-			case 1:
+			case #010000:
 				r = 48;
 				g = 168;
 				b = 248;
@@ -20,7 +22,7 @@ if !global.freezeframe
 				g2 = 57;
 				b2 = 121;
 				break;
-			case 2:
+			case #020000:
 				r = 232;
 				g = 80;
 				b = 152;
@@ -30,6 +32,7 @@ if !global.freezeframe
 				break;
 		}
 	}
+	
 	x += hsp;
 	y += vsp;
 }

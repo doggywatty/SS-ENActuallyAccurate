@@ -8,6 +8,7 @@ selectV += v_move;
 selectH += h_move;
 var maxH = (selectV > -1) ? 2 : 0;
 var maxV = (array_length(levelArr) + outfitRows) - 1;
+
 if (selectV == ((array_length(levelArr) + outfitRows) - 1))
 	maxH = (array_length(outfitArr) % 3) - 1;
 else if (selectV < array_length(levelArr) && selectV >= 0)
@@ -30,5 +31,6 @@ scrollFactor = round(lerp(scrollFactor, vf * vInterval, 0.3));
 
 if (key_jump && selectV == -1)
 	instance_destroy();
+
 if (key_slap2 || key_start2)
 	instance_destroy();

@@ -1,7 +1,7 @@
 if (ds_list_find_index(global.BaddieRoom, id) != -1 && !importantEnemy)
 	exit;
 
-repeat 3
+repeat (3)
 {
 	with (create_debris(x, y, choose(spr_slapstar, spr_baddieGibs)))
 	{
@@ -21,10 +21,10 @@ event_play_oneshot("event:/SFX/player/punch", x, y);
 event_play_oneshot("event:/SFX/enemies/kill", x, y);
 global.ComboTime = 60;
 
-if importantEnemy
+if (importantEnemy)
 	exit;
 
-if giveScore
+if (giveScore)
 {
 	obj_parent_player.superTauntBuffer++;
 	global.Combo++;
@@ -35,5 +35,5 @@ if giveScore
 
 ds_list_add(global.BaddieRoom, id);
 
-if escapeEnemy
+if (escapeEnemy)
 	ds_list_add(global.EscapeRoom, id);

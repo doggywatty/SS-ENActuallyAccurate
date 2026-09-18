@@ -1,9 +1,11 @@
 var _player = instance_nearest(x, y, obj_parent_player);
 var player_minecart = scr_transformationCheck(_player.state) == "Minecart";
+
 if (place_meeting(x, y - 4, _player) && !player_minecart)
 {
 	grabbedMinecart = true;
-	_player.state = States.minecart;
+	_player.state = states.victory;
+	
 	if (_player.xscale == image_xscale)
 		_player.movespeed = clamp(_player.movespeed, 3, 12);
 	else
@@ -15,8 +17,8 @@ if (place_meeting(x, y - 4, _player) && !player_minecart)
 	_player.y = y;
 	_player.xscale = image_xscale;
 	_player.hurted = false;
-
-	if !instance_exists(obj_poofeffect)
+	
+	if (!instance_exists(obj_poofeffect))
 		instance_create(x, y, obj_poofeffect);
 	
 	for (var i = 0; i < (sprite_get_number(spr_coalDebris) - 1); i++)
@@ -26,7 +28,7 @@ if (place_meeting(x, y - 4, _player) && !player_minecart)
 	}
 }
 
-if player_minecart
+if (player_minecart)
 	image_alpha = 0.5;
 else
 	image_alpha = 1;

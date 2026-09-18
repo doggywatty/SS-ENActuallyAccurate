@@ -9,8 +9,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Entryway",
+    "path": "folders/Objects/Entryway.yy",
   },
   "parentObjectId": {
     "name": "obj_parent_clutterSmallDestroyable",
@@ -36,5 +36,8 @@
     "path": "sprites/spr_slosh/spr_slosh.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": true,
 }

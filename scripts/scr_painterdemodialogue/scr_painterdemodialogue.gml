@@ -4,24 +4,27 @@ function scr_painterdemodialogue()
 	var levels = ["entryway", "steamy", "mineshaft", "molasses"];
 	var molasses_secrets = 0;
 	ini_open(global.SaveFileName);
+	
 	for (var i = 0; i < array_length(levels); i++)
 	{
 		for (var j = 0; j < 3; j++)
 		{
 			var secret_collected = ini_read_real("Secret", levels[i] + string(j + 1), 0) ? 1 : 0;
 			secret_count += secret_collected;
+			
 			if (levels[i] == "molasses")
 				molasses_secrets += secret_collected;
 		}
 	}
-	ini_close();
 	
+	ini_close();
 	var info_arr = [];
 	talk_sound = "event:/SFX/hub/painterThink";
 	var dialogue_key;
+	
 	if (room == hub_molasses)
 	{
-		if scr_check_completion()
+		if (scr_check_completion())
 		{
 			dialogue_key = "demopainter_molasses_sleeping";
 			idle = spr_painteridle7;
@@ -30,7 +33,7 @@ function scr_painterdemodialogue()
 		}
 		else if (molasses_secrets >= 3)
 		{
-			if irandom(1) == 0
+			if (irandom(1) == 0)
 			{
 				dialogue_key = "demopainter_molasses_gotsecrets_a";
 				idle = spr_painteridle;
@@ -53,9 +56,9 @@ function scr_painterdemodialogue()
 			talk_sound = "event:/SFX/hub/painterThinkSad";
 		}
 	}
-	else if secret_count == 0
+	else if (secret_count == 0)
 	{
-		if global.NewFile
+		if (global.NewFile)
 		{
 			dialogue_key = "demopainter_newfile";
 			idle = spr_painteridle1;
@@ -108,12 +111,15 @@ function scr_painterdemodialogue()
 		array_push(info_arr, scr_getDialogIcon("INK"));
 	}
 	else
+	{
 		dialogue_key = "demopainter_invalidsecrets";
+	}
+	
 	if (dialogue_key != "demopainter_newfile" && dialogue_key != "demopainter_invalidsecrets" && global.UseOfftopic && irandom(2) == 0 && room != hub_molasses)
 	{
 		if (global.SaveMinutes >= 60)
 		{
-			if secret_count == 12
+			if (secret_count == 12)
 			{
 				dialogue_key = "demopainter_overtimeallsecrets";
 				idle = spr_painteridle5;
@@ -145,5 +151,6 @@ function scr_painterdemodialogue()
 			talk_sound = "event:/SFX/hub/painterThinkSad";
 		}
 	}
+	
 	return lang_get(dialogue_key, info_arr);
 }

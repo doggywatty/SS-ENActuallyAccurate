@@ -1,10 +1,13 @@
-if !global.panic && ds_list_size(global.KeyFollowerList) <= 0
+if (!global.panic && ds_list_size(global.KeyFollowerList) <= 0)
 	exit;
+
 var target_player = get_nearestPlayer();
-switch state
+
+switch (state)
 {
-	case States.frozen:
+	case states.frozen:
 		sprite_index = spr_wakeup;
+		
 		if (shaketime > 0)
 		{
 			shaketime--;
@@ -16,25 +19,30 @@ switch state
 			x = xstart;
 			y = ystart;
 		}
-		if (((target_player.cutscene || target_player.state == States.gotkey) && !awoken) || offended)
+		
+		if (((target_player.cutscene || target_player.state == states.boulder) && !awoken) || offended)
 			exit;
-		if !playedSound && !awoken
+		
+		if (!playedSound && !awoken)
 		{
 			playedSound = true;
 			fmod_quick3D(sndWake);
 			fmod_studio_event_instance_start(sndWake);
 		}
+		
 		awoken = true;
 		image_speed = 0.35;
-		if sprite_animation_end()
+		
+		if (sprite_animation_end())
 		{
 			sprite_index = spr_aim;
 			image_index = 0;
 			chaseActive = true;
-			state = States.normal;
+			state = states.normal;
 		}
+		
 		break;
-	case States.normal:
+	case states.normal:
 		image_xscale = sign(target_player.x - x);
 		movespeed = approach(movespeed, 0, accel);
 		targetx = target_player.x;
@@ -42,37 +50,45 @@ switch state
 		pathxstart = x;
 		pathystart = y;
 		dir = point_direction(x, y, targetx, targety);
+		
 		if (aimtime > 0)
+		{
 			aimtime--;
+		}
 		else
 		{
 			aimtime = 30;
-			state = States.run;
+			state = states.Nhookshot;
 			movespeed = -6;
 			sprite_index = spr_windup;
 			image_index = 0;
 			targetpassed = false;
 			candie = false;
 		}
+		
 		break;
-	case States.titlescreen:
+	case states.titlescreen:
 		movespeed = approach(movespeed, 10, 2 * accel);
+		
 		if (movespeed > 0 && sprite_index == spr_windup)
 		{
 			sprite_index = spr_charge;
 			image_index = 0;
 		}
+		
 		if (movespeed == 10)
-			state = States.run;
+			state = states.Nhookshot;
+		
 		x += lengthdir_x(movespeed, dir);
 		y += lengthdir_y(movespeed, dir);
 		break;
-	case States.run:
-		if !targetpassed
+	case states.Nhookshot:
+		if (!targetpassed)
 		{
 			candie = 1;
 			var _accel = (movespeed < 6) ? (accel * 2) : accel;
 			movespeed = approach(movespeed, maxspeed, _accel);
+			
 			if (point_distance(x, y, targetx, targety) < movespeed)
 				targetpassed = true;
 		}
@@ -83,37 +99,42 @@ switch state
 			else
 				movespeed = approach(movespeed, 0, 1.65 * accel);
 		}
-		else if candie
+		else if (candie)
 		{
 			aimtime = 30;
 			sprite_index = spr_aim;
 			image_index = 0;
-			state = States.normal;
+			state = states.normal;
 			candie = 0;
 			movespeed = 0;
 			targetpassed = false;
 		}
-		if !targetpassed
+		
+		if (!targetpassed)
 		{
 			var _passedX = (sign(targetx - pathxstart) == -1) ? (x <= targetx) : (x >= targetx);
 			var _passedY = (sign(targety - pathystart) == -1) ? (y <= targety) : (y >= targety);
+			
 			if (_passedX && _passedY)
 				targetpassed = true;
 		}
+		
 		if (sprite_index != spr_aim)
 		{
 			if (sprite_index != spr_aim || movespeed > 0)
 				sprite_index = spr_charge;
 		}
+		
 		x += lengthdir_x(movespeed, dir);
 		y += lengthdir_y(movespeed, dir);
 		break;
-	case States.charge:
+	case states.slap:
 		if (stuntime > 0)
 		{
 			x = targetx + random_range(-2, 2);
 			y = targety + random_range(-2, 2);
 			stuntime--;
+			
 			if (stuntime <= 0)
 				dir = point_direction(targetx, targety, target_player.x, target_player.y) - 180;
 		}
@@ -122,11 +143,12 @@ switch state
 			x += lengthdir_x(movespeed, dir);
 			y += lengthdir_y(movespeed, dir);
 			movespeed = approach(movespeed, 0, 2 * accel);
+			
 			if (offended && movespeed == 0)
 			{
 				targetx = xstart;
 				targety = ystart;
-				state = States.climbwall;
+				state = states.cheesepep;
 				sprite_index = spr_guardianohbye;
 				image_index = 0;
 				fmod_quick3D(sndSob);
@@ -138,29 +160,32 @@ switch state
 				aimtime = 30;
 				sprite_index = spr_aim;
 				image_index = 0;
-				state = States.normal;
+				state = states.normal;
 				candie = false;
 				movespeed = 0;
 				targetpassed = false;
 			}
 		}
+		
 		break;
-	case States.stun:
+	case states.charge:
 		sprite_index = spr_guardianohbye;
 		x += (5 * image_xscale);
 		y -= 5;
 		break;
-	case States.climbwall:
+	case states.cheesepep:
 		fmod_quick3D(sndSob);
 		movespeed = approach(movespeed, 12, 0.2);
 		dir = point_direction(x, y, targetx, targety);
 		var dist = point_distance(x, y, targetx, targety);
+		
 		if (movespeed > dist)
 			movespeed = dist;
 		
 		image_xscale = sign(targetx - x);
 		x += lengthdir_x(movespeed, dir);
 		y += lengthdir_y(movespeed, dir);
+		
 		if (dist < 0.5)
 		{
 			x = xstart;
@@ -169,23 +194,28 @@ switch state
 			sprite_index = spr_wakeup;
 			image_index = 0;
 			image_speed = 0;
-			state = States.frozen;
+			state = states.frozen;
 			shaketime = 10;
 			fmod_studio_event_instance_set_parameter_by_name(sndSob, "state", 1, true);
 		}
+		
 		break;
 }
-if (state == States.frozen)
+
+if (state == states.frozen)
 	exit;
+
 var player_supertaunt = false;
-with target_player
+
+with (target_player)
 {
-	if ((sprite_index == spr_supertaunt1 || sprite_index == spr_supertaunt2 || sprite_index == spr_supertaunt3 || sprite_index == spr_supertaunt4) && state == States.taunt)
+	if ((sprite_index == spr_supertaunt1 || sprite_index == spr_supertaunt2 || sprite_index == spr_supertaunt3 || sprite_index == spr_supertaunt4) && state == states.gottreasure)
 		player_supertaunt = true;
 }
-if (state != States.charge && state != States.frozen && player_supertaunt && bbox_in_camera(id, view_camera[0]))
+
+if (state != states.slap && state != states.frozen && player_supertaunt && bbox_in_camera(id, view_camera[0]))
 {
-	state = States.charge;
+	state = states.slap;
 	offended = true;
 	sprite_index = spr_aim;
 	image_index = 0;
@@ -196,13 +226,14 @@ if (state != States.charge && state != States.frozen && player_supertaunt && bbo
 	targety = y;
 	global.ComboTime = 60;
 	event_play_oneshot("event:/SFX/general/softkaboom", x, y);
-	with obj_achievementTracker
+	
+	with (obj_achievementTracker)
 		guardianSupertaunted++;
 }
 
-if (target_player.state == States.fling || target_player.state == States.fling_launch)
+if (target_player.state == states.ladder || target_player.state == states.parry)
 {
-	state = States.charge;
+	state = states.slap;
 	movespeed = 0;
 	stuntime = max(stuntime, 10);
 	chaseActive = false;
@@ -210,18 +241,22 @@ if (target_player.state == States.fling || target_player.state == States.fling_l
 	targety = y;
 }
 
-if instance_exists(obj_coneball_timesUp)
+if (instance_exists(obj_coneball_timesUp))
 {
-	state = States.stun;
+	state = states.charge;
+	
 	if (instance_exists(obj_icontracker))
 		instance_destroy(obj_icontracker);
 }
 
-if (state == States.run || state == States.titlescreen)
+if (state == states.Nhookshot || state == states.titlescreen)
 {
-	if !event_instance_isplaying(sndMoving)
+	if (!event_instance_isplaying(sndMoving))
 		fmod_studio_event_instance_start(sndMoving);
 }
 else
+{
 	fmod_studio_event_instance_stop(sndMoving, false);
+}
+
 fmod_quick3D(sndMoving);

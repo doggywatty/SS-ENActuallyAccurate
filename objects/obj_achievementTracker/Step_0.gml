@@ -1,24 +1,34 @@
-for (var i = array_length(activeChefTasks) - 1; i >= 0; i--)
+var i = array_length(activeChefTasks) - 1;
+
+while (i >= 0)
 {
 	var current_task = activeChefTasks[i];
-	if (current_task.conditionType == ConditionType.InLevel && current_task.taskCondition())
+	
+	if (current_task.conditionType == (0 << 0) && current_task.taskCondition())
 	{
 		scr_award_chef_task(current_task.taskKey, current_task.taskSprite, current_task.taskIndex);
 		array_delete(activeChefTasks, i, 1);
 	}
+	
+	i--;
 }
 
-for (var i = array_length(activeExhibitionNightSecretTasks) - 1; i >= 0; i--)
+i = array_length(activeExhibitionNightSecretTasks) - 1;
+
+while (i >= 0)
 {
 	var current_task = activeExhibitionNightSecretTasks[i];
+	
 	with (activeExhibitionNightSecretTasks[i])
 	{
-		if (conditionType == ConditionType.InLevel && taskCondition())
+		if (conditionType == (0 << 0) && taskCondition())
 		{
 			scr_award_palette(current_task.taskKey, current_task.taskCharacter);
 			array_delete(other.activeExhibitionNightSecretTasks, i, 1);
 		}
 	}
+	
+	i--;
 }
 
 if (!ds_queue_empty(chefUnlockQueue) && !instance_exists(obj_achievementNotif))
@@ -31,6 +41,7 @@ if (!ds_queue_empty(chefUnlockQueue) && !instance_exists(obj_achievementNotif))
 		clothingCharacter: task_info[2],
 		image_index: task_info[3]
 	});
-	repeat 10
+	
+	repeat (10)
 		instance_create(camera_get_view_width(view_camera[0]) - 100, camera_get_view_height(view_camera[0]) - 50, obj_confettiEffect);
 }

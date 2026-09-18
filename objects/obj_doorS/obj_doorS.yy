@@ -4,10 +4,12 @@
   "name": "obj_doorS",
   "eventList": [],
   "managed": true,
-  "overriddenProperties": [],
+  "overriddenProperties": [
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_parent_doortrigger","path":"objects/obj_parent_doortrigger/obj_parent_doortrigger.yy",},"propertyId":{"name":"id_door","path":"objects/obj_parent_doortrigger/obj_parent_doortrigger.yy",},"value":"\"S\"",},
+  ],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Structure",
+    "path": "folders/Objects/Structure.yy",
   },
   "parentObjectId": {
     "name": "obj_parent_doortrigger",
@@ -26,14 +28,15 @@
   "physicsShape": 1,
   "physicsShapePoints": [],
   "physicsStartAwake": true,
-  "properties": [
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"id_door","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"\"S\";","varType":4,},
-  ],
+  "properties": [],
   "solid": false,
   "spriteId": {
     "name": "spr_doorS",
     "path": "sprites/spr_doorS/spr_doorS.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": false,
 }

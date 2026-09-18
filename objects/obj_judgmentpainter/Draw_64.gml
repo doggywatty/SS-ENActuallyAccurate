@@ -1,4 +1,4 @@
-if !active
+if (!active)
 	exit;
 
 dialogAlpha = approach(dialogAlpha, (progression == 1) ? 1 : 0, 0.05);

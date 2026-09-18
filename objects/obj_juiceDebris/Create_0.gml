@@ -7,23 +7,19 @@ paletteSprite = spr_juicePalette;
 
 switch (global.InternalLevelName)
 {
-    case "entryway":
-        paletteSelect = 1;
-        break;
-    
-    default:
-        paletteSelect = 2;
-        break;
-    
-    case "molasses":
-        paletteSelect = 3;
-        break;
-    
-    case "mines":
-        paletteSelect = 4;
-        break;
-    
-    case "fudge":
-        paletteSelect = 5;
-        break;
+	case "entryway":
+		paletteSelect = 1;
+		break;
+	default:
+		paletteSelect = 2;
+		break;
+	case "molasses":
+		paletteSelect = 3;
+		break;
+	case "mines":
+		paletteSelect = 4;
+		break;
+	case "fudge":
+		paletteSelect = 5;
+		break;
 }

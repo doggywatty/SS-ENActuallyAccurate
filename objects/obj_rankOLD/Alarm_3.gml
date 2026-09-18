@@ -30,6 +30,7 @@ else if (global.rank == "d")
 	setcolors(109, 121, 134, 84, 87, 99);
 	sprite_index = spr_rankD;
 }
+
 if (global.rank != "p")
 	alarm[7] = 120;
 else
@@ -37,7 +38,8 @@ else
 
 image_speed = 0.45;
 image_index = 0;
-switch dex
+
+switch (dex)
 {
 	case 5:
 		cakedex = 4;
@@ -64,6 +66,7 @@ switch dex
 		bgdex = 1;
 		break;
 }
+
 if (global.rank != "p")
 	flash = true;
 
