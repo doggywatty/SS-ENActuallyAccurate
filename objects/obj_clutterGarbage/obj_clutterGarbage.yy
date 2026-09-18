@@ -8,8 +8,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Structure",
+    "path": "folders/Objects/Structure.yy",
   },
   "parentObjectId": {
     "name": "obj_parent_clutterSmallDestroyable",
@@ -35,5 +35,8 @@
     "path": "sprites/spr_clutterGarbage/spr_clutterGarbage.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": true,
 }

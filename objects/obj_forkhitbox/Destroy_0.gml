@@ -1,2 +1,2 @@
-if instance_exists(ID)
-    ID.hitboxcreate = false;
+if (instance_exists(ID))
+	ID.hitboxcreate = false;

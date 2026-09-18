@@ -13,14 +13,14 @@
   "edgeFiltering": false,
   "For3D": true,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"57aec3e7-a3ae-4b2b-9cd1-6d63125dc30b",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"19449646-2c38-4801-9bd4-62623d8f1dd4",},
   ],
   "gridX": 0,
   "gridY": 0,
   "height": 26,
   "HTile": false,
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"5528591d-5dd9-4dc7-9baf-ff0009c265da","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"70032551-db6c-4507-bc19-4a739841edbf","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
   ],
   "nineSlice": {
     "resourceType": "GMNineSliceData",
@@ -28,6 +28,7 @@
     "bottom": 0,
     "enabled": true,
     "guideColour": [
+      4294902015,
       4294902015,
       4294902015,
       4294902015,
@@ -48,8 +49,8 @@
   },
   "origin": 0,
   "parent": {
-    "name": "Sprites",
-    "path": "folders/Sprites.yy",
+    "name": "Player",
+    "path": "folders/Sprites/Player.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {
@@ -59,7 +60,7 @@
     "autoRecord": true,
     "backdropHeight": 768,
     "backdropImageOpacity": 0.5,
-    "backdropImagePath": "True",
+    "backdropImagePath": "",
     "backdropWidth": 1366,
     "backdropXOffset": 0.0,
     "backdropYOffset": 0.0,
@@ -73,11 +74,11 @@
     "playbackSpeed": 30.0,
     "playbackSpeedType": 0,
     "showBackdrop": true,
-    "showBackdropImage": true,
+    "showBackdropImage": false,
     "timeUnits": 1,
     "tracks": [
-      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"57aec3e7-a3ae-4b2b-9cd1-6d63125dc30b","path":"sprites/spr_demopattern_mineshaft/spr_demopattern_mineshaft.yy",},},},"Disabled":false,"id":"86ab00df-252d-4169-8435-046e14ef6060","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":-1,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"19449646-2c38-4801-9bd4-62623d8f1dd4","path":"sprites/spr_demopattern_mineshaft/spr_demopattern_mineshaft.yy",},},},"Disabled":false,"id":"2315e643-8fbe-413e-b331-d3dc1df84891","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,

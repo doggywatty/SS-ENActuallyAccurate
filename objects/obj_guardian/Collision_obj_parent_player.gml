@@ -1,7 +1,7 @@
-if (sprite_index != spr_guardian_wakingUp && state == States.run && chaseActive && !(other.state == States.fling || other.state == States.fling_launch))
+if (sprite_index != spr_guardian_wakingUp && state == states.Nhookshot && chaseActive && !(other.state == states.ladder || other.state == states.parry))
 {
-    scr_hurtplayer(other);
-    with obj_achievementTracker
-        tookGuardianDamage = true;
+	scr_hurtplayer(other);
+	
+	with (obj_achievementTracker)
+		tookGuardianDamage = true;
 }
-

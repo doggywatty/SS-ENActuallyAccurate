@@ -3,7 +3,7 @@ grav = 0.5;
 hsp = 0;
 vsp = 0;
 movespeed = 1;
-state = States.frozen;
+state = states.frozen;
 baddieStunTimer = 0;
 alarm[0] = 150;
 canRoam = true;
@@ -29,4 +29,3 @@ birdCreated = 0;
 boundbox = 0;
 points = 0;
 inhaleStrength = 0;
-

@@ -12,6 +12,7 @@ if (optionSelectionH == -1)
 }
 
 menuArrow = [new subSprite(spr_langArrow, 0, 0, false), new subSprite(spr_langArrow, 1, 0, false)];
+
 for (var i = 0; i < array_length(menuArrow); i++)
 {
 	with (menuArrow[i])

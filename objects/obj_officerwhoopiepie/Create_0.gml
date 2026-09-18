@@ -3,7 +3,7 @@ grav = 0.5;
 hsp = 0;
 vsp = 0;
 movespeed = 1;
-state = States.charge;
+state = states.slap;
 baddieStunTimer = 0;
 alarm[0] = 150;
 canRoam = true;
@@ -25,4 +25,3 @@ grounded = 1;
 birdCreated = 0;
 boundbox = 0;
 hitboxcreate = 0;
-

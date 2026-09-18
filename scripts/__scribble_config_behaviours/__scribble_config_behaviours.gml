@@ -7,7 +7,7 @@
 #macro SCRIBBLE_FIX_ESCAPED_NEWLINES          false  //Replaces newline literals ("\\n") with an actual newline ("\n")
 #macro SCRIBBLE_COLORIZE_SPRITES              true   //Whether to use colourization for sprites. This includes [rainbow] and [cycle]
 #macro SCRIBBLE_ADD_SPRITE_ORIGINS            false  //Whether to use sprite origins. Setting this to <false> will vertically centre sprites on the line of text
-#macro SCRIBBLE_MISSING_CHARACTER             "�"    //Character to use when another character is missing from a font
+#macro SCRIBBLE_MISSING_CHARACTER             "?"    //Character to use when another character is missing from a font
 #macro SCRIBBLE_BGR_COLOR_HEX_CODES           false  //Set to <true> to use GameMaker's #BBGGRR format for in-line hex code colors. <false> uses the web standard #RRGGBB format
 #macro SCRIBBLE_BOUNDING_BOX_USES_PAGE        true   //Whether to use text element sizes (false) or page sizes (true) for bounding box calculations
 #macro SCRIBBLE_TAB_WIDTH                     4      //Width of a horizontal tab, as a number of spaces
@@ -39,7 +39,7 @@
 #macro SCRIBBLE_SAFELY_WRAP_TIME               true       //Whether to wrap the internal time value
 #macro SCRIBBLE_IGNORE_PAUSE_BEFORE_PAGEBREAK  true       //Disables [pause] events immediately before pagebreaks, though only if there are no other events between the pause and the pagebreak
 #macro SCRIBBLE_INCREMENTAL_FREEZE             true       //Whether text models should freeze their vertex buffers one frame after the text model is created. This leads to increased performance, especially with large amounts of text
-#macro SCRIBBLE_SPRITEFONT_IGNORE_ORIGIN       true      //Set to <true> to ignore a sprite origin's contribution to its spritefont glyph x/y offsets
+#macro SCRIBBLE_SPRITEFONT_IGNORE_ORIGIN       false      //Set to <true> to ignore a sprite origin's contribution to its spritefont glyph x/y offsets
 #macro SCRIBBLE_SPRITEFONT_LEGACY_HEIGHT       false      //Version 8 uses GameMaker's native spritefont dimensions. Older versions used the tight bounding box leading to narrower lines. Set this macro to <true> to use the tighter legacy behaviour
 #macro SCRIBBLE_SDF_BORDER_TRIM                0          //Edge trimming around the bounding box for SDF glyphs (in pixels). This is useful for tidying up any glitches when scaling
 #macro SCRIBBLE_ALWAYS_DOUBLE_DRAW             false      //Whether to force double-draw behaviour. This is useful for fixing problems with SDF glyph outline overlap

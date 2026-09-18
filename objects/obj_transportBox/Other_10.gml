@@ -1,11 +1,11 @@
-if !instance_exists(backPanel)
+if (!instance_exists(backPanel))
 {
-    backPanel = instance_create(x, y, obj_solid, 
-    {
-        sprite_index: spr_pizzabox,
-        image_xscale: image_xscale,
-        image_yscale: image_yscale,
-        depth: -30,
-        visible: true
-    });
+	backPanel = instance_create(x, y, obj_solid, 
+	{
+		sprite_index: spr_pizzabox,
+		image_xscale: image_xscale,
+		image_yscale: image_yscale,
+		depth: -30,
+		visible: true
+	});
 }

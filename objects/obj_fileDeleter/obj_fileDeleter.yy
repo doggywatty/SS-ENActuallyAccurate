@@ -11,8 +11,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "titleGroup",
+    "path": "folders/Objects/titleGroup.yy",
   },
   "parentObjectId": null,
   "persistent": false,
@@ -29,7 +29,7 @@
   "physicsShapePoints": [],
   "physicsStartAwake": true,
   "properties": [
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"selectedFile","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"0;","varType":4,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"selectedFile","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"0","varType":1,},
   ],
   "solid": false,
   "spriteId": {

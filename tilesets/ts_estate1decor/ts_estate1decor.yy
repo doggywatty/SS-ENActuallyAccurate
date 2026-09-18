@@ -12,12 +12,12 @@
   "out_tilehborder": 2,
   "out_tilevborder": 2,
   "parent": {
-    "name": "Tilesets",
-    "path": "folders/Tilesets.yy",
+    "name": "Cafe",
+    "path": "folders/Tile Sets/Cafe.yy",
   },
   "spriteId": {
-    "name": "tilespr_ts_estate1decor",
-    "path": "sprites/tilespr_ts_estate1decor/tilespr_ts_estate1decor.yy",
+    "name": "_decompiled_ts_estate1decor",
+    "path": "sprites/_decompiled_ts_estate1decor/_decompiled_ts_estate1decor.yy",
   },
   "spriteNoExport": true,
   "textureGroupId": {
@@ -2081,9 +2081,9 @@
   "tileAnimationFrames": [],
   "tileAnimationSpeed": 15.00015,
   "tileHeight": 32,
-  "tilehsep": 4,
-  "tilevsep": 4,
+  "tilehsep": 0,
+  "tilevsep": 0,
   "tileWidth": 32,
-  "tilexoff": 2,
-  "tileyoff": 2,
+  "tilexoff": 0,
+  "tileyoff": 0,
 }

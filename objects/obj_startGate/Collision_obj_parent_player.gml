@@ -1,23 +1,27 @@
-if instance_exists(obj_titlecard)
+if (instance_exists(obj_titlecard))
 	exit;
+
 var enter_gate = false;
-with obj_parent_player
+
+with (obj_parent_player)
 {
 	var other_id = other.id;
-	if (key_up && grounded && (state == States.normal || state == States.mach1 || state == States.mach2
-	|| state == States.mach3) && !instance_exists(obj_fadeoutTransition) && state != States.victory
-	&& state != States.comingoutdoor)
+	
+	if (key_up && grounded && (state == states.normal || state == states.machroll || state == states.pistol || state == states.shotgun) && !instance_exists(obj_fadeoutTransition) && state != states.shotgunjump && state != states.stunned)
 		enter_gate = true;
 }
-if enter_gate
+
+if (enter_gate)
 {
 	hasInteracted = true;
 	stop_music(false);
-	gotoLevel(level);
+	self.gotoLevel(level);
 }
-if !secretcanspit && array_contains(secrets, true) && level != "tutorial"
+
+if (!secretcanspit && array_contains(secrets, true) && level != "tutorial")
 {
 	secretcanspit = true;
-	repeat 5
+	
+	repeat (5)
 		create_radiating_particle(x, y - 128, spr_secretpoof);
 }

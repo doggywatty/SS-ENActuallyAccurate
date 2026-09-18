@@ -1,7 +1,7 @@
 if (image_index > 9 || !hurtPlayers)
-    exit;
+	exit;
 
 if (hurtOwner && ownerID == other.id)
-    exit;
+	exit;
 
 scr_hurtplayer(other);

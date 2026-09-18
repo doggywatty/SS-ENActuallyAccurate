@@ -1,14 +1,14 @@
-if !DrawHUD
+if (!DrawHUD)
 	exit;
 
-if !global.ShowHUD
+if (!global.ShowHUD)
 	exit;
 
 var collectable_shake_x = pointCollectShake * random_range(-1, 1);
 var collectable_shake_y = pointCollectShake * random_range(-1, 1);
 var visual_score = global.Collect - global.ComboScore;
 
-with obj_particlecontroller
+with (obj_particlecontroller)
 {
 	for (var i = 0; i < ds_list_size(global.collectParticleList); i++)
 	{
@@ -17,7 +17,7 @@ with obj_particlecontroller
 	}
 }
 
-with obj_comboEndEffect
+with (obj_comboEndEffect)
 	visual_score -= comboScore;
 
 visual_score = max(visual_score, 0);
@@ -33,11 +33,14 @@ var point_x = cakeHud.x + cakeHud.pointX;
 var point_y = cakeHud.y + cakeHud.pointY + hud_bounce;
 var point_string = string(visual_score);
 var point_string_length = string_length(point_string);
+
 if (oldPointCollect != point_string)
 {
 	array_resize(cakeHud.pointColors, point_string_length);
+	
 	for (var i = 0; i < point_string_length; i++)
 		cakeHud.pointColors[i] = (((point_string_length - i) * 3) + real(string_char_at(point_string, i + 1))) % 7;
+	
 	oldPointCollect = point_string;
 }
 
@@ -58,14 +61,15 @@ for (var i = 0; i < point_string_length; i++)
 
 if (global.InternalLevelName != "none" && room != timesuproom && room != rank_room && room != timesuproom)
 {
-	if !instance_exists(obj_startGate)
+	if (!instance_exists(obj_startGate))
 	{
 		var bubbleempty = spr_rankbubble_d;
 		var bubblefilled = spr_rankbubble_dfilled;
 		var local_rank = global.crank;
 		var minus_moment = 0;
 		var bubbleframe = 0;
-		switch global.currentrank
+		
+		switch (global.currentrank)
 		{
 			case "P":
 				bubbleempty = spr_rankbubble_p;
@@ -122,9 +126,13 @@ if (global.InternalLevelName != "none" && room != timesuproom && room != rank_ro
 			draw_sprite_ext(spr_rankbubble_bg, bubbleframe, surface_get_width(rankbubblesurface) / 2, surface_get_height(rankbubblesurface) / 2, 1, 1, 0, c_white, 1);
 			
 			if (global.currentrank == "P")
+			{
 				draw_sprite_ext(spr_rankbubble_pfilled, -1, 16, 16, 1, 1, 0, c_white, 1);
+			}
 			else if (global.currentrank == "S")
+			{
 				draw_sprite_ext(spr_rankbubble_sfilled, -1, 16, 16, 1, 1, 0, c_white, 1);
+			}
 			else
 			{
 				draw_sprite_ext(bubbleempty, -1, 16, 16, 1, 1, 0, c_white, 1);
@@ -135,7 +143,9 @@ if (global.InternalLevelName != "none" && room != timesuproom && room != rank_ro
 			draw_surface_ext(rankbubblesurface, (cakeHud.x + 142) - ((surface_get_width(rankbubblesurface) / 2) * (bubblescale + 1)), cakeHud.y - 22 - ((surface_get_height(rankbubblesurface) / 2) * (bubblescale + 1)), bubblescale + 1, bubblescale + 1, 0, c_white, alpha);
 		}
 		else
+		{
 			rankbubblesurface = surface_create(96, 96);
+		}
 	}
 }
 

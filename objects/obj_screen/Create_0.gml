@@ -9,11 +9,11 @@ global.gameframe_border_width = 2;
 bgSprite = new subSprite(spr_letterboxBg_simple, 0, 0, false);
 bgSpriteOld = ds_list_create();
 
-updateLetterBox = function(_spr_ind, _img_ind)
+updateLetterBox = function(arg0, arg1)
 {
 	ds_list_add(bgSpriteOld, variable_clone(bgSprite, 1));
-	bgSprite.sprite_index = _spr_ind;
-	bgSprite.image_index = _img_ind;
+	bgSprite.sprite_index = arg0;
+	bgSprite.image_index = arg1;
 };
 
 event_user(1);
@@ -24,9 +24,9 @@ captionBuffer = 100;
 global.GameSurface = -4;
 application_surface_draw_enable(false);
 
-nextPowTwo = function(_powTwo)
+nextPowTwo = function(arg0)
 {
-	return power(2, ceil(log2(_powTwo) / log2(2)));
+	return power(2, ceil(log2(arg0) / log2(2)));
 };
 
 var surfW = 960;

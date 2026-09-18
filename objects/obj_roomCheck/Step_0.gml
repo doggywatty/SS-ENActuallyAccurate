@@ -1,7 +1,6 @@
-with obj_parent_player
+with (obj_parent_player)
 {
-    state = States.noclip;
-    x = room_width / 2;
-    y = room_height / 2;
+	state = states.hang;
+	x = room_width / 2;
+	y = room_height / 2;
 }
-

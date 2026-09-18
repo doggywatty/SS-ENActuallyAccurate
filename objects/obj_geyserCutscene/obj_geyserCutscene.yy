@@ -11,8 +11,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Molasses",
+    "path": "folders/Objects/Molasses.yy",
   },
   "parentObjectId": null,
   "persistent": false,
@@ -35,5 +35,8 @@
     "path": "sprites/spr_geyserCutscene_Inactive/spr_geyserCutscene_Inactive.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": true,
 }

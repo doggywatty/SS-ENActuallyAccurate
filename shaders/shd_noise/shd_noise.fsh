@@ -1,10 +1,8 @@
 varying vec2 v_vTexcoord;
 varying vec4 v_vColour;
-
 uniform float u_intensity;
 uniform vec2 u_resolution;
 uniform vec3 u_offset;
-
 mat4 mat4x3(vec3 n1, vec3 n2, vec3 n3, vec3 n4) {
 	return mat4(
 		n1.x, n2.x, n3.x, n4.x,
@@ -13,30 +11,24 @@ mat4 mat4x3(vec3 n1, vec3 n2, vec3 n3, vec3 n4) {
 		0.0, 0.0, 0.0, 0.0
 	);
 }
-
 float round(float x) {
 	return floor(x + 0.5);
 }
-
 vec2 round(vec2 v) {
 	return vec2(round(v.x), round(v.y));
 }
-
 vec3 round(vec3 v) {
 	return vec3(round(v.x), round(v.y), round(v.z));
 }
-
 vec4 round(vec4 v) {
 	return vec4(round(v.x), round(v.y), round(v.z), round(v.w));
 }
-
 //////////////// K.jpg's Re-oriented 4-Point BCC Noise (OpenSimplex2) ////////////////
 ////////////////////// Output: vec4(dF/dx, dF/dy, dF/dz, value) //////////////////////
 // Inspired by Stefan Gustavson's noise
 vec4 permute(vec4 t) {
 	return t * (t * 34.0 + 133.0);
 }
-
 // Gradient set is a normalized expanded rhombic dodecahedron
 vec3 grad(float hash) {
 	
@@ -72,7 +64,6 @@ vec3 grad(float hash) {
 	
 	return grad;
 }
-
 // BCC lattice split up into 2 cube lattices
 vec4 openSimplex2SDerivativesPart(vec3 X) {
 	
@@ -105,7 +96,6 @@ vec4 openSimplex2SDerivativesPart(vec3 X) {
 	// Return it all as a vec4
 	return vec4(derivative, dot(aaaa, extrapolations));
 }
-
 // Use this if you don't want Z to look different from X and Y
 vec4 openSimplex2SDerivatives_Conventional(vec3 X) {
 	X = dot(X, vec3(2.0/3.0)) - X;
@@ -114,7 +104,6 @@ vec4 openSimplex2SDerivatives_Conventional(vec3 X) {
 	
 	return vec4(dot(result.xyz, vec3(2.0/3.0)) - result.xyz, result.w);
 }
-
 // Use this if you want to show X and Y in a plane, then use Z for time, vertical, etc.
 vec4 openSimplex2SDerivatives_ImproveXY(vec3 X) {
 	
@@ -130,11 +119,8 @@ vec4 openSimplex2SDerivatives_ImproveXY(vec3 X) {
 	
 	return vec4(result.xyz * orthonormalMap, result.w);
 }
-
 //////////////////////////////// End noise code ////////////////////////////////
-
 #define SCALE 0.05
-
 void main()
 {
 	vec3 ps = vec3((v_vTexcoord * u_resolution) + u_offset.xy, u_offset.z);

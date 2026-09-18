@@ -1,11 +1,10 @@
-if (currentState == States.titlescreen)
+if (currentState == (2 << 0))
 {
-    currentState = States.normal;
-    sprite_index = spr_Pressed;
+	currentState = (1 << 0);
+	sprite_index = spr_Pressed;
 }
-else if (currentState == States.run)
+else if (currentState == (3 << 0))
 {
-    currentState = States.frozen;
-    sprite_index = spr_Released;
+	currentState = (0 << 0);
+	sprite_index = spr_Released;
 }
-

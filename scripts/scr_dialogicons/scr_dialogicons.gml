@@ -1,9 +1,10 @@
-function scr_getDialogIcon(_dialogIcon, color1 = "c_white", color2 = "c_black")
+function scr_getDialogIcon(arg0, arg1 = "c_white", arg2 = "c_black")
 {
-	_dialogIcon = string_upper(_dialogIcon);
+	arg0 = string_upper(arg0);
 	var spr = "spr_null";
 	var ind = "0";
-	switch _dialogIcon
+	
+	switch (arg0)
 	{
 		case "HARRY":
 			spr = "spr_icon_dialog";
@@ -42,7 +43,8 @@ function scr_getDialogIcon(_dialogIcon, color1 = "c_white", color2 = "c_black")
 		case "FLINGFROG":
 			spr = "spr_icon_dialog";
 			ind = "8";
-			break;			
+			break;
 	}
-	return $"[{color1}][{spr}, {ind}][{color2}]";
+	
+	return $"[{arg1}][{spr}, {ind}][{arg2}]";
 }

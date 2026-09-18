@@ -37,5 +37,8 @@
     "name": "spr_MinecartrailSlopeEditor",
     "path": "sprites/spr_MinecartrailSlopeEditor/spr_MinecartrailSlopeEditor.yy",
   },
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": false,
 }

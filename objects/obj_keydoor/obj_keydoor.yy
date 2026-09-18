@@ -7,10 +7,13 @@
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
   ],
   "managed": true,
-  "overriddenProperties": [],
+  "overriddenProperties": [
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_door","path":"objects/obj_door/obj_door.yy",},"propertyId":{"name":"showDoorLight","path":"objects/obj_door/obj_door.yy",},"value":"false",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_door","path":"objects/obj_door/obj_door.yy",},"propertyId":{"name":"doorLocked","path":"objects/obj_door/obj_door.yy",},"value":"true",},
+  ],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Structure",
+    "path": "folders/Objects/Structure.yy",
   },
   "parentObjectId": {
     "name": "obj_door",
@@ -20,7 +23,7 @@
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
   "physicsFriction": 0.2,
-  "physicsGroup": 1,
+  "physicsGroup": 0,
   "physicsKinematic": false,
   "physicsLinearDamping": 0.1,
   "physicsObject": false,
@@ -29,15 +32,15 @@
   "physicsShape": 1,
   "physicsShapePoints": [],
   "physicsStartAwake": true,
-  "properties": [
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"showDoorLight","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"false;","varType":4,},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"doorLocked","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"true;","varType":4,},
-  ],
+  "properties": [],
   "solid": false,
   "spriteId": {
     "name": "spr_keydoor",
     "path": "sprites/spr_keydoor/spr_keydoor.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": true,
 }

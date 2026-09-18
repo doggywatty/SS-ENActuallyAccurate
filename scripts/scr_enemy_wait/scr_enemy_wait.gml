@@ -7,11 +7,11 @@ function scr_enemy_panicWait()
 	y = -200;
 	invincibleBaddie = true;
 	
-	if global.panic
+	if (global.panic)
 	{
 		var _player = instance_nearest(xstart, ystart, obj_parent_player);
-		if (!instance_exists(escapePortalEffect) && point_in_rectangle(xstart, ystart, _player.x - 500,
-		obj_parent_player.y - 100, obj_parent_player.x + 500, obj_parent_player.y + 100))
+		
+		if (!instance_exists(escapePortalEffect) && point_in_rectangle(xstart, ystart, _player.x - 500, obj_parent_player.y - 100, obj_parent_player.x + 500, obj_parent_player.y + 100))
 		{
 			escapePortalEffect = instance_create(xstart, ystart, obj_panicPortal);
 			event_play_oneshot("event:/SFX/enemies/escapespawn", xstart, ystart);
@@ -21,12 +21,13 @@ function scr_enemy_panicWait()
 			hasSquashedX = true;
 			squashValueX = 0;
 			baddieStunTimer = 20;
-			if !scr_enemyDestroyableCheck(x, y)
+			
+			if (!scr_enemyDestroyableCheck(x, y))
 			{
 				invincibleBaddie = false;
 				visible = true;
 				flash = true;
-				state = States.charge;
+				state = states.slap;
 				sprite_index = baddieSpriteStun;
 				image_index = 0;
 			}
@@ -42,7 +43,8 @@ function scr_enemy_secretWait()
 	x = -900;
 	y = -200;
 	invincibleBaddie = true;
-	if !place_meeting(xstart, ystart, obj_bigdestructibles)
+	
+	if (!place_meeting(xstart, ystart, obj_bigdestructibles))
 	{
 		x = xstart;
 		y = ystart;
@@ -53,7 +55,7 @@ function scr_enemy_secretWait()
 		baddieStunTimer = 3;
 		vsp = -8;
 		grounded = false;
-		state = States.charge;
+		state = states.slap;
 		sprite_index = baddieSpriteWalk;
 	}
 }

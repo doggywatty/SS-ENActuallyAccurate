@@ -1,9 +1,11 @@
 if (animation_end_old())
 {
-    canleave = 1;
-    goup = true;
-    flash = true;
-    alarm[7] = -1;
+	canleave = 1;
+	goup = true;
+	flash = true;
+	alarm[7] = -1;
 }
 else
-    alarm[7] = 3;
+{
+	alarm[7] = 3;
+}

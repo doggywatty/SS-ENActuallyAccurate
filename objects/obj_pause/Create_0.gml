@@ -25,14 +25,12 @@ playerPauseSprite = spr_pizzelle_pause;
 playerPauseIndex = 0;
 pausecount = -1;
 pause_map = ds_map_create();
-
 ds_map_set(pause_map, "pause_resume", 0);
 ds_map_set(pause_map, "pause_options", 1);
 ds_map_set(pause_map, "pause_retry", 2);
 ds_map_set(pause_map, "pause_tasks", 3);
 ds_map_set(pause_map, "pause_exit", 4);
 ds_map_set(pause_map, "pause_menu", 4);
-
 inputBufferDown = 0;
 inputBufferUp = 0;
 roomMusicPause = false;

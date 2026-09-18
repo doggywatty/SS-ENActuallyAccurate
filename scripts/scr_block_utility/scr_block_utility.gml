@@ -1,7 +1,8 @@
-function scr_destroy_tile(_layertileId)
+function scr_destroy_tile(arg0)
 {
-	var lay_id = layer_get_id(_layertileId);
+	var lay_id = layer_get_id(arg0);
 	var map_id = layer_tilemap_get_id_fixed(lay_id);
+	
 	for (var i = 0; i < floor(sprite_width / tilemap_get_tile_width(map_id)); i++)
 	{
 		for (var z = 0; z < floor(sprite_height / tilemap_get_tile_height(map_id)); z++)
@@ -23,25 +24,31 @@ function scr_destroy_nearby_tiles()
 	instance_destroy(instance_place(x - 1, y, obj_secretTileDestroy));
 	instance_destroy(instance_place(x, y + 1, obj_secretTileDestroy));
 	instance_destroy(instance_place(x, y - 1, obj_secretTileDestroy));
-	with obj_secret_cutoff
+	
+	with (obj_secret_cutoff)
 		alarm[0] = 1;
 }
 
-function manage_up_arrow(_upArrow)
+function manage_up_arrow(arg0)
 {
-	if !variable_instance_exists(self, "script_UpArrow")
+	if (!variable_instance_exists(self, "script_UpArrow"))
 		script_UpArrow = -4;
-	if _upArrow
+	
+	if (arg0)
 	{
-		if !instance_exists(script_UpArrow)
+		if (!instance_exists(script_UpArrow))
 		{
 			script_UpArrow = instance_create(obj_parent_player.x, obj_parent_player.y, obj_uparrow);
 			script_UpArrow.manual = true;
 		}
 	}
-	else if instance_exists(script_UpArrow)
+	else if (instance_exists(script_UpArrow))
+	{
 		instance_destroy(script_UpArrow);
-	if !instance_exists(script_UpArrow)
+	}
+	
+	if (!instance_exists(script_UpArrow))
 		return -4;
+	
 	return script_UpArrow;
 }

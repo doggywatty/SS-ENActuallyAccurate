@@ -1,38 +1,37 @@
-if (point_in_circle(x, y, obj_parent_player.x + (75 * obj_parent_player.xscale), obj_parent_player.y, 125) && obj_parent_player.inhaling && state != EnemyStates.inhaled)
-    state = EnemyStates.inhaled;
+if (point_in_circle(x, y, obj_parent_player.x + (75 * obj_parent_player.xscale), obj_parent_player.y, 125) && obj_parent_player.inhaling && state != enemystates.inhale)
+	state = enemystates.inhale;
 
-if (state != States.stun)
-    depth = 0;
+if (state != states.charge)
+	depth = 0;
 
-if (state != States.charge && state != States.freezeframe)
-    thrown = 0;
+if (state != enemystates.thrown && state != states.boxxedpep)
+	thrown = 0;
 
 event_inherited();
 
-if (state != States.titlescreen)
-    scr_scareenemy();
+if (state != enemystates.attack)
+	scr_scareenemy();
 
 enemyAttackTimer = max(enemyAttackTimer - 1, 0);
 ragereset = max(ragereset - 1, 0);
 
-if (point_in_rectangle(obj_parent_player.x, obj_parent_player.y, x - 100, y - 50, x + 100, y + 50) && obj_parent_player.state != States.door && obj_parent_player.state != States.comingoutdoor)
+if (point_in_rectangle(obj_parent_player.x, obj_parent_player.y, x - 100, y - 50, x + 100, y + 50) && obj_parent_player.state != (40 << 0) && obj_parent_player.state != (26 << 0))
 {
-    if (state != States.titlescreen && state == States.frozen && (obj_parent_player.state == States.doughmount || obj_parent_player.state == States.doughmountspin) && enemyAttackTimer <= 0)
-    {
-        image_index = 0;
-        flash = true;
-        create_heat_afterimage(AfterImageType.plain);
-        state = States.titlescreen;
-        sprite_index = spr_golfburger_golf;
-        enemyAttackTimer = 200;
-    }
+	if (state != enemystates.attack && state == enemystates.normal && (obj_parent_player.state == (41 << 0) || obj_parent_player.state == (42 << 0)) && enemyAttackTimer <= 0)
+	{
+		image_index = 0;
+		flash = true;
+		create_heat_afterimage(afterimagetypes.basic);
+		state = enemystates.attack;
+		sprite_index = spr_golfburger_golf;
+		enemyAttackTimer = 200;
+	}
 }
 
 if (sprite_index == spr_golfburger_golf || invisFrames > 0)
-    baddieInvincibilityBuffer = 1;
+	baddieInvincibilityBuffer = 1;
 else
-    baddieInvincibilityBuffer = 0;
+	baddieInvincibilityBuffer = 0;
 
 if (invisFrames > 0)
-    invisFrames--;
-
+	invisFrames--;

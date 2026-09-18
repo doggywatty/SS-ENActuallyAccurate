@@ -1,9 +1,9 @@
-if playerID.x != other.x
+if (playerID.x != other.x)
 	playerID.xscale = sign(other.x - playerID.x);
 
-with playerID
+with (playerID)
 {
-	if (state != States.parry)
+	if (state != states.gameover)
 	{
 		sprite_index = choose(spr_parry1, spr_parry2, spr_parry3);
 		image_index = 0;
@@ -11,23 +11,26 @@ with playerID
 		movespeed = 8;
 		flash = true;
 		create_particle(x, y, spr_parryeffect);
-		repeat 3
-			create_radiating_particle(x, y, spr_fuckassOrb, 0, false, 7, 10, 10);		
+		
+		repeat (3)
+			create_radiating_particle(x, y, spr_fuckassOrb, 0, false, 7, 10, 10);
+		
 		event_play_oneshot("event:/SFX/player/parry", x, y);
-		state = States.parry;
+		state = states.gameover;
 	}
 }
 
-with other.id
+with (other.id)
 {
-	switch object_index
+	switch (object_index)
 	{
 		case obj_crackerkicker_kickhitbox:
 		case obj_hurtbox_baddie:
 		case obj_cottonwitch_beambox:
 		case obj_forkhitbox:
-			if instance_exists(baddieID)
+			if (instance_exists(baddieID))
 				instance_destroy(baddieID);
+			
 			break;
 		case obj_blimp_proj:
 			instance_destroy(id, false);
@@ -35,8 +38,10 @@ with other.id
 			{
 				hurtPlayers: false
 			});
-			if instance_exists(baddieID)
+			
+			if (instance_exists(baddieID))
 				instance_destroy(baddieID);
+			
 			break;
 		case obj_pickaxe:
 			instance_destroy();
@@ -44,25 +49,30 @@ with other.id
 		case obj_snowMintProjectile:
 			bumpcount++;
 			var _dir = sign(image_xscale);
+			
 			if (x != other.x)
 				_dir = sign(x - other.x);
+			
 			image_xscale = _dir;
 			break;
 		case obj_dartTrap_projectile:
-			if !parried
+			if (!parried)
 			{
 				alarm[1] = 90;
 				parried = true;
 				var _dir = sign(image_xscale);
+				
 				if (x != other.x)
 					_dir = sign(x - other.x);
+				
 				image_xscale = _dir;
 			}
+			
 			break;
 		case obj_guardian:
-			if (state != States.charge)
+			if (state != states.slap)
 			{
-				state = States.charge;
+				state = states.slap;
 				sprite_index = spr_aim;
 				image_index = 0;
 				movespeed = max(movespeed, 12);
@@ -71,11 +81,12 @@ with other.id
 				targetx = x;
 				targety = y;
 			}
+			
 			break;
 	}
 }
 
-with obj_parent_enemy
+with (obj_parent_enemy)
 {
 	if (distance_to_object(other.id) <= 84)
 	{

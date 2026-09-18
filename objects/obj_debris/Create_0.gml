@@ -1,5 +1,5 @@
 if (sprite_index != spr_gnomewalldebris)
-    image_index = random_range(0, 6);
+	image_index = random_range(0, 6);
 
 image_speed = 0;
 vsp = random_range(-8, 4);

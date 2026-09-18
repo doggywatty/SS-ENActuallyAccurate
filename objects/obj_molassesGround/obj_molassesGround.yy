@@ -8,8 +8,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Molasses",
+    "path": "folders/Objects/Molasses.yy",
   },
   "parentObjectId": null,
   "persistent": false,
@@ -32,5 +32,8 @@
     "path": "sprites/spr_molassesGround/spr_molassesGround.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": true,
 }

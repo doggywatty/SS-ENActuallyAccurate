@@ -13,17 +13,17 @@
   "edgeFiltering": false,
   "For3D": false,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"84cef9af-99ad-40ac-93cf-4f45b5fa5e7b",},
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"ddd30a43-1376-406a-b77f-7aef6366a38a",},
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"99bb0969-db78-4934-81a3-5e450c45d083",},
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"b3688490-befe-471d-afec-9041b7d7be71",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"bf5882c7-d3bf-4df6-9dae-00e3938031a8",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"5b35107e-5b16-436d-9d6a-d888c36c1ed4",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"33c0ef8e-db65-4d83-8f31-f4fe235becdd",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"8e4b1724-3f60-4914-9193-294a805faf8e",},
   ],
   "gridX": 0,
   "gridY": 0,
   "height": 32,
   "HTile": false,
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"f18504e1-3d96-4506-9146-4395c82b3da2","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"51d6508f-a61f-4023-a9a4-246133d9b497","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
   ],
   "nineSlice": {
     "resourceType": "GMNineSliceData",
@@ -31,6 +31,7 @@
     "bottom": 0,
     "enabled": true,
     "guideColour": [
+      4294902015,
       4294902015,
       4294902015,
       4294902015,
@@ -51,8 +52,8 @@
   },
   "origin": 0,
   "parent": {
-    "name": "Sprites",
-    "path": "folders/Sprites.yy",
+    "name": "Structure",
+    "path": "folders/Sprites/Structure.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {
@@ -62,7 +63,7 @@
     "autoRecord": true,
     "backdropHeight": 768,
     "backdropImageOpacity": 0.5,
-    "backdropImagePath": "True",
+    "backdropImagePath": "",
     "backdropWidth": 1366,
     "backdropXOffset": 0.0,
     "backdropYOffset": 0.0,
@@ -76,14 +77,14 @@
     "playbackSpeed": 0.0,
     "playbackSpeedType": 1,
     "showBackdrop": true,
-    "showBackdropImage": true,
+    "showBackdropImage": false,
     "timeUnits": 1,
     "tracks": [
-      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"84cef9af-99ad-40ac-93cf-4f45b5fa5e7b","path":"sprites/spr_secretTile_cutoffOverlay/spr_secretTile_cutoffOverlay.yy",},},},"Disabled":false,"id":"7e43fbff-126f-48c0-8d22-e4681dcd10b3","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"ddd30a43-1376-406a-b77f-7aef6366a38a","path":"sprites/spr_secretTile_cutoffOverlay/spr_secretTile_cutoffOverlay.yy",},},},"Disabled":false,"id":"49382729-065d-49b2-af33-06d14467360d","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"99bb0969-db78-4934-81a3-5e450c45d083","path":"sprites/spr_secretTile_cutoffOverlay/spr_secretTile_cutoffOverlay.yy",},},},"Disabled":false,"id":"e0232896-c593-456d-9a84-2d4975c9a59e","IsCreationKey":false,"Key":2.0,"Length":1.0,"Stretch":false,},
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"b3688490-befe-471d-afec-9041b7d7be71","path":"sprites/spr_secretTile_cutoffOverlay/spr_secretTile_cutoffOverlay.yy",},},},"Disabled":false,"id":"bebe4c1c-33e7-4c45-86be-d7f279bdf0d9","IsCreationKey":false,"Key":3.0,"Length":1.0,"Stretch":false,},
+      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":-1,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"bf5882c7-d3bf-4df6-9dae-00e3938031a8","path":"sprites/spr_secretTile_cutoffOverlay/spr_secretTile_cutoffOverlay.yy",},},},"Disabled":false,"id":"e1ad01f6-350c-42de-b88c-b51dba24b013","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"5b35107e-5b16-436d-9d6a-d888c36c1ed4","path":"sprites/spr_secretTile_cutoffOverlay/spr_secretTile_cutoffOverlay.yy",},},},"Disabled":false,"id":"0398783a-d872-4e0b-9395-fba2b77bf20f","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"33c0ef8e-db65-4d83-8f31-f4fe235becdd","path":"sprites/spr_secretTile_cutoffOverlay/spr_secretTile_cutoffOverlay.yy",},},},"Disabled":false,"id":"db4410c6-203d-4b99-b08a-4cb6bd9a9eaf","IsCreationKey":false,"Key":2.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"8e4b1724-3f60-4914-9193-294a805faf8e","path":"sprites/spr_secretTile_cutoffOverlay/spr_secretTile_cutoffOverlay.yy",},},},"Disabled":false,"id":"1237d0ae-6214-48f4-a677-35d838240cd4","IsCreationKey":false,"Key":3.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,

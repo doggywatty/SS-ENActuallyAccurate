@@ -3,22 +3,27 @@ if (event > 0)
 else
 	pal_swap_set(spr_rankpal, bgdex, 0);
 
-draw_sprite_tiled_ext(lang_get_sprite(bg_rank), bgdex, bgx, bgy, 1, 1, c_white, bgAlpha);
+draw_sprite_tiled_ext(lang_get_sprite(bg_rank), bgdex, bgx, bgy, 1, 1, 16777215, bgAlpha);
 shader_reset();
 
 if (event > 0)
 {
 	afterimagesetup();
+	
 	if (sprite_index == spr_rankP || sprite_index == spr_rankPend)
 		draw_rectangle(0, 0, 960, 540, false);
+	
 	draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, 1);
+	
 	if (rank_text_sprite != -4 && floor(image_index) == (image_number - 1))
 		draw_sprite_ext(rank_text_sprite, 0, x, y, 1, 1, 0, c_white, 1);
+	
 	shader_reset();
 }
 else
 {
 	draw_player_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, 1);
+	
 	if (rank_text_sprite != -4 && floor(image_index) == (image_number - 1))
 		draw_sprite_ext(rank_text_sprite, 0, x, y, 1, 1, 0, c_white, 1);
 }
@@ -27,13 +32,14 @@ draw_set_alpha(flash);
 draw_rectangle(0, 0, 960, 540, false);
 draw_set_alpha(1);
 
-if event <= 0
+if (event <= 0)
 	exit;
 
 draw_sprite_ext(lang_get_sprite(spr_rankclipboard), 0, 716, 271 + clipboardY, 1, 1, 0, c_white, 1);
 var i = 0;
 var _text_scribble = "[c_red][fa_middle][fa_center][dialogfont]";
-if combo_shown
+
+if (combo_shown)
 {
 	var _cx = 894;
 	var _cy = 68 + clipboardY;
@@ -79,6 +85,7 @@ if (saved_total_string != _string)
 {
 	for (i = 0; i < _string_length; i++)
 		score_total_colors[i] = choose(0, 1, 2, 3, 4, 5, 6);
+	
 	saved_total_string = _string;
 }
 

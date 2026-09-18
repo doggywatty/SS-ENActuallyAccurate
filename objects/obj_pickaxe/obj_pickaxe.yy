@@ -13,8 +13,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Mines",
+    "path": "folders/Objects/Mines.yy",
   },
   "parentObjectId": {
     "name": "obj_hurtbox",
@@ -24,7 +24,7 @@
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
   "physicsFriction": 0.2,
-  "physicsGroup": 1,
+  "physicsGroup": 0,
   "physicsKinematic": false,
   "physicsLinearDamping": 0.1,
   "physicsObject": false,
@@ -43,5 +43,8 @@
     "name": "spr_pickaxe",
     "path": "sprites/spr_pickaxe/spr_pickaxe.yy",
   },
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": true,
 }

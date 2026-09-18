@@ -6,8 +6,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Structure",
+    "path": "folders/Objects/Structure.yy",
   },
   "parentObjectId": {
     "name": "obj_solid",
@@ -17,7 +17,7 @@
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
   "physicsFriction": 0.2,
-  "physicsGroup": 1,
+  "physicsGroup": 0,
   "physicsKinematic": false,
   "physicsLinearDamping": 0.1,
   "physicsObject": false,
@@ -33,5 +33,8 @@
     "path": "sprites/spr_metalblockhard/spr_metalblockhard.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": false,
 }

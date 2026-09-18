@@ -1,5 +1,6 @@
 var lay_id = layer_get_id(layer_tile);
 var map_id = layer_tilemap_get_id_fixed(lay_id);
+
 for (var i = 0; i < floor(sprite_width / tilemap_get_tile_width(map_id)); i++)
 {
 	for (var z = 0; z < floor(sprite_height / tilemap_get_tile_height(map_id)); z++)

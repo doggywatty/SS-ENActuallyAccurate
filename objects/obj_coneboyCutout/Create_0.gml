@@ -18,9 +18,11 @@ enemyDeath_awardPoints = function()
 enemyDeath_SpawnBody = function()
 {
 	var i = 0;
+	
 	if (chance(5))
-		event_play_oneshot("event:/SFX/enemies/coneboyrareow", x, y);	
-	repeat 3
+		event_play_oneshot("event:/SFX/enemies/coneboyrareow", x, y);
+	
+	repeat (3)
 	{
 		with (instance_create(x, y, obj_juiceDebris))
 		{
@@ -33,6 +35,7 @@ enemyDeath_SpawnBody = function()
 			sprite_index = spr_coneboydebris;
 			image_index = i;
 		}
+		
 		i++;
 	}
 };

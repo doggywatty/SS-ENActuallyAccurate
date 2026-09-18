@@ -1,37 +1,46 @@
 for (var i = 0; room_exists(i); i++)
 	global.RoomNameList[i] = room_get_name(i);
+
 for (var i = 0; object_exists(i); i++)
 	global.ObjectNameList[i] = object_get_name(i);
 
-function scr_parseBool(args, argvalue)
+function scr_parseBool(arg0, arg1)
 {
 	var true_strings = ["1", "y", "true", "yes", "t", "+"];
 	var false_strings = ["0", "n", "false", "no", "f", "-"];
-	args = string_lower(args);
-	if array_contains(true_strings, args)
+	arg0 = string_lower(arg0);
+	
+	if (array_contains(true_strings, arg0))
+	{
 		return true;
-	else if array_contains(false_strings, args)
+	}
+	else if (array_contains(false_strings, arg0))
+	{
 		return false;
+	}
 	else
 	{
-		show_debug_message($"SHELL WARNING: Couldn't parse {args} as a string, using default value of {argvalue}.");
-		return argvalue;
+		show_debug_message($"SHELL WARNING: Couldn't parse {arg0} as a string, using default value of {arg1}.");
+		return arg1;
 	}
 }
 
-function sh_escape(args)
+function sh_escape(arg0_)
 {
-	var arg0 = scr_parseBool(string(args[1]), !global.panic);
-	var arg1 = args[2];
-	var arg2 = args[3];
+	var arg0 = scr_parseBool(string(arg0_[1]), !global.panic);
+	var arg1 = arg0_[2];
+	var arg2 = arg0_[3];
 	global.panic = arg0;
 	var minutes = real(string_digits(arg1));
 	var seconds = real(string_digits(arg2));
 	global.EscapeTime = ((minutes * 60) + seconds) * 60;
-	with obj_hudManager.HUDObject_timer
+	
+	with (obj_hudManager.HUDObject_timer)
 		targetEscapeTime = global.EscapeTime;
+	
 	global.MaxEscapeTime = global.EscapeTime;
-	if !instance_exists(obj_panicchanger)
+	
+	if (!instance_exists(obj_panicchanger))
 		instance_create(x, y, obj_panicchanger);
 }
 
@@ -46,9 +55,9 @@ function meta_escape()
 	};
 }
 
-function sh_game_speed(_fps)
+function sh_game_speed(arg0_)
 {
-	var arg0 = _fps[1];
+	var arg0 = arg0_[1];
 	var new_game_speed = max(round(real(string_digits(arg0))), 1);
 	game_set_speed(new_game_speed, gamespeed_fps);
 }
@@ -64,17 +73,19 @@ function meta_game_speed()
 	};
 }
 
-function sh_character(_char)
+function sh_character(arg0)
 {
-	var choosen_character = Characters.Pizzelle;
-	switch _char[1]
+	var choosen_character = (0 << 0);
+	
+	switch (arg0[1])
 	{
 		default:
-			show_debug_message($"SHELL WARNING: [{_char[1]}] is not a valid character. Defaulting to Pizzelle.");
+			show_debug_message($"SHELL WARNING: [{arg0[1]}] is not a valid character. Defaulting to Pizzelle.");
 		case "Pizzelle":
-			choosen_character = Characters.Pizzelle;
+			choosen_character = (0 << 0);
 			break;
 	}
+	
 	scr_player_changeCharacter(obj_parent_player, choosen_character);
 }
 
@@ -89,7 +100,7 @@ function meta_character()
 	};
 }
 
-function sh_roomcheck(_room)
+function sh_roomcheck(arg0)
 {
 	instance_create(0, 0, obj_roomCheck);
 }
@@ -105,17 +116,20 @@ function meta_roomcheck()
 	};
 }
 
-function sh_unlock(_typelevel)
+function sh_unlock(arg0)
 {
-	var type = _typelevel[1];
+	var type = arg0[1];
+	
 	if (type == "all" || type == "levels")
 	{
 		var levels = ["tutorial", "entryway", "steamy", "mineshaft", "molasses"];
 		ini_open(global.SaveFileName);
+		
 		for (var i = 0; i < array_length(levels); i++)
 		{
 			var int_level = levels[i];
 			var level_info = ds_map_find_value(global.GameLevelMap, int_level);
+			
 			for (var z = 0; z < 3; z++)
 				ini_update_stat("Secret", string(int_level) + string(z + 1), true);
 			
@@ -128,17 +142,20 @@ function sh_unlock(_typelevel)
 			ini_update_stat("Confecti", string(int_level) + "4", true);
 			ini_update_stat("Confecti", string(int_level) + "5", true);
 			
-			if int_level == "tutorial"
+			if (int_level == "tutorial")
 			{
 				ini_update_stat("Misc", "completedtutorial", true);
-				if !ini_read_real("Misc", "lapunlockall", false)
+				
+				if (!ini_read_real("Misc", "lapunlockall", false))
 				{
 					ini_write_real("Misc", "lapunlockall", true);
 					scr_queueToolTipPrompt($"[promptfont]{lang_get("prompt_lap_unlockall")}");
 				}
 			}
+			
 			ini_write_string("Ranks", string(int_level), "p");
 		}
+		
 		ini_close();
 	}
 	
@@ -146,8 +163,10 @@ function sh_unlock(_typelevel)
 	{
 		ini_open("optionData.ini");
 		var clothes_info = scr_get_palettes(false);
+		
 		for (var i = 0; i < array_length(clothes_info); i++)
-			ini_write_real("Palettes", clothes_info[i].taskKey, true)
+			ini_write_real("Palettes", clothes_info[i].taskKey, true);
+		
 		ini_close();
 	}
 	
@@ -155,12 +174,15 @@ function sh_unlock(_typelevel)
 	{
 		var levels = ["demoEN", "entryway", "steamy", "mineshaft", "molasses"];
 		ini_open(global.SaveFileName);
+		
 		for (var z = 0; z < array_length(levels); z++)
 		{
 			var cheftask_info = scr_get_chef_tasks(levels[z], false);
+			
 			for (var i = 0; i < array_length(cheftask_info); i++)
 				ini_write_real("ChefTasks", cheftask_info[i].taskKey, true);
 		}
+		
 		ini_close();
 	}
 }
@@ -176,9 +198,9 @@ function meta_unlock()
 	};
 }
 
-function sh_toggle_collisions(_col)
+function sh_toggle_collisions(arg0)
 {
-	var arg1 = scr_parseBool(_col[1], !global.showcollisions);
+	var arg1 = scr_parseBool(arg0[1], !global.showcollisions);
 	global.showcollisions = arg1;
 	toggle_collision_function();
 }
@@ -194,11 +216,11 @@ function meta_toggle_collisions()
 	};
 }
 
-function sh_lock_camera(_cam)
+function sh_lock_camera(arg0)
 {
-	with obj_camera
+	with (obj_camera)
 	{
-		var arg1 = scr_parseBool(_cam[1], !cameraLock);
+		var arg1 = scr_parseBool(arg0[1], !cameraLock);
 		cameraLock = arg1;
 	}
 }
@@ -216,38 +238,34 @@ function meta_lock_camera()
 
 function toggle_collision_function()
 {
-	if !variable_global_exists("showcollisionarray")
-		global.showcollisionarray = [
-			obj_solid, obj_slope, obj_slopePlatform, obj_platform, obj_sidePlatform,
-			obj_cameraRegion, obj_cottonplatform, obj_creamThiefGoTrigger, obj_creamThiefTurnTrigger,
-			obj_creamThiefJumpTrigger, obj_creamThiefGrabTrigger, obj_creamThiefLoseTrigger,
-			obj_creamThiefTauntTrigger, obj_creamThiefBIGJump, obj_secretdestroyable,
-			obj_secretdestroyable_Point, obj_secretdestroyable_big, obj_secret_brainBlock,
-			obj_secretdestroyable_bigPoint, obj_secretdestroyable_metal, obj_eventtrigger,
-			obj_parent_doortrigger, obj_doorS, obj_doorA, obj_doorB, obj_doorC, obj_doorD, obj_doorE,
-			obj_doorP, obj_grindRail, obj_grindRail_Slope, obj_minecartRail, obj_minecartRail_Slope,
-			obj_hangRail, obj_gnomeTNTBlock, obj_cottonsolid, obj_dirtpatch
-		];
+	if (!variable_global_exists("showcollisionarray"))
+		global.showcollisionarray = [obj_solid, obj_slope, obj_slopePlatform, obj_platform, obj_sidePlatform, obj_cameraRegion, obj_cottonplatform, obj_creamThiefGoTrigger, obj_creamThiefTurnTrigger, obj_creamThiefJumpTrigger, obj_creamThiefGrabTrigger, obj_creamThiefLoseTrigger, obj_creamThiefTauntTrigger, obj_creamThiefBIGJump, obj_secretdestroyable, obj_secretdestroyable_Point, obj_secretdestroyable_big, obj_secret_brainBlock, obj_secretdestroyable_bigPoint, obj_secretdestroyable_metal, obj_eventtrigger, obj_parent_doortrigger, obj_doorS, obj_doorA, obj_doorB, obj_doorC, obj_doorD, obj_doorE, obj_doorP, obj_grindRail, obj_grindRail_Slope, obj_minecartRail, obj_minecartRail_Slope, obj_hangRail, obj_gnomeTNTBlock, obj_cottonsolid, obj_dirtpatch];
+	
 	var array = global.showcollisionarray;
 	var length = array_length(array);
-	for (var i = length - 1; i >= 0; i--)
+	var i = length - 1;
+	
+	while (i >= 0)
 	{
-	    with array[i]
-	    {
-	        if (object_index == array[i])
-	        {
-	            visible = global.showcollisions;
-	            depth = 0;
-	            if (object_index != obj_solid && object_index != obj_slope)
-	                image_alpha = 0.6;
-	        }
-	    }
+		with (array[i])
+		{
+			if (object_index == array[i])
+			{
+				visible = global.showcollisions;
+				depth = 0;
+				
+				if (object_index != obj_solid && object_index != obj_slope)
+					image_alpha = 0.6;
+			}
+		}
+		
+		i--;
 	}
 }
 
-function sh_showtiles(_tile)
+function sh_showtiles(arg0)
 {
-	var arg1 = scr_parseBool(_tile[1], !global.showtiles);
+	var arg1 = scr_parseBool(arg0[1], !global.showtiles);
 	global.showtiles = arg1;
 	show_tiles_function();
 }
@@ -273,9 +291,11 @@ function scr_shell_inittiles()
 {
 	tiles_array = [];
 	var _layers = layer_get_all();
+	
 	for (var i = 0; i < array_length(_layers); i++)
 	{
 		var tile_id = layer_tilemap_get_id_fixed(_layers[i]);
+		
 		if (layer_exists(_layers[i]) && tile_id != -1 && layer_get_visible(_layers[i]))
 			array_push(tiles_array, _layers[i]);
 	}
@@ -283,24 +303,23 @@ function scr_shell_inittiles()
 
 global.PlayerDebugView = undefined;
 
-function toggle_debugView(debug)
+function toggle_debugView(arg0)
 {
-	global.DebugVisuals = debug;
-	show_debug_log(debug);
-	if global.DebugVisuals
+	global.DebugVisuals = arg0;
+	show_debug_log(arg0);
+	
+	if (global.DebugVisuals)
 	{
 		show_debug_log(global.DebugVisuals);
 		global.PlayerDebugView = dbg_view("Player", true);
 		dbg_section("Sprite Info");
 		dbg_sprite(ref_create(obj_player1, "sprite_index"), ref_create(obj_player1, "image_index"), "Player Sprite", 100, 100);
-		
 		dbg_section("Position Info");
 		dbg_watch(ref_create(obj_player1, "roomName"), "room");
 		dbg_watch(ref_create(obj_player1, "x"), "X Position");
 		dbg_watch(ref_create(obj_player1, "y"), "Y Position");
 		dbg_watch(ref_create(obj_player1, "roomStartX"), "Room X Position");
 		dbg_watch(ref_create(obj_player1, "roomStartY"), "Room Y Position");
-		
 		dbg_section("Physics Info");
 		dbg_watch(ref_create(obj_player1, "movespeed"), "movespeed");
 		dbg_watch(ref_create(obj_player1, "verticalMovespeed"), "verticalMovespeed");
@@ -310,21 +329,22 @@ function toggle_debugView(debug)
 		dbg_watch(ref_create(obj_player1, "fracVsp"), "fracVsp");
 		dbg_watch(ref_create(obj_player1, "grounded"), "grounded");
 		dbg_watch(ref_create(obj_player1, "groundedSlope"), "groundedSlope");
-		
 		dbg_section("Misc Info");
 		dbg_watch(ref_create(obj_player1, "xscale"), "xscale");
 		dbg_watch(ref_create(obj_player1, "state"), "Player State");
 		dbg_watch(ref_create(obj_player1, "stateName"), "Player State Name");
 		dbg_watch(ref_create(obj_player1, "baddieGrabbedID"), "baddieGrabbedID");
-		dbg_watch(ref_create(global, "GLOBAL_FUN"), "Fun Value");		
+		dbg_watch(ref_create(global, "GLOBAL_FUN"), "Fun Value");
 	}
 	else
+	{
 		dbg_view_delete(global.PlayerDebugView);
+	}
 }
 
-function sh_toggle_debugmode(_debugmode)
+function sh_toggle_debugmode(arg0)
 {
-	var arg1 = scr_parseBool(_debugmode[1], !global.DebugVisuals);
+	var arg1 = scr_parseBool(arg0[1], !global.DebugVisuals);
 	toggle_debugView(arg1);
 }
 
@@ -339,12 +359,15 @@ function meta_toggle_debugmode()
 	};
 }
 
-function sh_room_goto(_room)
+function sh_room_goto(arg0)
 {
-	var arg1 = asset_get_index(_room[1]);
-	var arg2 = _room[2];
-	if (asset_get_type(_room[1]) != 3)
-		return "Can't find room " + string(_room[1]);
+	var arg1 = asset_get_index(arg0[1]);
+	var arg2 = arg0[2];
+	
+	if (asset_get_type(arg0[1]) != 3)
+	{
+		return "Can't find room " + string(arg0[1]);
+	}
 	else
 	{
 		obj_parent_player.targetRoom = arg1;
@@ -364,11 +387,12 @@ function meta_room_goto()
 	};
 }
 
-function sh_instance_create(object)
+function sh_instance_create(arg0)
 {
-	var _obj = asset_get_index(object[1]);
-	if _obj > -1
-		instance_create(object[2] ?? get_mouse_x(), object[3] ?? get_mouse_y(), _obj);
+	var _obj = asset_get_index(arg0[1]);
+	
+	if (_obj > -1)
+		instance_create(arg0[2] ?? get_mouse_x(), arg0[3] ?? get_mouse_y(), _obj);
 }
 
 function meta_instance_create()
@@ -377,17 +401,17 @@ function meta_instance_create()
 	{
 		description: "Spawn a new object.",
 		arguments: ["<object_id>", "<x>", "<y>"],
-		suggestions: [global.ObjectNameList, mouseArgumentType.worldX, mouseArgumentType.worldY],
+		suggestions: [global.ObjectNameList, (0 << 0), (1 << 0)],
 		argumentDescriptions: ["The object to spawn", "The X spawn coordinate", "The Y spawn coordinate"]
 	};
 }
 
 function sh_noclip()
 {
-	if (obj_parent_player.state != States.noclip)
-		obj_parent_player.state = States.noclip;
+	if (obj_parent_player.state != states.hang)
+		obj_parent_player.state = states.hang;
 	else
-		obj_parent_player.state = States.normal;
+		obj_parent_player.state = states.normal;
 }
 
 function meta_noclip()
@@ -403,10 +427,10 @@ function meta_noclip()
 
 function sh_freeflight()
 {
-	if (obj_parent_player.state != States.freeflight)
-		obj_parent_player.state = States.freeflight;
+	if (obj_parent_player.state != states.talkto)
+		obj_parent_player.state = states.talkto;
 	else
-		obj_parent_player.state = States.normal;
+		obj_parent_player.state = states.normal;
 }
 
 function meta_freeflight()
@@ -420,11 +444,13 @@ function meta_freeflight()
 	};
 }
 
-function sh_give_all(_all)
+function sh_give_all(arg0)
 {
 	var confecti_objs = [obj_confectimallow, obj_confectichoco, obj_confecticrack, obj_confectiworm, obj_confecticandy];
+	
 	for (var i = 0; i < array_length(confecti_objs); i++)
 		instance_create(x, y, confecti_objs[i]);
+	
 	global.Treasure = true;
 	global.secretfound = 3;
 	global.Collect = global.srank;
@@ -441,14 +467,13 @@ function meta_give_all()
 	};
 }
 
-function sh_give_prank(_prank)
+function sh_give_prank(arg0)
 {
-	var confecti_objs = [
-		obj_confectimallow, obj_confectichoco,
-		obj_confecticrack, obj_confectiworm, obj_confecticandy
-	];
+	var confecti_objs = [obj_confectimallow, obj_confectichoco, obj_confecticrack, obj_confectiworm, obj_confecticandy];
+	
 	for (var i = 0; i < array_length(confecti_objs); i++)
 		instance_create(x, y, confecti_objs[i]);
+	
 	global.rank = "p";
 	global.panic = 1;
 	global.ComboLost = 0;
@@ -472,9 +497,9 @@ function meta_give_prank()
 	};
 }
 
-function sh_set_combo(_combo)
+function sh_set_combo(arg0)
 {
-	global.Combo = real(string_digits(_combo[1]));
+	global.Combo = real(string_digits(arg0[1]));
 	obj_parent_player.superTauntBuffer = global.Combo;
 	global.ComboTime = 60;
 	global.ComboFreeze = 15;
@@ -491,11 +516,12 @@ function meta_set_combo()
 	};
 }
 
-function sh_give_stat(_stat)
+function sh_give_stat(arg0)
 {
-	var arg1 = _stat[1];
-	var add = _stat[2];
-	switch arg1
+	var arg1 = arg0[1];
+	var add = arg0[2];
+	
+	switch (arg1)
 	{
 		case "combo":
 			global.Combo += add;
@@ -521,7 +547,7 @@ function meta_give_stat()
 	};
 }
 
-function sh_lang_reload(_lang)
+function sh_lang_reload(arg0)
 {
 	scr_lang_reload();
 }

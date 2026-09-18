@@ -8,9 +8,9 @@ for (var i = 0; i < ds_list_size(global.BgInstancesList); i++)
 	}
 }
 
-with obj_parent_player
+with (obj_parent_player)
 {
-	if inBackgroundLayer
+	if (inBackgroundLayer)
 	{
 		y -= global.BgInstanceLayerOffset;
 		x -= (camera_get_view_x(view_camera[0]) * 0.05);

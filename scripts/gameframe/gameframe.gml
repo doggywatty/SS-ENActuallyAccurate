@@ -21,7 +21,7 @@ mt_gameframe_std_haxe_class = new gameframe_std_haxe_class(-1, "gameframe_std_ha
 
 function gameframe_log(_args1) {
 	// gameframe_log(args:haxe_Rest<any>)
-	if !gameframe_debug exit;
+	if (!gameframe_debug) exit;
 	var _s = "[Gameframe]";
 	var __g = 0;
 	while (__g < argument_count) {
@@ -35,7 +35,7 @@ function gameframe_log(_args1) {
 function gameframe_update() {
 	/// gameframe_update()
 	/// @returns {void}
-	if !gameframe_is_ready exit;
+	if (!gameframe_is_ready) exit;
 	gameframe_effective_scale = display_get_dpi_x() / 96 / gameframe_dpi_scale;
 	gameframe_mouse_over_frame = false;
 	gameframe_delayed_update();
@@ -105,7 +105,7 @@ function gameframe_init() {
 	gameframe_is_ready = true;
 	gameframe_has_native_extension = gameframe_check_native_extension();
 	gameframe_double_click_time = (gameframe_has_native_extension ? gameframe_get_double_click_time() : 500);
-	global.gameframe_double_click_time = 500; //Ok Sugary Spire devs, pop off
+	gameframe_double_click_time = 500;
 	gameframe_init_native();
 	gameframe_tools_rect_get_window_rect(gameframe_restoreRect_hx);
 	gameframe_button_add_defaults();
@@ -506,7 +506,7 @@ function gameframe_button_add_defaults() {
 	var _minimize = game_frame_button_create("minimize", gameframe_spr_buttons, 0, function(_button) {
 		gameframe_minimize()
 	});
-	if !gameframe_has_native_extension _minimize[@9/* enabled */] = false;
+	if (!gameframe_has_native_extension) _minimize[@9/* enabled */] = false;
 	array_push(gameframe_button_array, _minimize);
 	var _maxrest = game_frame_button_create("maxrest", gameframe_spr_buttons, 1, function(_button) {
 		if (gameframe_isMaximized_hx) gameframe_restore(); else gameframe_maximize();
@@ -817,7 +817,7 @@ function gameframe_caption_draw_caption_text_default(__x, __y, __width, __height
 	__x += gameframe_caption_margin * _dpiScale;
 	var _icon = gameframe_caption_icon;
 	if (_icon != -1) {
-		draw_sprite_ext(_icon, -1, (__x + sprite_get_xoffset(_icon) * _dpiScale | 0), __y + ((__height - sprite_get_height(_icon) * _dpiScale) div 2) + sprite_get_yoffset(_icon) * _dpiScale, _dpiScale, _dpiScale, 0, c_white, gameframe_caption_alpha * gameframe_alpha);
+		draw_sprite_ext(_icon, -1, (__x + sprite_get_xoffset(_icon) * _dpiScale | 0), __y + ((__height - sprite_get_height(_icon) * _dpiScale) div 2) + sprite_get_yoffset(_icon) * _dpiScale, _dpiScale, _dpiScale, 0, 16777215, gameframe_caption_alpha * gameframe_alpha);
 		__x += (sprite_get_width(_icon) + gameframe_caption_icon_margin) * _dpiScale;
 	}
 	var _text = gameframe_caption_text;
@@ -1046,7 +1046,7 @@ function gameframe_tools_keyctl_update() {
 function gameframe_draw() {
 	/// gameframe_draw()
 	/// @returns {void}
-	if !gameframe_is_ready exit;
+	if (!gameframe_is_ready) exit;
 	if (window_get_fullscreen() || gameframe_isFullscreen_hx) exit;
 	var _gw = window_get_width();
 	var _gh = window_get_height();
@@ -1054,7 +1054,7 @@ function gameframe_draw() {
 	var __borderWidth = (gameframe_isMaximized_hx ? 0 : gameframe_border_width);
 	var __titlebarHeight = gameframe_caption_get_height();
 	var __buttons_x = gameframe_button_get_combined_offset(_gw);
-	if !gameframe_isMaximized_hx gameframe_caption_draw_border(0, 0, _gw, _gh);
+	if (!gameframe_isMaximized_hx) gameframe_caption_draw_border(0, 0, _gw, _gh);
 	gameframe_caption_draw_background(__borderWidth, __borderWidth, _gw - __borderWidth * 2, __titlebarHeight, __buttons_x);
 	gameframe_caption_draw_text(__borderWidth, __borderWidth, __buttons_x - __borderWidth, __titlebarHeight);
 	gameframe_button_draw(__buttons_x, __borderWidth, __titlebarHeight);
@@ -1195,7 +1195,7 @@ gameframe_button_wait_for_movement_y = 0.;
 globalvar gameframe_debug; /// @is {bool}
 gameframe_debug = false;
 globalvar gameframe_blend; /// @is {int}
-gameframe_blend = c_white;
+gameframe_blend = 16777215;
 globalvar gameframe_alpha; /// @is {number}
 gameframe_alpha = 1.0;
 globalvar gameframe_can_input; /// @is {bool}

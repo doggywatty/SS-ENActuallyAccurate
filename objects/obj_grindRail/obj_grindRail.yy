@@ -36,5 +36,8 @@
     "name": "spr_Minecartrail",
     "path": "sprites/spr_Minecartrail/spr_Minecartrail.yy",
   },
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": false,
 }

@@ -8,7 +8,7 @@ if (instance_exists(obj_cutsceneManager) && obj_cutsceneManager.exitLevelCustcen
 	grav = 0;
 }
 
-if (state != States.bump && state != States.cottonroll && state != States.crouch && state != States.tumble && sprite_index != spr_null && sprite_index != spr_player_PZ_frostburn_land_spin && state != States.Sjumpprep && state != States.machroll && state != States.hurt && state != States.crouchjump)
+if (state != states.throwing && state != states.tackle && state != states.facestomp && state != states.runonball && sprite_index != spr_null && sprite_index != spr_player_PZ_frostburn_land_spin && state != states.chainsaw && state != states.climbdownwall && state != states.superslam && state != states.timesup)
 	mask_index = spr_player_mask;
 else
 	mask_index = spr_crouchmask;
@@ -26,35 +26,39 @@ scr_playerstate();
 hspCarry += slideHsp;
 scr_collide_destructibles();
 
-if (state != States.titlescreen && state != States.oldtaunt && state != States.noclip
-&& state != States.door && state != States.comingoutdoor && state != States.victory
-&& state != States.timesup && state != States.gameover)
+if (state != states.titlescreen && state != states.freefall && state != states.hang && state != states.grab && state != states.stunned && state != states.shotgunjump && state != states.climbwall && state != states.knightpep)
+{
 	scr_collision();
-else if (state == States.gameover)
+}
+else if (state == states.knightpep)
 {
 	x += hsp;
 	y += vsp;
+	
 	if (vsp < terminalVelocity)
 		vsp += grav;
 }
 
 var _state = global.freezeframe ? frozenState : state;
 scr_setTransfoTip(_state);
+
 if (oldPromptText != global.TransfoPrompt)
 {
 	oldPromptText = global.TransfoPrompt;
 	ini_open(global.SaveFileName);
 	var _seen_prompt = ini_read_real("Tip", global.TransfoPrompt, false);
+	
 	if (global.TransfoPrompt != "" && !_seen_prompt)
 	{
 		scr_queueToolTipPrompt(lang_get(global.TransfoPrompt));
 		ini_write_real("Tip", global.TransfoPrompt, true);
 	}
+	
 	ini_close();
 }
 
 scr_playersounds();
-cutscene = state == States.door || state == States.gotkey || state == States.actor || state == States.victory || state == States.comingoutdoor || state == States.gameover;
+cutscene = state == states.grab || state == states.boulder || state == states.mach3 || state == states.shotgunjump || state == states.stunned || state == states.knightpep;
 isInSecretPortal = false;
 isInLapPortal = false;
 draw_angle = 0;

@@ -2,25 +2,28 @@ if (sprite_index == spr_juicepuddledone && other.grounded)
 {
 	if (player_complete_invulnerability(other.id))
 		exit;
-	with other
+	
+	with (other)
 	{
 		var old_mask = mask_index;
 		mask_index = spr_player_mask;
+		
 		if (place_meeting_collision(x, y))
 		{
 			mask_index = old_mask;
 			exit;
 		}
+		
 		mask_index = old_mask;
 		image_index = 0;
 		image_speed = 0.35;
 		sprite_index = spr_player_PZ_slipSlide_intro;
-		state = States.puddle;
+		state = states.freefallprep;
 		vsp = -11;
 		grounded = 0;
 	}
 	
-	with obj_achievementTracker
+	with (obj_achievementTracker)
 		constructHasSlipped = true;
 	
 	event_play_oneshot("event:/SFX/player/slip", x, y);
@@ -35,11 +38,13 @@ if (sprite_index == spr_juicepuddledone && other.grounded)
 		image_speed = 0;
 	}
 	
-	if !perma
+	if (!perma)
 	{
 		image_xscale = other.image_xscale;
 		instance_destroy();
 	}
 	else
+	{
 		alarm[0] = 60;
+	}
 }

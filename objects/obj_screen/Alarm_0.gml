@@ -4,7 +4,7 @@ if (!window_has_focus() || !variable_global_exists("fullscreen"))
 	exit;
 }
 
-switch global.fullscreen
+switch (global.fullscreen)
 {
 	case 0:
 		gameframe_set_fullscreen(0);

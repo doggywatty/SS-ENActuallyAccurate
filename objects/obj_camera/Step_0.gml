@@ -1,8 +1,6 @@
 DrawHUD = true;
 
-if (room == timesuproom || room == rank_room || room == rm_credits || room == rm_titlecard
-|| room == hub_demohallway || room == hub_paintstudio || room == mineshaft_elevator || is_hub()
-|| is_tutorial())
+if (room == timesuproom || room == rank_room || room == rm_credits || room == rm_titlecard || room == hub_demohallway || room == hub_paintstudio || room == mineshaft_elevator || is_hub() || is_tutorial())
 	DrawHUD = false;
 
 if (get_panic())
@@ -15,8 +13,10 @@ if (get_panic() && !global.freezeframe && !is_tutorial())
 {
 	if (global.EscapeTime > global.MaxEscapeTime)
 		global.MaxEscapeTime = global.EscapeTime;
+	
 	if (global.EscapeTime > 0)
 		global.EscapeTime--;
+	
 	if ((global.EscapeTime > 0 && (abs(global.EscapeTime) % 60) == 0) && global.Collect >= 5)
 	{
 		var _oldcollect = global.Collect;
@@ -30,17 +30,20 @@ if (get_panic() && !global.freezeframe && !is_tutorial())
 	
 	if (global.panic && global.EscapeTime <= 0 && room != timesuproom)
 	{
-		if !instance_exists(obj_coneball_timesUp)
+		if (!instance_exists(obj_coneball_timesUp))
 			instance_create(obj_parent_player.x, obj_parent_player.y, obj_coneball_timesUp);
 	}
 	else
+	{
 		global.greyscalefade = approach(global.greyscalefade, 0, 0.015);
+	}
 }
 
 if (frozen && !global.freezeframe)
 {
 	for (var i = 0; i < 3; i++)
 		alarm_set(i, frozenAlarm[i]);
+	
 	frozen = false;
 }
 
@@ -53,7 +56,7 @@ var vw = cam_w * cam_zoom;
 var vh = cam_h * cam_zoom;
 camera_set_view_size(view_camera[0], vw, vh);
 
-if (instance_exists(obj_parent_player) && obj_parent_player.state != States.timesup && obj_parent_player.state != States.gameover)
+if (instance_exists(obj_parent_player) && obj_parent_player.state != states.climbwall && obj_parent_player.state != states.knightpep)
 {
 	var target = 
 	{
@@ -67,27 +70,33 @@ if (instance_exists(obj_parent_player) && obj_parent_player.state != States.time
 	var shake_value_x = 0;
 	var shake_value_y = 0;
 	
-	if !global.freezeframe
+	if (!global.freezeframe)
 	{
 		var _player = obj_parent_player;
 		var _targetcharge = 0;
 		var _tspeed = 6;
-		if (_player.state == States.mach2 || _player.state == States.mach3 || _player.state == States.minecart || _player.state == States.minecart_bump)
+		
+		if (_player.state == states.pistol || _player.state == states.shotgun || _player.state == states.victory || _player.state == states.Sjump)
 		{
 			_targetcharge = _player.xscale * ((_player.movespeed / 4) * 50);
 			_tspeed = 0.3;
-			if (sign(chargeCameraX) != _player.xscale || (_player.state == States.minecart || _player.state == States.minecart_bump))
+			
+			if (sign(chargeCameraX) != _player.xscale || (_player.state == states.victory || _player.state == states.Sjump))
 				_tspeed = 3;
 		}
-		else if (abs(_player.hsp) >= 16 && _player.state != States.climbwall && _player.state != States.Sjump)
+		else if (abs(_player.hsp) >= 16 && _player.state != states.cheesepep && _player.state != states.highjump)
 		{
 			_targetcharge = sign(_player.hsp) * ((_player.movespeed / 4) * 50);
 			_tspeed = 2;
+			
 			if (sign(chargeCameraX) != sign(_player.hsp) && sign(_player.hsp) != 0)
 				_tspeed = 8;
 		}
-		else if (_player.state == States.machslide)
+		else if (_player.state == states.machfreefall)
+		{
 			_tspeed = 10;
+		}
+		
 		chargeCameraX = approach(chargeCameraX, _targetcharge, _tspeed);
 	}
 	
@@ -105,7 +114,7 @@ if (instance_exists(obj_parent_player) && obj_parent_player.state != States.time
 		{
 			if (shakeTime == 0 && !global.freezeframe)
 				shakeMag = approach(shakeMag, 0, shakeDecel);
-
+			
 			shake_value_x += random_range(-shakeMag, shakeMag);
 			shake_value_y += random_range(-shakeMag, shakeMag);
 			
@@ -115,11 +124,13 @@ if (instance_exists(obj_parent_player) && obj_parent_player.state != States.time
 				ds_list_delete(other.cameraShakeList, i);
 			}
 			else if (shakeTime > 0)
+			{
 				shakeTime = approach(shakeTime, 0, 1);
+			}
 		}
 	}
 	
-	if !global.ScreenShake
+	if (!global.ScreenShake)
 	{
 		shake_value_x = 0;
 		shake_value_y = 0;
@@ -148,38 +159,49 @@ if (is_hub() || !scr_roomcheck())
 else
 {
 	if (global.Collect < global.crank)
+	{
 		global.currentrank = "D";
+	}
 	else if (global.Collect < global.brank)
+	{
 		global.currentrank = "C";
+	}
 	else if (global.Collect < global.arank)
+	{
 		global.currentrank = "B";
+	}
 	else if (global.Collect < global.srank)
+	{
 		global.currentrank = "A";
+	}
 	else if (global.Collect >= global.srank)
 	{
-		if !global.ComboLost && global.secretfound > 2 && global.lapcount >= 1 && global.Treasure
+		if (!global.ComboLost && global.secretfound > 2 && global.lapcount >= 1 && global.Treasure)
 			global.currentrank = "P";
 		else
 			global.currentrank = "S";
 	}
 	
-	if lastRank != global.currentrank
+	if (lastRank != global.currentrank)
 	{
 		bubblescale = 2;
 		var rank_snd = sndRankUp;
 		var rank_index = rank_checker(string_lower(global.currentrank));
 		var oldrank_index = rank_checker(string_lower(lastRank));
 		var event_state = oldrank_index;
+		
 		if (oldrank_index > rank_index)
 		{
 			rank_snd = sndRankDown;
 			event_state = rank_index;
 		}
-		if DrawHUD
+		
+		if (DrawHUD)
 		{
 			fmod_studio_event_instance_start(rank_snd);
 			fmod_studio_event_instance_set_parameter_by_name(rank_snd, "state", event_state, false);
 		}
+		
 		lastRank = global.currentrank;
 	}
 }

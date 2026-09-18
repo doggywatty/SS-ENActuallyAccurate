@@ -1,20 +1,22 @@
-function scr_hurtplayer(player = obj_parent_player, mspd)
+function scr_hurtplayer(arg0 = obj_parent_player, arg1)
 {
-	if !global.freezeframe && player.state != States.actor && player.state != States.parry && player.state != States.dodgetumble && player.state != States.hurt
+	if (!global.freezeframe && arg0.state != states.mach3 && arg0.state != states.gameover && arg0.state != states.crouchjump && arg0.state != states.superslam)
 	{
-		with player
+		with (arg0)
 		{
-			if cutscene
+			if (cutscene)
 				continue;
-			if state == States.noclip
+			
+			if (state == states.hang)
 				continue;
-			if sprite_index == spr_supertaunt1 || sprite_index == spr_supertaunt2
-			|| sprite_index == spr_supertaunt3 || sprite_index == spr_supertaunt4
+			
+			if (sprite_index == spr_supertaunt1 || sprite_index == spr_supertaunt2 || sprite_index == spr_supertaunt3 || sprite_index == spr_supertaunt4)
 				continue;
-			if (state == States.minecart)
+			
+			if (state == states.victory)
 			{
 				sprite_index = spr_player_PZ_hitWall_mach3;
-				state = States.bump;
+				state = states.throwing;
 				hsp = 2.5 * xscale;
 				vsp = -3;
 				machTwo = 0;
@@ -27,19 +29,17 @@ function scr_hurtplayer(player = obj_parent_player, mspd)
 						image_index = i;
 				}
 			}
-			else if (state == States.cotton || state == States.cottondrill || state == States.cottonroll
-			|| state == States.cottondig || state == States.fling_launch || state == States.fling)
+			else if (state == states.bossintro || state == states.keyget || state == states.tackle || state == states.slipnslide || state == states.parry || state == states.ladder)
 			{
 			}
-			else if (state == States.bottlerocket)
+			else if (state == states.barrelmach2)
 			{
 			}
-			else if (state != States.hurt && state != States.taunt && !hurted && !cutscene
-			& state != States.bump && state != States.tumble)
+			else if (state != states.superslam && state != states.gottreasure && !hurted && !cutscene && state != states.throwing && state != states.runonball)
 			{
-				if (state == States.doughmount || state == States.doughmountspin)
+				if (state == states.punch || state == states.backkick)
 				{
-					with instance_create(x, y, obj_dogMount)
+					with (instance_create(x, y, obj_dogMount))
 					{
 						image_xscale = other.xscale;
 						sprite_index = spr_dogMount_kick;
@@ -51,7 +51,7 @@ function scr_hurtplayer(player = obj_parent_player, mspd)
 				event_play_oneshot("event:/SFX/player/hurt", x, y);
 				create_particle(x, y, spr_bangEffect);
 				create_particle(x, y, spr_parryeffect);
-				state = States.hurt;
+				state = states.superslam;
 				alarm[7] = 120;
 				scr_sleep_ext(100);
 				hurted = true;
@@ -69,15 +69,18 @@ function scr_hurtplayer(player = obj_parent_player, mspd)
 					scr_queueTVAnimation(randomize_animations(global.TvSprPlayer_HurtExp));
 				}
 				else
+				{
 					scr_queueTVAnimation(global.TvSprPlayer_Hurt, 60);
+				}
 				
 				sprite_index = (sign(image_xscale) == other.image_xscale) ? spr_hurtjump : spr_hurt;
-				movespeed = !is_undefined(mspd) ? mspd : 8;
+				movespeed = !is_undefined(arg1) ? arg1 : 8;
 				global.ComboTime = clamp(global.ComboTime - 25, 0, 60);
 				var _oldcollect = global.Collect;
 				global.Collect = max(global.Collect - 50, 0);
 				var _repeat = clamp(round((_oldcollect - global.Collect) / 10), 0, 15);
-				if _oldcollect > 0
+				
+				if (_oldcollect > 0)
 				{
 					instance_create(x, y, obj_pointLoseNumber, 
 					{
@@ -85,15 +88,18 @@ function scr_hurtplayer(player = obj_parent_player, mspd)
 						number: string(global.Collect - _oldcollect)
 					});
 					
-					repeat _repeat
+					repeat (_repeat)
 						instance_create(x, y, obj_collectableLoss);
 				}
+				
 				instance_create(x, y, obj_spikehurteffect);
-				repeat 5
+				
+				repeat (5)
 				{
 					create_radiating_particle(x, y, spr_fuckassOrb, 0, false, 7, 10, 10);
 					instance_create(x, y, obj_hurtStars);
 				}
+				
 				image_index = 0;
 				flash = true;
 				vsp = -12;
@@ -101,23 +107,18 @@ function scr_hurtplayer(player = obj_parent_player, mspd)
 			}
 		}
 	}
+	
 	return false;
 }
 
-function player_complete_invulnerability(player = obj_parent_player)
+function player_complete_invulnerability(arg0 = obj_parent_player)
 {
-	var _states = [
-		States.titlescreen, States.noclip, States.actor, States.gameover,
-		States.talkto, States.comingoutdoor, States.door, States.victory
-	];
-	return array_contains(_states, player.state);
+	var _states = [(2 << 0), (76 << 0), (70 << 0), (19 << 0), (52 << 0), (26 << 0), (40 << 0), (25 << 0)];
+	return array_contains(_states, arg0.state);
 }
 
-function player_can_hurt(player = obj_parent_player)
+function player_can_hurt(arg0 = obj_parent_player)
 {
-	var _states = [
-		States.cotton, States.cottondrill, States.cottonroll, States.cottondig,
-		States.fling_launch, States.fling
-	];
-	return !array_contains(_states, player.state) && !player_complete_invulnerability(player);
+	var _states = [states.bossintro, (56 << 0), (57 << 0), (58 << 0), (93 << 0), (59 << 0)];
+	return !array_contains(_states, arg0.state) && !player_complete_invulnerability(arg0);
 }

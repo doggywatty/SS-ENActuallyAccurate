@@ -1,8 +1,8 @@
 global.scribble_saved_profile = "[pPrompt]";
 
-function scribble_quick_button(button)
+function scribble_quick_button(arg0)
 {
-	return $"[c_white]{get_control_sprite(button)}{global.scribble_saved_profile}";
+	return $"[c_white]{get_control_sprite(arg0)}{global.scribble_saved_profile}";
 }
 
 global.DefaultCursor = 0;
@@ -84,11 +84,8 @@ scribble_add_macro("iFf", function()
 {
 	return scr_getDialogIcon("FLINGFROG", "c_white", "c_white");
 });
-global.allTexturePages = [
-	"Default", "Player", "Baddies", "HUD", "Backgrounds", "Unused", "Devs", 
-	"Entryway", "Cottontown", "Mines", "Molasses", "Hub", "Structure", "Cafe", "Fudgetop", "Sucrose",
-	"geyserwaves", "effectsGroup", "titleGroup", "testingGroup"
-];
+global.allTexturePages = ["Default", "Player", "Baddies", "HUD", "Backgrounds", "Unused", "Devs", "Entryway", "Cottontown", "Mines", "Molasses", "Hub", "Structure", "Cafe", "Fudgetop", "Sucrose", "geyserwaves", "effectsGroup", "titleGroup", "testingGroup"];
+global.MainMenuRefresh = false;
 global.langUpdated = false;
 randomize();
 global.RandomSeed = random_get_seed();
@@ -96,28 +93,32 @@ global.GLOBAL_FUN = 0;
 
 function scr_gameInit()
 {
-	var dbg_mode = DebugType.None;
-	if GM_build_type == "run"
-		dbg_mode = DebugType.Dev;
+	var dbg_mode = (0 << 0);
+	var p_i = 0;
+	var p_c = parameter_count();
 	
-	for (var p_i = 0, p_c = parameter_count(); p_i <= p_c; p_i++)
+	while (p_i <= p_c)
 	{
-	    if dbg_mode == DebugType.Dev
-	        break;
-	    var p_s = string_lower(parameter_string(p_i));
-	    switch p_s
-	    {
-	        case "-dev":
-	        case "--dev":
-	        case "-debug":
-	        case "--debug":
-	            dbg_mode = DebugType.Dev;
-	            break;
-	        case "-playtest":
-	        case "--playtest":
-	            dbg_mode = DebugType.Playtest;
-	            break;
-	    }
+		if (dbg_mode == (2 << 0))
+			break;
+		
+		var p_s = string_lower(parameter_string(p_i));
+		
+		switch (p_s)
+		{
+			case "-dev":
+			case "--dev":
+			case "-debug":
+			case "--debug":
+				dbg_mode = (2 << 0);
+				break;
+			case "-playtest":
+			case "--playtest":
+				dbg_mode = (1 << 0);
+				break;
+		}
+		
+		p_i++;
 	}
 	
 	global.DebugMode = dbg_mode;
@@ -126,7 +127,7 @@ function scr_gameInit()
 	global.SaveFileName = "saveData1.ini";
 	global.NewFile = false;
 	global.PainterTopperIndex = irandom_range(0, sprite_get_number(spr_paintertopper) - 1);
-	global.PreviousRoom = rm_missing;	
+	global.PreviousRoom = rm_missing;
 	global.RespawnBlockMoving = false;
 	global.challengemode = 0;
 	global.erank = 0;
@@ -160,7 +161,7 @@ function scr_gameInit()
 	global.ExitGateTaunt = 0;
 	global.freezeframe = false;
 	global.TransfoPrompt = "";
-	global.TransfoState = States.normal;
+	global.TransfoState = states.normal;
 	global.greyscalefade = 0;
 	global.music = -4;
 	global.harrymusic = -4;
@@ -177,8 +178,10 @@ function scr_gameInit()
 	global.showtiles = true;
 	global.DebugVisuals = false;
 	global.fartcounter = 0;
-	if (global.DebugMode == DebugType.Dev || global.DebugMode == DebugType.Playtest)
+	
+	if (global.DebugMode == debugmode.debug || global.DebugMode == debugmode.playtest)
 		global.showcollisions = true;
+	
 	global.parallaxbg_surface = -4;
 	global.ParallaxMap = ds_map_create();
 	scr_default_parallax(true);
@@ -199,10 +202,7 @@ function scr_gameInit()
 	global.PlayerInputDevice2 = -2;
 	global.targetCamX = 0;
 	global.targetCamY = 0;
-	global.resolutions = [
-		[480, 270], [640, 360], [960, 540], [1024, 576], [1280, 720], [1600, 900], [1920, 1080],
-		[2560, 1440], [3840, 2160]
-	];
+	global.resolutions = [[480, 270], [640, 360], [960, 540], [1024, 576], [1280, 720], [1600, 900], [1920, 1080], [2560, 1440], [3840, 2160]];
 	init_option();
 	scr_judgment_init();
 	global.doorsave = ds_list_create();

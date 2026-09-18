@@ -16,10 +16,10 @@ enemyAttackTimerMax = 300;
 
 enemyAttack_TriggerEvent = function()
 {
-	if (enemyAttackTimer <= 0 && scr_enemy_playerisnear(60, 350) && state == States.frozen)
+	if (enemyAttackTimer <= 0 && scr_enemy_playerisnear(60, 350) && state == states.frozen)
 	{
 		enemyAttackTimer = enemyAttackTimerMax;
-		state = States.titlescreen;
+		state = states.titlescreen;
 		sprite_index = spr_cottonblimp_shoot;
 		image_index = 0;
 	}
@@ -41,7 +41,7 @@ enemyState_Attack = function()
 
 enemyDeath_SpawnBody = function()
 {
-	with instance_create(x, y, obj_baddieDead)
+	with (instance_create(x, y, obj_baddieDead))
 	{
 		image_xscale = other.image_xscale;
 		image_blend = other.image_blend;
@@ -49,6 +49,7 @@ enemyDeath_SpawnBody = function()
 		paletteSprite = other.paletteSprite;
 		paletteSelect = other.paletteSelect;
 	}
+	
 	instance_create(x, y, obj_bombExplosionPlayer, 
 	{
 		hurtBaddies: false

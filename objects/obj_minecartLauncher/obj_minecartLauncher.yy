@@ -9,8 +9,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Mines",
+    "path": "folders/Objects/Mines.yy",
   },
   "parentObjectId": null,
   "persistent": false,
@@ -36,5 +36,8 @@
     "name": "spr_minecartEmpty",
     "path": "sprites/spr_minecartEmpty/spr_minecartEmpty.yy",
   },
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": true,
 }

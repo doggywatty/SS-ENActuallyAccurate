@@ -1,11 +1,11 @@
-with obj_parent_player
+with (obj_parent_player)
 {
-    if (state != States.noclip && state != States.cotton && state != States.cottondrill && state != States.cottonroll && state != States.tumble && state != States.taunt && state != States.bump && state != States.actor && state != States.frozen)
-    {
-        if (place_meeting_slopePlatform(x, y + 1, other) && vsp >= 0 && state != States.grind)
-        {
-            state = States.grind;
-            vsp = 0;
-        }
-    }
+	if (state != states.hang && state != states.bossintro && state != states.keyget && state != states.tackle && state != states.runonball && state != states.gottreasure && state != states.throwing && state != states.mach3 && state != states.frozen)
+	{
+		if (place_meeting_slopePlatform(x, y + 1, other) && vsp >= 0 && state != states.chainsawbump)
+		{
+			state = states.chainsawbump;
+			vsp = 0;
+		}
+	}
 }

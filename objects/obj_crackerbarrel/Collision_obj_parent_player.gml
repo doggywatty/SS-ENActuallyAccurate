@@ -1,2 +1,2 @@
 if (state == 1)
-    scr_hurtplayer(other);
+	scr_hurtplayer(other);

@@ -20,6 +20,7 @@ for (var k = 1; lang_key_exists($"demopainter_idlethought_{k}"); k++)
 }
 
 var palette_array = global.CharacterPalette[global.playerCharacter].palettes;
+
 for (var i = 0; i < array_length(palette_array); i++)
 {
 	var key = palette_array[i].palName;

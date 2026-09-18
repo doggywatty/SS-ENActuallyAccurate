@@ -41,7 +41,7 @@ for (var i = 0; i < array_length(fileSelectHeightRatio); i++)
 }
 
 draw_set_alpha(1);
-draw_player_sprite_ext(saves_sprite, saves_index, pizzyX, pizzyY, 1, 1, 0, c_white, 1, Characters.Pizzelle, filePalette[selectedFile]);
+draw_player_sprite_ext(saves_sprite, saves_index, pizzyX, pizzyY, 1, 1, 0, 16777215, 1, (0 << 0), filePalette[selectedFile]);
 draw_set_alpha(hudAlpha);
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);

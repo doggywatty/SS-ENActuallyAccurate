@@ -1,26 +1,29 @@
-function scr_player_changeCharacter(player = obj_player1, _playerChar, _mainPlayerChar = false)
+function scr_player_changeCharacter(arg0 = obj_player1, arg1, arg2 = false)
 {
-	with player
+	with (arg0)
 	{
 		previousCharacter = global.playerCharacter;
-		global.playerCharacter = _playerChar;
-		if !_mainPlayerChar
-			mainPlayerCharacter = _playerChar;
+		global.playerCharacter = arg1;
+		
+		if (!arg2)
+			mainPlayerCharacter = arg1;
+		
 		scr_characterSprite();
 	}
 }
 
-function scr_playerrespawn(player = true, _drowned = false)
+function scr_playerrespawn(arg0 = true, arg1 = false)
 {
-	if !player
+	if (!arg0)
 	{
-		if (state != States.gameover && (state != States.actor || instance_exists(obj_techdiff)) && state != States.fling && !place_meeting(x, y + 32, obj_vertical_hallway) && !instance_exists(obj_fadeoutTransition) && room != timesuproom && room != rank_room)
+		if (state != states.knightpep && (state != states.mach3 || instance_exists(obj_techdiff)) && state != states.ladder && !place_meeting(x, y + 32, obj_vertical_hallway) && !instance_exists(obj_fadeoutTransition) && room != timesuproom && room != rank_room)
 		{
 			var _checkpoint = instance_nearest(x, y, obj_checkpoint_invis);
 			var _checkpointReal = -4;
-			with obj_checkpoint
+			
+			with (obj_checkpoint)
 			{
-				if Checkpointactivated
+				if (Checkpointactivated)
 					_checkpointReal = id;
 			}
 			
@@ -43,31 +46,32 @@ function scr_playerrespawn(player = true, _drowned = false)
 				instance_create(roomStartX, roomStartY, obj_poofeffect);
 			}
 			
-			state = States.normal;
+			state = states.normal;
 			alarm[7] = 60;
 			hurted = true;
 			sprite_index = spr_idle;
 		}
 	}
-	else if !instance_exists(obj_techdiff)
+	else if (!instance_exists(obj_techdiff))
 	{
-		if !_drowned
+		if (!arg1)
 		{
 			event_play_oneshot("event:/SFX/player/groundpound", x, room_height - 100);
 			camera_shake_add(3, 3);
 			hsp = 0;
 			vsp = 0;
 		}
+		
 		instance_create(x, y, obj_techdiff, 
 		{
-			drowned: _drowned
+			drowned: arg1
 		});
-		state = States.actor;
+		state = states.mach3;
 	}
-	with obj_achievementTracker
+	
+	with (obj_achievementTracker)
 	{
-		if (obj_parent_player.state == States.minecart || obj_parent_player.state == States.minecart_bump
-		|| obj_parent_player.state == States.minecart_launched)
+		if (obj_parent_player.state == states.victory || obj_parent_player.state == states.Sjump || obj_parent_player.state == states.comingoutdoor)
 			hitInMinecart = true;
 	}
 }
@@ -75,280 +79,284 @@ function scr_playerrespawn(player = true, _drowned = false)
 function scr_playerstate()
 {
 	var state_function = undefined;
-	switch state
+	
+	switch (state)
 	{
-		case States.normal:
+		case states.normal:
 			state_function = state_player_normal;
 			break;
-		case States.jump:
+		case states.chainsawpogo:
 			state_function = state_player_jump;
 			break;
-		case States.run:
+		case states.Nhookshot:
 			state_function = state_player_run;
 			break;
-		case States.titlescreen:
+		case states.titlescreen:
 			state_function = state_player_titlescreen;
 			break;
-		case States.charge:
+		case states.slap:
 			state_function = state_player_charge;
 			break;
-		case States.climbwall:
+		case states.cheesepep:
 			state_function = state_player_climbwall;
 			break;
-		case States.wallkick:
+		case states.cheeseball:
 			state_function = state_player_wallkick;
 			break;
-		case States.machtumble:
+		case states.cheesepepstick:
 			state_function = state_player_machtumble;
 			break;
-		case States.grabdash:
+		case states.pistalaim:
 			state_function = state_player_grabdash;
 			break;
-		case States.grab:
+		case states.handstandjump:
 			state_function = state_player_grab;
 			break;
-		case States.timesup:
+		case states.climbwall:
 			state_function = state_player_timesup;
 			break;
-		case States.machroll:
+		case states.climbdownwall:
 			state_function = state_player_machroll;
 			break;
-		case States.swingclub:
+		case states.portal:
 			state_function = state_player_swingclub;
 			break;
-		case States.superslam:
+		case states.secondjump:
 			state_function = state_player_superslam;
 			break;
-		case States.grind:
+		case states.chainsawbump:
 			state_function = state_player_grind;
 			break;
-		case States.hang:
+		case states.grind:
 			state_function = state_player_hang;
 			break;
-		case States.taunt:
+		case states.gottreasure:
 			state_function = state_player_taunt;
 			break;
-		case States.gameover:
+		case states.knightpep:
 			state_function = state_player_gameover;
 			break;
-		case States.ceilingCrash:
+		case states.knightpepattack:
 			state_function = state_player_ceilingCrash;
 			break;
-		case States.freefallprep:
+		case states.meteorpep:
 			state_function = state_player_freefallprep;
 			break;
-		case States.tackle:
+		case states.knightpepslopes:
 			state_function = state_player_tackle;
 			break;
-		case States.slipnslide:
+		case states.bombpep:
 			state_function = state_player_slipnslide;
 			break;
-		case States.ladder:
+		case states.grabbing:
 			state_function = state_player_ladder;
 			break;
-		case States.victory:
+		case states.shotgunjump:
 			state_function = state_player_victory;
 			break;
-		case States.comingoutdoor:
+		case states.stunned:
 			state_function = state_player_comingoutdoor;
 			break;
-		case States.Sjump:
+		case states.highjump:
 			state_function = state_player_Sjump;
 			break;
-		case States.Sjumpprep:
+		case states.chainsaw:
 			state_function = state_player_Sjumpprep;
 			break;
-		case States.crouch:
+		case states.facestomp:
 			state_function = state_player_crouch;
 			break;
-		case States.crouchjump:
+		case states.timesup:
 			state_function = state_player_crouchjump;
 			break;
-		case States.mach1:
+		case states.machroll:
 			state_function = state_player_mach1;
 			break;
-		case States.mach2:
+		case states.pistol:
 			state_function = state_player_mach2;
 			break;
-		case States.mach3:
+		case states.shotgun:
 			state_function = state_player_mach3;
 			break;
-		case States.machslide:
+		case states.machfreefall:
 			state_function = state_player_machslide;
 			break;
-		case States.bump:
+		case states.throwing:
 			state_function = state_player_bump;
 			break;
-		case States.hurt:
+		case states.superslam:
 			state_function = state_player_hurt;
 			break;
-		case States.freefall:
+		case states.slam:
 			state_function = state_player_freefall;
 			break;
-		case States.freefallland:
+		case states.skateboard:
 			state_function = state_player_freefallland;
 			break;
-		case States.door:
+		case states.grab:
 			state_function = state_player_door;
 			break;
-		case States.doughmount:
+		case states.punch:
 			state_function = state_player_doughmount;
 			break;
-		case States.doughmountspin:
+		case states.backkick:
 			state_function = state_player_doughmountspin;
 			break;
-		case States.doughmountballoon:
+		case states.shoulder:
 			state_function = state_player_doughmountballoon;
 			break;
-		case States.doughmountpancake:
+		case states.backbreaker:
 			state_function = state_player_doughmountpancake;
 			break;
-		case States.gotkey:
+		case states.boulder:
 			state_function = state_player_gotkey;
 			break;
-		case States.finishingblow:
+		case states.bossdefeat:
 			state_function = state_player_finishingblow;
 			break;
-		case States.cotton:
+		case states.bossintro:
 			state_function = state_player_cotton;
 			break;
-		case States.uppercut:
+		case states.ufofloat:
 			state_function = state_player_uppercut;
 			break;
-		case States.pal:
+		case states.ufodash:
 			state_function = state_player_pal;
 			break;
-		case States.shocked:
+		case states.pizzathrow:
 			state_function = state_player_shocked;
 			break;
-		case States.rocketlauncher:
+		case states.hurt:
 			state_function = state_player_rocketlauncher;
 			break;
-		case States.parry:
+		case states.gameover:
 			state_function = state_player_parry;
 			break;
-		case States.tumble:
+		case states.runonball:
 			state_function = state_player_tumble;
 			break;
-		case States.talkto:
+		case states.Sjumpland:
 			state_function = state_player_talkto;
 			break;
-		case States.puddle:
+		case states.freefallprep:
 			state_function = state_player_puddle;
 			break;
-		case States.cottondrill:
+		case states.keyget:
 			state_function = state_player_cottondrill;
 			break;
-		case States.cottonroll:
+		case states.tackle:
 			state_function = state_player_cottonroll;
 			break;
-		case States.cottondig:
+		case states.slipnslide:
 			state_function = state_player_cottondig;
 			break;
-		case States.fling:
+		case states.ladder:
 			state_function = state_player_fling;
 			break;
-		case States.breakdance:
+		case states.jump:
 			state_function = state_player_breakdance;
 			break;
-		case States.minecart:
+		case states.victory:
 			state_function = state_player_minecart;
 			break;
-		case States.minecart_bump:
+		case states.Sjump:
 			state_function = state_player_minecart_bump;
 			break;
-		case States.minecart_launched:
+		case states.comingoutdoor:
 			state_function = state_player_minecart_launched;
 			break;
-		case States.fireass:
+		case states.crouchslide:
 			state_function = state_player_fireass;
 			break;
-		case States.fireassdash:
+		case states.mach1:
 			state_function = state_player_fireassdash;
 			break;
-		case States.squished:
+		case states.Sjumpprep:
 			state_function = state_player_squished;
 			break;
-		case States.machtumble2:
+		case states.crouch:
 			state_function = state_player_machtumble;
 			break;
-		case States.dodgetumble:
+		case states.crouchjump:
 			state_function = state_player_dodgetumble;
 			break;
-		case States.geyser:
+		case states.mach2:
 			state_function = state_player_geyser;
 			break;
-		case States.actor:
+		case states.mach3:
 			state_function = state_player_actor;
 			break;
-		case States.changing:
+		case states.bump:
 			state_function = state_player_changing;
 			break;
-		case States.donothing:
+		case states.machslide:
 			state_function = state_player_donothing;
 			break;
-		case States.drown:
+		case states.barrelroll:
 			state_function = state_player_drown;
 			break;
-		case States.frozen:
+		case states.frozen:
 			state_function = state_player_frozen;
 			break;
-		case States.trick:
+		case states.freefallland:
 			state_function = state_player_trick;
 			break;
-		case States.noclip:
+		case states.hang:
 			state_function = state_player_noclip;
 			break;
-		case States.costumenormal:
+		case states.door:
 			state_function = state_player_costumenormal;
 			break;
-		case States.costumegrab:
+		case states.barrelnormal:
 			state_function = state_player_costumegrab;
 			break;
-		case States.costumechuck:
+		case states.barrelmach1:
 			state_function = state_player_costumechuck;
 			break;
-		case States.costumebreeze:
+		case states.barrelfall:
 			state_function = state_player_costumebreeze;
 			break;
-		case States.bottlerocket:
+		case states.barrelmach2:
 			state_function = state_player_bottlerocket;
 			break;
-		case States.frostburnnormal:
+		case states.cotton:
 			state_function = state_player_frostburnnormal;
 			break;
-		case States.frostburnslide:
+		case states.uppercut:
 			state_function = state_player_frostburnslide;
 			break;
-		case States.frostburnjump:
+		case states.pal:
 			state_function = state_player_frostburnjump;
 			break;
-		case States.frostburnstick:
+		case states.shocked:
 			state_function = state_player_frostburnstick;
 			break;
-		case States.supergrab:
+		case states.bushdisguise:
 			state_function = state_player_supergrab;
 			break;
-		case States.doughmountjump:
+		case states.uppunch:
 			state_function = state_player_doughmountjump;
 			break;
-		case States.fling_launch:
+		case states.parry:
 			state_function = state_player_fling_launch;
 			break;
-		case States.freeflight:
+		case states.talkto:
 			state_function = state_player_freeflight;
 			break;
 	}
+	
 	stateName = $"State : {state}";
-	if !is_undefined(state_function)
+	
+	if (!is_undefined(state_function))
 	{
 		state_function();
-		if global.DebugMode
+		
+		if (global.DebugMode)
 			stateName = "PlayerState." + string_extract(script_get_name(state_function), "_", 1) + string_extract(script_get_name(state_function), "_", 3);
 	}
 }
 
 function scr_isMainCharacter()
 {
-	return global.playerCharacter == Characters.Pizzelle;
+	return global.playerCharacter == characters.PZ;
 }

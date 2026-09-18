@@ -10,15 +10,15 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Structure",
+    "path": "folders/Objects/Structure.yy",
   },
   "parentObjectId": null,
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
   "physicsFriction": 0.2,
-  "physicsGroup": 1,
+  "physicsGroup": 0,
   "physicsKinematic": false,
   "physicsLinearDamping": 0.1,
   "physicsObject": false,
@@ -28,10 +28,10 @@
   "physicsShapePoints": [],
   "physicsStartAwake": true,
   "properties": [
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"unid","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"0;","varType":4,},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"trigger","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"0;","varType":4,},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"can_activate","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"true;","varType":4,},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"panicmode","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"false;","varType":4,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"unid","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"0","varType":1,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"trigger","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"0","varType":1,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"can_activate","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"true","varType":3,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"panicmode","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"false","varType":3,},
   ],
   "solid": false,
   "spriteId": {
@@ -39,5 +39,8 @@
     "path": "sprites/spr_orangebox/spr_orangebox.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": false,
 }

@@ -5,10 +5,14 @@ logoChangeBufferMax = 100;
 logoChangeBuffer = logoChangeBufferMax;
 completed = false;
 playedGnome = false;
-for (var p_i = 0, p_c = parameter_count(); p_i <= p_c; p_i++)
+var p_i = 0;
+var p_c = parameter_count();
+
+while (p_i <= p_c)
 {
 	var p_s = string_lower(parameter_string(p_i));
-	switch p_s
+	
+	switch (p_s)
 	{
 		case "-nointro":
 		case "--nointro":
@@ -17,4 +21,6 @@ for (var p_i = 0, p_c = parameter_count(); p_i <= p_c; p_i++)
 			room_goto_fixed(rm_mainmenu);
 			break;
 	}
+	
+	p_i++;
 }

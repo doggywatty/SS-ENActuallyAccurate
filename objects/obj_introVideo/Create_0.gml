@@ -1,5 +1,5 @@
 if (video_get_status() != 0)
-    video_close();
+	video_close();
 
 scr_initinput();
 canSkip = false;
@@ -9,9 +9,9 @@ displayVideo = false;
 
 if (!file_exists("gamedata/intro.mp4"))
 {
-    trace("Intro video not found.");
-    event_user(0);
-    exit;
+	trace("Intro video not found.");
+	event_user(0);
+	exit;
 }
 
 updateVolume = function()

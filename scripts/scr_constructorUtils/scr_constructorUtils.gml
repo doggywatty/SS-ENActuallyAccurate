@@ -1,61 +1,65 @@
-function subSprite(_spr_ind, _img_ind = 0, _img_spd = 0.35, _doWrap = true) constructor
+function subSprite(arg0, arg1 = 0, arg2 = 0.35, arg3 = true) constructor
 {
-    static update = function(_img_spd = image_speed)
-    {
-        image_number = sprite_get_number(sprite_index);
-        image_index += _img_spd;
-        if doWrap
-            image_index = wrap(image_index, 0, image_number);
-        else
-            image_index = clamp(image_index, 0, image_number);
-        return image_index;
-    };
-    
-    static setPosition = function(_x, _y)
-    {
-        x = _x;
-        y = _y;
-        return self;
-    };
-    
-    static draw = function(_x = x, _y = y, _img_xscale = image_xscale, _img_yscale = image_yscale, _img_angle = image_angle, _img_blend = image_blend, _img_alpha = image_alpha)
-    {
-        if !visible
-            exit;
-        draw_sprite_ext(sprite_index, image_index, _x, _y, _img_xscale, _img_yscale, _img_angle, _img_blend, _img_alpha);
-        return self;
-    };
-	
-	static draw_lang = function(_x = x, _y = y, _img_xscale = image_xscale, _img_yscale = image_yscale, _img_angle = image_angle, _img_blend = image_blend, _img_alpha = image_alpha)
+	static update = function(arg0 = image_speed)
 	{
-		if !visible
-			exit;
-		draw_sprite_ext(lang_get_sprite(sprite_index), image_index, _x, _y, _img_xscale, _img_yscale, _img_angle, _img_blend, _img_alpha);
+		image_number = sprite_get_number(sprite_index);
+		image_index += arg0;
+		
+		if (doWrap)
+			image_index = wrap(image_index, 0, image_number);
+		else
+			image_index = clamp(image_index, 0, image_number);
+		
+		return image_index;
+	};
+	
+	static setPosition = function(arg0, arg1)
+	{
+		x = arg0;
+		y = arg1;
 		return self;
 	};
-
-    static setFunction = function(_func)
-    {
-        custom_func = method(self, _func);
-        return self;
-    };
-    
-    sprite_index = _spr_ind;
-    image_index = _img_ind;
-    image_speed = _img_spd;
-    doWrap = _doWrap;
-    image_xscale = 1;
-    image_yscale = 1;
-    visible = true;
-    image_angle = 0;
-    image_blend = c_white;
-    image_alpha = 1;
-    x = 0;
-    y = 0;
+	
+	static draw = function(arg0 = x, arg1 = y, arg2 = image_xscale, arg3 = image_yscale, arg4 = image_angle, arg5 = image_blend, arg6 = image_alpha)
+	{
+		if (!visible)
+			exit;
+		
+		draw_sprite_ext(sprite_index, image_index, arg0, arg1, arg2, arg3, arg4, arg5, arg6);
+		return self;
+	};
+	
+	static draw_lang = function(arg0 = x, arg1 = y, arg2 = image_xscale, arg3 = image_yscale, arg4 = image_angle, arg5 = image_blend, arg6 = image_alpha)
+	{
+		if (!visible)
+			exit;
+		
+		draw_sprite_ext(lang_get_sprite(sprite_index), image_index, arg0, arg1, arg2, arg3, arg4, arg5, arg6);
+		return self;
+	};
+	
+	static setFunction = function(arg0)
+	{
+		custom_func = method(self, arg0);
+		return self;
+	};
+	
+	sprite_index = arg0;
+	image_index = arg1;
+	image_speed = arg2;
+	doWrap = arg3;
+	image_xscale = 1;
+	image_yscale = 1;
+	visible = true;
+	image_angle = 0;
+	image_blend = c_white;
+	image_alpha = 1;
+	x = 0;
+	y = 0;
 	xstart = 0;
-	ystart = 0;	
-    image_number = sprite_get_number(sprite_index);
-    finalFrame = image_number;
-    custom_func = -4;
-    return self;
+	ystart = 0;
+	image_number = sprite_get_number(sprite_index);
+	finalFrame = image_number;
+	custom_func = -4;
+	return self;
 }

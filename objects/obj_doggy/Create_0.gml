@@ -1,5 +1,5 @@
 event_inherited();
-state = States.frozen;
+state = states.frozen;
 baddieStunTimer = 0;
 alarm[0] = 150;
 canRoam = false;
@@ -26,4 +26,3 @@ grounded = 1;
 birdCreated = 0;
 boundbox = 0;
 idletimer = 200;
-

@@ -1,4 +1,4 @@
 if (other.object_index == obj_boxFrog)
-    exit;
+	exit;
 
 event_inherited();

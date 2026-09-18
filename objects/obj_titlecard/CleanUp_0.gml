@@ -1,1 +1,1 @@
-delete info;
+info = undefined;

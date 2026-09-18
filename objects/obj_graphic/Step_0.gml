@@ -1,4 +1,4 @@
 if (is_undefined(onStep))
-    exit;
+	exit;
 
 onStep();

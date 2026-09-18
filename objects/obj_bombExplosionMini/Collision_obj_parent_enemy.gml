@@ -1,4 +1,4 @@
 if (other.object_index == obj_cottonblimp && other.id == ownerID)
-    exit;
+	exit;
 
 event_inherited();

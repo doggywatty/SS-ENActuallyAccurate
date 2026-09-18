@@ -1,13 +1,16 @@
 var _is_region_active = false;
 var _region = -4;
 var _debugZOOM = false;
-if (global.DebugMode == DebugType.Dev && keyboard_check(ord("C")))
+
+if (global.DebugMode == debugmode.debug && keyboard_check(ord("C")))
 	_debugZOOM = true;
 
 var region_active = false;
-with obj_cameraRegion
+
+with (obj_cameraRegion)
 {
 	region_active = Region_active && activationCode();
+	
 	if (region_active)
 		_region = id;
 }
@@ -34,21 +37,22 @@ else
 
 if (region_active && !_debugZOOM)
 	cam_lzoom = lerp(cam_lzoom, _region.zoom, 0.2);
-else if !_debugZOOM
+else if (!_debugZOOM)
 	cam_lzoom = lerp(cam_lzoom, 1, 0.1);
 
-if region_active
+if (region_active)
 	cam_langle = lerp(cam_langle, -_region.image_angle, 0.2);
 else
 	cam_langle = lerp(cam_langle, 0, 0.1);
 
-if !cameraLock
+if (!cameraLock)
 {
-	with obj_parent_player
+	with (obj_parent_player)
 	{
 		global.targetCamX = x;
 		global.targetCamY = y - 32;
-		if inBackgroundLayer
+		
+		if (inBackgroundLayer)
 			global.targetCamY += global.BgInstanceLayerOffset;
 	}
 }

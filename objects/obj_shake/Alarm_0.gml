@@ -1,6 +1,6 @@
 if (sprite_index != spr_juicedead && sprite_index != spr_coneboy)
 {
-	with instance_create(x, y, obj_baddieDead)
+	with (instance_create(x, y, obj_baddieDead))
 	{
 		paletteSprite = other.paletteSprite;
 		paletteSelect = other.paletteSelect;
@@ -14,7 +14,8 @@ if (sprite_index != spr_juicedead && sprite_index != spr_coneboy)
 else if (sprite_index == spr_coneboy)
 {
 	var i = 0;
-	repeat 3
+	
+	repeat (3)
 	{
 		with (instance_create(x, y, obj_juiceDebris))
 		{
@@ -27,15 +28,17 @@ else if (sprite_index == spr_coneboy)
 			sprite_index = spr_coneboydebris;
 			image_index = i;
 		}
+		
 		i++;
 	}
 }
 else
 {
 	var i = 0;
-	repeat 10
+	
+	repeat (10)
 	{
-		with instance_create(x, y, obj_juiceDebris)
+		with (instance_create(x, y, obj_juiceDebris))
 		{
 			paletteSprite = other.paletteSprite;
 			paletteSelect = other.paletteSelect;
@@ -43,9 +46,12 @@ else
 			sprite_index = spr_juicedebris;
 			image_index = i;
 		}
+		
 		i++;
 	}
+	
 	event_play_oneshot("event:/SFX/general/breakglass", x, y);
 }
+
 event_play_oneshot("event:/SFX/enemies/kill");
 instance_destroy();

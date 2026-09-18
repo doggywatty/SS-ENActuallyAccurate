@@ -5,7 +5,7 @@ slipSlopeBounces = 7;
 stepEffectBuffer = 0;
 oldPromptText = "";
 bouncebackspeed = 0;
-mainPlayerCharacter = Characters.Pizzelle;
+mainPlayerCharacter = characters.PZ;
 global.playerCharacter = mainPlayerCharacter;
 previousCharacter = global.playerCharacter;
 targetElevatorRoom = mineshaft_1;
@@ -56,8 +56,10 @@ frozenSmash = 0;
 frozenHsp = 0;
 frozenVsp = 0;
 frozenJumpBuffer = 0;
+
 for (var i = 0; i < 11; i++)
 	frozenAlarm[i] = -1;
+
 costumeBlock = -4;
 costumeBlockDetails = 0;
 angle = 0;
@@ -108,7 +110,7 @@ movespeed = 0;
 jumpStop = false;
 visible = true;
 inhalingEnemy = false;
-state = States.titlescreen;
+state = states.titlescreen;
 jumpAnim = true;
 landAnim = false;
 machSlideAnim = false;
@@ -187,8 +189,10 @@ sourBuddiesTimer = 60;
 surfaceWidth = 2;
 surfaceHeight = 10;
 surfacePallete = -1;
-if !surface_exists(surfacePallete)
+
+if (!surface_exists(surfacePallete))
 	surfacePallete = surface_create(surfaceWidth, surfaceHeight);
+
 customSavedPalette = 1;
 characters = "Pizzelle";
 colorHeight = 8;

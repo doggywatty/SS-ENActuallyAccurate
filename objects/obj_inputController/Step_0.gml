@@ -1,6 +1,7 @@
 for (var i = -1; i < gamepad_get_device_count(); i++)
 {
 	var _index = scr_button_pressed(i);
+	
 	if (_index != -2 && _index != global.PlayerInputDevice)
 	{
 		showtext = false;
@@ -14,11 +15,12 @@ for (var i = -1; i < gamepad_get_device_count(); i++)
 				gamepad_set_vibration(j, 0, 0);
 		}
 		
-		if disconnectScreen
+		if (disconnectScreen)
 		{
 			disconnectScreen = false;
 			queueDisconnectScreen = false;
-			with obj_pause
+			
+			with (obj_pause)
 			{
 				alarm[0] = 3;
 				alarm[1] = 1;
@@ -28,7 +30,7 @@ for (var i = -1; i < gamepad_get_device_count(); i++)
 	}
 }
 
-if queueDisconnectScreen
+if (queueDisconnectScreen)
 {
 	event_user(0);
 	exit;

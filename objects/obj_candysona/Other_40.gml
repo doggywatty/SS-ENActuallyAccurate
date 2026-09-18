@@ -1,2 +1,2 @@
-if (!instance_exists(candyID) && state == States.jump)
-    instance_destroy();
+if (!instance_exists(candyID) && state == states.chainsawpogo)
+	instance_destroy();

@@ -10,38 +10,46 @@ var active = false;
 draw_set_font(old);
 draw_sprite_ext(spr_npcrope, propdex, wave_x + 64, boxy - 15, 1, 1, 0, c_white, 1);
 draw_sprite_ext(spr_npcrope, propdex, wave_x + 864, boxy - 15, 1, 1, 0, c_white, 1);
-with obj_npc
+
+with (obj_npc)
 {
-	if speaking
+	if (speaking)
 		active = true;
 }
 
 boxy = max(boxy, -tgty);
-if active
+
+if (active)
 {
 	if (boxstate == 0)
 	{
 		boxvsp += 0.35;
 		boxy = approach(boxy, 80, boxvsp);
+		
 		if (boxy >= 80)
 			boxstate = 1;
 	}
 	else
+	{
 		boxy = approach(boxy, 30 + wave(-2, 2, 4, 0), 2);
+	}
 }
 else
 {
 	boxstate = 0;
 	boxvsp = 0;
 	boxy = approach(boxy, -tgty, 5);
+	
 	if (boxy <= -tgty)
 		instance_destroy();
 }
 
-if !surface_exists(mysurf)
+if (!surface_exists(mysurf))
 	mysurf = surface_create(960, tgty);
-if !surface_exists(mycut)
+
+if (!surface_exists(mycut))
 	mycut = surface_create(960, tgty);
+
 if (surface_exists(mycut))
 {
 	surface_set_target(mycut);
@@ -53,7 +61,7 @@ if (surface_exists(mycut))
 	surface_reset_target();
 }
 
-if surface_exists(mysurf)
+if (surface_exists(mysurf))
 {
 	surface_set_target(mysurf);
 	draw_set_color(c_white);

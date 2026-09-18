@@ -1,8 +1,8 @@
-with obj_creamThief
+with (obj_creamThief)
 {
 	hsp = 0;
 	vsp = 0;
-	state = States.frozen;
+	state = states.frozen;
 	sprite_index = spr_creamthief_lose;
 	ds_list_add(global.SaveRoom, id, false);
 	instance_create(x, y, obj_creamThiefCar);
@@ -10,6 +10,7 @@ with obj_creamThief
 }
 
 var _content = instance_create(x + (sprite_width / 2), y + (sprite_height / 2), BoxContent);
+
 if (object_get_parent(_content.object_index) == obj_parent_confecti)
 {
 	create_particle((x - sprite_xoffset) + (sprite_width / 2), (y - sprite_yoffset) + (sprite_height / 2), spr_taunteffect).particle_depth(_content.depth + 1);
@@ -25,7 +26,8 @@ if (object_get_parent(_content.object_index) == obj_parent_confecti)
 	create_small_number((x - sprite_xoffset) + (sprite_width / 2), (y - sprite_yoffset) + (sprite_height / 2), 1000);
 	global.ComboTime = 60;
 }
-repeat 6
+
+repeat (6)
 	create_debris(random_range(bbox_left, bbox_right), random_range(bbox_top, bbox_bottom), spr_confecticage_debris);
 
 instance_destroy();

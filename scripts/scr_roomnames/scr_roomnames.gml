@@ -1,7 +1,8 @@
-function scr_gamecaptions(_room = room)
+function scr_gamecaptions(arg0 = room)
 {
 	var game_caption = undefined;
-	switch _room
+	
+	switch (arg0)
 	{
 		case rm_preinitializer:
 		case rm_initializer:
@@ -35,7 +36,7 @@ function scr_gamecaptions(_room = room)
 			game_caption = "winname_hub";
 			break;
 		case hub_demohallway:
-		case hub_molassesB:		
+		case hub_molassesB:
 			game_caption = "winname_hub";
 			break;
 		case hub_molasses:
@@ -46,7 +47,7 @@ function scr_gamecaptions(_room = room)
 			break;
 		case tutorial_1:
 			game_caption = "winname_tutorial";
-			break;			
+			break;
 		case entryway_1:
 			game_caption = "winname_entryway";
 			break;
@@ -66,18 +67,21 @@ function scr_gamecaptions(_room = room)
 			game_caption = "Early Morning Sugary Spire";
 			break;
 	}
-	if instance_exists(obj_titlecard)
+	
+	if (instance_exists(obj_titlecard))
 		game_caption = "winname_titlecard";
-	if lang_key_exists(game_caption)
+	
+	if (lang_key_exists(game_caption))
 		return lang_get(game_caption);
 	else
 		return game_caption;
 }
 
-function scr_roomnames(_room = room)
+function scr_roomnames(arg0 = room)
 {
 	var room_name = "NO ROOMNAME FOUND-1265";
-	switch _room
+	
+	switch (arg0)
 	{
 		case rm_missing:
 			room_name = "romname_missing";
@@ -95,7 +99,8 @@ function scr_roomnames(_room = room)
 			room_name = "NO ROOMNAME FOUND-1265";
 			break;
 	}
-	if lang_key_exists(room_name)
+	
+	if (lang_key_exists(room_name))
 		return lang_get(room_name);
 	else
 		return room_name;

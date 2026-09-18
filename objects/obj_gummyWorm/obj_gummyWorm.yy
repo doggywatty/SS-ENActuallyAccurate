@@ -13,8 +13,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Mines",
+    "path": "folders/Objects/Mines.yy",
   },
   "parentObjectId": {
     "name": "obj_solid",
@@ -34,7 +34,7 @@
   "physicsShapePoints": [],
   "physicsStartAwake": true,
   "properties": [
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"wormSpeed","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"0.8;","varType":4,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"wormSpeed","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"0.8","varType":0,},
   ],
   "solid": false,
   "spriteId": {

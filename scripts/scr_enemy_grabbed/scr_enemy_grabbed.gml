@@ -9,10 +9,12 @@ function scr_enemy_grabbed()
 	image_xscale = -player_id.xscale;
 	baddieStunTimer = 200;
 	player_id.baddieGrabbedID = id;
-	if (player_id.state == States.grab)
+	
+	if (player_id.state == states.handstandjump)
 	{
 		var walk_bobbingy = 0;
 		var walk_bobbingx = 0;
+		
 		if (player_id.sprite_index == player_id.spr_haulingWalk)
 		{
 			var yoffsets = [0, 2, 3, 9, 12, 0, -7, -6, -5, -3, 6, 5, 2];
@@ -22,33 +24,40 @@ function scr_enemy_grabbed()
 		}
 		
 		var _yoff = -56 + walk_bobbingy;
+		
 		if (player_id.sprite_index == player_id.spr_haulingIntro)
 		{
 			var yoffsets = [-13, -35, -60, -55, -56];
 			_yoff = yoffsets[floor(player_id.image_index)];
 		}
+		
 		if (player_id.sprite_index == player_id.spr_haulingLand)
 		{
 			var yoffsets = [-31, -49, -53, -55];
 			_yoff = yoffsets[floor(player_id.image_index)];
 		}
+		
 		if (player_id.sprite_index == player_id.spr_haulingJump)
 		{
 			var yoffsets = [-22, -41, -62, -58];
 			_yoff = yoffsets[floor(player_id.image_index)];
 		}
+		
 		if (player_id.sprite_index == player_id.spr_haulingFall)
 		{
 			var yoffsets = [-58, -58, -58];
 			_yoff = yoffsets[floor(player_id.image_index)];
 		}
+		
 		y = player_id.y + _yoff;
 		x = player_id.x + walk_bobbingx;
 		image_xscale = -player_id.xscale;
 	}
+	
 	if (player_id.sprite_index == player_id.spr_swingDing)
 	{
 		x = player_id.x;
+		
 		switch (floor(player_id.image_index))
 		{
 			case 0:
@@ -67,10 +76,11 @@ function scr_enemy_grabbed()
 				x += (player_id.xscale * -10);
 				break;
 		}
+		
 		y = player_id.y;
 	}
 	
-	if (player_id.state == States.superslam)
+	if (player_id.state == states.secondjump)
 	{
 		if (player_id.sprite_index != player_id.spr_piledriverland)
 		{
@@ -84,9 +94,10 @@ function scr_enemy_grabbed()
 		}
 	}
 	
-	if (player_id.state == States.finishingblow && state != States.climbwall)
+	if (player_id.state == states.bossdefeat && state != states.cheesepep)
 	{
 		var try_x = 0;
+		
 		while (try_x < 60)
 		{
 			if (!scr_solid(player_id.x + (try_x * player_id.xscale), y) && !scr_slopePlatform(player_id.x + (try_x * player_id.xscale), y))
@@ -94,20 +105,20 @@ function scr_enemy_grabbed()
 			else
 				break;
 		}
+		
 		x = player_id.x + (try_x * player_id.xscale);
 		y = player_id.y;
 		hsp = 0;
 		vsp = 0;
 	}
 	
-	with obj_parent_player
+	with (obj_parent_player)
 	{
-		if (!global.freezeframe && state != States.frozen && state != States.grab
-		&& state != States.finishingblow && state != States.charge && state != States.superslam)
+		if (!global.freezeframe && state != states.frozen && state != states.handstandjump && state != states.bossdefeat && state != states.slap && state != states.secondjump)
 		{
 			other.x = x;
 			other.y = y;
-			other.state = States.charge;
+			other.state = states.slap;
 			other.image_index = 0;
 		}
 	}

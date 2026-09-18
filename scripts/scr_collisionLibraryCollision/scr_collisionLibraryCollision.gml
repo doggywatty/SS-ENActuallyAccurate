@@ -487,4 +487,3 @@ function position_meeting_slopeSolid(xx, yy, obj = obj_slope)
 		mask_index = old_mask;
 	return check_collision;
 }		
-

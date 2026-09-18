@@ -4,13 +4,15 @@ shake2 = false;
 shake3 = false;
 shake4 = false;
 shake5 = false;
-switch event
+
+switch (event)
 {
 	case 1:
 		if (global.mallowfollow == 1)
 			mallowspr = spr_confecti1rank;
 		else
 			mallowspr = spr_confecti1rank;
+		
 		drawmallow = true;
 		alarm[0] = 15;
 		break;
@@ -19,6 +21,7 @@ switch event
 			chocospr = spr_confecti2rank;
 		else
 			chocospr = spr_confecti2ran;
+		
 		drawchoco = true;
 		alarm[0] = 15;
 		break;
@@ -27,6 +30,7 @@ switch event
 			crackspr = spr_confecti3rank;
 		else
 			crackspr = spr_confecti3rank;
+		
 		drawcrack = true;
 		alarm[0] = 15;
 		alarm[0] = 15;
@@ -36,6 +40,7 @@ switch event
 			wormspr = spr_confecti4rank;
 		else
 			wormspr = spr_confecti4rankm;
+		
 		drawworm = true;
 		alarm[0] = 15;
 		break;
@@ -44,6 +49,7 @@ switch event
 			candyspr = spr_confecti5rank;
 		else
 			candyspr = spr_confecti5rankm;
+		
 		drawcandy = true;
 		alarm[0] = 15;
 		break;

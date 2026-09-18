@@ -4,14 +4,18 @@ function scr_judgment_assign()
 	ini_open(global.SaveFileName);
 	var j = "disappointing";
 	var judgement = ini_read_string("Game", "Judgment", "noone");
+	
 	if (per >= 100)
 		j = "perfect";
 	else if (per >= 50)
 		j = "fine";
+	
 	if (global.SaveMinutes < 20)
 		j = "fast";
+	
 	if (global.SaveMinutes < 45 && per >= 101)
 		j = "holyshit";
+	
 	if (judgement == "holyshit")
 		j = "holyshit";
 	
@@ -21,17 +25,18 @@ function scr_judgment_assign()
 	return scr_judgment_get(j);
 }
 
-function scr_judgment_get(_judgmentval)
+function scr_judgment_get(arg0)
 {
-	var j = ds_map_find_value(global.judgment_map, _judgmentval);
+	var j = ds_map_find_value(global.judgment_map, arg0);
 	return j ?? ds_map_find_value(global.judgment_map, "none");
 }
 
-function scr_judgment_read(_judgmentfile)
+function scr_judgment_read(arg0)
 {
-	if !file_exists(_judgmentfile)
+	if (!file_exists(arg0))
 		return scr_judgment_get("none");
-	ini_open(_judgmentfile);
+	
+	ini_open(arg0);
 	var p = ini_read_string("Game", "Judgment", "none");
 	ini_close();
 	return scr_judgment_get(p);
@@ -39,9 +44,9 @@ function scr_judgment_read(_judgmentfile)
 
 function saveJudgment() constructor
 {
-	static setProperties = function(_properties)
+	static setProperties = function(arg0)
 	{
-		properties = _properties;
+		properties = arg0;
 		return self;
 	};
 	
@@ -58,25 +63,26 @@ function saveJudgment() constructor
 	return self;
 }
 
-function add_judgment(_judgment, _judgprops)
+function add_judgment(arg0, arg1)
 {
-	var j = new saveJudgment().setProperties(_judgprops);
-	j.properties.title = lang_get($"judgment_title_{_judgment}");
+	var j = new saveJudgment().setProperties(arg1);
+	j.properties.title = lang_get($"judgment_title_{arg0}");
 	j.properties.dialog = [lang_get("judgmentinfo_default")];
-	for (var i = 1; lang_key_exists($"judgmentinfo_{_judgment}_{i}"); i++)
+	
+	for (var i = 1; lang_key_exists($"judgmentinfo_{arg0}_{i}"); i++)
 	{
-		var dg = lang_get($"judgmentinfo_{_judgment}_{i}");
+		var dg = lang_get($"judgmentinfo_{arg0}_{i}");
 		array_push(j.properties.dialog, dg);
 	}
+	
 	array_push(j.properties.dialog, lang_get("judgmentinfo_ending"));
-	ds_map_set(global.judgment_map, _judgment, j);
+	ds_map_set(global.judgment_map, arg0, j);
 	return j;
 }
 
-
 function scr_judgment_init()
 {
-	if !variable_global_exists("judgment_map")
+	if (!variable_global_exists("judgment_map"))
 	{
 		global.judgment_map = ds_map_create();
 		add_judgment("none", 
@@ -96,6 +102,7 @@ function scr_judgment_init()
 		ds_map_clear(global.judgment_map);
 		ds_map_set(global.judgment_map, "none", default_judgment);
 	}
+	
 	add_judgment("disappointing", 
 	{
 		title: "disappointing",

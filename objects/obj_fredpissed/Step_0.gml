@@ -1,20 +1,25 @@
 image_speed = (sprite_index == spr_fred_pissedhit) ? 0.5 : 0.35;
 var _bottom = (y + sprite_height) - peek;
-if !playerTarget
+
+if (!playerTarget)
 	_bottom = y + sprite_height;
 
 var _p = get_nearestPlayer();
-if cutscene
+
+if (cutscene)
 {
 	var _tgt_x = x + (image_xscale * 100);
 	fred_y = y;
+	
 	if (actor_buffer > 0)
 	{
 		actor_buffer--;
+		
 		if (actor_buffer < 0)
 			actor_buffer = 0;
 	}
-	with _p
+	
+	with (_p)
 	{
 		if (sprite_animation_end())
 		{
@@ -30,16 +35,19 @@ if cutscene
 			}
 		}
 	}
+	
 	if (actor_buffer == 0 && instance_exists(_p) && _p.grounded && sprite_index != spr_fred_pissedhit)
 	{
 		sprite_index = spr_fred_pissedhit;
 		image_index = 0;
-		with _p
+		
+		with (_p)
 		{
 			sprite_index = spr_player_PZ_minecart_fredScreamTrans;
 			event_play_oneshot("event:/SFX/general/fredcutscenepunch");
 			image_index = 0;
 		}
+		
 		actor_buffer = -1;
 	}
 	
@@ -47,12 +55,14 @@ if cutscene
 	{
 		image_speed = 0;
 		image_index = approach(image_index, 12, 0.35);
-		with _p
+		
+		with (_p)
 		{
 			if (floor(other.image_index) == 10)
 				y = other.py - 80;
 			else
 				y = other.py - 90;
+			
 			obj_camera.cameraYOffset = other.py - y;
 			sprite_index = spr_player_PZ_fredHit;
 			image_index = 0;
@@ -63,29 +73,33 @@ if cutscene
 	
 	if (actor_buffer == 0 && sprite_index == spr_fred_pissedhit)
 	{
-		with _p
+		with (_p)
 		{
-			state = States.Sjump;
+			state = states.highjump;
 			sprite_index = spr_superspring;
 			vsp = -16;
 			verticalMovespeed = vsp;
 			freeFallSmash = 0;
 		}
+		
 		actor_buffer = -2;
 	}
+	
 	if (sprite_index == spr_fred_pissedhit && sprite_animation_end())
 	{
 		cutscene = false;
 		sprite_index = spr_fred_pissedwave;
 	}
-	with _p
+	
+	with (_p)
 	{
-		if (state == States.actor)
+		if (state == states.mach3)
 		{
 			if (sprite_index == spr_player_PZ_minecart_fredBump && sprite_animation_end())
 				sprite_index = spr_player_PZ_minecart;
 			
 			x = lerp(x, _tgt_x, 0.07);
+			
 			if (floor(other.image_index) >= 10 && other.sprite_index == spr_fred_pissedhit && other.actor_buffer == -1)
 			{
 				sprite_index = spr_player_PZ_fredHit;
@@ -99,6 +113,7 @@ if cutscene
 			}
 		}
 	}
+	
 	vsp = 0;
 	exit;
 }
@@ -114,4 +129,5 @@ else
 	var _tgt = clamp((_bottom - fred_y) / 100, 0, 1);
 	vsp = approach(vsp, 5 * _tgt, 0.5);
 }
+
 fred_y = clamp(fred_y + vsp, y, y + sprite_height);

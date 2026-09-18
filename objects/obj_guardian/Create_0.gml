@@ -12,7 +12,7 @@ shaketime = 0;
 stuntime = 0;
 chaseActive = false;
 offended = false;
-state = States.frozen;
+state = states.frozen;
 targetx = x;
 targety = y;
 targetpassed = false;
@@ -31,14 +31,17 @@ sndWake = fmod_createEventInstance("event:/SFX/enemies/guardian");
 alarm[0] = 1;
 image_speed = 0;
 depth = 0;
-with instance_create(x, y, obj_icontracker)
-{
-    target = other.id;
-    visible_cond = function()
-    {
-        return target.chaseActive == true;
-    };
-    sprite_index = spr_guardian_icon;
-}
-returntimer = 0;
 
+with (instance_create(x, y, obj_icontracker))
+{
+	target = other.id;
+	
+	visible_cond = function()
+	{
+		return target.chaseActive == true;
+	};
+	
+	sprite_index = spr_guardian_icon;
+}
+
+returntimer = 0;

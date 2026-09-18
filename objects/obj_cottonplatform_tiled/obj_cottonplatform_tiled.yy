@@ -8,8 +8,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Cottontown",
+    "path": "folders/Objects/Cottontown.yy",
   },
   "parentObjectId": {
     "name": "obj_cottonplatform",
@@ -35,5 +35,8 @@
     "path": "sprites/spr_cottonplatform_tiled/spr_cottonplatform_tiled.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": true,
 }

@@ -1,2 +1,2 @@
 if (!global.tempRocketLauncher)
-    global.tempRocketLauncher = true;
+	global.tempRocketLauncher = true;

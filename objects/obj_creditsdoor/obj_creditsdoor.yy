@@ -10,8 +10,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Structure",
+    "path": "folders/Objects/Structure.yy",
   },
   "parentObjectId": {
     "name": "obj_door",
@@ -37,5 +37,8 @@
     "path": "sprites/spr_door/spr_door.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": true,
 }

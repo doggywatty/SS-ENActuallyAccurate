@@ -14,8 +14,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Mines",
+    "path": "folders/Objects/Mines.yy",
   },
   "parentObjectId": null,
   "persistent": false,
@@ -38,5 +38,8 @@
     "path": "sprites/spr_minesElevatorCutscene/spr_minesElevatorCutscene.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": true,
 }

@@ -9,8 +9,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Structure",
+    "path": "folders/Objects/Structure.yy",
   },
   "parentObjectId": {
     "name": "obj_slope",
@@ -39,5 +39,8 @@
     "name": "spr_rampMask",
     "path": "sprites/spr_rampMask/spr_rampMask.yy",
   },
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": true,
 }

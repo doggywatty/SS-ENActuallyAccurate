@@ -1,16 +1,21 @@
 var target_player = get_nearestPlayer();
+
 if (waitTimer > 0)
 	waitTimer--;
+
 if (grabBuffer > 0)
 	grabBuffer--;
 
 candyindex = wrap(candyindex + 0.35, 0, sprite_get_number(spr_flingFrogGrab) - 1);
+
 if (sprite_index == spr_flingfrogmadstart && sprite_animation_end())
 	sprite_index = spr_flingfrogmad;
+
 if (grabbedPlayer != -4)
 {
-	if !event_instance_isplaying(pullSND)
+	if (!event_instance_isplaying(pullSND))
 		fmod_studio_event_instance_start(pullSND);
+	
 	if (sprite_index != spr_flingfrogmad && sprite_index != spr_flingfrogmadstart)
 	{
 		image_index = 0;
@@ -22,8 +27,10 @@ else
 	sprite_index = spr_flingFrog;
 	fmod_studio_event_instance_stop(pullSND, false);
 }
-if event_instance_isplaying(pullSND)
+
+if (event_instance_isplaying(pullSND))
 	fmod_quick3D(pullSND);
+
 if (grabbedPlayer == -4)
 {
 	if (distance_to_object(target_player) <= grabRange)
@@ -33,7 +40,8 @@ if (grabbedPlayer == -4)
 		targetY = lengthdir_y(90, _player_dir);
 		hsp = 0;
 		vsp = 0;
-		if isReady
+		
+		if (isReady)
 		{
 			x = round(xstart + targetX);
 			y = round(max(ystart + targetY, ystart));
@@ -55,43 +63,49 @@ if (grabbedPlayer == -4)
 		flingInputStarted = false;
 	}
 	
-	if (waitTimer <= 0 && place_meeting(x, y, target_player) && !scr_solid(x, y) && target_player.state != States.fling)
+	if (waitTimer <= 0 && place_meeting(x, y, target_player) && !scr_solid(x, y) && target_player.state != states.ladder)
 	{
 		grabbedPlayer = target_player;
 		grabBuffer = grabBufferMax;
 		hsp = clamp(abs(grabbedPlayer.hsp / 2), 0, 12) * sign(grabbedPlayer.hsp);
 		vsp = clamp((grabbedPlayer.vsp / 2) + 5, -5, 10);
-		with grabbedPlayer
+		
+		with (grabbedPlayer)
 		{
-			if !instance_exists(obj_candifiedeffect1)
+			if (!instance_exists(obj_candifiedeffect1))
 			{
 				instance_create(x, y, obj_candifiedeffect1);
 				event_play_multiple("event:/SFX/player/psychicfrogstart", x, y);
 			}
-			state = States.fling;
+			
+			state = states.ladder;
 			movespeed = 0;
 			hsp = 0;
 			vsp = 0;
 			x = other.x;
 			y = other.y;
 		}
-		with obj_achievementTracker
+		
+		with (obj_achievementTracker)
 			flingFrogSequence[array_length(flingFrogSequence)] = other.id;
 	}
+	
 	exit;
 }
 
 if (grabbedPlayer != -4)
 {
-	with grabbedPlayer
+	with (grabbedPlayer)
 	{
 		x = other.x;
 		y = other.y;
+		
 		if (sprite_index != spr_player_PZ_flinged)
 			sprite_index = spr_player_PZ_flinged_start;
 		
-		state = States.fling;
-		if !instance_exists(obj_candifiedeffect2)
+		state = states.ladder;
+		
+		if (!instance_exists(obj_candifiedeffect2))
 			instance_create(x, y, obj_candifiedeffect2);
 		
 		movespeed = 0;
@@ -100,6 +114,7 @@ if (grabbedPlayer != -4)
 	
 	var h_move = grabbedPlayer.key_left + grabbedPlayer.key_right;
 	var v_move = grabbedPlayer.key_down;
+	
 	if (h_move != 0 || v_move != 0)
 		flingBallDestAngle = approach(flingBallDestAngle, angleArr[1 + h_move], 8);
 	
@@ -113,26 +128,30 @@ if (grabbedPlayer != -4)
 	
 	if (grabBuffer <= 0)
 	{
-		if flingInputStarted
+		if (flingInputStarted)
 		{
 			flingBallRadius = lerp(flingBallRadius, 60, 0.2);
 			flingBallAngle = lerp(flingBallAngle, flingBallDestAngle, 0.2);
 		}
+		
 		if (h_move != 0 || v_move != 0)
 		{
-			if !flingInputStarted
+			if (!flingInputStarted)
 			{
 				flingBallRadius = point_distance(x, y, xstart, ystart + 70);
 				flingBallAngle = darctan2((ystart + 70) - ystart, x - xstart);
 				flingInputStarted = true;
 			}
+			
 			if (abs(x - xstart) > 10 || abs(y - (ystart + 70)) > 10)
 				flingPrepared = true;
 		}
+		
 		var cdir = point_direction(x, y, xstart, ystart + 70);
 		flingDir = round_nearest(cdir, angleArr);
 	}
-	if flingInputStarted
+	
+	if (flingInputStarted)
 	{
 		hsp = 0;
 		vsp = 0;
@@ -152,35 +171,41 @@ if (grabbedPlayer != -4)
 	}
 	
 	x = clamp(x, xstart - 280, xstart + 280);
+	
 	if (flingPrepared && (grabbedPlayer.key_left == 0 && grabbedPlayer.key_right == 0 && grabbedPlayer.key_down == 0))
 	{
-		with grabbedPlayer
+		with (grabbedPlayer)
 		{
 			event_play_multiple("event:/SFX/player/psychicfrogend", x, y);
 			y = other.ystart + 70;
 			x = other.xstart;
-			state = States.fling_launch;
+			state = states.parry;
 			jumpStop = true;
 			hsp = lengthdir_x(min(other.flingBallRadius / 60, 1) * 15, other.flingDir);
 			vsp = lengthdir_y(min(other.flingBallRadius / 60, 1) * 15, other.flingDir);
+			
 			if (abs(hsp) < 1)
 				hsp = 0;
 			
 			movespeed = abs(hsp);
+			
 			if (movespeed != 0)
 				sprite_index = spr_player_PZ_flinged_up_start;
 			else
 				sprite_index = spr_player_PZ_flinged_straightup;
+			
 			if (sign(hsp) != 0)
 				xscale = sign(hsp);
 			
 			flingDashTimer = other.flingDashLength;
 			grounded = false;
 		}
+		
 		grabbedPlayer = -4;
 		waitTimer = 25;
 		flingPrepared = false;
 		flingInputStarted = false;
 	}
+	
 	exit;
 }

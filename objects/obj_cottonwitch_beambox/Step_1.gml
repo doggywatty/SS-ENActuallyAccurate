@@ -1,3 +1,2 @@
-if (!instance_exists(baddieID) || baddieID.state != States.titlescreen)
-    instance_destroy();
-
+if (!instance_exists(baddieID) || baddieID.state != states.titlescreen)
+	instance_destroy();

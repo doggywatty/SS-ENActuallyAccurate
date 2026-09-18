@@ -1,30 +1,31 @@
-function scr_queueTVAnimation(_exp_spr, _exp_buffer = 150)
+function scr_queueTVAnimation(arg0, arg1 = 150)
 {
-	with obj_hudManager.HUDObject_TV
+	with (obj_hudManager.HUDObject_TV)
 	{
 		var roomname = room_get_name(room);
-		if (_exp_spr == global.TvSprPlayer_Secret && instance_exists(obj_secretfound))
+		
+		if (arg0 == global.TvSprPlayer_Secret && instance_exists(obj_secretfound))
 			exit;
-		if (tvExpressionSprite != _exp_spr)
+		
+		if (tvExpressionSprite != arg0)
 			tvForceTransition = true;
-		tvExpressionSprite = _exp_spr;
-		tvExpressionBuffer = _exp_buffer;
-		var vocal_collectables = [
-			spr_tvHUD_confecti1, spr_tvHUD_confecti2, spr_tvHUD_confecti3, spr_tvHUD_confecti4,
-			spr_tvHUD_confecti5, spr_tvHUD_janitorLap, spr_tvHUD_janitorTreasure,
-			global.TvSprPlayer_KeyGot, global.TvSprPlayer_Happy
-		];
-		if (chance(50) && array_contains(vocal_collectables, _exp_spr))
+		
+		tvExpressionSprite = arg0;
+		tvExpressionBuffer = arg1;
+		var vocal_collectables = [spr_tvHUD_confecti1, spr_tvHUD_confecti2, spr_tvHUD_confecti3, spr_tvHUD_confecti4, spr_tvHUD_confecti5, spr_tvHUD_janitorLap, spr_tvHUD_janitorTreasure, global.TvSprPlayer_KeyGot, global.TvSprPlayer_Happy];
+		
+		if (chance(50) && array_contains(vocal_collectables, arg0))
 			fmod_studio_event_instance_start(get_primaryPlayer().voiceCollect);
 	}
 }
 
-function scr_queueToolTipPrompt(_toolTipPrompt = "", _toolTipPromptTimer = 220)
+function scr_queueToolTipPrompt(arg0 = "", arg1 = 220)
 {
-	with obj_hudManager
+	with (obj_hudManager)
 	{
-		global.TooltipPrompt = _toolTipPrompt;
-		HUDObject_tooltipPrompts.promptTimer = _toolTipPromptTimer;
+		global.TooltipPrompt = arg0;
+		HUDObject_tooltipPrompts.promptTimer = arg1;
 	}
-	return _toolTipPromptTimer;
+	
+	return arg1;
 }

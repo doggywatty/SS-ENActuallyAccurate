@@ -16,10 +16,10 @@ openSpr = spr_enterexitgate;
 closingSpr = spr_exitgateclosing;
 closedspr = spr_exitgateclosed;
 
-if isDemo && global.InternalLevelName != "none"
+if (true && global.InternalLevelName != "none")
 {
-    instance_create(x, y - 119, obj_paintertopper, 
-    {
-        depth: depth - 1
-    });
+	instance_create(x, y - 119, obj_paintertopper, 
+	{
+		depth: depth - 1
+	});
 }

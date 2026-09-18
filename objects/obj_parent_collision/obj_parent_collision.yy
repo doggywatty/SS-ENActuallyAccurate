@@ -27,5 +27,8 @@
   "solid": false,
   "spriteId": null,
   "spriteMaskId": null,
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": true,
 }

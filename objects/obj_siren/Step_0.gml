@@ -1,4 +1,4 @@
 if (global.panic)
-    sprite_index = spr_siren_active;
+	sprite_index = spr_siren_active;
 else
-    sprite_index = spr_siren_idle;
+	sprite_index = spr_siren_idle;

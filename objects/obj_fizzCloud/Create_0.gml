@@ -12,7 +12,7 @@ grav = 0.5;
 hsp = 1;
 vsp = 0;
 movespeed = 5;
-state = EnemyStates.float;
+state = enemystates.float;
 baddieStunTimer = 0;
 alarm[0] = 150;
 canRoam = true;
@@ -49,6 +49,7 @@ for (var i = 0; i < 11; i++)
 	if (roomname == ("mountain_" + string(i)) && i > 6)
 	{
 		paletteSelect = 1;
+		
 		if (roomname == ("mountain_" + string(i)) && i > 7)
 			paletteSelect = 2;
 	}

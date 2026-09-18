@@ -8,8 +8,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "HUD",
+    "path": "folders/Objects/HUD.yy",
   },
   "parentObjectId": null,
   "persistent": false,
@@ -26,7 +26,7 @@
   "physicsShapePoints": [],
   "physicsStartAwake": true,
   "properties": [
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"tiles","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"[\"Tiles_1\", \"Tiles_2\", \"Tiles_3\", \"Tiles_4\", \"Tiles_Foreground1\", \"Tiles_Foreground2\"];","varType":4,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"tiles","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"[\"Tiles_1\", \"Tiles_2\", \"Tiles_3\", \"Tiles_4\", \"Tiles_Foreground1\", \"Tiles_Foreground2\"]","varType":4,},
   ],
   "solid": false,
   "spriteId": {
@@ -34,5 +34,8 @@
     "path": "sprites/spr_grid/spr_grid.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": false,
 }

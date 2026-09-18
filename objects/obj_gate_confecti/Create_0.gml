@@ -5,5 +5,4 @@ image_xscale = choose(-1, 1);
 roamTimer = 80 + irandom(70);
 movespeed = 2;
 hsp = 0;
-state = States.frozen;
-
+state = states.frozen;

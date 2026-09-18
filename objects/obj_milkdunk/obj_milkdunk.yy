@@ -11,8 +11,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Cafe",
+    "path": "folders/Objects/Cafe.yy",
   },
   "parentObjectId": {
     "name": "obj_solid",

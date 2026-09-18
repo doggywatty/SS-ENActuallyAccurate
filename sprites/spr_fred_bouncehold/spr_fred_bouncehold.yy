@@ -13,16 +13,16 @@
   "edgeFiltering": false,
   "For3D": false,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"ced01c2f-2a80-4d01-8a4a-332195f5a83e",},
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"ebcc2cd8-c646-4c9f-8e1c-26e0b2184d9a",},
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"07092d61-3b4b-4cc2-9b28-7b0759057a5a",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"b2c109cb-d759-46ed-a0b9-e8a5fcb2041b",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"552f1960-7690-4821-a834-fc8488eabc3a",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"5463cd7a-fa9e-4265-aae5-4fac094a57df",},
   ],
   "gridX": 0,
   "gridY": 0,
   "height": 213,
   "HTile": false,
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"487f8b36-adf2-47af-b714-4cb1b284c50f","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"bf677046-4ddc-456c-a1e1-8d9ba19f828c","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
   ],
   "nineSlice": {
     "resourceType": "GMNineSliceData",
@@ -30,6 +30,7 @@
     "bottom": 0,
     "enabled": true,
     "guideColour": [
+      4294902015,
       4294902015,
       4294902015,
       4294902015,
@@ -48,10 +49,10 @@
     ],
     "top": 129,
   },
-  "origin": 0,
+  "origin": 1,
   "parent": {
-    "name": "Sprites",
-    "path": "folders/Sprites.yy",
+    "name": "Mines",
+    "path": "folders/Sprites/Mines.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {
@@ -61,7 +62,7 @@
     "autoRecord": true,
     "backdropHeight": 768,
     "backdropImageOpacity": 0.5,
-    "backdropImagePath": "True",
+    "backdropImagePath": "",
     "backdropWidth": 1366,
     "backdropXOffset": 0.0,
     "backdropYOffset": 0.0,
@@ -75,13 +76,13 @@
     "playbackSpeed": 1.0,
     "playbackSpeedType": 1,
     "showBackdrop": true,
-    "showBackdropImage": true,
+    "showBackdropImage": false,
     "timeUnits": 1,
     "tracks": [
-      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"ced01c2f-2a80-4d01-8a4a-332195f5a83e","path":"sprites/spr_fred_bouncehold/spr_fred_bouncehold.yy",},},},"Disabled":false,"id":"2df2e995-c25a-499c-a38f-e6b5318a2fde","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"ebcc2cd8-c646-4c9f-8e1c-26e0b2184d9a","path":"sprites/spr_fred_bouncehold/spr_fred_bouncehold.yy",},},},"Disabled":false,"id":"7bec2b56-8392-40e8-815a-91f102ea2020","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"07092d61-3b4b-4cc2-9b28-7b0759057a5a","path":"sprites/spr_fred_bouncehold/spr_fred_bouncehold.yy",},},},"Disabled":false,"id":"f1c16301-7580-46ce-8220-e9cd61a541f5","IsCreationKey":false,"Key":2.0,"Length":1.0,"Stretch":false,},
+      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":-1,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"b2c109cb-d759-46ed-a0b9-e8a5fcb2041b","path":"sprites/spr_fred_bouncehold/spr_fred_bouncehold.yy",},},},"Disabled":false,"id":"708e7daa-fae6-4bd4-91ac-3b698f1643b2","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"552f1960-7690-4821-a834-fc8488eabc3a","path":"sprites/spr_fred_bouncehold/spr_fred_bouncehold.yy",},},},"Disabled":false,"id":"575fb01e-9c3f-4001-a34a-33a0c805ea92","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"5463cd7a-fa9e-4265-aae5-4fac094a57df","path":"sprites/spr_fred_bouncehold/spr_fred_bouncehold.yy",},},},"Disabled":false,"id":"76c34456-1004-4b79-8a3b-a29f42f5ae48","IsCreationKey":false,"Key":2.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,

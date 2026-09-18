@@ -1,16 +1,16 @@
-if (state == States.frozen)
+if (state == states.frozen)
 {
-    if (other.state != States.oldtaunt && other.state != States.frozen && other.state != States.noclip && other.state != States.taunt)
-    {
-        with other
-        {
-            other.x = other.xstart;
-            other.y = other.ystart;
-            scr_taunt_storeVariables();
-            state = States.oldtaunt;
-            other.playerID = id;
-        }
-        state = States.titlescreen;
-    }
+	if (other.state != states.freefall && other.state != states.frozen && other.state != states.hang && other.state != states.gottreasure)
+	{
+		with (other)
+		{
+			other.x = other.xstart;
+			other.y = other.ystart;
+			scr_taunt_storeVariables();
+			state = states.freefall;
+			other.playerID = id;
+		}
+		
+		state = states.titlescreen;
+	}
 }
-

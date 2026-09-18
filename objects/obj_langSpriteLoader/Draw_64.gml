@@ -1,5 +1,6 @@
-if !instance_exists(obj_option)
+if (!instance_exists(obj_option))
 	exit;
+
 draw_set_alpha(0.5);
 draw_rectangle_color(-100, -100, 1060, 640, c_black, c_black, c_black, c_black, false);
 draw_set_alpha(1);

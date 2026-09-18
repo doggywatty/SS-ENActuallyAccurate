@@ -1,2 +1,1 @@
-logicOutput = currentState == States.normal;
-
+logicOutput = currentState == (1 << 0);

@@ -9,22 +9,25 @@ sawPlayer = false;
 
 enemyDeath_SpawnBody = function()
 {
-	with instance_create(x, y, obj_baddieDead)
+	with (instance_create(x, y, obj_baddieDead))
 	{
 		image_xscale = other.image_xscale;
 		image_blend = other.image_blend;
 		sprite_index = spr_dartFrog_dead;
 	}
 };
+
 enemyDeath_SpawnDeathFX = function()
 {
-	repeat 3
+	repeat (3)
 		create_baddiedebris();
+	
 	create_particle(x, y, spr_bangEffect);
 	event_play_oneshot("event:/SFX/enemies/kill", x, y);
 	camera_shake_add(3, 3);
 	enemyDeath_SpawnBody();
 };
+
 enemyDeath_awardPoints = function()
 {
 	global.ComboTime = 60;

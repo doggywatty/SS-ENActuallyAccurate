@@ -8,6 +8,7 @@ if (place_meeting(x, y, obj_parent_player) && !active)
 if (sprite_index == spr_eyescreamsandwich_popout)
 {
 	y = lerp(y, ystart - 25, 0.1);
+	
 	if (sprite_animation_end())
 	{
 		tgt_x = obj_parent_player.x;
@@ -19,6 +20,7 @@ if (sprite_index == spr_eyescreamsandwich_popout)
 
 if (sprite_animation_end() && sprite_index == spr_eyescreamsandwich_divestart)
 	sprite_index = spr_eyescreamsandwich_dive;
+
 if (sprite_index == spr_eyescreamsandwich_dive)
 {
 	var dir = point_direction(x, y, tgt_x, tgt_y);

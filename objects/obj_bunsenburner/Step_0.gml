@@ -1,32 +1,37 @@
 if (sprite_index == candleBurn || global.freezeframe)
 	exit;
+
 var touched = false;
+
 if (place_meeting(x, y, obj_parent_player))
 {
-	with obj_parent_player
+	with (obj_parent_player)
 	{
-		if (state == States.noclip || state == States.frozen)
+		if (state == states.hang || state == states.frozen)
 			exit;
-		if (state == States.doughmount || state == States.doughmountspin)
+		
+		if (state == states.punch || state == states.backkick)
 		{
 			if (sprite_index != spr_player_PZ_dogMount_inflate_jump)
 			{
 				sprite_index = spr_player_PZ_dogMount_inflate;
 				image_index = 0;
 				vsp = -10;
-				state = States.doughmountballoon;
+				state = states.shoulder;
 				touched = true;
 			}
 		}
-		else if (state != States.doughmountballoon)
+		else if (state != states.shoulder)
 		{
 			sprite_index = spr_player_PZ_fireAss_intro;
 			vsp = -20;
-			state = States.fireass;
+			state = states.crouchslide;
 			image_index = 0;
 			movespeed = hsp;
-			if !event_instance_isplaying(sndFireass)
+			
+			if (!event_instance_isplaying(sndFireass))
 				fmod_studio_event_instance_start(sndFireass);
+			
 			event_play_oneshot("event:/SFX/player/burn", x, y);
 			touched = true;
 		}

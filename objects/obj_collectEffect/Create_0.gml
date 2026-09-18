@@ -13,14 +13,16 @@ biggening = true;
 targetx = 128;
 targety = 96;
 
-if !choosed
+if (!choosed)
 {
 	playerID = obj_parent_player;
-	switch global.playerCharacter
+	
+	switch (global.playerCharacter)
 	{
 		default:
 			sprite_index = choose(spr_collect1, spr_collect2, spr_collect3, spr_collect4, spr_collect5);
 			break;
 	}
+	
 	use_palette = true;
 }

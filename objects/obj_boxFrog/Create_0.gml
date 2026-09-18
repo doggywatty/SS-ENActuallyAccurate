@@ -14,11 +14,11 @@ enemyAttackTimerMax = 120;
 
 enemyAttack_TriggerEvent = function()
 {
-	if (enemyAttackTimer <= 0 && scr_enemy_playerisnear(400, 60) && grounded && state == States.frozen)
+	if (enemyAttackTimer <= 0 && scr_enemy_playerisnear(400, 60) && grounded && state == states.frozen)
 	{
 		enemyAttackTimer = enemyAttackTimerMax;
 		var _player = get_nearestPlayer();
-		state = States.titlescreen;
+		state = states.titlescreen;
 		image_xscale = face_obj(_player);
 		vsp = -8;
 		movespeed = 4;
@@ -26,7 +26,7 @@ enemyAttack_TriggerEvent = function()
 		sprite_index = spr_boxfrog_jump;
 		image_index = 0;
 		wearingBox = false;
-		event_play_oneshot("event:/SFX/enemies/boxfrogJump", x, y);		
+		event_play_oneshot("event:/SFX/enemies/boxfrogJump", x, y);
 	}
 };
 
@@ -43,9 +43,10 @@ enemyState_Attack = function()
 		
 		if (sprite_animation_end())
 		{
-			state = States.frozen;
+			state = states.frozen;
 			sprite_index = baddieSpriteWalk;
 		}
+		
 		exit;
 	}
 	
@@ -57,7 +58,7 @@ enemyState_Attack = function()
 		sprite_index = spr_boxfrog_fall;
 	}
 	
-	if grounded
+	if (grounded)
 	{
 		sprite_index = spr_boxfrog_land;
 		image_index = 0;

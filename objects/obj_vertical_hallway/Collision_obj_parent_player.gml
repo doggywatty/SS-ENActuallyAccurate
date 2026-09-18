@@ -1,4 +1,4 @@
-with other.id
+with (other.id)
 {
 	var bbox_size = abs(bbox_right - bbox_left);
 	other.playerPosX ??= x;
@@ -14,7 +14,8 @@ with other.id
 	vertical = true;
 	verticalOffset = xpos_offset;
 	hallwaydirection = sign(other.image_yscale);
-	if !instance_exists(obj_fadeoutTransition)
+	
+	if (!instance_exists(obj_fadeoutTransition))
 	{
 		event_play_oneshot("event:/SFX/general/door");
 		instance_create(x, y, obj_fadeoutTransition);

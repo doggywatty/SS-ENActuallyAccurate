@@ -23,7 +23,7 @@ for (var i = 0; i < 3; i++)
 	if (file_exists(savePath[i]))
 	{
 		ini_open(savePath[i]);
-		filePalette[i] = ini_read_real("Misc", $"playerPaletteIndex_{scr_getCharacterPrefix(Characters.Pizzelle)}", 2);
+		filePalette[i] = ini_read_real("Misc", $"playerPaletteIndex_{scr_getCharacterPrefix((0 << 0))}", 2);
 		fileOpened[i] = ini_read_real("Game", "seconds", 0) != 0 || ini_read_real("Game", "minutes", 0) != 0;
 		ini_close();
 		filePercentage[i] = scr_completion_percent(savePath[i]);
@@ -63,7 +63,7 @@ doodle_surface_manage = function()
 {
 	for (var i = 0; i < array_length(fileDoodleSurf); i++)
 	{
-		if !surface_exists(fileDoodleSurf[i])
+		if (!surface_exists(fileDoodleSurf[i]))
 		{
 			fileDoodleSurf[i] = surface_create(fileDoodleW, fileDoodleH);
 			surface_set_target(fileDoodleSurf[i]);

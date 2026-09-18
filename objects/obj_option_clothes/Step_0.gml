@@ -9,6 +9,7 @@ if (inputBuffer > 0)
 var old_selection = optionSelection;
 optionSelection += (key_right2 + key_left2);
 optionSelection = clamp(optionSelection, 0, 1);
+
 if (optionSelection != old_selection)
 {
 	event_play_oneshot("event:/SFX/ui/step");
@@ -22,21 +23,25 @@ if (deleteFileBuffer >= deleteFileBufferMax)
 	ini_open("optionData.ini");
 	ini_section_delete("Palettes");
 	ini_close();
-	with obj_option
+	
+	with (obj_option)
 		changedAnyOption = true;
 	
 	var save_path = ["saveData1_EN.ini", "saveData2_EN.ini", "saveData3_EN.ini"];
+	
 	for (var i = 0; i < 3; i++)
 	{
 		if (file_exists(save_path[i]))
 		{
 			ini_open(save_path[i]);
-			ini_key_delete("Misc", $"playerPaletteIndex_{scr_getCharacterPrefix(Characters.Pizzelle)}");
+			ini_key_delete("Misc", $"playerPaletteIndex_{scr_getCharacterPrefix((0 << 0))}");
 			ini_close();
-			with obj_mainfileselect
+			
+			with (obj_mainfileselect)
 				filePalette[i] = 2;
 		}
 	}
+	
 	instance_destroy();
 	exit;
 }
@@ -57,7 +62,7 @@ if (key_slap2 || key_start2)
 	exit;
 }
 
-if !key_jump2
+if (!key_jump2)
 {
 	deleteFileBuffer = 0;
 	pulseTimer = 3;
@@ -70,5 +75,6 @@ else if (optionSelection == 0)
 
 pulseTimer = wrap(pulseTimer, 0, pulseTimerMax);
 image_speed = max((deleteFileBuffer / (deleteFileBufferMax - 50)) * 0.65, 0.25);
+
 if (image_speed <= 0)
 	image_index = 0;

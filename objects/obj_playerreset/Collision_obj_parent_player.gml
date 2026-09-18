@@ -1,2 +1,2 @@
-with obj_parent_player
-    scr_levelSet();
+with (obj_parent_player)
+	scr_levelSet();

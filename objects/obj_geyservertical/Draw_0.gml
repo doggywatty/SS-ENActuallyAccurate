@@ -1,4 +1,4 @@
-if global.showcollisions && global.DebugVisuals
+if (global.showcollisions && global.DebugVisuals)
 {
 	var last_color = draw_get_color();
 	draw_set_color(c_red);

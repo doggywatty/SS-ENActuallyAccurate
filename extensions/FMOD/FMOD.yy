@@ -15,7 +15,7 @@
   "author": "",
   "classname": "Fmod_iOS",
   "copyToTargets": 3035426153142681806,
-  "date": "2026-03-25T18:14:02.701466-04:00",
+  "date": "2026-09-18T00:09:23.0595593-03:00",
   "description": "",
   "exportToGame": true,
   "extensionVersion": "1.0.4",
@@ -2337,7 +2337,7 @@
   "packageId": "",
   "parent": {
     "name": "Extensions",
-    "path": "folders/Fmod/Extensions.yy",
+    "path": "folders/Extensions/Fmod/Extensions.yy",
   },
   "productId": "",
   "sourcedir": "",

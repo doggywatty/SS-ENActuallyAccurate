@@ -10,24 +10,30 @@ function state_player_ladder()
 	hsp = 0;
 	flash = false;
 	grav = 0;
-	if key_up
+	
+	if (key_up)
 	{
 		sprite_index = spr_laddermove;
+		
 		if (vsp > -6)
 			vsp = -6;
-		if !stepEffectBuffer--
+		
+		if (!stepEffectBuffer--)
 		{
 			instance_create(x, y + 43, obj_puffEffect);
 			event_play_oneshot("event:/SFX/player/step", x, y);
 			stepEffectBuffer = 12;
 		}
+		
 		image_speed = 0.35;
 	}
-	else if key_down
+	else if (key_down)
 	{
 		sprite_index = spr_ladderdown;
-		if vsp < 10
+		
+		if (vsp < 10)
 			vsp = 10;
+		
 		image_speed = -0.35;
 	}
 	else
@@ -39,20 +45,23 @@ function state_player_ladder()
 	machTwo = 0;
 	jumpAnim = true;
 	landAnim = false;
-	if !place_meeting(x, y, obj_ladder)
+	
+	if (!place_meeting(x, y, obj_ladder))
 	{
 		landAnim = false;
 		jumpAnim = false;
-		state = States.normal;
+		state = states.normal;
 		image_index = 0;
 		var _y = y;
 		var i = 0;
+		
 		if (vsp < 0)
 		{
-			while !place_meeting_collision(x, y + 1)
+			while (!place_meeting_collision(x, y + 1))
 			{
 				y++;
 				i++;
+				
 				if (i >= 10)
 				{
 					y = _y;
@@ -60,6 +69,7 @@ function state_player_ladder()
 				}
 			}
 		}
+		
 		inputLadderBuffer = 5;
 		vsp = 0;
 	}
@@ -72,13 +82,14 @@ function state_player_ladder()
 		image_index = 0;
 		ladderBuffer = 20;
 		jumpAnim = true;
-		state = States.jump;
+		state = states.chainsawpogo;
 		vsp = -9;
 		inputLadderBuffer = 20;
 	}
+	
 	if (key_down && scr_solid_player(x, y + 1))
 	{
-		state = States.normal;
+		state = states.normal;
 		image_index = 0;
 	}
 }

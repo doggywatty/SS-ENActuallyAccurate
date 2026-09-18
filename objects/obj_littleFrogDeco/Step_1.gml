@@ -1,4 +1,4 @@
 if (sprite_index == spr_lilfrogdude_taunt)
-    exit;
+	exit;
 
 scr_collision();

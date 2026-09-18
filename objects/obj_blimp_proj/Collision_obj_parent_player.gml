@@ -1,5 +1,5 @@
 if (!canHurtPlayer)
-    exit;
+	exit;
 
 event_inherited();
 instance_destroy();

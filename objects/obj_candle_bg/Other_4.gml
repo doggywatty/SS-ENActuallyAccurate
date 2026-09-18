@@ -1,2 +1,2 @@
 if (global.panic)
-    sprite_index = escapeSprite;
+	sprite_index = escapeSprite;

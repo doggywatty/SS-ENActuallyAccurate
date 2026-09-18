@@ -1,19 +1,18 @@
-with other
+with (other)
 {
-	if ((state == States.minecart || state == States.minecart_bump || (state == States.minecart_launched
-	&& vsp > 0)) && !other.holdingPlayer && !global.freezeframe)
+	if ((state == states.victory || state == states.Sjump || (state == states.comingoutdoor && vsp > 0)) && !other.holdingPlayer && !global.freezeframe)
 	{
 		var _x = x;
 		var _y = y;
 		x = other.x;
 		
-		if !other.cutscene
+		if (!other.cutscene)
 			other.fred_y = y - 30;
 		
 		image_index = 0;
 		movespeed = 0;
 		
-		with obj_camera
+		with (obj_camera)
 		{
 			cameraXOffset = _x - other.x;
 			cameraYOffset = _y - other.y;

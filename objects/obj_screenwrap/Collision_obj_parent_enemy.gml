@@ -1,8 +1,9 @@
-if !receiver
+if (!receiver)
 {
 	var p = other.id;
 	var offset = p.y - y;
-	with obj_screenwrap
+	
+	with (obj_screenwrap)
 	{
 		if (trigger == other.trigger && receiver)
 		{

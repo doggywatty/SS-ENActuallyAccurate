@@ -12,11 +12,12 @@ groupArr = [];
 while (array_length(global.texturesToLoad) > 0)
 {
 	var t = array_pop(global.texturesToLoad);
-	if !is_undefined(t)
+	
+	if (!is_undefined(t))
 		array_push(groupArr, texturegroup_get_textures(t));
 }
 
-if goToHub
+if (goToHub)
 	alarm[1] = 1;
 else
 	unloaded = true;

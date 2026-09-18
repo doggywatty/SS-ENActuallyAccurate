@@ -1,2 +1,1 @@
-obj_parent_player.state = States.titlescreen;
-
+obj_parent_player.state = states.titlescreen;

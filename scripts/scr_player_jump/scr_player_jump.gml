@@ -1,8 +1,8 @@
 function state_player_jump()
 {
 	move = key_left + key_right;
-
-	if momentum
+	
+	if (momentum)
 		hsp = xscale * movespeed;
 	else
 		hsp = move * movespeed;
@@ -30,9 +30,11 @@ function state_player_jump()
 	if (move == xscale && scr_solid(x + xscale, y))
 	{
 		var _ledge = false;
+		
 		if (vsp < 0)
 			_ledge = snap_to_ledge(xscale, 6);
-		if !_ledge
+		
+		if (!_ledge)
 			movespeed = 0;
 	}
 	
@@ -78,7 +80,7 @@ function state_player_jump()
 		stompAnim = false;
 		vsp = -11;
 		grav = 0.3;
-		state = States.jump;
+		state = states.chainsawpogo;
 		jumpAnim = true;
 		jumpStop = false;
 		freefallstart = 0;
@@ -89,7 +91,7 @@ function state_player_jump()
 	if (grounded && vsp > 0 && (!key_attack || scr_solid(x + xscale, y, true)))
 	{
 		inputBufferSecondJump = 0;
-		state = States.normal;
+		state = states.normal;
 		jumpAnim = true;
 		jumpStop = false;
 		image_index = 0;
@@ -100,31 +102,32 @@ function state_player_jump()
 		floatyGrab = 18;
 	}
 	
-	if (global.playerCharacter == Characters.Pizzelle)
+	if (global.playerCharacter == characters.PZ)
 	{
 		if (vsp > 5)
 			fallingAnimation++;
+		
 		if (fallingAnimation >= 40 && fallingAnimation < 65)
 		{
 			sprite_index = spr_player_PZ_freeFall_1;
+			
 			if (sprite_index == spr_player_PZ_flinged_up && !instance_exists(obj_candifiedeffect1))
 				instance_create(x, y, obj_candifiedeffect1);
 		}
+		
 		if (fallingAnimation >= 65)
 			sprite_index = spr_player_PZ_freeFall_2;
 	}
 	
-	if !stompAnim
+	if (!stompAnim)
 	{
 		if (jumpAnim && sprite_animation_end())
 			jumpAnim = false;
-		if !jumpAnim
+		
+		if (!jumpAnim)
 		{
-			var aerial_sprite_transitions = [
-				[spr_suplexdashCancel, spr_fall],
-				[spr_piledriverJump, spr_fall],
-				[spr_jump, spr_fall]
-			];
+			var aerial_sprite_transitions = [[spr_suplexdashCancel, spr_fall], [spr_piledriverJump, spr_fall], [spr_jump, spr_fall]];
+			
 			for (var i = 0; i < array_length(aerial_sprite_transitions); i++)
 			{
 				if (aerial_sprite_transitions[i][0] == sprite_index)
@@ -146,12 +149,13 @@ function state_player_jump()
 		xscale = move;
 	
 	image_speed = 0.35;
-	do_grab(States.jump);
+	do_grab(states.chainsawpogo);
 	
 	if (grounded && (sprite_index == spr_player_PZ_freeFall_1 || sprite_index == spr_player_PZ_freeFall_2))
 	{
 		event_play_oneshot("event:/SFX/player/groundpound", x, y);
-		with obj_parent_enemy
+		
+		with (obj_parent_enemy)
 		{
 			if (bbox_in_camera(id, view_camera[0]) && grounded)
 			{
@@ -163,12 +167,12 @@ function state_player_jump()
 		camera_shake_add(10, 30);
 		image_index = 0;
 		sprite_index = spr_player_PZ_freeFall_land;
-		state = States.freefallland;
+		state = states.skateboard;
 		vsp = 0;
 		doubleJumped = false;
 	}
 	
-	do_taunt(States.jump);
+	do_taunt(states.chainsawpogo);
 	
 	if (scr_checkgroundpound() && !key_slap2 && !grounded)
 	{
@@ -176,7 +180,7 @@ function state_player_jump()
 		sprite_index = spr_groundPoundstart;
 		vsp = -6;
 		freeFallSmash = -14;
-		state = States.freefallprep;
+		state = states.meteorpep;
 	}
 	
 	if (floor(image_index) == (image_number - 1) && sprite_index == spr_player_PZ_flinged_up_start)
@@ -188,7 +192,7 @@ function state_player_jump()
 		movespeed = max(movespeed, 6);
 		sprite_index = spr_mach1;
 		jumpAnim = true;
-		state = States.mach2;
+		state = states.pistol;
 		image_index = 0;
 	}
 }

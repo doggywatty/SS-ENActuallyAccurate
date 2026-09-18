@@ -1,5 +1,5 @@
 if (sprite_index == spr_null)
-    instance_destroy();
+	instance_destroy();
 
 image_speed = 0;
 vsp = random_range(-5, 0);

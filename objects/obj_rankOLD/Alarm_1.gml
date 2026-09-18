@@ -2,7 +2,8 @@ sevent += 1;
 cshake1 = false;
 cshake2 = false;
 cshake3 = false;
-switch sevent
+
+switch (sevent)
 {
 	case 1:
 		if (global.SecretsFound[sevent - 1])
@@ -11,7 +12,10 @@ switch sevent
 			carddex1 = 0;
 		}
 		else
+		{
 			cshake1 = true;
+		}
+		
 		alarm[1] = 25;
 		break;
 	case 2:
@@ -21,7 +25,10 @@ switch sevent
 			carddex2 = 0;
 		}
 		else
+		{
 			cshake2 = true;
+		}
+		
 		alarm[1] = 25;
 		break;
 	case 3:
@@ -31,7 +38,10 @@ switch sevent
 			carddex3 = 0;
 		}
 		else
+		{
 			cshake3 = true;
+		}
+		
 		alarm[1] = 25;
 		break;
 	default:

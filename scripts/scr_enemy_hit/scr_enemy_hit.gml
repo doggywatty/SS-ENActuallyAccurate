@@ -3,7 +3,8 @@ function scr_enemy_hit()
 	weakThrowHit = false;
 	sprite_index = baddieSpriteDead;
 	image_speed = 0.35;
-	with (create_afterimage(AfterImageType.plain, image_xscale))
+	
+	with (create_afterimage(afterimagetypes.basic, image_xscale))
 	{
 		image_alpha = 0.6;
 		vanish = true;
@@ -11,14 +12,17 @@ function scr_enemy_hit()
 	
 	var impact = false;
 	var old_weakThrowHit = weakThrowHit;
-	if !weakThrowHit && throwAntiGrav
+	
+	if (!weakThrowHit && throwAntiGrav)
 	{
 		if (abs(hitHsp) > abs(hitVsp))
 			hitVsp = 0;
+		
 		hsp = hitHsp;
 		vsp = hitVsp;
 	}
-	if weakThrowHit
+	
+	if (weakThrowHit)
 	{
 		hitHsp = hsp;
 		hitVsp = vsp;
@@ -28,13 +32,16 @@ function scr_enemy_hit()
 	{
 		vsp = -5;
 		weakThrowHit = false;
+		
 		if (hitHsp != 0 || hsp != 0)
 		{
 			hsp = 5 * -sign(hsp);
 			hitHsp = 5 * -sign(hitHsp);
 		}
+		
 		impact = true;
 	}
+	
 	if ((vsp < 0 || hitVsp != 0) && (place_meeting_collision(x, y - 1) || place_meeting(x, y - 1, obj_vertical_hallway)) && !place_meeting(x, y + hitVsp, obj_destructibles) && (!weakThrowHit || shoulderbashed <= 0))
 	{
 		vsp = 5;
@@ -42,9 +49,9 @@ function scr_enemy_hit()
 		impact = true;
 	}
 	
-	if impact
+	if (impact)
 	{
-		repeat 2
+		repeat (2)
 		{
 			instance_create(x, y, obj_slapstar);
 			instance_create(x, y, obj_baddieGibs);
@@ -59,14 +66,16 @@ function scr_enemy_hit()
 		{
 			hsp *= 1.5;
 			baddieStunTimer = 0;
-			state = States.frozen;
+			state = states.frozen;
 			exit;
 		}
-		if canBeKilled
+		
+		if (canBeKilled)
 		{
 			instance_destroy();
 			exit;
 		}
-		state = States.charge;
+		
+		state = states.slap;
 	}
 }

@@ -22,7 +22,7 @@
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
   "physicsFriction": 0.2,
-  "physicsGroup": 1,
+  "physicsGroup": 0,
   "physicsKinematic": false,
   "physicsLinearDamping": 0.1,
   "physicsObject": false,
@@ -32,7 +32,7 @@
   "physicsShapePoints": [],
   "physicsStartAwake": true,
   "properties": [
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"visible","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"true;","varType":4,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"visible","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":0.0,"rangeMin":0.0,"value":"true","varType":3,},
   ],
   "solid": false,
   "spriteId": null,
@@ -40,5 +40,8 @@
     "name": "spr_chocofrogbig",
     "path": "sprites/spr_chocofrogbig/spr_chocofrogbig.yy",
   },
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": true,
 }

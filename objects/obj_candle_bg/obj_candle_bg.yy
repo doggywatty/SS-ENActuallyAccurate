@@ -10,8 +10,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Cottontown",
+    "path": "folders/Objects/Cottontown.yy",
   },
   "parentObjectId": null,
   "persistent": false,
@@ -34,5 +34,8 @@
     "path": "sprites/spr_candle_lit/spr_candle_lit.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "Standard Level Asset",
+  ],
   "visible": true,
 }
