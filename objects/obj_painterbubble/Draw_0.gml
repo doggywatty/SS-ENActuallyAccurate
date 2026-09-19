@@ -22,7 +22,7 @@ else
 
 var text = scribble(txt);
 text.starting_format(font_get_sprite(global.npcsmallfont, true));
-text.blend(16777215, fade);
+text.blend(c_white, fade);
 text.wrap(250);
 text.align(1, 1);
 

@@ -1,3 +1,4 @@
+//PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDIN
 depth = -5;
 global.ScrollOffset = 0;
 lapDeco = ds_list_create();
@@ -38,6 +39,7 @@ safe_layer_set_depth = function(arg0, arg1)
 		layer_depth(arg0, arg1);
 };
 
+//PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPAD
 set_layer_depths = function()
 {
 	var temp_map = ds_map_create();
@@ -69,6 +71,7 @@ set_layer_depths = function()
 	ds_map_destroy(temp_map);
 };
 
+//PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDI
 createLapDeco = function(arg0 = false)
 {
 	if (array_length(lapDecoBag) <= 0)
@@ -96,6 +99,7 @@ createLapDeco = function(arg0 = false)
 
 subLayerArray = [];
 
+//P
 defineSublayer = function(arg0, arg1)
 {
 	array_push(subLayerArray, 
@@ -105,6 +109,7 @@ defineSublayer = function(arg0, arg1)
 	});
 };
 
+//PADDINGPADDINGPAD
 createSubLayers = function()
 {
 	var all_layers = layer_get_all();

@@ -1,6 +1,6 @@
 function event_instance_isplaying(arg0)
 {
-	return fmod_studio_event_instance_get_playback_state(arg0) == (0 << 0);
+	return fmod_studio_event_instance_get_playback_state(arg0) == FMOD_STUDIO_PLAYBACK_STATE.PLAYING;
 }
 
 function event_instance_exists(arg0)

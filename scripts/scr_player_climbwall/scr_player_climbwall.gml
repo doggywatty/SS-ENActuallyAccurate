@@ -149,7 +149,7 @@ function state_player_climbwall()
 		inputBufferJump = 0;
 		image_index = 0;
 		
-		if (global.playerCharacter == characters.PZ)
+		if (global.playerCharacter == PlayerCharacter.PIZZELLE)
 		{
 			jumpStop = false;
 			xscale *= -1;

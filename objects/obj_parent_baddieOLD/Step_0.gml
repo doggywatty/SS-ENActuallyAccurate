@@ -91,7 +91,7 @@ if (tauntBuffer)
 	
 	if (!global.freezeframe)
 	{
-		if (obj_parent_player.state != (18 << 0) && obj_parent_player.state != (51 << 0) && state != enemystates.Throw)
+		if (obj_parent_player.state != states.gottreasure && obj_parent_player.state != states.gameover && state != enemystates.Throw)
 		{
 			tauntBuffer = false;
 			enemyAttackTimer = 0;

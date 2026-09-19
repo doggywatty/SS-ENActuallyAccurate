@@ -17,11 +17,11 @@ draw_set_font(old);
 
 switch (ropetype)
 {
-	case ropetypes.above:
+	case ropetypes.top:
 		draw_sprite_ext(myrope, propdex, wave_x + 64, boxy - 15, 1, 1, 0, c_white, 1);
 		draw_sprite_ext(myrope, propdex, wave_x + 864, boxy - 15, 1, 1, 0, c_white, 1);
 		break;
-	case ropetypes.below:
+	case ropetypes.bottom:
 		if (!(boxy <= -tgty))
 			draw_sprite_ext(myrope, propdex, wave_x + 432, boxy + tgty, 1, 1, 0, c_white, 1);
 		

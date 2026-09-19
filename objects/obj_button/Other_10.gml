@@ -1,6 +1,6 @@
-if (currentState == (0 << 0))
+if (currentState == ButtonState.released)
 {
-	currentState = (2 << 0);
+	currentState = ButtonState.lowering;
 	sprite_index = spr_Lowering;
 	
 	if (save_trigger && ds_list_find_index(global.SaveRoom, id) == -1)

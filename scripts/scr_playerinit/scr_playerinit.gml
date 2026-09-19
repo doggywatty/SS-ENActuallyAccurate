@@ -301,7 +301,7 @@ function scr_playerstate()
 		case states.freefallland:
 			state_function = state_player_trick;
 			break;
-		case states.hang:
+		case states.noclip:
 			state_function = state_player_noclip;
 			break;
 		case states.door:
@@ -358,5 +358,5 @@ function scr_playerstate()
 
 function scr_isMainCharacter()
 {
-	return global.playerCharacter == characters.PZ;
+	return global.playerCharacter == PlayerCharacter.PIZZELLE;
 }

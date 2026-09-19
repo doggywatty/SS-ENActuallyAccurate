@@ -1,3 +1,4 @@
+//PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPAD
 depth = -25;
 sucrose_lighting = false;
 sucrose_color = 0;
@@ -14,7 +15,7 @@ drawPlayer = function(arg0 = id)
 			draw_sprite_ext_duotone(sprite_index, -1, x, y, xscale * scale, yscale * scale, draw_angle, 1601784, 0, image_alpha * 0.75 * (wetTimer / wetTimerMax));
 		
 		if (flash)
-			draw_sprite_ext_flash(sprite_index, image_index, x, y, xscale * scale, yscale * scale, draw_angle, 16777215, image_alpha);
+			draw_sprite_ext_flash(sprite_index, image_index, x, y, xscale * scale, yscale * scale, draw_angle, c_white, image_alpha);
 		
 		if (isInSecretPortal)
 			draw_sprite_ext_flash(sprite_index, image_index, x, y, xscale * scale, yscale * scale, draw_angle, 9251145, image_alpha * (1.5 - scale));
@@ -24,6 +25,7 @@ drawPlayer = function(arg0 = id)
 	}
 };
 
+//PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDING
 drawBaddieSprite = function(arg0 = id)
 {
 	with (arg0)
@@ -64,17 +66,17 @@ drawBaddieSprite = function(arg0 = id)
 			draw_sprite_ext_duotone(sprite_index, image_index, _drawx, _drawy, _xs, _ys, image_angle, 1601784, 0, image_alpha * 0.75 * (wetTimer / wetTimerMax));
 		
 		if (flash)
-			draw_sprite_ext_flash(sprite_index, image_index, _drawx, _drawy, _xs, _ys, image_angle, 16777215, image_alpha);
+			draw_sprite_ext_flash(sprite_index, image_index, _drawx, _drawy, _xs, _ys, image_angle, c_white, image_alpha);
 		
 		if (canSpawnStunBird && baddieStunTimer >= 50 && state == states.slap)
 		{
-			birdEffect.draw(x, y - 40, 1, 1, 0, 16777215, 1);
+			birdEffect.draw(x, y - 40, 1, 1, 0, c_white, 1);
 			birdEffect.update();
 		}
 		
 		if (tauntBuffer)
 		{
-			angerEffect.draw(x, y, 1, 1, 0, 16777215, 1);
+			angerEffect.draw(x, y, 1, 1, 0, c_white, 1);
 			angerEffect.update();
 		}
 		

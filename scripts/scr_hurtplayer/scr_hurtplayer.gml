@@ -7,7 +7,7 @@ function scr_hurtplayer(arg0 = obj_parent_player, arg1)
 			if (cutscene)
 				continue;
 			
-			if (state == states.hang)
+			if (state == states.noclip)
 				continue;
 			
 			if (sprite_index == spr_supertaunt1 || sprite_index == spr_supertaunt2 || sprite_index == spr_supertaunt3 || sprite_index == spr_supertaunt4)
@@ -113,12 +113,12 @@ function scr_hurtplayer(arg0 = obj_parent_player, arg1)
 
 function player_complete_invulnerability(arg0 = obj_parent_player)
 {
-	var _states = [(2 << 0), (76 << 0), (70 << 0), (19 << 0), (52 << 0), (26 << 0), (40 << 0), (25 << 0)];
+	var _states = [states.titlescreen, states.noclip, states.mach3, states.knightpep, states.Sjumpland, states.stunned, states.grab, states.shotgunjump];
 	return array_contains(_states, arg0.state);
 }
 
 function player_can_hurt(arg0 = obj_parent_player)
 {
-	var _states = [states.bossintro, (56 << 0), (57 << 0), (58 << 0), (93 << 0), (59 << 0)];
+	var _states = [states.bossintro, states.keyget, states.tackle, states.slipnslide, states.parry, states.ladder];
 	return !array_contains(_states, arg0.state) && !player_complete_invulnerability(arg0);
 }

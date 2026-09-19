@@ -1,3 +1,10 @@
+enum StickPressState
+{
+	released = 0,
+	triggered = 1,
+	pressed = 2
+}
+
 function p1Vibration(arg0, arg1)
 {
 	with (obj_inputController)
@@ -171,12 +178,12 @@ function scr_input_ini_read(arg0, arg1, arg2, arg3 = false, arg4 = false)
 function scr_setinput_init()
 {
 	ini_open("optionData.ini");
-	global.deadzones[(0 << 0)] = ini_read_real("Settings", "deadzoneMaster", 0.4);
-	global.deadzones[(1 << 0)] = ini_read_real("Settings", "deadzoneVertical", 0.5);
-	global.deadzones[(2 << 0)] = ini_read_real("Settings", "deadzoneHorizontal", 0.5);
-	global.deadzones[(3 << 0)] = ini_read_real("Settings", "deadzonePress", 0.5);
-	global.deadzones[(4 << 0)] = ini_read_real("Settings", "deadzoneSJump", 0.8);
-	global.deadzones[(5 << 0)] = ini_read_real("Settings", "deadzoneCrouch", 0.65);
+	global.deadzones[Deadzone.master] = ini_read_real("Settings", "deadzoneMaster", 0.4);
+	global.deadzones[Deadzone.vertical] = ini_read_real("Settings", "deadzoneVertical", 0.5);
+	global.deadzones[Deadzone.horizontal] = ini_read_real("Settings", "deadzoneHorizontal", 0.5);
+	global.deadzones[Deadzone.press] = ini_read_real("Settings", "deadzonePress", 0.5);
+	global.deadzones[Deadzone.sjump] = ini_read_real("Settings", "deadzoneSJump", 0.8);
+	global.deadzones[Deadzone.crouch] = ini_read_real("Settings", "deadzoneCrouch", 0.65);
 	ini_close();
 	scr_input_init_sprites();
 }
@@ -193,7 +200,7 @@ function scr_gpinput_isaxis(arg0)
 
 function scr_input_update(arg0 = -1)
 {
-	var dz = global.deadzones[(0 << 0)];
+	var dz = global.deadzones[Deadzone.master];
 	gamepad_set_axis_deadzone(arg0, dz);
 	var keys = ds_map_keys_to_array(global.input_map);
 	
@@ -208,10 +215,10 @@ function scr_input_update(arg0 = -1)
 function scr_input_stickpressed(arg0)
 {
 	var s = string(arg0);
-	return ds_map_find_value(global.stickpressed, s) == (2 << 0);
+	return ds_map_find_value(global.stickpressed, s) == StickPressState.pressed;
 }
 
-function scr_input_stickpressed_update(arg0 = global.PlayerInputDevice, arg1 = global.deadzones[(0 << 0)])
+function scr_input_stickpressed_update(arg0 = global.PlayerInputDevice, arg1 = global.deadzones[Deadzone.master])
 {
 	var sticks = [32785, 32786, 32787, 32788];
 	sticks = array_concat(sticks, sticks);
@@ -230,27 +237,27 @@ function scr_input_stickpressed_update(arg0 = global.PlayerInputDevice, arg1 = g
 		var val = gamepad_axis_value(arg0, sticks[i]);
 		var pressState = ds_map_find_value(global.stickpressed, s);
 		
-		if (pressState == (2 << 0) && !((!inv && val >= arg1) || (inv && val <= -arg1)))
-			ds_map_set(global.stickpressed, s, (0 << 0));
+		if (pressState == StickPressState.pressed && !((!inv && val >= arg1) || (inv && val <= -arg1)))
+			ds_map_set(global.stickpressed, s, StickPressState.released);
 		
-		if (pressState == (1 << 0))
-			ds_map_set(global.stickpressed, s, (2 << 0));
+		if (pressState == StickPressState.triggered)
+			ds_map_set(global.stickpressed, s, StickPressState.pressed);
 	}
 }
 
 function scr_checkdeadzone(arg0, arg1, arg2)
 {
-	var dz = global.deadzones[(3 << 0)];
+	var dz = global.deadzones[Deadzone.press];
 	
 	switch (arg0)
 	{
 		case 32785:
 		case 32787:
-			dz = global.deadzones[(2 << 0)];
+			dz = global.deadzones[Deadzone.horizontal];
 			break;
 		case 32786:
 		case 32788:
-			dz = global.deadzones[(1 << 0)];
+			dz = global.deadzones[Deadzone.vertical];
 			break;
 	}
 	
@@ -260,12 +267,12 @@ function scr_checkdeadzone(arg0, arg1, arg2)
 		{
 			case "upC":
 				if (arg2.state == states.chainsaw)
-					dz = global.deadzones[(4 << 0)];
+					dz = global.deadzones[Deadzone.sjump];
 				
 				break;
 			case "downC":
 				if (arg2.state == states.facestomp)
-					dz = global.deadzones[(5 << 0)];
+					dz = global.deadzones[Deadzone.crouch];
 				
 				break;
 		}
@@ -363,7 +370,7 @@ function Input(arg0, arg1, arg2, arg3 = 0, arg4 = false) constructor
 				if (!scr_input_stickpressed(stickstr) && ((!gpAxisInvert && gamepad_axis_value(global.PlayerInputDevice, gpInputs[i]) >= dz) || (gpAxisInvert && gamepad_axis_value(global.PlayerInputDevice, gpInputs[i]) <= -dz)))
 				{
 					pressed = true;
-					ds_map_set(global.stickpressed, stickstr, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
+					ds_map_set(global.stickpressed, stickstr, StickPressState.triggered);
 					exit;
 				}
 			}

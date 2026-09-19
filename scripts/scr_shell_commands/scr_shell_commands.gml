@@ -75,14 +75,14 @@ function meta_game_speed()
 
 function sh_character(arg0)
 {
-	var choosen_character = (0 << 0);
+	var choosen_character = PlayerCharacter.PIZZELLE;
 	
 	switch (arg0[1])
 	{
 		default:
 			show_debug_message($"SHELL WARNING: [{arg0[1]}] is not a valid character. Defaulting to Pizzelle.");
 		case "Pizzelle":
-			choosen_character = (0 << 0);
+			choosen_character = PlayerCharacter.PIZZELLE;
 			break;
 	}
 	
@@ -401,15 +401,15 @@ function meta_instance_create()
 	{
 		description: "Spawn a new object.",
 		arguments: ["<object_id>", "<x>", "<y>"],
-		suggestions: [global.ObjectNameList, (0 << 0), (1 << 0)],
+		suggestions: [global.ObjectNameList, mouseArgumentType.worldX, mouseArgumentType.worldY],
 		argumentDescriptions: ["The object to spawn", "The X spawn coordinate", "The Y spawn coordinate"]
 	};
 }
 
 function sh_noclip()
 {
-	if (obj_parent_player.state != states.hang)
-		obj_parent_player.state = states.hang;
+	if (obj_parent_player.state != states.noclip)
+		obj_parent_player.state = states.noclip;
 	else
 		obj_parent_player.state = states.normal;
 }

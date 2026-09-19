@@ -1,3 +1,4 @@
+//PADDINGPADDINGPADDINGPADDI
 event_inherited();
 baddieSpriteIdle = spr_coneboy;
 baddieSpriteWalk = spr_coneboy;

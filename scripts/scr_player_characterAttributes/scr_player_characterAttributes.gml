@@ -199,7 +199,7 @@ function scr_characterSprite()
 	spr_petdog = scr_getCharacterSprite(spr_player_PZ_dogMount_pet);
 	spr_dogMount_meteor = scr_getCharacterSprite(spr_player_PZ_dogMount_meteor);
 	scr_characterTVSprite();
-	var char_arr = [characters.PZ];
+	var char_arr = [PlayerCharacter.PIZZELLE];
 	
 	for (var i = 0; i < array_length(char_arr); i++)
 	{
@@ -246,7 +246,7 @@ function scr_characterTVSprite()
 global.CharacterPalette = [];
 global.StupidWorkaroundFixLater = 0;
 
-function define_player_palette(arg0 = characters.PZ, arg1, arg2, arg3 = arg2, arg4 = arg3, arg5 = undefined)
+function define_player_palette(arg0 = PlayerCharacter.PIZZELLE, arg1, arg2, arg3 = arg2, arg4 = arg3, arg5 = undefined)
 {
 	var q = [];
 	
@@ -301,24 +301,24 @@ function define_palette_sprite(arg0, arg1 = [1, 2])
 }
 
 // DEFAULT: CHARACTER | NAME | CLOTHES | CLOTHES_SHADING | PATCHES | PATTERN | SCOOTER | SCOOTER_DARK | SCOOTER_THRUSTER | SKIN | SKIN_SHADING
-define_palette_sprite(characters.PZ, [0, 1]);
-//DEFAULT: CHARACTER(characters.PZ), NAME("palette_PZ_default"), CLOTHES(#ffff40), CLOTHES_SHADING(#e6b83c), PATCHES(#602828), PATTERN(undefined), SCOOTER(#872cd2), SCOOTER_DARK(#200239), SCOOTER_THRUSTER(#786898), SKIN(#ffaa83), SKIN_SHADING(#a03800)
-define_player_palette(characters.PZ, "palette_PZ_default", #ffff40, #e6b83c, #602828, undefined, #872cd2, #200239, #786898, #ffaa83, #a03800);
+define_palette_sprite(PlayerCharacter.PIZZELLE, [0, 1]);
+//DEFAULT: CHARACTER(PlayerCharacter.PIZZELLE), NAME("palette_PZ_default"), CLOTHES(#ffff40), CLOTHES_SHADING(#e6b83c), PATCHES(#602828), PATTERN(undefined), SCOOTER(#872cd2), SCOOTER_DARK(#200239), SCOOTER_THRUSTER(#786898), SKIN(#ffaa83), SKIN_SHADING(#a03800)
+define_player_palette(PlayerCharacter.PIZZELLE, "palette_PZ_default", #ffff40, #e6b83c, #602828, undefined, #872cd2, #200239, #786898, #ffaa83, #a03800);
 
 // The first palette defined is index 0 in the palette sprite, hence all of these. You can add new colors to the palette this way btw.
-define_player_palette(characters.PZ, "palette_PZ_classic", #ffffff, #88a8c8, #88a8c8, undefined); // Technically you don't need to add undefined here.
-define_player_palette(characters.PZ, "palette_PZ_exhibitionnight", #d0b8b8, #af6669, #602828, undefined);
-define_player_palette(characters.PZ, "palette_PZ_exhibitionred", #e03000, #580000, #580000, undefined); // 3 Secrets
-define_player_palette(characters.PZ, "palette_PZ_exhibitionblack", #3e3e49, #182028, #182028, undefined); // 6 Secrets
-define_player_palette(characters.PZ, "palette_PZ_exhibitionpurple", #6f5bab, #3d2d6e, #3d2d6e, undefined, #c80090, #900040, #d0b8b8); // 9 Secrets
-define_player_palette(characters.PZ, "palette_PZ_noise", #f8e080, #d88818, #d88818, undefined, #d88818, #a03800, #a03800); // 12 Secrets
-define_player_palette(characters.PZ, "palette_PZ_exhibitionbrain", undefined, c_black, #741A45, spr_demopattern_brain, #a82860, #780038, #780038); // Judgement
-define_player_palette(characters.PZ, "palette_PZ_exhibitionbraingold", undefined, c_black, #580000, spr_demopattern_brainGold, #943000, #502620, #502620); // 303%
-define_player_palette(characters.PZ, "palette_PZ_exhibitionpaper", undefined, c_black, #78A8F8, spr_demopattern_paper, #90b0f8, #1070d0, #1070d0); // Paper
-define_player_palette(characters.PZ, "palette_PZ_exhibitionentryway", undefined, c_black, #E09000, spr_demopattern_entryway, #b83830, #602828, #602828); // Entryway
-define_player_palette(characters.PZ, "palette_PZ_exhibitionsteamy", undefined, c_black, #FFDEF9, spr_demopattern_steamy, #a880a8, #8038f0, #686090); // Cottontown
-define_player_palette(characters.PZ, "palette_PZ_exhibitionmineshaft", undefined, c_black, #09447F, spr_demopattern_mineshaft, #60d048, #006858, #006858); // Mines
-define_player_palette(characters.PZ, "palette_PZ_exhibitionmolasses", undefined, c_black, #006858, spr_demopattern_molasses, #f87018, #b03000, #b03000); // Molasses
+define_player_palette(PlayerCharacter.PIZZELLE, "palette_PZ_classic", #ffffff, #88a8c8, #88a8c8, undefined); // Technically you don't need to add undefined here.
+define_player_palette(PlayerCharacter.PIZZELLE, "palette_PZ_exhibitionnight", #d0b8b8, #af6669, #602828, undefined);
+define_player_palette(PlayerCharacter.PIZZELLE, "palette_PZ_exhibitionred", #e03000, #580000, #580000, undefined); // 3 Secrets
+define_player_palette(PlayerCharacter.PIZZELLE, "palette_PZ_exhibitionblack", #3e3e49, #182028, #182028, undefined); // 6 Secrets
+define_player_palette(PlayerCharacter.PIZZELLE, "palette_PZ_exhibitionpurple", #6f5bab, #3d2d6e, #3d2d6e, undefined, #c80090, #900040, #d0b8b8); // 9 Secrets
+define_player_palette(PlayerCharacter.PIZZELLE, "palette_PZ_noise", #f8e080, #d88818, #d88818, undefined, #d88818, #a03800, #a03800); // 12 Secrets
+define_player_palette(PlayerCharacter.PIZZELLE, "palette_PZ_exhibitionbrain", undefined, c_black, #741A45, spr_demopattern_brain, #a82860, #780038, #780038); // Judgement
+define_player_palette(PlayerCharacter.PIZZELLE, "palette_PZ_exhibitionbraingold", undefined, c_black, #580000, spr_demopattern_brainGold, #943000, #502620, #502620); // 303%
+define_player_palette(PlayerCharacter.PIZZELLE, "palette_PZ_exhibitionpaper", undefined, c_black, #78A8F8, spr_demopattern_paper, #90b0f8, #1070d0, #1070d0); // Paper
+define_player_palette(PlayerCharacter.PIZZELLE, "palette_PZ_exhibitionentryway", undefined, c_black, #E09000, spr_demopattern_entryway, #b83830, #602828, #602828); // Entryway
+define_player_palette(PlayerCharacter.PIZZELLE, "palette_PZ_exhibitionsteamy", undefined, c_black, #FFDEF9, spr_demopattern_steamy, #a880a8, #8038f0, #686090); // Cottontown
+define_player_palette(PlayerCharacter.PIZZELLE, "palette_PZ_exhibitionmineshaft", undefined, c_black, #09447F, spr_demopattern_mineshaft, #60d048, #006858, #006858); // Mines
+define_player_palette(PlayerCharacter.PIZZELLE, "palette_PZ_exhibitionmolasses", undefined, c_black, #006858, spr_demopattern_molasses, #f87018, #b03000, #b03000); // Molasses
 var palette_surface = surface_create(1, 1);
 
 for (var i = 0; i < array_length(global.CharacterPalette); i++)

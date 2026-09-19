@@ -4,7 +4,7 @@ if (place_meeting(x, y - 1, obj_parent_player))
 	{
 		var minecart_can_traverse = state == states.victory && y < (other.y + 40);
 		
-		if (state != states.hang && !minecart_can_traverse && !global.freezeframe)
+		if (state != states.noclip && !minecart_can_traverse && !global.freezeframe)
 		{
 			if (state == states.bossintro || state == states.keyget)
 				instance_create(x, y, obj_poofeffect);

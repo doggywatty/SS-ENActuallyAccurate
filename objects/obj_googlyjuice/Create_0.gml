@@ -1,3 +1,4 @@
+//PADDINGPADDINGPADDINGPADD
 event_inherited();
 baddieSpriteIdle = undefined;
 baddieSpriteWalk = spr_juicewalk;

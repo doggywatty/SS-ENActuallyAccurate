@@ -154,11 +154,11 @@ if (!isOpen) {
 	} else if (keyboard_check_pressed(vk_enter)) {
         if (isAutocompleteOpen)
         {
-            _confirm_current_suggestion();
+            self._confirm_current_suggestion();
         }
         else
         {
-            var args = _input_string_split(consoleString);
+            var args = self._input_string_split(consoleString);
             
             if (array_length(args) > 0)
             {
@@ -177,7 +177,7 @@ if (!isOpen) {
                         array_push(history, consoleString);
                         array_push(output, ">" + consoleString);
                         array_push(output, "Execution deferred until shell is closed.");
-                        _update_positions();
+                        self._update_positions();
                     }
                     else
                     {

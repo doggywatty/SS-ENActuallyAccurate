@@ -6,6 +6,6 @@ condition = function()
 output = function()
 {
 	var lay_id = layer_get_id("Assets_1");
-	var sprite_id = layer_sprite_get_id(lay_id, "graphic_310D5E4BE6D6EB8");
+	var sprite_id = layer_sprite_get_id(lay_id, "graphic_7E6D6EB8");
 	layer_sprite_change(sprite_id, spr_clocktowerexterior_candleDead);
 };

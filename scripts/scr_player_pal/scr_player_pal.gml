@@ -18,7 +18,7 @@ function state_player_pal()
 	if (key_jump)
 	{
 		event_play_oneshot("event:/SFX/ui/confirm");
-		tate = (1 << 0);
+		tate = states.normal;
 		targetRoom = hub_w1;
 		targetDoor = "C";
 		instance_create(x, y, obj_fadeoutTransition);

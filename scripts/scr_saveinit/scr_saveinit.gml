@@ -4,9 +4,9 @@ function scr_saveinit()
 	ini_open(global.SaveFileName);
 	global.SaveSeconds = ini_read_real("Game", "seconds", 0);
 	global.SaveMinutes = ini_read_real("Game", "minutes", 0);
-	global.HurtCounter = ini_read_real("Game", $"damage_{scr_getCharacterPrefix((0 << 0))}", 0);
+	global.HurtCounter = ini_read_real("Game", $"damage_{scr_getCharacterPrefix(PlayerCharacter.PIZZELLE)}", 0);
 	global.HurtMilestone = global.HurtCounter;
-	global.PlayerPaletteIndex = ini_read_real("Misc", $"playerPaletteIndex_{scr_getCharacterPrefix((0 << 0))}", 2);
+	global.PlayerPaletteIndex = ini_read_real("Misc", $"playerPaletteIndex_{scr_getCharacterPrefix(PlayerCharacter.PIZZELLE)}", 2);
 	global.GLOBAL_FUN = ini_read_real("Game", "FUN", -4);
 	
 	if (global.GLOBAL_FUN <= -4)

@@ -1,3 +1,4 @@
+//PADDIN
 depth = 90;
 image_speed = 0.4;
 scale = 0.15;

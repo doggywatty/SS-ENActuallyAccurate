@@ -18,7 +18,7 @@ function state_player_mach2()
 	
 	if (inputBufferJump > 0 && can_jump)
 	{
-		if (global.playerCharacter == characters.PZ && move != -xscale && key_attack)
+		if (global.playerCharacter == PlayerCharacter.PIZZELLE && move != -xscale && key_attack)
 		{
 			image_index = 0;
 			sprite_index = spr_airdash1;
@@ -156,7 +156,7 @@ function state_player_mach2()
 		}
 	}
 	
-	if ((!grounded || slopeCheck(x + xscale, y)) && scr_solid(x + xscale, y, true) && global.playerCharacter == characters.PZ)
+	if ((!grounded || slopeCheck(x + xscale, y)) && scr_solid(x + xscale, y, true) && global.playerCharacter == PlayerCharacter.PIZZELLE)
 	{
 	}
 	else if (scr_solid(x + xscale, y, true) && !place_meeting(x + xscale, y, obj_destructibles))

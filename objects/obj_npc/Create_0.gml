@@ -21,4 +21,4 @@ mysurf = -4;
 mycut = -4;
 ispainter = false;
 propdex = 0;
-ropetype = ropetypes.above;
+ropetype = ropetypes.top;

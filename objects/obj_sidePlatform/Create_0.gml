@@ -1,3 +1,4 @@
+//PADDINGPADDINGPADDING
 canCollide = function(arg0, arg1 = obj_parent_player)
 {
 	switch (arg1.object_index)

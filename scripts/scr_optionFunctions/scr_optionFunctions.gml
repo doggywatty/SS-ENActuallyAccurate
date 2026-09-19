@@ -1,3 +1,53 @@
+enum OptionMenu
+{
+	main = 0,
+	audio = 1,
+	video = 2,
+	windowMode = 3,
+	game = 4,
+	language = 5,
+	controls = 6,
+	keyboard = 7,
+	controller = 8,
+	deadzones = 9
+}
+
+enum OptionType
+{
+	toggle = 0,
+	sliderLegacy = 1,
+	choice = 2,
+	press = 3,
+	button = 6,
+	slider = 7
+}
+
+enum ButtonState
+{
+	released = 0,
+	pressed = 1,
+	lowering = 2,
+	reverting = 3
+}
+
+enum Letterbox
+{
+	off = 0,
+	simple = 1,
+	doodle = 2,
+	dynamic = 3
+}
+
+enum Deadzone
+{
+	master = 0,
+	vertical = 1,
+	horizontal = 2,
+	press = 3,
+	sjump = 4,
+	crouch = 5
+}
+
 function set_resolution_option(arg0)
 {
 	window_set_size(global.resolutions[arg0][0], global.resolutions[arg0][1]);
@@ -41,7 +91,7 @@ function create_option() constructor
 function option_normal(arg0, arg1, arg2, arg3, arg4 = true) : create_option() constructor
 {
 	id = arg0;
-	type = (2 << 0);
+	type = OptionType.choice;
 	options = arg1;
 	on_toggle = arg2;
 	value = arg3;
@@ -52,7 +102,7 @@ function option_button(arg0, arg1) : create_option() constructor
 {
 	id = arg0;
 	on_toggle = arg1;
-	type = (6 << 0);
+	type = OptionType.button;
 }
 
 function option_slider(arg0, arg1, arg2, arg3, arg4 = -4, arg5 = false) : create_option() constructor
@@ -60,7 +110,7 @@ function option_slider(arg0, arg1, arg2, arg3, arg4 = -4, arg5 = false) : create
 	id = arg0;
 	on_slide = arg1;
 	on_stop = arg2;
-	type = (7 << 0);
+	type = OptionType.slider;
 	sound = arg4;
 	value = arg3;
 	show_percent = arg5;
@@ -226,7 +276,7 @@ function create_option_toggle(arg0, arg1, arg2, arg3)
 	{
 		name: arg1,
 		desc: arg2,
-		type: (0 << 0),
+		type: OptionType.toggle,
 		alpha: 1,
 		func: arg3,
 		value: 0
@@ -242,7 +292,7 @@ function create_option_press(arg0, arg1, arg2, arg3)
 	{
 		name: arg1,
 		desc: arg2,
-		type: (3 << 0),
+		type: OptionType.press,
 		alpha: 1,
 		func: arg3,
 		value: 0
@@ -258,7 +308,7 @@ function create_option_multichoice(arg0, arg1, arg2, arg3, arg4)
 	{
 		name: arg1,
 		desc: arg2,
-		type: (2 << 0),
+		type: OptionType.choice,
 		alpha: 1,
 		choices: arg3,
 		func: arg4,
@@ -275,7 +325,7 @@ function create_option_slider(arg0, arg1, arg2, arg3, arg4, arg5 = undefined)
 	{
 		name: arg1,
 		desc: arg2,
-		type: (1 << 0),
+		type: OptionType.sliderLegacy,
 		alpha: 1,
 		on_move: arg3,
 		on_stop: arg4,

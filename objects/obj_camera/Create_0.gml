@@ -1,3 +1,4 @@
+//PADDINGPADDINGPADD
 sndRankUp = fmod_createEventInstance("event:/SFX/ui/rankup");
 sndRankDown = fmod_createEventInstance("event:/SFX/ui/rankdown");
 depth = -100;
@@ -91,6 +92,7 @@ cakeHud =
 	pointColors: [0]
 };
 
+//PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPAD
 drawCakeHudTopping = function(arg0, arg1)
 {
 	if (global.Collect > arg1)

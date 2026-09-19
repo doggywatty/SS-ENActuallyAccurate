@@ -10,11 +10,11 @@ switch (global.Letterbox)
 		letterbox_spr = spr_letterboxBg_simple;
 		letterbox_ind = 0;
 		break;
-	case (2 << 0):
+	case Letterbox.doodle:
 		letterbox_spr = spr_letterboxBg_doodle;
 		letterbox_ind = 0;
 		break;
-	case (3 << 0):
+	case Letterbox.dynamic:
 		letterbox_spr = spr_letterboxBg_dynamic;
 		
 		switch (global.InternalLevelName)

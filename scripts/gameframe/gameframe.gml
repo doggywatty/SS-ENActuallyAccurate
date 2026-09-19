@@ -817,7 +817,7 @@ function gameframe_caption_draw_caption_text_default(__x, __y, __width, __height
 	__x += gameframe_caption_margin * _dpiScale;
 	var _icon = gameframe_caption_icon;
 	if (_icon != -1) {
-		draw_sprite_ext(_icon, -1, (__x + sprite_get_xoffset(_icon) * _dpiScale | 0), __y + ((__height - sprite_get_height(_icon) * _dpiScale) div 2) + sprite_get_yoffset(_icon) * _dpiScale, _dpiScale, _dpiScale, 0, 16777215, gameframe_caption_alpha * gameframe_alpha);
+		draw_sprite_ext(_icon, -1, (__x + sprite_get_xoffset(_icon) * _dpiScale | 0), __y + ((__height - sprite_get_height(_icon) * _dpiScale) div 2) + sprite_get_yoffset(_icon) * _dpiScale, _dpiScale, _dpiScale, 0, c_white, gameframe_caption_alpha * gameframe_alpha);
 		__x += (sprite_get_width(_icon) + gameframe_caption_icon_margin) * _dpiScale;
 	}
 	var _text = gameframe_caption_text;
@@ -1195,7 +1195,7 @@ gameframe_button_wait_for_movement_y = 0.;
 globalvar gameframe_debug; /// @is {bool}
 gameframe_debug = false;
 globalvar gameframe_blend; /// @is {int}
-gameframe_blend = 16777215;
+gameframe_blend = c_white;
 globalvar gameframe_alpha; /// @is {number}
 gameframe_alpha = 1.0;
 globalvar gameframe_can_input; /// @is {bool}

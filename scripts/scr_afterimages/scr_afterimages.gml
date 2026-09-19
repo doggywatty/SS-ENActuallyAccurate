@@ -31,7 +31,7 @@ function create_afterimage(arg0, arg1 = image_xscale, arg2 = false)
 		hsp: 0,
 		vsp: 0,
 		identity: afterimage_id,
-		gonealpha: (arg0 == (0 << 0)) ? 0.85 : 1,
+		gonealpha: (arg0 == afterimagetypes.basic) ? 0.85 : 1,
 		vanish: false,
 		paletteSelect: pal[0],
 		paletteSprite: pal[1],
@@ -41,7 +41,7 @@ function create_afterimage(arg0, arg1 = image_xscale, arg2 = false)
 		fakeMach3Afterimage: false
 	};
 	
-	if (arg0 == (7 << 0))
+	if (arg0 == afterimagetypes.red)
 		q.vanishSpd = 0.05;
 	
 	ds_list_add(global.afterimage_list, q);

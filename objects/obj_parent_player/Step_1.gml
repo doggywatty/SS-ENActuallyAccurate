@@ -26,7 +26,7 @@ scr_playerstate();
 hspCarry += slideHsp;
 scr_collide_destructibles();
 
-if (state != states.titlescreen && state != states.freefall && state != states.hang && state != states.grab && state != states.stunned && state != states.shotgunjump && state != states.climbwall && state != states.knightpep)
+if (state != states.titlescreen && state != states.freefall && state != states.noclip && state != states.grab && state != states.stunned && state != states.shotgunjump && state != states.climbwall && state != states.knightpep)
 {
 	scr_collision();
 }

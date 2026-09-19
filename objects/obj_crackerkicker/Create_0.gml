@@ -1,3 +1,4 @@
+//PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGP
 event_inherited();
 baddieSpriteIdle = undefined;
 baddieSpriteWalk = spr_crackerkicker_walk;
@@ -25,6 +26,7 @@ enemyAttack_TriggerEvent = function()
 	}
 };
 
+//PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADD
 enemyState_Attack = function()
 {
 	scr_enemyThrowDefault(spr_crackerkicker_kick, 3, 0.35, function()

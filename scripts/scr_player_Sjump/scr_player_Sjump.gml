@@ -73,7 +73,7 @@ function state_player_Sjump()
 		image_index = 0;
 		state = states.knightpepattack;
 	}
-	else if ((key_attack2 || inputBufferSlap > 0) && global.playerCharacter == characters.PZ && sprite_index != spr_player_PZ_fall_outOfControl && sprite_index != spr_superspring && sprite_index != spr_superjumpCancelIntro)
+	else if ((key_attack2 || inputBufferSlap > 0) && global.playerCharacter == PlayerCharacter.PIZZELLE && sprite_index != spr_player_PZ_fall_outOfControl && sprite_index != spr_superspring && sprite_index != spr_superjumpCancelIntro)
 	{
 		event_play_oneshot("event:/SFX/player/superjumpcancel", x, y);
 		image_index = 0;

@@ -42,7 +42,7 @@ for (var i = 0; i < ds_list_size(global.afterimage_list); i++)
 			}
 			else if (instance_exists(identity) && object_is_ancestor(identity.object_index, obj_parent_player))
 			{
-				draw_player_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, 16777215, gonealpha * image_alpha);
+				draw_player_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, gonealpha * image_alpha);
 				override = true;
 			}
 			else if (paletteSprite != -4 && paletteSelect != -4)

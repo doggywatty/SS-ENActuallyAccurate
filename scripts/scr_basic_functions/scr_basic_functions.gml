@@ -82,7 +82,7 @@ function string_extract(arg0, arg1, arg2)
 	return arg0;
 }
 
-function create_small_number(arg0, arg1, arg2, arg3 = 16777215)
+function create_small_number(arg0, arg1, arg2, arg3 = c_white)
 {
 	return instance_create(arg0, arg1, obj_smallnumber, 
 	{

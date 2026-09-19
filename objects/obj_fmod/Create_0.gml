@@ -1,6 +1,7 @@
+//PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPA
 var _channels = 256;
-var _coreflags = (0 << 0);
-var _studioflags = (0 << 0);
+var _coreflags = FMOD_INIT.NORMAL;
+var _studioflags = FMOD_STUDIO_INIT.NORMAL;
 global.FMODSTUDIOSYSTEM = fmod_studio_system_create();
 show_debug_message("fmod_studio_system_create: " + string(fmod_last_result()));
 var settings_struct = new FmodSystemAdvancedSettings();
@@ -20,13 +21,13 @@ array_push(banks, "sfx.bank");
 for (var i = 0; i < array_length(banks); i++)
 {
 	var b = working_directory + path + plat + "/" + banks[i];
-	var bank = fmod_studio_system_load_bank_file(b, (0 << 0));
+	var bank = fmod_studio_system_load_bank_file(b, FMOD_STUDIO_LOAD_BANK.NORMAL);
 	show_debug_message("Bank Loaded: " + string(fmod_last_result()));
 	fmod_studio_bank_load_sample_data(bank);
 	show_debug_message("Bank Sample Data Load: " + string(fmod_last_result()));
 }
 
-global.FMOD_DSP_FFT = fmod_system_create_dsp_by_type((29 << 0));
+global.FMOD_DSP_FFT = fmod_system_create_dsp_by_type(FMOD_DSP_TYPE.FFT);
 musicBus = fmod_studio_system_get_bus("bus:/Stereo/Music");
 initializedDSP = false;
 fmod_studio_bus_lock_channel_group(musicBus);
@@ -39,12 +40,12 @@ updateFFT = function()
 	{
 		var channel_group = fmod_studio_bus_get_channel_group(musicBus);
 		
-		if (fmod_last_result() != (76 << 0))
+		if (fmod_last_result() != FMOD_RESULT.ERR_STUDIO_NOT_LOADED)
 		{
-			fmod_channel_control_add_dsp(channel_group, (-1 << 0), global.FMOD_DSP_FFT);
-			fmod_dsp_set_parameter_int(global.FMOD_DSP_FFT, (1 << 0), (0 << 0));
+			fmod_channel_control_add_dsp(channel_group, FMOD_CHANNELCONTROL_DSP_INDEX.HEAD, global.FMOD_DSP_FFT);
+			fmod_dsp_set_parameter_int(global.FMOD_DSP_FFT, FMOD_DSP_FFT.WINDOWTYPE, FMOD_DSP_FFT_WINDOW.RECT);
 			var size = 16;
-			fmod_dsp_set_parameter_int(global.FMOD_DSP_FFT, (0 << 0), size);
+			fmod_dsp_set_parameter_int(global.FMOD_DSP_FFT, FMOD_DSP_FFT.WINDOWSIZE, size);
 			initializedDSP = true;
 		}
 		
@@ -53,7 +54,7 @@ updateFFT = function()
 	
 	ds_list_clear(global.FMOD_DSP_Value);
 	buffer_seek(global.FMOD_DSP_FFTBuffer, buffer_seek_start, 0);
-	var required_size = fmod_dsp_get_parameter_data(global.FMOD_DSP_FFT, (2 << 0), global.FMOD_DSP_FFTBuffer);
+	var required_size = fmod_dsp_get_parameter_data(global.FMOD_DSP_FFT, FMOD_DSP_FFT.SPECTRUMDATA, global.FMOD_DSP_FFTBuffer);
 	
 	if (buffer_get_size(global.FMOD_DSP_FFTBuffer) < required_size)
 		buffer_resize(global.FMOD_DSP_FFTBuffer, required_size);

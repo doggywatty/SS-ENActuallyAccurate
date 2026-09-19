@@ -2,7 +2,7 @@ if (place_meeting(x, y, obj_parent_player))
 {
 	with (obj_parent_player)
 	{
-		if (place_meeting(x, y, other) && state != states.hang && state != states.freefall && !cutscene)
+		if (place_meeting(x, y, other) && state != states.noclip && state != states.freefall && !cutscene)
 		{
 			if (state != states.pal && state != states.cotton && state != states.shocked)
 			{

@@ -1,3 +1,4 @@
+//PADDINGPADDINGPADDINGPADDI
 event_inherited();
 
 canCollide = function(arg0, arg1 = obj_parent_player)

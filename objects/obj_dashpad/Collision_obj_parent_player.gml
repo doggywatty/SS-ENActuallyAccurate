@@ -18,7 +18,7 @@ if (other.dashpadBuffer <= 0)
 			event_play_multiple("event:/SFX/general/dashpad", x, y);
 			fmod_studio_event_instance_start(sndMachStart);
 			
-			if (global.playerCharacter == characters.PZ)
+			if (global.playerCharacter == PlayerCharacter.PIZZELLE)
 			{
 				dashpadBuffer = 25;
 				state = states.shotgun;

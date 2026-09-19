@@ -3,7 +3,7 @@ if (event > 0)
 else
 	pal_swap_set(spr_rankpal, bgdex, 0);
 
-draw_sprite_tiled_ext(lang_get_sprite(bg_rank), bgdex, bgx, bgy, 1, 1, 16777215, bgAlpha);
+draw_sprite_tiled_ext(lang_get_sprite(bg_rank), bgdex, bgx, bgy, 1, 1, c_white, bgAlpha);
 shader_reset();
 
 if (event > 0)

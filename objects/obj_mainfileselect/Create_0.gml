@@ -1,3 +1,4 @@
+//PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADD
 depth = 10;
 video_close();
 selectedFile = 0;
@@ -23,7 +24,7 @@ for (var i = 0; i < 3; i++)
 	if (file_exists(savePath[i]))
 	{
 		ini_open(savePath[i]);
-		filePalette[i] = ini_read_real("Misc", $"playerPaletteIndex_{scr_getCharacterPrefix((0 << 0))}", 2);
+		filePalette[i] = ini_read_real("Misc", $"playerPaletteIndex_{scr_getCharacterPrefix(PlayerCharacter.PIZZELLE)}", 2);
 		fileOpened[i] = ini_read_real("Game", "seconds", 0) != 0 || ini_read_real("Game", "minutes", 0) != 0;
 		ini_close();
 		filePercentage[i] = scr_completion_percent(savePath[i]);

@@ -17,6 +17,6 @@ condition = function()
 output = function()
 {
 	var lay_id = layer_get_id("Assets_1_Lang");
-	var sprite_id = layer_sprite_get_id(lay_id, "graphic_71ADB181AE2");
+	var sprite_id = layer_sprite_get_id(lay_id, "graphic_75257AE2");
 	layer_sprite_change(sprite_id, lang_get_sprite(spr_cottondecovandalized));
 };

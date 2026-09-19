@@ -1,3 +1,10 @@
+enum ChefTaskCondition
+{
+	perStep = 0,
+	endOfLevel = 1,
+	onNotify = 2
+}
+
 function ChefTask(arg0, arg1, arg2, arg3, arg4) constructor
 {
 	static setPersistent = function(arg0)
@@ -20,7 +27,7 @@ function OutfitTask(arg0, arg1, arg2, arg3) : ChefTask(arg0, arg2, lang_get_spri
 	taskCharacter = arg1;
 }
 
-function ExhibitionNightSecretTask(arg0, arg1, arg2) : OutfitTask(arg0, arg1, (1 << 0), -4) constructor
+function ExhibitionNightSecretTask(arg0, arg1, arg2) : OutfitTask(arg0, arg1, ChefTaskCondition.endOfLevel, -4) constructor
 {
 	neededSecrets = arg2;
 	
@@ -58,7 +65,7 @@ function scr_award_chef_task(arg0, arg1, arg2)
 	obj_hudManager.saveAlpha = 10;
 	
 	if (!prevUnlocked)
-		ds_queue_enqueue(obj_achievementTracker.chefUnlockQueue, [arg1, arg0, (0 << 0), arg2]);
+		ds_queue_enqueue(obj_achievementTracker.chefUnlockQueue, [arg1, arg0, PlayerCharacter.PIZZELLE, arg2]);
 	
 	show_debug_message($"Chef Task Unlocked: {arg0}");
 }
@@ -90,7 +97,7 @@ function scr_check_end_level_chef_tasks()
 		{
 			var current_task = activeChefTasks[i];
 			
-			if (current_task.conditionType == (1 << 0) && current_task.taskCondition())
+			if (current_task.conditionType == ChefTaskCondition.endOfLevel && current_task.taskCondition())
 			{
 				scr_award_chef_task(current_task.taskKey, current_task.taskSprite, current_task.taskIndex);
 				
@@ -110,7 +117,7 @@ function scr_check_end_level_chef_tasks()
 			
 			with (current_task)
 			{
-				if (conditionType == (1 << 0) && taskCondition())
+				if (conditionType == ChefTaskCondition.endOfLevel && taskCondition())
 				{
 					scr_award_palette(taskKey, taskCharacter);
 					array_delete(other.activeChefTasks, p, 1);
@@ -161,7 +168,7 @@ function scr_task_notify(arg0, arg1 = [])
 	{
 		var ind = array_get_index(check_array, task);
 		
-		if (ind >= 0 && task.conditionType == (2 << 0) && task.taskCondition(arg1))
+		if (ind >= 0 && task.conditionType == ChefTaskCondition.onNotify && task.taskCondition(arg1))
 		{
 			if (palette)
 				scr_award_palette(task.taskKey, task.taskCharacter);
@@ -175,25 +182,25 @@ function scr_task_notify(arg0, arg1 = [])
 
 function scr_get_palettes(arg0 = true)
 {
-	var pals = [new ExhibitionNightSecretTask("palette_PZ_exhibitionred", (0 << 0), 3), new ExhibitionNightSecretTask("palette_PZ_exhibitionblack", (0 << 0), 6), new ExhibitionNightSecretTask("palette_PZ_exhibitionpurple", (0 << 0), 9), new ExhibitionNightSecretTask("palette_PZ_noise", (0 << 0), 12), new OutfitTask("palette_PZ_exhibitionbrain", (0 << 0), (2 << 0), function()
+	var pals = [new ExhibitionNightSecretTask("palette_PZ_exhibitionred", PlayerCharacter.PIZZELLE, 3), new ExhibitionNightSecretTask("palette_PZ_exhibitionblack", PlayerCharacter.PIZZELLE, 6), new ExhibitionNightSecretTask("palette_PZ_exhibitionpurple", PlayerCharacter.PIZZELLE, 9), new ExhibitionNightSecretTask("palette_PZ_noise", PlayerCharacter.PIZZELLE, 12), new OutfitTask("palette_PZ_exhibitionbrain", PlayerCharacter.PIZZELLE, ChefTaskCondition.onNotify, function()
 	{
 		ini_open(global.SaveFileName);
 		var judge = ini_read_string("Game", "Judgment", "none");
 		ini_close();
 		return judge != "none";
-	}), new OutfitTask("palette_PZ_exhibitionbraingold", (0 << 0), (2 << 0), function()
+	}), new OutfitTask("palette_PZ_exhibitionbraingold", PlayerCharacter.PIZZELLE, ChefTaskCondition.onNotify, function()
 	{
 		ini_open(global.SaveFileName);
 		var judge = ini_read_string("Game", "Judgment", "none");
 		ini_close();
 		return judge == "perfect" || judge == "holyshit";
-	}), new OutfitTask("palette_PZ_exhibitionpaper", (0 << 0), (0 << 0), function()
+	}), new OutfitTask("palette_PZ_exhibitionpaper", PlayerCharacter.PIZZELLE, ChefTaskCondition.perStep, function()
 	{
 		if (instance_exists(obj_exhibitiontrashcan))
 			return obj_exhibitiontrashcan.sprite_index == spr_trashcan_score || obj_exhibitiontrashcan.sprite_index == spr_trashcan_full;
 		else
 			return false;
-	}), new OutfitTask("palette_PZ_exhibitionentryway", (0 << 0), (0 << 0), function()
+	}), new OutfitTask("palette_PZ_exhibitionentryway", PlayerCharacter.PIZZELLE, ChefTaskCondition.perStep, function()
 	{
 		var room_list_index = array_get_index(obj_achievementTracker.constructionClutterCleared, room);
 		
@@ -219,19 +226,19 @@ function scr_get_palettes(arg0 = true)
 			return true;
 		
 		return false;
-	}), new OutfitTask("palette_PZ_exhibitionsteamy", (0 << 0), (0 << 0), function()
+	}), new OutfitTask("palette_PZ_exhibitionsteamy", PlayerCharacter.PIZZELLE, ChefTaskCondition.perStep, function()
 	{
 		if (!obj_parent_player.savedCottonSolid)
 			obj_achievementTracker.cottonBlockTime = 0;
 		
 		return obj_achievementTracker.cottonBlockTime >= 5;
-	}), new OutfitTask("palette_PZ_exhibitionmineshaft", (0 << 0), (0 << 0), function()
+	}), new OutfitTask("palette_PZ_exhibitionmineshaft", PlayerCharacter.PIZZELLE, ChefTaskCondition.perStep, function()
 	{
 		if (obj_parent_player.grounded)
 			obj_achievementTracker.bouncedOnFred = 0;
 		
 		return obj_achievementTracker.bouncedOnFred >= 5;
-	}), new OutfitTask("palette_PZ_exhibitionmolasses", (0 << 0), (0 << 0), function()
+	}), new OutfitTask("palette_PZ_exhibitionmolasses", PlayerCharacter.PIZZELLE, ChefTaskCondition.perStep, function()
 	{
 		return obj_achievementTracker.drownedEnemies >= 3;
 	})];
@@ -257,7 +264,7 @@ function scr_get_chef_tasks(arg0, arg1 = true)
 	switch (arg0)
 	{
 		case "entryway":
-			tasks[0] = new ChefTask("task_cc_all_breakables", (0 << 0), spr_bakertasks_entry, 0, function()
+			tasks[0] = new ChefTask("task_cc_all_breakables", ChefTaskCondition.perStep, spr_bakertasks_entry, 0, function()
 			{
 				var room_list_index = array_get_index(obj_achievementTracker.constructionBreakablesRooms, room);
 				
@@ -282,7 +289,7 @@ function scr_get_chef_tasks(arg0, arg1 = true)
 				
 				return array_length(obj_achievementTracker.constructionBreakablesRooms) == 0;
 			});
-			tasks[1] = new ChefTask("task_cc_speedrun", (0 << 0), spr_bakertasks_entry, 1, function()
+			tasks[1] = new ChefTask("task_cc_speedrun", ChefTaskCondition.perStep, spr_bakertasks_entry, 1, function()
 			{
 				var near_harry = false;
 				
@@ -294,17 +301,17 @@ function scr_get_chef_tasks(arg0, arg1 = true)
 				
 				return global.LevelMinutes < 2 && room == entryway_11 && near_harry;
 			});
-			tasks[2] = new ChefTask("task_cc_no_slip", (1 << 0), spr_bakertasks_entry, 2, function()
+			tasks[2] = new ChefTask("task_cc_no_slip", ChefTaskCondition.endOfLevel, spr_bakertasks_entry, 2, function()
 			{
 				return !obj_achievementTracker.constructHasSlipped;
 			});
 			break;
 		case "steamy":
-			tasks[0] = new ChefTask("task_ct_clock_room", (0 << 0), spr_bakertasks_steamy, 0, function()
+			tasks[0] = new ChefTask("task_ct_clock_room", ChefTaskCondition.perStep, spr_bakertasks_steamy, 0, function()
 			{
 				return room == steamy_sideroom;
 			});
-			tasks[1] = new ChefTask("task_ct_all_witches", (0 << 0), spr_bakertasks_steamy, 1, function()
+			tasks[1] = new ChefTask("task_ct_all_witches", ChefTaskCondition.perStep, spr_bakertasks_steamy, 1, function()
 			{
 				var room_list_index = array_get_index(obj_achievementTracker.cottonWitchRooms, room);
 				
@@ -320,7 +327,7 @@ function scr_get_chef_tasks(arg0, arg1 = true)
 				
 				return array_length(obj_achievementTracker.cottonWitchRooms) == 0;
 			});
-			tasks[2] = new ChefTask("task_ct_few_cotton_blocks", (0 << 0), spr_bakertasks_steamy, 2, function()
+			tasks[2] = new ChefTask("task_ct_few_cotton_blocks", ChefTaskCondition.perStep, spr_bakertasks_steamy, 2, function()
 			{
 				with (obj_parent_player)
 				{
@@ -361,7 +368,7 @@ function scr_get_chef_tasks(arg0, arg1 = true)
 			});
 			break;
 		case "mineshaft":
-			tasks[0] = new ChefTask("task_sm_all_miners", (0 << 0), spr_bakertasks_mines, 0, function()
+			tasks[0] = new ChefTask("task_sm_all_miners", ChefTaskCondition.perStep, spr_bakertasks_mines, 0, function()
 			{
 				var room_list_index = array_get_index(obj_achievementTracker.gnomeMinerRooms, room);
 				
@@ -385,18 +392,18 @@ function scr_get_chef_tasks(arg0, arg1 = true)
 				
 				return array_length(obj_achievementTracker.gnomeMinerRooms) == 0;
 			});
-			tasks[1] = new ChefTask("task_sm_minecart_nohit", (1 << 0), spr_bakertasks_mines, 1, function()
+			tasks[1] = new ChefTask("task_sm_minecart_nohit", ChefTaskCondition.endOfLevel, spr_bakertasks_mines, 1, function()
 			{
 				return !obj_achievementTracker.hitInMinecart;
 			});
-			tasks[2] = new ChefTask("task_sm_slug", (2 << 0), spr_bakertasks_mines, 2, function(arg0)
+			tasks[2] = new ChefTask("task_sm_slug", ChefTaskCondition.onNotify, spr_bakertasks_mines, 2, function(arg0)
 			{
 				obj_achievementTracker.slugsWhacked++;
 				return obj_achievementTracker.slugsWhacked >= 5;
 			});
 			break;
 		case "molasses":
-			tasks[0] = new ChefTask("task_ms_all_geyser", (0 << 0), spr_bakertasks_molasses, 0, function()
+			tasks[0] = new ChefTask("task_ms_all_geyser", ChefTaskCondition.perStep, spr_bakertasks_molasses, 0, function()
 			{
 				var room_list_index = array_get_index(obj_achievementTracker.geyserSpawnerRooms, room);
 				
@@ -420,11 +427,11 @@ function scr_get_chef_tasks(arg0, arg1 = true)
 				
 				return array_length(obj_achievementTracker.geyserSpawnerRooms) == 0;
 			});
-			tasks[1] = new ChefTask("task_ms_guardian_parry", (0 << 0), spr_bakertasks_molasses, 1, function()
+			tasks[1] = new ChefTask("task_ms_guardian_parry", ChefTaskCondition.perStep, spr_bakertasks_molasses, 1, function()
 			{
 				return obj_achievementTracker.guardianSupertaunted >= 3;
 			});
-			tasks[2] = new ChefTask("task_ms_catch", (0 << 0), spr_bakertasks_molasses, 2, function()
+			tasks[2] = new ChefTask("task_ms_catch", ChefTaskCondition.perStep, spr_bakertasks_molasses, 2, function()
 			{
 				if (obj_parent_player.grounded)
 					obj_achievementTracker.flingFrogSequence = [];
@@ -442,7 +449,7 @@ function scr_get_chef_tasks(arg0, arg1 = true)
 			});
 			break;
 		case "demoEN":
-			tasks[0] = new ChefTask("task_en_all_s", (1 << 0), spr_bakertasks_en_ranks, 0, function()
+			tasks[0] = new ChefTask("task_en_all_s", ChefTaskCondition.endOfLevel, spr_bakertasks_en_ranks, 0, function()
 			{
 				var lvlArr = ["entryway", "steamy", "mineshaft", "molasses"];
 				var res = true;
@@ -463,7 +470,7 @@ function scr_get_chef_tasks(arg0, arg1 = true)
 				ini_close();
 				return res;
 			}).setPersistent(true);
-			tasks[1] = new ChefTask("task_en_all_p", (1 << 0), spr_bakertasks_en_ranks, 1, function()
+			tasks[1] = new ChefTask("task_en_all_p", ChefTaskCondition.endOfLevel, spr_bakertasks_en_ranks, 1, function()
 			{
 				var lvlArr = ["entryway", "steamy", "mineshaft", "molasses"];
 				var res = true;

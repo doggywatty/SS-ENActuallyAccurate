@@ -1,3 +1,4 @@
+//PADDINGPADDINGPADDINGPADDINGPADDIN
 draw_sprite_tiled_ext(bg_credits, 0, bgCredits.x, 0, 1, 1, bgCredits.image_blend, bgCredits.image_alpha);
 draw_sprite_ext(spr_biggnomestudios_logosimple, 0, 0, 0, 1, 1, 0, c_white, showLogo * logoAlpha);
 

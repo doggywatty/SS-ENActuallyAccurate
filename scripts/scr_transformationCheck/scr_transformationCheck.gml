@@ -3,21 +3,21 @@ function scr_setTransfoTip(arg0)
 	switch (arg0)
 	{
 		case states.bossintro:
-		case (56 << 0):
-		case (57 << 0):
-		case (58 << 0):
+		case states.keyget:
+		case states.tackle:
+		case states.slipnslide:
 			global.TransfoPrompt = "prompt_werecotton";
 			break;
-		case (61 << 0):
-		case (63 << 0):
-		case (62 << 0):
+		case states.victory:
+		case states.Sjump:
+		case states.comingoutdoor:
 			global.TransfoPrompt = "prompt_minecart";
 			break;
-		case (59 << 0):
+		case states.ladder:
 			global.TransfoPrompt = "prompt_fling";
 			break;
-		case (67 << 0):
-		case (68 << 0):
+		case states.crouchslide:
+		case states.mach1:
 			global.TransfoPrompt = "prompt_fireass";
 			break;
 		default:
@@ -33,7 +33,7 @@ function scr_transformationCheck(arg0)
 {
 	var transfo = undefined;
 	
-	if (arg0 == (74 << 0))
+	if (arg0 == states.freefall)
 		arg0 = tauntStored.state;
 	
 	switch (arg0)
@@ -41,37 +41,37 @@ function scr_transformationCheck(arg0)
 		default:
 			transfo = undefined;
 			break;
-		case (54 << 0):
+		case states.runonball:
 			transfo = "Ball";
 			break;
 		case states.bossintro:
-		case (56 << 0):
-		case (57 << 0):
-		case (58 << 0):
+		case states.keyget:
+		case states.tackle:
+		case states.slipnslide:
 			transfo = "Werecotton";
 			break;
-		case (59 << 0):
-		case (93 << 0):
+		case states.ladder:
+		case states.parry:
 			transfo = "Fling";
 			break;
-		case (61 << 0):
-		case (63 << 0):
-		case (62 << 0):
+		case states.victory:
+		case states.Sjump:
+		case states.comingoutdoor:
 			transfo = "Minecart";
 			break;
-		case (88 << 0):
-		case (90 << 0):
-		case (89 << 0):
-		case (91 << 0):
+		case states.cotton:
+		case states.pal:
+		case states.uppercut:
+		case states.shocked:
 			transfo = "Frostburn";
 			break;
-		case (41 << 0):
-		case (42 << 0):
-		case (43 << 0):
-		case (44 << 0):
+		case states.punch:
+		case states.backkick:
+		case states.uppunch:
+		case states.shoulder:
 			transfo = "Marshdog";
 			break;
-		case (81 << 0):
+		case states.barrelmach2:
 			transfo = "Rocket";
 			break;
 	}

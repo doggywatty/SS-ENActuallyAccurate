@@ -4,7 +4,7 @@ while (i >= 0)
 {
 	var current_task = activeChefTasks[i];
 	
-	if (current_task.conditionType == (0 << 0) && current_task.taskCondition())
+	if (current_task.conditionType == ChefTaskCondition.perStep && current_task.taskCondition())
 	{
 		scr_award_chef_task(current_task.taskKey, current_task.taskSprite, current_task.taskIndex);
 		array_delete(activeChefTasks, i, 1);
@@ -21,7 +21,7 @@ while (i >= 0)
 	
 	with (activeExhibitionNightSecretTasks[i])
 	{
-		if (conditionType == (0 << 0) && taskCondition())
+		if (conditionType == ChefTaskCondition.perStep && taskCondition())
 		{
 			scr_award_palette(current_task.taskKey, current_task.taskCharacter);
 			array_delete(other.activeExhibitionNightSecretTasks, i, 1);

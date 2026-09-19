@@ -1,3 +1,4 @@
+//PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPA
 event_inherited();
 baddieSpriteIdle = spr_swed;
 baddieSpriteWalk = spr_swed;
@@ -25,6 +26,7 @@ enemyAttack_TriggerEvent = function()
 	}
 };
 
+//PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDIN
 enemyState_Attack = function()
 {
 	image_speed = 0.35;

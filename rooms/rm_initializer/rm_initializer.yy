@@ -2,7 +2,7 @@
   "resourceType": "GMRoom",
   "resourceVersion": "1.0",
   "name": "rm_initializer",
-  "creationCodeFile": "",
+  "creationCodeFile": "rooms/rm_initializer/RoomCreationCode.gml",
   "inheritCode": false,
   "inheritCreationOrder": false,
   "inheritLayers": false,
@@ -45,7 +45,7 @@
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_64BE643","colour":4294967295,"frozen":false,"hasCreationCode":true,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_shell","path":"objects/obj_shell/obj_shell.yy",},"properties":[
             {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_shell","path":"objects/obj_shell/obj_shell.yy",},"propertyId":{"name":"screenAnchorPointV","path":"objects/obj_shell/obj_shell.yy",},"value":"\"top\"",},
             {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_shell","path":"objects/obj_shell/obj_shell.yy",},"propertyId":{"name":"openModifiers","path":"objects/obj_shell/obj_shell.yy",},"value":"[]",},
-            {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_shell","path":"objects/obj_shell/obj_shell.yy",},"propertyId":{"name":"openKey","path":"objects/obj_shell/obj_shell.yy",},"value":"117",},
+            {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_shell","path":"objects/obj_shell/obj_shell.yy",},"propertyId":{"name":"openKey","path":"objects/obj_shell/obj_shell.yy",},"value":"ord(\"u\")",},
             {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_shell","path":"objects/obj_shell/obj_shell.yy",},"propertyId":{"name":"prompt","path":"objects/obj_shell/obj_shell.yy",},"value":"\"?\"",},
             {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_shell","path":"objects/obj_shell/obj_shell.yy",},"propertyId":{"name":"openFunction","path":"objects/obj_shell/obj_shell.yy",},"value":"scr_shell_openconsole",},
             {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_shell","path":"objects/obj_shell/obj_shell.yy",},"propertyId":{"name":"closeFunction","path":"objects/obj_shell/obj_shell.yy",},"value":"scr_shell_closeconsole",},

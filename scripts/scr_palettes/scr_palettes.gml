@@ -23,7 +23,7 @@ function palette_as_player(arg0 = sprite_index, arg1 = image_index, arg2 = globa
 
 function draw_player_sprite(arg0, arg1, arg2, arg3, arg4 = global.playerCharacter, arg5 = global.PlayerPaletteIndex)
 {
-	draw_player_sprite_ext(arg0, arg1, arg2, arg3, 1, 1, 0, 16777215, 1, arg4, arg5);
+	draw_player_sprite_ext(arg0, arg1, arg2, arg3, 1, 1, 0, c_white, 1, arg4, arg5);
 }
 
 function draw_player_sprite_ext(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9 = global.playerCharacter, arg10 = global.PlayerPaletteIndex)

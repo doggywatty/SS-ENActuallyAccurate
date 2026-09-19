@@ -1,10 +1,10 @@
-if (currentState == (2 << 0))
+if (currentState == ButtonState.lowering)
 {
-	currentState = (1 << 0);
+	currentState = ButtonState.pressed;
 	sprite_index = spr_Pressed;
 }
-else if (currentState == (3 << 0))
+else if (currentState == ButtonState.reverting)
 {
-	currentState = (0 << 0);
+	currentState = ButtonState.released;
 	sprite_index = spr_Released;
 }

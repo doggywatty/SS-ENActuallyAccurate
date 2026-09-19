@@ -1,6 +1,6 @@
 if (state == states.frozen)
 {
-	if (other.state != states.freefall && other.state != states.frozen && other.state != states.hang && other.state != states.gottreasure)
+	if (other.state != states.freefall && other.state != states.frozen && other.state != states.noclip && other.state != states.gottreasure)
 	{
 		with (other)
 		{

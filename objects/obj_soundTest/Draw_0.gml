@@ -9,7 +9,7 @@ var npspr = lang_get_sprite(spr_nowplaying);
 
 if (array_contains(bonus, music_desc))
 {
-	c = 16777215;
+	c = c_white;
 	npspr = lang_get_sprite(spr_nowplayingbonus);
 }
 

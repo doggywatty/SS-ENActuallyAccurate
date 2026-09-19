@@ -11,7 +11,7 @@ if (state != enemystates.thrown && state != states.boxxedpep)
 
 ragereset = max(ragereset - 1, 0);
 
-if (point_in_rectangle(obj_parent_player.x, obj_parent_player.y, x - 200, y - 50, x + 200, y + 50) && obj_parent_player.state != (40 << 0) && obj_parent_player.state != (26 << 0))
+if (point_in_rectangle(obj_parent_player.x, obj_parent_player.y, x - 200, y - 50, x + 200, y + 50) && obj_parent_player.state != states.grab && obj_parent_player.state != states.stunned)
 {
 	if (state != enemystates.attack && state == enemystates.normal && ragereset <= 0)
 	{
