@@ -1,4 +1,4 @@
-depth = 4;
+ depth = 4;
 alpha = 0;
 savedIndex = global.PlayerPaletteIndex;
 lockedPalettes = [];

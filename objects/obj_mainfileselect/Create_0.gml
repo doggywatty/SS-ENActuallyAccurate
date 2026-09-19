@@ -1,4 +1,4 @@
-//PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADD
+//PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPAD
 depth = 10;
 video_close();
 selectedFile = 0;
@@ -18,7 +18,6 @@ filePercentage = [];
 filePresent = [];
 fileJudgment = [];
 fileOpened = [];
-
 for (var i = 0; i < 3; i++)
 {
 	if (file_exists(savePath[i]))
@@ -40,7 +39,6 @@ for (var i = 0; i < 3; i++)
 		fileOpened[i] = false;
 	}
 }
-
 fileDisplayPercent = 0;
 hudAlpha = 0;
 abletomove = false;
@@ -59,7 +57,6 @@ image_speed = 0;
 fileDoodleW = 145;
 fileDoodleH = 192;
 fileDoodleSurf = [surface_create(fileDoodleW, fileDoodleH), surface_create(fileDoodleW, fileDoodleH), surface_create(fileDoodleW, fileDoodleH)];
-
 doodle_surface_manage = function()
 {
 	for (var i = 0; i < array_length(fileDoodleSurf); i++)
@@ -70,13 +67,11 @@ doodle_surface_manage = function()
 			surface_set_target(fileDoodleSurf[i]);
 			draw_clear_alpha(c_white, 1);
 			surface_reset_target();
-			
 			if (buffer_exists(fileDoodleBuffer[i]))
 				buffer_set_surface(fileDoodleBuffer[i], fileDoodleSurf[i], 0);
 		}
 	}
 };
-
 fileDoodleBuffer = [-4, -4, -4];
 fileDoodlePos = [[163, 0], [373, 0], [583, 0]];
 previewalpha = 0;

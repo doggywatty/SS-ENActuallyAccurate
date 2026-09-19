@@ -10,7 +10,6 @@ spr_dead = spr_null;
 x = -100;
 y = -100;
 playerPalette = false;
-
 onClick = function()
 {
 	if (dead)

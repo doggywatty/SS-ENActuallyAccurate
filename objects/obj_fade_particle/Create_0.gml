@@ -1,28 +1,28 @@
+//PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPAD
 depth = 0;
 image_speed = 0.35;
 playerID = -4;
 step_function = -4;
 followPlayer = false;
-
 particle_imgspd = function(arg0)
 {
 	image_speed = arg0;
 	return self;
 };
-
+//
 particle_depth = function(arg0)
 {
 	depth = arg0;
 	return self;
 };
-
+//P
 particle_scale = function(arg0, arg1)
 {
 	image_xscale = arg0;
 	image_yscale = arg1;
 	return self;
 };
-
+//PADDINGPA
 particle_followobj = function(arg0)
 {
 	if (instance_exists(arg0))
@@ -32,6 +32,5 @@ particle_followobj = function(arg0)
 		x = playerID.x;
 		y = playerID.y;
 	}
-	
 	return self;
 };
