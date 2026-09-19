@@ -12,7 +12,7 @@ function state_player_trick()
 		sprite_index = spr_player_PZ_trick;
 	}
 	
-	if (key_attack && (!grounded || slopeCheck(x + xscale, y)) && scr_solid(x + xscale, y, true) && !place_meeting(x + xscale, y, obj_destructibles) && global.playerCharacter == characters.PZ)
+	if (key_attack && (!grounded || slopeCheck(x + xscale, y)) && scr_solid(x + xscale, y, true) && !place_meeting(x + xscale, y, obj_destructibles) && global.playerCharacter == PlayerCharacter.PIZZELLE)
 	{
 		verticalMovespeed = movespeed;
 		

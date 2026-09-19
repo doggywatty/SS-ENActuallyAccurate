@@ -125,9 +125,9 @@ creditEntry = function() constructor
 			visible = true;
 			
 			if (flash)
-				draw_self_flash(16777215);
+				draw_self_flash(c_white);
 			else if (other.playerPalette)
-				draw_player_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha, (0 << 0), 2);
+				draw_player_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha, PlayerCharacter.PIZZELLE, 2);
 			else
 				draw_self();
 		}

@@ -15,9 +15,9 @@ if (state != enemystates.attack)
 enemyAttackTimer = max(enemyAttackTimer - 1, 0);
 ragereset = max(ragereset - 1, 0);
 
-if (point_in_rectangle(obj_parent_player.x, obj_parent_player.y, x - 100, y - 50, x + 100, y + 50) && obj_parent_player.state != (40 << 0) && obj_parent_player.state != (26 << 0))
+if (point_in_rectangle(obj_parent_player.x, obj_parent_player.y, x - 100, y - 50, x + 100, y + 50) && obj_parent_player.state != states.grab && obj_parent_player.state != states.stunned)
 {
-	if (state != enemystates.attack && state == enemystates.normal && (obj_parent_player.state == (41 << 0) || obj_parent_player.state == (42 << 0)) && enemyAttackTimer <= 0)
+	if (state != enemystates.attack && state == enemystates.normal && (obj_parent_player.state == states.punch || obj_parent_player.state == states.backkick) && enemyAttackTimer <= 0)
 	{
 		image_index = 0;
 		flash = true;

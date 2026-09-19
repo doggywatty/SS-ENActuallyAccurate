@@ -152,7 +152,7 @@ if (_collect_sfx)
 	
 	fmod_studio_event_instance_set_parameter_by_name(collect_sound, "state", (score_total_visual / score_total) * 10, true);
 }
-else if (event_instance_isplaying(collect_sound) && fmod_studio_event_instance_get_playback_state(collect_sound) != (4 << 0))
+else if (event_instance_isplaying(collect_sound) && fmod_studio_event_instance_get_playback_state(collect_sound) != FMOD_STUDIO_PLAYBACK_STATE.STOPPING)
 {
 	fmod_studio_event_instance_stop(collect_sound, false);
 }

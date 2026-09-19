@@ -3,7 +3,7 @@ selected = 0;
 
 switch (global.playerCharacter)
 {
-	case characters.PZ:
+	case PlayerCharacter.PIZZELLE:
 	default:
 		playerPauseSprite = spr_pizzelle_pause;
 		break;

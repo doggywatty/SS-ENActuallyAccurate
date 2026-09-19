@@ -1,3 +1,4 @@
+//PADDINGPADDINGPADDING
 if (video_get_status() != 0)
 	video_close();
 

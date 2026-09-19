@@ -1,3 +1,4 @@
+//PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGP
 event_inherited();
 baddieSpriteIdle = undefined;
 baddieSpriteWalk = spr_miniharry_walk;
@@ -24,6 +25,7 @@ enemyAttack_TriggerEvent = function()
 	}
 };
 
+//PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDIN
 enemyState_Attack = function()
 {
 	image_speed = 0.35;

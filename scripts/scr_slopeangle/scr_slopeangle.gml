@@ -1,3 +1,4 @@
+//PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDI
 function scr_slopeanglenonplayer(arg0, arg1, arg2 = 1)
 {
 	var array = 0;
@@ -47,5 +48,5 @@ function scr_slopeanglenonplayer(arg0, arg1, arg2 = 1)
 
 function scr_checkSlopeAngle()
 {
-	return scr_checkPositionSolidAngle(x, bbox_bottom, abs(x - bbox_left), abs(x - bbox_right) - 1, (bbox_bottom - bbox_top) / 2, -90, undefined, true);
+	return scr_checkPositionSolidAngle(x, bbox_bottom, abs(x - bbox_left), abs(x - bbox_right) - 1, bbox_height / 2, -90, undefined, true);
 }

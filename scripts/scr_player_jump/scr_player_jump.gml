@@ -102,7 +102,7 @@ function state_player_jump()
 		floatyGrab = 18;
 	}
 	
-	if (global.playerCharacter == characters.PZ)
+	if (global.playerCharacter == PlayerCharacter.PIZZELLE)
 	{
 		if (vsp > 5)
 			fallingAnimation++;

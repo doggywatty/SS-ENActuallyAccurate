@@ -71,7 +71,7 @@ if (!(is_hub() || is_tutorial() || !scr_roomcheck() || room == mineshaft_elevato
 	with (HUDObject_TV)
 	{
 		draw_sprite_ext(tvBG, tvBG_index, x, y, 1, 1, 0, c_white, 1);
-		draw_player_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, 16777215, 1);
+		draw_player_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_white, 1);
 		
 		if (sprite_index != spr_tvHUD_turnedOff && sprite_index != spr_tvHUD_turningOn)
 		{
@@ -137,6 +137,6 @@ if (!(is_hub() || is_tutorial() || !scr_roomcheck() || room == mineshaft_elevato
 
 if (!global.gamePauseState)
 {
-	scribble($"[wave][pPrompt]{global.TooltipPrompt}").blend(16777215, HUDObject_tooltipPrompts.image_alpha).align(1, 1).draw(HUDObject_tooltipPrompts.x, HUDObject_tooltipPrompts.y);
+	scribble($"[wave][pPrompt]{global.TooltipPrompt}").blend(c_white, HUDObject_tooltipPrompts.image_alpha).align(1, 1).draw(HUDObject_tooltipPrompts.x, HUDObject_tooltipPrompts.y);
 	draw_set_alpha(1);
 }

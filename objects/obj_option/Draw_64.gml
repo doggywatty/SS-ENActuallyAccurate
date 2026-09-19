@@ -1,7 +1,7 @@
 draw_rectangle_color(0, 0, 960, 540, c_black, c_black, c_black, c_black, false);
 
 for (var i = 0; i < array_length(bg_alpha); i++)
-	draw_sprite_tiled_ext(bg_options, i, bgx, bgy, 1, 1, 16777215, bg_alpha[i]);
+	draw_sprite_tiled_ext(bg_options, i, bgx, bgy, 1, 1, c_white, bg_alpha[i]);
 
 if (instance_exists(obj_option_keyconfig) || instance_exists(obj_option_confirm) || instance_exists(obj_option_lang) || instance_exists(obj_langSpriteLoader))
 	exit;
@@ -24,7 +24,7 @@ for (var i = 0; i < _optLength; i++)
 {
 	var _option = options[i];
 	var _yy = (camera_get_view_height(view_camera[0]) / 2) + round(-((_optLength - 1) * _strHeight * 0.5)) + (i * _strHeight);
-	var _iColor = (i == optionSelected) ? 16777215 : 8421504;
+	var _iColor = (i == optionSelected) ? c_white : c_gray;
 	_option.icon_alpha = approach(_option.icon_alpha, i == optionSelected, 0.2);
 	
 	switch (_option.type)
@@ -81,7 +81,7 @@ for (var i = 0; i < _optLength; i++)
 			}
 			
 			break;
-		case (7 << 0):
+		case OptionType.slider:
 			var old_halign = draw_get_halign();
 			_xx = 150;
 			draw_set_halign(fa_left);

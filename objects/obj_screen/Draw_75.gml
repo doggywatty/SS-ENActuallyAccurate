@@ -30,12 +30,12 @@ if (global.TextureFiltering && !do_letterbox && ((res_w % 960) > 0 || (res_h % 5
 	surface_prepare_aa_filter(global.GameSurface);
 
 draw_clear_alpha(c_black, 1);
-draw_sprite_tiled_ext(bgSprite.sprite_index, bgSprite.image_index, screen_x, screen_y, scale, scale, 16777215, 1);
+draw_sprite_tiled_ext(bgSprite.sprite_index, bgSprite.image_index, screen_x, screen_y, scale, scale, c_white, 1);
 
 for (var i = 0; i < ds_list_size(bgSpriteOld); i++)
 {
 	var bg = ds_list_find_value(bgSpriteOld, i);
-	draw_sprite_tiled_ext(bg.sprite_index, bg.image_index, screen_x, screen_y, scale, scale, 16777215, bg.image_alpha);
+	draw_sprite_tiled_ext(bg.sprite_index, bg.image_index, screen_x, screen_y, scale, scale, c_white, bg.image_alpha);
 }
 
 if (global.Letterbox)

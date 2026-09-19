@@ -29,7 +29,7 @@ if (!global.panic)
 				if (!is_undefined(musicFunc))
 					musicFunc(room, musicInst, secretMusicInst);
 				
-				fmod_studio_event_instance_set_callback(musicInst, (4096 << 0));
+				fmod_studio_event_instance_set_callback(musicInst, FMOD_STUDIO_EVENT_CALLBACK.TIMELINE_BEAT);
 			}
 		}
 	}
@@ -58,13 +58,13 @@ if (global.RoomIsSecret)
 		fmod_studio_event_instance_set_timeline_position(global.RoomMusic.secretMusicInst, secret_pos);
 		fmod_studio_event_instance_set_paused(global.RoomMusic.musicInst, true);
 		fmod_studio_event_instance_set_paused(global.RoomMusic.secretMusicInst, false);
-		fmod_studio_event_instance_set_callback(global.RoomMusic.secretMusicInst, (4096 << 0));
+		fmod_studio_event_instance_set_callback(global.RoomMusic.secretMusicInst, FMOD_STUDIO_EVENT_CALLBACK.TIMELINE_BEAT);
 	}
 	
 	if (global.panic)
 	{
 		fmod_studio_event_instance_set_paused(global.EscapeMusicInst, true);
-		fmod_studio_event_instance_set_callback(global.EscapeMusicInst, (262144 << 0));
+		fmod_studio_event_instance_set_callback(global.EscapeMusicInst, FMOD_STUDIO_EVENT_CALLBACK.NESTED_TIMELINE_BEAT);
 	}
 }
 

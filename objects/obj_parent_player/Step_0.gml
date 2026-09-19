@@ -64,7 +64,7 @@ if (grounded)
 
 var ceiling = inBackgroundLayer ? (-global.BgInstanceLayerOffset - 600) : -600;
 
-if ((y > (room_height + 400) || y < ceiling) && room != timesuproom && state != states.hang && !instance_exists(obj_fadeoutTransition) && !instance_exists(obj_cutsceneManager))
+if ((y > (room_height + 400) || y < ceiling) && room != timesuproom && state != states.noclip && !instance_exists(obj_fadeoutTransition) && !instance_exists(obj_cutsceneManager))
 	scr_playerrespawn();
 
 if (state != states.slam && state != states.meteorpep && state != states.skateboard && state != states.secondjump)
@@ -152,7 +152,7 @@ if (!hurted)
 	image_alpha = 1;
 
 var machslide_check = sprite_index == spr_machslideboost3 || sprite_index == spr_machslideboost3FallStart || sprite_index == spr_machslideboost3Fall;
-var killmove_states = [(33 << 0), (22 << 0), (89 << 0), (88 << 0), (56 << 0), states.bossintro, (57 << 0), (58 << 0), (81 << 0), (65 << 0), (61 << 0), (67 << 0), (16 << 0), (39 << 0), (53 << 0), (42 << 0), (37 << 0), (27 << 0), (4 << 0), (93 << 0), (7 << 0)];
+var killmove_states = [states.shotgun, states.bombpep, states.uppercut, states.cotton, states.keyget, states.bossintro, states.tackle, states.slipnslide, states.barrelmach2, states.crouch, states.victory, states.crouchslide, states.chainsawbump, states.grind, states.freefallprep, states.backkick, states.slam, states.highjump, states.slap, states.parry, states.cheeseball];
 
 if (array_contains(killmove_states, state) || (state == states.machfreefall && machslide_check) || (state == states.Nhookshot && movespeed >= 12) || (state == states.ufofloat && vsp < 0) || (state == states.pal && vsp > 0) || (state == states.runonball && sprite_index != spr_tumblestart && sprite_index != spr_tumbleend) || (state == states.cheesepep && verticalMovespeed > 8) || (state == states.punch && abs(movespeed) >= 10) || (state == states.climbdownwall && mach3Roll > 0) || (state == states.secondjump && sprite_index == spr_piledriver) || ((state == states.secondjump && sprite_index == spr_piledriverIntro) && sprite_index != spr_player_PZ_werecotton_drill_h))
 	instakillmove = true;

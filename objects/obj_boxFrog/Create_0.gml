@@ -1,3 +1,4 @@
+//PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPAD
 event_inherited();
 baddieSpriteIdle = spr_boxfrog_boxidle;
 baddieSpriteWalk = spr_boxfrog_boxidle;
@@ -30,6 +31,7 @@ enemyAttack_TriggerEvent = function()
 	}
 };
 
+//PADDINGPADDINGPADDINGPADDINGPADDIN
 enemyState_Attack = function()
 {
 	wearingBox = false;

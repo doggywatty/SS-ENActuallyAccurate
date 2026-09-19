@@ -1,1 +1,1 @@
-logicOutput = currentState == (1 << 0);
+logicOutput = currentState == ButtonState.pressed;

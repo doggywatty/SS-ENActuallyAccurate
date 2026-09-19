@@ -9,7 +9,7 @@ if (state != enemystates.thrown && state != states.boxxedpep)
 
 enemyAttackTimer = max(enemyAttackTimer - 1, 0);
 
-if (((obj_parent_player.x > (x - 50) && obj_parent_player.x < (x + 50)) && (y <= (obj_parent_player.y + 300) && y >= (obj_parent_player.y - 300))) && obj_parent_player.state != states.bossintro && obj_parent_player.state != (56 << 0) && obj_parent_player.state != (40 << 0) && obj_parent_player.state != (57 << 0))
+if (((obj_parent_player.x > (x - 50) && obj_parent_player.x < (x + 50)) && (y <= (obj_parent_player.y + 300) && y >= (obj_parent_player.y - 300))) && obj_parent_player.state != states.bossintro && obj_parent_player.state != states.keyget && obj_parent_player.state != states.grab && obj_parent_player.state != states.tackle)
 {
 	if (state != enemystates.attack && enemyAttackTimer <= 0 && obj_parent_player.state != states.bossintro)
 	{

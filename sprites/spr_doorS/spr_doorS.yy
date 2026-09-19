@@ -53,7 +53,7 @@
     "showBackdropImage": false,
     "timeUnits": 1,
     "tracks": [
-      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":-1,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
+      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
             {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"4ef70167-b938-46e9-9060-8cc10c0765b8","path":"sprites/spr_doorS/spr_doorS.yy",},},},"Disabled":false,"id":"ea7af0ff-0f3d-4499-81db-0266ef652d03","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],

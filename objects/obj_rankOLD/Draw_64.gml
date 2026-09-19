@@ -3,7 +3,7 @@ if (goup)
 else
 	pal_swap_set(rankpal, bgdex, 0);
 
-draw_sprite_tiled_ext(bgspr, bgdex, bgx, bgy, 1, 1, 16777215, totalalpha);
+draw_sprite_tiled_ext(bgspr, bgdex, bgx, bgy, 1, 1, c_white, totalalpha);
 shader_reset();
 
 if (goup)

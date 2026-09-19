@@ -138,7 +138,7 @@ enemyDraw_extra = function()
 	
 	if (is_underground)
 	{
-		digOverlayEffect.draw(x, y, sign(image_xscale), 1, 0, 16777215, 1);
+		digOverlayEffect.draw(x, y, sign(image_xscale), 1, 0, c_white, 1);
 		digOverlayEffect.update((abs(hsp) / 8) * 0.5);
 	}
 };

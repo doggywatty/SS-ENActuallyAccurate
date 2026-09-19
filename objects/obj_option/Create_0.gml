@@ -1,13 +1,14 @@
-optionBG[(0 << 0)] = 0;
-optionBG[(1 << 0)] = 1;
-optionBG[(2 << 0)] = 2;
-optionBG[(3 << 0)] = 2;
-optionBG[(4 << 0)] = 3;
-optionBG[(5 << 0)] = 5;
-optionBG[(6 << 0)] = 4;
-optionBG[(7 << 0)] = 4;
-optionBG[(8 << 0)] = 4;
-optionBG[(9 << 0)] = 4;
+//PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPA
+optionBG[OptionMenu.main] = 0;
+optionBG[OptionMenu.audio] = 1;
+optionBG[OptionMenu.video] = 2;
+optionBG[OptionMenu.windowMode] = 2;
+optionBG[OptionMenu.game] = 3;
+optionBG[OptionMenu.language] = 5;
+optionBG[OptionMenu.controls] = 4;
+optionBG[OptionMenu.keyboard] = 4;
+optionBG[OptionMenu.controller] = 4;
+optionBG[OptionMenu.deadzones] = 4;
 
 handle_savedoption = function()
 {
@@ -34,7 +35,7 @@ scr_input_varinit();
 bg_alpha = [1, 0, 0, 0, 0, 0, 0];
 inputBuffer = 1;
 activeSFX = -4;
-optionMenu = (0 << 0);
+optionMenu = OptionMenu.main;
 backMenu = -4;
 backOption = 0;
 scrollbuffer = 0;

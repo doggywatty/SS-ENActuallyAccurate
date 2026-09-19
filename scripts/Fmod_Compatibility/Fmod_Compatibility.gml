@@ -30,7 +30,7 @@ function fmod_createEventInstance(event) {
 /// @param {string} name
 /// @returns {real} Instance reference
 function fmod_event_getParameter(event_instance_ref, name) {
-	var param = fmod_studio_event_instance_get_parameter_by_name(event_instance_ref, nae)
+	var param = fmod_studio_event_instance_get_parameter_by_name(event_instance_ref, name)
 	return param.value;
 }
 

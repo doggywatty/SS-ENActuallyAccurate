@@ -9,7 +9,7 @@ variable_global_set("sh_help", function(args) {
 	if (array_length(args) > 1) {
 		// Display specific help for an individual function
 		var help_function = args[1];
-		if (_array_contains(allFunctions, help_function)) {
+		if (self._array_contains(allFunctions, help_function)) {
 			if (variable_struct_exists(functionData, help_function)) {
 				var metadata = functionData[$ help_function];
 				var output = help_function;

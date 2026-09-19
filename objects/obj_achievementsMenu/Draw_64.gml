@@ -39,7 +39,7 @@ for (var i = 0; i < rowTotal; i++)
 		
 		if (isSelected)
 		{
-			c = 16777215;
+			c = c_white;
 			task.y = round(lerp(task.y, -16, 0.3));
 		}
 		else
@@ -100,7 +100,7 @@ for (var i = 1; i <= array_length(outfitArr); i++)
 	
 	if (isSelected)
 	{
-		c = 16777215;
+		c = c_white;
 		task.y = round(lerp(task.y, -16, 0.3));
 	}
 	else

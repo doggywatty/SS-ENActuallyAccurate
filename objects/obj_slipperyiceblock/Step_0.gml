@@ -2,7 +2,7 @@ if (!global.freezeframe)
 {
 	var _player = instance_nearest(x, y, obj_parent_player);
 	
-	if (place_meeting(x, y - 1, _player) && _player.grounded && !_player.cutscene && _player.state != states.hang && _player.state != states.frozen)
+	if (place_meeting(x, y - 1, _player) && _player.grounded && !_player.cutscene && _player.state != states.noclip && _player.state != states.frozen)
 	{
 		with (_player)
 		{

@@ -1,3 +1,4 @@
+//PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPA
 event_inherited();
 state = states.breakdance;
 canGetScared = false;
@@ -24,6 +25,7 @@ enemyDeath_SpawnBody = function()
 	}
 };
 
+//PADDINGPADDINGPADDIN
 enemyAttack_TriggerEvent = function()
 {
 	if (scr_enemy_playerisnear(400, 60) && grounded && state == states.breakdance)
@@ -37,6 +39,7 @@ enemyAttack_TriggerEvent = function()
 
 slide = 0;
 
+//P
 enemyCustomStates = function()
 {
 	switch (state)

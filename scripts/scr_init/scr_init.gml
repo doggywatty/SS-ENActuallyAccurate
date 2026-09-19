@@ -1,3 +1,4 @@
+//PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPAD
 global.scribble_saved_profile = "[pPrompt]";
 
 function scribble_quick_button(arg0)
@@ -10,60 +11,74 @@ scribble_add_macro("kL", function()
 {
 	return scribble_quick_button("left");
 });
+//PAD
 scribble_add_macro("kU", function()
 {
 	return scribble_quick_button("up");
 });
+//PADDI
 scribble_add_macro("kD", function()
 {
 	return scribble_quick_button("down");
 });
+//PADDI
 scribble_add_macro("kR", function()
 {
 	return scribble_quick_button("right");
 });
+//PADDI
 scribble_add_macro("kJ", function()
 {
 	return scribble_quick_button("jump");
 });
+//PADDI
 scribble_add_macro("kG", function()
 {
 	return scribble_quick_button("slap");
 });
+//PADDI
 scribble_add_macro("kM", function()
 {
 	return scribble_quick_button("attack");
 });
+//PADDIN
 scribble_add_macro("kT", function()
 {
 	return scribble_quick_button("taunt");
 });
+//PADDINGPAD
 scribble_add_macro("kSJ", function()
 {
 	return scribble_quick_button("dialogSJ");
 });
+//PADDINGPADDI
 scribble_add_macro("kGP", function()
 {
 	return scribble_quick_button("dialogGP");
 });
+//PADDINGPA
 scribble_add_macro("kFWD", function()
 {
 	return scribble_quick_button("forward");
 });
+//PADDINGPA
 scribble_add_macro("kBCK", function()
 {
 	return scribble_quick_button("backward");
 });
+//PADDINGPADDINGPA
 scribble_add_macro("pNPC", function()
 {
 	global.scribble_saved_profile = "[pNPC]";
 	return "[npcfont][c_black]";
 });
+//PADDINGPADDINGPADDI
 scribble_add_macro("pPrompt", function()
 {
 	global.scribble_saved_profile = "[pPrompt]";
 	return "[promptfont][c_white]";
 });
+//PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDIN
 scribble_add_macro("iSl", function()
 {
 	return scr_getDialogIcon("SLUGGY", "c_white", "c_white");
@@ -93,13 +108,13 @@ global.GLOBAL_FUN = 0;
 
 function scr_gameInit()
 {
-	var dbg_mode = (0 << 0);
+	var dbg_mode = debugmode.off;
 	var p_i = 0;
 	var p_c = parameter_count();
 	
 	while (p_i <= p_c)
 	{
-		if (dbg_mode == (2 << 0))
+		if (dbg_mode == debugmode.debug)
 			break;
 		
 		var p_s = string_lower(parameter_string(p_i));
@@ -110,11 +125,11 @@ function scr_gameInit()
 			case "--dev":
 			case "-debug":
 			case "--debug":
-				dbg_mode = (2 << 0);
+				dbg_mode = debugmode.debug;
 				break;
 			case "-playtest":
 			case "--playtest":
-				dbg_mode = (1 << 0);
+				dbg_mode = debugmode.playtest;
 				break;
 		}
 		

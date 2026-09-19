@@ -15,23 +15,23 @@ switch (optionMenu)
 		backOption = 0;
 		options = [new option_button("opt_audio", function()
 		{
-			option_goto((1 << 0));
+			option_goto(OptionMenu.audio);
 		}).add_icon(spr_newpause_icons, 5), new option_button("opt_video", function()
 		{
-			option_goto((2 << 0));
+			option_goto(OptionMenu.video);
 		}).add_icon(spr_newpause_icons, 6), new option_button("opt_game", function()
 		{
-			option_goto((4 << 0));
+			option_goto(OptionMenu.game);
 		}).add_icon(spr_newpause_icons, 8), new option_button("opt_controls", function()
 		{
-			option_goto((6 << 0));
+			option_goto(OptionMenu.controls);
 		}).add_icon(spr_newpause_icons, 7)];
 		
 		if (room == rm_mainmenu)
 		{
 			var lang_menu = new option_button("opt_language", function()
 			{
-				option_goto((5 << 0));
+				option_goto(OptionMenu.language);
 				instance_create(0, 0, obj_option_lang);
 				scr_input_varinit();
 			});
@@ -40,8 +40,8 @@ switch (optionMenu)
 		}
 		
 		break;
-	case (1 << 0):
-		backMenu = (0 << 0);
+	case OptionMenu.audio:
+		backMenu = OptionMenu.main;
 		backOption = 0;
 		alignCenter = false;
 		sliderSprite = spr_optionslide_bar;
@@ -89,8 +89,8 @@ switch (optionMenu)
 			fmod_studio_system_set_parameter_by_name("speakerOption", arg0, true);
 		}, global.speakerOption)];
 		break;
-	case (2 << 0):
-		backMenu = (0 << 0);
+	case OptionMenu.video:
+		backMenu = OptionMenu.main;
 		backOption = 1;
 		alignCenter = false;
 		var res = [];
@@ -101,7 +101,7 @@ switch (optionMenu)
 		var letterbox_option = ["opt_off", "opt_vid_letterbox_simple", "opt_vid_letterbox_doodle", "opt_vid_letterbox_dynamic"];
 		options = [toMainPage, new option_button("opt_vid_windowmode", function()
 		{
-			option_goto((3 << 0));
+			option_goto(OptionMenu.windowMode);
 		}), new option_normal("opt_vid_resolution", res, function(arg0)
 		{
 			quick_write_option("Settings", "opt_resolution", arg0);
@@ -134,8 +134,8 @@ switch (optionMenu)
 			global.ShowHUD = arg0;
 		}, global.ShowHUD)];
 		break;
-	case (3 << 0):
-		backMenu = (2 << 0);
+	case OptionMenu.windowMode:
+		backMenu = OptionMenu.video;
 		backOption = 1;
 		alignCenter = false;
 		options = [toMainPage, new option_button("opt_vid_windowmode_windowed", function()
@@ -149,8 +149,8 @@ switch (optionMenu)
 			set_fullscreen_option(2);
 		})];
 		break;
-	case (4 << 0):
-		backMenu = (0 << 0);
+	case OptionMenu.game:
+		backMenu = OptionMenu.main;
 		backOption = 2;
 		alignCenter = false;
 		var timer_options = ["opt_off", "opt_game_timer_type_level", "opt_game_timer_type_save", "opt_game_timer_type_both"];
@@ -181,25 +181,25 @@ switch (optionMenu)
 		}
 		
 		break;
-	case (5 << 0):
-		backMenu = (0 << 0);
+	case OptionMenu.language:
+		backMenu = OptionMenu.main;
 		backOption = 4;
 		alignCenter = false;
 		break;
-	case (6 << 0):
-		backMenu = (0 << 0);
+	case OptionMenu.controls:
+		backMenu = OptionMenu.main;
 		backOption = 3;
 		alignCenter = false;
 		options = [toMainPage, new option_button("opt_ctrl_keyboard", function()
 		{
-			option_goto((7 << 0));
+			option_goto(OptionMenu.keyboard);
 		}), new option_button("opt_ctrl_controller", function()
 		{
-			option_goto((8 << 0));
+			option_goto(OptionMenu.controller);
 		})];
 		break;
-	case (7 << 0):
-		backMenu = (6 << 0);
+	case OptionMenu.keyboard:
+		backMenu = OptionMenu.controls;
 		backOption = 1;
 		alignCenter = false;
 		options = [toMainPage, new option_button("opt_ctrl_bindings", function()
@@ -221,8 +221,8 @@ switch (optionMenu)
 			global.option_groundpound_key = arg0;
 		}, global.option_groundpound_key)];
 		break;
-	case (8 << 0):
-		backMenu = (6 << 0);
+	case OptionMenu.controller:
+		backMenu = OptionMenu.controls;
 		backOption = 2;
 		alignCenter = false;
 		options = [toMainPage, new option_button("opt_ctrl_bindings", function()
@@ -236,7 +236,7 @@ switch (optionMenu)
 			}
 		}), new option_button("opt_ctrl_deadzones", function()
 		{
-			option_goto((9 << 0));
+			option_goto(OptionMenu.deadzones);
 		}), new option_normal("opt_ctrl_controllersuperjump", onOffToggle, function(arg0)
 		{
 			quick_write_option("Settings", "dsjumpgp", arg0);
@@ -247,55 +247,55 @@ switch (optionMenu)
 			global.option_groundpound_gp = arg0;
 		}, global.option_groundpound_gp)];
 		break;
-	case (9 << 0):
-		backMenu = (8 << 0);
+	case OptionMenu.deadzones:
+		backMenu = OptionMenu.controller;
 		backOption = 2;
 		alignCenter = false;
 		sliderSprite = spr_optionSlider;
 		sliderIcon = spr_optionSliderIcon2;
 		options = [toMainPage, new option_slider("opt_ctrl_dz_gen", function(arg0)
 		{
-			global.deadzones[(0 << 0)] = arg0 / 100;
+			global.deadzones[Deadzone.master] = arg0 / 100;
 		}, function(arg0)
 		{
-			global.deadzones[(0 << 0)] = arg0 / 100;
-			quick_write_option("Settings", "deadzoneMaster", global.deadzones[(0 << 0)]);
-		}, round(global.deadzones[(0 << 0)] * 100)), new option_slider("opt_ctrl_dz_vert", function(arg0)
+			global.deadzones[Deadzone.master] = arg0 / 100;
+			quick_write_option("Settings", "deadzoneMaster", global.deadzones[Deadzone.master]);
+		}, round(global.deadzones[Deadzone.master] * 100)), new option_slider("opt_ctrl_dz_vert", function(arg0)
 		{
-			global.deadzones[(1 << 0)] = arg0 / 100;
+			global.deadzones[Deadzone.vertical] = arg0 / 100;
 		}, function(arg0)
 		{
-			global.deadzones[(1 << 0)] = arg0 / 100;
-			quick_write_option("Settings", "deadzoneVertical", global.deadzones[(1 << 0)]);
-		}, round(global.deadzones[(1 << 0)] * 100)), new option_slider("opt_ctrl_dz_horiz", function(arg0)
+			global.deadzones[Deadzone.vertical] = arg0 / 100;
+			quick_write_option("Settings", "deadzoneVertical", global.deadzones[Deadzone.vertical]);
+		}, round(global.deadzones[Deadzone.vertical] * 100)), new option_slider("opt_ctrl_dz_horiz", function(arg0)
 		{
-			global.deadzones[(2 << 0)] = arg0 / 100;
+			global.deadzones[Deadzone.horizontal] = arg0 / 100;
 		}, function(arg0)
 		{
-			global.deadzones[(2 << 0)] = arg0 / 100;
-			quick_write_option("Settings", "deadzoneHorizontal", global.deadzones[(2 << 0)]);
-		}, round(global.deadzones[(2 << 0)] * 100)), new option_slider("opt_ctrl_dz_press", function(arg0)
+			global.deadzones[Deadzone.horizontal] = arg0 / 100;
+			quick_write_option("Settings", "deadzoneHorizontal", global.deadzones[Deadzone.horizontal]);
+		}, round(global.deadzones[Deadzone.horizontal] * 100)), new option_slider("opt_ctrl_dz_press", function(arg0)
 		{
-			global.deadzones[(3 << 0)] = arg0 / 100;
+			global.deadzones[Deadzone.press] = arg0 / 100;
 		}, function(arg0)
 		{
-			global.deadzones[(3 << 0)] = arg0 / 100;
-			quick_write_option("Settings", "deadzonePress", global.deadzones[(3 << 0)]);
-		}, round(global.deadzones[(3 << 0)] * 100)), new option_slider("opt_ctrl_dz_superjump", function(arg0)
+			global.deadzones[Deadzone.press] = arg0 / 100;
+			quick_write_option("Settings", "deadzonePress", global.deadzones[Deadzone.press]);
+		}, round(global.deadzones[Deadzone.press] * 100)), new option_slider("opt_ctrl_dz_superjump", function(arg0)
 		{
-			global.deadzones[(4 << 0)] = arg0 / 100;
+			global.deadzones[Deadzone.sjump] = arg0 / 100;
 		}, function(arg0)
 		{
-			global.deadzones[(4 << 0)] = arg0 / 100;
-			quick_write_option("Settings", "deadzoneSJump", global.deadzones[(4 << 0)]);
-		}, round(global.deadzones[(4 << 0)] * 100)), new option_slider("opt_ctrl_dz_crouchwalk", function(arg0)
+			global.deadzones[Deadzone.sjump] = arg0 / 100;
+			quick_write_option("Settings", "deadzoneSJump", global.deadzones[Deadzone.sjump]);
+		}, round(global.deadzones[Deadzone.sjump] * 100)), new option_slider("opt_ctrl_dz_crouchwalk", function(arg0)
 		{
-			global.deadzones[(5 << 0)] = arg0 / 100;
+			global.deadzones[Deadzone.crouch] = arg0 / 100;
 		}, function(arg0)
 		{
-			global.deadzones[(5 << 0)] = arg0 / 100;
-			quick_write_option("Settings", "deadzoneCrouch", global.deadzones[(5 << 0)]);
-		}, round(global.deadzones[(5 << 0)] * 100))];
+			global.deadzones[Deadzone.crouch] = arg0 / 100;
+			quick_write_option("Settings", "deadzoneCrouch", global.deadzones[Deadzone.crouch]);
+		}, round(global.deadzones[Deadzone.crouch] * 100))];
 		break;
 }
 

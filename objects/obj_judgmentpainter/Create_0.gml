@@ -1,3 +1,4 @@
+//PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPAD
 active = false;
 visible = false;
 image_speed = 0;
@@ -56,6 +57,7 @@ current_talk_inst = -4;
 typist = scribble_typist();
 typist.pause();
 typist.in(1, 0);
+//PADDINGPADDINGPADDINGPADDINGPADDINGPADDI
 typist.function_per_char(function()
 {
 	static buffer = 0;

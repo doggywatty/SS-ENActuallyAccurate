@@ -7,5 +7,5 @@ draw_text_scribble(x, y, $"[fa_middle][fa_center][c_white][fontDefault]{string_u
 for (var i = 0; i < array_length(menuArrow); i++)
 {
 	with (menuArrow[i])
-		draw(x + offSet, other.y, 1, 1, 0, 16777215, 1);
+		draw(x + offSet, other.y, 1, 1, 0, c_white, 1);
 }

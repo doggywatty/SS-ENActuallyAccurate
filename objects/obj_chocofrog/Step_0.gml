@@ -1,6 +1,6 @@
 with (instance_nearest(x, y, obj_parent_player))
 {
-	var bumpstates = [(33 << 0), (32 << 0), (12 << 0), (10 << 0), (65 << 0)];
+	var bumpstates = [states.shotgun, states.pistol, states.climbdownwall, states.pistalaim, states.crouch];
 	
 	if ((place_meeting(x + hsp, y, other.id) || place_meeting(x + xscale, y, other.id)) && object_index != obj_chocofrogsmall && array_contains(bumpstates, state))
 	{

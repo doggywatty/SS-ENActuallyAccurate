@@ -1,3 +1,10 @@
+//PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDING
+enum DeviceSlot
+{
+	keyboard = 0,
+	gamepad = 1
+}
+
 depth = -99;
 
 if (instance_number(object_index) > 1)
@@ -12,8 +19,8 @@ switchBuffer = 0;
 switchBufferMax = 25;
 active = true;
 device_found = false;
-device_selected[(0 << 0)] = false;
-device_selected[(1 << 0)] = false;
+device_selected[DeviceSlot.keyboard] = false;
+device_selected[DeviceSlot.gamepad] = false;
 disconnected_device = -2;
 showtext = false;
 textflash = 0;

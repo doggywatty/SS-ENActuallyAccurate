@@ -34,7 +34,7 @@ if (deleteFileBuffer >= deleteFileBufferMax)
 		if (file_exists(save_path[i]))
 		{
 			ini_open(save_path[i]);
-			ini_key_delete("Misc", $"playerPaletteIndex_{scr_getCharacterPrefix((0 << 0))}");
+			ini_key_delete("Misc", $"playerPaletteIndex_{scr_getCharacterPrefix(PlayerCharacter.PIZZELLE)}");
 			ini_close();
 			
 			with (obj_mainfileselect)

@@ -1,3 +1,4 @@
+//PADDINGPADDINGPADDINGPADDINGPADDINGPA
 global.instancelist = ds_list_create();
 
 function check_and_destroy(arg0, arg1, arg2, arg3 = -4)
@@ -42,7 +43,7 @@ function scr_collide_destructibles()
 		mask_index = spr_player_mask;
 	
 	var _player_dir = sign(obj_player1.hsp) ? max(obj_player1.xscale, obj_player1.hsp) : min(obj_player1.xscale, obj_player1.hsp);
-	var side_to_side_states = [(32 << 0), (4 << 0), (22 << 0), (88 << 0), (90 << 0), (89 << 0), (16 << 0), (39 << 0), (75 << 0), (69 << 0), (33 << 0), (3 << 0), (86 << 0), (12 << 0), (57 << 0), (65 << 0), (66 << 0), (48 << 0), (51 << 0), (53 << 0), (54 << 0), (40 << 0), (26 << 0), (61 << 0), (41 << 0), (42 << 0), (68 << 0), (58 << 0), (8 << 0), (7 << 0)];
+	var side_to_side_states = [states.pistol, states.slap, states.bombpep, states.cotton, states.pal, states.uppercut, states.chainsawbump, states.grind, states.freefallland, states.mach2, states.shotgun, states.Nhookshot, states.current, states.climbdownwall, states.tackle, states.crouch, states.crouchjump, states.ufofloat, states.gameover, states.freefallprep, states.runonball, states.grab, states.stunned, states.victory, states.punch, states.backkick, states.mach1, states.slipnslide, states.cheesepepstick, states.cheeseball];
 	
 	if (array_contains(side_to_side_states, state) || (state == states.handstandjump && sprite_index == spr_swingDing) || (state == states.barrelmach2 && substate == 0))
 	{

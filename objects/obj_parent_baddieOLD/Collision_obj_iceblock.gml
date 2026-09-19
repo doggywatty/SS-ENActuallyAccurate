@@ -1,2 +1,2 @@
-if (other.state == (861 << 0) && !invincibleBaddie && baddieCollisionBoxEnabled)
+if (other.state == enemystates.stun && !invincibleBaddie && baddieCollisionBoxEnabled)
 	instance_destroy();

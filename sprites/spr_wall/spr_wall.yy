@@ -77,7 +77,7 @@
     "showBackdropImage": false,
     "timeUnits": 1,
     "tracks": [
-      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":-1,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
+      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
             {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"33419d43-3893-4049-a94f-c5cd7a0e43c2","path":"sprites/spr_wall/spr_wall.yy",},},},"Disabled":false,"id":"834be83d-d4a2-4c05-a08f-3e1fd9692d6a","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],

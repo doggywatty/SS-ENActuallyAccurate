@@ -89,7 +89,7 @@ var _option = options[optionSelected];
 
 switch (_option.type)
 {
-	case (6 << 0):
+	case OptionType.button:
 		if (key_jump)
 		{
 			if (!is_undefined(_option.on_toggle))
@@ -119,7 +119,7 @@ switch (_option.type)
 		}
 		
 		break;
-	case (7 << 0):
+	case OptionType.slider:
 		if (((h_move2 != 0 && _option.moving) || (h_move != 0 && !_option.moving)) && !scrollbuffer)
 		{
 			if (is_struct(savedSliderOption) && savedSliderOption != _option)

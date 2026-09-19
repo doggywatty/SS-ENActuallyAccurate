@@ -41,7 +41,7 @@ function state_player_finishingblow()
 			with (instance_create(x, y, obj_instakillHitbox))
 			{
 				playerID = other.id;
-				targetState = (46 << 0);
+				targetState = states.bossdefeat;
 			}
 		}
 	}

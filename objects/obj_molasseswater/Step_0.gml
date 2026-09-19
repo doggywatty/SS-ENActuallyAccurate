@@ -4,7 +4,7 @@ if (place_meeting(x, y, obj_parent_player))
 	{
 		if (place_meeting(x, y, other))
 		{
-			if (state != states.hang && state != states.barrelroll && !global.freezeframe)
+			if (state != states.noclip && state != states.barrelroll && !global.freezeframe)
 			{
 				if (vsp >= 0)
 				{

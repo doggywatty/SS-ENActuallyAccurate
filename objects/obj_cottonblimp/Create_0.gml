@@ -1,3 +1,4 @@
+//PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPA
 event_inherited();
 baddieSpriteIdle = undefined;
 baddieSpriteWalk = spr_cottonblimp;
@@ -25,6 +26,7 @@ enemyAttack_TriggerEvent = function()
 	}
 };
 
+//PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDI
 enemyState_Attack = function()
 {
 	scr_enemyThrowDefault(spr_cottonblimp_shoot, 7, 0.35, function()
@@ -39,6 +41,7 @@ enemyState_Attack = function()
 	});
 };
 
+//PADDINGPAD
 enemyDeath_SpawnBody = function()
 {
 	with (instance_create(x, y, obj_baddieDead))

@@ -7,7 +7,7 @@ if (place_meeting(x, y, obj_parent_player))
 {
 	with (obj_parent_player)
 	{
-		if (state == states.hang || state == states.frozen)
+		if (state == states.noclip || state == states.frozen)
 			exit;
 		
 		if (state == states.punch || state == states.backkick)

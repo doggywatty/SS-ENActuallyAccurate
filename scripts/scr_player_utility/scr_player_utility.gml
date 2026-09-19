@@ -2,7 +2,7 @@ function scr_taunt_storeVariables()
 {
 	tauntStored = 
 	{
-		state: (place_meeting(x, y, obj_secretTreasure) && state == states.gottreasure) ? (1 << 0) : state,
+		state: (place_meeting(x, y, obj_secretTreasure) && state == states.gottreasure) ? states.normal : state,
 		hsp: hsp,
 		prevHsp: prevHsp,
 		vsp: vsp,
@@ -152,7 +152,7 @@ function do_grab(arg0 = state)
 				}
 			}
 		}
-		else if (global.playerCharacter == characters.PZ && sprite_index != spr_player_PZ_suplexDash_bump)
+		else if (global.playerCharacter == PlayerCharacter.PIZZELLE && sprite_index != spr_player_PZ_suplexDash_bump)
 		{
 			if (floatyGrab > 0)
 			{

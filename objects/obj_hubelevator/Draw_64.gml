@@ -16,7 +16,7 @@ if (state == states.normal)
 	for (var i = 0; i < length; i++)
 	{
 		txt = hub_array[i][1];
-		var c = (selected == i) ? 16777215 : 8421504;
+		var c = (selected == i) ? c_white : c_gray;
 		draw_text_color(240, yy + ScrollY, txt, c, c, c, c, 1);
 		yy += 60;
 	}
