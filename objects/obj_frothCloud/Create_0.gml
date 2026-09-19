@@ -1,4 +1,4 @@
-event_inherited();
+  event_inherited();
 grav = 0.5;
 hsp = 1;
 vsp = 0;

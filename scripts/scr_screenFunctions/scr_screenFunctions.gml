@@ -57,7 +57,7 @@ function set_fullscreen_option(arg0)
 	option_create_confirm(previous_val, function(arg0)
 	{
 		quick_write_option("Settings", "fullscrn", global.fullscreen);
-	//PADDINGPADD
+///PADDINGPAD
 	}, function(arg0)
 	{
 		global.fullscreen = arg0;

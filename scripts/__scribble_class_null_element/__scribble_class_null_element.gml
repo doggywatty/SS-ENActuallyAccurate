@@ -1,499 +1,445 @@
-// Feather disable all
+//PADDINGPADDINGPADDIN
 function __scribble_class_null_element() constructor
 {
-    static __error = function()
+    static __error=function()
     {
         __scribble_error("Cannot call text element methods using the result from .draw()\nThis can occur in two situations:\n  1. scribble().draw().method();\n  2. t = scribble().draw(); t.method()\n\nInstead use:\n  1. scribble().method().draw();\n  2. t = scribble(); t.method(); t.draw();");
     }
-    
-    
-    
     #region Basics
-    
-    static draw = function()
+//PADDINGPADDING
+    static draw=function()
     {
         __error();
     }
-    
-    static starting_format = function()
+//
+    static starting_format=function()
     {
         __error();
     }
-    
-    static align = function()
+//
+    static align=function()
     {
         __error();
     }
-    
-    static blend = function()
+//
+    static blend=function()
     {
         __error();
     }
-    
-    static gradient = function()
+//
+    static gradient=function()
     {
         __error();
     }
-    
-    static fog = function()
+//
+    static fog=function()
     {
         __error();
     }
-    
-    static flash = function()
+//
+    static flash=function()
     {
         __error();
     }
-    
     #endregion
-    
-    
-    
     #region Layout
-    
-    static origin = function()
+//PADDINGPADDINGPADD
+    static origin=function()
     {
         __error();
     }
-    
-    static transform = function()
+//
+    static transform=function()
     {
         __error();
     }
-    
-    static skew = function()
+//
+    static skew=function()
     {
         __error();
     }
-    
-    static scale_to_box = function()
+//
+    static scale_to_box=function()
     {
         __error();
     }
-    
-    static wrap = function()
+//
+    static wrap=function()
     {
         __error();
     }
-    
-    static fit_to_box = function()
+//
+    static fit_to_box=function()
     {
         __error();
     }
-    
-    static pin_guide_width = function()
+//
+    static pin_guide_width=function()
     {
         __error();
     }
-    
-    static line_height = function()
+//
+    static line_height=function()
     {
         __error();
     }
-    
-    static line_spacing = function()
+//
+    static line_spacing=function()
     {
         __error();
     }
-    
-    static padding = function()
+//
+    static padding=function()
     {
         __error();
     }
-    
-    static bezier = function()
+//
+    static bezier=function()
     {
         __error();
     }
-    
-    static right_to_left = function()
+//
+    static right_to_left=function()
     {
         __error();
     }
-    
     #endregion
-    
-    
-    
     #region Regions
-    
-    static region_detect = function()
+//PADDINGPADDINGPADD
+    static region_detect=function()
     {
     }
-    
-    static region_set_active = function()
+//P
+    static region_set_active=function()
     {
     }
-    
-    static region_get_active = function()
+//P
+    static region_get_active=function()
     {
         __error();
     }
-    
     #endregion
-    
-    
-    
     #region Dimensions
-    
-    static __update_bbox_matrix = function()
+//PADDINGPADDINGPADD
+    static __update_bbox_matrix=function()
     {
         __error();
     }
-    
-    static get_left = function()
+//
+    static get_left=function()
     {
         __error();
     }
-    
-    static get_top = function()
+//
+    static get_top=function()
     {
         __error();
     }
-    
-    static get_right = function()
+//
+    static get_right=function()
     {
         __error();
     }
-    
-    static get_bottom = function()
+//
+    static get_bottom=function()
     {
         __error();
     }
-    
-    static get_width = function()
+//
+    static get_width=function()
     {
         __error();
     }
-    
-    static get_height = function()
+//
+    static get_height=function()
     {
         __error();
     }
-    
-    static get_bbox = function()
+//
+    static get_bbox=function()
     {
         __error();
     }
-    
-    static get_bbox_revealed = function()
+//
+    static get_bbox_revealed=function()
     {
         __error();
     }
-    
     #endregion
-    
-    
-    
     #region Pages
-    
-    static page = function()
+//PADDINGPADDINGPADD
+    static page=function()
     {
         __error();
     }
-    
-    static get_page = function()
+//
+    static get_page=function()
     {
         __error();
     }
-    
-    static get_pages = function()
+//
+    static get_pages=function()
     {
         __error();
     }
-    
-    static get_page_count = function()
+//
+    static get_page_count=function()
     {
         __error();
     }
-    
-    static on_last_page = function()
+//
+    static on_last_page=function()
     {
         __error();
     }
-    
     #endregion
-    
-    
-    
     #region Other Getters
-    
-    static get_wrapped = function()
+//PADDINGPADDINGPADD
+    static get_wrapped=function()
     {
         __error();
     }
-    
-    static get_text = function()
+//
+    static get_text=function()
     {
         __error();
     }
-    
-    static get_glyph_data = function()
+//
+    static get_glyph_data=function()
     {
         __error();
     }
-    
-    static get_glyph_count = function()
+//
+    static get_glyph_count=function()
     {
         __error();
     }
-    
-    static get_line_count = function()
+//
+    static get_line_count=function()
     {
         __error();
     }
-    
     #endregion
-    
-    
-    
     #region Typewriter
-    
-    static reveal = function()
+//PADDINGPADDINGPADD
+    static reveal=function()
     {
         __error();
     }
-    
-    static get_reveal = function()
+//
+    static get_reveal=function()
     {
         __error();
     }
-    
     #endregion
-    
-    
-    
     #region Animation
-    
-    static animation_tick_speed = function()
+//PADDINGPADDINGPADD
+    static animation_tick_speed=function()
     {
         __error();
     }
-    
-    static animation_speed = function()
+//
+    static animation_speed=function()
     {
         __error();
     }
-    
-    static get_animation_speed = function()
+//
+    static get_animation_speed=function()
     {
         __error();
     }
-    
-    static is_animated = function()
+//
+    static is_animated=function()
     {
         __error();
     }
-    
-    static animation_sync = function()
+//
+    static animation_sync=function()
     {
         __error();
     }
-    
-    static animation_wave = function()
+//
+    static animation_wave=function()
     {
         __error();
     }
-    
-    static animation_shake = function()
+//
+    static animation_shake=function()
     {
         __error();
     }
-    
-    static animation_rainbow = function()
+//
+    static animation_rainbow=function()
     {
         __error();
     }
-    
-    static animation_wobble = function()
+//
+    static animation_wobble=function()
     {
         __error();
     }
-    
-    static animation_pulse = function()
+//
+    static animation_pulse=function()
     {
         __error();
     }
-    
-    static animation_wheel = function()
+//
+    static animation_wheel=function()
     {
         __error();
     }
-    
-    static animation_cycle = function()
+//
+    static animation_cycle=function()
     {
         __error();
     }
-    
-    static animation_jitter = function()
+//
+    static animation_jitter=function()
     {
         __error();
     }
-    
-    static animation_blink = function()
+//
+    static animation_blink=function()
     {
         __error();
     }
-    
     #endregion
-    
-    
-    
     #region SDF
-    
-    static sdf_shadow = function()
+//PADDINGPADDINGPADD
+    static sdf_shadow=function()
     {
         __error();
     }
-    
-    static sdf_outline = function()
+//
+    static sdf_outline=function()
     {
         __error();
     }
-    
-    static sdf_feather = function()
+//
+    static sdf_feather=function()
     {
         __error();
     }
-    
     #endregion
-    
-    
-    
     #region Cache Management
-    
-     /// @param freeze
-    static build = function()
+//PADDINGPADDINGPADDINGPADDINGPADDINGPADDIN
+    static build=function()
     {
         __error();
     }
-    
-    static flush = function()
+//
+    static flush=function()
     {
         __error();
     }
-    
     #endregion
-    
-    
-    
     #region Miscellaneous
-    
-    static get_events = function()
+//PADDINGPADDINGPADD
+    static get_events=function()
     {
         __error();
     }
-    
-    /// @param templateFunction/Array
-    /// @param [executeOnlyOnChange=true]
-    static template = function()
+//PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPAD
+    static template=function()
     {
         __error();
     }
-    
-    /// @param state
-    static ignore_command_tags = function()
+//PADDINGPADDINGPADDING
+    static ignore_command_tags=function()
     {
         __error();
     }
-    
-    static z = function()
+//
+    static z=function()
     {
         __error();
     }
-    
-    static get_z = function()
+//
+    static get_z=function()
     {
         __error();
     }
-    
-    /// @param string
-    /// @param [uniqueID]
-    static overwrite = function()
+//PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDIN
+    static overwrite=function()
     {
         __error();
     }
-    
-    static debug_draw_bbox = function()
+//
+    static debug_draw_bbox=function()
     {
         __error();
     }
-    
     #endregion
-    
-    
-    
     #region Legacy Typewriter
-    
-    static typewriter_off = function()
+//PADDINGPADDINGPADD
+    static typewriter_off=function()
     {
         __error();
     }
-    
-    static typewriter_reset = function()
+//
+    static typewriter_reset=function()
     {
         __error();
     }
-    
-    static typewriter_in = function()
+//
+    static typewriter_in=function()
     {
         __error();
     }
-    
-    static typewriter_out = function()
+//
+    static typewriter_out=function()
     {
         __error();
     }
-    
-    static typewriter_skip = function()
+//
+    static typewriter_skip=function()
     {
         __error();
     }
-    
-    static typewriter_sound = function()
+//
+    static typewriter_sound=function()
     {
         __error();
     }
-    
-    static typewriter_sound_per_char = function()
+//
+    static typewriter_sound_per_char=function()
     {
         __error();
     }
-    
-    static typewriter_function = function()
+//
+    static typewriter_function=function()
     {
         __error();
     }
-    
-    static typewriter_pause = function()
+//
+    static typewriter_pause=function()
     {
         __error();
     }
-    
-    static typewriter_unpause = function()
+//
+    static typewriter_unpause=function()
     {
         __error();
     }
-    
-    static typewriter_ease = function()
+//
+    static typewriter_ease=function()
     {
         __error();
     }
-    
-    static get_typewriter_state = function()
+//
+    static get_typewriter_state=function()
     {
         __error();
     }
-    
-    static get_typewriter_paused = function()
+//
+    static get_typewriter_paused=function()
     {
         __error();
     }
-    
-    static get_typewriter_pos = function()
+//
+    static get_typewriter_pos=function()
     {
         __error();
     }
-    
     #endregion
 }
