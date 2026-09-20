@@ -2,7 +2,7 @@ condition = function()
 {
 	return ds_list_find_index(global.SaveRoom, 102655) != -1;
 };
-
+//PADDIN
 output = function()
 {
 	var lay_id = layer_get_id("Assets_1");
