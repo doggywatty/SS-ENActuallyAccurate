@@ -14,7 +14,7 @@ if (!global.gamePauseState && !instance_exists(obj_fadeoutTransition) && !instan
 	
 	with (obj_parent_player)
 	{
-		if (state == states.shotgunjump && place_meeting(x, y, obj_startGate))
+		if (state == PlayerState.victory && place_meeting(x, y, obj_startGate))
 			_cant_pause = true;
 	}
 	

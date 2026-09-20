@@ -11,7 +11,7 @@ if (room != rank_room && !is_hub())
 	instance_destroy(obj_cutsceneManager);
 	
 	with (obj_parent_player)
-		state = states.mach3;
+		state = PlayerState.actor;
 	
 	with (instance_create(x, y, obj_fadeoutTransition, 
 	{
@@ -40,7 +40,7 @@ else if (is_hub())
 	with (obj_parent_player)
 	{
 		scr_characterSprite();
-		state = states.titlescreen;
+		state = PlayerState.titlescreen;
 		targetDoor = "A";
 	}
 	

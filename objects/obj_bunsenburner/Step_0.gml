@@ -7,25 +7,25 @@ if (place_meeting(x, y, obj_parent_player))
 {
 	with (obj_parent_player)
 	{
-		if (state == states.noclip || state == states.frozen)
+		if (state == PlayerState.noclip || state == PlayerState.frozen)
 			exit;
 		
-		if (state == states.punch || state == states.backkick)
+		if (state == PlayerState.doughmount || state == PlayerState.doughmountspin)
 		{
 			if (sprite_index != spr_player_PZ_dogMount_inflate_jump)
 			{
 				sprite_index = spr_player_PZ_dogMount_inflate;
 				image_index = 0;
 				vsp = -10;
-				state = states.shoulder;
+				state = PlayerState.doughmountballoon;
 				touched = true;
 			}
 		}
-		else if (state != states.shoulder)
+		else if (state != PlayerState.doughmountballoon)
 		{
 			sprite_index = spr_player_PZ_fireAss_intro;
 			vsp = -20;
-			state = states.crouchslide;
+			state = PlayerState.fireass;
 			image_index = 0;
 			movespeed = hsp;
 			

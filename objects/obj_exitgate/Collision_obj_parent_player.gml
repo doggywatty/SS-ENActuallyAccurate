@@ -2,7 +2,7 @@ if (global.panic)
 {
 	with (obj_parent_player)
 	{
-		if (grounded && (!other.drop || other.drop_state == 1) && key_up && (state == states.normal || state == states.machroll || state == states.pistol || state == states.shotgun || state == states.chainsaw))
+		if (grounded && (!other.drop || other.drop_state == 1) && key_up && (state == PlayerState.normal || state == PlayerState.mach1 || state == PlayerState.mach2 || state == PlayerState.mach3 || state == PlayerState.Sjumpprep))
 		{
 			targetDoor = "none";
 			var use_music = true;
@@ -21,10 +21,10 @@ if (global.panic)
 			scr_check_end_level_chef_tasks();
 			global.CompletedLevel = true;
 			
-			if (state != states.grab)
+			if (state != PlayerState.door)
 			{
 				sprite_index = spr_lookdoor;
-				state = states.grab;
+				state = PlayerState.door;
 				xscale = 1;
 				image_index = 0;
 			}

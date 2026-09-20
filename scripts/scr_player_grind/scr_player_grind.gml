@@ -12,19 +12,19 @@ function state_player_grind()
 	{
 		if (movespeed < 12)
 		{
-			state = states.pistol;
+			state = PlayerState.mach2;
 			sprite_index = spr_mach2_spinJump;
 		}
 		else
 		{
-			state = states.shotgun;
+			state = PlayerState.mach3;
 			sprite_index = spr_mach3jump;
 		}
 	}
 	
 	if (place_meeting_collision(x + xscale, y, Exclude.SLOPES))
 	{
-		state = states.throwing;
+		state = PlayerState.bump;
 		hsp = xscale * -5;
 		vsp = 1;
 		instance_create(x + (10 * xscale), y + 10, obj_bumpEffect);
@@ -40,12 +40,12 @@ function state_player_grind()
 		
 		if (movespeed < 12)
 		{
-			state = states.pistol;
+			state = PlayerState.mach2;
 			sprite_index = spr_mach2_spinJump;
 		}
 		else
 		{
-			state = states.shotgun;
+			state = PlayerState.mach3;
 			sprite_index = spr_mach3jump;
 		}
 	}

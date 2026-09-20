@@ -13,10 +13,10 @@ defaultMovespeed = 0;
 
 enemyAttack_TriggerEvent = function()
 {
-	if (scr_enemy_playerisnear(400, 60) && state == states.frozen && enemyAttackTimer <= 0)
+	if (scr_enemy_playerisnear(400, 60) && state == PlayerState.frozen && enemyAttackTimer <= 0)
 	{
 		enemyAttackTimer = enemyAttackTimerMax;
-		state = states.titlescreen;
+		state = PlayerState.titlescreen;
 		movespeed = 0;
 		var _player = get_nearestPlayer();
 		image_xscale = face_obj(_player);
@@ -60,7 +60,7 @@ enemyState_Attack = function()
 		vsp = -3;
 		image_xscale *= -1;
 		sprite_index = baddieSpriteStun;
-		state = states.slap;
+		state = PlayerState.charge;
 		baddieStunTimer = 100;
 	}
 };

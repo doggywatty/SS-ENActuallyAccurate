@@ -43,7 +43,7 @@ function scr_levelSet()
 	
 	global.ExitGateTaunt = 0;
 	global.TransfoPrompt = "";
-	global.TransfoState = states.normal;
+	global.TransfoState = PlayerState.normal;
 	global.freezeframe = false;
 	global.greyscalefade = 0;
 	global.EscapeTime = 4000;
@@ -169,7 +169,7 @@ function scr_levelSet()
 		groundedSlope = false;
 		targetDoor = "A";
 		fireTrailBuffer = 0;
-		state = states.stunned;
+		state = PlayerState.comingoutdoor;
 		image_index = 0;
 		sprite_index = spr_walkfront;
 		trace("Levelset");

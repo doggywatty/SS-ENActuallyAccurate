@@ -1,8 +1,8 @@
-if (state == states.frozen && other.state != states.stunned && other.hsp == 0 && other.grounded && other.key_up2)
+if (state == PlayerState.frozen && other.state != PlayerState.comingoutdoor && other.hsp == 0 && other.grounded && other.key_up2)
 {
-	state = states.normal;
+	state = PlayerState.normal;
 	playerID = other.id;
-	other.state = states.mach3;
+	other.state = PlayerState.actor;
 	other.key_up2 = 0;
 	other.movespeed = 0;
 	other.hsp = 0;

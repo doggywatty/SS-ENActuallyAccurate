@@ -63,7 +63,7 @@ if (grabbedPlayer == -4)
 		flingInputStarted = false;
 	}
 	
-	if (waitTimer <= 0 && place_meeting(x, y, target_player) && !scr_solid(x, y) && target_player.state != states.ladder)
+	if (waitTimer <= 0 && place_meeting(x, y, target_player) && !scr_solid(x, y) && target_player.state != PlayerState.fling)
 	{
 		grabbedPlayer = target_player;
 		grabBuffer = grabBufferMax;
@@ -78,7 +78,7 @@ if (grabbedPlayer == -4)
 				event_play_multiple("event:/SFX/player/psychicfrogstart", x, y);
 			}
 			
-			state = states.ladder;
+			state = PlayerState.fling;
 			movespeed = 0;
 			hsp = 0;
 			vsp = 0;
@@ -103,7 +103,7 @@ if (grabbedPlayer != -4)
 		if (sprite_index != spr_player_PZ_flinged)
 			sprite_index = spr_player_PZ_flinged_start;
 		
-		state = states.ladder;
+		state = PlayerState.fling;
 		
 		if (!instance_exists(obj_candifiedeffect2))
 			instance_create(x, y, obj_candifiedeffect2);
@@ -179,7 +179,7 @@ if (grabbedPlayer != -4)
 			event_play_multiple("event:/SFX/player/psychicfrogend", x, y);
 			y = other.ystart + 70;
 			x = other.xstart;
-			state = states.parry;
+			state = PlayerState.fling_launch;
 			jumpStop = true;
 			hsp = lengthdir_x(min(other.flingBallRadius / 60, 1) * 15, other.flingDir);
 			vsp = lengthdir_y(min(other.flingBallRadius / 60, 1) * 15, other.flingDir);

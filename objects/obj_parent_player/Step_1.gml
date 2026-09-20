@@ -8,7 +8,7 @@ if (instance_exists(obj_cutsceneManager) && obj_cutsceneManager.exitLevelCustcen
 	grav = 0;
 }
 
-if (state != states.throwing && state != states.tackle && state != states.facestomp && state != states.runonball && sprite_index != spr_null && sprite_index != spr_player_PZ_frostburn_land_spin && state != states.chainsaw && state != states.climbdownwall && state != states.superslam && state != states.timesup)
+if (state != PlayerState.bump && state != PlayerState.cottonroll && state != PlayerState.crouch && state != PlayerState.tumble && sprite_index != spr_null && sprite_index != spr_player_PZ_frostburn_land_spin && state != PlayerState.Sjumpprep && state != PlayerState.machroll && state != PlayerState.hurt && state != PlayerState.crouchjump)
 	mask_index = spr_player_mask;
 else
 	mask_index = spr_crouchmask;
@@ -26,11 +26,11 @@ scr_playerstate();
 hspCarry += slideHsp;
 scr_collide_destructibles();
 
-if (state != states.titlescreen && state != states.freefall && state != states.noclip && state != states.grab && state != states.stunned && state != states.shotgunjump && state != states.climbwall && state != states.knightpep)
+if (state != PlayerState.titlescreen && state != PlayerState.oldtaunt && state != PlayerState.noclip && state != PlayerState.door && state != PlayerState.comingoutdoor && state != PlayerState.victory && state != PlayerState.timesup && state != PlayerState.gameover)
 {
 	scr_collision();
 }
-else if (state == states.knightpep)
+else if (state == PlayerState.gameover)
 {
 	x += hsp;
 	y += vsp;
@@ -58,7 +58,7 @@ if (oldPromptText != global.TransfoPrompt)
 }
 
 scr_playersounds();
-cutscene = state == states.grab || state == states.boulder || state == states.mach3 || state == states.shotgunjump || state == states.stunned || state == states.knightpep;
+cutscene = state == PlayerState.door || state == PlayerState.gotkey || state == PlayerState.actor || state == PlayerState.victory || state == PlayerState.comingoutdoor || state == PlayerState.gameover;
 isInSecretPortal = false;
 isInLapPortal = false;
 draw_angle = 0;

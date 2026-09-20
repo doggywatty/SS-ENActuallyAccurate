@@ -21,7 +21,7 @@ function scr_confecti_normal()
 	
 	var _dir = 0;
 	
-	if (obj_parent_player.state != states.grabbing && obj_parent_player.state != states.grab && obj_parent_player.state != states.stunned)
+	if (obj_parent_player.state != PlayerState.ladder && obj_parent_player.state != PlayerState.door && obj_parent_player.state != PlayerState.comingoutdoor)
 		_dir = obj_parent_player.xscale;
 	
 	confecti_dir = approach(confecti_dir, _dir, 0.2);
@@ -73,13 +73,13 @@ function scr_confecti_normal()
 	y = round(y);
 	var supertaunts = [obj_parent_player.spr_supertaunt1, obj_parent_player.spr_supertaunt2, obj_parent_player.spr_supertaunt3, obj_parent_player.spr_supertaunt4];
 	
-	if (obj_parent_player.state == states.gottreasure && state != states.normal && state != states.titlescreen)
+	if (obj_parent_player.state == PlayerState.taunt && state != PlayerState.normal && state != PlayerState.titlescreen)
 	{
 		if (array_contains(supertaunts, obj_parent_player.sprite_index))
 		{
 			sprite_index = spr_supertaunt;
 			image_index = 0;
-			state = states.titlescreen;
+			state = PlayerState.titlescreen;
 			
 			with (obj_confectitaunt)
 			{
@@ -95,7 +95,7 @@ function scr_confecti_normal()
 				depth: depth + 1,
 				bigTaunt: bigTaunt
 			});
-			state = states.normal;
+			state = PlayerState.normal;
 			image_index = irandom_range(0, sprite_get_number(spr_taunt) - 1);
 		}
 	}

@@ -41,7 +41,7 @@ function state_player_fireass()
 			inputBufferSlap = 0;
 			sprite_index = spr_player_PZ_fireAss_dash;
 			image_index = 0;
-			state = states.mach1;
+			state = PlayerState.fireassdash;
 			
 			if (move != 0)
 				xscale = move;
@@ -64,7 +64,7 @@ function state_player_fireass()
 		
 		if (sprite_animation_end())
 		{
-			state = states.normal;
+			state = PlayerState.normal;
 			hsp = 0;
 			image_index = 0;
 			hurted = 1;
@@ -97,19 +97,19 @@ function state_player_fireassdash()
 	{
 		image_index = 0;
 		sprite_index = spr_fall;
-		state = states.chainsawpogo;
+		state = PlayerState.jump;
 		
 		if (key_attack)
 		{
 			sprite_index = spr_secondjump2;
-			state = states.pistol;
+			state = PlayerState.mach2;
 		}
 	}
 	
 	if (place_meeting_collision(x + xscale, y, Exclude.SLOPES) && !place_meeting(x + xscale, y, obj_destructibles) && !place_meeting(x + xscale, y, obj_chocofrog))
 	{
 		sprite_index = spr_player_PZ_fall_outOfControl;
-		state = states.chainsawpogo;
+		state = PlayerState.jump;
 		vsp = -12;
 		jumpStop = true;
 		movespeed = 0;

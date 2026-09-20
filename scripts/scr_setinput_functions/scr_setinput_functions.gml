@@ -228,11 +228,11 @@ function scr_checkdeadzone(arg0,arg1,arg2)
 		switch (arg1)
 		{
 			case "upC":
-				if (arg2.state == states.chainsaw)
+				if (arg2.state == PlayerState.Sjump)
 					dz=global.deadzones[Deadzone.sjump];
 				break;
 			case "downC":
-				if (arg2.state == states.facestomp)
+				if (arg2.state == PlayerState.crouch)
 					dz=global.deadzones[Deadzone.crouch];
 				break;
 		}

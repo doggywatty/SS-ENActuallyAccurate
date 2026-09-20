@@ -21,6 +21,6 @@ with (obj_parent_player)
 
 with (obj_parent_enemy)
 {
-	if (place_meeting_adjacent(other.id) && state != states.charge)
+	if (place_meeting_adjacent(other.id) && state != PlayerState.stun)
 		other.activated = true;
 }

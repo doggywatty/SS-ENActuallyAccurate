@@ -13,7 +13,7 @@ if (!spawnEnemy && sprite_animation_end(sprite_index, image_index, 5))
 	
 	with (baddieID)
 	{
-		if (state != states.cheeseball)
+		if (state != PlayerState.wallkick)
 			exit;
 		
 		event_play_oneshot("event:/SFX/enemies/escapespawn", xstart, ystart);
@@ -27,14 +27,14 @@ if (!spawnEnemy && sprite_animation_end(sprite_index, image_index, 5))
 			baddieStunTimer = 20;
 			invincibleBaddie = false;
 			visible = true;
-			state = states.slap;
+			state = PlayerState.charge;
 			sprite_index = baddieSpriteStun;
 			image_index = 0;
 			
 			if (escapeEnemyUnStun)
 			{
 				image_index = 0;
-				state = states.frozen;
+				state = PlayerState.frozen;
 				sprite_index = baddieSpriteWalk;
 			}
 		}

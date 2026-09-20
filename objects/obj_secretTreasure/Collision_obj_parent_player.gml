@@ -1,12 +1,12 @@
 with (other)
 {
-	if (state != states.mach3 && sprite_index != spr_gotTreasure)
+	if (state != PlayerState.actor && sprite_index != spr_gotTreasure)
 	{
 		event_play_oneshot("event:/SFX/general/foundtreasure");
 		scr_taunt_storeVariables();
 		hsp = 0;
 		vsp = 0;
-		state = states.mach3;
+		state = PlayerState.actor;
 		sprite_index = spr_gotTreasure;
 		other.alarm[0] = 120;
 		other.playerID = id;

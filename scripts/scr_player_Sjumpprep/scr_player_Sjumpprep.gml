@@ -53,7 +53,7 @@ function state_player_Sjumpprep()
 	{
 		instance_create(x, y, obj_mushroomCloudEffect);
 		sprite_index = spr_superjump;
-		state = states.highjump;
+		state = PlayerState.Sjump;
 		vsp = -12;
 		verticalMovespeed = vsp;
 		sJumpCanDoubleJump = false;

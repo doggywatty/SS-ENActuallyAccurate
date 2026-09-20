@@ -88,7 +88,7 @@ function state_player_mach3()
 	if (scr_checksuperjump() && sprite_index != spr_machdashpad && sprite_index != spr_dive && can_jump)
 	{
 		sprite_index = spr_superjumpPrep;
-		state = states.chainsaw;
+		state = PlayerState.Sjumpprep;
 		hsp = 0;
 		instance_create(x, y, obj_jumpdust, 
 		{
@@ -105,7 +105,7 @@ function state_player_mach3()
 			event_play_oneshot("event:/SFX/player/break", x, y);
 			sprite_index = spr_machslidestart;
 			image_index = 0;
-			state = states.machfreefall;
+			state = PlayerState.machslide;
 		}
 		
 		if (move == -xscale)
@@ -113,7 +113,7 @@ function state_player_mach3()
 			event_play_oneshot("event:/SFX/player/machslideboost", x, y);
 			sprite_index = spr_machslideboost3;
 			flash = false;
-			state = states.machfreefall;
+			state = PlayerState.machslide;
 			image_index = 0;
 			machTwo = 100;
 		}
@@ -123,7 +123,7 @@ function state_player_mach3()
 	{
 		mach3Roll = mach3RollMax;
 		flash = false;
-		state = states.climbdownwall;
+		state = PlayerState.machroll;
 		instance_create(x, y, obj_jumpdust, 
 		{
 			playerID: id
@@ -148,7 +148,7 @@ function state_player_mach3()
 			verticalMovespeed -= vsp;
 		
 		grabClimbBuffer = 0;
-		state = states.cheesepep;
+		state = PlayerState.climbwall;
 	}
 	else if (scr_solid(x + xscale, y, true) && !place_meeting(x + xscale, y, obj_destructibles) && !place_meeting(x + xscale, y, obj_metalblock))
 	{
@@ -175,7 +175,7 @@ function state_player_mach3()
 			flash = false;
 			combo = 0;
 			sprite_index = spr_mach3hitwall;
-			state = states.throwing;
+			state = PlayerState.bump;
 			hsp = -6 * xscale;
 			vsp = -6;
 			machTwo = 0;
@@ -227,7 +227,7 @@ function state_player_mach3()
 	
 	if (sprite_index != spr_dive)
 	{
-		do_grab(states.shotgun);
-		do_taunt(states.shotgun);
+		do_grab(PlayerState.mach3);
+		do_taunt(PlayerState.mach3);
 	}
 }

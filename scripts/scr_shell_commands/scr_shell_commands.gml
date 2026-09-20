@@ -408,10 +408,10 @@ function meta_instance_create()
 
 function sh_noclip()
 {
-	if (obj_parent_player.state != states.noclip)
-		obj_parent_player.state = states.noclip;
+	if (obj_parent_player.state != PlayerState.noclip)
+		obj_parent_player.state = PlayerState.noclip;
 	else
-		obj_parent_player.state = states.normal;
+		obj_parent_player.state = PlayerState.normal;
 }
 
 function meta_noclip()
@@ -427,10 +427,10 @@ function meta_noclip()
 
 function sh_freeflight()
 {
-	if (obj_parent_player.state != states.talkto)
-		obj_parent_player.state = states.talkto;
+	if (obj_parent_player.state != PlayerState.freeflight)
+		obj_parent_player.state = PlayerState.freeflight;
 	else
-		obj_parent_player.state = states.normal;
+		obj_parent_player.state = PlayerState.normal;
 }
 
 function meta_freeflight()

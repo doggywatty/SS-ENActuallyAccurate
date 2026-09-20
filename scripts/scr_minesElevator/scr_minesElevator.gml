@@ -7,7 +7,7 @@ function cutscene_elevator_prestart()
 	
 	with (obj_parent_player)
 	{
-		state = states.mach3;
+		state = PlayerState.actor;
 		movespeed = 6;
 		hsp = 0;
 		vsp = 0;
@@ -50,7 +50,7 @@ function cutscene_elevator_start()
 	
 	with (obj_parent_player)
 	{
-		state = states.mach3;
+		state = PlayerState.actor;
 		hsp = 0;
 		vsp = 0;
 		sprite_index = spr_idle;
@@ -80,7 +80,7 @@ function cutscene_elevator_premiddle()
 	
 	with (obj_parent_player)
 	{
-		state = states.mach3;
+		state = PlayerState.actor;
 		targetRoom = mineshaft_elevator;
 		hsp = 0;
 		vsp = 0;
@@ -108,7 +108,7 @@ function cutscene_elevator_middle()
 	
 	with (obj_parent_player)
 	{
-		state = states.mach3;
+		state = PlayerState.actor;
 		hsp = 0;
 		vsp = 0;
 		targetRoom = targetElevatorRoom;
@@ -152,7 +152,7 @@ function cutscene_elevator_preend()
 	
 	with (obj_parent_player)
 	{
-		state = states.mach3;
+		state = PlayerState.actor;
 		hsp = 0;
 		vsp = 0;
 		x = elevator.x;
@@ -210,7 +210,7 @@ function cutscene_elevator_end()
 		image_speed = 0.35;
 		sprite_index = spr_player_PZ_fall_outOfControl;
 		visible = true;
-		state = states.freefallprep;
+		state = PlayerState.puddle;
 		vsp = -11;
 		hsp = 0;
 		movsepeed = 0;

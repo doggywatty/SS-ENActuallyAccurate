@@ -2,7 +2,7 @@ x += hsp;
 
 switch (state)
 {
-	case states.frozen:
+	case PlayerState.frozen:
 		hsp = movespeed * image_xscale;
 		image_speed = 0.35;
 		
@@ -41,9 +41,9 @@ switch (state)
 		if (roamTimer-- <= 0)
 			event_user(0);
 		
-		if (obj_parent_player.state == states.gottreasure && obj_parent_player.sprite_index == obj_parent_player.spr_taunt && state != states.normal && state != states.titlescreen)
+		if (obj_parent_player.state == PlayerState.taunt && obj_parent_player.sprite_index == obj_parent_player.spr_taunt && state != PlayerState.normal && state != PlayerState.titlescreen)
 		{
-			state = states.normal;
+			state = PlayerState.normal;
 			
 			with (instance_create(x, y, obj_confectitaunt))
 			{
@@ -55,13 +55,13 @@ switch (state)
 		}
 		
 		break;
-	case states.normal:
+	case PlayerState.normal:
 		image_speed = 0;
 		hsp = 0;
 		sprite_index = spr_taunt;
 		
-		if (obj_parent_player.state != states.gottreasure)
-			state = states.frozen;
+		if (obj_parent_player.state != PlayerState.taunt)
+			state = PlayerState.frozen;
 		
 		break;
 }

@@ -14,7 +14,7 @@ function cutscene_wait(arg0)
 
 function cutscene_end_player()
 {
-	obj_parent_player.state = states.normal;
+	obj_parent_player.state = PlayerState.normal;
 	obj_parent_player.hsp = 0;
 	obj_parent_player.vsp = 0;
 	obj_parent_player.sprite_index = obj_parent_player.spr_idle;
@@ -23,7 +23,7 @@ function cutscene_end_player()
 
 function cutscene_start_player()
 {
-	obj_parent_player.state = states.mach3;
+	obj_parent_player.state = PlayerState.actor;
 	obj_parent_player.hsp = 0;
 	obj_parent_player.vsp = 0;
 	obj_parent_player.sprite_index = obj_parent_player.spr_idle;

@@ -174,7 +174,7 @@ function state_player_minecart()
 		if (place_meeting(x + xscale, y, obj_trainStop))
 		{
 			sprite_index = spr_player_PZ_geyser;
-			state = states.throwing;
+			state = PlayerState.bump;
 			hsp = 4 * -xscale;
 			vsp = -6;
 			machTwo = 0;
@@ -191,7 +191,7 @@ function state_player_minecart()
 		{
 			sprite_index = spr_player_PZ_minecart_fall;
 			image_index = 0;
-			state = states.Sjump;
+			state = PlayerState.minecart_bump;
 			event_play_oneshot("event:/SFX/minecart/bump");
 			hsp = 8 * -xscale;
 			vsp = -5;
@@ -235,7 +235,7 @@ function state_player_minecart_bump()
 	mask_index = spr_mask_minecart;
 	
 	if (grounded)
-		state = states.victory;
+		state = PlayerState.minecart;
 }
 
 function state_player_minecart_launched()
@@ -268,7 +268,7 @@ function state_player_minecart_launched()
 	
 	if (grounded && vsp > 0)
 	{
-		state = states.victory;
+		state = PlayerState.minecart;
 		movespeed = abs(movespeed);
 		instance_create(x, y, obj_jumpdust);
 	}

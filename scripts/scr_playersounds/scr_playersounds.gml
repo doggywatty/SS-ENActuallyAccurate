@@ -41,7 +41,7 @@ function scr_playersounds()
 {
 	var saved_state = global.freezeframe ? frozenState : state;
 	
-	if (saved_state != states.mach3)
+	if (saved_state != PlayerState.actor)
 	{
 		transfoSound = scr_transformationCheck(saved_state);
 		var _has_transfo = !is_undefined(transfoSound);
@@ -84,10 +84,10 @@ function scr_playersounds()
 		fmod_studio_event_instance_stop(sndTumble, false);
 	}
 	
-	if (event_instance_isplaying(sndSuplex) && saved_state != states.pistalaim)
+	if (event_instance_isplaying(sndSuplex) && saved_state != PlayerState.grabdash)
 		fmod_studio_event_instance_stop(sndSuplex, true);
 	
-	if (saved_state == states.cheeseball && (sprite_index == spr_wallJumpIntro || sprite_index == spr_wallJump))
+	if (saved_state == PlayerState.wallkick && (sprite_index == spr_wallJumpIntro || sprite_index == spr_wallJump))
 	{
 		if (!event_instance_isplaying(sndWallkick))
 			fmod_studio_event_instance_start(sndWallkick);
@@ -97,7 +97,7 @@ function scr_playersounds()
 		fmod_studio_event_instance_stop(sndWallkick, false);
 	}
 	
-	if (saved_state == states.victory && grounded && vsp > 0 && sprite_index != spr_player_PZ_minecart_spinOut)
+	if (saved_state == PlayerState.minecart && grounded && vsp > 0 && sprite_index != spr_player_PZ_minecart_spinOut)
 	{
 		if (!event_instance_isplaying(sndMinecart))
 			fmod_studio_event_instance_start(sndMinecart);
@@ -107,7 +107,7 @@ function scr_playersounds()
 		fmod_studio_event_instance_stop(sndMinecart, false);
 	}
 	
-	if ((saved_state == states.chainsawbump && grounded && vsp > 0) || saved_state == states.grind)
+	if ((saved_state == PlayerState.grind && grounded && vsp > 0) || saved_state == PlayerState.hang)
 	{
 		if (!event_instance_isplaying(sndGrind))
 			fmod_studio_event_instance_start(sndGrind);
@@ -117,7 +117,7 @@ function scr_playersounds()
 		fmod_studio_event_instance_stop(sndGrind, false);
 	}
 	
-	if (saved_state == states.slap)
+	if (saved_state == PlayerState.charge)
 	{
 		if (spinSoundBuffer-- < 0)
 		{
@@ -132,7 +132,7 @@ function scr_playersounds()
 		fmod_studio_event_instance_stop(sndSpinning, true);
 	}
 	
-	if (saved_state == states.slipnslide && place_meeting(x, y, obj_cottonsolid))
+	if (saved_state == PlayerState.cottondig && place_meeting(x, y, obj_cottonsolid))
 	{
 		if (!event_instance_isplaying(sndCottonDigging))
 		{
@@ -146,7 +146,7 @@ function scr_playersounds()
 		event_play_oneshot("event:/SFX/cotton/digOut", x, y);
 	}
 	
-	if (saved_state == states.climbdownwall)
+	if (saved_state == PlayerState.machroll)
 	{
 		if (!event_instance_isplaying(sndRoll))
 			fmod_studio_event_instance_start(sndRoll);
@@ -158,7 +158,7 @@ function scr_playersounds()
 		fmod_studio_event_instance_stop(sndRoll, true);
 	}
 	
-	if (grounded && saved_state == states.punch && movespeed >= 12 && sprite_index != spr_player_PZ_dogMount_skid)
+	if (grounded && saved_state == PlayerState.doughmount && movespeed >= 12 && sprite_index != spr_player_PZ_dogMount_skid)
 	{
 		if (!event_instance_isplaying(sndGalloping))
 			fmod_studio_event_instance_start(sndGalloping);
@@ -168,7 +168,7 @@ function scr_playersounds()
 		fmod_studio_event_instance_stop(sndGalloping, true);
 	}
 	
-	if (saved_state == states.slam || saved_state == states.meteorpep || saved_state == states.secondjump)
+	if (saved_state == PlayerState.freefall || saved_state == PlayerState.freefallprep || saved_state == PlayerState.superslam)
 	{
 		if (!event_instance_isplaying(sndFreefall))
 			fmod_studio_event_instance_start(sndFreefall);
@@ -178,7 +178,7 @@ function scr_playersounds()
 		fmod_studio_event_instance_stop(sndFreefall, true);
 	}
 	
-	if (saved_state == states.chainsaw)
+	if (saved_state == PlayerState.Sjumpprep)
 	{
 		if (!event_instance_isplaying(sndSuperjump))
 			fmod_studio_event_instance_start(sndSuperjump);
@@ -189,21 +189,21 @@ function scr_playersounds()
 		fmod_studio_event_instance_start(sndSuperjumpRelease);
 	}
 	
-	if ((saved_state != states.highjump || sprite_index == spr_superjumpCancelIntro) && event_instance_isplaying(sndSuperjumpRelease))
+	if ((saved_state != PlayerState.Sjump || sprite_index == spr_superjumpCancelIntro) && event_instance_isplaying(sndSuperjumpRelease))
 		fmod_studio_event_instance_stop(sndSuperjumpRelease, true);
 	
-	if (saved_state == states.pistol || saved_state == states.Nhookshot || saved_state == states.shotgun || saved_state == states.cheesepep)
+	if (saved_state == PlayerState.mach2 || saved_state == PlayerState.run || saved_state == PlayerState.mach3 || saved_state == PlayerState.climbwall)
 	{
 		if (!event_instance_isplaying(sndMach))
 			fmod_studio_event_instance_start(sndMach);
 		
 		var machsnd = 0;
 		
-		if ((saved_state == states.pistol && sprite_index == spr_mach1) || (saved_state == states.Nhookshot && sprite_index == spr_mach1))
+		if ((saved_state == PlayerState.mach2 && sprite_index == spr_mach1) || (saved_state == PlayerState.run && sprite_index == spr_mach1))
 			machsnd = 1;
-		else if ((saved_state == states.pistol && sprite_index == spr_mach2) || (saved_state == states.Nhookshot && movespeed < 12) || (saved_state == states.cheesepep && verticalMovespeed < 12))
+		else if ((saved_state == PlayerState.mach2 && sprite_index == spr_mach2) || (saved_state == PlayerState.run && movespeed < 12) || (saved_state == PlayerState.climbwall && verticalMovespeed < 12))
 			machsnd = 2;
-		else if ((saved_state == states.shotgun && sprite_index != spr_crazyrun) || saved_state == states.Nhookshot || (saved_state == states.cheesepep && verticalMovespeed >= 12))
+		else if ((saved_state == PlayerState.mach3 && sprite_index != spr_crazyrun) || saved_state == PlayerState.run || (saved_state == PlayerState.climbwall && verticalMovespeed >= 12))
 			machsnd = 3;
 		else if (sprite_index == spr_crazyrun)
 			machsnd = 4;

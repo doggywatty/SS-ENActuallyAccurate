@@ -42,7 +42,7 @@ function state_player_costumegrab()
 			sprite_index = spr_idle;
 			costumeBlock = -4;
 			costumeBlockDetails = -4;
-			state = states.door;
+			state = PlayerState.costumenormal;
 		}
 		
 		if (key_down2)
@@ -70,7 +70,7 @@ function state_player_costumegrab()
 			costumeBlock = -4;
 			costumeBlockDetails = -4;
 			dummyBlock = -4;
-			state = states.door;
+			state = PlayerState.costumenormal;
 		}
 	}
 }

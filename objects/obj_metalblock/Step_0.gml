@@ -1,6 +1,6 @@
 with (instance_nearest(x, y, obj_parent_player))
 {
-	if ((place_meeting(x + hsp, y, other.id) || place_meeting(x + xscale, y, other.id)) && (state == states.shotgun || (state == states.Nhookshot && movespeed >= 12) || state == states.uppercut || (state == states.pal && movespeed > 5) || state == states.freefallprep || (state == states.climbdownwall && mach3Roll > 0) || state == states.victory || (state == states.barrelmach2 && substate == 0)))
+	if ((place_meeting(x + hsp, y, other.id) || place_meeting(x + xscale, y, other.id)) && (state == PlayerState.mach3 || (state == PlayerState.run && movespeed >= 12) || state == PlayerState.frostburnslide || (state == PlayerState.frostburnjump && movespeed > 5) || state == PlayerState.puddle || (state == PlayerState.machroll && mach3Roll > 0) || state == PlayerState.minecart || (state == PlayerState.bottlerocket && substate == 0)))
 	{
 		with (other.id)
 		{
@@ -9,7 +9,7 @@ with (instance_nearest(x, y, obj_parent_player))
 		}
 	}
 	
-	if ((place_meeting(x + hsp, y, other.id) || place_meeting(x - xscale, y, other.id)) && state == states.current && movespeed >= 12)
+	if ((place_meeting(x + hsp, y, other.id) || place_meeting(x - xscale, y, other.id)) && state == PlayerState.unknownrun && movespeed >= 12)
 	{
 		with (other.id)
 		{
@@ -18,7 +18,7 @@ with (instance_nearest(x, y, obj_parent_player))
 		}
 	}
 	
-	if (((place_meeting(x, y + vsp, other.id) && vsp < 0) || place_meeting(x, y - 1, other.id)) && state == states.highjump)
+	if (((place_meeting(x, y + vsp, other.id) && vsp < 0) || place_meeting(x, y - 1, other.id)) && state == PlayerState.Sjump)
 	{
 		with (other.id)
 		{
@@ -27,7 +27,7 @@ with (instance_nearest(x, y, obj_parent_player))
 		}
 	}
 	
-	if (((place_meeting(x, y + vsp, other.id) && vsp < 0) || place_meeting(x, y - 1, other.id)) && state == states.parry)
+	if (((place_meeting(x, y + vsp, other.id) && vsp < 0) || place_meeting(x, y - 1, other.id)) && state == PlayerState.fling_launch)
 	{
 		with (other.id)
 		{
@@ -36,7 +36,7 @@ with (instance_nearest(x, y, obj_parent_player))
 		}
 	}
 	
-	if (((place_meeting(x, y + vsp, other.id) && vsp < 0) || place_meeting(x, y - 1, other.id)) && state == states.cheesepep && machTwo >= 100)
+	if (((place_meeting(x, y + vsp, other.id) && vsp < 0) || place_meeting(x, y - 1, other.id)) && state == PlayerState.climbwall && machTwo >= 100)
 	{
 		with (other.id)
 		{
@@ -45,7 +45,7 @@ with (instance_nearest(x, y, obj_parent_player))
 		}
 	}
 	
-	if (((place_meeting(x, y + vsp, other.id) && vsp >= 0) || place_meeting(x, y + 1, other.id)) && state == states.skateboard && freeFallSmash > 10)
+	if (((place_meeting(x, y + vsp, other.id) && vsp >= 0) || place_meeting(x, y + 1, other.id)) && state == PlayerState.freefallland && freeFallSmash > 10)
 	{
 		with (other.id)
 		{

@@ -1,6 +1,6 @@
 switch (state)
 {
-	case states.frozen:
+	case PlayerState.frozen:
 		hsp = 0;
 		
 		if (grounded)
@@ -14,7 +14,7 @@ switch (state)
 		
 		image_speed = 0.35;
 		break;
-	case states.normal:
+	case PlayerState.normal:
 		if (grounded && vsp >= 0)
 		{
 			movespeed = approach(movespeed, 9, 0.2);
@@ -56,7 +56,7 @@ switch (state)
 		
 		image_speed = 0.4;
 		break;
-	case states.titlescreen:
+	case PlayerState.titlescreen:
 		hsp = movespeed * image_xscale;
 		instance_destroy(instance_place(x + hsp, y, obj_destructibles));
 		
@@ -72,12 +72,12 @@ switch (state)
 		if ((sprite_animation_end() && sprite_index != spr_creamthief_grabbingStart) || sprite_index == spr_creamthief_grabbing)
 		{
 			if (grounded)
-				state = states.normal;
+				state = PlayerState.normal;
 		}
 		
 		image_speed = 0.3;
 		break;
-	case states.Nhookshot:
+	case PlayerState.run:
 		hsp = 0;
 		vsp = 0;
 		
@@ -87,7 +87,7 @@ switch (state)
 		tauntTimer--;
 		image_speed = 0;
 		break;
-	case states.charge:
+	case PlayerState.stun:
 		hsp = 0;
 		vsp = 0;
 		image_speed = 0.35;
@@ -95,11 +95,11 @@ switch (state)
 		if (floor(image_index) == 11)
 		{
 			movespeed = 16;
-			state = states.normal;
+			state = PlayerState.normal;
 		}
 		
 		break;
-	case states.slap:
+	case PlayerState.charge:
 		hsp = movespeed * image_xscale;
 		movespeed = approach(movespeed, 0, 0.4);
 		
@@ -109,7 +109,7 @@ switch (state)
 			image_index = 0;
 			sprite_index = spr_creamthief_walk;
 			movespeed = 8;
-			state = states.normal;
+			state = PlayerState.normal;
 		}
 		
 		break;
@@ -129,10 +129,10 @@ if ((instance_exists(obj_fadeoutTransition) || instance_exists(obj_techdiff)) &&
 {
 	sprite_index = spr_creamthief_idle;
 	
-	if (state != states.frozen)
+	if (state != PlayerState.frozen)
 	{
 		instance_create(x, y, obj_poofeffect);
-		state = states.frozen;
+		state = PlayerState.frozen;
 	}
 	
 	with (obj_racelight)

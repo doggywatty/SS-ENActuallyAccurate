@@ -5,7 +5,7 @@ if (ds_list_find_index(global.SaveRoom, id) == -1)
 {
 	with (other)
 	{
-		if (state != states.boulder && sprite_index != spr_player_PZ_gotKey && sprite_index != spr_player_PZ_pileDriver_jump)
+		if (state != PlayerState.gotkey && sprite_index != spr_player_PZ_gotKey && sprite_index != spr_player_PZ_pileDriver_jump)
 		{
 			global.ComboTime = 60;
 			event_play_oneshot("event:/SFX/general/collectKey");
@@ -23,7 +23,7 @@ if (ds_list_find_index(global.SaveRoom, id) == -1)
 				sprite_index = spr_player_PZ_freeFall_1;
 			}
 			
-			state = states.boulder;
+			state = PlayerState.gotkey;
 			keyParticles = true;
 			alarm[7] = 30;
 			scr_queueTVAnimation(global.TvSprPlayer_KeyGot, 60);

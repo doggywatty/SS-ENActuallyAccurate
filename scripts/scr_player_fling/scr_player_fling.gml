@@ -41,7 +41,7 @@ function state_player_fling_launch()
 				}
 				
 				sprite_index = spr_player_PZ_geyser;
-				state = states.chainsawpogo;
+				state = PlayerState.jump;
 				jumpStop = true;
 			}
 			else if (sprite_index != spr_player_PZ_flinged_tilt_start && sprite_index != spr_player_PZ_flinged_tilt)
@@ -71,7 +71,7 @@ function state_player_fling_launch()
 		
 		if (abs(hsp) <= 5)
 		{
-			state = states.slam;
+			state = PlayerState.freefall;
 			movespeed = 0;
 			vsp = 12;
 			freeFallSmash = 20;
@@ -82,7 +82,7 @@ function state_player_fling_launch()
 			if (abs(hsp) <= 0 && slopeCheck(x, y))
 				xscale = -slopeMomentum_direction();
 			
-			state = states.climbdownwall;
+			state = PlayerState.machroll;
 			sprite_index = spr_crouchslip;
 			movespeed = min(abs(hsp), 12);
 			hsp = movespeed * xscale;
@@ -106,7 +106,7 @@ function state_player_fling_launch()
 		}
 		
 		sprite_index = spr_player_PZ_fall;
-		state = states.chainsawpogo;
+		state = PlayerState.jump;
 		vsp = -12;
 		verticalMovespeed = vsp;
 		freeFallSmash = 0;
@@ -129,7 +129,7 @@ function state_player_fling_launch()
 					verticalMovespeed -= vsp;
 				
 				grabClimbBuffer = 0;
-				state = states.cheesepep;
+				state = PlayerState.climbwall;
 			}
 			else
 			{
@@ -151,7 +151,7 @@ function state_player_fling_launch()
 				
 				flash = false;
 				sprite_index = spr_mach3hitwall;
-				state = states.throwing;
+				state = PlayerState.bump;
 				hsp = -2.5 * xscale;
 				vsp = -3;
 				machTwo = 0;
@@ -161,6 +161,6 @@ function state_player_fling_launch()
 		}
 	}
 	
-	if (state != states.parry)
+	if (state != PlayerState.fling_launch)
 		grav = 0.5;
 }

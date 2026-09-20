@@ -51,12 +51,12 @@ with (HUDObject_TV)
 	{
 		var player_state = global.freezeframe ? arg0.frozenState : arg0.state;
 		
-		if (player_state == states.machfreefall)
+		if (player_state == PlayerState.machslide)
 		{
 			if (arg0.sprite_index == arg0.spr_machslideboost3)
-				player_state = states.shotgun;
+				player_state = PlayerState.mach3;
 			else
-				player_state = states.pistol;
+				player_state = PlayerState.mach2;
 		}
 		
 		if (sprite_index == spr_tvHUD_turningOn && !sprite_animation_end(undefined, undefined, sprite_image_number))
@@ -77,10 +77,10 @@ with (HUDObject_TV)
 			switch (_sprite_check)
 			{
 				case global.TvSprPlayer_Hurt:
-					_count = obj_parent_player.state != states.superslam;
+					_count = obj_parent_player.state != PlayerState.hurt;
 					break;
 				case global.TvSprPlayer_KeyGot:
-					_count = obj_parent_player.state != states.boulder;
+					_count = obj_parent_player.state != PlayerState.gotkey;
 					break;
 				case global.TvSprPlayer_Secret:
 					_count = !obj_parent_player.isInSecretPortal;
@@ -126,71 +126,71 @@ with (HUDObject_TV)
 					queuedSprite = global.TvSprPlayer_HighCombo;
 				
 				break;
-			case states.shotgun:
-			case states.cheeseball:
-			case states.machfreefall:
-			case states.cheesepep:
-			case states.climbdownwall:
+			case PlayerState.mach3:
+			case PlayerState.wallkick:
+			case PlayerState.machslide:
+			case PlayerState.climbwall:
+			case PlayerState.machroll:
 				tvNormalStates = true;
 				var my_mvsp = global.freezeframe ? abs(arg0.frozenMoveSpeed) : abs(arg0.movespeed);
 				
-				if (player_state == states.cheesepep)
+				if (player_state == PlayerState.climbwall)
 					my_mvsp = global.freezeframe ? abs(arg0.frozenVerticalMovespeed) : abs(arg0.verticalMovespeed);
 				
 				var _oldQueue = queuedSprite;
 				
-				if (player_state == states.cheeseball || player_state == states.machfreefall)
+				if (player_state == PlayerState.wallkick || player_state == PlayerState.machslide)
 					queuedSprite = global.TvSprPlayer_Mach2;
 				
-				if (player_state == states.shotgun || player_state == states.cheesepep || (player_state == states.machfreefall && arg0.sprite_index == arg0.spr_machslideboost3) || player_state == states.climbdownwall)
+				if (player_state == PlayerState.mach3 || player_state == PlayerState.climbwall || (player_state == PlayerState.machslide && arg0.sprite_index == arg0.spr_machslideboost3) || player_state == PlayerState.machroll)
 					queuedSprite = global.TvSprPlayer_Mach3;
 				
-				if (arg0.sprite_index == arg0.spr_crazyrun || (player_state == states.cheesepep && my_mvsp >= 16) || (player_state == states.climbdownwall && arg0.mach3Roll > 0 && my_mvsp >= 16))
+				if (arg0.sprite_index == arg0.spr_crazyrun || (player_state == PlayerState.climbwall && my_mvsp >= 16) || (player_state == PlayerState.machroll && arg0.mach3Roll > 0 && my_mvsp >= 16))
 					queuedSprite = global.TvSprPlayer_Mach4;
 				
 				if (queuedSprite != _oldQueue)
 					tvForceTransition = true;
 				
 				break;
-			case states.runonball:
+			case PlayerState.tumble:
 				queuedSprite = global.TvSprPlayer_Ball;
 				break;
-			case states.freefallprep:
+			case PlayerState.puddle:
 				queuedSprite = global.TvSprPlayer_Slipping;
 				break;
-			case states.freefall:
+			case PlayerState.oldtaunt:
 				queuedSprite = global.TvSprPlayer_Hooked;
 				
 				if (arg0.sprite_index == spr_player_PZ_frostburn_hook)
 					queuedSprite = global.TvSprPlayer_FrostBurn;
 				
 				break;
-			case states.victory:
+			case PlayerState.minecart:
 				queuedSprite = global.TvSprPlayer_Minecart;
 				break;
-			case states.crouchslide:
-			case states.mach1:
+			case PlayerState.fireass:
+			case PlayerState.fireassdash:
 				queuedSprite = global.TvSprPlayer_FireAss;
 				break;
-			case states.bossintro:
-			case states.keyget:
-			case states.tackle:
-			case states.slipnslide:
+			case PlayerState.cotton:
+			case PlayerState.cottondrill:
+			case PlayerState.cottonroll:
+			case PlayerState.cottondig:
 				queuedSprite = global.TvSprPlayer_WereCotton;
 				break;
-			case states.pal:
-			case states.cotton:
-			case states.uppercut:
-			case states.shocked:
+			case PlayerState.frostburnjump:
+			case PlayerState.frostburnnormal:
+			case PlayerState.frostburnslide:
+			case PlayerState.frostburnstick:
 				queuedSprite = global.TvSprPlayer_FrostBurn;
 				break;
-			case states.ladder:
+			case PlayerState.fling:
 				queuedSprite = global.TvSprPlayer_Croaked;
 				break;
-			case states.punch:
-			case states.backkick:
-			case states.shoulder:
-			case states.backbreaker:
+			case PlayerState.doughmount:
+			case PlayerState.doughmountspin:
+			case PlayerState.doughmountballoon:
+			case PlayerState.doughmountpancake:
 				queuedSprite = global.TvSprPlayer_MarshMount;
 				break;
 		}

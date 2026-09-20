@@ -18,7 +18,7 @@ function state_player_taunt()
 	}
 	if (sprite_index == spr_player_PZ_freeFallSpin && place_meeting(x, y + 1, obj_solid))
 	{
-		state = states.machfreefall;
+		state = PlayerState.machslide;
 		sprite_index = spr_player_PZ_crouchSlide;
 	}
 	if (sprite_index == spr_taunt)
@@ -124,7 +124,7 @@ function state_player_taunt()
 	if (sprite_animation_end())
 	{
 		if (sprite_index == spr_petdog || sprite_index == spr_Timesup)
-			state = states.normal;
+			state = PlayerState.normal;
 	}
 	if (sprite_index == spr_supertaunt1 || sprite_index == spr_supertaunt2 || sprite_index == spr_supertaunt3 || sprite_index == spr_supertaunt4)
 		image_speed = 0.4;

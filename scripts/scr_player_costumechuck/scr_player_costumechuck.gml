@@ -17,9 +17,9 @@ function state_player_costumechuck()
 		}
 		
 		if (chuckCooldown == 0 || !key_attack)
-			state = states.door;
+			state = PlayerState.costumenormal;
 	}
 	
 	if (substate == 1 && sprite_animation_end())
-		state = states.door;
+		state = PlayerState.costumenormal;
 }

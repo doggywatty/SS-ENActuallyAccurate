@@ -4,7 +4,7 @@ var player_minecart = scr_transformationCheck(_player.state) == "Minecart";
 if (place_meeting(x, y - 4, _player) && !player_minecart)
 {
 	grabbedMinecart = true;
-	_player.state = states.victory;
+	_player.state = PlayerState.minecart;
 	
 	if (_player.xscale == image_xscale)
 		_player.movespeed = clamp(_player.movespeed, 3, 12);

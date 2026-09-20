@@ -1,4 +1,4 @@
-if (other.state == states.shotgun)
+if (other.state == PlayerState.mach3)
 {
 	with (other)
 	{
@@ -11,17 +11,17 @@ if (other.dashpadBuffer <= 0)
 {
 	with (other)
 	{
-		if (state != states.chainsaw && state != states.victory && state != states.facestomp && state != states.backkick && state != states.punch && sprite_get_bbox_bottom(mask_index) <= other.bbox_bottom)
+		if (state != PlayerState.Sjumpprep && state != PlayerState.minecart && state != PlayerState.crouch && state != PlayerState.doughmountspin && state != PlayerState.doughmount && sprite_get_bbox_bottom(mask_index) <= other.bbox_bottom)
 		{
 			movespeed += 0.25;
 			movespeed = clamp(movespeed, 12, 24);
 			event_play_multiple("event:/SFX/general/dashpad", x, y);
 			fmod_studio_event_instance_start(sndMachStart);
 			
-			if (global.playerCharacter == PlayerCharacter.PIZZELLE)
+			if (global.playerCharacter == characters.PZ)
 			{
 				dashpadBuffer = 25;
-				state = states.shotgun;
+				state = PlayerState.mach3;
 				
 				if (sprite_index != spr_machdashpad)
 				{
@@ -45,14 +45,14 @@ if (other.dashpadBuffer <= 0)
 					}
 				}
 				
-				if (state != states.cheesepep && !scr_solid(other.x, y))
+				if (state != PlayerState.climbwall && !scr_solid(other.x, y))
 					x = other.x;
 				
 				vsp = 3;
 				flash = true;
 			}
 		}
-		else if (state == states.victory && sprite_get_bbox_bottom(mask_index) <= other.bbox_bottom)
+		else if (state == PlayerState.minecart && sprite_get_bbox_bottom(mask_index) <= other.bbox_bottom)
 		{
 			xscale = sign(other.image_xscale);
 			movespeed += 4;
@@ -71,7 +71,7 @@ if (other.dashpadBuffer <= 0)
 			xscale = sign(other.image_xscale);
 			movespeed = max(14, movespeed);
 			dashpadBuffer = 50;
-			state = states.Nhookshot;
+			state = PlayerState.run;
 		}
 	}
 }

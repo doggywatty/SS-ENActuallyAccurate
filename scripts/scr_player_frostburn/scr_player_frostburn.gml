@@ -127,7 +127,7 @@ function state_player_frostburnslide()
 			image_xscale = other.xscale;
 		
 		fmod_studio_event_instance_start(sndJump);
-		state = states.pal;
+		state = PlayerState.frostburnjump;
 		movespeed = hsp;
 	}
 	
@@ -146,7 +146,7 @@ function state_player_frostburnslide()
 	if (!grounded && vsp >= terminalVelocity)
 	{
 		movespeed = hsp;
-		state = states.pal;
+		state = PlayerState.frostburnjump;
 		flash = true;
 		momentum = true;
 		sprite_index = spr_player_PZ_frostburn_spin;
@@ -159,14 +159,14 @@ function state_player_frostburnslide()
 			vsp = 0;
 			image_index = 0;
 			sprite_index = spr_player_PZ_frostburn_wallCling;
-			state = states.shocked;
+			state = PlayerState.frostburnstick;
 			xscale = sign(hsp);
 		}
 		else
 		{
 			event_play_oneshot("event:/SFX/player/bumpwall", x, y);
 			sprite_index = spr_player_PZ_frostburn_walk_fall;
-			state = states.pal;
+			state = PlayerState.frostburnjump;
 			vsp = -4;
 			xscale = -sign(hsp);
 			movespeed = xscale * 5;
@@ -284,7 +284,7 @@ function state_player_frostburnjump()
 			vsp = 0;
 			image_index = 0;
 			sprite_index = spr_player_PZ_frostburn_wallCling;
-			state = states.shocked;
+			state = PlayerState.frostburnstick;
 			xscale = sign(hsp);
 		}
 		else
@@ -309,14 +309,14 @@ function state_player_frostburnjump()
 				with (instance_create(x, y, obj_jumpdust))
 					image_xscale = other.xscale;
 				
-				state = states.uppercut;
+				state = PlayerState.frostburnslide;
 			}
 			else
 			{
 				event_play_oneshot("event:/SFX/player/groundpound", x, y);
 				image_index = 0;
 				movespeed = 0;
-				state = states.shocked;
+				state = PlayerState.frostburnstick;
 				jumpAnim = true;
 				jumpStop = false;
 				
@@ -348,11 +348,11 @@ function state_player_frostburnjump()
 				with (instance_create(x, y, obj_jumpdust))
 					image_xscale = other.xscale;
 				
-				state = states.uppercut;
+				state = PlayerState.frostburnslide;
 			}
 			else
 			{
-				state = states.cotton;
+				state = PlayerState.frostburnnormal;
 				
 				if (sign(hsp) != 0)
 					xscale = sign(hsp);
@@ -378,7 +378,7 @@ function state_player_frostburnstick()
 		sprite_index = spr_player_PZ_frostburn_walk_fall;
 		xscale *= -1;
 		movespeed = xscale * 5;
-		state = states.pal;
+		state = PlayerState.frostburnjump;
 	}
 	
 	if (sprite_animation_end())
@@ -390,11 +390,11 @@ function state_player_frostburnstick()
 			xscale *= -1;
 			vsp = -13;
 			movespeed = xscale * 10;
-			state = states.pal;
+			state = PlayerState.frostburnjump;
 		}
 		else
 		{
-			state = states.cotton;
+			state = PlayerState.frostburnnormal;
 			sprite_index = spr_player_PZ_frostburn_idle;
 			freeFallSmash = 0;
 		}

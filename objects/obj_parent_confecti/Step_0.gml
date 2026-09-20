@@ -11,17 +11,17 @@ if (wetTimer > 0 && wetTimerEffect-- <= 0)
 
 switch (state)
 {
-	case states.frozen:
+	case PlayerState.frozen:
 		scr_confecti_normal();
 		depth = -5 + ds_list_find_index(global.FollowerList, id);
 		break;
-	case states.normal:
+	case PlayerState.normal:
 		scr_confecti_taunt();
 		break;
-	case states.titlescreen:
+	case PlayerState.titlescreen:
 		scr_confecti_appear();
 		break;
-	case states.Nhookshot:
+	case PlayerState.run:
 		scr_confecti_unlock();
 		break;
 }

@@ -48,7 +48,7 @@ if (collected)
 	ystart = y;
 }
 
-if ((instance_exists(obj_minesgempiece) || collected) && playerID.state != states.mach3)
+if ((instance_exists(obj_minesgempiece) || collected) && playerID.state != PlayerState.actor)
 {
 	leaveTimer = 60;
 	leaving = false;

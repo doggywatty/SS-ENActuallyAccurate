@@ -18,7 +18,7 @@ solidCollideFunc=function(arg0=obj_parent_player)
 		case obj_player1:
 		case obj_player2:
 			var _state=global.freezeframe ? arg0.frozenState : arg0.state;
-			return _state != states.grabbing;
+			return _state != PlayerState.ladder;
 			break;
 		default:
 			return true;

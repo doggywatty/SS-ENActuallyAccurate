@@ -71,7 +71,7 @@ function state_player_Sjump()
 		}
 		
 		image_index = 0;
-		state = states.knightpepattack;
+		state = PlayerState.ceilingCrash;
 	}
 	else if ((key_attack2 || inputBufferSlap > 0) && global.playerCharacter == PlayerCharacter.PIZZELLE && sprite_index != spr_player_PZ_fall_outOfControl && sprite_index != spr_superspring && sprite_index != spr_superjumpCancelIntro)
 	{
@@ -94,7 +94,7 @@ function state_player_Sjump()
 				xscale = move;
 			
 			movespeed = 12;
-			state = states.shotgun;
+			state = PlayerState.mach3;
 			flash = true;
 			jumpStop = true;
 			vsp = -4;

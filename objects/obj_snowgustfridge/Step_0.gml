@@ -2,11 +2,11 @@ if (place_meeting(x, y, obj_parent_player))
 {
 	with (obj_parent_player)
 	{
-		if (place_meeting(x, y, other) && state != states.noclip && state != states.freefall && !cutscene)
+		if (place_meeting(x, y, other) && state != PlayerState.noclip && state != PlayerState.oldtaunt && !cutscene)
 		{
-			if (state != states.pal && state != states.cotton && state != states.shocked)
+			if (state != PlayerState.frostburnjump && state != PlayerState.frostburnnormal && state != PlayerState.frostburnstick)
 			{
-				state = states.cotton;
+				state = PlayerState.frostburnnormal;
 				movespeed = clamp(movespeed, 0, 8);
 				other.sprite_index = spr_fridge_attack;
 				other.image_index = 0;

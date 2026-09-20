@@ -1,4 +1,4 @@
-if (state == states.chainsawpogo)
+if (state == PlayerState.jump)
 {
 	if (vsp < 20)
 		vsp += grav;

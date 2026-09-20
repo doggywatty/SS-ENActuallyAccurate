@@ -59,7 +59,7 @@ function state_player_climbwall()
 	{
 		movespeed = 0;
 		vsp /= 2;
-		state = states.chainsawpogo;
+		state = PlayerState.jump;
 		sprite_index = spr_fall;
 		conveyorHsp = -6 * xscale;
 	}
@@ -96,12 +96,12 @@ function state_player_climbwall()
 		
 		if (verticalMovespeed < 12)
 		{
-			state = states.pistol;
+			state = PlayerState.mach2;
 			movespeed = verticalMovespeed;
 		}
 		else if (verticalMovespeed >= 12)
 		{
-			state = states.shotgun;
+			state = PlayerState.mach3;
 			sprite_index = spr_mach3player;
 			movespeed = verticalMovespeed;
 		}
@@ -121,16 +121,16 @@ function state_player_climbwall()
 			movespeed = verticalMovespeed;
 			
 			if (verticalMovespeed < 12)
-				state = states.pistol;
+				state = PlayerState.mach2;
 			else if (verticalMovespeed >= 12)
-				state = states.shotgun;
+				state = PlayerState.mach3;
 		}
 		else
 		{
 			sprite_index = spr_player_PZ_wallclimb_crash;
 			event_play_oneshot("event:/SFX/player/groundpound", x, y);
 			image_index = 0;
-			state = states.knightpepattack;
+			state = PlayerState.ceilingCrash;
 			camera_shake_add(10, 30);
 			
 			with (obj_parent_enemy)
@@ -153,7 +153,7 @@ function state_player_climbwall()
 		{
 			jumpStop = false;
 			xscale *= -1;
-			state = states.cheeseball;
+			state = PlayerState.wallkick;
 			fmod_studio_event_instance_start(sndWallkickStart);
 			vsp = -14;
 			sprite_index = spr_wallJumpIntro;
@@ -181,7 +181,7 @@ function state_player_climbwall()
 			vsp = -9;
 			jumpStop = false;
 			xscale *= -1;
-			state = states.pistol;
+			state = PlayerState.mach2;
 			
 			if (verticalMovespeed >= 12 && !place_meeting(x + xscale, y, obj_molassesWall))
 			{
@@ -189,7 +189,7 @@ function state_player_climbwall()
 					movespeed = 13;
 				
 				sprite_index = spr_machdashpad;
-				state = states.shotgun;
+				state = PlayerState.mach3;
 			}
 			else if (place_meeting(x + xscale, y, obj_molassesWall))
 			{

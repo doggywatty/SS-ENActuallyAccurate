@@ -1,14 +1,14 @@
-if (point_in_circle(x, y, obj_parent_player.x + (75 * obj_parent_player.xscale), obj_parent_player.y, 125) && obj_parent_player.inhaling && state != enemystates.inhale)
-	state = enemystates.inhale;
+if (point_in_circle(x, y, obj_parent_player.x + (75 * obj_parent_player.xscale), obj_parent_player.y, 125) && obj_parent_player.inhaling && state != enemystates.inhaled)
+	state = enemystates.inhaled;
 
 if (flash && alarm[2] <= 0)
 {
 }
 
-if (state != states.charge)
+if (state != PlayerState.stun)
 	depth = 0;
 
-if (state != enemystates.thrown && state != states.boxxedpep)
+if (state != enemystates.thrown && state != PlayerState.freezeframe)
 	thrown = 0;
 
 enemyAttackTimer = max(enemyAttackTimer - 1, 0);

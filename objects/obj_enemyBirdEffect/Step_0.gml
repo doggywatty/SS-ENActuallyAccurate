@@ -6,7 +6,7 @@ if (!instance_exists(baddieID))
 
 updateBirdPosition();
 
-if (!global.freezeframe && (baddieID.baddieStunTimer < 50 || baddieID.state != states.slap))
+if (!global.freezeframe && (baddieID.baddieStunTimer < 50 || baddieID.state != PlayerState.charge))
 {
 	baddieID.birdCreated = false;
 	instance_destroy();

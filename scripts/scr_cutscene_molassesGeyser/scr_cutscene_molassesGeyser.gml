@@ -7,7 +7,7 @@ function cutscene_geyser_start()
 	
 	with (obj_parent_player)
 	{
-		state = states.mach3;
+		state = PlayerState.actor;
 		visible = false;
 		hsp = 0;
 		vsp = 0;
@@ -37,7 +37,7 @@ function cutscene_geyser_middle()
 	
 	with (obj_parent_player)
 	{
-		state = states.mach3;
+		state = PlayerState.actor;
 		visible = false;
 		hsp = 0;
 		vsp = 0;
@@ -74,7 +74,7 @@ function cutscene_geyser_end()
 	with (obj_parent_player)
 	{
 		sprite_index = spr_player_PZ_geyser;
-		state = states.chainsawpogo;
+		state = PlayerState.jump;
 		jumpStop = true;
 		visible = true;
 		hsp = 0;

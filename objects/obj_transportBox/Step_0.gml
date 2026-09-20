@@ -2,7 +2,7 @@ with (obj_parent_player)
 {
 	if (other.image_yscale == 1)
 	{
-		if (((key_down && !place_meeting(x, y + 1, obj_destructibles) && place_meeting(x, y + 1, other.id) && (state == states.facestomp || state == states.cheeseball || state == states.climbdownwall)) || ((state == states.slam || state == states.skateboard) && !place_meeting(x, y + 1, obj_destructibles) && place_meeting(x, y + 1, other.id))) && !instance_exists(obj_fadeoutTransition) && state != states.grab && state != states.stunned)
+		if (((key_down && !place_meeting(x, y + 1, obj_destructibles) && place_meeting(x, y + 1, other.id) && (state == PlayerState.crouch || state == PlayerState.wallkick || state == PlayerState.machroll)) || ((state == PlayerState.freefall || state == PlayerState.freefallland) && !place_meeting(x, y + 1, obj_destructibles) && place_meeting(x, y + 1, other.id))) && !instance_exists(obj_fadeoutTransition) && state != PlayerState.door && state != PlayerState.comingoutdoor)
 		{
 			with (other)
 			{
@@ -21,13 +21,13 @@ with (obj_parent_player)
 			obj_parent_player.targetDoor = other.targetDoor;
 			obj_parent_player.targetRoom = other.targetRoom;
 			sprite_index = spr_downpizzabox;
-			state = states.grab;
+			state = PlayerState.door;
 		}
 	}
 	
 	if (other.image_yscale == -1)
 	{
-		if ((((key_up || state == states.highjump || state == states.cheesepep) && !place_meeting(x, y - 1, obj_destructibles) && place_meeting(x, y - 1, other.id) && (state == states.chainsawpogo || state == states.cheesepep || state == states.cheeseball || state == states.ufofloat || state == states.highjump || state == states.pistol || state == states.shotgun)) && !place_meeting(x, y - 1, obj_destructibles) && place_meeting(x, y - 1, other.id)) && !instance_exists(obj_fadeoutTransition))
+		if ((((key_up || state == PlayerState.Sjump || state == PlayerState.climbwall) && !place_meeting(x, y - 1, obj_destructibles) && place_meeting(x, y - 1, other.id) && (state == PlayerState.jump || state == PlayerState.climbwall || state == PlayerState.wallkick || state == PlayerState.uppercut || state == PlayerState.Sjump || state == PlayerState.mach2 || state == PlayerState.mach3)) && !place_meeting(x, y - 1, obj_destructibles) && place_meeting(x, y - 1, other.id)) && !instance_exists(obj_fadeoutTransition))
 		{
 			event_play_oneshot("event:/SFX/general/box");
 			
@@ -48,7 +48,7 @@ with (obj_parent_player)
 			obj_parent_player.targetDoor = other.targetDoor;
 			obj_parent_player.targetRoom = other.targetRoom;
 			sprite_index = spr_uppizzabox;
-			state = states.grab;
+			state = PlayerState.door;
 		}
 	}
 }

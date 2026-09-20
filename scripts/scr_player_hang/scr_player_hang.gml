@@ -10,7 +10,7 @@ function state_player_hang()
 	
 	if (place_meeting_collision(x + xscale, y, Exclude.SLOPES))
 	{
-		state = states.throwing;
+		state = PlayerState.bump;
 		hsp = xscale * -5;
 		vsp = 1;
 		instance_create(x + (10 * xscale), y + 10, obj_bumpEffect);
@@ -32,8 +32,8 @@ function state_player_hang()
 		sprite_index = spr_climbCeilingJump;
 		
 		if (movespeed < 12)
-			state = states.pistol;
+			state = PlayerState.mach2;
 		else
-			state = states.shotgun;
+			state = PlayerState.mach3;
 	}
 }

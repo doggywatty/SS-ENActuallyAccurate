@@ -1,6 +1,6 @@
-function face_obj(arg0)
+function face_obj(_obj)
 {
-	var dir = sign(arg0.x - x);
+	var dir = sign(_obj.x - x);
 	
 	if (dir == 0)
 		dir = 1;

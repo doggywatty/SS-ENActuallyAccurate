@@ -1,6 +1,6 @@
 with (obj_parent_player)
 {
-	if (state != states.highjump && state != states.slam)
+	if (state != PlayerState.Sjump && state != PlayerState.freefall)
 	{
 		event_play_oneshot("event:/SFX/general/superspring", x, y);
 		other.image_index = 0;
@@ -10,7 +10,7 @@ with (obj_parent_player)
 		if (other.image_yscale == 1)
 		{
 			sprite_index = spr_superspring;
-			state = states.highjump;
+			state = PlayerState.Sjump;
 			vsp = -12;
 			verticalMovespeed = vsp;
 			freeFallSmash = 0;
@@ -18,7 +18,7 @@ with (obj_parent_player)
 		}
 		else
 		{
-			state = states.slam;
+			state = PlayerState.freefall;
 			movespeed = 0;
 			vsp = 10;
 			freeFallSmash = 0;

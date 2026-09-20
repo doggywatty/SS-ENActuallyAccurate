@@ -1,6 +1,6 @@
 with (other)
 {
-	if ((state == states.victory || state == states.Sjump || (state == states.comingoutdoor && vsp > 0)) && !other.holdingPlayer && !global.freezeframe)
+	if ((state == PlayerState.minecart || state == PlayerState.minecart_bump || (state == PlayerState.minecart_launched && vsp > 0)) && !other.holdingPlayer && !global.freezeframe)
 	{
 		var _x = x;
 		var _y = y;

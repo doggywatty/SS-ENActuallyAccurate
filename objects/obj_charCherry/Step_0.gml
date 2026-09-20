@@ -1,6 +1,6 @@
-baddieCollisionBoxEnabled = state != states.minecart;
+baddieCollisionBoxEnabled = state != PlayerState.charcherryrun;
 
-if (state == states.frozen)
-	state = states.minecart;
+if (state == PlayerState.frozen)
+	state = PlayerState.charcherryrun;
 
 event_inherited();

@@ -11,7 +11,7 @@ updateEffectPosition = function()
 	
 	image_xscale = playerID.image_xscale;
 	
-	if (playerID.state == states.cheesepep)
+	if (playerID.state == PlayerState.climbwall)
 		sprite_index = spr_wallChargeEffect;
 	else
 		sprite_index = spr_superJumpEffect;

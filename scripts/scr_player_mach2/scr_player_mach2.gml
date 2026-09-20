@@ -62,7 +62,7 @@ function state_player_mach2()
 		if (abs(hsp) >= 12)
 		{
 			movespeed = max(movespeed, 12);
-			state = states.shotgun;
+			state = PlayerState.mach3;
 			flash = true;
 			
 			if (sprite_index != spr_rollgetup && sprite_index != spr_mach3hit)
@@ -85,7 +85,7 @@ function state_player_mach2()
 				event_play_oneshot("event:/SFX/player/break", x, y);
 				sprite_index = spr_machslidestart;
 				image_index = 0;
-				state = states.machfreefall;
+				state = PlayerState.machslide;
 			}
 			
 			if (move == -xscale)
@@ -93,14 +93,14 @@ function state_player_mach2()
 				event_play_oneshot("event:/SFX/player/machslideboost", x, y);
 				sprite_index = spr_machslideboost;
 				image_index = 0;
-				state = states.machfreefall;
+				state = PlayerState.machslide;
 			}
 		}
 	}
 	else if (movespeed < 8 && (grounded && vsp >= 0))
 	{
 		if (!key_attack)
-			state = states.normal;
+			state = PlayerState.normal;
 		
 		if (move == -xscale)
 		{
@@ -112,7 +112,7 @@ function state_player_mach2()
 	if (key_down && !key_slap2 && !place_meeting(x, y, obj_dashpad))
 	{
 		flash = false;
-		state = states.climbdownwall;
+		state = PlayerState.machroll;
 		instance_create(x, y, obj_jumpdust, 
 		{
 			playerID: id
@@ -139,7 +139,7 @@ function state_player_mach2()
 				verticalMovespeed -= vsp;
 			
 			grabClimbBuffer = 0;
-			state = states.cheesepep;
+			state = PlayerState.climbwall;
 		}
 		else
 		{
@@ -147,7 +147,7 @@ function state_player_mach2()
 			
 			if (!_ledge)
 			{
-				state = states.throwing;
+				state = PlayerState.bump;
 				image_index = 0;
 				sprite_index = spr_splat;
 				event_play_oneshot("event:/SFX/player/splat", x, y);
@@ -193,8 +193,8 @@ function state_player_mach2()
 	if (sprite_animation_end() && sprite_index == spr_longJump_intro)
 		sprite_index = spr_longJump;
 	
-	do_grab(states.pistol);
-	do_taunt(states.pistol);
+	do_grab(PlayerState.mach2);
+	do_taunt(PlayerState.mach2);
 	
 	if (sprite_index == spr_rollgetup || sprite_index == spr_longJump_intro || sprite_index == spr_longJump)
 		image_speed = 0.4;

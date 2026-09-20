@@ -1,6 +1,6 @@
 with (obj_parent_player)
 {
-	if (place_meeting(x, y, other.id) && alarm[0] <= 0 && !instance_exists(obj_fadeoutTransition) && key_up2 && grounded && (state == states.normal || state == states.chainsaw || state == states.pistol || state == states.shotgun || state == states.Nhookshot) && state != states.grab && state != states.shotgunjump && state != states.stunned)
+	if (place_meeting(x, y, other.id) && alarm[0] <= 0 && !instance_exists(obj_fadeoutTransition) && key_up2 && grounded && (state == PlayerState.normal || state == PlayerState.Sjumpprep || state == PlayerState.mach2 || state == PlayerState.mach3 || state == PlayerState.run) && state != PlayerState.door && state != PlayerState.victory && state != PlayerState.comingoutdoor)
 	{
 		with (other)
 		{

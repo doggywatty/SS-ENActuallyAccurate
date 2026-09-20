@@ -4,18 +4,18 @@ if (ds_list_find_index(global.SaveRoom, id) == -1)
 	{
 		with (obj_parent_player)
 		{
-			if (state == states.punch || state == states.backkick)
+			if (state == PlayerState.doughmount || state == PlayerState.doughmountspin)
 			{
 				with (other)
 					event_user(0);
 				
 				movespeed = abs(movespeed);
-				state = states.normal;
+				state = PlayerState.normal;
 				
 				if (key_attack)
 				{
 					movespeed = max(movespeed, 10);
-					state = states.pistol;
+					state = PlayerState.mach2;
 				}
 				
 				sprite_index = spr_idle;

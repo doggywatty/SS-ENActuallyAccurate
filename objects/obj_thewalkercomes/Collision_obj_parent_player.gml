@@ -7,7 +7,7 @@ if (!instance_exists(obj_thewalkercage))
 		with (other)
 		{
 			hsp = 9 * other.xscale;
-			state = states.knightpep;
+			state = PlayerState.gameover;
 			sprite_index = spr_player_PZ_fall_outOfControl;
 		}
 	}

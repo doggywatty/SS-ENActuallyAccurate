@@ -1,53 +1,53 @@
-function get_control_string(arg0)
+function get_control_string(_ctrl)
 {
-	switch (arg0)
+	switch _ctrl
 	{
 		default:
 			return "[unknown]";
 			break;
-		case 27:
+		case vk_escape:
 			return "Escape";
 			break;
-		case 112:
+		case vk_f1:
 			return "F1";
 			break;
-		case 113:
+		case vk_f2:
 			return "F2";
 			break;
-		case 114:
+		case vk_f3:
 			return "F3";
 			break;
-		case 115:
+		case vk_f4:
 			return "F4";
 			break;
-		case 116:
+		case vk_f5:
 			return "F5";
 			break;
-		case 117:
+		case vk_f6:
 			return "F6";
 			break;
-		case 118:
+		case vk_f7:
 			return "F7";
 			break;
-		case 119:
+		case vk_f8:
 			return "F8";
 			break;
-		case 120:
+		case vk_f9:
 			return "F9";
 			break;
-		case 121:
+		case vk_f10:
 			return "F10";
 			break;
-		case 122:
+		case vk_f11:
 			return "F11";
 			break;
-		case 123:
+		case vk_f12:
 			return "F12";
 			break;
-		case 44:
+		case vk_printscreen:
 			return "Print Screen";
 			break;
-		case 19:
+		case vk_pause:
 			return "Pause";
 			break;
 		case 49:
@@ -83,13 +83,13 @@ function get_control_string(arg0)
 		case 8:
 			return "Backspace";
 			break;
-		case 45:
+		case vk_insert:
 			return "Insert";
 			break;
-		case 36:
+		case vk_home:
 			return "Home";
 			break;
-		case 33:
+		case vk_pageup:
 			return "Page Up";
 			break;
 		case 9:
@@ -125,19 +125,19 @@ function get_control_string(arg0)
 		case 80:
 			return "P";
 			break;
-		case 35:
+		case vk_end:
 			return "End";
 			break;
-		case 34:
+		case vk_pagedown:
 			return "Page Down";
 			break;
-		case 103:
+		case vk_numpad7:
 			return "Num 7";
 			break;
-		case 104:
+		case vk_numpad8:
 			return "Num 8";
 			break;
-		case 105:
+		case vk_numpad9:
 			return "Num 9";
 			break;
 		case 43:
@@ -170,16 +170,16 @@ function get_control_string(arg0)
 		case 76:
 			return "L";
 			break;
-		case 13:
+		case vk_enter:
 			return "Enter";
 			break;
-		case 100:
+		case vk_numpad4:
 			return "Num 4";
 			break;
-		case 101:
+		case vk_numpad5:
 			return "Num 5";
 			break;
-		case 102:
+		case vk_numpad6:
 			return "Num 6";
 			break;
 		case 16:
@@ -209,19 +209,19 @@ function get_control_string(arg0)
 		case 38:
 			return "&";
 			break;
-		case 97:
+		case vk_numpad1:
 			return "Num 1";
 			break;
-		case 98:
+		case vk_numpad2:
 			return "Num 2";
 			break;
-		case 99:
+		case vk_numpad3:
 			return "Num 3";
 			break;
 		case 17:
 			return "/";
 			break;
-		case 18:
+		case vk_alt:
 			return "Alt";
 			break;
 		case 32:
@@ -236,62 +236,62 @@ function get_control_string(arg0)
 		case 40:
 			return "(";
 			break;
-		case 96:
+		case vk_numpad0:
 			return "Num 0";
 			break;
 	}
 }
 
-function get_control_string_npc(arg0)
+function get_control_string_npc(_ctrl)
 {
-	switch (arg0)
+	switch _ctrl
 	{
 		default:
 			return "[unknown]";
 			break;
-		case 27:
+		case vk_escape:
 			return "Escape";
 			break;
-		case 112:
+		case vk_f1:
 			return "F1";
 			break;
-		case 113:
+		case vk_f2:
 			return "F2";
 			break;
-		case 114:
+		case vk_f3:
 			return "F3";
 			break;
-		case 115:
+		case vk_f4:
 			return "F4";
 			break;
-		case 116:
+		case vk_f5:
 			return "F5";
 			break;
-		case 117:
+		case vk_f6:
 			return "F6";
 			break;
-		case 118:
+		case vk_f7:
 			return "F7";
 			break;
-		case 119:
+		case vk_f8:
 			return "F8";
 			break;
-		case 120:
+		case vk_f9:
 			return "F9";
 			break;
-		case 121:
+		case vk_f10:
 			return "F10";
 			break;
-		case 122:
+		case vk_f11:
 			return "F11";
 			break;
-		case 123:
+		case vk_f12:
 			return "F12";
 			break;
-		case 44:
+		case vk_printscreen:
 			return "Print Screen";
 			break;
-		case 19:
+		case vk_pause:
 			return "Pause";
 			break;
 		case 49:
@@ -327,13 +327,13 @@ function get_control_string_npc(arg0)
 		case 8:
 			return "Backspace";
 			break;
-		case 45:
+		case vk_insert:
 			return "Insert";
 			break;
-		case 36:
+		case vk_home:
 			return "Home";
 			break;
-		case 33:
+		case vk_pageup:
 			return "Page Up";
 			break;
 		case 9:
@@ -369,19 +369,19 @@ function get_control_string_npc(arg0)
 		case 80:
 			return "P";
 			break;
-		case 35:
+		case vk_end:
 			return "End";
 			break;
-		case 34:
+		case vk_pagedown:
 			return "Page Down";
 			break;
-		case 103:
+		case vk_numpad7:
 			return "Num 7";
 			break;
-		case 104:
+		case vk_numpad8:
 			return "Num 8";
 			break;
-		case 105:
+		case vk_numpad9:
 			return "Num 9";
 			break;
 		case 43:
@@ -414,19 +414,19 @@ function get_control_string_npc(arg0)
 		case 76:
 			return "L";
 			break;
-		case 13:
+		case vk_enter:
 			return "Enter";
 			break;
-		case 100:
+		case vk_numpad4:
 			return "Num 4";
 			break;
-		case 101:
+		case vk_numpad5:
 			return "Num 5";
 			break;
-		case 102:
+		case vk_numpad6:
 			return "Num 6";
 			break;
-		case 16:
+		case vk_shift:
 			return "Shift";
 			break;
 		case 90:
@@ -450,37 +450,37 @@ function get_control_string_npc(arg0)
 		case 77:
 			return "M";
 			break;
-		case 38:
+		case vk_up:
 			return "Up Arrow";
 			break;
-		case 97:
+		case vk_numpad1:
 			return "Num 1";
 			break;
-		case 98:
+		case vk_numpad2:
 			return "Num 2";
 			break;
-		case 99:
+		case vk_numpad3:
 			return "Num 3";
 			break;
-		case 17:
+		case vk_control:
 			return "Control";
 			break;
-		case 18:
+		case vk_alt:
 			return "Alt";
 			break;
-		case 32:
+		case vk_space:
 			return "Spacebar";
 			break;
-		case 37:
+		case vk_left:
 			return "Left Arrow";
 			break;
-		case 39:
+		case vk_right:
 			return "Right Arrow";
 			break;
-		case 40:
+		case vk_down:
 			return "Down Arrow";
 			break;
-		case 96:
+		case vk_numpad0:
 			return "Num 0";
 			break;
 	}

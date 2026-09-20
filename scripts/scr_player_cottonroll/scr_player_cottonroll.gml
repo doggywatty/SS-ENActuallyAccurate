@@ -8,7 +8,7 @@ function state_player_cottonroll()
 	
 	if (place_meeting_solid(x + xscale, y) && !place_meeting(x + xscale, y, obj_destructibles) && !place_meeting(x + xscale, y, obj_chocofrog))
 	{
-		state = states.bossintro;
+		state = PlayerState.cotton;
 		sprite_index = spr_player_PZ_werecotton_splat_intro;
 		image_index = 0;
 		movespeed = 0;
@@ -22,7 +22,7 @@ function state_player_cottonroll()
 	
 	if (grounded && !key_down && movespeed <= 8 && room_to_jump)
 	{
-		state = states.bossintro;
+		state = PlayerState.cotton;
 		sprite_index = spr_cottonIdle;
 		momentum = true;
 	}
@@ -30,7 +30,7 @@ function state_player_cottonroll()
 	if (inputBufferJump > 0 && !can_jump)
 	{
 		momentum = true;
-		state = states.bossintro;
+		state = PlayerState.cotton;
 		vsp = -10;
 		grav = 0.025;
 		image_index = 0;
@@ -52,7 +52,7 @@ function state_player_cottonroll()
 	if (inputBufferJump > 0 && grounded && !place_meeting_solid(x, y - 16) && !place_meeting_solid(x, y - 32))
 	{
 		momentum = true;
-		state = states.bossintro;
+		state = PlayerState.cotton;
 		vsp = -14;
 		grav = 0.025;
 		image_index = 0;
@@ -75,7 +75,7 @@ function state_player_cottonroll()
 		vsp = grounded ? 0 : -5;
 		grav = 0.2;
 		grounded = false;
-		state = states.bossintro;
+		state = PlayerState.cotton;
 		event_play_oneshot("event:/SFX/cotton/attack", x, y);
 		groundedCot = false;
 	}

@@ -68,7 +68,7 @@ drawBaddieSprite = function(arg0 = id)
 		if (flash)
 			draw_sprite_ext_flash(sprite_index, image_index, _drawx, _drawy, _xs, _ys, image_angle, c_white, image_alpha);
 		
-		if (canSpawnStunBird && baddieStunTimer >= 50 && state == states.slap)
+		if (canSpawnStunBird && baddieStunTimer >= 50 && state == PlayerState.charge)
 		{
 			birdEffect.draw(x, y - 40, 1, 1, 0, c_white, 1);
 			birdEffect.update();

@@ -1,5 +1,5 @@
 x = playerID.x;
 y = playerID.y;
 
-if ((playerID.state != states.chainsawbump && playerID.state != states.victory) || !playerID.grounded)
+if ((playerID.state != PlayerState.grind && playerID.state != PlayerState.minecart) || !playerID.grounded)
 	instance_destroy();

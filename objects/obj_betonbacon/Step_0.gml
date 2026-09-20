@@ -1,17 +1,17 @@
 movespeed = 2.5;
 
-if (point_in_circle(x, y, obj_parent_player.x + (75 * obj_parent_player.xscale), obj_parent_player.y, 125) && obj_parent_player.inhaling && state != enemystates.inhale)
-	state = enemystates.inhale;
+if (point_in_circle(x, y, obj_parent_player.x + (75 * obj_parent_player.xscale), obj_parent_player.y, 125) && obj_parent_player.inhaling && state != enemystates.inhaled)
+	state = enemystates.inhaled;
 
-if (state != states.charge)
+if (state != PlayerState.stun)
 	depth = 0;
 
-if (state != enemystates.thrown && state != states.boxxedpep)
+if (state != enemystates.thrown && state != PlayerState.freezeframe)
 	thrown = 0;
 
 ragereset = max(ragereset - 1, 0);
 
-if (point_in_rectangle(obj_parent_player.x, obj_parent_player.y, x - 200, y - 50, x + 200, y + 50) && obj_parent_player.state != states.grab && obj_parent_player.state != states.stunned)
+if (point_in_rectangle(obj_parent_player.x, obj_parent_player.y, x - 200, y - 50, x + 200, y + 50) && obj_parent_player.state != PlayerState.door && obj_parent_player.state != PlayerState.comingoutdoor)
 {
 	if (state != enemystates.attack && state == enemystates.normal && ragereset <= 0)
 	{

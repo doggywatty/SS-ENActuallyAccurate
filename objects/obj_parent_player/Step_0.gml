@@ -1,7 +1,7 @@
 var a = instance_place(x, y, obj_secretwall);
 secretArray = (a != -4) ? a.layerArray : [];
 
-if (state != states.stunned)
+if (state != PlayerState.comingoutdoor)
 	image_blend = c_white;
 
 inputLadderBuffer = max(inputLadderBuffer - 1, 0);
@@ -18,7 +18,7 @@ if (!instance_exists(heatAfterEffectID))
 	});
 }
 
-if (state != states.normal)
+if (state != PlayerState.normal)
 {
 	breakdanceBuffer = 0;
 	breakdanceSpeed = 0.25;
@@ -29,7 +29,7 @@ if (fireTrailBuffer > 0)
 
 if (fireTrailBuffer <= 0)
 {
-	if (movespeed >= 12 && sprite_index != spr_longJump && sprite_index != spr_longJump_intro && (state == states.pistol || state == states.shotgun || (state == states.Nhookshot && movespeed >= 12) || (state == states.climbdownwall && mach3Roll > 0)))
+	if (movespeed >= 12 && sprite_index != spr_longJump && sprite_index != spr_longJump_intro && (state == PlayerState.mach2 || state == PlayerState.mach3 || (state == PlayerState.run && movespeed >= 12) || (state == PlayerState.machroll && mach3Roll > 0)))
 	{
 		instance_create(x, y, obj_flameCloud, 
 		{
@@ -40,7 +40,7 @@ if (fireTrailBuffer <= 0)
 	fireTrailBuffer = 100;
 }
 
-if (state != states.shotgun && state != states.cheesepep)
+if (state != PlayerState.mach3 && state != PlayerState.climbwall)
 	machFourMode = false;
 
 var conveyor_hsp = conveyorBelt_hsp();
@@ -57,32 +57,32 @@ if (!hasSeenProgressionPrompt && (room == hub_demohallway || room == hub_paintst
 }
 
 if (room == rm_mainmenu || room == rm_introVideo || room == rm_startupLogo || room == rm_disclaimer)
-	state = states.titlescreen;
+	state = PlayerState.titlescreen;
 
 if (grounded)
 	floatyGrab = 18;
 
 var ceiling = inBackgroundLayer ? (-global.BgInstanceLayerOffset - 600) : -600;
 
-if ((y > (room_height + 400) || y < ceiling) && room != timesuproom && state != states.noclip && !instance_exists(obj_fadeoutTransition) && !instance_exists(obj_cutsceneManager))
+if ((y > (room_height + 400) || y < ceiling) && room != timesuproom && state != PlayerState.noclip && !instance_exists(obj_fadeoutTransition) && !instance_exists(obj_cutsceneManager))
 	scr_playerrespawn();
 
-if (state != states.slam && state != states.meteorpep && state != states.skateboard && state != states.secondjump)
+if (state != PlayerState.freefall && state != PlayerState.freefallprep && state != PlayerState.freefallland && state != PlayerState.superslam)
 	freeFallSmash = -14;
 
-if (!global.freezeframe && state != states.frozen)
+if (!global.freezeframe && state != PlayerState.frozen)
 {
-	if (!instance_exists(baddieGrabbedID) && (state == states.handstandjump || state == states.slap))
-		state = states.normal;
+	if (!instance_exists(baddieGrabbedID) && (state == PlayerState.grab || state == PlayerState.charge))
+		state = PlayerState.normal;
 	
-	if (state != states.handstandjump && state != states.slap && state != states.secondjump && state != states.bossdefeat)
+	if (state != PlayerState.grab && state != PlayerState.charge && state != PlayerState.superslam && state != PlayerState.finishingblow)
 		baddieGrabbedID = -4;
 	
-	if (state != states.climbdownwall && state != states.shotgun)
+	if (state != PlayerState.machroll && state != PlayerState.mach3)
 		mach3Roll = 0;
 }
 
-if (sprite_index == spr_player_PZ_tired && state != states.normal)
+if (sprite_index == spr_player_PZ_tired && state != PlayerState.normal)
 	windingAnim = 0;
 
 if (!global.freezeframe)
@@ -152,47 +152,47 @@ if (!hurted)
 	image_alpha = 1;
 
 var machslide_check = sprite_index == spr_machslideboost3 || sprite_index == spr_machslideboost3FallStart || sprite_index == spr_machslideboost3Fall;
-var killmove_states = [states.shotgun, states.bombpep, states.uppercut, states.cotton, states.keyget, states.bossintro, states.tackle, states.slipnslide, states.barrelmach2, states.crouch, states.victory, states.crouchslide, states.chainsawbump, states.grind, states.freefallprep, states.backkick, states.slam, states.highjump, states.slap, states.parry, states.cheeseball];
+var killmove_states = [PlayerState.mach3, PlayerState.slipnslide, PlayerState.frostburnslide, PlayerState.frostburnnormal, PlayerState.cottondrill, PlayerState.cotton, PlayerState.cottonroll, PlayerState.cottondig, PlayerState.bottlerocket, PlayerState.machtumble2, PlayerState.minecart, PlayerState.fireass, PlayerState.grind, PlayerState.hang, PlayerState.puddle, PlayerState.doughmountspin, PlayerState.freefall, PlayerState.Sjump, PlayerState.charge, PlayerState.fling_launch, PlayerState.wallkick];
 
-if (array_contains(killmove_states, state) || (state == states.machfreefall && machslide_check) || (state == states.Nhookshot && movespeed >= 12) || (state == states.ufofloat && vsp < 0) || (state == states.pal && vsp > 0) || (state == states.runonball && sprite_index != spr_tumblestart && sprite_index != spr_tumbleend) || (state == states.cheesepep && verticalMovespeed > 8) || (state == states.punch && abs(movespeed) >= 10) || (state == states.climbdownwall && mach3Roll > 0) || (state == states.secondjump && sprite_index == spr_piledriver) || ((state == states.secondjump && sprite_index == spr_piledriverIntro) && sprite_index != spr_player_PZ_werecotton_drill_h))
+if (array_contains(killmove_states, state) || (state == PlayerState.machslide && machslide_check) || (state == PlayerState.run && movespeed >= 12) || (state == PlayerState.uppercut && vsp < 0) || (state == PlayerState.frostburnjump && vsp > 0) || (state == PlayerState.tumble && sprite_index != spr_tumblestart && sprite_index != spr_tumbleend) || (state == PlayerState.climbwall && verticalMovespeed > 8) || (state == PlayerState.doughmount && abs(movespeed) >= 10) || (state == PlayerState.machroll && mach3Roll > 0) || (state == PlayerState.superslam && sprite_index == spr_piledriver) || ((state == PlayerState.superslam && sprite_index == spr_piledriverIntro) && sprite_index != spr_player_PZ_werecotton_drill_h))
 	instakillmove = true;
 else
 	instakillmove = false;
 
-if ((state != states.chainsawpogo && state != states.timesup) || vsp < 0)
+if ((state != PlayerState.jump && state != PlayerState.crouchjump) || vsp < 0)
 	fallingAnimation = 0;
 
-if (state != states.skateboard && state != states.normal && state != states.machfreefall)
+if (state != PlayerState.freefallland && state != PlayerState.normal && state != PlayerState.machslide)
 	slamHurt = 0;
 
-if (state != states.superslam)
+if (state != PlayerState.hurt)
 	player_hurt_buffer = 100;
 
-if (state != states.normal && state != states.machfreefall)
+if (state != PlayerState.normal && state != PlayerState.machslide)
 	machSlideAnim = false;
 
-if (state != states.normal)
+if (state != PlayerState.normal)
 {
 	idle = 0;
 	dashdust = 0;
 }
 
-if (state != states.machroll && state != states.chainsawpogo && state != states.pistalaim && state != states.normal && state != states.pistol && state != states.shotgun && state != states.meteorpep && state != states.portal && state != states.bossintro && state != states.tackle && state != states.slipnslide)
+if (state != PlayerState.mach1 && state != PlayerState.jump && state != PlayerState.grabdash && state != PlayerState.normal && state != PlayerState.mach2 && state != PlayerState.mach3 && state != PlayerState.freefallprep && state != PlayerState.swingclub && state != PlayerState.cotton && state != PlayerState.cottonroll && state != PlayerState.cottondig)
 	momentum = false;
 
-if (state != states.pistol)
+if (state != PlayerState.mach2)
 	machPunchAnim = false;
 
-if (state != states.chainsawpogo)
+if (state != PlayerState.jump)
 	ladderBuffer = 0;
 
-if (state != states.chainsawpogo && state != states.gottreasure)
+if (state != PlayerState.jump && state != PlayerState.taunt)
 	stompAnim = false;
 
-if (state != states.freefallprep)
+if (state != PlayerState.puddle)
 	slipSlopeBounces = 7;
 
-if (state == states.shotgun || state == states.pistol || state == states.highjump || (state == states.climbdownwall && mach3Roll > 0) || state == states.slap)
+if (state == PlayerState.mach3 || state == PlayerState.mach2 || state == PlayerState.Sjump || (state == PlayerState.machroll && mach3Roll > 0) || state == PlayerState.charge)
 {
 	machAfterimage--;
 	
@@ -209,12 +209,12 @@ else
 	machAfterimage = 0;
 }
 
-var up_arrow = ((place_meeting(x, y, obj_door) && !(place_meeting(x, y, obj_doorblocked) || place_meeting(x, y, obj_keydoor) || place_meeting(x, y, obj_janitorDoor))) || (place_meeting(x, y, obj_startGate) && state != states.shotgunjump) || place_meeting(x, y, obj_soundTest_Button) || (place_meeting(x, y, obj_janitorDoor) && (global.janitorRudefollow || ds_list_find_index(global.SaveRoom, instance_place(x, y, obj_janitorDoor).id) != -1)) || (place_meeting(x, y, obj_keydoor) && (ds_list_size(global.KeyFollowerList) > 0 || ds_list_find_index(global.SaveRoom, instance_place(x, y, obj_keydoor).id) != -1)) || (place_meeting(x, y, obj_exitgate) && global.panic == 1)) && !instance_exists(obj_uparrow) && scr_solid(x, y + 1) && state == states.normal;
+var up_arrow = ((place_meeting(x, y, obj_door) && !(place_meeting(x, y, obj_doorblocked) || place_meeting(x, y, obj_keydoor) || place_meeting(x, y, obj_janitorDoor))) || (place_meeting(x, y, obj_startGate) && state != PlayerState.victory) || place_meeting(x, y, obj_soundTest_Button) || (place_meeting(x, y, obj_janitorDoor) && (global.janitorRudefollow || ds_list_find_index(global.SaveRoom, instance_place(x, y, obj_janitorDoor).id) != -1)) || (place_meeting(x, y, obj_keydoor) && (ds_list_size(global.KeyFollowerList) > 0 || ds_list_find_index(global.SaveRoom, instance_place(x, y, obj_keydoor).id) != -1)) || (place_meeting(x, y, obj_exitgate) && global.panic == 1)) && !instance_exists(obj_uparrow) && scr_solid(x, y + 1) && state == PlayerState.normal;
 
 if (up_arrow)
 	instance_create(x, y, obj_uparrow);
 
-if (state == states.shotgun && !instance_exists(obj_speedlines))
+if (state == PlayerState.mach3 && !instance_exists(obj_speedlines))
 {
 	instance_create(x, y, obj_speedlines, 
 	{
@@ -222,7 +222,7 @@ if (state == states.shotgun && !instance_exists(obj_speedlines))
 	});
 }
 
-if (state == states.cheeseball)
+if (state == PlayerState.wallkick)
 {
 	blueAfterimage--;
 	
@@ -239,7 +239,7 @@ else
 	blueAfterimage = 0;
 }
 
-if (superTauntBuffer >= 10 && state != states.gottreasure && global.Combo >= 10)
+if (superTauntBuffer >= 10 && state != PlayerState.taunt && global.Combo >= 10)
 {
 	if (!superTauntCharged)
 		event_play_oneshot("event:/SFX/player/gotsupertaunt", x, y);
@@ -255,8 +255,8 @@ if (place_meeting(x, y + 9, obj_molassesGround))
 		event_play_oneshot("event:/SFX/player/goopfloor", x, y);
 	}
 	
-	if (state == states.cheesepep && vsp < 0)
-		state = states.normal;
+	if (state == PlayerState.climbwall && vsp < 0)
+		state = PlayerState.normal;
 	
 	if (vsp < 0 && grounded)
 	{
@@ -285,7 +285,7 @@ if (!grounded)
 slideHsp = approach(slideHsp, 0, 0.15);
 slideHsp = clamp(abs(slideHsp), 0, 3) * sign(slideHsp);
 
-if (state == states.cheesepep)
+if (state == PlayerState.climbwall)
 	slideHsp = 0;
 
 dashpadBuffer = max(dashpadBuffer - 1, 0);

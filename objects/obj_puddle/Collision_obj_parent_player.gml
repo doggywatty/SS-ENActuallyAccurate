@@ -18,7 +18,7 @@ if (sprite_index == spr_juicepuddledone && other.grounded)
 		image_index = 0;
 		image_speed = 0.35;
 		sprite_index = spr_player_PZ_slipSlide_intro;
-		state = states.freefallprep;
+		state = PlayerState.puddle;
 		vsp = -11;
 		grounded = 0;
 	}

@@ -182,7 +182,7 @@ function state_player_normal()
 	{
 		sprite_index = shotgunAnim ? spr_shotgun_fall : spr_fall;
 		jumpAnim = false;
-		state = states.chainsawpogo;
+		state = PlayerState.jump;
 		image_index = 0;
 	}
 	
@@ -196,7 +196,7 @@ function state_player_normal()
 		});
 		vsp = -11;
 		grav = 0.3;
-		state = states.chainsawpogo;
+		state = PlayerState.jump;
 		image_index = 0;
 		freefallstart = 0;
 		jumpAnim = true;
@@ -241,7 +241,7 @@ function state_player_normal()
 	
 	if ((key_down && grounded && !place_meeting(x, y, obj_hubDisplay) && !place_meeting(x, y, obj_paletteChangerMirror)) || scr_solid(x, y - 1))
 	{
-		state = states.facestomp;
+		state = PlayerState.crouch;
 		landAnim = false;
 		crouchAnim = true;
 		image_index = 0;
@@ -264,8 +264,8 @@ function state_player_normal()
 		}
 	}
 	
-	do_grab(states.normal);
-	do_taunt(states.normal);
+	do_grab(PlayerState.normal);
+	do_taunt(PlayerState.normal);
 	
 	if (key_attack && grounded && !scr_solid(x + xscale, y, true))
 	{
@@ -277,11 +277,11 @@ function state_player_normal()
 				sprite_index = spr_mach1;
 				image_index = 0;
 				jumpAnim = true;
-				state = states.pistol;
+				state = PlayerState.mach2;
 				break;
 		}
 	}
 	
-	if (prevSpriteIndex != sprite_index && sprite_index == spr_idle && state == states.normal)
+	if (prevSpriteIndex != sprite_index && sprite_index == spr_idle && state == PlayerState.normal)
 		image_index = 0;
 }

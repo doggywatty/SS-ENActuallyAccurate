@@ -66,7 +66,7 @@ function state_player_handstand()
 		sprite_index = spr_null;
 	
 	if (!key_attack)
-		state = states.normal;
+		state = PlayerState.normal;
 	
 	if (inputBufferSlap > 0 && bounced)
 	{
@@ -77,6 +77,6 @@ function state_player_handstand()
 		movespeed = 0;
 		bounceSpeed = 0;
 		bounced = false;
-		state = key_up ? states.highjump : states.shotgun;
+		state = key_up ? PlayerState.Sjump : PlayerState.mach3;
 	}
 }

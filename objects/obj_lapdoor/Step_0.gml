@@ -1,6 +1,6 @@
 with (obj_parent_player)
 {
-	if (place_meeting(x, y, other.id) && key_up && grounded == 1 && (state == states.normal || state == states.chainsaw || state == states.machroll || state == states.pistol || state == states.shotgun) && !instance_exists(obj_fadeoutTransition) && state != states.grab && state != states.shotgunjump && state != states.stunned && global.janitortype == 1)
+	if (place_meeting(x, y, other.id) && key_up && grounded == 1 && (state == PlayerState.normal || state == PlayerState.Sjumpprep || state == PlayerState.mach1 || state == PlayerState.mach2 || state == PlayerState.mach3) && !instance_exists(obj_fadeoutTransition) && state != PlayerState.door && state != PlayerState.victory && state != PlayerState.comingoutdoor && global.janitortype == 1)
 	{
 		if (ds_list_find_index(global.SaveRoom, other.id) != -1)
 		{
@@ -9,11 +9,11 @@ with (obj_parent_player)
 			obj_camera.chargeCameraX = 0;
 			targetDoor = other.targetDoor;
 			targetRoom = other.targetRoom;
-			state = states.grab;
+			state = PlayerState.door;
 		}
 		else if (global.janitorRudefollow == 1)
 		{
-			state = states.shotgunjump;
+			state = PlayerState.victory;
 			image_index = 0;
 			obj_camera.chargeCameraX = 0;
 			targetDoor = other.targetDoor;

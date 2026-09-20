@@ -3,9 +3,9 @@ if (place_meeting(x, y, obj_parryhitbox) || global.freezeframe)
 
 with (other.id)
 {
-	if (instance_exists(other.baddieID) && !cutscene && scr_transformationCheck(state) == undefined && !hurted && state != states.grab && state != states.shotgunjump && state != states.stunned && state != states.noclip && state != states.runonball && state != states.ladder && state != states.parry && state != states.crouchjump && state != states.bossintro && state != states.keyget && state != states.tackle && sprite_index != spr_tumbleend)
+	if (instance_exists(other.baddieID) && !cutscene && scr_transformationCheck(state) == undefined && !hurted && state != PlayerState.door && state != PlayerState.victory && state != PlayerState.comingoutdoor && state != PlayerState.noclip && state != PlayerState.tumble && state != PlayerState.fling && state != PlayerState.fling_launch && state != PlayerState.dodgetumble && state != PlayerState.cotton && state != PlayerState.cottondrill && state != PlayerState.cottonroll && sprite_index != spr_tumbleend)
 	{
-		state = states.runonball;
+		state = PlayerState.tumble;
 		image_speed = 0.35;
 		xscale = other.baddieID.image_xscale;
 		movespeed = 10;

@@ -17,13 +17,13 @@ if (sprite_index == spriteDoorUnlocked && sprite_animation_end())
 
 with (obj_parent_player)
 {
-	if (place_meeting(x, y, other.id) && !instance_exists(obj_fadeoutTransition) && key_up && grounded && (state == states.normal || state == states.chainsaw || state == states.pistol || state == states.shotgun) && state != states.grab && state != states.shotgunjump && state != states.stunned)
+	if (place_meeting(x, y, other.id) && !instance_exists(obj_fadeoutTransition) && key_up && grounded && (state == PlayerState.normal || state == PlayerState.Sjumpprep || state == PlayerState.mach2 || state == PlayerState.mach3) && state != PlayerState.door && state != PlayerState.victory && state != PlayerState.comingoutdoor)
 	{
 		if (!global.janitorRudefollow && ds_list_find_index(global.SaveRoom, other.id) == -1)
 			exit;
 		
 		image_index = 0;
-		state = states.grab;
+		state = PlayerState.door;
 		targetDoor = other.targetDoor;
 		targetRoom = other.targetRoom;
 		obj_camera.chargeCameraX = 0;
@@ -35,7 +35,7 @@ with (obj_parent_player)
 			{
 				sprite_index: other.spriteDoorLock
 			});
-			state = states.shotgunjump;
+			state = PlayerState.victory;
 			event_play_oneshot("event:/SFX/general/cheers", x, y);
 			event_play_oneshot("event:/SFX/general/keyunlock", x, y);
 			fmod_studio_event_instance_start(obj_parent_player.voiceCollect);
@@ -56,7 +56,7 @@ with (obj_parent_player)
 					x = obj_parent_player.x - (16 * obj_parent_player.image_xscale);
 					y = obj_parent_player.y;
 					image_index = 0;
-					state = states.Nhookshot;
+					state = PlayerState.run;
 				}
 			}
 		}

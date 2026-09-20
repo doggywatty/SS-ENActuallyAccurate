@@ -18,7 +18,7 @@ function state_player_charge()
 	
 	if (movespeed <= 2)
 	{
-		state = states.handstandjump;
+		state = PlayerState.grab;
 		sprite_index = spr_haulingIdle;
 	}
 	
@@ -37,7 +37,7 @@ function state_player_charge()
 	{
 		sprite_index = spr_piledriver;
 		vsp = -6;
-		state = states.secondjump;
+		state = PlayerState.superslam;
 		image_index = 0;
 		image_speed = 0.35;
 	}
@@ -45,7 +45,7 @@ function state_player_charge()
 	if (inputBufferSlap > 0 || (scr_solid(x + xscale, y, true) && !place_meeting(x + xscale, y, obj_destructibles)))
 	{
 		sprite_index = spr_swingDingEnd;
-		state = states.bossdefeat;
+		state = PlayerState.finishingblow;
 		movespeed *= xscale;
 		hsp = movespeed;
 		image_index = 0;

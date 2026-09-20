@@ -9,10 +9,10 @@ if (suck == true)
 {
 	with (pl)
 	{
-		if (state == states.punch || state == states.backkick || state == states.shoulder)
+		if (state == PlayerState.doughmount || state == PlayerState.doughmountspin || state == PlayerState.doughmountballoon)
 		{
 			sprite_index = spr_bump;
-			state = states.throwing;
+			state = PlayerState.bump;
 			
 			with (instance_create(x, y, obj_dogMount))
 				state = 1;

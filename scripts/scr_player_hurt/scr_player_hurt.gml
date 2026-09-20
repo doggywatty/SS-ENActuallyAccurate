@@ -19,9 +19,9 @@ function state_player_hurt()
 	
 	if ((grounded && vsp >= 0) || !player_hurt_buffer)
 	{
-		if (state == states.superslam)
+		if (state == PlayerState.hurt)
 		{
-			state = states.normal;
+			state = PlayerState.normal;
 			movespeed = 0;
 		}
 	}

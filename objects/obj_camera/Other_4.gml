@@ -41,7 +41,7 @@ var vw = cam_w * cam_zoom;
 var vh = cam_h * cam_zoom;
 camera_set_view_size(view_camera[0], vw, vh);
 
-if (instance_exists(obj_parent_player) && obj_parent_player.state != states.climbwall && obj_parent_player.state != states.knightpep)
+if (instance_exists(obj_parent_player) && obj_parent_player.state != PlayerState.timesup && obj_parent_player.state != PlayerState.gameover)
 {
 	global.targetCamX = obj_parent_player.x;
 	global.targetCamY = obj_parent_player.y - 32;
@@ -61,13 +61,13 @@ if (instance_exists(obj_parent_player) && obj_parent_player.state != states.clim
 		var _targetcharge = 0;
 		var _tspeed = 0;
 		
-		if (_player.state == states.pistol || _player.state == states.shotgun)
+		if (_player.state == PlayerState.mach2 || _player.state == PlayerState.mach3)
 		{
 			_targetcharge = _player.xscale * _player.movespeed * 16;
 			_tspeed = 0.3;
 			chargeCameraX = approach(chargeCameraX, _targetcharge, _tspeed);
 		}
-		else if (abs(_player.hsp) >= 16 && _player.state != states.cheesepep && _player.state != states.highjump)
+		else if (abs(_player.hsp) >= 16 && _player.state != PlayerState.climbwall && _player.state != PlayerState.Sjump)
 		{
 			_targetcharge = sign(_player.hsp) * abs(_player.hsp) * 16;
 			_tspeed = 2;
@@ -77,7 +77,7 @@ if (instance_exists(obj_parent_player) && obj_parent_player.state != states.clim
 			
 			chargeCameraX = approach(chargeCameraX, _targetcharge, _tspeed);
 		}
-		else if (_player.state == states.machfreefall)
+		else if (_player.state == PlayerState.machslide)
 		{
 			chargeCameraX = approach(chargeCameraX, 0, 10);
 		}

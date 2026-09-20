@@ -101,7 +101,7 @@ function state_player_freefall()
 	{
 		if (slopeCheck(x, y) && !place_meeting(x, y, obj_dashpad))
 		{
-			state = states.climbdownwall;
+			state = PlayerState.machroll;
 			sprite_index = spr_crouchslip;
 			movespeed = (freeFallSmash > 20) ? 12 : 8;
 			xscale = -slopeMomentum_direction();
@@ -113,7 +113,7 @@ function state_player_freefall()
 		{
 			event_play_oneshot("event:/SFX/player/groundpound", x, y);
 			image_index = 0;
-			state = states.skateboard;
+			state = PlayerState.freefallland;
 			jumpAnim = true;
 			jumpStop = false;
 			
@@ -127,7 +127,7 @@ function state_player_freefall()
 					
 					if (other.freeFallSmash >= 10)
 					{
-						state = states.slap;
+						state = PlayerState.charge;
 						vsp = -11;
 						image_xscale *= -1;
 						

@@ -8,7 +8,7 @@ function state_player_crouchjump()
 	if (fallingAnimation >= 40 && fallingAnimation < 65)
 	{
 		sprite_index = spr_player_PZ_freeFall_1;
-		state = states.chainsawpogo;
+		state = PlayerState.jump;
 	}
 	
 	mask_index = spr_crouchmask;
@@ -34,7 +34,7 @@ function state_player_crouchjump()
 	{
 		if (key_down)
 		{
-			state = states.facestomp;
+			state = PlayerState.crouch;
 			jumpAnim = true;
 			crouchAnim = true;
 			image_index = 0;
@@ -43,7 +43,7 @@ function state_player_crouchjump()
 		else if (!scr_solid(x, y - 16))
 		{
 			movespeed = 0;
-			state = states.normal;
+			state = PlayerState.normal;
 			jumpAnim = true;
 			landAnim = true;
 			crouchAnim = true;
@@ -52,7 +52,7 @@ function state_player_crouchjump()
 			mask_index = spr_player_mask;
 		}
 		
-		state = states.facestomp;
+		state = PlayerState.crouch;
 		jumpAnim = true;
 		crouchAnim = true;
 		image_index = 0;

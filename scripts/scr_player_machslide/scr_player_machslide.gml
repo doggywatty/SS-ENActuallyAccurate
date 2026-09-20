@@ -41,7 +41,7 @@ function state_player_machslide()
 		if (movespeed <= 0)
 		{
 			movespeed = 0;
-			state = states.Nhookshot;
+			state = PlayerState.run;
 		}
 		
 		image_speed = 0.4;
@@ -60,12 +60,12 @@ function state_player_machslide()
 				machSlideAnim = true;
 			
 			movespeed = 0;
-			state = states.normal;
+			state = PlayerState.normal;
 		}
 		
 		if (scr_solid(x + xscale, y, true))
 		{
-			state = states.throwing;
+			state = PlayerState.bump;
 			movespeed = 0;
 			image_index = 0;
 			sprite_index = spr_splat;
@@ -79,7 +79,7 @@ function state_player_machslide()
 		image_index = 0;
 		xscale *= -1;
 		movespeed = 8;
-		state = states.pistol;
+		state = PlayerState.mach2;
 		sprite_index = spr_mach2;
 		instance_create(x, y, obj_jumpdust);
 	}
@@ -91,6 +91,6 @@ function state_player_machslide()
 		image_index = 0;
 		xscale *= -1;
 		movespeed = 12;
-		state = states.shotgun;
+		state = PlayerState.mach3;
 	}
 }

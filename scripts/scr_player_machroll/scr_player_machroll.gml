@@ -59,18 +59,18 @@ function state_player_machroll()
 				fmod_studio_event_instance_start(sndRollGetUp);
 				image_index = 0;
 				sprite_index = spr_rollgetup;
-				state = (movespeed >= 12) ? states.shotgun : states.pistol;
+				state = (movespeed >= 12) ? PlayerState.mach3 : PlayerState.mach2;
 			}
 			else if (movespeed > 6)
 			{
 				event_play_oneshot("event:/SFX/player/break", x, y);
 				sprite_index = spr_machslidestart;
 				image_index = 0;
-				state = states.machfreefall;
+				state = PlayerState.machslide;
 			}
 			else
 			{
-				state = states.normal;
+				state = PlayerState.normal;
 			}
 		}
 	}
@@ -79,7 +79,7 @@ function state_player_machroll()
 	{
 		inputBufferJump = 0;
 		create_particle(x, y, spr_groundPoundClouds);
-		state = states.slam;
+		state = PlayerState.freefall;
 		image_index = 0;
 		sprite_index = spr_diveBombstart;
 		dir = xscale;
@@ -111,7 +111,7 @@ function state_player_machroll()
 		
 		if (will_splat)
 		{
-			state = states.throwing;
+			state = PlayerState.bump;
 			image_index = 0;
 			sprite_index = spr_splat;
 			event_play_oneshot("event:/SFX/player/splat", x, y);

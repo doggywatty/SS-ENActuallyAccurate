@@ -1,4 +1,4 @@
-if (!(obj_parent_player.state == states.punch || obj_parent_player.state == states.backkick || obj_parent_player.state == states.shoulder))
+if (!(obj_parent_player.state == PlayerState.doughmount || obj_parent_player.state == PlayerState.doughmountspin || obj_parent_player.state == PlayerState.doughmountballoon))
 {
 	image_alpha = 0.35;
 	exit;

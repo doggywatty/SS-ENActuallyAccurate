@@ -3,7 +3,7 @@ if (playerID.x != other.x)
 
 with (playerID)
 {
-	if (state != states.gameover)
+	if (state != PlayerState.parry)
 	{
 		sprite_index = choose(spr_parry1, spr_parry2, spr_parry3);
 		image_index = 0;
@@ -16,7 +16,7 @@ with (playerID)
 			create_radiating_particle(x, y, spr_fuckassOrb, 0, false, 7, 10, 10);
 		
 		event_play_oneshot("event:/SFX/player/parry", x, y);
-		state = states.gameover;
+		state = PlayerState.parry;
 	}
 }
 
@@ -70,9 +70,9 @@ with (other.id)
 			
 			break;
 		case obj_guardian:
-			if (state != states.slap)
+			if (state != PlayerState.charge)
 			{
-				state = states.slap;
+				state = PlayerState.charge;
 				sprite_index = spr_aim;
 				image_index = 0;
 				movespeed = max(movespeed, 12);

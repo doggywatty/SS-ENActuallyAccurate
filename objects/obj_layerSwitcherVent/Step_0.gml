@@ -6,7 +6,7 @@ with (obj_parent_player)
 	if (place_meeting(x, y + 1, other.id))
 	{
 		jumpStop = true;
-		state = states.cheeseball;
+		state = PlayerState.wallkick;
 		fmod_studio_event_instance_start(sndWallkickStart);
 		vsp = -12;
 		sprite_index = spr_wallJumpIntro;

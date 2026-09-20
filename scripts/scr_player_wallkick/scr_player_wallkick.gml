@@ -30,7 +30,7 @@ function state_player_wallkick()
 		else if (inputBufferJump > 0 && sprite_index == spr_wallJumpFastFall)
 		{
 			inputBufferJump = 0;
-			state = states.slam;
+			state = PlayerState.freefall;
 			image_index = 0;
 			sprite_index = spr_diveBombstart;
 			dir = xscale;
@@ -55,7 +55,7 @@ function state_player_wallkick()
 			movespeed = 12;
 			hsp = movespeed * xscale;
 			vsp = -5;
-			state = states.shotgun;
+			state = PlayerState.mach3;
 			fmod_studio_event_instance_start(sndMachStart);
 			fmod_studio_event_instance_start(sndWallkickCancel);
 		}
@@ -78,7 +78,7 @@ function state_player_wallkick()
 			
 			movespeed = 12;
 			hsp = movespeed * dir;
-			state = states.shotgun;
+			state = PlayerState.mach3;
 			image_index = 0;
 			sprite_index = spr_rollgetup;
 			fmod_studio_event_instance_start(sndMachStart);
@@ -88,7 +88,7 @@ function state_player_wallkick()
 			landAnim = true;
 			movespeed = 8;
 			hsp = movespeed * dir;
-			state = states.normal;
+			state = PlayerState.normal;
 			instance_create(x, y, obj_landcloud);
 			event_play_oneshot("event:/SFX/player/step", x, y);
 		}
@@ -103,6 +103,6 @@ function state_player_wallkick()
 	if (!instance_exists(obj_wallkickDust))
 		instance_create(x + random_range(-40, 40), y + random_range(-40, 40), obj_wallkickDust);
 	
-	do_taunt(states.cheeseball);
+	do_taunt(PlayerState.wallkick);
 	image_speed = 0.45;
 }

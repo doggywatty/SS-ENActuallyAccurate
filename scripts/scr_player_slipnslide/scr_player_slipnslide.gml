@@ -11,7 +11,7 @@ function state_player_slipnslide()
 	
 	if (movespeed <= 0)
 	{
-		state = states.normal;
+		state = PlayerState.normal;
 		movespeed = 0;
 		machTwo = 0;
 		image_index = 0;
@@ -22,7 +22,7 @@ function state_player_slipnslide()
 		image_index = 0;
 		image_speed = 0.35;
 		sprite_index = spr_player_PZ_slipSlide_intro;
-		state = states.freefallprep;
+		state = PlayerState.puddle;
 		vsp = -11;
 		event_play_oneshot("event:/SFX/player/slip", x, y);
 	}
@@ -30,7 +30,7 @@ function state_player_slipnslide()
 	if (place_meeting_collision(x + xscale, y) && !place_meeting(x + xscale, y, obj_destructibles))
 	{
 		sprite_index = spr_player_PZ_fall_outOfControl;
-		state = states.chainsawpogo;
+		state = PlayerState.jump;
 		vsp = -11;
 		jumpStop = true;
 		movespeed = 0;
