@@ -2,10 +2,9 @@ sprite_index = spr_cassettetape;
 image_alpha = 0;
 parameters = 
 {
-	time: 0,
+	time:0,
 	ybob: 0
 };
-
 onStep = function()
 {
 	parameters.time++;

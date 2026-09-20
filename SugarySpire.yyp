@@ -12,7 +12,6 @@
   "defaultScriptType": 1,
   "Folders": [
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Animation Curves","folderPath":"folders/Animation Curves.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Tileset Sprites","folderPath":"folders/Sprites/Tileset Sprites.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Extensions","folderPath":"folders/Extensions.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Fmod","folderPath":"folders/Extensions/Fmod.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Extensions","folderPath":"folders/Extensions/Fmod/Extensions.yy",},
@@ -76,6 +75,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Player","folderPath":"folders/Sprites/Player.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Structure","folderPath":"folders/Sprites/Structure.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Sucrose","folderPath":"folders/Sprites/Sucrose.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Tileset Sprites","folderPath":"folders/Sprites/Tileset Sprites.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"titleGroup","folderPath":"folders/Sprites/titleGroup.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Unused","folderPath":"folders/Sprites/Unused.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Tile Sets","folderPath":"folders/Tile Sets.yy",},
