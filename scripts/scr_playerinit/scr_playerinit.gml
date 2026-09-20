@@ -16,7 +16,7 @@ function scr_playerrespawn(arg0 = true, arg1 = false)
 {
 	if (!arg0)
 	{
-		if (state != states.knightpep && (state != states.mach3 || instance_exists(obj_techdiff)) && state != states.ladder && !place_meeting(x, y + 32, obj_vertical_hallway) && !instance_exists(obj_fadeoutTransition) && room != timesuproom && room != rank_room)
+		if (state != PlayerState.gameover && (state != PlayerState.actor || instance_exists(obj_techdiff)) && state != PlayerState.fling && !place_meeting(x, y + 32, obj_vertical_hallway) && !instance_exists(obj_fadeoutTransition) && room != timesuproom && room != rank_room)
 		{
 			var _checkpoint = instance_nearest(x, y, obj_checkpoint_invis);
 			var _checkpointReal = -4;
@@ -46,7 +46,7 @@ function scr_playerrespawn(arg0 = true, arg1 = false)
 				instance_create(roomStartX, roomStartY, obj_poofeffect);
 			}
 			
-			state = states.normal;
+			state = PlayerState.normal;
 			alarm[7] = 60;
 			hurted = true;
 			sprite_index = spr_idle;
@@ -66,12 +66,12 @@ function scr_playerrespawn(arg0 = true, arg1 = false)
 		{
 			drowned: arg1
 		});
-		state = states.mach3;
+		state = PlayerState.actor;
 	}
 	
 	with (obj_achievementTracker)
 	{
-		if (obj_parent_player.state == states.victory || obj_parent_player.state == states.Sjump || obj_parent_player.state == states.comingoutdoor)
+		if (obj_parent_player.state == PlayerState.minecart || obj_parent_player.state == PlayerState.minecart_bump || obj_parent_player.state == PlayerState.minecart_launched)
 			hitInMinecart = true;
 	}
 }
@@ -82,265 +82,265 @@ function scr_playerstate()
 	
 	switch (state)
 	{
-		case states.normal:
+		case PlayerState.normal:
 			state_function = state_player_normal;
 			break;
-		case states.chainsawpogo:
+		case PlayerState.jump:
 			state_function = state_player_jump;
 			break;
-		case states.Nhookshot:
+		case PlayerState.run:
 			state_function = state_player_run;
 			break;
-		case states.titlescreen:
+		case PlayerState.titlescreen:
 			state_function = state_player_titlescreen;
 			break;
-		case states.slap:
+		case PlayerState.charge:
 			state_function = state_player_charge;
 			break;
-		case states.cheesepep:
+		case PlayerState.climbwall:
 			state_function = state_player_climbwall;
 			break;
-		case states.cheeseball:
+		case PlayerState.wallkick:
 			state_function = state_player_wallkick;
 			break;
-		case states.cheesepepstick:
+		case PlayerState.machtumble:
 			state_function = state_player_machtumble;
 			break;
-		case states.pistalaim:
+		case PlayerState.grabdash:
 			state_function = state_player_grabdash;
 			break;
-		case states.handstandjump:
+		case PlayerState.grab:
 			state_function = state_player_grab;
 			break;
-		case states.climbwall:
+		case PlayerState.timesup:
 			state_function = state_player_timesup;
 			break;
-		case states.climbdownwall:
+		case PlayerState.machroll:
 			state_function = state_player_machroll;
 			break;
-		case states.portal:
+		case PlayerState.swingclub:
 			state_function = state_player_swingclub;
 			break;
-		case states.secondjump:
+		case PlayerState.superslam:
 			state_function = state_player_superslam;
 			break;
-		case states.chainsawbump:
+		case PlayerState.grind:
 			state_function = state_player_grind;
 			break;
-		case states.grind:
+		case PlayerState.hang:
 			state_function = state_player_hang;
 			break;
-		case states.gottreasure:
+		case PlayerState.taunt:
 			state_function = state_player_taunt;
 			break;
-		case states.knightpep:
+		case PlayerState.gameover:
 			state_function = state_player_gameover;
 			break;
-		case states.knightpepattack:
+		case PlayerState.ceilingCrash:
 			state_function = state_player_ceilingCrash;
 			break;
-		case states.meteorpep:
+		case PlayerState.freefallprep:
 			state_function = state_player_freefallprep;
 			break;
-		case states.knightpepslopes:
+		case PlayerState.tackle:
 			state_function = state_player_tackle;
 			break;
-		case states.bombpep:
+		case PlayerState.slipnslide:
 			state_function = state_player_slipnslide;
 			break;
-		case states.grabbing:
+		case PlayerState.ladder:
 			state_function = state_player_ladder;
 			break;
-		case states.shotgunjump:
+		case PlayerState.victory:
 			state_function = state_player_victory;
 			break;
-		case states.stunned:
+		case PlayerState.comingoutdoor:
 			state_function = state_player_comingoutdoor;
 			break;
-		case states.highjump:
+		case PlayerState.Sjump:
 			state_function = state_player_Sjump;
 			break;
-		case states.chainsaw:
+		case PlayerState.Sjumpprep:
 			state_function = state_player_Sjumpprep;
 			break;
-		case states.facestomp:
+		case PlayerState.crouch:
 			state_function = state_player_crouch;
 			break;
-		case states.timesup:
+		case PlayerState.crouchjump:
 			state_function = state_player_crouchjump;
 			break;
-		case states.machroll:
+		case PlayerState.mach1:
 			state_function = state_player_mach1;
 			break;
-		case states.pistol:
+		case PlayerState.mach2:
 			state_function = state_player_mach2;
 			break;
-		case states.shotgun:
+		case PlayerState.mach3:
 			state_function = state_player_mach3;
 			break;
-		case states.machfreefall:
+		case PlayerState.machslide:
 			state_function = state_player_machslide;
 			break;
-		case states.throwing:
+		case PlayerState.bump:
 			state_function = state_player_bump;
 			break;
-		case states.superslam:
+		case PlayerState.hurt:
 			state_function = state_player_hurt;
 			break;
-		case states.slam:
+		case PlayerState.freefall:
 			state_function = state_player_freefall;
 			break;
-		case states.skateboard:
+		case PlayerState.freefallland:
 			state_function = state_player_freefallland;
 			break;
-		case states.grab:
+		case PlayerState.door:
 			state_function = state_player_door;
 			break;
-		case states.punch:
+		case PlayerState.doughmount:
 			state_function = state_player_doughmount;
 			break;
-		case states.backkick:
+		case PlayerState.doughmountspin:
 			state_function = state_player_doughmountspin;
 			break;
-		case states.shoulder:
+		case PlayerState.doughmountballoon:
 			state_function = state_player_doughmountballoon;
 			break;
-		case states.backbreaker:
+		case PlayerState.doughmountpancake:
 			state_function = state_player_doughmountpancake;
 			break;
-		case states.boulder:
+		case PlayerState.gotkey:
 			state_function = state_player_gotkey;
 			break;
-		case states.bossdefeat:
+		case PlayerState.finishingblow:
 			state_function = state_player_finishingblow;
 			break;
-		case states.bossintro:
+		case PlayerState.cotton:
 			state_function = state_player_cotton;
 			break;
-		case states.ufofloat:
+		case PlayerState.uppercut:
 			state_function = state_player_uppercut;
 			break;
-		case states.ufodash:
+		case PlayerState.pal:
 			state_function = state_player_pal;
 			break;
-		case states.pizzathrow:
+		case PlayerState.shocked:
 			state_function = state_player_shocked;
 			break;
-		case states.hurt:
+		case PlayerState.rocketlauncher:
 			state_function = state_player_rocketlauncher;
 			break;
-		case states.gameover:
+		case PlayerState.parry:
 			state_function = state_player_parry;
 			break;
-		case states.runonball:
+		case PlayerState.tumble:
 			state_function = state_player_tumble;
 			break;
-		case states.Sjumpland:
+		case PlayerState.talkto:
 			state_function = state_player_talkto;
 			break;
-		case states.freefallprep:
+		case PlayerState.puddle:
 			state_function = state_player_puddle;
 			break;
-		case states.keyget:
+		case PlayerState.cottondrill:
 			state_function = state_player_cottondrill;
 			break;
-		case states.tackle:
+		case PlayerState.cottonroll:
 			state_function = state_player_cottonroll;
 			break;
-		case states.slipnslide:
+		case PlayerState.cottondig:
 			state_function = state_player_cottondig;
 			break;
-		case states.ladder:
+		case PlayerState.fling:
 			state_function = state_player_fling;
 			break;
-		case states.jump:
+		case PlayerState.breakdance:
 			state_function = state_player_breakdance;
 			break;
-		case states.victory:
+		case PlayerState.minecart:
 			state_function = state_player_minecart;
 			break;
-		case states.Sjump:
+		case PlayerState.minecart_bump:
 			state_function = state_player_minecart_bump;
 			break;
-		case states.comingoutdoor:
+		case PlayerState.minecart_launched:
 			state_function = state_player_minecart_launched;
 			break;
-		case states.crouchslide:
+		case PlayerState.fireass:
 			state_function = state_player_fireass;
 			break;
-		case states.mach1:
+		case PlayerState.fireassdash:
 			state_function = state_player_fireassdash;
 			break;
-		case states.Sjumpprep:
+		case PlayerState.squished:
 			state_function = state_player_squished;
 			break;
-		case states.crouch:
+		case PlayerState.machtumble2:
 			state_function = state_player_machtumble;
 			break;
-		case states.crouchjump:
+		case PlayerState.dodgetumble:
 			state_function = state_player_dodgetumble;
 			break;
-		case states.mach2:
+		case PlayerState.geyser:
 			state_function = state_player_geyser;
 			break;
-		case states.mach3:
+		case PlayerState.actor:
 			state_function = state_player_actor;
 			break;
-		case states.bump:
+		case PlayerState.changing:
 			state_function = state_player_changing;
 			break;
-		case states.machslide:
+		case PlayerState.donothing:
 			state_function = state_player_donothing;
 			break;
-		case states.barrelroll:
+		case PlayerState.drown:
 			state_function = state_player_drown;
 			break;
-		case states.frozen:
+		case PlayerState.frozen:
 			state_function = state_player_frozen;
 			break;
-		case states.freefallland:
+		case PlayerState.trick:
 			state_function = state_player_trick;
 			break;
-		case states.noclip:
+		case PlayerState.noclip:
 			state_function = state_player_noclip;
 			break;
-		case states.door:
+		case PlayerState.costumenormal:
 			state_function = state_player_costumenormal;
 			break;
-		case states.barrelnormal:
+		case PlayerState.costumegrab:
 			state_function = state_player_costumegrab;
 			break;
-		case states.barrelmach1:
+		case PlayerState.costumechuck:
 			state_function = state_player_costumechuck;
 			break;
-		case states.barrelfall:
+		case PlayerState.costumebreeze:
 			state_function = state_player_costumebreeze;
 			break;
-		case states.barrelmach2:
+		case PlayerState.bottlerocket:
 			state_function = state_player_bottlerocket;
 			break;
-		case states.cotton:
+		case PlayerState.frostburnnormal:
 			state_function = state_player_frostburnnormal;
 			break;
-		case states.uppercut:
+		case PlayerState.frostburnslide:
 			state_function = state_player_frostburnslide;
 			break;
-		case states.pal:
+		case PlayerState.frostburnjump:
 			state_function = state_player_frostburnjump;
 			break;
-		case states.shocked:
+		case PlayerState.frostburnstick:
 			state_function = state_player_frostburnstick;
 			break;
-		case states.bushdisguise:
+		case PlayerState.supergrab:
 			state_function = state_player_supergrab;
 			break;
-		case states.uppunch:
+		case PlayerState.doughmountjump:
 			state_function = state_player_doughmountjump;
 			break;
-		case states.parry:
+		case PlayerState.fling_launch:
 			state_function = state_player_fling_launch;
 			break;
-		case states.talkto:
+		case PlayerState.freeflight:
 			state_function = state_player_freeflight;
 			break;
 	}

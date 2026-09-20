@@ -1,22 +1,22 @@
 function scr_hurtplayer(arg0 = obj_parent_player, arg1)
 {
-	if (!global.freezeframe && arg0.state != states.mach3 && arg0.state != states.gameover && arg0.state != states.crouchjump && arg0.state != states.superslam)
+	if (!global.freezeframe && arg0.state != PlayerState.actor && arg0.state != PlayerState.parry && arg0.state != PlayerState.dodgetumble && arg0.state != PlayerState.hurt)
 	{
 		with (arg0)
 		{
 			if (cutscene)
 				continue;
 			
-			if (state == states.noclip)
+			if (state == PlayerState.noclip)
 				continue;
 			
 			if (sprite_index == spr_supertaunt1 || sprite_index == spr_supertaunt2 || sprite_index == spr_supertaunt3 || sprite_index == spr_supertaunt4)
 				continue;
 			
-			if (state == states.victory)
+			if (state == PlayerState.minecart)
 			{
 				sprite_index = spr_player_PZ_hitWall_mach3;
-				state = states.throwing;
+				state = PlayerState.bump;
 				hsp = 2.5 * xscale;
 				vsp = -3;
 				machTwo = 0;
@@ -29,15 +29,15 @@ function scr_hurtplayer(arg0 = obj_parent_player, arg1)
 						image_index = i;
 				}
 			}
-			else if (state == states.bossintro || state == states.keyget || state == states.tackle || state == states.slipnslide || state == states.parry || state == states.ladder)
+			else if (state == PlayerState.cotton || state == PlayerState.cottondrill || state == PlayerState.cottonroll || state == PlayerState.cottondig || state == PlayerState.fling_launch || state == PlayerState.fling)
 			{
 			}
-			else if (state == states.barrelmach2)
+			else if (state == PlayerState.bottlerocket)
 			{
 			}
-			else if (state != states.superslam && state != states.gottreasure && !hurted && !cutscene && state != states.throwing && state != states.runonball)
+			else if (state != PlayerState.hurt && state != PlayerState.taunt && !hurted && !cutscene && state != PlayerState.bump && state != PlayerState.tumble)
 			{
-				if (state == states.punch || state == states.backkick)
+				if (state == PlayerState.doughmount || state == PlayerState.doughmountspin)
 				{
 					with (instance_create(x, y, obj_dogMount))
 					{
@@ -51,7 +51,7 @@ function scr_hurtplayer(arg0 = obj_parent_player, arg1)
 				event_play_oneshot("event:/SFX/player/hurt", x, y);
 				create_particle(x, y, spr_bangEffect);
 				create_particle(x, y, spr_parryeffect);
-				state = states.superslam;
+				state = PlayerState.hurt;
 				alarm[7] = 120;
 				scr_sleep_ext(100);
 				hurted = true;
@@ -113,12 +113,12 @@ function scr_hurtplayer(arg0 = obj_parent_player, arg1)
 
 function player_complete_invulnerability(arg0 = obj_parent_player)
 {
-	var _states = [states.titlescreen, states.noclip, states.mach3, states.knightpep, states.Sjumpland, states.stunned, states.grab, states.shotgunjump];
+	var _states = [PlayerState.titlescreen, PlayerState.noclip, PlayerState.actor, PlayerState.gameover, PlayerState.talkto, PlayerState.comingoutdoor, PlayerState.door, PlayerState.victory];
 	return array_contains(_states, arg0.state);
 }
 
 function player_can_hurt(arg0 = obj_parent_player)
 {
-	var _states = [states.bossintro, states.keyget, states.tackle, states.slipnslide, states.parry, states.ladder];
+	var _states = [PlayerState.cotton, PlayerState.cottondrill, PlayerState.cottonroll, PlayerState.cottondig, PlayerState.fling_launch, PlayerState.fling];
 	return !array_contains(_states, arg0.state) && !player_complete_invulnerability(arg0);
 }

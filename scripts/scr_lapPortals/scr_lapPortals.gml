@@ -6,7 +6,7 @@ function cutscene_lapPortal_start()
 	with (obj_parent_player)
 	{
 		isInLapPortal = true;
-		state = states.mach3;
+		state = PlayerState.actor;
 		hsp = 0;
 		vsp = 0;
 		sprite_index = spr_lappingportal_enter;
@@ -68,7 +68,7 @@ function cutscene_lapPortal_middle()
 	{
 		isInLapPortal = true;
 		visible = false;
-		state = states.mach3;
+		state = PlayerState.actor;
 		hsp = 0;
 		vsp = 0;
 		sprite_index = spr_groundPoundfall;
@@ -106,7 +106,7 @@ function cutscene_lapPortal_end()
 		movespeed = 0;
 		freeFallSmash = -14;
 		sprite_index = spr_groundPoundfall;
-		state = states.slam;
+		state = PlayerState.freefall;
 		finished = true;
 	}
 	

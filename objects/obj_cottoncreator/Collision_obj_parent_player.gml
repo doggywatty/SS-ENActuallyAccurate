@@ -3,10 +3,10 @@ if (global.freezeframe)
 
 with (other)
 {
-	if (!player_complete_invulnerability() && state != states.bossintro && state != states.keyget && state != states.grab && state != states.tackle && state != states.slipnslide)
+	if (!player_complete_invulnerability() && state != PlayerState.cotton && state != PlayerState.cottondrill && state != PlayerState.door && state != PlayerState.cottonroll && state != PlayerState.cottondig)
 	{
 		event_play_oneshot("event:/SFX/cotton/intro", x, y);
-		state = states.bossintro;
+		state = PlayerState.cotton;
 		x = other.x;
 		y = other.y + 33;
 		flash = 0;

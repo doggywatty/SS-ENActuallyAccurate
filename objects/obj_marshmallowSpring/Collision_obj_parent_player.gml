@@ -1,24 +1,24 @@
 with (other)
 {
-	if (!cutscene && !global.freezeframe && (state != states.gottreasure && state != states.slam && state != states.meteorpep && state != states.skateboard))
+	if (!cutscene && !global.freezeframe && (state != PlayerState.taunt && state != PlayerState.freefall && state != PlayerState.freefallprep && state != PlayerState.freefallland))
 	{
 		jumpStop = true;
 		vsp = -18;
 		
-		if (state == states.normal || state == states.facestomp || state == states.pistalaim || state == states.machfreefall)
-			state = states.chainsawpogo;
+		if (state == PlayerState.normal || state == PlayerState.crouch || state == PlayerState.grabdash || state == PlayerState.machslide)
+			state = PlayerState.jump;
 		
-		if (state == states.cotton || state == states.shocked || state == states.pal)
+		if (state == PlayerState.frostburnnormal || state == PlayerState.frostburnstick || state == PlayerState.frostburnjump)
 		{
 			image_index = 0;
 			sprite_index = spr_player_PZ_frostburn_jump;
-			state = states.pal;
+			state = PlayerState.frostburnjump;
 		}
 		
-		if (state == states.cheesepep || state == states.climbdownwall)
-			state = states.pistol;
+		if (state == PlayerState.climbwall || state == PlayerState.machroll)
+			state = PlayerState.mach2;
 		
-		if (state == states.chainsawpogo || state == states.normal)
+		if (state == PlayerState.jump || state == PlayerState.normal)
 		{
 			sprite_index = spr_player_PZ_fall_outOfControl;
 			image_index = 0;

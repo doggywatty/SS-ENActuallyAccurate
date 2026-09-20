@@ -1,7 +1,7 @@
 warningx = lerp(warningx, targetx, warningspeed);
 warningy = lerp(warningy, targety, warningspeed);
 
-if (chaseActive && state != states.charge)
+if (chaseActive && state != PlayerState.stun)
 {
 	var _x = pathxstart;
 	var _y = pathystart;

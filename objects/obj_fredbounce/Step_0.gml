@@ -24,7 +24,7 @@ if (cutscene)
 			sprite_index = spr_player_PZ_minecart_jump;
 			image_index = 0;
 			vsp = -25;
-			state = states.comingoutdoor;
+			state = PlayerState.minecart_launched;
 			movespeed = 0;
 			
 			with (obj_achievementTracker)
@@ -41,7 +41,7 @@ if (cutscene)
 		{
 			y = other.fred_y + 40;
 			x = other.x;
-			state = states.mach3;
+			state = PlayerState.actor;
 			vsp = 0;
 			hsp = 0;
 		}

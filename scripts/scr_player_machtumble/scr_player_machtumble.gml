@@ -17,11 +17,11 @@ function state_player_machtumble()
 		
 		if (!_ledge)
 		{
-			if (state == states.cheesepepstick)
+			if (state == PlayerState.machtumble)
 			{
 				jumpStop = false;
 				xscale *= -1;
-				state = states.cheeseball;
+				state = PlayerState.wallkick;
 				fmod_studio_event_instance_start(sndWallkickStart);
 				vsp = -14;
 				sprite_index = spr_wallJumpIntro;
@@ -36,7 +36,7 @@ function state_player_machtumble()
 			}
 			else
 			{
-				state = states.throwing;
+				state = PlayerState.bump;
 				image_index = 0;
 				sprite_index = spr_splat;
 				event_play_oneshot("event:/SFX/player/splat", x, y);
@@ -50,7 +50,7 @@ function state_player_machtumble()
 		{
 			grav = 0.5;
 			sprite_index = spr_crouchslip;
-			state = states.climbdownwall;
+			state = PlayerState.machroll;
 			
 			with (instance_create(x, y, obj_jumpdust))
 				image_xscale = other.xscale;
@@ -76,7 +76,7 @@ function state_player_machtumble()
 			instance_create(x, y, obj_jumpdust);
 			sprite_index = spr_crouchslipintro;
 			image_index = 0;
-			state = states.climbdownwall;
+			state = PlayerState.machroll;
 			
 			with (instance_create(x, y, obj_jumpdust))
 				image_xscale = other.xscale;
@@ -90,7 +90,7 @@ function state_player_machtumble()
 			image_index = 0;
 			sprite_index = spr_longJump_intro;
 			instance_create(x, y, obj_jumpdust);
-			state = states.pistol;
+			state = PlayerState.mach2;
 			jumpStop = false;
 			vsp = -11;
 			grav = 0.3;
@@ -112,7 +112,7 @@ function state_player_machtumble()
 				instance_create(x, y, obj_jumpdust);
 				sprite_index = spr_crouchslipintro;
 				image_index = 0;
-				state = states.climbdownwall;
+				state = PlayerState.machroll;
 				
 				with (instance_create(x, y, obj_jumpdust))
 					image_xscale = other.xscale;
@@ -127,12 +127,12 @@ function state_player_machtumble()
 				vsp = 0;
 				sprite_index = spr_couchstart;
 				image_index = 0;
-				state = states.facestomp;
+				state = PlayerState.crouch;
 			}
 		}
 		else if (key_attack)
 		{
-			state = states.pistol;
+			state = PlayerState.mach2;
 			sprite_index = spr_mach2;
 		}
 		else if (inputBufferSlap > 0)
@@ -149,7 +149,7 @@ function state_player_machtumble()
 		{
 			sprite_index = spr_fall;
 			momentum = true;
-			state = states.chainsawpogo;
+			state = PlayerState.jump;
 			jumpStop = true;
 		}
 	}
@@ -198,7 +198,7 @@ function state_player_dodgetumble()
 		}
 		else
 		{
-			state = states.throwing;
+			state = PlayerState.bump;
 			image_index = 0;
 			sprite_index = spr_splat;
 			event_play_oneshot("event:/SFX/player/splat", x, y);
@@ -211,7 +211,7 @@ function state_player_dodgetumble()
 		{
 			grav = 0.5;
 			sprite_index = spr_crouchslip;
-			state = states.climbdownwall;
+			state = PlayerState.machroll;
 			
 			with (instance_create(x, y, obj_jumpdust))
 				image_xscale = other.xscale;
@@ -228,7 +228,7 @@ function state_player_dodgetumble()
 		image_index = 0;
 		sprite_index = spr_longJump_intro;
 		instance_create(x, y, obj_jumpdust);
-		state = states.pistol;
+		state = PlayerState.mach2;
 		jumpStop = false;
 		vsp = -11;
 		grav = 0.3;
@@ -238,7 +238,7 @@ function state_player_dodgetumble()
 	{
 		if (key_attack)
 		{
-			state = states.pistol;
+			state = PlayerState.mach2;
 			sprite_index = spr_mach2;
 		}
 		else if (inputBufferSlap > 0)
@@ -255,7 +255,7 @@ function state_player_dodgetumble()
 		{
 			sprite_index = spr_fall;
 			momentum = true;
-			state = states.chainsawpogo;
+			state = PlayerState.jump;
 			jumpStop = true;
 		}
 	}

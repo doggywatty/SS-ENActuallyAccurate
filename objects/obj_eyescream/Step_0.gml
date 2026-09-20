@@ -40,8 +40,8 @@ if (ragereset > 0)
 
 event_inherited();
 
-if (state != states.charge)
+if (state != PlayerState.stun)
 	depth = 0;
 
-if (state != enemystates.thrown && state != states.boxxedpep)
+if (state != enemystates.thrown && state != PlayerState.freezeframe)
 	thrown = 0;

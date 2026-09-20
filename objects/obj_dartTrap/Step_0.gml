@@ -14,7 +14,7 @@ if (player_detected != 0)
 
 if (tauntBuffer)
 {
-	if (obj_parent_player.state != states.gottreasure && obj_parent_player.state != states.gameover && sprite_index != spr_dartFrog_shooting)
+	if (obj_parent_player.state != PlayerState.taunt && obj_parent_player.state != PlayerState.parry && sprite_index != spr_dartFrog_shooting)
 	{
 		tauntBuffer = false;
 		coolDown = 0;

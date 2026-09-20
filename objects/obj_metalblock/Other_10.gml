@@ -2,11 +2,11 @@ if (DestroyedBy.object_index == obj_parent_player || DestroyedBy.object_index ==
 {
 	with (DestroyedBy)
 	{
-		if (state == states.slam || state == states.skateboard)
+		if (state == PlayerState.freefall || state == PlayerState.freefallland)
 		{
 			event_play_oneshot("event:/SFX/player/groundpound", x, y);
 			image_index = 0;
-			state = states.skateboard;
+			state = PlayerState.freefallland;
 			jumpAnim = true;
 			jumpStop = false;
 			
@@ -34,7 +34,7 @@ if (DestroyedBy.object_index == obj_parent_player || DestroyedBy.object_index ==
 			hsp = 0;
 			vsp = 0;
 		}
-		else if (state == states.secondjump)
+		else if (state == PlayerState.superslam)
 		{
 			sprite_index = spr_piledriverland;
 			event_play_oneshot("event:/SFX/player/groundpound", x, y);
@@ -67,12 +67,12 @@ if (DestroyedBy.object_index == obj_parent_player || DestroyedBy.object_index ==
 			
 			baddieGrabbedID = -4;
 		}
-		else if (state == states.shotgun && sprite_index != spr_mach3hit)
+		else if (state == PlayerState.mach3 && sprite_index != spr_mach3hit)
 		{
 			sprite_index = spr_mach3hit;
 			image_index = 0;
 		}
-		else if (state == states.climbdownwall)
+		else if (state == PlayerState.machroll)
 		{
 			mach3Roll = mach3RollMax;
 			flash = false;

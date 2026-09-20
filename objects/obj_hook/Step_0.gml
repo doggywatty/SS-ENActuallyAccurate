@@ -9,10 +9,10 @@ if (!instance_exists(hookStopID))
 
 switch (state)
 {
-	case states.frozen:
+	case PlayerState.frozen:
 		visible = true;
 		break;
-	case states.normal:
+	case PlayerState.normal:
 		var target_dir = point_direction(x, y, xstart, ystart);
 		var pnt_dist = min(point_distance(x, y, xstart, ystart), gobackspeed);
 		x += lengthdir_x(pnt_dist, target_dir);
@@ -22,12 +22,12 @@ switch (state)
 		{
 			x = xstart;
 			y = ystart;
-			state = states.frozen;
+			state = PlayerState.frozen;
 		}
 		
 		visible = true;
 		break;
-	case states.titlescreen:
+	case PlayerState.titlescreen:
 		var target_dir = point_direction(x, y, hookStopID.x, hookStopID.y);
 		xprevious = x;
 		yprevious = y;
@@ -38,13 +38,13 @@ switch (state)
 		
 		with (playerID)
 		{
-			if (state == states.freefall)
+			if (state == PlayerState.oldtaunt)
 			{
 				x = other.x;
 				y = other.y - 14;
 				xscale = sign(other.image_xscale);
 				
-				if (tauntStored.state == states.pal || tauntStored.state == states.cotton || tauntStored.state == states.uppercut || tauntStored.state == states.uppercut)
+				if (tauntStored.state == PlayerState.frostburnjump || tauntStored.state == PlayerState.frostburnnormal || tauntStored.state == PlayerState.frostburnslide || tauntStored.state == PlayerState.frostburnslide)
 					sprite_index = spr_player_PZ_frostburn_hook;
 				else
 					sprite_index = spr_player_PZ_hook_vertical;
@@ -57,7 +57,7 @@ switch (state)
 		{
 			x = hookStopID.x;
 			y = hookStopID.y;
-			state = states.normal;
+			state = PlayerState.normal;
 			visible = true;
 			
 			with (playerID)
@@ -65,7 +65,7 @@ switch (state)
 				x = other.hookStopID.x;
 				y = other.hookStopID.y - 14;
 				
-				if (state == states.freefall)
+				if (state == PlayerState.oldtaunt)
 					scr_taunt_setVariables();
 			}
 		}

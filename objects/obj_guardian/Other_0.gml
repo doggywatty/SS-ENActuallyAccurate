@@ -1,4 +1,4 @@
-if (state == states.Nhookshot)
+if (state == PlayerState.run)
 {
 	returntimer++;
 	

@@ -16,21 +16,21 @@ if (!global.freezeframe)
 {
 	with (instance_place(x, y, obj_parent_player))
 	{
-		if ((other.geysertimer > 0 || other.geyserPredeploy) && (!other.geyserSolid || y > other.bbox_top) && state != states.mach3)
+		if ((other.geysertimer > 0 || other.geyserPredeploy) && (!other.geyserSolid || y > other.bbox_top) && state != PlayerState.actor)
 		{
-			if (state == states.machfreefall || (state == states.cheeseball && (key_down || sprite_index == spr_wallJumpFastFall || sprite_index == spr_wallJumpFastFallIntro)) || state == states.slam || state == states.climbdownwall || state == states.normal || state == states.chainsawpogo || state == states.cheesepep)
+			if (state == PlayerState.machslide || (state == PlayerState.wallkick && (key_down || sprite_index == spr_wallJumpFastFall || sprite_index == spr_wallJumpFastFallIntro)) || state == PlayerState.freefall || state == PlayerState.machroll || state == PlayerState.normal || state == PlayerState.jump || state == PlayerState.climbwall)
 			{
 				sprite_index = spr_player_PZ_geyser;
-				state = states.chainsawpogo;
+				state = PlayerState.jump;
 				grounded = 0;
 				movespeed = approach(movespeed, 0, 0.25);
 				
-				if (state == states.machfreefall)
+				if (state == PlayerState.machslide)
 					xscale *= -1;
 				
-				if (state == states.cheesepep)
+				if (state == PlayerState.climbwall)
 				{
-					state = states.cheeseball;
+					state = PlayerState.wallkick;
 					fmod_studio_event_instance_start(sndWallkickStart);
 				}
 			}
@@ -48,10 +48,10 @@ if (!global.freezeframe)
 	{
 		if (place_meeting(x, y, other) && (other.geysertimer > 0 || other.geyserPredeploy) && (!other.geyserSolid || y > other.bbox_top))
 		{
-			if (state != states.cheesepep && state != states.cheesepepstick && state != states.charge && state != states.boxxedpep && state != states.cheeseball)
+			if (state != PlayerState.climbwall && state != PlayerState.machtumble && state != PlayerState.stun && state != PlayerState.freezeframe && state != PlayerState.wallkick)
 			{
 				sprite_index = baddieSpriteStun;
-				state = states.slap;
+				state = PlayerState.charge;
 				baddieStunTimer = 100;
 				hsp = approach(hsp, 0, 0.3);
 				

@@ -114,7 +114,7 @@ function state_player_cotton()
 		movespeed = max(10, movespeed);
 		hsp = 0;
 		vsp = 0;
-		state = states.slipnslide;
+		state = PlayerState.cottondig;
 		cottonDashTimer = 30;
 		grav = 0;
 		grounded = false;
@@ -183,7 +183,7 @@ function state_player_cotton()
 	if (!grounded && !array_contains(air_sprites, sprite_index))
 		sprite_index = spr_cottonFall;
 	
-	if (state != states.keyget)
+	if (state != PlayerState.cottondrill)
 	{
 		if (!key_jump2 && !jumpStop && vsp < 0.5)
 		{
@@ -205,7 +205,7 @@ function state_player_cotton()
 	
 	if (sprite_index == spr_player_PZ_werecotton_spin && (place_meeting(x, y, obj_cottonsolid) || (place_meeting(x + hsp, y, obj_cottonsolid) && move == sign(hsp)) || (place_meeting(x, y + vsp, obj_cottonsolid) && move2 == sign(vsp))))
 	{
-		state = states.slipnslide;
+		state = PlayerState.cottondig;
 		sprite_index = spr_cottondrill;
 		cottonDirection = point_direction(0, 0, hsp, vsp);
 		movespeed = round(abs(point_distance(0, 0, hsp, vsp)));

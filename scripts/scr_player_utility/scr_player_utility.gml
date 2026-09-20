@@ -2,7 +2,7 @@ function scr_taunt_storeVariables()
 {
 	tauntStored = 
 	{
-		state: (place_meeting(x, y, obj_secretTreasure) && state == states.gottreasure) ? states.normal : state,
+		state: (place_meeting(x, y, obj_secretTreasure) && state == PlayerState.taunt) ? PlayerState.normal : state,
 		hsp: hsp,
 		prevHsp: prevHsp,
 		vsp: vsp,
@@ -51,7 +51,7 @@ function do_taunt(arg0 = state)
 	{
 		tauntTimer = 20;
 		scr_taunt_storeVariables();
-		state = states.gottreasure;
+		state = PlayerState.taunt;
 		
 		if (superTauntCharged && key_up)
 		{
@@ -119,7 +119,7 @@ function do_grab(arg0 = state)
 		}
 		else if (global.rocketLauncher || global.tempRocketLauncher)
 		{
-			state = states.hurt;
+			state = PlayerState.rocketlauncher;
 			image_index = 0;
 			global.tempRocketLauncher = false;
 			
@@ -173,12 +173,12 @@ function do_grab(arg0 = state)
 			instance_create(x, y, obj_jumpdust);
 			image_index = 0;
 			
-			if (state == states.normal || state == states.chainsawpogo)
+			if (state == PlayerState.normal || state == PlayerState.jump)
 				movespeed = 8;
 			else
 				movespeed = max(movespeed, 5);
 			
-			state = states.pistalaim;
+			state = PlayerState.grabdash;
 			fmod_studio_event_instance_start(sndSuplex);
 			
 			if (key_down)
@@ -192,7 +192,7 @@ function do_grab(arg0 = state)
 					sprite_index = spr_crouchslipintro;
 					image_index = 0;
 					fmod_studio_event_instance_start(sndCrouchslide);
-					state = states.climbdownwall;
+					state = PlayerState.machroll;
 					
 					with (instance_create(x, y, obj_jumpdust))
 						image_xscale = other.xscale;
@@ -216,7 +216,7 @@ function do_uppercut()
 	movespeed = hsp;
 	vsp = grounded ? -14 : -10;
 	grav = 0;
-	state = states.ufofloat;
+	state = PlayerState.uppercut;
 	flash = false;
 	sprite_index = spr_uppercutbegin;
 	image_index = 0;
@@ -228,7 +228,7 @@ function do_uppercut()
 
 function do_clubswing()
 {
-	state = states.portal;
+	state = PlayerState.swingclub;
 	sprite_index = spr_suplexdashIntro;
 	image_index = 0;
 	

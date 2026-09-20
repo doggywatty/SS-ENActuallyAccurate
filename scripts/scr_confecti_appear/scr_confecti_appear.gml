@@ -6,7 +6,7 @@ function scr_confecti_appear()
 	if (sprite_index == spr_supertaunt)
 	{
 		drawxscale = obj_parent_player.xscale;
-		_end = sprite_animation_end() && obj_parent_player.state != states.gottreasure;
+		_end = sprite_animation_end() && obj_parent_player.state != PlayerState.taunt;
 	}
 	
 	if (sprite_index != spr_appear && sprite_index != spr_supertaunt)
@@ -19,7 +19,7 @@ function scr_confecti_appear()
 		if (_end)
 		{
 			sprite_index = spr_idle;
-			state = states.frozen;
+			state = PlayerState.frozen;
 			
 			if (use_interpolation)
 				interpolation = 0;

@@ -52,9 +52,9 @@ function scr_roomStart_SetPosition_player(arg0 = obj_player1)
 			gate.image_index = 0;
 		}
 		
-		if ((state == states.grab || state == states.shotgunjump) && room != rank_room)
+		if ((state == PlayerState.door || state == PlayerState.victory) && room != rank_room)
 		{
-			state = states.stunned;
+			state = PlayerState.comingoutdoor;
 			image_index = 0;
 			
 			if (box)
@@ -64,7 +64,7 @@ function scr_roomStart_SetPosition_player(arg0 = obj_player1)
 				verticalMovespeed = 0;
 				movespeed = 0;
 				jumpStop = true;
-				state = states.chainsawpogo;
+				state = PlayerState.jump;
 				sprite_index = spr_fall;
 				grounded = false;
 			}
@@ -146,7 +146,7 @@ function cutscene_secretPortal_start()
 	with (obj_parent_player)
 	{
 		isInSecretPortal = true;
-		state = states.mach3;
+		state = PlayerState.actor;
 		hsp = 0;
 		vsp = 0;
 		sprite_index = spr_hurt;
@@ -154,9 +154,9 @@ function cutscene_secretPortal_start()
 		
 		switch (other.storedState)
 		{
-			case states.bossintro:
-			case states.keyget:
-			case states.tackle:
+			case PlayerState.cotton:
+			case PlayerState.cottondrill:
+			case PlayerState.cottonroll:
 				sprite_index = spr_cottonDoubleJumpFall;
 				break;
 			default:
@@ -207,7 +207,7 @@ function cutscene_secretPortal_middle()
 	with (obj_parent_player)
 	{
 		isInSecretPortal = true;
-		state = states.mach3;
+		state = PlayerState.actor;
 		hsp = 0;
 		vsp = 0;
 	}
@@ -249,7 +249,7 @@ function cutscene_secretPortal_preend()
 	{
 		scale = 0;
 		isInSecretPortal = true;
-		state = states.mach3;
+		state = PlayerState.actor;
 		hsp = 0;
 		vsp = 0;
 		image_speed = 0;
@@ -295,15 +295,15 @@ function cutscene_secretPortal_end()
 		
 		switch (other.storedState)
 		{
-			case states.bossintro:
-			case states.keyget:
-			case states.tackle:
+			case PlayerState.cotton:
+			case PlayerState.cottondrill:
+			case PlayerState.cottonroll:
 				movespeed = 0;
 				verticalMovespeed = 0;
 				hsp = 0;
 				vsp = -5;
 				sprite_index = spr_cottonDoubleJumpFall;
-				state = states.bossintro;
+				state = PlayerState.cotton;
 				groundedCot = false;
 				break;
 			default:
@@ -313,7 +313,7 @@ function cutscene_secretPortal_end()
 				verticalMovespeed = 0;
 				hsp = 0;
 				vsp = 0;
-				state = states.slam;
+				state = PlayerState.freefall;
 				freeFallSmash = -14;
 				break;
 		}
@@ -398,7 +398,7 @@ function cutscene_backtohub_start()
 	{
 		y = hubY - (camera_get_view_height(view_camera[0]) * 2);
 		x = hubX;
-		state = states.mach3;
+		state = PlayerState.actor;
 		sprite_index = spr_player_PZ_slipSlide;
 		image_index = 0;
 		hsp = 0;
@@ -425,7 +425,7 @@ function cutscene_backtohub_en_out()
 	
 	with (obj_parent_player)
 	{
-		state = states.mach3;
+		state = PlayerState.actor;
 		hsp = 0;
 		vsp = 0;
 		grav = 0;
@@ -468,7 +468,7 @@ function cutscene_backtohub_middle()
 	
 	with (obj_parent_player)
 	{
-		state = states.mach3;
+		state = PlayerState.actor;
 		movespeed = 0;
 		
 		switch (sprite_index)
@@ -537,7 +537,7 @@ function cutscene_backtohub_middle()
 function cutscene_backtohub_end()
 {
 	with (obj_parent_player)
-		state = states.normal;
+		state = PlayerState.normal;
 	
 	obj_camera.cameraLock = false;
 	cutscene_event_end();

@@ -2,14 +2,14 @@ if (place_meeting(x, y - 1, obj_parent_player))
 {
 	with (obj_parent_player)
 	{
-		var minecart_can_traverse = state == states.victory && y < (other.y + 40);
+		var minecart_can_traverse = state == PlayerState.minecart && y < (other.y + 40);
 		
-		if (state != states.noclip && !minecart_can_traverse && !global.freezeframe)
+		if (state != PlayerState.noclip && !minecart_can_traverse && !global.freezeframe)
 		{
-			if (state == states.bossintro || state == states.keyget)
+			if (state == PlayerState.cotton || state == PlayerState.cottondrill)
 				instance_create(x, y, obj_poofeffect);
 			
-			if (state == states.victory)
+			if (state == PlayerState.minecart)
 			{
 				instance_create(x, y, obj_bombExplosion);
 				
@@ -22,7 +22,7 @@ if (place_meeting(x, y - 1, obj_parent_player))
 			
 			image_index = 0;
 			sprite_index = spr_player_PZ_fireAss_intro;
-			state = states.crouchslide;
+			state = PlayerState.fireass;
 			vsp = -20;
 			movespeed = hsp;
 			

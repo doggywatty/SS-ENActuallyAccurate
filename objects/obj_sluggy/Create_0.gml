@@ -17,7 +17,7 @@ jumpEvent = function(arg0 = true)
 {
 	if (event_instance_isplaying(sndSluggyDig))
 		fmod_studio_event_instance_stop(sndSluggyDig, false);
-	else if (state != states.breakdance)
+	else if (state != PlayerState.burrow)
 		event_play_oneshot("event:/SFX/enemies/sluggyJump", x, y);
 	enemyAttackTimer = enemyAttackTimerMax;
 	if (arg0)
@@ -25,15 +25,15 @@ jumpEvent = function(arg0 = true)
 		var _player = get_nearestPlayer();
 		image_xscale = face_obj(_player);
 	}
-	sprite_index = (state == states.breakdance) ? spr_sluggy_undergroundjumpstart : spr_sluggy_jumpstart;
+	sprite_index = (state == PlayerState.burrow) ? spr_sluggy_undergroundjumpstart : spr_sluggy_jumpstart;
 	image_index = 0;
 	burrowTimer = 0;
-	state = states.titlescreen;
+	state = PlayerState.titlescreen;
 };
 //PADDINGPADDINGPADDINGPADDINGPADDINGPADDING
 enemyAttack_TriggerEvent = function()
 {
-	if (enemyAttackTimer <= 0 && scr_enemy_playerisnear(200, 200, undefined, 16) && grounded && (state == states.breakdance || state == states.frozen))
+	if (enemyAttackTimer <= 0 && scr_enemy_playerisnear(200, 200, undefined, 16) && grounded && (state == PlayerState.burrow || state == PlayerState.frozen))
 		jumpEvent();
 };
 //PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPA
@@ -48,7 +48,7 @@ enemyState_Attack = function()
 		movespeed = 0;
 		if (sprite_animation_end())
 		{
-			state = states.frozen;
+			state = PlayerState.frozen;
 			sprite_index = baddieSpriteWalk;
 		}
 		exit;

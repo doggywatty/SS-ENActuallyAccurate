@@ -7,7 +7,7 @@ with (obj_parent_player)
 {
 	var other_id = other.id;
 	
-	if (key_up && grounded && (state == states.normal || state == states.machroll || state == states.pistol || state == states.shotgun) && !instance_exists(obj_fadeoutTransition) && state != states.shotgunjump && state != states.stunned)
+	if (key_up && grounded && (state == PlayerState.normal || state == PlayerState.mach1 || state == PlayerState.mach2 || state == PlayerState.mach3) && !instance_exists(obj_fadeoutTransition) && state != PlayerState.victory && state != PlayerState.comingoutdoor)
 		enter_gate = true;
 }
 

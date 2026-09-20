@@ -28,7 +28,7 @@ function state_player_run()
 		else if (movespeed > 2)
 		{
 			xscale = move;
-			state = states.machfreefall;
+			state = PlayerState.machslide;
 			sprite_index = spr_runskid;
 		}
 		else
@@ -42,7 +42,7 @@ function state_player_run()
 		movespeed = approach(movespeed, 0, 0.5);
 		
 		if (grounded && movespeed <= 7)
-			state = states.normal;
+			state = PlayerState.normal;
 	}
 	
 	if (!key_jump2 && !jumpStop && vsp < 0.5)
@@ -99,7 +99,7 @@ function state_player_run()
 				flash = false;
 				combo = 0;
 				sprite_index = spr_mach3hitwall;
-				state = states.throwing;
+				state = PlayerState.bump;
 				hsp = -2.5 * xscale;
 				vsp = -3;
 				machTwo = 0;
@@ -111,7 +111,7 @@ function state_player_run()
 	else if (scr_solid(x + xscale, y, true) && !place_meeting(x + xscale, y, obj_destructibles))
 	{
 		movespeed = 0;
-		state = states.normal;
+		state = PlayerState.normal;
 	}
 	
 	if (movespeed > 4)

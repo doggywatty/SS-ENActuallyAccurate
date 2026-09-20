@@ -15,7 +15,7 @@ for (var i = 0; i < ds_list_size(global.afterimage_list); i++)
 		
 		if (instance_exists(identity) && object_is_ancestor(identity.object_index, obj_parent_player))
 		{
-			if (identity.state == states.pistol || (identity.state == states.shotgun && mach3Afterimage))
+			if (identity.state == PlayerState.mach2 || (identity.state == PlayerState.mach3 && mach3Afterimage))
 				image_alpha = identity.movespeed / 12;
 			else
 				image_alpha = 1;
@@ -24,7 +24,7 @@ for (var i = 0; i < ds_list_size(global.afterimage_list); i++)
 				image_alpha = 0;
 		}
 		
-		if (instance_exists(identity) && (object_get_parent(identity.object_index) == obj_parent_player || identity.object_index == obj_parent_player) && mach3Afterimage && identity.state != states.shotgun && !(identity.state == states.Nhookshot && identity.movespeed >= 12) && identity.state != states.slap && identity.state != states.pistol && identity.state != states.pistalaim && identity.state != states.machfreefall && identity.state != states.secondjump && !(identity.state == states.climbdownwall && identity.mach3Roll > 0) && identity.state != states.highjump && identity.state != states.gameover && identity.state != states.runonball && identity.state != 125 && identity.state != states.chainsawpogo && identity.state != states.ufofloat && identity.state != states.crouch && identity.state != states.machroll && identity.state != states.pal && identity.state != states.runonball && identity.state != states.highjump && identity.state != states.cheeseball)
+		if (instance_exists(identity) && (object_get_parent(identity.object_index) == obj_parent_player || identity.object_index == obj_parent_player) && mach3Afterimage && identity.state != PlayerState.mach3 && !(identity.state == PlayerState.run && identity.movespeed >= 12) && identity.state != PlayerState.charge && identity.state != PlayerState.mach2 && identity.state != PlayerState.grabdash && identity.state != PlayerState.machslide && identity.state != PlayerState.superslam && !(identity.state == PlayerState.machroll && identity.mach3Roll > 0) && identity.state != PlayerState.Sjump && identity.state != PlayerState.parry && identity.state != PlayerState.tumble && identity.state != 125 && identity.state != PlayerState.jump && identity.state != PlayerState.uppercut && identity.state != PlayerState.machtumble2 && identity.state != PlayerState.mach1 && identity.state != PlayerState.frostburnjump && identity.state != PlayerState.tumble && identity.state != PlayerState.Sjump && identity.state != PlayerState.wallkick)
 			vanish = true;
 		
 		if (!mach3Afterimage && !fakeMach3Afterimage)

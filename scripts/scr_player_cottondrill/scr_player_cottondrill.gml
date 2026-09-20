@@ -36,7 +36,7 @@ function state_player_cottondrill()
 			vsp = 0;
 			hsp = 0;
 			sprite_index = spr_cottonDoubleJumpFall;
-			state = states.bossintro;
+			state = PlayerState.cotton;
 		}
 		
 		hsp = move;
@@ -51,7 +51,7 @@ function state_player_cottondrill()
 		{
 			movespeed = (verticalMovespeed > 15) ? 12 : 8;
 			vsp = 3;
-			state = states.tackle;
+			state = PlayerState.cottonroll;
 			image_index = 0;
 			sprite_index = spr_player_PZ_werecotton_roll;
 			
@@ -66,7 +66,7 @@ function state_player_cottondrill()
 		}
 		else if (!place_meeting(x, y, obj_cottonsolid))
 		{
-			state = states.bossintro;
+			state = PlayerState.cotton;
 			sprite_index = spr_cottonLand;
 			vsp = 0;
 			movespeed = 0;
@@ -77,7 +77,7 @@ function state_player_cottondrill()
 	if (inputBufferSlap > 0 && sprite_index != spr_player_PZ_werecotton_drill_h && groundedCot && !place_meeting(x, y, obj_cottonsolid))
 	{
 		inputBufferSlap = 0;
-		state = states.bossintro;
+		state = PlayerState.cotton;
 		flash = true;
 		image_index = 0;
 		sprite_index = spr_player_PZ_werecotton_drill_h;
@@ -92,7 +92,7 @@ function state_player_cottondrill()
 	if (inputBufferJump > 0 && !cottonJumped && !can_jump && !doubleJumped && !place_meeting(x, y, obj_cottonsolid))
 	{
 		movespeed = 0;
-		state = states.bossintro;
+		state = PlayerState.cotton;
 		cottonJumped = 1;
 		vsp = -10;
 		grav = 0.025;

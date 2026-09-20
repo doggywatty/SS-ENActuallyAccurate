@@ -54,7 +54,7 @@ function state_player_freefallprep()
 	{
 		freefall_buffer = 0;
 		verticalMovespeed = vsp;
-		state = states.slam;
+		state = PlayerState.freefall;
 		freeFallSmash = -14;
 		create_particle(x, y, spr_groundPoundClouds);
 	}

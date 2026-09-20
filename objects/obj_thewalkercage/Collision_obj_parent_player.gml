@@ -1,7 +1,7 @@
-if (other.state == states.pistalaim)
+if (other.state == PlayerState.grabdash)
 {
 	other.vsp = -2;
 	other.hsp = -6 * other.xscale;
-	other.state = states.throwing;
+	other.state = PlayerState.bump;
 	instance_destroy();
 }

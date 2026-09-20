@@ -3,7 +3,7 @@ function scr_finishingBlow(arg0, arg1)
 	if (!instance_exists(arg0))
 		exit;
 	
-	if (arg0.state == states.cheesepep)
+	if (arg0.state == PlayerState.climbwall)
 		exit;
 	
 	with (arg0)
@@ -28,7 +28,7 @@ function scr_finishingBlow(arg0, arg1)
 		vsp = hitVsp;
 		hp = 0;
 		throwAntiGrav = true;
-		state = states.cheesepep;
+		state = PlayerState.climbwall;
 		
 		if (baddieStunTimer < 500)
 			baddieStunTimer = 500;
@@ -49,7 +49,7 @@ function scr_instakillEnemy(arg0, arg1)
 	if (!instance_exists(arg0))
 		exit;
 	
-	if (arg0.state == states.cheesepep)
+	if (arg0.state == PlayerState.climbwall)
 		exit;
 	
 	with (arg0)
@@ -60,12 +60,12 @@ function scr_instakillEnemy(arg0, arg1)
 		image_xscale = -arg1.xscale;
 		hsp = -image_xscale * abs(arg1.hsp);
 		
-		if (arg1.state == states.shotgun)
+		if (arg1.state == PlayerState.mach3)
 			x = arg1.x + (((abs(arg1.hsp) * 2) + 5) * sign(arg1.hsp));
 		
 		vsp = -10;
 		sprite_index = baddieSpriteDead;
-		state = states.slap;
+		state = PlayerState.charge;
 		
 		if (baddieStunTimer < 200)
 			baddieStunTimer = 200;
@@ -99,15 +99,15 @@ function baddieOnPlayerCollisions()
 {
 	var player_object = get_nearestPlayer();
 	
-	if (!invincibleBaddie && state != states.charge && place_meeting(x, y, player_object) && !player_object.cutscene && player_object.state != states.superslam)
+	if (!invincibleBaddie && state != PlayerState.stun && place_meeting(x, y, player_object) && !player_object.cutscene && player_object.state != PlayerState.hurt)
 	{
-		if (baddieInvincibilityBuffer <= 0 && player_object.instakillmove && state != states.cheesepep)
+		if (baddieInvincibilityBuffer <= 0 && player_object.instakillmove && state != PlayerState.climbwall)
 		{
 			scr_instakillEnemy(id, player_object);
 			
 			with (player_object)
 			{
-				if (mach3Roll > 0 && state == states.climbdownwall)
+				if (mach3Roll > 0 && state == PlayerState.machroll)
 				{
 					mach3Roll = mach3RollMax;
 					flash = false;
@@ -119,20 +119,20 @@ function baddieOnPlayerCollisions()
 					}
 				}
 				
-				if (!grounded && state != states.slam && state != states.climbdownwall && key_jump2)
+				if (!grounded && state != PlayerState.freefall && state != PlayerState.machroll && key_jump2)
 				{
 					create_particle(x, y + 50, spr_stompEffect);
 					flash = false;
 					vsp = -11;
 				}
 				
-				if (state == states.shotgun && sprite_index != spr_mach3hit)
+				if (state == PlayerState.mach3 && sprite_index != spr_mach3hit)
 				{
 					sprite_index = spr_mach3hit;
 					image_index = 0;
 				}
 				
-				if ((state == states.bossintro || state == states.keyget || state == states.tackle) && !grounded)
+				if ((state == PlayerState.cotton || state == PlayerState.cottondrill || state == PlayerState.cottonroll) && !grounded)
 				{
 					vsp = min(-10, vsp);
 					jumpStop = true;
@@ -145,7 +145,7 @@ function baddieOnPlayerCollisions()
 			exit;
 		}
 		
-		if (baddieInvincibilityBuffer <= 0 && state != states.cheesepep && (player_object.state == states.pistol || player_object.state == states.shotgun || player_object.state == states.Nhookshot || player_object.state == states.climbdownwall))
+		if (baddieInvincibilityBuffer <= 0 && state != PlayerState.climbwall && (player_object.state == PlayerState.mach2 || player_object.state == PlayerState.mach3 || player_object.state == PlayerState.run || player_object.state == PlayerState.machroll))
 		{
 			event_play_multiple("event:/SFX/player/mach2bump", x, y);
 			global.ComboFreeze = 15;
@@ -153,7 +153,7 @@ function baddieOnPlayerCollisions()
 			image_index = 0;
 			hsp = player_object.xscale * 12;
 			vsp = (player_object.y - 180 - y) / 60;
-			state = states.slap;
+			state = PlayerState.charge;
 			baddieInvincibilityBuffer = 5;
 			hasSquashedX = true;
 			squashValueX = 0;
@@ -173,7 +173,7 @@ function baddieOnPlayerCollisions()
 			exit;
 		}
 		
-		if (baddieInvincibilityBuffer <= 0 && player_object.state == states.bossintro && player_object.sprite_index == spr_player_PZ_werecotton_drill_h)
+		if (baddieInvincibilityBuffer <= 0 && player_object.state == PlayerState.cotton && player_object.sprite_index == spr_player_PZ_werecotton_drill_h)
 		{
 			event_play_oneshot("event:/SFX/player/punch", x, y);
 			event_play_oneshot("event:/SFX/enemies/killingblow", x, y);
@@ -182,7 +182,7 @@ function baddieOnPlayerCollisions()
 			exit;
 		}
 		
-		if (canBeStomped && vsp >= 0 && (player_object.state == states.chainsawpogo || player_object.state == states.handstandjump) && player_object.vsp > 0 && player_object.y < y && player_object.sprite_index != player_object.spr_stompprep)
+		if (canBeStomped && vsp >= 0 && (player_object.state == PlayerState.jump || player_object.state == PlayerState.grab) && player_object.vsp > 0 && player_object.y < y && player_object.sprite_index != player_object.spr_stompprep)
 		{
 			event_play_oneshot("event:/SFX/enemies/stomp", x, y);
 			hasSquashedX = true;
@@ -198,7 +198,7 @@ function baddieOnPlayerCollisions()
 			
 			hsp = player_object.xscale * 5;
 			vsp = -5;
-			state = states.slap;
+			state = PlayerState.charge;
 			
 			with (player_object)
 			{
@@ -208,7 +208,7 @@ function baddieOnPlayerCollisions()
 				image_index = 0;
 				create_particle(x, y + 50, spr_stompEffect);
 				
-				if (state == states.handstandjump)
+				if (state == PlayerState.grab)
 					sprite_index = spr_haulingJump;
 				
 				vsp = key_jump2 ? -14 : -9;
@@ -217,9 +217,9 @@ function baddieOnPlayerCollisions()
 			exit;
 		}
 		
-		if (canBeGrabbed && player_object.state == states.pistalaim)
+		if (canBeGrabbed && player_object.state == PlayerState.grabdash)
 		{
-			state = states.charge;
+			state = PlayerState.stun;
 			
 			if (baddieStunTimer < 200)
 				baddieStunTimer = 200;
@@ -233,14 +233,14 @@ function baddieOnPlayerCollisions()
 				
 				if (movespeed <= 10)
 				{
-					state = states.handstandjump;
+					state = PlayerState.grab;
 					sprite_index = spr_haulingIntro;
 				}
 				else
 				{
 					sprite_index = spr_swingDing;
 					movespeed = max(movespeed, 10);
-					state = states.slap;
+					state = PlayerState.charge;
 				}
 				
 				if (!grounded)
@@ -248,7 +248,7 @@ function baddieOnPlayerCollisions()
 				
 				if (key_up)
 				{
-					state = states.secondjump;
+					state = PlayerState.superslam;
 					sprite_index = spr_piledriver;
 					vsp = -14;
 					grounded = false;
@@ -260,9 +260,9 @@ function baddieOnPlayerCollisions()
 			exit;
 		}
 		
-		if (canBeGrabbed && player_object.state == states.cheesepepstick)
+		if (canBeGrabbed && player_object.state == PlayerState.machtumble)
 		{
-			state = states.charge;
+			state = PlayerState.stun;
 			
 			if (baddieStunTimer < 200)
 				baddieStunTimer = 200;
@@ -277,7 +277,7 @@ function baddieOnPlayerCollisions()
 				
 				inputBufferSlap = 0;
 				movespeed = clamp(movespeed, 0, 6);
-				state = states.bossdefeat;
+				state = PlayerState.finishingblow;
 				sprite_index = spr_grabDashTumble_hit;
 				
 				if (key_up)
@@ -296,12 +296,12 @@ function baddieOnPlayerCollisions()
 
 function baddieOnBaddieCollisions()
 {
-	if (state != states.cheesepep || !place_meeting(x, y, obj_parent_enemy))
+	if (state != PlayerState.climbwall || !place_meeting(x, y, obj_parent_enemy))
 		exit;
 	
 	with (instance_place(x, y, obj_parent_enemy))
 	{
-		if (!invincibleBaddie && state != states.charge)
+		if (!invincibleBaddie && state != PlayerState.stun)
 		{
 			instance_destroy();
 			exit;
@@ -347,7 +347,7 @@ function baddieOnSwingCollisions()
 	vsp = -10;
 	sprite_index = baddieSpriteDead;
 	flash = true;
-	state = states.slap;
+	state = PlayerState.charge;
 	eliteHP = 0;
 	
 	if (baddieStunTimer < 200)
@@ -367,7 +367,7 @@ function baddieOnSwingCollisions()
 
 function baddieOnInstakillHitboxCollisions()
 {
-	if (baddieInvincibilityBuffer > 0 || invincibleBaddie || state == states.charge || !place_meeting(x, y, obj_instakillHitbox))
+	if (baddieInvincibilityBuffer > 0 || invincibleBaddie || state == PlayerState.stun || !place_meeting(x, y, obj_instakillHitbox))
 		exit;
 	
 	var player_object = instance_place(x, y, obj_instakillHitbox).playerID;

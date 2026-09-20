@@ -50,7 +50,7 @@ function state_player_ladder()
 	{
 		landAnim = false;
 		jumpAnim = false;
-		state = states.normal;
+		state = PlayerState.normal;
 		image_index = 0;
 		var _y = y;
 		var i = 0;
@@ -82,14 +82,14 @@ function state_player_ladder()
 		image_index = 0;
 		ladderBuffer = 20;
 		jumpAnim = true;
-		state = states.chainsawpogo;
+		state = PlayerState.jump;
 		vsp = -9;
 		inputLadderBuffer = 20;
 	}
 	
 	if (key_down && scr_solid_player(x, y + 1))
 	{
-		state = states.normal;
+		state = PlayerState.normal;
 		image_index = 0;
 	}
 }

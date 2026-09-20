@@ -24,13 +24,13 @@ function state_player_bump()
 		
 		if (sprite_animation_end())
 		{
-			state = states.chainsawpogo;
+			state = PlayerState.jump;
 			sprite_index = shotgunAnim ? spr_shotgun_jump : spr_jump;
 		}
 	}
 	else if (grounded)
 	{
-		state = states.chainsawpogo;
+		state = PlayerState.jump;
 	}
 	
 	image_speed = 0.35;

@@ -7,7 +7,7 @@ if (object_exists(content))
 		
 		if (object_get_parent(object_index) == obj_parent_enemy)
 		{
-			state = states.slap;
+			state = PlayerState.charge;
 			hasSquashedX = true;
 			squashValueX = 0;
 			baddieStunTimer = 50;

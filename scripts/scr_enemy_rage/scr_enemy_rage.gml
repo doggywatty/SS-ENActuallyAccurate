@@ -89,7 +89,7 @@ function scr_enemy_rage()
 				
 				if (sprite_animation_end())
 				{
-					state = states.frozen;
+					state = PlayerState.frozen;
 					movespeed = 1;
 					enemyAttackTimer = 200;
 				}
@@ -145,7 +145,7 @@ function scr_enemy_rage()
 			{
 				movespeed = 1;
 				sprite_index = spr_knight_stun;
-				state = states.normal;
+				state = PlayerState.normal;
 			}
 			
 			break;
@@ -154,7 +154,7 @@ function scr_enemy_rage()
 			
 			if (sprite_animation_end())
 			{
-				state = states.frozen;
+				state = PlayerState.frozen;
 				sprite_index = baddieSpriteWalk;
 			}
 			
@@ -230,7 +230,7 @@ function scr_enemy_rage()
 					
 					if (sprite_animation_end())
 					{
-						state = states.frozen;
+						state = PlayerState.frozen;
 						enemyAttackTimer = 300;
 					}
 				}
@@ -273,16 +273,16 @@ function scr_enemy_rage()
 					slide = -image_xscale * (movespeed + 4);
 				}
 				
-				if (distance_to_object(obj_parent_player) < 100 && obj_parent_player.state == states.skateboard)
+				if (distance_to_object(obj_parent_player) < 100 && obj_parent_player.state == PlayerState.freefallland)
 				{
 					hsp = 0;
 					vsp = -8;
 					grounded = false;
-					state = states.slap;
+					state = PlayerState.charge;
 					sprite_index = baddieSpriteStun;
 				}
 				
-				if ((enemyAttackTimer <= 0 || player_present || !place_meeting(x + hsp, y + 1, obj_dirtpatch)) && obj_parent_player.state != states.skateboard)
+				if ((enemyAttackTimer <= 0 || player_present || !place_meeting(x + hsp, y + 1, obj_dirtpatch)) && obj_parent_player.state != PlayerState.freefallland)
 				{
 					sprite_index = spr_sluggy_undergroundjumpstart;
 					image_index = 0;
@@ -314,11 +314,11 @@ function scr_enemy_rage()
 			{
 				with (obj_parent_player)
 				{
-					if (state == states.punch || state == states.backkick)
+					if (state == PlayerState.doughmount || state == PlayerState.doughmountspin)
 					{
 						movelocked = true;
 						xscale = other.image_xscale;
-						state = states.backbreaker;
+						state = PlayerState.doughmountpancake;
 						image_index = 0;
 						sprite_index = spr_player_PZ_dogMount_spin;
 						movespeed = abs(movespeed);
@@ -332,7 +332,7 @@ function scr_enemy_rage()
 			{
 				movelocked = false;
 				sprite_index = spr_golfburger_walk;
-				state = states.frozen;
+				state = PlayerState.frozen;
 				enemyAttackTimer = 200;
 			}
 			

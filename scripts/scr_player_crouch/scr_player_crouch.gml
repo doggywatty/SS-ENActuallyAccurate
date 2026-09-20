@@ -11,7 +11,7 @@ function state_player_crouch()
 	if (!grounded && !key_jump)
 	{
 		jumpAnim = false;
-		state = states.timesup;
+		state = PlayerState.crouchjump;
 		movespeed = 4;
 		crouchAnim = true;
 		image_index = 0;
@@ -21,7 +21,7 @@ function state_player_crouch()
 	{
 		fmod_studio_event_instance_start(sndJump);
 		vsp = -8;
-		state = states.timesup;
+		state = PlayerState.crouchjump;
 		movespeed = 4;
 		image_index = 0;
 		crouchAnim = true;
@@ -30,7 +30,7 @@ function state_player_crouch()
 	
 	if (grounded && !key_down && !key_jump && room_to_jump)
 	{
-		state = states.normal;
+		state = PlayerState.normal;
 		movespeed = 0;
 		crouchAnim = true;
 		jumpAnim = true;
@@ -69,7 +69,7 @@ function state_player_crouch()
 		instance_create(x, y, obj_jumpdust);
 		sprite_index = spr_crouchslipintro;
 		image_index = 0;
-		state = states.climbdownwall;
+		state = PlayerState.machroll;
 		
 		with (instance_create(x, y, obj_jumpdust))
 			image_xscale = other.xscale;

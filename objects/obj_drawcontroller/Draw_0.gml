@@ -38,7 +38,7 @@ with (obj_parent_player)
 	{
 		other.drawPlayer(id);
 		
-		if ((state == states.slap && image_index < 5) || sprite_index == spr_piledriverland)
+		if ((state == PlayerState.charge && image_index < 5) || sprite_index == spr_piledriverland)
 			other.drawBaddieSprite(baddieGrabbedID);
 	}
 }

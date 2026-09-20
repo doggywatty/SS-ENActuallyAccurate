@@ -4,9 +4,9 @@ if (collide == 1)
 	
 	with (obj_parent_player)
 	{
-		if (state != states.barrelmach2)
+		if (state != PlayerState.bottlerocket)
 		{
-			state = states.barrelmach2;
+			state = PlayerState.bottlerocket;
 			xscale = other.image_xscale;
 			x = other.x;
 			y = other.y;

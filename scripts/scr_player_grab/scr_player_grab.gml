@@ -137,7 +137,7 @@ function state_player_grab()
 			move = xscale;
 		
 		inputBufferSlap = 0;
-		state = states.bossdefeat;
+		state = PlayerState.finishingblow;
 		movespeed = hsp;
 		
 		if (sprite_index == spr_swingDing)
@@ -154,7 +154,7 @@ function state_player_grab()
 	{
 		sprite_index = spr_piledriver;
 		vsp = -6;
-		state = states.secondjump;
+		state = PlayerState.superslam;
 		image_index = 0;
 		image_speed = 0.35;
 	}
@@ -165,14 +165,14 @@ function state_player_grab()
 		{
 			with (baddieGrabbedID)
 			{
-				state = states.slap;
+				state = PlayerState.charge;
 				image_index = 0;
 				x = other.x;
 				y = other.y;
 			}
 		}
 		
-		state = states.facestomp;
+		state = PlayerState.crouch;
 		landAnim = false;
 		crouchAnim = true;
 		image_index = 0;

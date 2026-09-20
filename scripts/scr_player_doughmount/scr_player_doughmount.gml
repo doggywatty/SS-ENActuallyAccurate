@@ -79,7 +79,7 @@ function state_player_doughmount()
 		image_index = 0;
 		inputBufferSlap = 0;
 		sprite_index = spr_player_PZ_dogMount_spin;
-		state = states.backkick;
+		state = PlayerState.doughmountspin;
 		movespeed = abs(movespeed);
 		vsp = -5;
 		movespeed = 12;
@@ -103,7 +103,7 @@ function state_player_doughmountspin()
 	{
 		image_index = 0;
 		sprite_index = spr_player_PZ_dogMount;
-		state = states.punch;
+		state = PlayerState.doughmount;
 		movespeed *= xscale;
 	}
 	
@@ -118,7 +118,7 @@ function state_player_doughmountspin()
 		
 		image_index = 0;
 		sprite_index = spr_player_PZ_dogMount;
-		state = states.punch;
+		state = PlayerState.doughmount;
 		movespeed *= xscale;
 		movespeed = -(movespeed - (movespeed / 1.5));
 	}
@@ -145,7 +145,7 @@ function state_player_doughmountballoon()
 	if (key_jump)
 	{
 		sprite_index = spr_player_PZ_dogMount_inflate_jump;
-		state = states.punch;
+		state = PlayerState.doughmount;
 		vsp = -20;
 		
 		with (instance_create(x, y, obj_puffEffect))
@@ -173,7 +173,7 @@ function state_player_doughmountpancake()
 		else
 		{
 			sprite_index = spr_player_PZ_dogMount_idle;
-			state = states.punch;
+			state = PlayerState.doughmount;
 			jumpStop = true;
 			movespeed = 0;
 		}

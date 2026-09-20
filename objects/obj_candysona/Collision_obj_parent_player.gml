@@ -7,7 +7,7 @@ if (!instance_exists(candyID))
 	scr_ghostcollectible(true);
 	global.ComboTime = 60;
 	alarm[0] = 3;
-	state = states.chainsawpogo;
+	state = PlayerState.jump;
 	flash = true;
 	alarm[1] = 0.15 * room_speed;
 	sprite_index = baddieSpriteDead;

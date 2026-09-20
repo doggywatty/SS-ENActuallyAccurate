@@ -19,7 +19,7 @@ output = function()
 	{
 		movespeed = 12;
 		jumpStop = true;
-		state = states.shotgun;
+		state = PlayerState.mach3;
 		sprite_index = spr_machdashpad;
 		vsp = 5;
 		dashpadBuffer = 50;
@@ -43,7 +43,7 @@ output = function()
 	layer_sprite_change(sprite_id, spr_clocktowerexterior_broken);
 	with (obj_parent_player)
 	{
-		if (state == states.shotgun && sprite_index != spr_mach3hit)
+		if (state == PlayerState.mach3 && sprite_index != spr_mach3hit)
 		{
 			sprite_index = spr_mach3hit;
 			image_index = 0;

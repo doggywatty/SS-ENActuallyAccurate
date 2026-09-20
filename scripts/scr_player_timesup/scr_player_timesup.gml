@@ -11,7 +11,7 @@ function state_player_timesup()
 	{
 		sprite_index = spr_player_PZ_fall_outOfControl;
 		alarm[1] = 3;
-		state = states.knightpep;
+		state = PlayerState.gameover;
 		vsp = irandom_range(-8, -5);
 		hsp = irandom_range(-4, 4);
 	}

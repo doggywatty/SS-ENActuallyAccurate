@@ -3,10 +3,10 @@ if (clone && instance_exists(realBump) && place_meeting(x, y, realBump))
 
 if (DestroyedBy.object_index == obj_parent_player || DestroyedBy.object_index == obj_player1 || DestroyedBy.object_index == obj_player2)
 {
-	if (DestroyedBy.state == states.chainsawpogo)
+	if (DestroyedBy.state == PlayerState.jump)
 	{
 	}
-	else if (place_meeting(x - DestroyedBy.hsp, y, DestroyedBy) && DestroyedBy.state == states.pistalaim)
+	else if (place_meeting(x - DestroyedBy.hsp, y, DestroyedBy) && DestroyedBy.state == PlayerState.grabdash)
 	{
 		with (DestroyedBy)
 		{
@@ -18,12 +18,12 @@ if (DestroyedBy.object_index == obj_parent_player || DestroyedBy.object_index ==
 			machTwo = 0;
 			image_index = 0;
 			
-			if (state == states.machroll)
+			if (state == PlayerState.mach1)
 				sprite_index = spr_canehit;
 			else
 				sprite_index = choose(spr_player_PZ_blockbreak_1, spr_player_PZ_blockbreak_2, spr_player_PZ_blockbreak_3, spr_player_PZ_blockbreak_4, spr_player_PZ_blockbreak_5, spr_player_PZ_blockbreak_6, spr_player_PZ_blockbreak_7);
 			
-			state = states.knightpepslopes;
+			state = PlayerState.tackle;
 		}
 	}
 	else
@@ -32,9 +32,9 @@ if (DestroyedBy.object_index == obj_parent_player || DestroyedBy.object_index ==
 		{
 			if (freeFallSmash < 10)
 			{
-				if (state == states.slam || state == states.skateboard)
+				if (state == PlayerState.freefall || state == PlayerState.freefallland)
 				{
-					state = states.skateboard;
+					state = PlayerState.freefallland;
 					var landing_sprite_transitions = [[spr_groundPoundfall, spr_groundPoundland], [spr_groundPoundstart, spr_groundPoundland], [spr_player_PZ_fall_outOfControl, spr_player_PZ_freeFall_land], [spr_diveBombfall, spr_diveBombland], [spr_diveBombstart, spr_diveBombland]];
 					
 					for (var i = 0; i < array_length(landing_sprite_transitions); i++)
@@ -46,7 +46,7 @@ if (DestroyedBy.object_index == obj_parent_player || DestroyedBy.object_index ==
 					image_index = 0;
 					vsp = 0;
 				}
-				else if (state == states.secondjump)
+				else if (state == PlayerState.superslam)
 				{
 					sprite_index = spr_piledriverland;
 					event_play_oneshot("event:/SFX/player/groundpound", x, y);

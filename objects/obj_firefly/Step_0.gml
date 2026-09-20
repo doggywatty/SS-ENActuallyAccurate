@@ -1,7 +1,7 @@
 if (lightIndex < 4)
 	lightIndex += 0.35;
 
-if (obj_parent_player.state == states.gottreasure)
+if (obj_parent_player.state == PlayerState.taunt)
 {
 	sprite_index = taunt_spr;
 	exit;

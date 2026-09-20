@@ -4,7 +4,7 @@ if (instance_exists(obj_creamThief) && ds_list_find_index(global.SaveRoom, id) =
 	{
 		movespeed = 0;
 		hsp = 0;
-		state = states.charge;
+		state = PlayerState.stun;
 		sprite_index = spr_creamthief_startRace;
 		image_index = 0;
 	}

@@ -2,7 +2,7 @@ if (DestroyedBy.object_index == obj_parent_player || DestroyedBy.object_index ==
 {
 	if (place_meeting(x - DestroyedBy.hsp, y, DestroyedBy))
 	{
-		if (DestroyedBy.state == states.machroll || DestroyedBy.state == states.pistol)
+		if (DestroyedBy.state == PlayerState.mach1 || DestroyedBy.state == PlayerState.mach2)
 		{
 			with (DestroyedBy)
 			{
@@ -14,10 +14,10 @@ if (DestroyedBy.object_index == obj_parent_player || DestroyedBy.object_index ==
 				machTwo = 0;
 				image_index = 0;
 				sprite_index = choose(spr_player_PZ_blockbreak_1, spr_player_PZ_blockbreak_2, spr_player_PZ_blockbreak_3, spr_player_PZ_blockbreak_4, spr_player_PZ_blockbreak_5, spr_player_PZ_blockbreak_6, spr_player_PZ_blockbreak_7);
-				state = states.knightpepslopes;
+				state = PlayerState.tackle;
 			}
 		}
-		else if (DestroyedBy.state == states.pistalaim)
+		else if (DestroyedBy.state == PlayerState.grabdash)
 		{
 			instance_destroy();
 		}

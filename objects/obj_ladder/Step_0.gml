@@ -6,12 +6,12 @@ if (place_meeting(x, y - 16, obj_parent_player))
 	{
 		var collide = place_meeting(x, y + 1, obj_ladder) && !place_meeting_collision(other.x + (other.sprite_width / 2), round(y + 5), Exclude.MOVINGANDPLATFORMS);
 		
-		if ((collide && key_down && !key_up) && !inputLadderBuffer && (grounded && (state == states.facestomp || state == states.skateboard)))
+		if ((collide && key_down && !key_up) && !inputLadderBuffer && (grounded && (state == PlayerState.crouch || state == PlayerState.freefallland)))
 		{
 			hsp = 0;
 			vsp = 0;
 			y += 5;
-			state = states.grabbing;
+			state = PlayerState.ladder;
 			x = other.x + (other.sprite_width / 2);
 			y = round(y);
 			

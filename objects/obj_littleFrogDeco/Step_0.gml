@@ -1,6 +1,6 @@
 if (sprite_index == spr_lilfrogdude_taunt)
 {
-	if (obj_parent_player.state != states.gottreasure)
+	if (obj_parent_player.state != PlayerState.taunt)
 		scr_taunt_setVariables();
 	
 	exit;
@@ -28,7 +28,7 @@ if (place_meeting_collision(x + image_xscale, y) && !grounded)
 if (grounded && jumpTimer-- < 0)
 	event_user(0);
 
-if (grounded && (get_nearestPlayer(x, y).state == states.gottreasure && bbox_in_camera(self, view_camera[0], 50)))
+if (grounded && (get_nearestPlayer(x, y).state == PlayerState.taunt && bbox_in_camera(self, view_camera[0], 50)))
 {
 	scr_taunt_storeVariables();
 	sprite_index = spr_lilfrogdude_taunt;

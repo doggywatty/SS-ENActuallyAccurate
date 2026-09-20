@@ -32,7 +32,7 @@ var tgtX = target_object.x + (sign(target_object.image_xscale) * -((ds_list_find
 var tgtY = (ds_list_find_index(global.KeyFollowerList, id) <= 0) ? (target_object.y - 40) : (target_object.y - 3);
 var tgtMVSP = distance_to_point(tgtX, tgtY) / 200;
 
-if (get_primaryPlayer().state == states.boulder)
+if (get_primaryPlayer().state == PlayerState.gotkey)
 {
 	tgtMVSP = 0.8;
 	tgtX = get_primaryPlayer().x + (25 * get_primaryPlayer().xscale);

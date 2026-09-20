@@ -12,7 +12,7 @@ function scr_enemy_charge()
 			vsp = -3;
 			image_xscale *= -1;
 			sprite_index = baddieSpriteStun;
-			state = states.slap;
+			state = PlayerState.charge;
 			baddieStunTimer = 100;
 		}
 	}

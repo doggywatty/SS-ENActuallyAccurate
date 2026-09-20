@@ -7,7 +7,7 @@ if (!global.freezeframe)
 {
 	with (obj_parent_player)
 	{
-		if (state != states.frozen)
+		if (state != PlayerState.frozen)
 		{
 			frozenState = state;
 			frozenSpriteIndex = sprite_index;
@@ -24,13 +24,13 @@ if (!global.freezeframe)
 			for (var i = 0; i < 10; i++)
 				frozenAlarm[i] = alarm_get(i);
 			
-			state = states.frozen;
+			state = PlayerState.frozen;
 		}
 	}
 	
 	with (obj_parent_enemy)
 	{
-		if (state != states.boxxedpep && state != states.cheeseball)
+		if (state != PlayerState.freezeframe && state != PlayerState.wallkick)
 		{
 			frozenState = state;
 			frozenSpriteIndex = sprite_index;
@@ -40,7 +40,7 @@ if (!global.freezeframe)
 			frozenGrav = grav;
 			frozenHsp = hsp;
 			frozenVsp = vsp;
-			state = states.boxxedpep;
+			state = PlayerState.freezeframe;
 		}
 	}
 	

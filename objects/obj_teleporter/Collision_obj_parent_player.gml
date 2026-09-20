@@ -1,4 +1,4 @@
-if (!reciever && !active && obj_parent_player.state != states.machslide && !global.freezeframe && is_for_me)
+if (!reciever && !active && obj_parent_player.state != PlayerState.donothing && !global.freezeframe && is_for_me)
 {
 	alarm[0] = 25;
 	active = true;
@@ -20,6 +20,6 @@ if (!reciever && !active && obj_parent_player.state != states.machslide && !glob
 		alarm[7] = 50;
 		alarm[5] = 2;
 		hurted = true;
-		state = states.machslide;
+		state = PlayerState.donothing;
 	}
 }

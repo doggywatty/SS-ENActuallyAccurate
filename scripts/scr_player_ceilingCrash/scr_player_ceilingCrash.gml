@@ -13,7 +13,7 @@ function state_player_ceilingCrash()
 	if (sprite_animation_end())
 	{
 		sprite_index = spr_player_PZ_geyser;
-		state = states.chainsawpogo;
+		state = PlayerState.jump;
 		jumpAnim = false;
 	}
 }

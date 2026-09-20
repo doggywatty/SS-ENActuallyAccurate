@@ -5,7 +5,7 @@ canCollide = function(arg0, arg1 = obj_parent_player)
 		case obj_parent_player:
 		case obj_player1:
 		case obj_player2:
-			return arg1.state != states.victory && arg1.state != states.Sjump && arg1.state != states.comingoutdoor;
+			return arg1.state != PlayerState.minecart && arg1.state != PlayerState.minecart_bump && arg1.state != PlayerState.minecart_launched;
 			break;
 		default:
 			return true;

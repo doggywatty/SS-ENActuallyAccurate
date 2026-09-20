@@ -13,17 +13,17 @@ updateEffectPosition = function()
 		image_xscale = -playerID.image_xscale;
 		x -= (18 * playerID.xscale);
 	}
-	else if (playerID.state == states.victory || playerID.sprite_index == spr_player_PZ_wallJumpCancel || playerID.sprite_index == spr_player_PZ_wallJumpCancel_intro)
+	else if (playerID.state == PlayerState.minecart || playerID.sprite_index == spr_player_PZ_wallJumpCancel || playerID.sprite_index == spr_player_PZ_wallJumpCancel_intro)
 	{
 		x += (32 * playerID.xscale);
 	}
-	else if (playerID.state == states.climbdownwall)
+	else if (playerID.state == PlayerState.machroll)
 	{
 		x += (40 * playerID.xscale);
 		y += 20;
 		image_yscale = 0.65;
 	}
-	else if (playerID.state == states.climbdownwall)
+	else if (playerID.state == PlayerState.machroll)
 	{
 		x += (40 * playerID.xscale);
 		y += 20;

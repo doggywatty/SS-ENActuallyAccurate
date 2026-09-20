@@ -1,2 +1,2 @@
-if (obj_parent_player.state != states.mach3)
+if (obj_parent_player.state != PlayerState.actor)
 	scr_collision();

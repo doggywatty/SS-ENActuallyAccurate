@@ -32,7 +32,7 @@ if (!noConeballRoom)
 			global.panic = 0;
 			global.greyscalefade = 0;
 			room = timesuproom;
-			state = states.climbwall;
+			state = PlayerState.timesup;
 			sprite_index = spr_Timesup;
 			image_index = 0;
 			event_play_oneshot("event:/music/timesup");

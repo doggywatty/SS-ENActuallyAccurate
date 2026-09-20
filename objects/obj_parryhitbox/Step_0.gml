@@ -1,4 +1,4 @@
-if (playerID.state != states.gottreasure && playerID.state != states.gameover)
+if (playerID.state != PlayerState.taunt && playerID.state != PlayerState.parry)
 	instance_destroy();
 
 image_xscale = playerID.xscale;

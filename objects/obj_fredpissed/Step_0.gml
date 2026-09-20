@@ -75,7 +75,7 @@ if (cutscene)
 	{
 		with (_p)
 		{
-			state = states.highjump;
+			state = PlayerState.Sjump;
 			sprite_index = spr_superspring;
 			vsp = -16;
 			verticalMovespeed = vsp;
@@ -93,7 +93,7 @@ if (cutscene)
 	
 	with (_p)
 	{
-		if (state == states.mach3)
+		if (state == PlayerState.actor)
 		{
 			if (sprite_index == spr_player_PZ_minecart_fredBump && sprite_animation_end())
 				sprite_index = spr_player_PZ_minecart;

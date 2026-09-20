@@ -1,4 +1,4 @@
-if (!instance_exists(ID) || (other.state == states.shotgun || other.state == states.crouchjump || other.state == states.victory))
+if (!instance_exists(ID) || (other.state == PlayerState.mach3 || other.state == PlayerState.dodgetumble || other.state == PlayerState.minecart))
 	exit;
 
 var impaling_creatures = [obj_knight, obj_bananaCharger, obj_sluggy];

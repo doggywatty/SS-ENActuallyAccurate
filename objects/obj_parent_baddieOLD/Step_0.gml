@@ -21,7 +21,7 @@ switch (state)
 	case enemystates.frozen:
 		scr_enemy_frozen();
 		break;
-	case enemystates.stationary:
+	case enemystates.unknownreset:
 		hsp = 0;
 		vsp = 0;
 		break;
@@ -91,7 +91,7 @@ if (tauntBuffer)
 	
 	if (!global.freezeframe)
 	{
-		if (obj_parent_player.state != states.gottreasure && obj_parent_player.state != states.gameover && state != enemystates.Throw)
+		if (obj_parent_player.state != PlayerState.taunt && obj_parent_player.state != PlayerState.parry && state != enemystates.Throw)
 		{
 			tauntBuffer = false;
 			enemyAttackTimer = 0;

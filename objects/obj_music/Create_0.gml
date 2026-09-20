@@ -133,7 +133,7 @@ addRoomMusic(molasses_1, "event:/music/w2/molasses", "event:/music/w2/molasses_s
 	
 	var player_state = get_playerState();
 	
-	if (player_state == states.ladder || player_state == states.parry)
+	if (player_state == PlayerState.fling || player_state == PlayerState.fling_launch)
 		frog = true;
 	
 	fmod_studio_event_instance_set_parameter_by_name(arg1, "frog", frog, false);

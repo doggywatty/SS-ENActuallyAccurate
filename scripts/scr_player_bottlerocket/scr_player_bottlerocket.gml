@@ -57,7 +57,7 @@ function state_player_bottlerocket()
 			
 			if (inputBufferJump > 0)
 			{
-				state = states.pistol;
+				state = PlayerState.mach2;
 				vsp = -15;
 				image_index = 0;
 				sprite_index = spr_mach2_spinJump;
@@ -91,7 +91,7 @@ function state_player_bottlerocket()
 			machTwo = 0;
 			grounded = 0;
 			sprite_index = spr_player_PZ_slipSlide_intro;
-			state = states.freefallprep;
+			state = PlayerState.puddle;
 		}
 	}
 }

@@ -26,6 +26,6 @@ else if (state == 1)
 	y = playerID.y - 40;
 	image_xscale = playerID.xscale;
 	
-	if (playerID.state != states.handstandjump)
+	if (playerID.state != PlayerState.grab)
 		state = 0;
 }

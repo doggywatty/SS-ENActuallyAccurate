@@ -1,4 +1,4 @@
-if (obj_parent_player.state == states.mach3 && obj_parent_player.sprite_index == obj_parent_player.spr_gotTreasure)
+if (obj_parent_player.state == PlayerState.actor && obj_parent_player.sprite_index == obj_parent_player.spr_gotTreasure)
 {
 	drawnImageIndex += 0.35;
 	draw_sprite(spr_treasureeffect, drawnImageIndex, x, y);

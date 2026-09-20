@@ -1,10 +1,10 @@
-if (state != states.charge)
+if (state != PlayerState.stun)
 	depth = 0;
 
-if (state != states.slap && state != states.boxxedpep)
+if (state != PlayerState.charge && state != PlayerState.freezeframe)
 	thrown = 0;
 
-if (state == states.slap)
+if (state == PlayerState.charge)
 	hitboxcreate = 0;
 
 if (x != obj_parent_player.x)

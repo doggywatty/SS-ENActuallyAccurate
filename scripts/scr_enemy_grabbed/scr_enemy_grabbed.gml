@@ -10,7 +10,7 @@ function scr_enemy_grabbed()
 	baddieStunTimer = 200;
 	player_id.baddieGrabbedID = id;
 	
-	if (player_id.state == states.handstandjump)
+	if (player_id.state == PlayerState.grab)
 	{
 		var walk_bobbingy = 0;
 		var walk_bobbingx = 0;
@@ -80,7 +80,7 @@ function scr_enemy_grabbed()
 		y = player_id.y;
 	}
 	
-	if (player_id.state == states.secondjump)
+	if (player_id.state == PlayerState.superslam)
 	{
 		if (player_id.sprite_index != player_id.spr_piledriverland)
 		{
@@ -94,7 +94,7 @@ function scr_enemy_grabbed()
 		}
 	}
 	
-	if (player_id.state == states.bossdefeat && state != states.cheesepep)
+	if (player_id.state == PlayerState.finishingblow && state != PlayerState.climbwall)
 	{
 		var try_x = 0;
 		
@@ -114,11 +114,11 @@ function scr_enemy_grabbed()
 	
 	with (obj_parent_player)
 	{
-		if (!global.freezeframe && state != states.frozen && state != states.handstandjump && state != states.bossdefeat && state != states.slap && state != states.secondjump)
+		if (!global.freezeframe && state != PlayerState.frozen && state != PlayerState.grab && state != PlayerState.finishingblow && state != PlayerState.charge && state != PlayerState.superslam)
 		{
 			other.x = x;
 			other.y = y;
-			other.state = states.slap;
+			other.state = PlayerState.charge;
 			other.image_index = 0;
 		}
 	}

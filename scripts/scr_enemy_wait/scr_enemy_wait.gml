@@ -27,7 +27,7 @@ function scr_enemy_panicWait()
 				invincibleBaddie = false;
 				visible = true;
 				flash = true;
-				state = states.slap;
+				state = PlayerState.charge;
 				sprite_index = baddieSpriteStun;
 				image_index = 0;
 			}
@@ -55,7 +55,7 @@ function scr_enemy_secretWait()
 		baddieStunTimer = 3;
 		vsp = -8;
 		grounded = false;
-		state = states.slap;
+		state = PlayerState.charge;
 		sprite_index = baddieSpriteWalk;
 	}
 }

@@ -16,7 +16,7 @@ function state_player_geyser()
 	if (!place_meeting(x, y, obj_geyservertical))
 	{
 		jumpStop = true;
-		state = states.chainsawpogo;
+		state = PlayerState.jump;
 		movespeed = abs(hsp);
 		vsp = -18;
 	}

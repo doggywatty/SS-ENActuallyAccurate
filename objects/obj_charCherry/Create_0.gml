@@ -1,6 +1,6 @@
 //PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPA
 event_inherited();
-state = states.breakdance;
+state = PlayerState.burrow;
 canGetScared = false;
 baddieSpriteIdle = spr_charcherry_popout;
 baddieSpriteWalk = spr_charcherry_run;
@@ -12,7 +12,7 @@ baddieSpriteDead = spr_charcherry_dead;
 
 enemyDeath_SpawnBody = function()
 {
-	if (state == states.minecart)
+	if (state == PlayerState.charcherryrun)
 	{
 		instance_create(x, y, obj_bombExplosionMini);
 	}
@@ -28,7 +28,7 @@ enemyDeath_SpawnBody = function()
 //PADDINGPADDINGPADDIN
 enemyAttack_TriggerEvent = function()
 {
-	if (scr_enemy_playerisnear(400, 60) && grounded && state == states.breakdance)
+	if (scr_enemy_playerisnear(400, 60) && grounded && state == PlayerState.burrow)
 	{
 		var _player = get_nearestPlayer();
 		image_xscale = -getFacingDirection(_player.x, x);
@@ -44,7 +44,7 @@ enemyCustomStates = function()
 {
 	switch (state)
 	{
-		case states.breakdance:
+		case PlayerState.burrow:
 			scr_conveyorBeltKinematics();
 			var player_object = get_nearestPlayer(x, y);
 			image_speed = 0.35;
@@ -53,7 +53,7 @@ enemyCustomStates = function()
 			if (sprite_index == spr_charcherry_popout)
 			{
 				if (sprite_animation_end())
-					state = states.minecart;
+					state = PlayerState.charcherryrun;
 				
 				exit;
 			}
@@ -65,7 +65,7 @@ enemyCustomStates = function()
 			
 			enemyAttack_TriggerEvent();
 			break;
-		case states.minecart:
+		case PlayerState.charcherryrun:
 			image_speed = 0.35;
 			sprite_index = spr_charcherry_run;
 			scr_conveyorBeltKinematics();

@@ -3,9 +3,9 @@ function scr_confecti_taunt()
 	image_speed = 0;
 	sprite_index = spr_taunt;
 	
-	if (obj_parent_player.state != states.gottreasure)
+	if (obj_parent_player.state != PlayerState.taunt)
 	{
-		state = states.frozen;
+		state = PlayerState.frozen;
 		image_speed = 0.35;
 	}
 	
@@ -16,7 +16,7 @@ function scr_confecti_taunt()
 		sprite_index = spr_supertaunt;
 		image_index = 0;
 		image_speed = 0.35;
-		state = states.titlescreen;
+		state = PlayerState.titlescreen;
 		
 		with (obj_confectitaunt)
 		{

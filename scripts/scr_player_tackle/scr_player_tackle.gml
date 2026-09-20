@@ -20,11 +20,11 @@ function state_player_tackle()
 			sprite_index = spr_mach1;
 			image_index = 0;
 			jumpAnim = true;
-			state = states.pistol;
+			state = PlayerState.mach2;
 		}
 		else
 		{
-			state = states.normal;
+			state = PlayerState.normal;
 		}
 	}
 	

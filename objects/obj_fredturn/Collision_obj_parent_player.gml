@@ -1,6 +1,6 @@
 with (other)
 {
-	if ((state == states.victory || state == states.Sjump) && sprite_index != spr_player_PZ_minecart_turn && sprite_index != spr_player_PZ_minecart_turnidle && other.image_xscale == xscale && !global.freezeframe)
+	if ((state == PlayerState.minecart || state == PlayerState.minecart_bump) && sprite_index != spr_player_PZ_minecart_turn && sprite_index != spr_player_PZ_minecart_turnidle && other.image_xscale == xscale && !global.freezeframe)
 	{
 		event_play_oneshot("event:/SFX/general/fredturnstop", x, y);
 		x = other.x - (image_xscale * 100);

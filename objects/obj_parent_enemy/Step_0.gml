@@ -1,12 +1,12 @@
 scr_baddie_collide_destroyables();
-downSlope = state != states.cheesepep;
+downSlope = state != PlayerState.climbwall;
 
-if (doCollision && state != states.charge && state != states.cheeseball && state != states.cheesepepstick)
+if (doCollision && state != PlayerState.stun && state != PlayerState.wallkick && state != PlayerState.machtumble)
 	scr_collision();
 
 canBreakBlocks = false;
 
-if (global.freezeframe && state != states.boxxedpep)
+if (global.freezeframe && state != PlayerState.freezeframe)
 {
 	frozenState = state;
 	frozenSpriteIndex = sprite_index;
@@ -16,18 +16,18 @@ if (global.freezeframe && state != states.boxxedpep)
 	frozenGrav = grav;
 	frozenHsp = hsp;
 	frozenVsp = vsp;
-	state = states.boxxedpep;
+	state = PlayerState.freezeframe;
 }
 
 switch (state)
 {
-	case states.frozen:
+	case PlayerState.frozen:
 		state_enemyNormal();
 		break;
-	case states.normal:
+	case PlayerState.normal:
 		state_enemyTurn();
 		break;
-	case states.titlescreen:
+	case PlayerState.titlescreen:
 		if (is_callable(enemyState_Attack))
 		{
 			scr_conveyorBeltKinematics();
@@ -35,13 +35,13 @@ switch (state)
 		}
 		
 		break;
-	case states.Nhookshot:
+	case PlayerState.run:
 		state_enemyScared();
 		break;
-	case states.slap:
+	case PlayerState.charge:
 		state_enemyStunned();
 		break;
-	case states.charge:
+	case PlayerState.stun:
 		if (baddieStunTimer < 200)
 			baddieStunTimer = 200;
 		
@@ -52,16 +52,16 @@ switch (state)
 		image_speed = 0.35;
 		grounded = false;
 		break;
-	case states.cheesepep:
+	case PlayerState.climbwall:
 		state_enemyHit();
 		break;
-	case states.cheeseball:
+	case PlayerState.wallkick:
 		state_enemyWaiting_Panic();
 		break;
-	case states.cheesepepstick:
+	case PlayerState.machtumble:
 		state_enemyWaiting_Box();
 		break;
-	case states.boxxedpep:
+	case PlayerState.freezeframe:
 		if (markedForDeath)
 			sprite_index = baddieSpriteStun;
 		
@@ -101,7 +101,7 @@ if (baddieCollisionBoxEnabled)
 if (canGetScared)
 	scr_scareenemy();
 
-if (state != states.titlescreen)
+if (state != PlayerState.titlescreen)
 	hasAttacked = false;
 
 if (markedForDeath && !global.freezeframe && !obj_camera.NextFreeze)
@@ -142,7 +142,7 @@ if (flash && alarm[0] <= 0)
 
 if (tauntBuffer)
 {
-	if (obj_parent_player.state != states.gottreasure && obj_parent_player.state != states.gameover)
+	if (obj_parent_player.state != PlayerState.taunt && obj_parent_player.state != PlayerState.parry)
 	{
 		tauntBuffer = false;
 		baddieStunTimer = 0;
@@ -154,7 +154,7 @@ if (tauntBuffer)
 	}
 }
 
-if (state != states.Nhookshot && state != states.boxxedpep)
+if (state != PlayerState.run && state != PlayerState.freezeframe)
 	baddieScareBuffer = 0;
 
 if (doRedAfterImage && redAfterImagebuffer-- < 0)

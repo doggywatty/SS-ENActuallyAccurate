@@ -1,15 +1,15 @@
 if (!markedForDeath)
 {
 	var _state = global.freezeframe ? frozenState : state;
-	wasInAir = _state == states.titlescreen && !grounded;
+	wasInAir = _state == PlayerState.titlescreen && !grounded;
 }
 
 event_inherited();
-canGetScared = grounded && state != states.titlescreen && state != states.breakdance;
+canGetScared = grounded && state != PlayerState.titlescreen && state != PlayerState.burrow;
 enemyAttack_TriggerEvent();
 burrowTimer = max(burrowTimer - 1, 0);
 
-if (state == states.titlescreen && sprite_index == spr_sluggy_jump)
+if (state == PlayerState.titlescreen && sprite_index == spr_sluggy_jump)
 {
 	canBreakBlocks = true;
 	doRedAfterImage = true;
@@ -32,16 +32,16 @@ if (state == states.titlescreen && sprite_index == spr_sluggy_jump)
 	}
 }
 
-if (burrowTimer <= 0 && place_meeting(x, y + 1, obj_dirtpatch) && state == states.frozen)
+if (burrowTimer <= 0 && place_meeting(x, y + 1, obj_dirtpatch) && state == PlayerState.frozen)
 {
 	hsp = 0;
 	movespeed = 0;
 	image_index = 0;
 	sprite_index = spr_sluggy_burrow;
-	state = states.breakdance;
+	state = PlayerState.burrow;
 	burrowTimer = burrowTimerMax;
 }
 
 var target_player = get_nearestPlayer();
 var is_underground = sprite_index == spr_sluggy_underground || (sprite_index == spr_sluggy_undergroundjumpstart && image_index <= 6);
-baddieCollisionBoxEnabled = !is_underground || target_player.state == states.shotgun;
+baddieCollisionBoxEnabled = !is_underground || target_player.state == PlayerState.mach3;

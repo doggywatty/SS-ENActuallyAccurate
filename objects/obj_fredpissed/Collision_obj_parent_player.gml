@@ -1,6 +1,6 @@
 with (other)
 {
-	if ((state == states.victory || state == states.Sjump || (state == states.comingoutdoor && vsp > 0)) && sprite_index != spr_player_PZ_minecart_bounce && !global.freezeframe)
+	if ((state == PlayerState.minecart || state == PlayerState.minecart_bump || (state == PlayerState.minecart_launched && vsp > 0)) && sprite_index != spr_player_PZ_minecart_bounce && !global.freezeframe)
 	{
 		var _x = x;
 		var _y = y;
@@ -18,7 +18,7 @@ with (other)
 		event_play_oneshot("event:/SFX/general/fredcustcenehit");
 		sprite_index = spr_player_PZ_minecart_fredBump;
 		image_index = 0;
-		state = states.mach3;
+		state = PlayerState.actor;
 		other.sprite_index = spr_fred_pissed;
 		other.fred_y = other.y;
 		other.cutscene = true;

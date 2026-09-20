@@ -1,4 +1,4 @@
-if (other.state == states.victory)
+if (other.state == PlayerState.minecart)
 {
 	if (!other.hurted && other.sprite_index != spr_player_PZ_minecart_spinOut)
 	{

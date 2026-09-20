@@ -1,11 +1,11 @@
 with (instance_nearest(x, y, obj_parent_player))
 {
-	var bumpstates = [states.shotgun, states.pistol, states.climbdownwall, states.pistalaim, states.crouch];
+	var bumpstates = [PlayerState.mach3, PlayerState.mach2, PlayerState.machroll, PlayerState.grabdash, PlayerState.machtumble2];
 	
 	if ((place_meeting(x + hsp, y, other.id) || place_meeting(x + xscale, y, other.id)) && object_index != obj_chocofrogsmall && array_contains(bumpstates, state))
 	{
 		event_play_oneshot("event:/SFX/player/splat", x, y);
-		state = states.throwing;
+		state = PlayerState.bump;
 		hsp = -xscale * 5;
 		vsp = -2;
 		sprite_index = spr_bump;
@@ -22,97 +22,97 @@ with (instance_nearest(x, y, obj_parent_player))
 		}
 	}
 	
-	if ((place_meeting(x + hsp, y, other.id) || place_meeting(x + xscale, y, other.id)) && state == states.bossintro && movespeed >= 8)
+	if ((place_meeting(x + hsp, y, other.id) || place_meeting(x + xscale, y, other.id)) && state == PlayerState.cotton && movespeed >= 8)
 	{
 		with (other.id)
 			instance_destroy();
 	}
 	
-	if ((place_meeting(x + hsp, y + vsp, other.id) || place_meeting(x + xscale, y + sign(vsp), other.id)) && state == states.slipnslide)
+	if ((place_meeting(x + hsp, y + vsp, other.id) || place_meeting(x + xscale, y + sign(vsp), other.id)) && state == PlayerState.cottondig)
 	{
 		with (other.id)
 			instance_destroy();
 	}
 	
-	if ((place_meeting(x + hsp, y, other.id) || place_meeting(x + xscale, y, other.id)) && state == states.bossintro && sprite_index == spr_player_PZ_werecotton_drill_h)
+	if ((place_meeting(x + hsp, y, other.id) || place_meeting(x + xscale, y, other.id)) && state == PlayerState.cotton && sprite_index == spr_player_PZ_werecotton_drill_h)
 	{
 		with (other.id)
 			instance_destroy();
 	}
 	
-	if ((place_meeting(x + hsp, y, other.id) || place_meeting(x + xscale, y, other.id)) && state == states.tackle)
+	if ((place_meeting(x + hsp, y, other.id) || place_meeting(x + xscale, y, other.id)) && state == PlayerState.cottonroll)
 	{
 		with (other.id)
 			instance_destroy();
 	}
 	
-	if (((place_meeting(x, y + vsp, other.id) && vsp > 0) || place_meeting(x, y + 1, other.id)) && state == states.keyget)
+	if (((place_meeting(x, y + vsp, other.id) && vsp > 0) || place_meeting(x, y + 1, other.id)) && state == PlayerState.cottondrill)
 	{
 		with (other.id)
 			instance_destroy();
 	}
 	
-	if ((place_meeting(x + hsp, y, other.id) || place_meeting(x + xscale, y, other.id)) && state == states.victory)
+	if ((place_meeting(x + hsp, y, other.id) || place_meeting(x + xscale, y, other.id)) && state == PlayerState.minecart)
 	{
 		with (other.id)
 			instance_destroy();
 	}
 	
-	if ((place_meeting(x + hsp, y, other.id) || place_meeting(x + xscale, y, other.id)) && (state == states.crouchslide || state == states.mach1))
+	if ((place_meeting(x + hsp, y, other.id) || place_meeting(x + xscale, y, other.id)) && (state == PlayerState.fireass || state == PlayerState.fireassdash))
 	{
 		with (other.id)
 			instance_destroy();
 	}
 	
-	if ((place_meeting(x, y + vsp, other.id) || place_meeting(x, y + sign(vsp), other.id)) && (state == states.crouchslide || state == states.mach1))
+	if ((place_meeting(x, y + vsp, other.id) || place_meeting(x, y + sign(vsp), other.id)) && (state == PlayerState.fireass || state == PlayerState.fireassdash))
 	{
 		with (other.id)
 			instance_destroy();
 	}
 	
-	if ((place_meeting(x + hsp, y, other.id) || place_meeting(x + xscale, y, other.id)) && state == states.freefall)
+	if ((place_meeting(x + hsp, y, other.id) || place_meeting(x + xscale, y, other.id)) && state == PlayerState.oldtaunt)
 	{
 		with (other.id)
 			instance_destroy();
 	}
 	
-	if ((place_meeting(x, y + vsp, other.id) || place_meeting(x, y + sign(vsp), other.id)) && state == states.freefall)
+	if ((place_meeting(x, y + vsp, other.id) || place_meeting(x, y + sign(vsp), other.id)) && state == PlayerState.oldtaunt)
 	{
 		with (other.id)
 			instance_destroy();
 	}
 	
-	if ((place_meeting(x + hsp, y, other.id) || place_meeting(x + xscale, y, other.id)) && state == states.freefall)
+	if ((place_meeting(x + hsp, y, other.id) || place_meeting(x + xscale, y, other.id)) && state == PlayerState.oldtaunt)
 	{
 		with (other.id)
 			instance_destroy();
 	}
 	
-	if ((place_meeting(x, y + vsp, other.id) || place_meeting(x, y + sign(vsp), other.id)) && state == states.freefall)
+	if ((place_meeting(x, y + vsp, other.id) || place_meeting(x, y + sign(vsp), other.id)) && state == PlayerState.oldtaunt)
 	{
 		with (other.id)
 			instance_destroy();
 	}
 	
-	if ((place_meeting(x + hsp, y, other.id) || place_meeting(x + xscale, y, other.id)) && (state == states.cotton || state == states.pal || state == states.uppercut))
+	if ((place_meeting(x + hsp, y, other.id) || place_meeting(x + xscale, y, other.id)) && (state == PlayerState.frostburnnormal || state == PlayerState.frostburnjump || state == PlayerState.frostburnslide))
 	{
 		with (other.id)
 			instance_destroy();
 	}
 	
-	if ((place_meeting(x, y + vsp, other.id) || place_meeting(x, y + sign(vsp), other.id)) && (state == states.pal || state == states.uppercut))
+	if ((place_meeting(x, y + vsp, other.id) || place_meeting(x, y + sign(vsp), other.id)) && (state == PlayerState.frostburnjump || state == PlayerState.frostburnslide))
 	{
 		with (other.id)
 			instance_destroy();
 	}
 	
-	if ((place_meeting(x + hsp, y, other.id) || place_meeting(x + xscale, y, other.id)) && state == states.barrelmach2 && substate == 0)
+	if ((place_meeting(x + hsp, y, other.id) || place_meeting(x + xscale, y, other.id)) && state == PlayerState.bottlerocket && substate == 0)
 	{
 		with (other.id)
 			instance_destroy();
 	}
 	
-	if ((place_meeting(x + hsp, y, other.id) || place_meeting(x + xscale, y, other.id)) && state == states.backkick)
+	if ((place_meeting(x + hsp, y, other.id) || place_meeting(x + xscale, y, other.id)) && state == PlayerState.doughmountspin)
 	{
 		with (other.id)
 			instance_destroy();

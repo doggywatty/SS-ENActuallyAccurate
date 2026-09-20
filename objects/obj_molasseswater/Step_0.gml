@@ -4,18 +4,18 @@ if (place_meeting(x, y, obj_parent_player))
 	{
 		if (place_meeting(x, y, other))
 		{
-			if (state != states.noclip && state != states.barrelroll && !global.freezeframe)
+			if (state != PlayerState.noclip && state != PlayerState.drown && !global.freezeframe)
 			{
 				if (vsp >= 0)
 				{
 					if (!instance_exists(obj_techdiff))
 					{
-						if (state == states.bossintro || state == states.keyget)
+						if (state == PlayerState.cotton || state == PlayerState.cottondrill)
 							instance_create(x, y, obj_poofeffect);
 						
 						scr_playerrespawn(true, true);
 						event_play_oneshot("event:/SFX/general/watersplash", x, y);
-						state = states.mach3;
+						state = PlayerState.actor;
 						vsp = 10;
 						image_index = 10;
 						sprite_index = spr_drown;
@@ -27,7 +27,7 @@ if (place_meeting(x, y, obj_parent_player))
 						vsp -= grav;
 						vsp = approach(vsp, 0, 0.5);
 						image_speed = 0.35;
-						state = states.mach3;
+						state = PlayerState.actor;
 					}
 					
 					wetTimer = approach(wetTimer, wetTimerMax, 15);

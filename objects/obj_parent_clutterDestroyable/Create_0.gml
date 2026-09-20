@@ -14,7 +14,7 @@ canCollide = function(arg0, arg1 = obj_parent_player)
 		case obj_player1:
 		case obj_player2:
 			var _state = global.freezeframe ? arg1.frozenState : arg1.state;
-			return !in_object || _state == states.cheesepep || _state == states.machfreefall;
+			return !in_object || _state == PlayerState.climbwall || _state == PlayerState.machslide;
 			break;
 		case obj_escaperosette:
 			return false;

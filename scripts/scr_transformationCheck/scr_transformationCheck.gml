@@ -2,22 +2,22 @@ function scr_setTransfoTip(arg0)
 {
 	switch (arg0)
 	{
-		case states.bossintro:
-		case states.keyget:
-		case states.tackle:
-		case states.slipnslide:
+		case PlayerState.cotton:
+		case PlayerState.cottondrill:
+		case PlayerState.cottonroll:
+		case PlayerState.cottondig:
 			global.TransfoPrompt = "prompt_werecotton";
 			break;
-		case states.victory:
-		case states.Sjump:
-		case states.comingoutdoor:
+		case PlayerState.minecart:
+		case PlayerState.minecart_bump:
+		case PlayerState.minecart_launched:
 			global.TransfoPrompt = "prompt_minecart";
 			break;
-		case states.ladder:
+		case PlayerState.fling:
 			global.TransfoPrompt = "prompt_fling";
 			break;
-		case states.crouchslide:
-		case states.mach1:
+		case PlayerState.fireass:
+		case PlayerState.fireassdash:
 			global.TransfoPrompt = "prompt_fireass";
 			break;
 		default:
@@ -33,7 +33,7 @@ function scr_transformationCheck(arg0)
 {
 	var transfo = undefined;
 	
-	if (arg0 == states.freefall)
+	if (arg0 == PlayerState.oldtaunt)
 		arg0 = tauntStored.state;
 	
 	switch (arg0)
@@ -41,37 +41,37 @@ function scr_transformationCheck(arg0)
 		default:
 			transfo = undefined;
 			break;
-		case states.runonball:
+		case PlayerState.tumble:
 			transfo = "Ball";
 			break;
-		case states.bossintro:
-		case states.keyget:
-		case states.tackle:
-		case states.slipnslide:
+		case PlayerState.cotton:
+		case PlayerState.cottondrill:
+		case PlayerState.cottonroll:
+		case PlayerState.cottondig:
 			transfo = "Werecotton";
 			break;
-		case states.ladder:
-		case states.parry:
+		case PlayerState.fling:
+		case PlayerState.fling_launch:
 			transfo = "Fling";
 			break;
-		case states.victory:
-		case states.Sjump:
-		case states.comingoutdoor:
+		case PlayerState.minecart:
+		case PlayerState.minecart_bump:
+		case PlayerState.minecart_launched:
 			transfo = "Minecart";
 			break;
-		case states.cotton:
-		case states.pal:
-		case states.uppercut:
-		case states.shocked:
+		case PlayerState.frostburnnormal:
+		case PlayerState.frostburnjump:
+		case PlayerState.frostburnslide:
+		case PlayerState.frostburnstick:
 			transfo = "Frostburn";
 			break;
-		case states.punch:
-		case states.backkick:
-		case states.uppunch:
-		case states.shoulder:
+		case PlayerState.doughmount:
+		case PlayerState.doughmountspin:
+		case PlayerState.doughmountjump:
+		case PlayerState.doughmountballoon:
 			transfo = "Marshdog";
 			break;
-		case states.barrelmach2:
+		case PlayerState.bottlerocket:
 			transfo = "Rocket";
 			break;
 	}

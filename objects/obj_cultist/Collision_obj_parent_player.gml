@@ -5,7 +5,7 @@ with (other)
 	if (!is_undefined(scr_transformationCheck(state)))
 	{
 		event_play_oneshot("event:/SFX/general/cultist");
-		state = states.normal;
+		state = PlayerState.normal;
 		other.sprite_index = spr_cultist_pray;
 		
 		if (key_attack)
@@ -15,7 +15,7 @@ with (other)
 			else
 				movespeed = abs(movespeed);
 			
-			state = states.pistol;
+			state = PlayerState.mach2;
 		}
 		
 		transfoSound = undefined;

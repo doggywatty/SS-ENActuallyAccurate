@@ -24,7 +24,7 @@ gotoLevel = function(arg0)
 		{
 			sprite_index = spr_entergate;
 		}
-		state = states.shotgunjump;
+		state = PlayerState.victory;
 		targetDoor = "A";
 		targetRoom = global.LevelFirstRoom;
 		global.ComboLost = false;

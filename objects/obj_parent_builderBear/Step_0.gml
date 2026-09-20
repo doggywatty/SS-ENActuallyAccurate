@@ -1,6 +1,6 @@
 switch (state)
 {
-	case states.frozen:
+	case PlayerState.frozen:
 		if (randomBuffer > 0)
 		{
 			randomBuffer--;
@@ -49,9 +49,9 @@ switch (state)
 				image_xscale = hallway_direction;
 		}
 		
-		if (get_nearestPlayer(x, y).state == states.gottreasure && state != states.normal && bbox_in_camera(self, view_camera[0], 50))
+		if (get_nearestPlayer(x, y).state == PlayerState.taunt && state != PlayerState.normal && bbox_in_camera(self, view_camera[0], 50))
 		{
-			state = states.normal;
+			state = PlayerState.normal;
 			scr_taunt_storeVariables();
 			
 			if (character == buildercharacters.karen && obj_parent_player.x != x)
@@ -59,15 +59,15 @@ switch (state)
 		}
 		
 		break;
-	case states.normal:
+	case PlayerState.normal:
 		hsp = 0;
 		vsp = 0;
 		sprite_index = tauntSprite;
 		
-		if (obj_parent_player.state != states.gottreasure)
+		if (obj_parent_player.state != PlayerState.taunt)
 		{
 			scr_taunt_setVariables();
-			state = states.frozen;
+			state = PlayerState.frozen;
 			randomBuffer = randomBufferMin + irandom(randomBufferMax);
 			
 			if (sprite_index == spr_builderBear_karen_idleAnim)

@@ -68,7 +68,7 @@ function state_player_cottondig()
 				grav = 0.025;
 				image_index = 0;
 				sprite_index = spr_cottonDoubleJump;
-				state = states.bossintro;
+				state = PlayerState.cotton;
 				instance_create(x, y, obj_highJumpCloud1, 
 				{
 					playerID: id
@@ -189,7 +189,7 @@ function state_player_cottondig()
 			}
 		}
 		
-		state = states.bossintro;
+		state = PlayerState.cotton;
 		dir = xscale;
 	}
 	

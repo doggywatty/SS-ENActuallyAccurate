@@ -6,5 +6,5 @@ function state_player_costumebreeze()
 	breezeCooldown--;
 	
 	if (breezeCooldown <= 0 || movespeed == 0)
-		state = states.door;
+		state = PlayerState.costumenormal;
 }

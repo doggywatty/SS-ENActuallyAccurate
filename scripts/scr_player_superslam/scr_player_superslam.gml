@@ -100,7 +100,7 @@ function state_player_superslam()
 			{
 				if (bbox_in_camera(id, view_camera[0]) && grounded && id != other.baddieGrabbedID)
 				{
-					state = states.slap;
+					state = PlayerState.charge;
 					baddieStunTimer = 120;
 					vsp = -11;
 					image_xscale *= -1;
@@ -124,7 +124,7 @@ function state_player_superslam()
 		if (sprite_animation_end())
 		{
 			jumpStop = false;
-			state = states.chainsawpogo;
+			state = PlayerState.jump;
 			grounded = false;
 			sprite_index = spr_piledriverJump;
 			image_index = 0;

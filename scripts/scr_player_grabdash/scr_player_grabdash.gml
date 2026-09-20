@@ -56,7 +56,7 @@ function state_player_grabdash()
 	
 	if (move != xscale && move != 0)
 	{
-		state = states.chainsawpogo;
+		state = PlayerState.jump;
 		image_index = 0;
 		sprite_index = spr_suplexdashCancel;
 		jumpAnim = true;
@@ -75,7 +75,7 @@ function state_player_grabdash()
 		{
 			playerID: id
 		});
-		state = states.pistol;
+		state = PlayerState.mach2;
 		jumpStop = false;
 		vsp = -11;
 		grav = 0.3;
@@ -98,13 +98,13 @@ function state_player_grabdash()
 					verticalMovespeed -= vsp;
 				
 				grabClimbBuffer = 10;
-				state = states.cheesepep;
+				state = PlayerState.climbwall;
 				floatyGrab = 18;
 			}
 			else
 			{
 				jumpStop = true;
-				state = states.chainsawpogo;
+				state = PlayerState.jump;
 				floatyGrab = 18;
 				vsp = -4;
 				sprite_index = spr_player_PZ_suplexDash_bump;
@@ -144,7 +144,7 @@ function state_player_grabdash()
 		
 		if (key_attack)
 		{
-			state = states.pistol;
+			state = PlayerState.mach2;
 			sprite_index = spr_mach2;
 			floatyGrab = 0;
 		}
@@ -153,7 +153,7 @@ function state_player_grabdash()
 			sprite_index = spr_idle;
 			image_index = 0;
 			momentum = true;
-			state = states.normal;
+			state = PlayerState.normal;
 			floatyGrab = 0;
 			jumpStop = true;
 		}
@@ -172,7 +172,7 @@ function state_player_grabdash()
 			floatyGrab = 0;
 		}
 		
-		state = states.crouch;
+		state = PlayerState.machtumble2;
 		inputBufferSlap = 0;
 		movespeed = max(movespeed, 12);
 		
@@ -191,7 +191,7 @@ function state_player_grabdash()
 			sprite_index = spr_crouchslipintro;
 			image_index = 0;
 			fmod_studio_event_instance_start(sndCrouchslide);
-			state = states.climbdownwall;
+			state = PlayerState.machroll;
 			
 			with (instance_create(x, y, obj_jumpdust))
 				image_xscale = other.xscale;

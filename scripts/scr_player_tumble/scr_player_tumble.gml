@@ -22,7 +22,7 @@ function state_player_tumble()
 	{
 		event_play_oneshot("event:/SFX/player/bumpwall", x, y);
 		sprite_index = spr_tumbleend;
-		state = states.throwing;
+		state = PlayerState.bump;
 		landAnim = false;
 		sprite_index = spr_tumbleend;
 		image_index = 0;

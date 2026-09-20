@@ -1,6 +1,6 @@
 var target_player = instance_nearest(x, y, obj_parent_player);
 
-if (!instance_exists(ID) || (target_player.state == states.shotgun || target_player.state == states.mach1 || target_player.state == states.victory || target_player.state == states.backkick))
+if (!instance_exists(ID) || (target_player.state == PlayerState.mach3 || target_player.state == PlayerState.fireassdash || target_player.state == PlayerState.minecart || target_player.state == PlayerState.doughmountspin))
 	instance_destroy();
 
 if (instance_exists(ID))
@@ -15,7 +15,7 @@ if (instance_exists(ID))
 		switch (object_index)
 		{
 			case obj_knight:
-				if (state != states.frozen && state != states.frozen)
+				if (state != PlayerState.frozen && state != PlayerState.frozen)
 				{
 					hitboxcreate = 0;
 					instance_destroy(other.id);
@@ -23,7 +23,7 @@ if (instance_exists(ID))
 				
 				break;
 			case obj_boxFrog:
-				if ((vsp >= 0 && grounded) || state != states.titlescreen)
+				if ((vsp >= 0 && grounded) || state != PlayerState.titlescreen)
 				{
 					hitboxcreate = false;
 					instance_destroy(other.id);
@@ -31,7 +31,7 @@ if (instance_exists(ID))
 				
 				break;
 			case obj_miniHarry:
-				if (state != states.titlescreen)
+				if (state != PlayerState.titlescreen)
 				{
 					hitboxcreate = 0;
 					instance_destroy(other.id);
@@ -39,7 +39,7 @@ if (instance_exists(ID))
 				
 				break;
 			case obj_sluggy:
-				if (vsp >= 0 || state != states.titlescreen)
+				if (vsp >= 0 || state != PlayerState.titlescreen)
 				{
 					hitboxcreate = 0;
 					instance_destroy(other.id);
@@ -48,7 +48,7 @@ if (instance_exists(ID))
 				break;
 			case obj_bananaCharger:
 			case obj_swedishfish:
-				if (state != states.slap)
+				if (state != PlayerState.charge)
 				{
 					hitboxcreate = 0;
 					instance_destroy(other.id);
@@ -62,7 +62,7 @@ if (instance_exists(ID))
 				break;
 				break;
 			case obj_betonbacon:
-				if (state != states.titlescreen && state != states.frozen)
+				if (state != PlayerState.titlescreen && state != PlayerState.frozen)
 					instance_destroy(other.id);
 				
 				break;

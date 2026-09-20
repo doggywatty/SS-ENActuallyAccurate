@@ -40,7 +40,7 @@ if (sucrose_lighting)
 			{
 				draw_sprite_ext_flash(sprite_index, image_index, x - cam_x, y - cam_y, xscale * scale, yscale * scale, draw_angle, other.sucrose_color, image_alpha);
 				
-				if (state == states.slap && image_index < 5)
+				if (state == PlayerState.charge && image_index < 5)
 				{
 					with (baddieGrabbedID)
 					{

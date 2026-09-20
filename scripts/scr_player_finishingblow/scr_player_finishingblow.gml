@@ -7,12 +7,12 @@ function state_player_finishingblow()
 	
 	if (sprite_animation_end())
 	{
-		state = states.normal;
+		state = PlayerState.normal;
 		movespeed = abs(movespeed);
 		
 		if (sprite_index == spr_swingDingEnd && key_attack)
 		{
-			state = states.pistol;
+			state = PlayerState.mach2;
 			movespeed = max(movespeed, 6);
 		}
 	}
@@ -41,7 +41,7 @@ function state_player_finishingblow()
 			with (instance_create(x, y, obj_instakillHitbox))
 			{
 				playerID = other.id;
-				targetState = states.bossdefeat;
+				targetState = PlayerState.finishingblow;
 			}
 		}
 	}

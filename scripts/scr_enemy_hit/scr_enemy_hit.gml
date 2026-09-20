@@ -66,7 +66,7 @@ function scr_enemy_hit()
 		{
 			hsp *= 1.5;
 			baddieStunTimer = 0;
-			state = states.frozen;
+			state = PlayerState.frozen;
 			exit;
 		}
 		
@@ -76,6 +76,6 @@ function scr_enemy_hit()
 			exit;
 		}
 		
-		state = states.slap;
+		state = PlayerState.charge;
 	}
 }

@@ -82,7 +82,7 @@ function state_enemyTurn()
 		image_index = 0;
 		sprite_index = baddieSpriteWalk;
 		image_xscale *= -1;
-		state = states.frozen;
+		state = PlayerState.frozen;
 		exit;
 	}
 }
@@ -100,7 +100,7 @@ function state_enemyScared()
 	
 	if (baddieScareBuffer <= 0)
 	{
-		state = states.frozen;
+		state = PlayerState.frozen;
 		sprite_index = baddieSpriteWalk;
 		baddieScareBuffer = 0;
 		scare_jump = false;
@@ -133,7 +133,7 @@ function state_enemyStunned()
 	if (grounded && baddieStunTimer < 0)
 	{
 		image_index = 0;
-		state = states.frozen;
+		state = PlayerState.frozen;
 		sprite_index = baddieSpriteWalk;
 	}
 }
@@ -175,7 +175,7 @@ function state_enemyHit()
 			exit;
 		}
 		
-		state = states.slap;
+		state = PlayerState.charge;
 		exit;
 	}
 }
@@ -223,7 +223,7 @@ function state_enemyWaiting_Box()
 		baddieStunTimer = 3;
 		vsp = -8;
 		grounded = false;
-		state = states.slap;
+		state = PlayerState.charge;
 		sprite_index = baddieSpriteWalk;
 	}
 }
@@ -257,7 +257,7 @@ function scr_enemyThrowDefault(arg0, arg1, arg2, arg3)
 		movespeed = defaultMovespeed;
 		image_index = 0;
 		sprite_index = baddieSpriteWalk;
-		state = states.frozen;
+		state = PlayerState.frozen;
 		exit;
 	}
 }

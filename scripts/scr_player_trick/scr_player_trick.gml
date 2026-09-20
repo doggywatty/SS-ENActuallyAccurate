@@ -20,7 +20,7 @@ function state_player_trick()
 			verticalMovespeed -= vsp;
 		
 		grabClimbBuffer = 0;
-		state = states.cheesepep;
+		state = PlayerState.climbwall;
 	}
 	else if (scr_solid(x + xscale, y, true) && !place_meeting(x + xscale, y, obj_destructibles))
 	{
@@ -28,7 +28,7 @@ function state_player_trick()
 		
 		if (!_ledge)
 		{
-			state = states.throwing;
+			state = PlayerState.bump;
 			image_index = 0;
 			sprite_index = spr_splat;
 			event_play_oneshot("event:/SFX/player/splat", x, y);
@@ -40,7 +40,7 @@ function state_player_trick()
 		fmod_studio_event_instance_start(sndRollGetUp);
 		image_index = 0;
 		sprite_index = spr_rollgetup;
-		state = states.shotgun;
+		state = PlayerState.mach3;
 	}
 	
 	image_speed = 0.5;

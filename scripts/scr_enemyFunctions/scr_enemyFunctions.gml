@@ -18,18 +18,18 @@ function scr_enemy_grabUpdatePosition(arg0)
 	
 	with (arg0)
 	{
-		if (!global.freezeframe && state != states.frozen && state != states.handstandjump && state != states.bossdefeat && state != states.slap && state != states.secondjump)
+		if (!global.freezeframe && state != PlayerState.frozen && state != PlayerState.grab && state != PlayerState.finishingblow && state != PlayerState.charge && state != PlayerState.superslam)
 		{
 			other.x = x;
 			other.y = y;
-			other.state = states.slap;
+			other.state = PlayerState.charge;
 			other.image_index = 0;
 		}
 	}
 	
 	var player_state = global.freezeframe ? arg0.frozenState : arg0.state;
 	
-	if (player_state == states.handstandjump)
+	if (player_state == PlayerState.grab)
 	{
 		var walk_bobbingy = 0;
 		var walk_bobbingx = 0;
@@ -73,7 +73,7 @@ function scr_enemy_grabUpdatePosition(arg0)
 		image_xscale = -arg0.xscale;
 	}
 	
-	if (player_state == states.slap)
+	if (player_state == PlayerState.charge)
 	{
 		x = arg0.x;
 		
@@ -99,9 +99,9 @@ function scr_enemy_grabUpdatePosition(arg0)
 		y = arg0.y;
 	}
 	
-	yscale = (player_state == states.secondjump) ? -1 : 1;
+	yscale = (player_state == PlayerState.superslam) ? -1 : 1;
 	
-	if (player_state == states.secondjump)
+	if (player_state == PlayerState.superslam)
 	{
 		if (arg0.sprite_index != arg0.spr_piledriverland)
 		{
@@ -115,7 +115,7 @@ function scr_enemy_grabUpdatePosition(arg0)
 		}
 	}
 	
-	if (player_state == states.bossdefeat && state != states.cheesepep)
+	if (player_state == PlayerState.finishingblow && state != PlayerState.climbwall)
 	{
 		x = arg0.x + (60 * arg0.xscale);
 		y = arg0.y;
@@ -149,7 +149,7 @@ function scr_enemy_turn_trigger()
 		hsp = 0;
 		image_index = 0;
 		sprite_index = baddieSpriteTurn;
-		state = states.normal;
+		state = PlayerState.normal;
 	}
 	else
 	{
@@ -165,7 +165,7 @@ function scr_enemyDestroyableCheck(arg0 = xstart, arg1 = ystart)
 	{
 		xstart = arg0;
 		ystart = arg1;
-		state = states.cheesepepstick;
+		state = PlayerState.machtumble;
 		return true;
 	}
 	
@@ -179,11 +179,11 @@ function scr_scareenemy()
 	
 	var player_object = get_nearestPlayer();
 	
-	if (!jumpedFromBlock && scr_enemy_playerisnear(400, 130, undefined, 90, player_object) && collision_line(x, y, player_object.x, player_object.y, obj_solid, false, true) == -4 && (player_object.state == states.shotgun || ((player_object.state == states.punch && object_index != obj_fancypancake) && abs(movespeed) >= 12) || player_object.state == states.backkick || (player_object.movespeed >= 10 && player_object.state == states.victory)))
+	if (!jumpedFromBlock && scr_enemy_playerisnear(400, 130, undefined, 90, player_object) && collision_line(x, y, player_object.x, player_object.y, obj_solid, false, true) == -4 && (player_object.state == PlayerState.mach3 || ((player_object.state == PlayerState.doughmount && object_index != obj_fancypancake) && abs(movespeed) >= 12) || player_object.state == PlayerState.doughmountspin || (player_object.movespeed >= 10 && player_object.state == PlayerState.minecart)))
 	{
-		if (state != states.Nhookshot && state != states.cheesepep && state != states.slap && state != states.charge)
+		if (state != PlayerState.run && state != PlayerState.climbwall && state != PlayerState.charge && state != PlayerState.stun)
 		{
-			state = states.Nhookshot;
+			state = PlayerState.run;
 			sprite_index = baddieSpriteScared;
 			
 			if (chance(5))

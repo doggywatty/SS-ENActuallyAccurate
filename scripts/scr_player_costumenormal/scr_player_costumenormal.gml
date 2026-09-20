@@ -38,7 +38,7 @@ function state_player_costumenormal()
 		
 		if (key_shoot2)
 		{
-			state = states.barrelfall;
+			state = PlayerState.costumebreeze;
 			breezeCooldown = 25;
 			instance_create(x, y, obj_breezehitbox);
 			movespeed = 12 * xscale;
@@ -54,7 +54,7 @@ function state_player_costumenormal()
 			if (move != 0)
 				xscale = move;
 			
-			state = states.barrelmach1;
+			state = PlayerState.costumechuck;
 			sprite_index = spr_swingDing;
 		}
 		
@@ -94,7 +94,7 @@ function state_player_costumenormal()
 				shake = 0;
 			}
 			
-			state = states.barrelnormal;
+			state = PlayerState.costumegrab;
 			substate = 0;
 		}
 	}

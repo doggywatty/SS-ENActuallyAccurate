@@ -170,7 +170,7 @@ function cutscene_mindpalacedoor_start()
 	
 	with (obj_parent_player)
 	{
-		state = states.mach3;
+		state = PlayerState.actor;
 		hsp = 0;
 		vsp = 0;
 		visible = false;
@@ -217,7 +217,7 @@ function cutscene_mindpalacedoor_end()
 	
 	with (obj_parent_player)
 	{
-		state = states.stunned;
+		state = PlayerState.comingoutdoor;
 		image_index = 0;
 		sprite_index = spr_walkfront;
 		visible = true;
