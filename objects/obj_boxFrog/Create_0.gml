@@ -15,11 +15,11 @@ enemyAttackTimerMax = 120;
 
 enemyAttack_TriggerEvent = function()
 {
-	if (enemyAttackTimer <= 0 && scr_enemy_playerisnear(400, 60) && grounded && state == states.frozen)
+	if (enemyAttackTimer <= 0 && scr_enemy_playerisnear(400, 60) && grounded && state == PlayerState.frozen)
 	{
 		enemyAttackTimer = enemyAttackTimerMax;
 		var _player = get_nearestPlayer();
-		state = states.titlescreen;
+		state = PlayerState.titlescreen;
 		image_xscale = face_obj(_player);
 		vsp = -8;
 		movespeed = 4;
@@ -45,7 +45,7 @@ enemyState_Attack = function()
 		
 		if (sprite_animation_end())
 		{
-			state = states.frozen;
+			state = PlayerState.frozen;
 			sprite_index = baddieSpriteWalk;
 		}
 		

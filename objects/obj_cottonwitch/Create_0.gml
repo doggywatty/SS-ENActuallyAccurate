@@ -11,11 +11,11 @@ enemyAttackTimerMax = 300;
 
 enemyAttack_TriggerEvent = function()
 {
-	if (enemyAttackTimer <= 0 && scr_enemy_playerisnear(410, 130) && state == states.frozen)
+	if (enemyAttackTimer <= 0 && scr_enemy_playerisnear(410, 130) && state == PlayerState.frozen)
 	{
 		enemyAttackTimer = enemyAttackTimerMax;
 		hsp = 0;
-		state = states.titlescreen;
+		state = PlayerState.titlescreen;
 		sprite_index = spr_cottonwitch_vanish;
 		image_index = 0;
 	}
@@ -94,7 +94,7 @@ enemyState_Attack = function()
 			
 			if (sprite_animation_end())
 			{
-				state = states.frozen;
+				state = PlayerState.frozen;
 				enemyAttackTimer = enemyAttackTimerMax;
 			}
 		}

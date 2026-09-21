@@ -5,4 +5,4 @@ image_xscale = choose(-1, 1);
 roamTimer = 80 + irandom(70);
 movespeed = 2;
 hsp = 0;
-state = states.frozen;
+state = PlayerState.frozen;

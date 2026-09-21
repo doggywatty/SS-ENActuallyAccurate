@@ -1,6 +1,6 @@
 switch (state)
 {
-	case states.normal:
+	case PlayerState.normal:
 		if (!instance_exists(obj_fadeoutTransition))
 		{
 			var length = array_length(hub_array) - 1;
@@ -19,7 +19,7 @@ switch (state)
 				if (hub_array[selected][0] != room)
 				{
 					alarm[0] = 180;
-					state = states.titlescreen;
+					state = PlayerState.titlescreen;
 					
 					with (obj_parent_player)
 					{
@@ -30,16 +30,16 @@ switch (state)
 				}
 				else
 				{
-					state = states.frozen;
+					state = PlayerState.frozen;
 					
 					with (obj_parent_player)
-						state = states.normal;
+						state = PlayerState.normal;
 				}
 			}
 		}
 		
 		break;
-	case states.titlescreen:
+	case PlayerState.titlescreen:
 		if (playerID.key_jump && alarm[0] != -1)
 			alarm[0] = 1;
 		

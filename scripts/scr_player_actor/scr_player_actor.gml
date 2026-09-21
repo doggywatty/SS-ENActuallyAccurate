@@ -41,7 +41,7 @@ function state_player_gotkey()
 	{
 		hsp = approach(hsp, 0, 4);
 		vsp = 0;
-		state = states.normal;
+		state = PlayerState.normal;
 		
 		with (obj_spookey)
 		{

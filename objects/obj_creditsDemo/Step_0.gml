@@ -1,5 +1,5 @@
 with (obj_parent_player)
-	state = states.titlescreen;
+	state = PlayerState.titlescreen;
 
 var skip = input_check_pressed("jump") || input_check_pressed("slap");
 var skip2 = input_check("jump") || input_check("attack");

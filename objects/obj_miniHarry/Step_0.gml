@@ -1,7 +1,7 @@
 event_inherited();
 enemyAttack_TriggerEvent();
 
-if (state == states.titlescreen && sprite_index == spr_miniharry_run)
+if (state == PlayerState.titlescreen && sprite_index == spr_miniharry_run)
 {
 	canBreakBlocks = true;
 	doRedAfterImage = true;

@@ -11,7 +11,7 @@ function state_player_golf()
 	if (sprite_index != spr_haulingIdle)
 		sprite_index = spr_swingDing;
 	else if (sprite_animation_end())
-		state = states.normal;
+		state = PlayerState.normal;
 	
 	if (key_slap2)
 	{

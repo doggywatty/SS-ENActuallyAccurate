@@ -1,5 +1,5 @@
 depth = 10;
-state = states.frozen;
+state = PlayerState.frozen;
 var i = 0;
 hub_array[i++] = [hub_w2, "FLOOR 2"];
 hub_array[i++] = [hub_w1, "FLOOR 1"];

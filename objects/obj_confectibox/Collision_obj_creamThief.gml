@@ -1,4 +1,4 @@
-if (other.state == states.titlescreen)
+if (other.state == PlayerState.titlescreen)
 {
 	helptimer = -1;
 	
@@ -6,7 +6,7 @@ if (other.state == states.titlescreen)
 	{
 		sprite_index = spr_creamthief_grab;
 		image_index = 0;
-		state = states.frozen;
+		state = PlayerState.frozen;
 		ds_list_add(global.SaveRoom, id, true);
 		instance_create(x, y, obj_creamThiefCar);
 	}

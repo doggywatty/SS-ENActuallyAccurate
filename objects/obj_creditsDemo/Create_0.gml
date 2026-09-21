@@ -213,7 +213,7 @@ addCategory = function(arg0)
 with (obj_parent_player)
 {
 	targetDoor = "A";
-	state = states.titlescreen;
+	state = PlayerState.titlescreen;
 }
 
 event_user(0);

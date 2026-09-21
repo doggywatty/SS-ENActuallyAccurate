@@ -1,7 +1,7 @@
 event_inherited();
 enemyAttack_TriggerEvent();
 
-if (state == states.titlescreen && sprite_index == spr_swed_charge)
+if (state == PlayerState.titlescreen && sprite_index == spr_swed_charge)
 {
 	canBreakBlocks = true;
 	doRedAfterImage = true;

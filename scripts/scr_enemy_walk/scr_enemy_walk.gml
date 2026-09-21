@@ -2,7 +2,7 @@ function scr_enemy_turnAround()
 {
 	if (object_index == obj_knight)
 	{
-		state = states.normal;
+		state = PlayerState.normal;
 		hsp = 0;
 	}
 	else

@@ -23,7 +23,7 @@ function scr_enemy_slugjump()
 	
 	if (sprite_index == spr_sluggy_land && sprite_animation_end())
 	{
-		state = states.frozen;
+		state = PlayerState.frozen;
 		sprite_index = baddieSpriteWalk;
 		movespeed = 1;
 	}
@@ -36,7 +36,7 @@ function scr_enemy_slugjump()
 		{
 			image_index = 0;
 			sprite_index = spr_sluggy_burrow;
-			state = states.titlescreen;
+			state = PlayerState.titlescreen;
 			burrowTimer = burrowTimerMax;
 			enemyAttackTimer = jumptimerMax;
 			slide = -image_xscale * 6;

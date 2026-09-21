@@ -1,6 +1,6 @@
 image_speed = 0.35;
 playerID = -4;
-state = states.frozen;
+state = PlayerState.frozen;
 hookStopID = instance_nearest(x, y, obj_hookstop);
 
 if (!instance_exists(hookStopID))

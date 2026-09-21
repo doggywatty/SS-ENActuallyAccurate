@@ -4,7 +4,7 @@ scr_collision_init();
 movespeed = 0;
 verticalMovespeed = 0;
 grav = 0.5;
-state = states.frozen;
+state = PlayerState.frozen;
 scr_taunt_storeVariables();
 randomBufferMin = 80;
 randomBufferMax = 50;

@@ -5,5 +5,5 @@ function state_player_rocketlauncher()
 	sprite_index = spr_player_PZ_bazooka_shoot;
 	
 	if (sprite_animation_end())
-		state = states.normal;
+		state = PlayerState.normal;
 }

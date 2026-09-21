@@ -7,7 +7,7 @@ if (!instance_exists(o_id))
 x = o_id.x;
 y = o_id.y;
 
-if (o_id.state != states.normal)
+if (o_id.state != PlayerState.normal)
 	instance_destroy();
 
 depth = o_id.depth + 1;

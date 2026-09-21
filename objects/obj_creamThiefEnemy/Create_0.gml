@@ -1,5 +1,5 @@
 event_inherited();
-state = states.frozen;
+state = PlayerState.frozen;
 active = false;
 movespeed = 12;
 baddieStunTimer = 0;

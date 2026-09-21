@@ -4,7 +4,7 @@ in_the_void = false;
 platIndex = 0;
 platAlpha = 1;
 depth = 2;
-state = states.normal;
+state = PlayerState.normal;
 candyID = -4;
 scr_collision_init();
 grav = 0.5;

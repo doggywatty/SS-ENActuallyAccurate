@@ -1,4 +1,4 @@
-if (obj_parent_player.state == states.frozen)
+if (obj_parent_player.state == PlayerState.frozen)
 	fadealpha = approach(fadealpha, 0.75, 0.05);
 else
 	fadealpha = approach(fadealpha, -0.0000001, 0.05);

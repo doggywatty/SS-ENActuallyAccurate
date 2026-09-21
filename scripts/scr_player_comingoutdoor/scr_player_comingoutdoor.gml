@@ -28,7 +28,7 @@ function state_player_comingoutdoor()
 	if (sprite_animation_end())
 	{
 		movespeed = 0;
-		state = states.normal;
+		state = PlayerState.normal;
 		image_blend = c_white;
 	}
 	

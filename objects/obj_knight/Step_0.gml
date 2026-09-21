@@ -1,6 +1,6 @@
 event_inherited();
 
-if (state == states.frozen && !instance_exists(hurtboxID))
+if (state == PlayerState.frozen && !instance_exists(hurtboxID))
 {
 	with (instance_create(x, y, obj_forkhitbox, 
 	{

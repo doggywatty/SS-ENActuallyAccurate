@@ -36,7 +36,7 @@ function state_player_uppercut()
 		movespeed = abs(movespeed);
 		movespeed = min(movespeed, 6);
 		inputBufferSecondJump = 0;
-		state = states.normal;
+		state = PlayerState.normal;
 		jumpAnim = true;
 		jumpStop = false;
 		image_index = 0;

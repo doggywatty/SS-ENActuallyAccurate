@@ -12,11 +12,11 @@ else
 event_inherited();
 
 if (!global.freezeframe)
-	canGetScared = !(state == states.titlescreen || wearingBox);
+	canGetScared = !(state == PlayerState.titlescreen || wearingBox);
 
 enemyAttack_TriggerEvent();
 
-if (state != states.frozen && !global.freezeframe)
+if (state != PlayerState.frozen && !global.freezeframe)
 	wearingBox = false;
 
 if (oldWearingBox != wearingBox)
@@ -29,7 +29,7 @@ if (oldWearingBox != wearingBox)
 	event_play_oneshot("event:/SFX/enemies/boxfrogDiscardBox", x, y);
 }
 
-if (state == states.titlescreen && (sprite_index == spr_boxfrog_jump || sprite_index == spr_boxfrog_fall))
+if (state == PlayerState.titlescreen && (sprite_index == spr_boxfrog_jump || sprite_index == spr_boxfrog_fall))
 {
 	doRedAfterImage = true;
 	

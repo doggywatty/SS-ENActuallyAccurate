@@ -13,7 +13,7 @@ function state_player_freefallland()
 	
 	if (sprite_animation_end())
 	{
-		state = states.normal;
+		state = PlayerState.normal;
 		image_index = 0;
 		
 		if (slamHurt)
