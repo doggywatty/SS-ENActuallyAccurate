@@ -183,7 +183,8 @@ function instance_place_list_platform(xx, yy, obj = obj_platform, list = undefin
                 special_colcheck = col_object.canCollide(col_object, id);
             
             var platform_check = (sign(col_object.image_yscale) <= -1) ? (yy <= y) : (yy >= y);
-            if (special_colcheck && platform_check && !place_meeting(xx, y, col_object))
+            var _touch_tol = -clamp(yy - y, -1, 1);
+            if (special_colcheck && platform_check && !place_meeting(xx, y + _touch_tol, col_object))
             {
                 collided++;
                 if !is_undefined(list)
@@ -290,6 +291,8 @@ function instance_place_list_slopePlatform(xx, yy, _exclude = obj_slopePlatform,
 	var old_x = x;
 	var old_y = y;
 	var old_bbox_top = bbox_top;
+	var old_bbox_left = bbox_left;
+	var old_bbox_right = bbox_right;
 	var old_bbox_bottom = bbox_bottom;
 	x = xx;
 	y = yy;
@@ -305,29 +308,36 @@ function instance_place_list_slopePlatform(xx, yy, _exclude = obj_slopePlatform,
 				_can_collide = col_object.canCollide(col_object, id);
 			if (_can_collide)
 			{
-				var object_side = (col_object.image_xscale > 0) ? bbox_right : bbox_left;
-				object_side = (object_side - x) + old_x;
-				var player_pos = point_direction(col_object.x + col_object.sprite_width, col_object.y + col_object.sprite_height, x, y);
-				var _xx = col_object.x + sign(col_object.image_xscale);
-				var _yy = col_object.y;
-				var w = col_object.sprite_width;
-				var h = col_object.sprite_height;
-				var _check1;
-				if (col_object.image_yscale > 0)
-					_check1 = (col_object.image_xscale > 0) ? (player_pos <= 180 && player_pos >= 90) : (player_pos <= 90 && player_pos >= 0);
-				else
-					_check1 = (col_object.image_xscale > 0) ? (player_pos <= 270 && player_pos >= 180) : ((player_pos <= 360 || player_pos <= 0) && player_pos >= 270);
-				var _check2 = !triangle_meeting(old_x, old_y, _xx, _yy + h, _xx + w, _yy, _xx + w, _yy + h);
-				var _check3 = (col_object.image_xscale > 0) ? (object_side <= col_object.bbox_left) : (object_side >= col_object.bbox_right);
-				if (_check1 && (_check2 || _check3) && ((col_object.image_yscale > 0)
-				? (old_bbox_bottom <= col_object.bbox_bottom) : (old_bbox_top >= col_object.bbox_top))
-				&& triangle_meeting(x, y, _xx, _yy + h, _xx + w, _yy, _xx + w, _yy + h))
+				var _slope_left = col_object.bbox_left;
+				var _slope_right = col_object.bbox_right;
+				var _slope_top = col_object.bbox_top;
+				var _slope_bottom = col_object.bbox_bottom;
+				var w = max(1, _slope_right - _slope_left);
+				var h = _slope_bottom - _slope_top;
+				var _rel_x_left = clamp((old_bbox_left - _slope_left) / w, 0, 1);
+				var _rel_x_right = clamp((old_bbox_right - _slope_left) / w, 0, 1);
+				if (col_object.image_xscale < 0)
 				{
-					collided++;
-					if (!is_undefined(list))
-						ds_list_add(list, col_object.id);
-					else
-						break;
+					_rel_x_left = 1 - _rel_x_left;
+					_rel_x_right = 1 - _rel_x_right;
+				}
+				var _y_left = (col_object.image_yscale > 0) ? (_slope_bottom - (_rel_x_left * h)) : (_slope_top + (_rel_x_left * h));
+				var _y_right = (col_object.image_yscale > 0) ? (_slope_bottom - (_rel_x_right * h)) : (_slope_top + (_rel_x_right * h));
+				var _slope_y_at_x = (col_object.image_yscale > 0) ? min(_y_left, _y_right) : max(_y_left, _y_right);
+				var _is_moving_down = (yy >= old_y);
+				var _above_slope = (col_object.image_yscale > 0) ? (old_bbox_bottom <= _slope_y_at_x + 6) : (old_bbox_top >= _slope_y_at_x - 6);
+				if (_is_moving_down && _above_slope)
+				{
+					var _t_x1 = (col_object.image_xscale > 0) ? _slope_left : _slope_right;
+					var _t_x2 = (col_object.image_xscale > 0) ? _slope_right : _slope_left;
+					if (triangle_meeting(x, y, _t_x1, _slope_bottom, _t_x2, _slope_top, _t_x2, _slope_bottom))
+					{
+						collided++;
+						if (!is_undefined(list))
+							ds_list_add(list, col_object.id);
+						else
+							break;
+					}
 				}
 			}
 		}
