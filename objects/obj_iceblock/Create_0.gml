@@ -1,6 +1,6 @@
 scr_collision_init();
 event_perform_object(obj_parent_enemy, ev_create, 0);
-state = states.frozen;
+state = PlayerState.frozen;
 canBeStomped = false;
 canBeGrabbed = false;
 content = -4;

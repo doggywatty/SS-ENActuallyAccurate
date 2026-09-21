@@ -15,7 +15,7 @@ image_speed = 0.35;
 grounded = 0;
 canRubberband = true;
 rubberbandMovespeed = 0;
-state = states.frozen;
+state = PlayerState.frozen;
 
 with (instance_create(x, y, obj_icontracker))
 {
@@ -23,6 +23,6 @@ with (instance_create(x, y, obj_icontracker))
 	
 	visible_cond = function()
 	{
-		return target.state != states.frozen;
+		return target.state != PlayerState.frozen;
 	};
 }

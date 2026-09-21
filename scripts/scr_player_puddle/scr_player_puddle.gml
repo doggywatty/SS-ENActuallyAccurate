@@ -47,7 +47,7 @@ function state_player_puddle()
 		player_slopeMomentum(0.75, 0);
 		
 		if (sprite_animation_end())
-			state = states.normal;
+			state = PlayerState.normal;
 		
 		if (!grounded)
 		{

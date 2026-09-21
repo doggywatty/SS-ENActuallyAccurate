@@ -6,5 +6,5 @@ function state_player_shocked()
 	hsp = 0;
 	
 	if (sprite_animation_end())
-		state = states.normal;
+		state = PlayerState.normal;
 }

@@ -12,10 +12,10 @@ slide = 0;
 
 enemyAttack_TriggerEvent = function()
 {
-	if (scr_enemy_playerisnear(400, 20) && grounded && state == states.frozen)
+	if (scr_enemy_playerisnear(400, 20) && grounded && state == PlayerState.frozen)
 	{
 		slide = 0;
-		state = states.titlescreen;
+		state = PlayerState.titlescreen;
 		movespeed = 0;
 		var _player = get_nearestPlayer();
 		image_xscale = face_obj(_player);

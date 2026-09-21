@@ -1,5 +1,5 @@
 event_inherited();
-state = states.frozen;
+state = PlayerState.frozen;
 baddieStunTimer = 0;
 alarm[0] = 150;
 canRoam = false;

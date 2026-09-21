@@ -1,4 +1,4 @@
-active = instance_exists(obj_creamThief) && obj_creamThief.state != states.frozen;
+active = instance_exists(obj_creamThief) && obj_creamThief.state != PlayerState.frozen;
 
 if (finale)
 {

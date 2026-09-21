@@ -17,7 +17,7 @@ function state_player_noclip()
 		movespeed = 12;
 	
 	if (key_jump)
-		state = states.normal;
+		state = PlayerState.normal;
 	
 	x += (move * movespeed);
 	
@@ -56,5 +56,5 @@ function state_player_freeflight()
 	}
 	
 	if (key_jump)
-		state = states.normal;
+		state = PlayerState.normal;
 }

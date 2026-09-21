@@ -1,4 +1,4 @@
-if (state == states.normal && grounded)
+if (state == PlayerState.normal && grounded)
 {
 	if ((other.jumpLeft && image_xscale < 0) || (other.jumpRight && image_xscale > 0))
 	{

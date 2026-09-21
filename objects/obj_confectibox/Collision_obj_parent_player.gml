@@ -2,7 +2,7 @@ with (obj_creamThief)
 {
 	hsp = 0;
 	vsp = 0;
-	state = states.frozen;
+	state = PlayerState.frozen;
 	sprite_index = spr_creamthief_lose;
 	ds_list_add(global.SaveRoom, id, false);
 	instance_create(x, y, obj_creamThiefCar);

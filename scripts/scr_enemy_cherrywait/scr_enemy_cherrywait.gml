@@ -12,6 +12,6 @@ function scr_enemy_cherrywait()
 	{
 		sprite_index = spr_charcherry_popout;
 		image_index = 0;
-		state = states.frozen;
+		state = PlayerState.frozen;
 	}
 }

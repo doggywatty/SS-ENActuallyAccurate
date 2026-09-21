@@ -12,9 +12,9 @@ baddieSpriteDead = spr_banana_dead;
 
 enemyAttack_TriggerEvent = function()
 {
-	if (scr_enemy_playerisnear(400, 20) && grounded && state == states.frozen)
+	if (scr_enemy_playerisnear(400, 20) && grounded && state == PlayerState.frozen)
 	{
-		state = states.titlescreen;
+		state = PlayerState.titlescreen;
 		substate = 0;
 		movespeed = 0;
 		var _player = get_nearestPlayer();

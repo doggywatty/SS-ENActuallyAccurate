@@ -7,7 +7,7 @@ function scr_enemy_turn()
 	
 	if (floor(image_index) == (image_number - 1))
 	{
-		state = states.frozen;
+		state = PlayerState.frozen;
 		image_index = 0;
 		sprite_index = baddieSpriteIdle;
 		image_xscale *= -1;

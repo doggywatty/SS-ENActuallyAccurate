@@ -10,7 +10,7 @@ function state_player_supergrab()
 		
 		if (movespeed == 0)
 		{
-			state = states.normal;
+			state = PlayerState.normal;
 			landAnim = false;
 		}
 	}

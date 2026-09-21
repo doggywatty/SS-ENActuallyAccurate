@@ -1,6 +1,6 @@
-if (state == states.normal)
+if (state == PlayerState.normal)
 {
-	state = states.titlescreen;
+	state = PlayerState.titlescreen;
 	vsp = -4;
 	image_index = 0;
 	sprite_index = spr_creamthief_grabbingStart;

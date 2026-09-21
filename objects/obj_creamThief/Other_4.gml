@@ -17,7 +17,7 @@ if (_raceOver)
 	sprite_index = _won ? spr_creamthief_victory : spr_creamthief_lose;
 	vsp = 30;
 	scr_collision();
-	state = states.frozen;
+	state = PlayerState.frozen;
 	instance_create(x, y, obj_creamThiefCar);
 }
 

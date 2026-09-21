@@ -5,7 +5,7 @@ with (other)
 	var inpdown = input_get("down").pressed || input_get("downC").pressed;
 	inp = inpup - inpdown;
 	
-	if (inp != 0 && grounded && state == states.normal)
+	if (inp != 0 && grounded && state == PlayerState.normal)
 	{
 		create_particle(x, y, spr_genericPoofEffect);
 		

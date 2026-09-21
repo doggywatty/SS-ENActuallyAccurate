@@ -1,7 +1,7 @@
 if (global.DebugMode == debugmode.off)
     exit;
 
-if (obj_parent_player.state != states.noclip)
-    obj_parent_player.state = states.noclip;
+if (obj_parent_player.state != PlayerState.noclip)
+    obj_parent_player.state = PlayerState.noclip;
 else
-    obj_parent_player.state = states.normal;
+    obj_parent_player.state = PlayerState.normal;

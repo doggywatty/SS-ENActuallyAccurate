@@ -1,4 +1,4 @@
-if (!instance_exists(baddieID) || baddieID.state != states.titlescreen)
+if (!instance_exists(baddieID) || baddieID.state != PlayerState.titlescreen)
 {
 	instance_destroy();
 	exit;

@@ -176,7 +176,7 @@ function scr_gameInit()
 	global.ExitGateTaunt = 0;
 	global.freezeframe = false;
 	global.TransfoPrompt = "";
-	global.TransfoState = states.normal;
+	global.TransfoState = PlayerState.normal;
 	global.greyscalefade = 0;
 	global.music = -4;
 	global.harrymusic = -4;

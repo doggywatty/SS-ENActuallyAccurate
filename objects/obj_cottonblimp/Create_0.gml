@@ -17,10 +17,10 @@ enemyAttackTimerMax = 300;
 
 enemyAttack_TriggerEvent = function()
 {
-	if (enemyAttackTimer <= 0 && scr_enemy_playerisnear(60, 350) && state == states.frozen)
+	if (enemyAttackTimer <= 0 && scr_enemy_playerisnear(60, 350) && state == PlayerState.frozen)
 	{
 		enemyAttackTimer = enemyAttackTimerMax;
-		state = states.titlescreen;
+		state = PlayerState.titlescreen;
 		sprite_index = spr_cottonblimp_shoot;
 		image_index = 0;
 	}
