@@ -15,7 +15,6 @@ switch (creditPhase)
 			creditPhase = -1;
 			phaseBuffer = 120;
 		}
-		
 		break;
 	case -1:
 		if (!phaseBuffer--)
@@ -38,7 +37,6 @@ switch (creditPhase)
 				showLogo = false;
 			}
 		}
-		
 		break;
 	case 0:
 		curtainSpr.image_speed = 0.35;
@@ -46,7 +44,6 @@ switch (creditPhase)
 		
 		if (sprite_animation_end(curtainSpr.sprite_index, curtainSpr.image_index, curtainSpr.image_number, curtainSpr.image_speed))
 			creditPhase = 1;
-		
 		break;
 	case 1:
 		event_user(1);
@@ -58,7 +55,6 @@ switch (creditPhase)
 			creditPhase = 2;
 			phaseBuffer = 100;
 		}
-		
 		break;
 	case 2:
 		endScreenSpr.visible = true;
@@ -66,7 +62,6 @@ switch (creditPhase)
 		
 		if (skip && phaseBuffer <= 0)
 			creditPhase = 3;
-		
 		break;
 	case 3:
 		curtainSpr.image_speed = 0.35;
@@ -77,7 +72,6 @@ switch (creditPhase)
 		
 		if (curtainSpr.image_index >= (curtainSpr.finalFrame - 1))
 			room_goto_fixed(rm_mainmenu);
-		
 		break;
 }
 

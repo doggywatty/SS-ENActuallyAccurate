@@ -1,6 +1,6 @@
 depth = 4;
 image_speed = 0.35;
-grabbedPlayer = -4;
+grabbedPlayer = noone;
 grabRange = 90;
 waitTimer = 5;
 hsp = 0;

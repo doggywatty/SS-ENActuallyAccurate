@@ -1,3 +1,3 @@
 event_inherited();
 depth = 1;
-DestroyedBy = -4;
+DestroyedBy = noone;

@@ -1,4 +1,4 @@
-function scr_player_CottonDashSprites(arg0)
+function scr_player_CottonDashSprites(_sprs)
 {
 	var drill_sprites = [spr_player_PZ_werecotton_drill_h, spr_player_PZ_werecotton_drill_dup, spr_player_PZ_werecotton_drill_up, spr_player_PZ_werecotton_drill_dup, spr_player_PZ_werecotton_drill_h, spr_player_PZ_werecotton_drill_ddown, spr_player_PZ_werecotton_drill_down, spr_player_PZ_werecotton_drill_ddown, spr_player_PZ_werecotton_drill_h];
 	
@@ -7,11 +7,11 @@ function scr_player_CottonDashSprites(arg0)
 		if (sprite_index == spr_cottonDashIntro)
 		{
 			if (sprite_animation_end())
-				sprite_index = drill_sprites[arg0];
+				sprite_index = drill_sprites[_sprs];
 		}
 		else
 		{
-			sprite_index = drill_sprites[arg0];
+			sprite_index = drill_sprites[_sprs];
 		}
 		
 		cottonDebrisTimer = 0;

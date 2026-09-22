@@ -1,6 +1,6 @@
 condition = function()
 {
-	return ds_list_find_index(global.SaveRoom, 102655) != -1;
+	return ds_list_find_index(global.SaveRoom, inst_25FFE16D) != -1;
 };
 //PADDIN
 output = function()

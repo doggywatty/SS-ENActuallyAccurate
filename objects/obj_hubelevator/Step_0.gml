@@ -37,11 +37,9 @@ switch (state)
 				}
 			}
 		}
-		
 		break;
 	case PlayerState.titlescreen:
 		if (playerID.key_jump && alarm[0] != -1)
 			alarm[0] = 1;
-		
 		break;
 }

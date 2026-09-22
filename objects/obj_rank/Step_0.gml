@@ -61,7 +61,6 @@ switch (event)
 			event++;
 			event_buffer = 60;
 		}
-		
 		break;
 	case 2:
 		if (key_jump)
@@ -96,7 +95,6 @@ switch (event)
 		
 		if (!event_buffer--)
 			revealConfecti();
-		
 		break;
 	case 5:
 		if (key_jump)
@@ -109,7 +107,6 @@ switch (event)
 		
 		if (!event_buffer--)
 			revealSecret();
-		
 		break;
 	case 6:
 		if (key_jump)
@@ -136,12 +133,10 @@ switch (event)
 			event_buffer = 0;
 			alarm[4] = 200;
 		}
-		
 		break;
 	case 7:
 		if (key_jump && alarm[4] > 1)
 			alarm[4] = 1;
-		
 		break;
 }
 

@@ -32,10 +32,13 @@ for (var i = 0; i < rowTotal; i++)
 	{
 		var task = taskArr[j];
 		var isSelected = rowSelected && j == selectH;
-		var c = 4210752;
+		var c = c_dkgray;
 		
 		if (rowSelected)
-			c = 12632256;
+			c = #C0C0C0; /*  12632256 is both assigned to c_ltgray and c_silver
+							 so i'm just putting the hex code instead because i CANNOT tell if it's
+							 light gray or silver
+						 */
 		
 		if (isSelected)
 		{
@@ -93,10 +96,10 @@ for (var i = 1; i <= array_length(outfitArr); i++)
 	var XS = (camera_get_view_width(view_camera[0]) - xlen) / 2;
 	var taskX = XS + (xind * taskPadX) + task.x + (irandom_range(-1, 1) * isSelected);
 	var taskY = rowY + task.y + (irandom_range(-1, 1) * isSelected) + 20;
-	var c = 4210752;
+	var c = c_dkgray;
 	
 	if (rowSelected)
-		c = 12632256;
+		c = #C0C0C0;
 	
 	if (isSelected)
 	{
@@ -109,7 +112,7 @@ for (var i = 1; i <= array_length(outfitArr); i++)
 	}
 	
 	var palind = 0;
-	var palpattern = -4;
+	var palpattern = noone;
 	var ind = 0;
 	
 	if (!task.isCompleted)

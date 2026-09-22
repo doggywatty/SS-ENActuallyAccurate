@@ -78,14 +78,14 @@ function cutscene_judgment_dialog()
 	{
 		if (finished)
 		{
-			var cr = 100209;
+			var cr = inst_38E71B95;
 			cr.Region_active = false;
 			
 			with (obj_secret_brainBlock)
 			{
 				instance_change(obj_secretdestroyable_metal, true);
 				debrisSprite = spr_painterbraindebris;
-				smokeColor = [6359209, 9982185, 11701217];
+				smokeColor = [0x6108A9, 0x9850E9, 0xB28BE1];
 			}
 			
 			cutscene_event_end();
@@ -111,7 +111,7 @@ function cutscene_judgment_flick()
 		
 		if (afterimage_timer <= 0)
 		{
-			with (create_afterimage(afterimagetypes.basic, xscale, 0))
+			with (create_afterimage(afterimagetypes.plain, xscale, 0))
 			{
 				image_index = max(other.image_index - 1, 0);
 				vanish = true;

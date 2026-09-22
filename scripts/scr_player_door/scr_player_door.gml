@@ -41,7 +41,6 @@ function state_player_door()
 						
 						if (instance_exists(_inst))
 							other.x = approach(other.x, _inst.x + (_inst.sprite_width / 2), 2);
-						
 						break;
 				}
 			}

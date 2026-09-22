@@ -1,12 +1,12 @@
 depth = 4;
-canCollide = function(arg0, arg1 = obj_parent_player)
+canCollide = function(stpl, _player = obj_parent_player)
 {
-	switch (arg1.object_index)
+	switch (_player.object_index)
 	{
 		case obj_parent_player:
 		case obj_player1:
 		case obj_player2:
-			var _state = global.freezeframe ? arg1.frozenState : arg1.state;
+			var _state = global.freezeframe ? _player.frozenState : _player.state;
 			return _state == PlayerState.minecart || _state == PlayerState.minecart_launched || _state == PlayerState.minecart_bump || _state == PlayerState.actor;
 			break;
 		case obj_minecart:

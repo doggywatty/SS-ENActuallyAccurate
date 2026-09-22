@@ -35,8 +35,8 @@ function scr_levelSet()
 	instance_destroy(obj_lap2visual);
 	instance_destroy(obj_minesgem);
 	instance_destroy(obj_collect_giver);
-	global.CafeDrawer = -4;
-	global.cutsceneManager = -4;
+	global.CafeDrawer = noone;
+	global.cutsceneManager = noone;
 	
 	if (instance_exists(obj_cutsceneManager))
 		instance_destroy(obj_cutsceneManager);
@@ -174,7 +174,7 @@ function scr_levelSet()
 		sprite_index = spr_walkfront;
 		trace("Levelset");
 		sJumpCanDoubleJump = true;
-		playComboVariable = -4;
+		playComboVariable = noone;
 		dashpadBuffer = 0;
 		dashpadBuffer = 0;
 		vertical = false;

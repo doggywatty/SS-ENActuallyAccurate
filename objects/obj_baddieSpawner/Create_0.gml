@@ -1,6 +1,6 @@
 scr_collision_init();
 image_speed = 0;
-baddieid = -4;
+baddieid = noone;
 refresh = 0;
 depth = 1;
 hsp = 0;

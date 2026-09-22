@@ -30,7 +30,6 @@ with (other.id)
 		case obj_forkhitbox:
 			if (instance_exists(baddieID))
 				instance_destroy(baddieID);
-			
 			break;
 		case obj_blimp_proj:
 			instance_destroy(id, false);
@@ -41,7 +40,6 @@ with (other.id)
 			
 			if (instance_exists(baddieID))
 				instance_destroy(baddieID);
-			
 			break;
 		case obj_pickaxe:
 			instance_destroy();
@@ -67,7 +65,6 @@ with (other.id)
 				
 				image_xscale = _dir;
 			}
-			
 			break;
 		case obj_guardian:
 			if (state != PlayerState.charge)
@@ -81,7 +78,6 @@ with (other.id)
 				targetx = x;
 				targety = y;
 			}
-			
 			break;
 	}
 }

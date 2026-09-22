@@ -9,7 +9,7 @@ with (obj_paintcritic)
 	{
 		array_delete(available_critics, i, 1);
 		
-		if (targetGate != -4)
+		if (targetGate != noone)
 			array_push(reserved_gates, targetGate);
 	}
 }

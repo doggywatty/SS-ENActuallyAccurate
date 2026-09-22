@@ -5,7 +5,7 @@ function scr_collision_init()
     grounded = false;
     groundedSlope = false;
     terminalVelocity = 10;
-    onMovingPlatform = -4;
+    onMovingPlatform = noone;
     grav = 0;
     hsp = 0;
     vsp = 0;
@@ -27,7 +27,7 @@ function scr_collision()
 	var _old_grounded = grounded;
 	grounded = false;
 	groundedSlope = false;
-	onMovingPlatform = -4;
+	onMovingPlatform = noone;
 	scr_movingPlatformsUpdate();	
 	var conveyor_hsp = 0;
 	if useConveyorFlag

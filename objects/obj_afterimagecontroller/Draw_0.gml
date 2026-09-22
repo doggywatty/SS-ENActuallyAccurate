@@ -11,7 +11,7 @@ for (var i = 0; i < ds_list_size(global.afterimage_list); i++)
 		{
 			var override = false;
 			
-			if (color_choose != afterimagetypes.basic)
+			if (color_choose != afterimagetypes.plain)
 			{
 				shader_set(shd_afterimage);
 				var color_blend_1 = shader_get_uniform(shd_afterimage, "blendcolor1");
@@ -19,7 +19,7 @@ for (var i = 0; i < ds_list_size(global.afterimage_list); i++)
 				var light_color = obj_afterimagecontroller.color_arr[color_choose].light;
 				var dark_color = obj_afterimagecontroller.color_arr[color_choose].dark;
 				
-				if (color_choose == afterimagetypes.palette && instance_exists(identity) && object_is_ancestor(identity.object_index, obj_parent_player))
+				if (color_choose == afterimagetypes.wallkick && instance_exists(identity) && object_is_ancestor(identity.object_index, obj_parent_player))
 				{
 					with (identity)
 					{
@@ -45,7 +45,7 @@ for (var i = 0; i < ds_list_size(global.afterimage_list); i++)
 				draw_player_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, gonealpha * image_alpha);
 				override = true;
 			}
-			else if (paletteSprite != -4 && paletteSelect != -4)
+			else if (paletteSprite != noone && paletteSelect != noone)
 			{
 				pal_swap_set(paletteSprite, paletteSelect, false);
 			}

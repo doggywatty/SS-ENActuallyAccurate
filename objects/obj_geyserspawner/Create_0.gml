@@ -1,4 +1,4 @@
 depth = 106;
-SpoutID = -4;
+SpoutID = noone;
 state = 0;
 imageIndex = 0;

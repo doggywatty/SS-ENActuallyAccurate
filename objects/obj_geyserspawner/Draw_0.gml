@@ -20,7 +20,7 @@ if (instance_exists(SpoutID))
 	var yw = y - 32;
 	var waterInst = collision_line(x, y, x, sy, obj_molasseswater, false, true);
 	
-	if (waterInst != -4)
+	if (waterInst != noone)
 		yw = waterInst.y;
 	
 	draw_sprite_ext(spr_geyserSplash, imageIndex, x - 32, yw, xs, 1, image_angle, image_blend, image_alpha);

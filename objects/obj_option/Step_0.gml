@@ -28,8 +28,8 @@ for (var i = 0; i < array_length(bg_alpha); i++)
 bgx -= 1;
 bgy -= 1;
 var _total_options = array_length(options);
-var selOption = (_total_options <= 0) ? -4 : options[optionSelected];
-var selID = (_total_options <= 0) ? -4 : options[optionSelected].id;
+var selOption = (_total_options <= 0) ? noone : options[optionSelected];
+var selID = (_total_options <= 0) ? noone : options[optionSelected].id;
 
 if (h_move2 == 0)
 	handle_savedoption();
@@ -38,7 +38,7 @@ if (savedDesc != selID)
 {
 	savedDesc = selID;
 	
-	if (savedDesc != -4)
+	if (savedDesc != noone)
 	{
 		old_desc = description;
 		descfadeout = true;
@@ -61,7 +61,7 @@ else
 
 if (key_slap2 || key_start2)
 {
-	if (backMenu != -4)
+	if (backMenu != noone)
 	{
 		event_play_oneshot("event:/SFX/ui/menuBack");
 		option_goto(backMenu, backOption);
@@ -100,7 +100,6 @@ switch (_option.type)
 				_option.on_toggle();
 			}
 		}
-		
 		break;
 	default:
 		if (key_jump || h_move != 0)
@@ -117,7 +116,6 @@ switch (_option.type)
 				_option.on_toggle(_option.value);
 			}
 		}
-		
 		break;
 	case OptionType.slider:
 		if (((h_move2 != 0 && _option.moving) || (h_move != 0 && !_option.moving)) && !scrollbuffer)
@@ -129,7 +127,7 @@ switch (_option.type)
 			{
 				savedSliderOption = _option;
 				
-				if (savedSliderOption.sound != -4)
+				if (savedSliderOption.sound != noone)
 				{
 					activeSFX = fmod_createEventInstance(savedSliderOption.sound);
 					fmod_studio_event_instance_start(activeSFX);
@@ -146,6 +144,5 @@ switch (_option.type)
 			
 			trace(_option.value);
 		}
-		
 		break;
 }

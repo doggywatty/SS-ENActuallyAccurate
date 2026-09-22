@@ -1,7 +1,7 @@
 event_inherited();
 onewayDeathSprite = spr_popcornowdead;
 onewayRank = 0;
-solidid = -4;
+solidid = noone;
 
 if (ds_list_find_index(global.SaveRoom, id) == -1)
 {

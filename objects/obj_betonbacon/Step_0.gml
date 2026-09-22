@@ -26,11 +26,11 @@ if (point_in_rectangle(obj_parent_player.x, obj_parent_player.y, x - 200, y - 50
 		image_speed = 0.35;
 		flash = true;
 		alarm[4] = 5;
-		create_heat_afterimage(afterimagetypes.basic);
+		create_heat_afterimage(afterimagetypes.plain);
 	}
 }
 
-if (hitboxcreate == 0 && animation_end_old(undefined, 10) && state == enemystates.attack)
+if (hitboxcreate == 0 && animation_end_old(, 10) && state == enemystates.attack)
 {
 	hitboxcreate = 1;
 	

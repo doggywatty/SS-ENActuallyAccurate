@@ -29,7 +29,7 @@ function scr_painterdemodialogue()
 			dialogue_key = "demopainter_molasses_sleeping";
 			idle = spr_painteridle7;
 			speak = spr_painteridle7;
-			talk_sound = -4;
+			talk_sound = noone;
 		}
 		else if (molasses_secrets >= 3)
 		{

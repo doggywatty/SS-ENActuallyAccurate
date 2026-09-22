@@ -6,7 +6,7 @@ Camera_xorigin = 0;
 Camera_yorigin = 0;
 cam_lzoom = 1;
 cam_langle = 0;
-var _region = -4;
+var _region = noone;
 
 with (obj_cameraRegion)
 {

@@ -1,8 +1,8 @@
-function scr_hurtplayer(arg0 = obj_parent_player, arg1)
+function scr_hurtplayer(_player = obj_parent_player, _msp)
 {
-	if (!global.freezeframe && arg0.state != PlayerState.actor && arg0.state != PlayerState.parry && arg0.state != PlayerState.dodgetumble && arg0.state != PlayerState.hurt)
+	if (!global.freezeframe && _player.state != PlayerState.actor && _player.state != PlayerState.parry && _player.state != PlayerState.dodgetumble && _player.state != PlayerState.hurt)
 	{
-		with (arg0)
+		with (_player)
 		{
 			if (cutscene)
 				continue;
@@ -74,7 +74,7 @@ function scr_hurtplayer(arg0 = obj_parent_player, arg1)
 				}
 				
 				sprite_index = (sign(image_xscale) == other.image_xscale) ? spr_hurtjump : spr_hurt;
-				movespeed = !is_undefined(arg1) ? arg1 : 8;
+				movespeed = !is_undefined(_msp) ? _msp : 8;
 				global.ComboTime = clamp(global.ComboTime - 25, 0, 60);
 				var _oldcollect = global.Collect;
 				global.Collect = max(global.Collect - 50, 0);
@@ -111,14 +111,14 @@ function scr_hurtplayer(arg0 = obj_parent_player, arg1)
 	return false;
 }
 
-function player_complete_invulnerability(arg0 = obj_parent_player)
+function player_complete_invulnerability(_player = obj_parent_player)
 {
 	var _states = [PlayerState.titlescreen, PlayerState.noclip, PlayerState.actor, PlayerState.gameover, PlayerState.talkto, PlayerState.comingoutdoor, PlayerState.door, PlayerState.victory];
-	return array_contains(_states, arg0.state);
+	return array_contains(_states, _player.state);
 }
 
-function player_can_hurt(arg0 = obj_parent_player)
+function player_can_hurt(_player = obj_parent_player)
 {
 	var _states = [PlayerState.cotton, PlayerState.cottondrill, PlayerState.cottonroll, PlayerState.cottondig, PlayerState.fling_launch, PlayerState.fling];
-	return !array_contains(_states, arg0.state) && !player_complete_invulnerability(arg0);
+	return !array_contains(_states, _player.state) && !player_complete_invulnerability(_player);
 }

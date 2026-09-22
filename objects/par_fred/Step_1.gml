@@ -1,5 +1,5 @@
 var dis = -4;
-var _id = -4;
+var _id = noone;
 
 with (obj_parent_player)
 {

@@ -4,10 +4,10 @@ save_index = 0;
 saveAlpha = 0;
 depth = -200;
 
-hudObject = function(arg0, arg1) constructor
+hudObject = function(_x, _y) constructor
 {
-	xstart = arg0;
-	ystart = arg1;
+	xstart = _x;
+	ystart = _y;
 	x = xstart;
 	y = ystart;
 	image_index = 0;
@@ -47,13 +47,13 @@ with (HUDObject_TV)
 	tvPrevDoingExpression = tvDoingExpression;
 	
 ///PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADD
-	tvAnimations = function(arg0)
+	tvAnimations = function(_pl)
 	{
-		var player_state = global.freezeframe ? arg0.frozenState : arg0.state;
+		var player_state = global.freezeframe ? _pl.frozenState : _pl.state;
 		
 		if (player_state == PlayerState.machslide)
 		{
-			if (arg0.sprite_index == arg0.spr_machslideboost3)
+			if (_pl.sprite_index == _pl.spr_machslideboost3)
 				player_state = PlayerState.mach3;
 			else
 				player_state = PlayerState.mach2;
@@ -132,20 +132,20 @@ with (HUDObject_TV)
 			case PlayerState.climbwall:
 			case PlayerState.machroll:
 				tvNormalStates = true;
-				var my_mvsp = global.freezeframe ? abs(arg0.frozenMoveSpeed) : abs(arg0.movespeed);
+				var my_mvsp = global.freezeframe ? abs(_pl.frozenMoveSpeed) : abs(_pl.movespeed);
 				
 				if (player_state == PlayerState.climbwall)
-					my_mvsp = global.freezeframe ? abs(arg0.frozenVerticalMovespeed) : abs(arg0.verticalMovespeed);
+					my_mvsp = global.freezeframe ? abs(_pl.frozenVerticalMovespeed) : abs(_pl.verticalMovespeed);
 				
 				var _oldQueue = queuedSprite;
 				
 				if (player_state == PlayerState.wallkick || player_state == PlayerState.machslide)
 					queuedSprite = global.TvSprPlayer_Mach2;
 				
-				if (player_state == PlayerState.mach3 || player_state == PlayerState.climbwall || (player_state == PlayerState.machslide && arg0.sprite_index == arg0.spr_machslideboost3) || player_state == PlayerState.machroll)
+				if (player_state == PlayerState.mach3 || player_state == PlayerState.climbwall || (player_state == PlayerState.machslide && _pl.sprite_index == _pl.spr_machslideboost3) || player_state == PlayerState.machroll)
 					queuedSprite = global.TvSprPlayer_Mach3;
 				
-				if (arg0.sprite_index == arg0.spr_crazyrun || (player_state == PlayerState.climbwall && my_mvsp >= 16) || (player_state == PlayerState.machroll && arg0.mach3Roll > 0 && my_mvsp >= 16))
+				if (_pl.sprite_index == _pl.spr_crazyrun || (player_state == PlayerState.climbwall && my_mvsp >= 16) || (player_state == PlayerState.machroll && _pl.mach3Roll > 0 && my_mvsp >= 16))
 					queuedSprite = global.TvSprPlayer_Mach4;
 				
 				if (queuedSprite != _oldQueue)
@@ -161,7 +161,7 @@ with (HUDObject_TV)
 			case PlayerState.oldtaunt:
 				queuedSprite = global.TvSprPlayer_Hooked;
 				
-				if (arg0.sprite_index == spr_player_PZ_frostburn_hook)
+				if (_pl.sprite_index == spr_player_PZ_frostburn_hook)
 					queuedSprite = global.TvSprPlayer_FrostBurn;
 				
 				break;
@@ -247,7 +247,7 @@ with (HUDObject_comboMeter)
 	displayState = displaystates.entering;
 	comboTimeDisplay = 0;
 	combofillDisplay = 0;
-	comboSurface = -4;
+	comboSurface = noone;
 	elm_meterFill = 
 	{
 		sprite_index: spr_tvHUD_comboMeter_fill,

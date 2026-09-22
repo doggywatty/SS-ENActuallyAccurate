@@ -9,14 +9,14 @@ if (instance_number(obj_music) > 1)
 	}
 }
 
-addRoomMusic = function(arg0, arg1, arg2, arg3)
+addRoomMusic = function(_room, _eventName, _secretEventName, _func)
 {
 	var temp_struct = {};
 	
 	with (temp_struct)
 	{
-		eventName = arg1;
-		secretEventName = arg2;
+		eventName = _eventName;
+		secretEventName = _secretEventName;
 		musicInst = undefined;
 		secretMusicInst = undefined;
 		musicFunc = undefined;
@@ -27,11 +27,11 @@ addRoomMusic = function(arg0, arg1, arg2, arg3)
 		if (!is_undefined(secretEventName) && is_string(secretEventName))
 			secretMusicInst = fmod_createEventInstance(secretEventName);
 		
-		if (!is_undefined(arg3) && is_callable(arg3))
-			musicFunc = method(self, arg3);
+		if (!is_undefined(_func) && is_callable(_func))
+			musicFunc = method(self, _func);
 	}
 	
-	ds_map_set(global.RoomMusicMap, arg0, temp_struct);
+	ds_map_set(global.RoomMusicMap, _room, temp_struct);
 };
 
 global.RoomMusicMap = ds_map_create();
@@ -43,7 +43,7 @@ global.RoomIsSecret = false;
 panicStart = false;
 currentSecretStatus = false;
 global.CurrentBeat = 0;
-addRoomMusic(rm_mainmenu, "event:/music/titlescreen_demo", undefined, function(arg0, arg1, arg2)
+addRoomMusic(rm_mainmenu, "event:/music/titlescreen_demo", undefined, function(_room, _parameter, _musicFunc)
 {
 	var event_state = 0;
 	
@@ -51,41 +51,41 @@ addRoomMusic(rm_mainmenu, "event:/music/titlescreen_demo", undefined, function(a
 		event_state = 1;
 	
 	if (!is_undefined(event_state))
-		fmod_studio_event_instance_set_parameter_by_name(arg1, "state", event_state, false);
+		fmod_studio_event_instance_set_parameter_by_name(_parameter, "state", event_state, false);
 });
 addRoomMusic(rm_credits, "event:/music/credits", undefined, undefined);
 addRoomMusic(rm_devroom, "event:/music/devroom", undefined, undefined);
 addRoomMusic(tutorial_1, "event:/music/tutorial", undefined, undefined);
-addRoomMusic(hub_paintstudio, "event:/music/hub", undefined, function(arg0, arg1, arg2)
+addRoomMusic(hub_paintstudio, "event:/music/hub", undefined, function(_room, _parameter, _musicFunc)
 {
 	var event_state = 0;
 	
 	if (!is_undefined(event_state))
-		fmod_studio_event_instance_set_parameter_by_name(arg1, "state", event_state, false);
+		fmod_studio_event_instance_set_parameter_by_name(_parameter, "state", event_state, false);
 });
 addRoomMusic(hub_soundTest, undefined, undefined, undefined);
-addRoomMusic(hub_demohallway, "event:/music/hub", undefined, function(arg0, arg1, arg2)
+addRoomMusic(hub_demohallway, "event:/music/hub", undefined, function(_room, _parameter, _musicFunc)
 {
 	var event_state = 0;
 	
 	if (!is_undefined(event_state))
-		fmod_studio_event_instance_set_parameter_by_name(arg1, "state", event_state, false);
+		fmod_studio_event_instance_set_parameter_by_name(_parameter, "state", event_state, false);
 });
 addRoomMusic(hub_mindpalace, "event:/music/painterBrain", undefined, undefined);
 addRoomMusic(hub_mindvault, "event:/music/harry", undefined, undefined);
-addRoomMusic(hub_molasses, "event:/music/hub", undefined, function(arg0, arg1, arg2)
+addRoomMusic(hub_molasses, "event:/music/hub", undefined, function(_room, _parameter, _musicFunc)
 {
 	var event_state = 0;
 	
 	if (!is_undefined(event_state))
-		fmod_studio_event_instance_set_parameter_by_name(arg1, "state", event_state, false);
+		fmod_studio_event_instance_set_parameter_by_name(_parameter, "state", event_state, false);
 });
 addRoomMusic(entryway_1, "event:/music/w1/entryway", "event:/music/w1/entryway_secret", undefined);
-addRoomMusic(steamy_1, "event:/music/w1/cottontown", "event:/music/w1/cottontown_secret", function(arg0, arg1, arg2)
+addRoomMusic(steamy_1, "event:/music/w1/cottontown", "event:/music/w1/cottontown_secret", function(_room, _parameter, _musicFunc)
 {
 	var event_state = undefined;
 	
-	switch (arg0)
+	switch (_room)
 	{
 		case steamy_1:
 		case steamy_7:
@@ -100,13 +100,13 @@ addRoomMusic(steamy_1, "event:/music/w1/cottontown", "event:/music/w1/cottontown
 	}
 	
 	if (!is_undefined(event_state))
-		fmod_studio_event_instance_set_parameter_by_name(arg1, "state", event_state, true);
+		fmod_studio_event_instance_set_parameter_by_name(_parameter, "state", event_state, true);
 });
-addRoomMusic(molasses_1, "event:/music/w2/molasses", "event:/music/w2/molasses_secret", function(arg0, arg1, arg2)
+addRoomMusic(molasses_1, "event:/music/w2/molasses", "event:/music/w2/molasses_secret", function(_room, _parameter, _musicFunc)
 {
 	var event_state = undefined;
 	
-	switch (arg0)
+	switch (_room)
 	{
 		case molasses_1:
 		case molasses_6:
@@ -118,7 +118,7 @@ addRoomMusic(molasses_1, "event:/music/w2/molasses", "event:/music/w2/molasses_s
 	}
 	
 	if (!is_undefined(event_state))
-		fmod_studio_event_instance_set_parameter_by_name(arg1, "state", event_state, false);
+		fmod_studio_event_instance_set_parameter_by_name(_parameter, "state", event_state, false);
 	
 	var frog = false;
 	
@@ -136,20 +136,20 @@ addRoomMusic(molasses_1, "event:/music/w2/molasses", "event:/music/w2/molasses_s
 	if (player_state == PlayerState.fling || player_state == PlayerState.fling_launch)
 		frog = true;
 	
-	fmod_studio_event_instance_set_parameter_by_name(arg1, "frog", frog, false);
+	fmod_studio_event_instance_set_parameter_by_name(_parameter, "frog", frog, false);
 });
-addRoomMusic(mineshaft_1, "event:/music/w1/mines", "event:/music/w1/mines_secret", function(arg0, arg1, arg2)
+addRoomMusic(mineshaft_1, "event:/music/w1/mines", "event:/music/w1/mines_secret", function(_room, _parameter, _musicFunc)
 {
 	var event_state = global.minesProgress;
 	
 	if (!is_undefined(event_state))
-		fmod_studio_event_instance_set_parameter_by_name(arg1, "state", event_state, false);
+		fmod_studio_event_instance_set_parameter_by_name(_parameter, "state", event_state, false);
 });
-addRoomMusic(mountain_intro, "event:/music/w2/mountain", "event:/music/w2/mountain_secret", function(arg0, arg1, arg2)
+addRoomMusic(mountain_intro, "event:/music/w2/mountain", "event:/music/w2/mountain_secret", function(_room, _parameter, _musicFunc)
 {
 	var event_state = undefined;
 	
-	switch (arg0)
+	switch (_room)
 	{
 		case mountain_intro:
 		case mountain_1:
@@ -162,6 +162,6 @@ addRoomMusic(mountain_intro, "event:/music/w2/mountain", "event:/music/w2/mounta
 	}
 	
 	if (!is_undefined(event_state))
-		fmod_studio_event_instance_set_parameter_by_name(arg1, "state", event_state, false);
+		fmod_studio_event_instance_set_parameter_by_name(_parameter, "state", event_state, false);
 });
 addRoomMusic(cafe_1, "event:/music/w2/cafe", "event:/music/w2/cafe_secret", undefined);

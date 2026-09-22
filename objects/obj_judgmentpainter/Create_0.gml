@@ -45,15 +45,15 @@ flickpwr = 0;
 flickspr = new subSprite(spr_brainpainterhandidle, 0, 0.15, false);
 flickspr.visible = false;
 continueIcon = new subSprite(spr_dialogbox_next, 0, 0.08, true);
-scribble_typists_add_event("j_painter_pose", function(arg0, arg1, arg2)
+scribble_typists_add_event("j_painter_pose", function(_unk0, _md, _unk2)
 {
 	with (obj_judgmentpainter)
 	{
-		var _mood = string(arg1[0]);
+		var _mood = string(_md[0]);
 		painterMood = _mood;
 	}
 });
-current_talk_inst = -4;
+current_talk_inst = noone;
 typist = scribble_typist();
 typist.pause();
 typist.in(1, 0);

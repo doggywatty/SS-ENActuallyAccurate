@@ -9,6 +9,6 @@ if (ds_list_find_index(global.SaveRoom, id) != -1 && object_index == obj_secretP
 	instance_create(x, y, obj_tilePaintSplatter, 
 	{
 		createSplash: false,
-		blendColor: 11230063
+		blendColor: #6F5BAB
 	});
 }

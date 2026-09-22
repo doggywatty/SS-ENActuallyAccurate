@@ -29,11 +29,11 @@ function scr_taunt_setVariables()
 	image_index = tauntStored.image_index;
 }
 
-function do_taunt(arg0 = state)
+function do_taunt(_state = state)
 {
 	static superTauntEffect = 0;
 	
-	if (arg0 != state)
+	if (_state != state)
 		exit;
 	
 	if (superTauntCharged && room != rank_room)
@@ -104,9 +104,9 @@ function do_taunt(arg0 = state)
 	return false;
 }
 
-function do_grab(arg0 = state)
+function do_grab(_state = state)
 {
-	if (arg0 != state)
+	if (_state != state)
 		exit;
 	
 	if (inputBufferSlap > 0)
@@ -239,9 +239,9 @@ function do_clubswing()
 		image_xscale = other.xscale;
 }
 
-function get_nearestPlayer(arg0 = x, arg1 = y)
+function get_nearestPlayer(_x = x, _y = y)
 {
-	return global.coopGame ? instance_nearest(arg0, arg1, obj_parent_player) : obj_player1;
+	return global.coopGame ? instance_nearest(_x, _y, obj_parent_player) : obj_player1;
 }
 
 function get_primaryPlayer()
@@ -249,25 +249,25 @@ function get_primaryPlayer()
 	return global.coopGame ? obj_player1 : obj_player1;
 }
 
-function get_playerState(arg0 = get_primaryPlayer())
+function get_playerState(_state = get_primaryPlayer())
 {
-	return global.freezeframe ? arg0.frozenState : arg0.state;
+	return global.freezeframe ? _state.frozenState : _state.state;
 }
 
-function bump_wall(arg0 = hsp)
+function bump_wall(_hsp = hsp)
 {
-	return (place_meeting_solid(x + arg0, y) || scr_solid_slope(x + arg0, y)) && (!scr_slope() || place_meeting_solid(x + sign(arg0), y - 16));
+	return (place_meeting_solid(x + _hsp, y) || scr_solid_slope(x + _hsp, y)) && (!scr_slope() || place_meeting_solid(x + sign(_hsp), y - 16));
 }
 
-function snap_to_ledge(arg0 = xscale, arg1 = 32)
+function snap_to_ledge(_xscale = xscale, _y1 = 32)
 {
 	var _ledge = false;
 	var _y = y;
 	
-	if (!place_meeting_collision(x + arg0, y - arg1))
+	if (!place_meeting_collision(x + _xscale, y - _y1))
 	{
 		_ledge = true;
-		x += arg0;
+		x += _xscale;
 		
 		while (place_meeting_collision(x, y))
 			y--;

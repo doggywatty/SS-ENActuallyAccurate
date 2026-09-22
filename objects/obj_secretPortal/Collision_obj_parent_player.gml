@@ -20,7 +20,7 @@ if (secretActivated && visible && !place_meeting(x, y, obj_secretPortalexit))
 		event_play_oneshot("event:/SFX/general/secretenter", x, y);
 		instance_create(x, y, obj_tilePaintSplatter, 
 		{
-			blendColor: 11230063
+			blendColor: #6F5BAB
 		});
 		ds_list_add(global.SaveRoom, id);
 	}

@@ -16,7 +16,6 @@ function scr_enemy_rage()
 						ragereset = 50;
 						sprite_index = spr_eyescreamsandwich_dive;
 					}
-					
 					break;
 				case spr_eyescreamsandwich_dive:
 					x += hsp;
@@ -34,10 +33,8 @@ function scr_enemy_rage()
 						instance_destroy();
 						instance_create(x, y, obj_bombExplosionHarmful);
 					}
-					
 					break;
 			}
-			
 			break;
 		case obj_doggy:
 			image_speed = 0.35;
@@ -147,7 +144,6 @@ function scr_enemy_rage()
 				sprite_index = spr_knight_stun;
 				state = PlayerState.normal;
 			}
-			
 			break;
 		case obj_betonbacon:
 			hsp = 0;
@@ -157,7 +153,6 @@ function scr_enemy_rage()
 				state = PlayerState.frozen;
 				sprite_index = baddieSpriteWalk;
 			}
-			
 			break;
 		case obj_cottonwitch:
 			var target_player = get_nearestPlayer();
@@ -240,7 +235,6 @@ function scr_enemy_rage()
 				image_speed = 0.5;
 			else
 				image_speed = 0.35;
-			
 			break;
 		case obj_sluggy:
 			image_speed = 0.35;
@@ -301,7 +295,6 @@ function scr_enemy_rage()
 					grounded = false;
 				}
 			}
-			
 			break;
 		case obj_painter:
 			scr_painter_dash();
@@ -328,14 +321,13 @@ function scr_enemy_rage()
 				}
 			}
 			
-			if (animation_end_old(undefined, 5))
+			if (animation_end_old(, 5))
 			{
 				movelocked = false;
 				sprite_index = spr_golfburger_walk;
 				state = PlayerState.frozen;
 				enemyAttackTimer = 200;
 			}
-			
 			break;
 		case obj_miniHarry:
 			if (sprite_index == spr_miniharry_spot)

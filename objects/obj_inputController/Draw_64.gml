@@ -6,7 +6,7 @@ if (disconnectScreen)
 		
 		with (_layer)
 		{
-			if (custom_func != -4)
+			if (custom_func != noone)
 				custom_func();
 			
 			if (sprite_index == bg_controllerdisconnect)

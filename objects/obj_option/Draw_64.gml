@@ -63,7 +63,7 @@ for (var i = 0; i < _optLength; i++)
 				draw_text_color(_xx, _yy, _finalStr, _iColor, _iColor, _iColor, _iColor, 1);
 			}
 			
-			if (_option.sprite_index != -4)
+			if (_option.sprite_index != noone)
 			{
 				var _icon_x = alignCenter ? (_xx + (string_width(_finalStr) / 2)) : (_xx + string_width(_finalStr));
 				_icon_x += 50;
@@ -79,7 +79,6 @@ for (var i = 0; i < _optLength; i++)
 				draw_text_color(camera_get_view_width(view_camera[0]) - _xx, _yy, _optStr, _iColor, _iColor, _iColor, _iColor, 1);
 				draw_set_halign(old_halign);
 			}
-			
 			break;
 		case OptionType.slider:
 			var old_halign = draw_get_halign();

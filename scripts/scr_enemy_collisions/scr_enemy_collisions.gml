@@ -1,24 +1,24 @@
-function scr_finishingBlow(arg0, arg1)
+function scr_finishingBlow(_player, _scale)
 {
-	if (!instance_exists(arg0))
+	if (!instance_exists(_player))
 		exit;
 	
-	if (arg0.state == PlayerState.climbwall)
+	if (_player.state == PlayerState.climbwall)
 		exit;
 	
-	with (arg0)
+	with (_player)
 	{
-		x = arg1.x + (60 * arg1.xscale);
-		y = arg1.y;
-		scr_enemyFinishingBlowPos(arg1);
+		x = _scale.x + (60 * _scale.xscale);
+		y = _scale.y;
+		scr_enemyFinishingBlowPos(_scale);
 		flash = true;
 		global.ComboTime = 60;
 		alarm[1] = 5;
 		grounded = false;
-		hitHsp = arg1.xscale * 25;
+		hitHsp = _scale.xscale * 25;
 		hitVsp = 0;
 		
-		if (arg1.sprite_index == arg1.spr_suplexmashUppercut)
+		if (_scale.sprite_index == _scale.spr_suplexmashUppercut)
 		{
 			hitHsp = 0;
 			hitVsp = -25;
@@ -44,24 +44,24 @@ function scr_finishingBlow(arg0, arg1)
 	}
 }
 
-function scr_instakillEnemy(arg0, arg1)
+function scr_instakillEnemy(_player, _scale)
 {
-	if (!instance_exists(arg0))
+	if (!instance_exists(_player))
 		exit;
 	
-	if (arg0.state == PlayerState.climbwall)
+	if (_player.state == PlayerState.climbwall)
 		exit;
 	
-	with (arg0)
+	with (_player)
 	{
 		event_play_oneshot("event:/SFX/player/punch", x, y);
 		camera_shake_add(3, 3);
 		global.ComboTime = 60;
-		image_xscale = -arg1.xscale;
-		hsp = -image_xscale * abs(arg1.hsp);
+		image_xscale = -_scale.xscale;
+		hsp = -image_xscale * abs(_scale.hsp);
 		
-		if (arg1.state == PlayerState.mach3)
-			x = arg1.x + (((abs(arg1.hsp) * 2) + 5) * sign(arg1.hsp));
+		if (_scale.state == PlayerState.mach3)
+			x = _scale.x + (((abs(_scale.hsp) * 2) + 5) * sign(_scale.hsp));
 		
 		vsp = -10;
 		sprite_index = baddieSpriteDead;
@@ -83,10 +83,10 @@ function scr_instakillEnemy(arg0, arg1)
 	}
 }
 
-function scr_baddieCollisionBox(arg0 = mask_index)
+function scr_baddieCollisionBox(_mask_ind = mask_index)
 {
 	var old_mask = mask_index;
-	mask_index = arg0;
+	mask_index = _mask_ind;
 	baddieOnPlayerCollisions();
 	baddieOnEscapeRosetteCollisions();
 	baddieOnBaddieCollisions();
@@ -169,7 +169,6 @@ function baddieOnPlayerCollisions()
 				instance_create(x, y, obj_slapstar);
 				instance_create(x, y, obj_baddieGibs);
 			}
-			
 			exit;
 		}
 		

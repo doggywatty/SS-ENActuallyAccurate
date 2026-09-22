@@ -24,7 +24,6 @@ switch (ropetype)
 	case ropetypes.bottom:
 		if (!(boxy <= -tgty))
 			draw_sprite_ext(myrope, propdex, wave_x + 432, boxy + tgty, 1, 1, 0, c_white, 1);
-		
 		break;
 }
 
@@ -33,7 +32,7 @@ boxy = max(boxy, -tgty);
 
 if (active)
 {
-	if (voice_cooldown <= 0 && talk_sound != -4)
+	if (voice_cooldown <= 0 && talk_sound != noone)
 	{
 		voice_cooldown = 100;
 		event_play_oneshot(talk_sound, x, y);

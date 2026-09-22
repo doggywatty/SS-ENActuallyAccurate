@@ -1,6 +1,6 @@
 image_alpha = 0;
 depth = -50;
-playerID = -4;
+playerID = noone;
 gemCount = 0;
 leaveTimer = 60;
 refined = false;

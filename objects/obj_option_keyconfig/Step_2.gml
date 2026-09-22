@@ -21,7 +21,6 @@ if (exiting)
 			case 2:
 				with (obj_option_keyconfig)
 					instance_destroy();
-				
 				event_play_oneshot("event:/SFX/ui/confirm");
 				exit;
 		}
@@ -192,10 +191,10 @@ else
 		
 		var gpinput = scr_checkanygamepad(global.PlayerInputDevice);
 		
-		if (gpinput == -4)
+		if (gpinput == noone)
 			gpinput = scr_check_joysticks(global.PlayerInputDevice);
 		
-		if (gpinput != -4)
+		if (gpinput != noone)
 		{
 			inpArr = inp.gpInputs;
 			

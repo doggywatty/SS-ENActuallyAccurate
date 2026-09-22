@@ -1,4 +1,4 @@
-content = -4;
+content = noone;
 image_speed = 0.35;
 depth = -1;
 helptimer = 60;

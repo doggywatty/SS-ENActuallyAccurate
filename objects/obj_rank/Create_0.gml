@@ -39,17 +39,17 @@ bgy=0;
 bgAlpha=0;
 clipboardY=810;
 rankdex=0;
-rank_text_sprite=-4;
-setcolors=function(arg0,arg1,arg2,arg3,arg4,arg5)
+rank_text_sprite=noone;
+setcolors=function(_r,_g,_b,_r2,_g2,_b2)
 {
 	realcol=
 	{
-		r: arg0,
-		g: arg1,
-		b: arg2,
-		r2: arg3,
-		g2: arg4,
-		b2: arg5
+		r: _r,
+		g: _g,
+		b: _b,
+		r2: _r2,
+		g2: _g2,
+		b2: _b2
 	};
 };
 //PADDINGPADDINGPADDINGPAD
@@ -63,13 +63,13 @@ afterimagesetup=function()
 };
 bgdex=0;
 //PADDINGPADDING
-showRank=function(arg0=global.rank)
+showRank=function(_rank=global.rank)
 {
 	with (obj_parent_player)
 		visible=false;
 	alarm[7]=250;
 	flash=true;
-	switch (arg0)
+	switch (_rank)
 	{
 		case "p":
 			alarm[7]=300;
@@ -108,8 +108,8 @@ showRank=function(arg0=global.rank)
 	image_index=0;
 	x=camera_get_view_width(view_camera[0]) / 2;
 	y=camera_get_view_height(view_camera[0]) / 2;
-	var _text=[lang_get_sprite(spr_rankD_text),lang_get_sprite(spr_rankC_text),lang_get_sprite(spr_rankB_text),lang_get_sprite(spr_rankA_text),lang_get_sprite(spr_rankS_text),-4];
-	rankdex=rank_checker(arg0);
+	var _text=[lang_get_sprite(spr_rankD_text),lang_get_sprite(spr_rankC_text),lang_get_sprite(spr_rankB_text),lang_get_sprite(spr_rankA_text),lang_get_sprite(spr_rankS_text),noone];
+	rankdex=rank_checker(_rank);
 	rank_text_sprite=lang_get_sprite(_text[rankdex]);
 	score_cake_index=rankdex;
 };

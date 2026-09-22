@@ -26,18 +26,18 @@ function scr_judgment_assign()
 	return scr_judgment_get(j);
 }
 
-function scr_judgment_get(arg0)
+function scr_judgment_get(_val)
 {
-	var j = ds_map_find_value(global.judgment_map, arg0);
+	var j = ds_map_find_value(global.judgment_map, _val);
 	return j ?? ds_map_find_value(global.judgment_map, "none");
 }
 
-function scr_judgment_read(arg0)
+function scr_judgment_read(_file)
 {
-	if (!file_exists(arg0))
+	if (!file_exists(_file))
 		return scr_judgment_get("none");
 	
-	ini_open(arg0);
+	ini_open(_file);
 	var p = ini_read_string("Game", "Judgment", "none");
 	ini_close();
 	return scr_judgment_get(p);
@@ -45,9 +45,9 @@ function scr_judgment_read(arg0)
 
 function saveJudgment() constructor
 {
-	static setProperties = function(arg0)
+	static setProperties = function(_properties)
 	{
-		properties = arg0;
+		properties = _properties;
 		return self;
 	};
 	
@@ -64,20 +64,20 @@ function saveJudgment() constructor
 	return self;
 }
 
-function add_judgment(arg0, arg1)
+function add_judgment(judgestr, properties)
 {
-	var j = new saveJudgment().setProperties(arg1);
-	j.properties.title = lang_get($"judgment_title_{arg0}");
+	var j = new saveJudgment().setProperties(properties);
+	j.properties.title = lang_get($"judgment_title_{judgestr}");
 	j.properties.dialog = [lang_get("judgmentinfo_default")];
 	
-	for (var i = 1; lang_key_exists($"judgmentinfo_{arg0}_{i}"); i++)
+	for (var i = 1; lang_key_exists($"judgmentinfo_{judgestr}_{i}"); i++)
 	{
-		var dg = lang_get($"judgmentinfo_{arg0}_{i}");
+		var dg = lang_get($"judgmentinfo_{judgestr}_{i}");
 		array_push(j.properties.dialog, dg);
 	}
 	
 	array_push(j.properties.dialog, lang_get("judgmentinfo_ending"));
-	ds_map_set(global.judgment_map, arg0, j);
+	ds_map_set(global.judgment_map, judgestr, j);
 	return j;
 }
 

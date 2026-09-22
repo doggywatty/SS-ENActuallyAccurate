@@ -1,4 +1,4 @@
-function scr_savelevelDetails(arg0 = true)
+function scr_savelevelDetails(_statement = true)
 {
 	var all_confecti = global.MallowFollow && global.ChocoFollow && global.CrackFollow && global.WormFollow && global.CandyFollow;
 	global.rank = "d";
@@ -74,7 +74,7 @@ function scr_savelevelDetails(arg0 = true)
 	ini_close();
 	obj_hudManager.saveAlpha = 10;
 	
-	if (arg0)
+	if (_statement)
 	{
 		fmod_studio_event_instance_start(global.RankMusicInst);
 		fmod_studio_event_instance_set_paused(global.RankMusicInst, false);
@@ -83,30 +83,30 @@ function scr_savelevelDetails(arg0 = true)
 	}
 }
 
-function ini_update_stat(arg0, arg1, arg2, arg3 = false)
+function ini_update_stat(_section, _key, _str, _stat_state = false)
 {
-	var val = ini_read_string(arg0, arg1, 0);
+	var val = ini_read_string(_section, _key, 0);
 	
-	if (arg3)
+	if (_stat_state)
 	{
-		if (val > arg2 || val == 0)
-			ini_write_string(arg0, arg1, arg2);
+		if (val > _str || val == 0)
+			ini_write_string(_section, _key, _str);
 		
 		exit;
 	}
 	
-	if (val < arg2)
-		ini_write_string(arg0, arg1, arg2);
+	if (val < _str)
+		ini_write_string(_section, _key, _str);
 }
 
-function confecti_count_level(arg0)
+function confecti_count_level(_levelcount)
 {
 	var confecti_count = 0;
 	ini_open(global.SaveFileName);
 	
 	for (var i = 1; i < 6; i++)
 	{
-		var c = string(arg0) + string(i);
+		var c = string(_levelcount) + string(i);
 		
 		if (ini_read_string("Confecti", c, 0) == 1)
 			confecti_count++;

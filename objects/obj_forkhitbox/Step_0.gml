@@ -20,7 +20,6 @@ if (instance_exists(ID))
 					hitboxcreate = 0;
 					instance_destroy(other.id);
 				}
-				
 				break;
 			case obj_boxFrog:
 				if ((vsp >= 0 && grounded) || state != PlayerState.titlescreen)
@@ -28,7 +27,6 @@ if (instance_exists(ID))
 					hitboxcreate = false;
 					instance_destroy(other.id);
 				}
-				
 				break;
 			case obj_miniHarry:
 				if (state != PlayerState.titlescreen)
@@ -36,7 +34,6 @@ if (instance_exists(ID))
 					hitboxcreate = 0;
 					instance_destroy(other.id);
 				}
-				
 				break;
 			case obj_sluggy:
 				if (vsp >= 0 || state != PlayerState.titlescreen)
@@ -44,7 +41,6 @@ if (instance_exists(ID))
 					hitboxcreate = 0;
 					instance_destroy(other.id);
 				}
-				
 				break;
 			case obj_bananaCharger:
 			case obj_swedishfish:
@@ -53,18 +49,15 @@ if (instance_exists(ID))
 					hitboxcreate = 0;
 					instance_destroy(other.id);
 				}
-				
 				break;
 			case obj_doggy:
 				if (sprite_index != spr_badmarsh_rage)
 					instance_destroy(other.id);
-				
 				break;
 				break;
 			case obj_betonbacon:
 				if (state != PlayerState.titlescreen && state != PlayerState.frozen)
 					instance_destroy(other.id);
-				
 				break;
 		}
 	}

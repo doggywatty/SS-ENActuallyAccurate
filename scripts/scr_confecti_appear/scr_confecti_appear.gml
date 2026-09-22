@@ -19,7 +19,7 @@ function scr_confecti_appear()
 		if (_end)
 		{
 			sprite_index = spr_idle;
-			state = PlayerState.frozen;
+			state = confectistate.normal;
 			
 			if (use_interpolation)
 				interpolation = 0;

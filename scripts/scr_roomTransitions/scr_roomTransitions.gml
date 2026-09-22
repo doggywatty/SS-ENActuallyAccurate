@@ -1,9 +1,9 @@
-function scr_roomStart_SetPosition_player(arg0 = obj_player1)
+function scr_roomStart_SetPosition_player(_player = obj_player1)
 {
 	if (instance_exists(obj_cutsceneManager) && obj_cutsceneManager.exitLevelCustcene)
 		exit;
 	
-	with (arg0)
+	with (_player)
 	{
 		var target_door = obj_parent_doortrigger;
 		var is_box_above = false;
@@ -101,7 +101,7 @@ function scr_roomStart_SetPosition_player(arg0 = obj_player1)
 		
 		if (!global.CompletedLevel)
 		{
-			if (true && room != hub_demohallway)
+			if (isDemo && room != hub_demohallway)
 				var _cutscene = cutscene_create([cutscene_backtohub_prestart, cutscene_backtohub_start, cutscene_backtohub_en_out, cutscene_backtohub_middle, cutscene_backtohub_end]);
 			else
 				var _cutscene = cutscene_create([cutscene_backtohub_prestart, cutscene_backtohub_start, cutscene_backtohub_middle, cutscene_backtohub_end]);
@@ -113,24 +113,24 @@ function scr_roomStart_SetPosition_player(arg0 = obj_player1)
 	return true;
 }
 
-function defaultSecretState(arg0 = undefined)
+function defaultSecretState(_state = undefined)
 {
 	var player = obj_parent_player;
 	
-	if (!is_undefined(arg0))
-		player = arg0;
+	if (!is_undefined(_state))
+		player = _state;
 	
 	return player.state;
 }
 
-function portal_activate(arg0, arg1)
+function portal_activate(_portal, _activated)
 {
-	with (arg0)
+	with (_portal)
 	{
 		var activate = !secretActivated;
 		
-		if (is_undefined(arg1))
-			activate = arg1;
+		if (is_undefined(_activated))
+			activate = _activated;
 		
 		secretActivated = activate;
 	}
@@ -231,7 +231,7 @@ function cutscene_secretPortal_middle()
 
 function cutscene_secretPortal_preend()
 {
-	static portal = -4;
+	static portal = noone;
 	
 	var finished = false;
 	global.ComboFreeze = 2;
@@ -333,7 +333,7 @@ function cutscene_secretPortal_end()
 			{
 				instance_create(x, y, obj_tilePaintSplatter, 
 				{
-					blendColor: 11230063
+					blendColor: #6F5BAB
 				});
 			}
 		}
@@ -404,7 +404,7 @@ function cutscene_backtohub_start()
 		hsp = 0;
 		vsp = 0;
 		
-		if (true && room != hub_demohallway)
+		if (isDemo && room != hub_demohallway)
 		{
 			scale = 0;
 			sprite_index = spr_player_PZ_geyser;
@@ -437,7 +437,7 @@ function cutscene_backtohub_en_out()
 		
 		if (!afterimagebuffer--)
 		{
-			with (create_afterimage(afterimagetypes.basic, xscale * scale, false))
+			with (create_afterimage(afterimagetypes.plain, xscale * scale, false))
 			{
 				image_xscale = other.xscale * other.scale;
 				image_yscale = other.yscale * other.scale;
@@ -490,7 +490,6 @@ function cutscene_backtohub_middle()
 					create_particle(x, y + 39, spr_bangEffect);
 					create_particle(x, y, spr_landcloud);
 				}
-				
 				break;
 			case spr_player_PZ_fall_outOfControl:
 			case spr_player_PZ_geyser:
@@ -511,7 +510,6 @@ function cutscene_backtohub_middle()
 					actorbuffer = 25;
 					event_play_oneshot("event:/SFX/player/splat", x, y);
 				}
-				
 				break;
 			case spr_player_PZ_slipSlide_end:
 				if (sprite_animation_end())
@@ -521,7 +519,6 @@ function cutscene_backtohub_middle()
 					fakeVSP = -6;
 					actorbuffer = 10;
 				}
-				
 				break;
 		}
 	}

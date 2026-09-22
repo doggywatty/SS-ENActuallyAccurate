@@ -18,9 +18,9 @@ function scr_parallaxbg_init()
 	if (!layernum)
 		exit;
 	
-	var _f = function(arg0, arg1)
+	var _f = function(_layerid1, _layerid2)
 	{
-		return layer_get_depth(arg1) - layer_get_depth(arg0);
+		return layer_get_depth(_layerid2) - layer_get_depth(_layerid1);
 	};
 	
 	array_sort(layers, _f);
@@ -40,7 +40,7 @@ function scr_parallaxbg_start()
 	if (!surface_exists(global.parallaxbg_surface))
 		global.parallaxbg_surface = surface_create(camera_get_view_width(view_camera[0]) + 128, camera_get_view_height(view_camera[0]) + 128);
 	
-	if (event_type == ev_draw && event_number == 0)
+	if (event_type == ev_draw && event_number == ev_draw_normal)
 	{
 		surface_set_target(global.parallaxbg_surface);
 		draw_clear_alpha(c_black, 0);
@@ -61,7 +61,7 @@ function scr_parallaxbg_start()
 
 function scr_parallaxbg_end()
 {
-	if (event_type == ev_draw && event_number == 0)
+	if (event_type == ev_draw && event_number == ev_draw_normal)
 	{
 		gpu_set_blendenable(0);
 		gpu_set_colorwriteenable(0, 0, 0, 1);

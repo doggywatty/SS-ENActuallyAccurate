@@ -1,7 +1,7 @@
 event_inherited();
 onewayDeathSprite = spr_lemonheadblockdead;
 onewayRank = 1;
-solidid = -4;
+solidid = noone;
 
 if (ds_list_find_index(global.SaveRoom, id) == -1)
 {

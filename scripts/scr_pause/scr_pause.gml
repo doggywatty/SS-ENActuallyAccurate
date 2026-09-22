@@ -1,4 +1,4 @@
-function scr_pause_instances(arg0 = false)
+function scr_pause_instances(_inst = false)
 {
 	var dont_pause = [obj_pause, obj_fmod, obj_music, obj_screen, obj_rpc, obj_localizer, obj_gametimer, obj_inputController];
 	musicReverb = fmod_studio_system_get_parameter_by_name("musicReverb").final_value;
@@ -6,7 +6,7 @@ function scr_pause_instances(arg0 = false)
 	fmod_studio_system_set_parameter_by_name("musicReverb", false, true);
 	fmod_studio_system_set_parameter_by_name("sfxReverb", false, true);
 	
-	if (arg0)
+	if (_inst)
 	{
 		if (!is_undefined(global.RoomMusic))
 		{
@@ -36,12 +36,12 @@ function scr_pause_instances(arg0 = false)
 		instance_activate_object(dont_pause[p]);
 }
 
-function scr_unpause_instances(arg0 = false)
+function scr_unpause_instances(_inst = false)
 {
 	fmod_studio_system_set_parameter_by_name("musicReverb", musicReverb, false);
 	fmod_studio_system_set_parameter_by_name("sfxReverb", sfxReverb, false);
 	
-	if (arg0)
+	if (_inst)
 	{
 		fmod_event_setPause_all(false);
 		

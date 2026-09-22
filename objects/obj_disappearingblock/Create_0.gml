@@ -1,13 +1,13 @@
 event_inherited();
 
-canCollide = function(arg0, arg1 = obj_parent_player)
+canCollide = function(_obj, _player = obj_parent_player)
 {
 	var in_object = false;
 	
-	with (arg1)
-		in_object = place_meeting(xprevious, yprevious, arg0);
+	with (_player)
+		in_object = place_meeting(xprevious, yprevious, _obj);
 	
-	return !arg0.destroyed && !in_object;
+	return !_obj.destroyed && !in_object;
 };
 
 dissolveBufferMax = 100;

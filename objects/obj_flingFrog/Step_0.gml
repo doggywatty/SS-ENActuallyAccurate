@@ -11,7 +11,7 @@ candyindex = wrap(candyindex + 0.35, 0, sprite_get_number(spr_flingFrogGrab) - 1
 if (sprite_index == spr_flingfrogmadstart && sprite_animation_end())
 	sprite_index = spr_flingfrogmad;
 
-if (grabbedPlayer != -4)
+if (grabbedPlayer != noone)
 {
 	if (!event_instance_isplaying(pullSND))
 		fmod_studio_event_instance_start(pullSND);
@@ -31,7 +31,7 @@ else
 if (event_instance_isplaying(pullSND))
 	fmod_quick3D(pullSND);
 
-if (grabbedPlayer == -4)
+if (grabbedPlayer == noone)
 {
 	if (distance_to_object(target_player) <= grabRange)
 	{
@@ -93,7 +93,7 @@ if (grabbedPlayer == -4)
 	exit;
 }
 
-if (grabbedPlayer != -4)
+if (grabbedPlayer != noone)
 {
 	with (grabbedPlayer)
 	{
@@ -201,7 +201,7 @@ if (grabbedPlayer != -4)
 			grounded = false;
 		}
 		
-		grabbedPlayer = -4;
+		grabbedPlayer = noone;
 		waitTimer = 25;
 		flingPrepared = false;
 		flingInputStarted = false;

@@ -61,7 +61,6 @@ function scr_playersounds()
 				case "Werecotton":
 					if (!_has_transfo)
 						event_play_oneshot("event:/SFX/cotton/lose", x, y);
-					
 					break;
 			}
 		}

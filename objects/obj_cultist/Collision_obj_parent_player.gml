@@ -33,7 +33,7 @@ with (other)
 			ds_list_add(global.SaveRoom, other.id);
 			
 			for (var i = 0; i < 500; i += 25)
-				create_collect_effect(other.x + irandom_range(-60, 60), other.y + irandom_range(-60, 60), undefined, 25);
+				create_collect_effect(other.x + irandom_range(-60, 60), other.y + irandom_range(-60, 60), , 25);
 			
 			event_play_multiple("event:/SFX/general/collect", x, y);
 			global.Collect += 500;

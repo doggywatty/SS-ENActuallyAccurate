@@ -5,7 +5,7 @@ afterimage++;
 
 if (afterimage > 6)
 {
-	create_afterimage(afterimagetypes.basic);
+	create_afterimage(afterimagetypes.plain);
 	afterimage = 0;
 }
 

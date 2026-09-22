@@ -62,6 +62,5 @@ switch (state)
 		
 		if (obj_parent_player.state != PlayerState.taunt)
 			state = PlayerState.frozen;
-		
 		break;
 }

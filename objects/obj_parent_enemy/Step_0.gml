@@ -33,7 +33,6 @@ switch (state)
 			scr_conveyorBeltKinematics();
 			enemyState_Attack();
 		}
-		
 		break;
 	case PlayerState.run:
 		state_enemyScared();
@@ -89,7 +88,6 @@ switch (state)
 	default:
 		if (is_callable(enemyCustomStates))
 			enemyCustomStates();
-		
 		break;
 }
 
@@ -159,7 +157,7 @@ if (state != PlayerState.run && state != PlayerState.freezeframe)
 
 if (doRedAfterImage && redAfterImagebuffer-- < 0)
 {
-	create_afterimage(afterimagetypes.red, image_xscale);
+	create_afterimage(afterimagetypes.baddie, image_xscale);
 	redAfterImagebuffer = redAfterImagebufferMax;
 }
 

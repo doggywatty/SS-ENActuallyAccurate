@@ -159,7 +159,7 @@ function state_player_machtumble()
 	
 	if (afterimage_timer <= 0)
 	{
-		with (create_afterimage(afterimagetypes.basic, xscale, 0))
+		with (create_afterimage(afterimagetypes.plain, xscale, 0))
 		{
 			image_index = max(other.image_index - 1, 0);
 			vanish = true;

@@ -1,11 +1,11 @@
 collectvanish = false;
-collectboxid = -4;
+collectboxid = noone;
 in_the_void = false;
 platIndex = 0;
 platAlpha = 1;
 depth = 2;
 state = PlayerState.normal;
-candyID = -4;
+candyID = noone;
 scr_collision_init();
 grav = 0.5;
 global.collected = 0;

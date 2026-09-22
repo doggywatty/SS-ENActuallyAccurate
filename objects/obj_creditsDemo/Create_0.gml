@@ -70,7 +70,7 @@ creditEntry = function() constructor
 			active = false;
 		}
 		
-		if (object_id != -4)
+		if (object_id != noone)
 		{
 			if (!object_id.dead)
 			{
@@ -136,14 +136,14 @@ creditEntry = function() constructor
 		draw_text_scribble(x, y, $"[fa_center][fa_top][smallfont]{string_upper(name)}");
 	};
 	
-	static addPaintTopper = function(arg0)
+	static addPaintTopper = function(_ptTopper)
 	{
-		if (!is_array(arg0) && is_real(arg0))
-			arg0 = [arg0];
+		if (!is_array(_ptTopper) && is_real(_ptTopper))
+			_ptTopper = [_ptTopper];
 		
-		for (var i = 0; i < array_length(arg0); i++)
+		for (var i = 0; i < array_length(_ptTopper); i++)
 		{
-			var sp = new subSprite(spr_paintertopper, arg0[i], 0, false);
+			var sp = new subSprite(spr_paintertopper, _ptTopper[i], 0, false);
 			sp.image_xscale = 3;
 			sp.image_yscale = 3;
 			sp.visible = false;
@@ -151,7 +151,7 @@ creditEntry = function() constructor
 		}
 	};
 	
-	static setImages = function(arg0)
+	static setImages = function(_imgs)
 	{
 		for (var i = 0; i < argument_count; i++)
 		{
@@ -168,7 +168,7 @@ creditEntry = function() constructor
 	activated = false;
 	spr_idle = spr_null;
 	spr_dead = spr_null;
-	object_id = -4;
+	object_id = noone;
 	index = -1;
 	name = "";
 	playerPalette = false;
@@ -188,23 +188,23 @@ creditEntry = function() constructor
 	return self;
 };
 
-addCredit = function(arg0, arg1, arg2 = [spr_null, spr_null])
+addCredit = function(_cat, _name, _sprArr = [spr_null, spr_null])
 {
 	var c = new creditEntry();
-	c.name = arg1;
-	c.spr_idle = arg2[0];
-	c.spr_dead = arg2[1];
+	c.name = _name;
+	c.spr_idle = _sprArr[0];
+	c.spr_dead = _sprArr[1];
 	c.index = -1;
 	c.create();
-	array_push(arg0, c);
+	array_push(_cat, c);
 	creditLength++;
 	return c;
 };
 
-addCategory = function(arg0)
+addCategory = function(_cat)
 {
 	var arr = [];
-	array_push(creditEntries, [lang_get(arg0), arr]);
+	array_push(creditEntries, [lang_get(_cat), arr]);
 	killCounterArr[categoryCount] = 0;
 	categoryCount++;
 	return arr;

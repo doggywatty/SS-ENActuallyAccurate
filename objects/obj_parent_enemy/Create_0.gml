@@ -19,7 +19,7 @@ markedForDeath = false;
 jumpedFromBlock = false;
 baddieScareBuffer = 0;
 hasAttacked = false;
-hurtboxID = -4;
+hurtboxID = noone;
 turnTimerMax = 200;
 turnTimer = 0;
 isFlyingEnemy = false;
@@ -59,7 +59,7 @@ baddieSpriteTurn = undefined;
 baddieSpriteHit = undefined;
 baddieSpriteDead = spr_gumslime_dead;
 baddieCollisionMask = spr_enemyCollisionBox;
-paletteSprite = -4;
+paletteSprite = noone;
 paletteSelect = 0;
 hitHsp = 0;
 hitVsp = 0;
@@ -93,11 +93,11 @@ enemyDeath_SpawnDeathFX = function()
 };
 
 //PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPAD
-enemyDeath_awardPoints = function(arg0 = importantEnemy)
+enemyDeath_awardPoints = function(_enemy = importantEnemy)
 {
 	global.ComboTime = 60;
 	
-	if (arg0)
+	if (_enemy)
 		exit;
 	
 	obj_parent_player.superTauntBuffer++;
@@ -108,7 +108,7 @@ enemyDeath_awardPoints = function(arg0 = importantEnemy)
 };
 
 enemyDraw_extra = undefined;
-escapePortalEffect = -4;
-dashCloudID = -4;
+escapePortalEffect = noone;
+dashCloudID = noone;
 birdEffect = new subSprite(spr_enemyBirdEffect);
 angerEffect = new subSprite(spr_angryCloud);

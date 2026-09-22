@@ -7,7 +7,7 @@ maxtime = 0;
 oldPointCollect = 0;
 global.EscapeTime = 4000;
 greyscalefade = 0;
-finalApplicationSurface = -4;
+finalApplicationSurface = noone;
 pointCollectShake = 0;
 Camera_width = room_width;
 Camera_height = room_height;
@@ -34,7 +34,7 @@ chargeCameraY = 0;
 alpha = 1;
 global.currentrank = "D";
 lastRank = "D";
-rankbubblesurface = -4;
+rankbubblesurface = noone;
 bubblescale = 0;
 global.CameraViewWidth = camera_get_view_width(view_camera[0]);
 global.CameraViewHeight = camera_get_view_height(view_camera[0]);
@@ -69,11 +69,11 @@ cameraShakeList = ds_list_create();
 painterdex = 0;
 pizdex = 0;
 
-addCameraShake = function(arg0, arg1, arg2) constructor
+addCameraShake = function(_shakeMag, _shakeDecel, _shakeTime) constructor
 {
-	shakeMag = arg0;
-	shakeDecel = arg1;
-	shakeTime = arg2;
+	shakeMag = _shakeMag;
+	shakeDecel = _shakeDecel;
+	shakeTime = _shakeTime;
 };
 
 cakeHud = 
@@ -93,8 +93,8 @@ cakeHud =
 };
 
 //PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPAD
-drawCakeHudTopping = function(arg0, arg1)
+drawCakeHudTopping = function(_sprite, _collect)
 {
-	if (global.Collect > arg1)
-		draw_sprite(arg0, cakeHud.image_index, cakeHud.x, cakeHud.y);
+	if (global.Collect > _collect)
+		draw_sprite(_sprite, cakeHud.image_index, cakeHud.x, cakeHud.y);
 };

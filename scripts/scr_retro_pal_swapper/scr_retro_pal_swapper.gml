@@ -1,5 +1,5 @@
 //PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDING
-function pal_swap_init_system(arg0, arg1, arg2)
+function pal_swap_init_system(_shader, _html5_spr, _html5_surf)
 {
 	var swapper = 
 	{
@@ -26,30 +26,30 @@ function pal_swap_init_system(arg0, arg1, arg2)
 	
 	if (!swapper.html5)
 	{
-		swapper.shader = arg0;
-		swapper.texel_size[0] = shader_get_uniform(arg0, "u_pixelSize");
-		swapper.uvs[0] = shader_get_uniform(arg0, "u_Uvs");
-		swapper.index[0] = shader_get_uniform(arg0, "u_paletteId");
-		swapper.texture[0] = shader_get_sampler_index(arg0, "u_palTexture");
+		swapper.shader = _shader;
+		swapper.texel_size[0] = shader_get_uniform(_shader, "u_pixelSize");
+		swapper.uvs[0] = shader_get_uniform(_shader, "u_Uvs");
+		swapper.index[0] = shader_get_uniform(_shader, "u_paletteId");
+		swapper.texture[0] = shader_get_sampler_index(_shader, "u_palTexture");
 	}
 	else
 	{
-		if (arg1 == undefined || arg2 == undefined)
+		if (_html5_spr == undefined || _html5_surf == undefined)
 		{
 			show_message("Must provide pal_swap_init_system() with 2 additional arguments for HTML5 Compatible Sprite and Surface Shaders");
 			game_end();
 		}
 		
-		swapper.html5_sprite = arg1;
-		swapper.html5_surface = arg2;
-		swapper.texel_size[1] = shader_get_uniform(arg1, "u_pixelSize");
-		swapper.uvs[1] = shader_get_uniform(arg1, "u_Uvs");
-		swapper.index[1] = shader_get_uniform(arg1, "u_paletteId");
-		swapper.texture[1] = shader_get_sampler_index(arg1, "u_palTexture");
-		swapper.texel_size[2] = shader_get_uniform(arg2, "u_pixelSize");
-		swapper.uvs[2] = shader_get_uniform(arg2, "u_Uvs");
-		swapper.index[2] = shader_get_uniform(arg2, "u_paletteId");
-		swapper.texture[2] = shader_get_sampler_index(arg2, "u_palTexture");
+		swapper.html5_sprite = _html5_spr;
+		swapper.html5_surface = _html5_surf;
+		swapper.texel_size[1] = shader_get_uniform(_html5_spr, "u_pixelSize");
+		swapper.uvs[1] = shader_get_uniform(_html5_spr, "u_Uvs");
+		swapper.index[1] = shader_get_uniform(_html5_spr, "u_paletteId");
+		swapper.texture[1] = shader_get_sampler_index(_html5_spr, "u_palTexture");
+		swapper.texel_size[2] = shader_get_uniform(_html5_surf, "u_pixelSize");
+		swapper.uvs[2] = shader_get_uniform(_html5_surf, "u_Uvs");
+		swapper.index[2] = shader_get_uniform(_html5_surf, "u_paletteId");
+		swapper.texture[2] = shader_get_sampler_index(_html5_surf, "u_palTexture");
 	}
 	
 	swapper.layer_priority = ds_priority_create();
@@ -58,16 +58,16 @@ function pal_swap_init_system(arg0, arg1, arg2)
 	global.retro_pal_swapper = swapper;
 }
 
-function pal_swap_set(arg0, arg1, arg2)
+function pal_swap_set(_spr, _val, _is_surf)
 {
 	var swapper = global.retro_pal_swapper;
 	
-	if (arg1 == 0)
+	if (_val == 0)
 		exit;
 	
 	var mode = 0;
 	
-	if (!arg2)
+	if (!_is_surf)
 	{
 		if (swapper.html5)
 		{
@@ -79,8 +79,8 @@ function pal_swap_set(arg0, arg1, arg2)
 			shader_set(swapper.shader);
 		}
 		
-		var tex = sprite_get_texture(arg0, 0);
-		var UVs = sprite_get_uvs(arg0, 0);
+		var tex = sprite_get_texture(_spr, 0);
+		var UVs = sprite_get_uvs(_spr, 0);
 		texture_set_stage(swapper.texture[mode], tex);
 		var texel_x = texture_get_texel_width(tex);
 		var texel_y = texture_get_texel_height(tex);
@@ -88,7 +88,7 @@ function pal_swap_set(arg0, arg1, arg2)
 		var texel_hy = texel_y * 0.5;
 		shader_set_uniform_f(swapper.texel_size[mode], texel_x, texel_y);
 		shader_set_uniform_f(swapper.uvs[mode], UVs[0] + texel_hx, UVs[1] + texel_hy, UVs[2], UVs[3]);
-		shader_set_uniform_f(swapper.index[mode], arg1);
+		shader_set_uniform_f(swapper.index[mode], _val);
 	}
 	else
 	{
@@ -102,7 +102,7 @@ function pal_swap_set(arg0, arg1, arg2)
 			shader_set(swapper.shader);
 		}
 		
-		var tex = surface_get_texture(arg0);
+		var tex = surface_get_texture(_spr);
 		texture_set_stage(swapper.texture[mode], tex);
 		var texel_x = texture_get_texel_width(tex);
 		var texel_y = texture_get_texel_height(tex);
@@ -110,7 +110,7 @@ function pal_swap_set(arg0, arg1, arg2)
 		var texel_hy = texel_y * 0.5;
 		shader_set_uniform_f(swapper.texel_size[mode], texel_x, texel_y);
 		shader_set_uniform_f(swapper.uvs[mode], texel_hx, texel_hy, 1 + texel_hx, 1 + texel_hy);
-		shader_set_uniform_f(swapper.index[mode], arg1);
+		shader_set_uniform_f(swapper.index[mode], _val);
 	}
 }
 
@@ -130,24 +130,24 @@ function pal_swap_layer_init()
 	ds_priority_clear(global.retro_pal_swapper.layer_temp_priority);
 }
 
-function pal_swap_set_layer(arg0, arg1, arg2, arg3)
+function pal_swap_set_layer(_spr, _ind, _val, _is_surf)
 {
-	var data = ds_map_find_value(global.retro_pal_swapper.layer_map, arg2);
+	var data = ds_map_find_value(global.retro_pal_swapper.layer_map, _val);
 	
 	if (data == undefined)
 		exit;
 	
 	ds_map_set(global.retro_pal_swapper.layer_map, _layer_index, 
 	{
-		sprite: arg0,
-		index: arg1,
-		is_surf: arg3
+		sprite: _spr,
+		index: _ind,
+		is_surf: _is_surf
 	});
 }
 
-function pal_swap_enable_layer(arg0)
+function pal_swap_enable_layer(_layer)
 {
-	if (!layer_exists(arg0))
+	if (!layer_exists(_layer))
 		exit;
 	
 	var data = 
@@ -157,7 +157,7 @@ function pal_swap_enable_layer(arg0)
 		is_surf: undefined
 	};
 ///PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDI
-	layer_script_begin(arg0, function()
+	layer_script_begin(_layer, function()
 	{
 		if (event_type == ev_draw)
 		{
@@ -172,7 +172,7 @@ function pal_swap_enable_layer(arg0)
 		}
 	});
 ///PADDINGPADDINGPADDINGPADDINGPADDINGPADDI
-	layer_script_end(arg0, function()
+	layer_script_end(_layer, function()
 	{
 		if (event_type == ev_draw)
 		{
@@ -185,6 +185,6 @@ function pal_swap_enable_layer(arg0)
 			}
 		}
 	});
-	ds_map_set(global.retro_pal_swapper.layer_map, arg0, data);
-	ds_priority_add(global.retro_pal_swapper.layer_priority, arg0, layer_get_depth(arg0));
+	ds_map_set(global.retro_pal_swapper.layer_map, _layer, data);
+	ds_priority_add(global.retro_pal_swapper.layer_priority, _layer, layer_get_depth(_layer));
 }

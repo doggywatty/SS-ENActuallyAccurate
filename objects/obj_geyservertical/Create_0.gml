@@ -10,14 +10,14 @@ depth=11;
 sound=event_play_oneshot("event:/SFX/general/geyser",(x - sprite_xoffset) + (sprite_width / 2),bbox_top);
 ambianceSND=fmod_createEventInstance("event:/SFX/general/geyserambiance");
 fmod_studio_event_instance_start(ambianceSND);
-solidCollideFunc=function(arg0=obj_parent_player)
+solidCollideFunc=function(_player=obj_parent_player)
 {
-	switch (arg0.object_index)
+	switch (_player.object_index)
 	{
 		case obj_parent_player:
 		case obj_player1:
 		case obj_player2:
-			var _state=global.freezeframe ? arg0.frozenState : arg0.state;
+			var _state=global.freezeframe ? _player.frozenState : _player.state;
 			return _state != PlayerState.ladder;
 			break;
 		default:
@@ -26,9 +26,9 @@ solidCollideFunc=function(arg0=obj_parent_player)
 	}
 };
 //PADDINGPADDINGPADDINGPADDINGPADDINGPADDIN
-nonsolidCollideFunc=function(arg0=obj_parent_player)
+nonsolidCollideFunc=function(_player=obj_parent_player)
 {
-	switch (arg0.object_index)
+	switch (_player.object_index)
 	{
 		case obj_parent_player:
 		case obj_player1:

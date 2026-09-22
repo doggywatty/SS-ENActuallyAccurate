@@ -69,6 +69,5 @@ switch (state)
 					scr_taunt_setVariables();
 			}
 		}
-		
 		break;
 }

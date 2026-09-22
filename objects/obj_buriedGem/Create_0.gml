@@ -5,7 +5,7 @@ hsp = 0;
 dugup = false;
 depth = 4;
 image_speed = 0.75;
-playerID = -4;
+playerID = noone;
 gemPopID = $"{string(id)}_gem_collectible";
 random_set_seed(global.RandomSeed + x + y);
 sprite_index = choose(spr_minesgem1, spr_minesgem2, spr_minesgem3, spr_minesgem4, spr_minesgem5);

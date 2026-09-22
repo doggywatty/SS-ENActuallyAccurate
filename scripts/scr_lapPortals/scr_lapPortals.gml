@@ -59,7 +59,7 @@ function cutscene_lapPortal_start()
 
 function cutscene_lapPortal_middle()
 {
-	static portal = -4;
+	static portal = noone;
 	
 	var finished = false;
 	global.ComboFreeze = 2;

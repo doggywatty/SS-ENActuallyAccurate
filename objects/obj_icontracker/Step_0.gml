@@ -15,5 +15,5 @@ with (target)
 
 visible = !bbox_in_cam;
 
-if (visible_cond != -4 && !bbox_in_cam)
+if (visible_cond != noone && !bbox_in_cam)
 	visible = visible_cond();

@@ -160,7 +160,6 @@ with (HUDObject_comboMeter)
 			
 			if (displayY >= 20)
 				displayState = displaystates.settling;
-			
 			break;
 		case displaystates.settling:
 			displayY = lerp(displayY, 0, 0.05);
@@ -171,7 +170,6 @@ with (HUDObject_comboMeter)
 				displayVSP = 0;
 				displayState = displaystates.active;
 			}
-			
 			break;
 		case displaystates.active:
 			var _setVSP = -1;
@@ -194,7 +192,6 @@ with (HUDObject_comboMeter)
 			{
 				displayY = approach(displayY, 0, 10);
 			}
-			
 			break;
 	}
 	

@@ -16,7 +16,7 @@ openSpr = spr_enterexitgate;
 closingSpr = spr_exitgateclosing;
 closedspr = spr_exitgateclosed;
 
-if (true && global.InternalLevelName != "none")
+if (isDemo && global.InternalLevelName != "none")
 {
 	instance_create(x, y - 119, obj_paintertopper, 
 	{

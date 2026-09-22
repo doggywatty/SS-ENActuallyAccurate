@@ -45,7 +45,7 @@ switch (state)
 			state = enemystates.cherryWait;
 			visible = false;
 			
-			if (content != -4)
+			if (content != noone)
 			{
 				with (instance_create(x + _old_hsp, y, content))
 				{
@@ -57,14 +57,12 @@ switch (state)
 				}
 			}
 		}
-		
 		break;
 	case enemystates.cherryWait:
-		if (baddieID != -4 && !instance_exists(baddieID))
+		if (baddieID != noone && !instance_exists(baddieID))
 		{
 			instance_destroy();
 			ds_list_add(global.SaveRoom, id);
 		}
-		
 		break;
 }

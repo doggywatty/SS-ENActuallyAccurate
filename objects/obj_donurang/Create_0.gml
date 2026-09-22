@@ -1,6 +1,6 @@
 movespeed = 20;
 hsp = 0;
-player = -4;
+player = noone;
 returning = false;
 throwbuffer = 12;
 accel = 0.65;

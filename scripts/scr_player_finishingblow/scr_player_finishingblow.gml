@@ -34,7 +34,7 @@ function state_player_finishingblow()
 		event_play_oneshot("event:/SFX/enemies/killingblow", x, y);
 		camera_shake_add(5, 20);
 		scr_finishingBlow(baddieGrabbedID, id);
-		baddieGrabbedID = -4;
+		baddieGrabbedID = noone;
 		
 		if (!instance_exists(obj_instakillHitbox))
 		{
@@ -50,7 +50,7 @@ function state_player_finishingblow()
 	
 	if (afterimage_timer <= 0)
 	{
-		with (create_afterimage(choose(afterimagetypes.blue, afterimagetypes.pink), xscale, true))
+		with (create_afterimage(choose(afterimagetypes.mach3effect_1, afterimagetypes.mach3effect_2), xscale, true))
 			basicAfterimage = false;
 		
 		afterimage_timer = 5;

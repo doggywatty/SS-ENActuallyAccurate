@@ -1,25 +1,25 @@
-function scr_player_changeCharacter(arg0 = obj_player1, arg1, arg2 = false)
+function scr_player_changeCharacter(_player = obj_player1, _character, _choosen_char = false)
 {
-	with (arg0)
+	with (_player)
 	{
 		previousCharacter = global.playerCharacter;
-		global.playerCharacter = arg1;
+		global.playerCharacter = _character;
 		
-		if (!arg2)
-			mainPlayerCharacter = arg1;
+		if (!_choosen_char)
+			mainPlayerCharacter = _character;
 		
 		scr_characterSprite();
 	}
 }
 
-function scr_playerrespawn(arg0 = true, arg1 = false)
+function scr_playerrespawn(_respawn = true, _drowned = false)
 {
-	if (!arg0)
+	if (!_respawn)
 	{
 		if (state != PlayerState.gameover && (state != PlayerState.actor || instance_exists(obj_techdiff)) && state != PlayerState.fling && !place_meeting(x, y + 32, obj_vertical_hallway) && !instance_exists(obj_fadeoutTransition) && room != timesuproom && room != rank_room)
 		{
 			var _checkpoint = instance_nearest(x, y, obj_checkpoint_invis);
-			var _checkpointReal = -4;
+			var _checkpointReal = noone;
 			
 			with (obj_checkpoint)
 			{
@@ -54,7 +54,7 @@ function scr_playerrespawn(arg0 = true, arg1 = false)
 	}
 	else if (!instance_exists(obj_techdiff))
 	{
-		if (!arg1)
+		if (!_drowned)
 		{
 			event_play_oneshot("event:/SFX/player/groundpound", x, room_height - 100);
 			camera_shake_add(3, 3);
@@ -64,7 +64,7 @@ function scr_playerrespawn(arg0 = true, arg1 = false)
 		
 		instance_create(x, y, obj_techdiff, 
 		{
-			drowned: arg1
+			drowned: _drowned
 		});
 		state = PlayerState.actor;
 	}

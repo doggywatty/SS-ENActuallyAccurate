@@ -117,7 +117,7 @@ switch (state)
 
 if (hsp != 0)
 {
-	with (create_afterimage(afterimagetypes.basic, image_xscale))
+	with (create_afterimage(afterimagetypes.plain, image_xscale))
 	{
 		gonealpha = 0.45;
 		alarm[0] = 1;

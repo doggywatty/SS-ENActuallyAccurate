@@ -4,7 +4,7 @@ image_speed = 0.5;
 image_alpha = 1;
 storedimage = obj_parent_player.image_index;
 sprite_index = obj_parent_player.sprite_index;
-color = choose(#010000, #020000);
+color = choose(1, 2);
 realcol = 
 {
 	r: 0,

@@ -1,8 +1,8 @@
-function scr_gamecaptions(arg0 = room)
+function scr_gamecaptions(_room = room)
 {
 	var game_caption = undefined;
 	
-	switch (arg0)
+	switch (_room)
 	{
 		case rm_preinitializer:
 		case rm_initializer:
@@ -77,11 +77,11 @@ function scr_gamecaptions(arg0 = room)
 		return game_caption;
 }
 
-function scr_roomnames(arg0 = room)
+function scr_roomnames(_room = room)
 {
 	var room_name = "NO ROOMNAME FOUND-1265";
 	
-	switch (arg0)
+	switch (_room)
 	{
 		case rm_missing:
 			room_name = "romname_missing";

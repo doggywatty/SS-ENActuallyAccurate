@@ -1,16 +1,16 @@
-function scr_sleep(arg0 = undefined)
+function scr_sleep(_freezetime = undefined)
 {
 	with (obj_camera)
 	{
 		if (global.hitstunalarm <= -1 && !global.freezeframe)
 		{
-			if (is_undefined(arg0))
+			if (is_undefined(_freezetime))
 			{
 				freezetype = false;
 			}
 			else
 			{
-				freezeval = arg0;
+				freezeval = _freezetime;
 				freezetype = true;
 			}
 			
@@ -19,10 +19,10 @@ function scr_sleep(arg0 = undefined)
 	}
 }
 
-function scr_sleep_ext(arg0)
+function scr_sleep_ext(_milisecs)
 {
 	var time = current_time;
-	var ms = arg0;
+	var ms = _milisecs;
 	
 	do
 	{

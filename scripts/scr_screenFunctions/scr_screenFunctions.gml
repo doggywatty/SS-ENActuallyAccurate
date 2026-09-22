@@ -1,7 +1,7 @@
 //PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGP
-function surface_prepare_aa_filter(arg0)
+function surface_prepare_aa_filter(_surftex)
 {
-	var surf_tex = surface_get_texture(arg0);
+	var surf_tex = surface_get_texture(_surftex);
 	var tw = texture_get_texel_width(surf_tex);
 	var th = texture_get_texel_height(surf_tex);
 	shader_set(shd_pixelscale);
@@ -46,21 +46,21 @@ function calculate_letterbox_params()
 	};
 }
 
-function set_fullscreen_option(arg0)
+function set_fullscreen_option(_val)
 {
 	var previous_val = global.fullscreen;
-	global.fullscreen = arg0;
+	global.fullscreen = _val;
 	
 	with (obj_screen)
 		alarm[0] = 1;
 	
-	option_create_confirm(previous_val, function(arg0)
+	option_create_confirm(previous_val, function(_val)
 	{
 		quick_write_option("Settings", "fullscrn", global.fullscreen);
 ///PADDINGPAD
-	}, function(arg0)
+	}, function(_val)
 	{
-		global.fullscreen = arg0;
+		global.fullscreen = _val;
 		
 		with (obj_screen)
 			alarm[0] = 1;

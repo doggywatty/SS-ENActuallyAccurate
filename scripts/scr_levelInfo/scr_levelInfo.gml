@@ -1,26 +1,26 @@
 global.GameLevelMap = ds_map_create();
 global.InternalLevelName = "none";
 
-function scr_defineTitleCard(arg0, arg1 = "event:/music/w1/entryway_titlecard", arg2 = -4, arg3 = -4) constructor
+function scr_defineTitleCard(_img_ind, _music = "event:/music/w1/entryway_titlecard", _x = -4, _y = -4) constructor
 {
-	image_index = arg0;
-	music = arg1;
-	x = arg2;
-	y = arg3;
+	image_index = _img_ind;
+	music = _music;
+	x = _x;
+	y = _y;
 }
 
-function scr_defineLevel(arg0, arg1, arg2, arg3, arg4 = [], arg5 = 20000, arg6 = -4, arg7 = false)
+function scr_defineLevel(_levelWorld, _internalName, _visualName, _firstRoom, _groupArr = [], _sRankRequirement = 20000, _titleCardInfo = noone, _isBoss = false)
 {
-	ds_map_add(global.GameLevelMap, arg1, 
+	ds_map_add(global.GameLevelMap, _internalName, 
 	{
-		internalName: arg1,
-		levelWorld: arg0,
-		visualName: arg2,
-		groupArr: arg4,
-		firstRoom: arg3,
-		sRankRequirement: arg5,
-		titleCardInfo: arg6,
-		isBoss: arg7
+		internalName: _internalName,
+		levelWorld: _levelWorld,
+		visualName: _visualName,
+		groupArr: _groupArr,
+		firstRoom: _firstRoom,
+		sRankRequirement: _sRankRequirement,
+		titleCardInfo: _titleCardInfo,
+		isBoss: _isBoss
 	});
 }
 
@@ -90,11 +90,11 @@ enum Note
 	C3 = 48
 }
 
-function scr_defineLevelMenuTune(arg0)
+function scr_defineLevelMenuTune(_note)
 {
 	var note_array = [];
 	
-	switch (arg0)
+	switch (_note)
 	{
 		default:
 			note_array = [Note.D1, Note.A1, Note.D2, Note.D1, Note.A1, Note.D2, Note.D1, Note.A1, Note.D1, Note.A1, Note.D2, Note.D1, Note.A1, Note.D2, Note.D1, Note.A1, Note.Cs1, Note.Gs1, Note.Cs2, Note.Cs1, Note.Gs1, Note.Cs2, Note.Cs1, Note.Gs1, Note.Cs1, Note.Gs1, Note.Cs2, Note.Cs1, Note.Cs2, Note.Gs1, Note.Cs1, Note.Gs1];

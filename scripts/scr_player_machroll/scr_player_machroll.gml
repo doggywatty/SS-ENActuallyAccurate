@@ -149,7 +149,7 @@ function state_player_machroll()
 	
 	if (afterimage_timer <= 0)
 	{
-		with (create_afterimage(afterimagetypes.basic, xscale))
+		with (create_afterimage(afterimagetypes.plain, xscale))
 		{
 			gonealpha = 0.8;
 			alarm[0] = 1;

@@ -23,13 +23,13 @@ with (_slope)
 	}
 }
 
-var _c = 255;
+var _c = c_red;
 
 if (vertical)
-	_c = 4235519;
+	_c = c_orange;
 
 if (can_bumpX && can_bumpY)
-	_c = 32768;
+	_c = c_green;
 
 draw_rectangle_color(x + x_adj, y + y_adj, x + (sprite_width / 2) + x_adj, y + (sprite_height / 2) + y_adj, _c, _c, _c, _c, false);
 draw_text(x, y - 32, $"{_xscl}, {_yscl}, CHECKS {can_bumpX}, {can_bumpY}");

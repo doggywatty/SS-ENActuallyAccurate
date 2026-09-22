@@ -7,7 +7,6 @@ switch (ev)
 	case "gamepad discovered":
 		if (gamepad_get_device_count() < 1)
 			break;
-		
 		show_debug_message($"Found gamepad {gp}: {gamepad_get_description(gp)}");
 		device_found = true;
 		showtext = true;

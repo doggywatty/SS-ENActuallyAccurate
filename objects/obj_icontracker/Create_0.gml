@@ -1,5 +1,5 @@
-target = -4;
-visible_cond = -4;
+target = noone;
+visible_cond = noone;
 
 visible_default_cond = function()
 {

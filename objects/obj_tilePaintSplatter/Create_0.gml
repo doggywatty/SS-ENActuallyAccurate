@@ -5,13 +5,13 @@ scale = 0.15;
 random_set_seed(global.RandomSeed + x + y);
 
 if (is_undefined(blendColor))
-	blendColor = choose(49240, 8006092, 16295984, 12512);
+	blendColor = choose(#58c000, #cc297a, #30a8f8, #e03000);
 
 image_index = irandom_range(0, 6) * 3;
 end_image_index = image_index + 2;
 angle = choose(0, 90, 180, 270);
 random_set_seed(global.RandomSeed);
-splatSurface = -4;
+splatSurface = noone;
 
 if (createSplash)
 {
@@ -42,7 +42,7 @@ for (var i = 0; i < array_length(all_layers); i++)
 		tileLayerArr[i] = all_layers[i];
 }
 
-array_sort(tileLayerArr, function(arg0, arg1)
+array_sort(tileLayerArr, function(_layerid_1, _layerid_2)
 {
-	return -(layer_get_depth(arg0) - layer_get_depth(arg1));
+	return -(layer_get_depth(_layerid_1) - layer_get_depth(_layerid_2));
 });

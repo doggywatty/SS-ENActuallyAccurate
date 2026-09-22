@@ -4,12 +4,12 @@ savedIndex = global.PlayerPaletteIndex;
 lockedPalettes = [];
 ini_open("optionData.ini");
 ini_write_real("Palettes", "palette_PZ_exhibition", true);
-var locked_palettes = array_filter(scr_get_palettes(false), function(arg0, arg1)
+var locked_palettes = array_filter(scr_get_palettes(false), function(_tkey, _pal)
 {
-	return !ini_read_real("Palettes", arg0.taskKey, false);
+	return !ini_read_real("Palettes", _tkey.taskKey, false);
 });
 ini_close();
-script_UpArrow = -4;
+script_UpArrow = noone;
 
 for (var i = 0; i < array_length(locked_palettes); i++)
 {

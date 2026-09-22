@@ -1,5 +1,5 @@
 collectvanish = false;
-collectboxid = -4;
+collectboxid = noone;
 in_the_void = false;
 depth = 2;
 global.collected = 0;
