@@ -15,10 +15,17 @@ enum OptionType
 {
 toggle=0,
 sliderLegacy=1,
-choice=2,
+normal=2,
 press=3,
 button=6,
 slider=7
+}
+enum OldOptionType
+{
+Toggle=0,
+Slider=1,
+MultiChoice=2,
+Press=3
 }
 enum ButtonState
 {
@@ -43,9 +50,9 @@ press=3,
 sjump=4,
 crouch=5
 }
-function set_resolution_option(arg0)
+function set_resolution_option(_window)
 {
-window_set_size(global.resolutions[arg0][0],global.resolutions[arg0][1]);
+window_set_size(global.resolutions[_window][0],global.resolutions[_window][1]);
 window_center();
 with(obj_screen)
 {
@@ -58,10 +65,10 @@ global.gameframe_default_cursor=global.DefaultCursor;
 function create_option() constructor
 {
 //PADDINGPADDINGPADDINGPA
-static add_icon=function(arg0,arg1)
+static add_icon=function(_spr_ind,img_ind)
 {
-sprite_index=arg0;
-image_index=arg1;
+sprite_index=_spr_ind;
+image_index=img_ind;
 return self;
 };
 value=0;
@@ -72,67 +79,67 @@ translate_name=true;
 on_toggle=undefined;
 on_slide=undefined;
 on_stop=undefined;
-sound=-4;
+sound=noone;
 alpha=1;
 moving=false;
 show_percent=false;
-sprite_index=-4;
+sprite_index=noone;
 image_index=0;
 icon_alpha=0;
 }
-function option_normal(arg0,arg1,arg2,arg3,arg4=true):create_option() constructor
+function option_normal(_id,_options,_on_toggle,_value,_translate_opt=true):create_option() constructor
 {
-id=arg0;
-type=OptionType.choice;
-options=arg1;
-on_toggle=arg2;
-value=arg3;
-translate_opt=arg4;
+id=_id;
+type=OptionType.normal;
+options=_options;
+on_toggle=_on_toggle;
+value=_value;
+translate_opt=_translate_opt;
 }
-function option_button(arg0,arg1):create_option() constructor
+function option_button(_id,_on_toggle):create_option() constructor
 {
-id=arg0;
-on_toggle=arg1;
+id=_id;
+on_toggle=_on_toggle;
 type=OptionType.button;
 }
-function option_slider(arg0,arg1,arg2,arg3,arg4=-4,arg5=false):create_option() constructor
+function option_slider(_id,_on_slide,_on_stop,_value,_sound=noone,_show_percent=false):create_option() constructor
 {
-id=arg0;
-on_slide=arg1;
-on_stop=arg2;
+id=_id;
+on_slide=_on_slide;
+on_stop=_on_stop;
 type=OptionType.slider;
-sound=arg4;
-value=arg3;
-show_percent=arg5;
+sound=_sound;
+value=_value;
+show_percent=_show_percent;
 }
-function option_goto(arg0,arg1=0)
+function option_goto(_optionMenu,_optionSelected=0)
 {
 var _OldMenu=optionMenu;
-optionMenu=arg0;
-optionSelected=arg1;
+optionMenu=_optionMenu;
+optionSelected=_optionSelected;
 inputBuffer=2;
 event_user(0);
 }
-function option_create_confirm(arg0,arg1,arg2)
+function option_create_confirm(_previousValue,_confirmFunc,_resetFunc)
 {
 return instance_create(0,0,obj_option_confirm,
 {
-previousValue:arg0,
-confirmFunc:arg1,
-resetFunc:arg2
+previousValue:_previousValue,
+confirmFunc:_confirmFunc,
+resetFunc:_resetFunc
 });
 }
-function draw_option(arg0,arg1,arg2,arg3)
+function draw_option(_x,_y,_string,_color)
 {
 draw_set_color(c_white);
-if (!arg3)
+if (!_color)
 draw_set_color(#666666);
-draw_text(arg0,arg1,arg2);
+draw_text(_x,_y,_string);
 draw_set_color(c_white);
 }
-function update_option_format(arg0,arg1)
+function update_option_format(_ver,_num)
 {
-switch (arg0)
+switch (_ver)
 {
 case 0:
 if (ini_key_exists("Settings","resolution"))
@@ -211,101 +218,101 @@ with(obj_screen)
 event_perform(ev_alarm,0);
 scr_initKeyNameMap();
 }
-function quick_write_option(arg0,arg1,arg2)
+function quick_write_option(_section,_key,_strvalue)
 {
 ini_open("optionData.ini");
-if (is_string(arg2))
-ini_write_string(arg0,arg1,arg2);
+if (is_string(_strvalue))
+ini_write_string(_section,_key,_strvalue);
 else
-ini_write_real(arg0,arg1,arg2);
+ini_write_real(_section,_key,_strvalue);
 ini_close();
 with(obj_option)
 changedAnyOption=true;
 }
-function create_option_menu(arg0,arg1,arg2,arg3=camera_get_view_width(view_camera[0]) / 2,arg4=150,arg5=25)
+function create_option_menu(_centered,_backto,_options,_xpad=camera_get_view_width(view_camera[0]) / 2,_ypad=150,_textpad=25)
 {
-return -4;
+return noone;
 var q=
 {
-centered:arg0,
-backto:arg1,
-options:arg2,
-xpad:arg3,
-ypad:arg4,
-textpad:arg5
+centered:_centered,
+backto:_backto,
+options:_options,
+xpad:_xpad,
+ypad:_ypad,
+textpad:_textpad
 };
 return q;
 }
-function create_option_toggle(arg0,arg1,arg2,arg3)
+function create_option_toggle(_option,_name,_desc,_func)
 {
-return -4;
+return noone;
 var q=
 {
-name:arg1,
-desc:arg2,
-type:OptionType.toggle,
+name:_name,
+desc:_desc,
+type:OldOptionType.Toggle,
 alpha:1,
-func:arg3,
+func:_func,
 value:0
 };
-array_push(arg0,q);
+array_push(_option,q);
 return q;
 }
-function create_option_press(arg0,arg1,arg2,arg3)
+function create_option_press(_option,_name,_desc,_func)
 {
-return -4;
+return noone;
 var q=
 {
-name:arg1,
-desc:arg2,
-type:OptionType.press,
+name:_name,
+desc:_desc,
+type:OldOptionType.Press,
 alpha:1,
-func:arg3,
+func:_func,
 value:0
 };
-array_push(arg0,q);
+array_push(_option,q);
 return q;
 }
-function create_option_multichoice(arg0,arg1,arg2,arg3,arg4)
+function create_option_multichoice(_option,_name,_desc,_choices,_func)
 {
-return -4;
+return noone;
 var q=
 {
-name:arg1,
-desc:arg2,
-type:OptionType.choice,
+name:_name,
+desc:_desc,
+type:OldOptionType.MultiChoice,
 alpha:1,
-choices:arg3,
-func:arg4,
+choices:_choices,
+func:_func,
 value:0
 };
-array_push(arg0,q);
+array_push(_option,q);
 return q;
 }
-function create_option_slider(arg0,arg1,arg2,arg3,arg4,arg5=undefined)
+function create_option_slider(_option,_name,_desc,_on_move,_on_stop,_sound=undefined)
 {
-return -4;
+return noone;
 var q=
 {
-name:arg1,
-desc:arg2,
-type:OptionType.sliderLegacy,
+name:_name,
+desc:_desc,
+type:OldOptionType.Slider,
 alpha:1,
-on_move:arg3,
-on_stop:arg4,
+on_move:_on_move,
+on_stop:_on_stop,
 value:0,
 moving:false,
 sound:undefined
 };
-if (!is_undefined(arg5))
-q.sound=fmod_createEventInstance(arg5);
-array_push(arg0,q);
+if (!is_undefined(_sound))
+q.sound=fmod_createEventInstance(_sound);
+array_push(_option,q);
 return q;
 }
-function goto_menu(arg0)
+function goto_menu(_menu)
 {
-return -4;
-selectedmenu=arg0;
+return noone;
+selectedmenu=_menu;
 optionselected=0;
 textScroll=-9999;
 pgHeight=0;

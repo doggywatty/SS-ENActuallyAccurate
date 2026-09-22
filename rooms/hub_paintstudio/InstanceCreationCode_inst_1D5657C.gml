@@ -13,6 +13,6 @@ condition = function()
 };
 output= function()
 {
-	with(100255)
+	with(inst_3CF16967)
 		targetRoom = !global.option_speedrun_timer?hub_molassesB:hub_molasses;
 };

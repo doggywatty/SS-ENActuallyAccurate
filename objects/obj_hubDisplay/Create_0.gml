@@ -22,9 +22,9 @@ displayPages = [];
 currentPage = 0;
 targetPage = 0;
 lastPage = 1;
-script_UpArrow = -4;
+script_UpArrow = noone;
 
-displayPage = function(arg0 = []) constructor
+displayPage = function(_contArr = []) constructor
 {
 	static draw = function()
 	{
@@ -44,15 +44,15 @@ displayPage = function(arg0 = []) constructor
 		}
 	};
 	
-	static getContent = function(arg0 = 0)
+	static getContent = function(_ind = 0)
 	{
-		if (!(arg0 < array_length(contentArr)))
+		if (!(_ind < array_length(contentArr)))
 			return undefined;
 		
-		return contentArr[arg0];
+		return contentArr[_ind];
 	};
 	
-	contentArr = arg0 ?? [];
+	contentArr = _contArr ?? [];
 };
 
 displayElement = function() constructor
@@ -61,10 +61,10 @@ displayElement = function() constructor
 	{
 	};
 	
-	static setIcon = function(arg0, arg1)
+	static setIcon = function(_spr_ind, _img_ind)
 	{
-		sprite_index = arg0;
-		image_index = arg1;
+		sprite_index = _spr_ind;
+		image_index = _img_ind;
 	};
 	
 	properties = {};
@@ -76,30 +76,30 @@ displayElement = function() constructor
 	image_blend = c_white;
 	image_alpha = 1;
 	
-	draw = function(arg0, arg1)
+	draw = function(_x, _y)
 	{
 	};
 };
 
-getPage = function(arg0)
+getPage = function(_page)
 {
-	while (arg0 >= array_length(displayPages))
+	while (_page >= array_length(displayPages))
 		array_push(displayPages, new displayPage());
 	
-	return displayPages[arg0];
+	return displayPages[_page];
 };
 
-addLevel = function(arg0, arg1, arg2 = true, arg3 = true, arg4 = true, arg5 = true)
+addLevel = function(_level, _page, _hasConfecti = true, _hasSecrets = true, _hasTreasure = true, _hasRank = true)
 {
-	var pg = getPage(arg1);
+	var pg = getPage(_page);
 	var l = new displayElement();
 	l.properties = 
 	{
 		isLevel: true,
-		hasConfecti: arg2,
-		hasSecrets: arg3,
-		hasTreasure: arg4,
-		hasRank: arg5,
+		hasConfecti: _hasConfecti,
+		hasSecrets: _hasSecrets,
+		hasTreasure: _hasTreasure,
+		hasRank: _hasRank,
 		confectiArr: [false, false, false, false, false],
 		secretArr: [false, false, false],
 		gotTreasure: 0,
@@ -108,25 +108,25 @@ addLevel = function(arg0, arg1, arg2 = true, arg3 = true, arg4 = true, arg5 = tr
 	var p = l.properties;
 	ini_open(global.SaveFileName);
 	
-	if (arg2)
+	if (_hasConfecti)
 	{
 		for (var i = 0; i < array_length(p.confectiArr); i++)
-			p.confectiArr[i] = ini_read_real("Confecti", $"{arg0}{i + 1}", false);
+			p.confectiArr[i] = ini_read_real("Confecti", $"{_level}{i + 1}", false);
 	}
 	
-	if (arg3)
+	if (_hasSecrets)
 	{
 		for (var i = 0; i < array_length(p.secretArr); i++)
-			p.secretArr[i] = ini_read_real("Secret", arg0 + string(i + 1), false);
+			p.secretArr[i] = ini_read_real("Secret", _level + string(i + 1), false);
 	}
 	
-	if (arg4)
-		p.gotTreasure = ini_read_real("Treasure", arg0, false);
+	if (_hasTreasure)
+		p.gotTreasure = ini_read_real("Treasure", _level, false);
 	
-	if (arg5)
+	if (_hasRank)
 	{
-		p.gotRank = ini_read_string("Ranks", arg0, "");
-		p.gotScore = ini_read_real("Highscore", arg0, 0);
+		p.gotRank = ini_read_string("Ranks", _level, "");
+		p.gotScore = ini_read_real("Highscore", _level, 0);
 	}
 	
 	ini_close();
@@ -134,13 +134,13 @@ addLevel = function(arg0, arg1, arg2 = true, arg3 = true, arg4 = true, arg5 = tr
 	return l;
 };
 
-drawLevel = function(arg0)
+drawLevel = function(_level)
 {
-	var p = struct_get(arg0, "properties");
+	var p = struct_get(_level, "properties");
 	
 	if (!is_undefined(p) && struct_get(p, "isLevel") == true)
 	{
-		draw_sprite(arg0.sprite_index, arg0.image_index, tvwidth / 2, 152);
+		draw_sprite(_level.sprite_index, _level.image_index, tvwidth / 2, 152);
 		var r_arr = ["d", "c", "b", "a", "s", "p"];
 		var ri = 6;
 		

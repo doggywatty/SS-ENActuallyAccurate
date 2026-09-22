@@ -25,10 +25,10 @@ global.keyDrawFont = __scribble_font_add_sprite_ext(spr_keyDrawFont, "ABCDEFGHIJ
 global.MoneyFont = __scribble_font_add_sprite_ext(spr_moneyFont, "0123456789$-", true, 0);
 global.smallnumberfont = __scribble_font_add_sprite_ext(spr_smallnumber, "1234567890-+", true, 0);
 global.captionfont = font_tahoma;
-function directory_get_files(arg0, arg1)
+function directory_get_files(_path, _ext_pat)
 {
 	var fileArr = [];
-	var file = file_find_first($"{arg0}*{arg1}", 0);
+	var file = file_find_first($"{_path}*{_ext_pat}", 0);
 	while (file != "")
 	{
 		array_push(fileArr, file);
@@ -37,9 +37,9 @@ function directory_get_files(arg0, arg1)
 	file_find_close();
 	return fileArr;
 }
-function scr_lang_make_struct(arg0)
+function scr_lang_make_struct(_file)
 {
-	var filePath = string_concat(working_directory, "lang/", arg0);
+	var filePath = string_concat(working_directory, "lang/", _file);
 	var b = buffer_load(filePath);
 	var text = string_split(buffer_read(b, buffer_text), "\n", true);
 	buffer_delete(b);
@@ -78,9 +78,9 @@ function scr_lang_make_struct(arg0)
 	}
 	return res;
 }
-function scr_lang_get_dictionary(arg0)
+function scr_lang_get_dictionary(_file)
 {
-	var filePath = string_concat(working_directory, "lang/", arg0, "/", "Dictionary.json");
+	var filePath = string_concat(working_directory, "lang/", _file, "/", "Dictionary.json");
 	if (!file_exists(filePath))
 		return {};
 	var b = buffer_load(filePath);
@@ -91,18 +91,18 @@ function scr_lang_get_dictionary(arg0)
 	}
 	catch (_ex)
 	{
-		global.langError = $"Unable to load sprite dictionary lang/{arg0}/Dictionary.json";
+		global.langError = $"Unable to load sprite dictionary lang/{_file}/Dictionary.json";
 		return {};
 	}
 }
-function scr_lang_dictionary_fonts_add(arg0, arg1)
+function scr_lang_dictionary_fonts_add(_file, _fonts)
 {
 	trace("Creating lang font dictionary");
 	var fontDict = [];
-	if (struct_exists(arg1, "Fonts"))
-		fontDict = arg1.Fonts;
+	if (struct_exists(_fonts, "Fonts"))
+		fontDict = _fonts.Fonts;
 	var basePath = $"{working_directory}lang/";
-	var path = string_concat(basePath, arg0, "/Fonts");
+	var path = string_concat(basePath, _file, "/Fonts");
 	var init = false;
 	if (!instance_exists(obj_langSpriteLoader))
 		instance_create(0, 0, obj_langSpriteLoader);
@@ -239,25 +239,25 @@ function scr_lang_fonts_init()
 	}
 	ds_map_set(global.langFonts, "_DEFAULT_FONTS", st);
 }
-function scr_lang_get_font_macro(arg0)
+function scr_lang_get_font_macro(_font)
 {
 	return method(
 	{
-		__fnt: arg0
+		__fnt: _font
 	}, function()
 	{
 		return $"[{sprite_get_name(font_get_sprite(variable_global_get(__fnt)))}]";
 	});
 }
-function scr_lang_dictionary_keys_add(arg0, arg1)
+function scr_lang_dictionary_keys_add(_file, _keys)
 {
 	trace("Creating lang specific key sprites");
 	var keyDict = [];
-	if (struct_exists(arg1, "Keys"))
-		keyDict = arg1.Keys;
+	if (struct_exists(_keys, "Keys"))
+		keyDict = _keys.Keys;
 	var define_keys = false;
 	var basePath = $"{working_directory}lang/";
-	var path = string_concat(basePath, arg0, "/Keys");
+	var path = string_concat(basePath, _file, "/Keys");
 	var init = false;
 	if (!instance_exists(obj_langSpriteLoader))
 		instance_create(0, 0, obj_langSpriteLoader);
@@ -308,15 +308,15 @@ function scr_lang_dictionary_keys_add(arg0, arg1)
 		}
 	}
 }
-function scr_lang_dictionary_sprites_add(arg0, arg1)
+function scr_lang_dictionary_sprites_add(_filespr, _sprs)
 {
 	scr_lang_dictionary_sprites_clear();
 	trace("Creating sprite dictionary");
 	var spriteArr = [];
 	var spriteDict = undefined;
-	if (struct_exists(arg1, "Sprites"))
+	if (struct_exists(_sprs, "Sprites"))
 	{
-		spriteDict = arg1.Sprites[0];
+		spriteDict = _sprs.Sprites[0];
 		spriteArr = struct_get_names(spriteDict);
 	}
 	if (is_undefined(spriteDict))
@@ -335,7 +335,7 @@ function scr_lang_dictionary_sprites_add(arg0, arg1)
 	{
 		var s = spriteArr[i];
 		var p = struct_get(spriteDict, s);
-		var fp = string_concat(basePath, arg0, "/Sprites");
+		var fp = string_concat(basePath, _filespr, "/Sprites");
 		if (is_struct(p))
 		{
 			trace("Lang Loading :: Entry is a struct.");
@@ -358,42 +358,42 @@ function scr_lang_dictionary_sprites_add(arg0, arg1)
 		}
 	}
 }
-function scr_lang_sprite_add_struct(arg0, arg1, arg2)
+function scr_lang_sprite_add_struct(_spr, _pos, _spr_type)
 {
-	var _sp = struct_get(arg1, "sprite");
+	var _sp = struct_get(_pos, "sprite");
 	if (is_undefined(_sp))
 	{
-		trace($"Unable to find sprite info for {json_stringify(arg1)}");
+		trace($"Unable to find sprite info for {json_stringify(_pos)}");
 		exit;
 	}
-	trace($"Initializing custom load for {_sp} ({arg0})");
-	var _xo = struct_get(arg1, "xoff");
-	var _yo = struct_get(arg1, "yoff");
+	trace($"Initializing custom load for {_sp} ({_spr})");
+	var _xo = struct_get(_pos, "xoff");
+	var _yo = struct_get(_pos, "yoff");
 	if (is_array(_sp))
 	{
-		scr_lang_sprite_add_array(arg0, _sp, arg2, _xo, _yo);
+		scr_lang_sprite_add_array(_spr, _sp, _spr_type, _xo, _yo);
 		exit;
 	}
-	var spr = scr_lang_sprite_add(arg0, _sp, arg2, _xo, _yo);
+	var spr = scr_lang_sprite_add(_spr, _sp, _spr_type, _xo, _yo);
 	if (spr != "default")
-		ds_map_set(global.langSpritesAsync, spr, arg0);
+		ds_map_set(global.langSpritesAsync, spr, _spr);
 }
-function scr_lang_sprite_add_array(arg0, arg1, arg2, arg3 = undefined, arg4 = undefined)
+function scr_lang_sprite_add_array(_spr, _framedata, _path, _xoff = undefined, _yoff = undefined)
 {
-	var baseSprite = asset_get_index(arg0);
+	var baseSprite = asset_get_index(_spr);
 	var fileCheck = true;
-	for (var i = 0; i < array_length(arg1); i++)
+	for (var i = 0; i < array_length(_framedata); i++)
 	{
 		var nm;
-		if (is_struct(arg1[i]))
-			nm = struct_get(arg1[i], "image") ?? "default";
+		if (is_struct(_framedata[i]))
+			nm = struct_get(_framedata[i], "image") ?? "default";
 		else
-			nm = arg1[i];
+			nm = _framedata[i];
 		if (nm == "default")
 		{
 			continue;
 		}
-		else if (!file_exists($"{arg2}/{nm}.png"))
+		else if (!file_exists($"{_path}/{nm}.png"))
 		{
 			fileCheck = false;
 			break;
@@ -401,7 +401,7 @@ function scr_lang_sprite_add_array(arg0, arg1, arg2, arg3 = undefined, arg4 = un
 	}
 	if (!fileCheck || !sprite_exists(baseSprite))
 	{
-		global.langError = $"Unable to find all assets for lang sprite at {arg2}";
+		global.langError = $"Unable to find all assets for lang sprite at {_path}";
 		trace(global.langError);
 		exit;
 	}
@@ -410,16 +410,16 @@ function scr_lang_sprite_add_array(arg0, arg1, arg2, arg3 = undefined, arg4 = un
 	var sh = sprite_get_height(baseSprite);
 	var sp = sprite_get_speed(baseSprite);
 	var spT = sprite_get_speed_type(baseSprite);
-	if (is_undefined(arg3))
-		arg3 = sprite_get_xoffset(baseSprite);
-	if (is_undefined(arg4))
-		arg4 = sprite_get_yoffset(baseSprite);
+	if (is_undefined(_xoff))
+		_xoff = sprite_get_xoffset(baseSprite);
+	if (is_undefined(_yoff))
+		_yoff = sprite_get_yoffset(baseSprite);
 	var builtSprite = undefined;
 	var surf = surface_create(sw, sh);
 	var _fc = 0;
-	for (var i = 0; i < array_length(arg1); i++)
+	for (var i = 0; i < array_length(_framedata); i++)
 	{
-		var current_frame = arg1[i];
+		var current_frame = _framedata[i];
 		var fcount = 1;
 		var nm;
 		if (is_struct(current_frame))
@@ -431,7 +431,7 @@ function scr_lang_sprite_add_array(arg0, arg1, arg2, arg3 = undefined, arg4 = un
 			{
 				var rframe = variable_clone(current_frame);
 				struct_set(rframe, "repeat", repeat_count - 1);
-				array_insert(arg1, i + 1, rframe);
+				array_insert(_framedata, i + 1, rframe);
 			}
 		}
 		else
@@ -442,57 +442,57 @@ function scr_lang_sprite_add_array(arg0, arg1, arg2, arg3 = undefined, arg4 = un
 		{
 			surface_set_target(surf);
 			draw_clear_alpha(c_white, 0);
-			draw_sprite(baseSprite, i, arg3, arg4);
+			draw_sprite(baseSprite, i, _xoff, _yoff);
 			surface_reset_target();
 			if (is_undefined(builtSprite))
-				builtSprite = sprite_create_from_surface(surf, 0, 0, sw, sh, false, false, arg3, arg4);
+				builtSprite = sprite_create_from_surface(surf, 0, 0, sw, sh, false, false, _xoff, _yoff);
 			else
 				sprite_add_from_surface(builtSprite, surf, 0, 0, sw, sh, false, false);
 		}
 		else
 		{
-			var f = $"{arg2}/{nm}.png";
+			var f = $"{_path}/{nm}.png";
 			if (is_undefined(builtSprite))
 			{
-				builtSprite = sprite_add(f, fcount, false, false, arg3, arg4);
+				builtSprite = sprite_add(f, fcount, false, false, _xoff, _yoff);
 			}
 			else
 			{
-				var _tempspr = sprite_add(f, fcount, false, false, arg3, arg4);
+				var _tempspr = sprite_add(f, fcount, false, false, _xoff, _yoff);
 				sprite_merge(builtSprite, _tempspr);
 				sprite_delete(_tempspr);
 			}
 		}
 		_fc += fcount;
-		if (i >= (array_length(arg1) - 1) && _fc < n)
-			array_push(arg1, "default");
+		if (i >= (array_length(_framedata) - 1) && _fc < n)
+			array_push(_framedata, "default");
 	}
 	surface_free(surf);
 	if (is_undefined(builtSprite))
 		exit;
-	trace($"Added extended lang sprite for {arg0} with length {sprite_get_number(builtSprite)}");
+	trace($"Added extended lang sprite for {_spr} with length {sprite_get_number(builtSprite)}");
 	sprite_set_speed(builtSprite, sp, spT);
 	ds_map_set(global.langSprites, baseSprite, builtSprite);
 	ds_map_set(global.langSpriteKeys, builtSprite, baseSprite);
 	lang_sprite_check_persistence(baseSprite, builtSprite);
 }
-function scr_lang_sprite_add(arg0, arg1, arg2, arg3 = undefined, arg4 = undefined)
+function scr_lang_sprite_add(_spr, _spr1, _spr2, _x = undefined, _y = undefined)
 {
-	var f = $"{arg2}/{arg1}.png";
-	var s = asset_get_index(arg0);
+	var f = $"{_spr2}/{_spr1}.png";
+	var s = asset_get_index(_spr);
 	if (!file_exists(f) || !sprite_exists(s))
 	{
 		trace($"Unable to find lang sprite {f}");
 		global.langError = $"Unable to find lang sprite {f}";
 		return "default";
 	}
-	trace($"Creating sprite {f} for {arg0}");
+	trace($"Creating sprite {f} for {_spr}");
 	var n = sprite_get_number(s);
-	if (is_undefined(arg3))
-		arg3 = sprite_get_xoffset(s);
-	if (is_undefined(arg4))
-		arg4 = sprite_get_yoffset(s);
-	return sprite_add_ext(f, n, arg3, arg4, true);
+	if (is_undefined(_x))
+		_x = sprite_get_xoffset(s);
+	if (is_undefined(_y))
+		_y = sprite_get_yoffset(s);
+	return sprite_add_ext(f, n, _x, _y, true);
 }
 function scr_lang_dictionary_sprites_clear()
 {
@@ -507,10 +507,10 @@ function scr_lang_dictionary_sprites_clear()
 	}
 	trace("Cleared lang sprite dictionary");
 }
-function scr_lang_set_file(arg0)
+function scr_lang_set_file(_file)
 {
 	var prev_lang_struct = global.langStruct;
-	global.langStruct = scr_lang_make_struct(arg0);
+	global.langStruct = scr_lang_make_struct(_file);
 	if (is_undefined(global.langStruct))
 	{
 		global.langStruct = prev_lang_struct;
@@ -523,7 +523,7 @@ function scr_lang_set_file(arg0)
 		trace("FAILED TO GET THE DICTIONARY FOR SELECTED LANGUAGE");
 		return false;
 	}
-	global.langName = string_copy(arg0, 1, string_length(arg0) - 4);
+	global.langName = string_copy(_file, 1, string_length(_file) - 4);
 	if (variable_struct_exists(global.langStruct, "langFolder"))
 	{
 		scr_lang_dictionary_sprites_add(global.langStruct.langFolder, global.langStruct.langDictionary);
@@ -531,7 +531,7 @@ function scr_lang_set_file(arg0)
 		scr_lang_dictionary_keys_add(global.langStruct.langFolder, global.langStruct.langDictionary);
 	}
 	lang_refresh_store();
-	trace($"Loaded new lang file ({arg0})");
+	trace($"Loaded new lang file ({_file})");
 	return true;
 }
 function scr_lang_reload()
@@ -604,38 +604,38 @@ function scr_lang_init()
 		global.langError = "Could not find any files in lang folder!";
 	trace("Initiated language: ", lang_get("language"));
 }
-function lang_key_exists(arg0)
+function lang_key_exists(_key)
 {
-	if (is_undefined(global.langDefault) || !variable_struct_exists(global.langDefault, arg0))
+	if (is_undefined(global.langDefault) || !variable_struct_exists(global.langDefault, _key))
 		return false;
 	return true;
 }
-function lang_get(arg0, arg1 = undefined)
+function lang_get(_langval, _cont = undefined)
 {
 	var content = "";
-	if (is_undefined(global.langStruct) || !variable_struct_exists(global.langStruct, arg0))
+	if (is_undefined(global.langStruct) || !variable_struct_exists(global.langStruct, _langval))
 	{
-		if (!is_undefined(global.langDefault) && variable_struct_exists(global.langDefault, arg0))
+		if (!is_undefined(global.langDefault) && variable_struct_exists(global.langDefault, _langval))
 		{
-			content = variable_struct_get(global.langDefault, arg0);
+			content = variable_struct_get(global.langDefault, _langval);
 			if (string_length(global.langError) < 1)
-				global.langError = $"Could not find value \"{arg0}\" for lang {global.langName}!";
+				global.langError = $"Could not find value \"{_langval}\" for lang {global.langName}!";
 		}
 		else if (string_length(global.langError) < 1)
 		{
-			global.langError = $"No such lang key exists \"{arg0}\"!";
+			global.langError = $"No such lang key exists \"{_langval}\"!";
 		}
 	}
 	else
 	{
-		content = variable_struct_get(global.langStruct, arg0);
+		content = variable_struct_get(global.langStruct, _langval);
 	}
-	if (!is_undefined(arg1))
+	if (!is_undefined(_cont))
 	{
-		for (var i = 0; i < array_length(arg1); i++)
+		for (var i = 0; i < array_length(_cont); i++)
 		{
 			var c = 1;
-			var s = string(arg1[i]);
+			var s = string(_cont[i]);
 			while (c <= string_length(content))
 			{
 				if (string_char_at(content, c) == "/")
@@ -660,28 +660,28 @@ function lang_get(arg0, arg1 = undefined)
 	}
 	return content;
 }
-function lang_group_replace(arg0, arg1 = ["{", "}"], arg2 = global.lang_values)
+function lang_group_replace(_len, _bracs = ["{", "}"], _vals = global.lang_values)
 {
 	var result = "";
-	var len = string_length(arg0);
+	var len = string_length(_len);
 	var captured = false;
 	var buffer = "";
-	var delimOpen = arg1[0];
+	var delimOpen = _bracs[0];
 	var len_open = string_length(delimOpen);
-	var delimClose = arg1[1];
+	var delimClose = _bracs[1];
 	var len_close = string_length(delimClose);
 	for (var i = 1; i <= len; i++)
 	{
-		if (!captured && string_copy(arg0, i, len_open) == delimOpen)
+		if (!captured && string_copy(_len, i, len_open) == delimOpen)
 		{
 			captured = true;
 			i += (len_open - 1);
 		}
-		else if (captured && string_copy(arg0, i, len_close) == delimClose)
+		else if (captured && string_copy(_len, i, len_close) == delimClose)
 		{
 			captured = false;
-			if (ds_map_exists(arg2, buffer))
-				result += ds_map_find_value(arg2, buffer);
+			if (ds_map_exists(_vals, buffer))
+				result += ds_map_find_value(_vals, buffer);
 			else
 				result += (delimOpen + buffer + delimClose);
 			buffer = "";
@@ -689,55 +689,55 @@ function lang_group_replace(arg0, arg1 = ["{", "}"], arg2 = global.lang_values)
 		}
 		else if (captured)
 		{
-			buffer += string_char_at(arg0, i);
+			buffer += string_char_at(_len, i);
 		}
 		else
 		{
-			result += string_char_at(arg0, i);
+			result += string_char_at(_len, i);
 		}
 	}
 	return result;
 }
-function lang_transform_string(arg0)
+function lang_transform_string(_bracs)
 {
-	var result = lang_group_replace(arg0, ["{", "}"], global.lang_values);
+	var result = lang_group_replace(_bracs, ["{", "}"], global.lang_values);
 	return result;
 }
-function lang_get_sprite(arg0)
+function lang_get_sprite(_spr)
 {
 	if (!variable_struct_exists(global.langStruct, "langDictionary"))
 	{
 		trace("Requested sprite from a language with no dictionary!");
-		return arg0;
+		return _spr;
 	}
-	var s = ds_map_find_value(global.langSprites, arg0);
+	var s = ds_map_find_value(global.langSprites, _spr);
 	if (!is_undefined(s))
 		return s;
-	return arg0;
+	return _spr;
 }
-function lang_get_sprite_key(arg0)
+function lang_get_sprite_key(_key)
 {
 	if (!variable_struct_exists(global.langStruct, "langDictionary"))
 	{
 		trace("Requested sprite from a language with no dictionary!");
-		return arg0;
+		return _key;
 	}
-	var s = ds_map_find_value(global.langSpriteKeys, arg0);
+	var s = ds_map_find_value(global.langSpriteKeys, _key);
 	if (!is_undefined(s))
 	{
-		trace($"Found sprite key {sprite_get_name(s)} for lang sprite {sprite_get_name(arg0)}");
+		trace($"Found sprite key {sprite_get_name(s)} for lang sprite {sprite_get_name(_key)}");
 		return s;
 	}
-	trace($"Couldn't find key for lang sprite {sprite_get_name(arg0)}");
-	return arg0;
+	trace($"Couldn't find key for lang sprite {sprite_get_name(_key)}");
+	return _key;
 }
-function lang_sprite_check_persistence(arg0, arg1)
+function lang_sprite_check_persistence(_spr1, _spr2)
 {
-	switch (arg0)
+	switch (_spr1)
 	{
 		case spr_newpause_border:
 			with (obj_pause)
-				pauseBorder = arg1;
+				pauseBorder = spr2;
 			break;
 	}
 }
@@ -752,10 +752,10 @@ function scr_lang_initvals()
 		ds_map_set(global.lang_values, array_get(pair, 0), pair[1]);
 	}
 }
-function font_get_sprite(arg0, arg1 = false)
+function font_get_sprite(_sprinfo, _ind_state = false)
 {
-	var res = font_get_info(arg0).spriteIndex;
-	if (res != -1 && arg1)
+	var res = font_get_info(_sprinfo).spriteIndex;
+	if (res != -1 && _ind_state)
 		return sprite_get_name(res);
 	return res;
 }

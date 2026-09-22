@@ -1,12 +1,12 @@
-function layer_type_get_id(arg0, arg1)
+function layer_type_get_id(_layerid, _element_id)
 {
-	if (layer_exists(arg0))
+	if (layer_exists(_layerid))
 	{
-		var layer_elements = layer_get_all_elements(arg0);
+		var layer_elements = layer_get_all_elements(_layerid);
 		
 		for (var i = 0; i < array_length(layer_elements); i++)
 		{
-			if (layer_get_element_type(layer_elements[i]) == arg1)
+			if (layer_get_element_type(layer_elements[i]) == _element_id)
 				return layer_elements[i];
 		}
 	}
@@ -14,32 +14,32 @@ function layer_type_get_id(arg0, arg1)
 	return -1;
 }
 
-function layer_tilemap_get_id_fixed(arg0)
+function layer_tilemap_get_id_fixed(_layerid)
 {
-	return layer_type_get_id(arg0, 5);
+	return layer_type_get_id(_layerid, layerelementtype_tilemap);
 }
 
-function layer_background_get_id_fixed(arg0)
+function layer_background_get_id_fixed(_layerid)
 {
-	return layer_type_get_id(arg0, 1);
+	return layer_type_get_id(_layerid, layerelementtype_background);
 }
 
-function layer_asset_get_id(arg0)
+function layer_asset_get_id(_layerid)
 {
-	return layer_type_get_id(arg0, 4);
+	return layer_type_get_id(_layerid, layerelementtype_sprite);
 }
 
-function layer_get_all_sprites(arg0)
+function layer_get_all_sprites(_layerid)
 {
 	var temp_array = [];
 	
-	if (layer_exists(arg0))
+	if (layer_exists(_layerid))
 	{
-		var a = layer_get_all_elements(arg0);
+		var a = layer_get_all_elements(_layerid);
 		
 		for (var i = 0; i < array_length(a); i++)
 		{
-			if (layer_get_element_type(a[i]) == 4)
+			if (layer_get_element_type(a[i]) == layerelementtype_sprite)
 				array_push(temp_array, a[i]);
 		}
 	}
@@ -47,17 +47,17 @@ function layer_get_all_sprites(arg0)
 	return temp_array;
 }
 
-function layer_get_all_instances(arg0)
+function layer_get_all_instances(_layerid)
 {
 	var temp_array = [];
 	
-	if (layer_exists(arg0))
+	if (layer_exists(_layerid))
 	{
-		var a = layer_get_all_elements(arg0);
+		var a = layer_get_all_elements(_layerid);
 		
 		for (var i = 0; i < array_length(a); i++)
 		{
-			if (layer_get_element_type(a[i]) == 2)
+			if (layer_get_element_type(a[i]) == layerelementtype_instance)
 				array_push(temp_array, a[i]);
 		}
 	}
@@ -65,9 +65,9 @@ function layer_get_all_instances(arg0)
 	return temp_array;
 }
 
-function layer_change_background(arg0, arg1)
+function layer_change_background(_layer_bg_id, _spr)
 {
-	if (arg0 != arg1)
+	if (_layer_bg_id != _spr)
 	{
 		var a = layer_get_all();
 		
@@ -75,15 +75,15 @@ function layer_change_background(arg0, arg1)
 		{
 			var back_id = layer_background_get_id_fixed(a[i]);
 			
-			if (layer_background_get_sprite(back_id) == arg0)
-				layer_background_sprite(back_id, arg1);
+			if (layer_background_get_sprite(back_id) == _layer_bg_id)
+				layer_background_sprite(back_id, _spr);
 		}
 	}
 }
 
-function layer_change_tileset(arg0, arg1)
+function layer_change_tileset(_layer_tile_id, _tileset)
 {
-	if (arg0 != arg1)
+	if (_layer_tile_id != _tileset)
 	{
 		var a = layer_get_all();
 		
@@ -91,8 +91,8 @@ function layer_change_tileset(arg0, arg1)
 		{
 			var tile_id = layer_tilemap_get_id_fixed(a[i]);
 			
-			if (tilemap_get_tileset(tile_id) == arg0)
-				tilemap_tileset(tile_id, arg1);
+			if (tilemap_get_tileset(tile_id) == _layer_tile_id)
+				tilemap_tileset(tile_id, _tileset);
 		}
 	}
 }

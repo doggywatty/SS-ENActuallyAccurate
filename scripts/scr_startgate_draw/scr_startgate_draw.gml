@@ -29,7 +29,7 @@ function scr_startgate_draw_normal()
 					y += vspeed;
 					image_index += image_speed;
 					
-					if (func != -4)
+					if (func != noone)
 						func();
 					
 					draw_sprite_tiled_ext(sprite_index, image_index, xstart + x, ystart + y + (h - my_height), image_xscale, image_yscale, image_blend, image_alpha);

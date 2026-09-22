@@ -109,6 +109,9 @@ global.GLOBAL_FUN = 0;
 function scr_gameInit()
 {
 	var dbg_mode = debugmode.off;
+	if (GM_build_type == "run")
+		dbg_mode = debugmode.debug;
+
 	var p_i = 0;
 	var p_c = parameter_count();
 	
@@ -178,16 +181,16 @@ function scr_gameInit()
 	global.TransfoPrompt = "";
 	global.TransfoState = PlayerState.normal;
 	global.greyscalefade = 0;
-	global.music = -4;
-	global.harrymusic = -4;
-	global.shopmusic = -4;
+	global.music = noone;
+	global.harrymusic = noone;
+	global.shopmusic = noone;
 	global.PAUSE_contTrack_pos = 0;
 	global.DialogMessage = 0;
 	global.dialogchoices = 0;
 	global.choiced = 0;
 	global.CurrentTime = current_time;
 	global.minesProgress = false;
-	global.cutsceneManager = -4;
+	global.cutsceneManager = noone;
 	global.shellactivate = false;
 	global.showcollisions = false;
 	global.showtiles = true;
@@ -197,7 +200,7 @@ function scr_gameInit()
 	if (global.DebugMode == debugmode.debug || global.DebugMode == debugmode.playtest)
 		global.showcollisions = true;
 	
-	global.parallaxbg_surface = -4;
+	global.parallaxbg_surface = noone;
 	global.ParallaxMap = ds_map_create();
 	scr_default_parallax(true);
 	global.FollowerList = ds_list_create();
@@ -212,7 +215,7 @@ function scr_gameInit()
 	global.Donutfollow = false;
 	global.janitortype = 1;
 	global.lapcount = 0;
-	global.CafeDrawer = -4;
+	global.CafeDrawer = noone;
 	global.PlayerInputDevice = -2;
 	global.PlayerInputDevice2 = -2;
 	global.targetCamX = 0;

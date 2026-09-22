@@ -30,7 +30,7 @@ function state_player_victory()
 		{
 			var level_info = ds_map_find_value(global.GameLevelMap, global.InternalLevelName);
 			
-			if (level_info.titleCardInfo != -4)
+			if (level_info.titleCardInfo != noone)
 			{
 				with (instance_create(x, y, obj_titlecard))
 					info = level_info.titleCardInfo;
@@ -45,7 +45,7 @@ function state_player_victory()
 	
 	if (place_meeting(x, y, obj_startGate))
 	{
-		if (true && global.InternalLevelName != "tutorial")
+		if (isDemo && global.InternalLevelName != "tutorial")
 			sprite_index = spr_enterpainting;
 		else
 			sprite_index = spr_entergate;

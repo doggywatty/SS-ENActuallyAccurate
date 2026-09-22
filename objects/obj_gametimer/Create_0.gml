@@ -72,9 +72,9 @@ livesplitInit = function()
 };
 
 //PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDI
-saveTime = function(arg0 = global.SaveFileName)
+saveTime = function(_file = global.SaveFileName)
 {
-	ini_open(arg0);
+	ini_open(_file);
 	ini_write_real("Game", "frames", global.SaveFrames);
 	ini_write_real("Game", "seconds", global.SaveSeconds);
 	ini_write_real("Game", "minutes", global.SaveMinutes);
@@ -82,12 +82,12 @@ saveTime = function(arg0 = global.SaveFileName)
 };
 
 //PADD
-makeString = function(arg0, arg1, arg2)
+makeString = function(_str1, _str2, _str3)
 {
 	var s_str = "";
 	var m_str = "";
 	var dsec_prec = global.option_speedrun_timer ? 3 : 2;
-	var dsec_str = string_format(arg2 / 60, 1, dsec_prec);
+	var dsec_str = string_format(_str3 / 60, 1, dsec_prec);
 	dsec_str = string_delete(dsec_str, 1, 2);
 	
 	while (string_length(dsec_str) != dsec_prec)
@@ -100,8 +100,8 @@ makeString = function(arg0, arg1, arg2)
 			dsec_str = string_delete(dsec_str, string_length(dsec_str), 1);
 	}
 	
-	var s_real = floor(arg1);
-	arg0 = floor(arg0 + floor(s_real / 60));
+	var s_real = floor(_str2);
+	_str1 = floor(_str1 + floor(s_real / 60));
 	s_real = s_real % 60;
 	
 	if (s_real < 10)
@@ -109,13 +109,13 @@ makeString = function(arg0, arg1, arg2)
 	else
 		s_str = string(s_real);
 	
-	var hours = floor(arg0 / 60);
-	arg0 %= 60;
+	var hours = floor(_str1 / 60);
+	_str1 %= 60;
 	
-	if (arg0 < 10)
-		m_str = $"0{arg0}";
+	if (_str1 < 10)
+		m_str = $"0{_str1}";
 	else
-		m_str = string(arg0);
+		m_str = string(_str1);
 	
 	var days = floor(hours / 24);
 	hours = hours % 24;
@@ -134,21 +134,21 @@ makeString = function(arg0, arg1, arg2)
 };
 
 //PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPA
-addTime = function(arg0 = [], arg1 = [], arg2 = [], arg3 = [])
+addTime = function(_arr1 = [], _arr2 = [], _arr3 = [], _arr4 = [])
 {
 	var rs = 0;
 	
-	while (array_length(arg3) > 0)
-		rs += (array_pop(arg3) * 60 * 60);
+	while (array_length(_arr4) > 0)
+		rs += (array_pop(_arr4) * 60 * 60);
 	
-	while (array_length(arg2) > 0)
-		rs += (array_pop(arg2) * 60);
+	while (array_length(_arr3) > 0)
+		rs += (array_pop(_arr3) * 60);
 	
-	while (array_length(arg1) > 0)
-		rs += array_pop(arg1);
+	while (array_length(_arr2) > 0)
+		rs += array_pop(_arr2);
 	
-	while (array_length(arg0) > 0)
-		rs += (array_pop(arg0) / 60);
+	while (array_length(_arr1) > 0)
+		rs += (array_pop(_arr1) / 60);
 	
 	return rs;
 };

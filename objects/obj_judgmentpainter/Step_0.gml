@@ -39,7 +39,6 @@ switch (progression)
 			progression = 1;
 			chatty = true;
 		}
-		
 		break;
 	case 1:
 		typist.in(1, 0);

@@ -1,7 +1,7 @@
 //PADDINGPADDINGPADDINGPADDI
 event_inherited();
 
-canCollide = function(arg0, arg1 = obj_parent_player)
+canCollide = function(stpl, _player = obj_parent_player)
 {
 	return false;
 };

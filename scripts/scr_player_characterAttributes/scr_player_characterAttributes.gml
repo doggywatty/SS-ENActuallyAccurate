@@ -1,21 +1,21 @@
-function scr_getCharacterPrefix(arg0)
+function scr_getCharacterPrefix(_pref)
 {
 	var character_prefix = ["PZ"];
-	return character_prefix[arg0];
+	return character_prefix[_pref];
 }
 
-function scr_getCharacterSprite(arg0, arg1 = "spr_player_", arg2 = global.playerCharacter)
+function scr_getCharacterSprite(_spr, _spr_ind = "spr_player_", _char = global.playerCharacter)
 {
-	var prefix_length = string_length(arg1);
-	var sprite_name = string_delete(sprite_get_name(arg0), 1, prefix_length + 3);
-	var asset_string = $"{arg1}{scr_getCharacterPrefix(arg2)}_{sprite_name}";
+	var prefix_length = string_length(_spr_ind);
+	var sprite_name = string_delete(sprite_get_name(_spr), 1, prefix_length + 3);
+	var asset_string = $"{_spr_ind}{scr_getCharacterPrefix(_char)}_{sprite_name}";
 	
 	if (asset_get_index(asset_string) <= -1)
 	{
 		if (global.DebugVisuals)
-			show_debug_message($"'{asset_string}' cannot be found. Using '{sprite_get_name(arg0)}'.");
+			show_debug_message($"'{asset_string}' cannot be found. Using '{sprite_get_name(_spr)}'.");
 		
-		return arg0;
+		return _spr;
 	}
 	
 	if (global.DebugVisuals)
@@ -24,9 +24,9 @@ function scr_getCharacterSprite(arg0, arg1 = "spr_player_", arg2 = global.player
 	return asset_get_index(asset_string);
 }
 
-function scr_getCharacterTVSprite(arg0, arg1 = global.playerCharacter)
+function scr_getCharacterTVSprite(_spr, _char = global.playerCharacter)
 {
-	return scr_getCharacterSprite(arg0, "spr_tvHUD_player_", arg1);
+	return scr_getCharacterSprite(_spr, "spr_tvHUD_player_", _char);
 }
 
 function scr_characterSprite()
@@ -246,64 +246,65 @@ function scr_characterTVSprite()
 global.CharacterPalette = [];
 global.StupidWorkaroundFixLater = 0;
 
-function define_player_palette(arg0 = PlayerCharacter.PIZZELLE, arg1, arg2, arg3 = arg2, arg4 = arg3, arg5 = undefined)
+function define_player_palette(_char = PlayerCharacter.PIZZELLE, _palName, _arr_ind1, _arr_ind2 = _arr_ind1, _arr_ind3 = _arr_ind2, _palTexture = undefined)
 {
 	var q = [];
 	
-	if (array_length(global.CharacterPalette[arg0].palettes))
+	if (array_length(global.CharacterPalette[_char].palettes))
 	{
-		var _ref = global.CharacterPalette[arg0].palettes[0].palColors;
+		var _ref = global.CharacterPalette[_char].palettes[0].palColors;
 		array_copy(q, 0, _ref, 0, array_length(_ref));
 	}
 	
 	var _def = q;
 	var array_index = 0;
-	q[array_index++] = arg2;
-	q[array_index++] = arg3;
-	q[array_index++] = arg4;
+	q[array_index++] = _arr_ind1;
+	q[array_index++] = _arr_ind2;
+	q[array_index++] = _arr_ind3;
 	
 	for (var i = 6; i < argument_count; i++)
 		q[array_index++] = argument[i];
 	
 	var struct = 
 	{
-		palName: arg1,
-		palTexture: arg5,
+		palName: _palName,
+		palTexture: _palTexture,
 		palColors: q
 	};
-	array_push(global.CharacterPalette[arg0].palettes, struct);
+	array_push(global.CharacterPalette[_char].palettes, struct);
 }
 
-function index_from_paletteName(arg0, arg1)
+function index_from_paletteName(_pal, _palName)
 {
-	var array = global.CharacterPalette[arg0].palettes;
+	var array = global.CharacterPalette[_pal].palettes;
 	
 	for (var i = 0; i < array_length(array); i++)
 	{
-		if (array[i].palName == arg1)
+		if (array[i].palName == _palName)
 			return i;
 	}
 	
 	return 0;
 }
 
-function define_palette_sprite(arg0, arg1 = [1, 2])
+function define_palette_sprite(_pal, _patternColors = [1, 2])
 {
 	var _struct = 
 	{
 		palettes: [],
 		sprite: noone,
 		debug: noone,
-		patternColors: arg1
+		patternColors: _patternColors
 	};
-	global.CharacterPalette[arg0] = _struct;
+	global.CharacterPalette[_pal] = _struct;
 	trace("INIT PAL BASE : ", _struct);
 }
 
-// DEFAULT: CHARACTER | NAME | CLOTHES | CLOTHES_SHADING | PATCHES | PATTERN | SCOOTER | SCOOTER_DARK | SCOOTER_THRUSTER | SKIN | SKIN_SHADING
+#region Pizzelle Definitions | FROM SS MODDING DATABASE | THANKS UNNOWN
+
 define_palette_sprite(PlayerCharacter.PIZZELLE, [0, 1]);
-//DEFAULT: CHARACTER(PlayerCharacter.PIZZELLE), NAME("palette_PZ_default"), CLOTHES(#ffff40), CLOTHES_SHADING(#e6b83c), PATCHES(#602828), PATTERN(undefined), SCOOTER(#872cd2), SCOOTER_DARK(#200239), SCOOTER_THRUSTER(#786898), SKIN(#ffaa83), SKIN_SHADING(#a03800)
-define_player_palette(PlayerCharacter.PIZZELLE, "palette_PZ_default", #ffff40, #e6b83c, #602828, undefined, #872cd2, #200239, #786898, #ffaa83, #a03800);
+//	DEFAULT:			CHARACTER			NAME					CLOTHES		CLOTHES_SHADING		PATCHES		PATTERN			SCOOTER		SCOOTER_DARK	SCOOTER_THRUSTER	SKIN		SKIN_SHADING
+define_player_palette(PlayerCharacter.PIZZELLE, "palette_PZ_default",	#ffff40,	#e6b83c,			#602828,	undefined,		#872cd2,	#200239,		#786898,			#ffaa83,	#a03800);
 
 // The first palette defined is index 0 in the palette sprite, hence all of these. You can add new colors to the palette this way btw.
 define_player_palette(PlayerCharacter.PIZZELLE, "palette_PZ_classic", #ffffff, #88a8c8, #88a8c8, undefined); // Technically you don't need to add undefined here.
@@ -319,6 +320,9 @@ define_player_palette(PlayerCharacter.PIZZELLE, "palette_PZ_exhibitionentryway",
 define_player_palette(PlayerCharacter.PIZZELLE, "palette_PZ_exhibitionsteamy", undefined, c_black, #FFDEF9, spr_demopattern_steamy, #a880a8, #8038f0, #686090); // Cottontown
 define_player_palette(PlayerCharacter.PIZZELLE, "palette_PZ_exhibitionmineshaft", undefined, c_black, #09447F, spr_demopattern_mineshaft, #60d048, #006858, #006858); // Mines
 define_player_palette(PlayerCharacter.PIZZELLE, "palette_PZ_exhibitionmolasses", undefined, c_black, #006858, spr_demopattern_molasses, #f87018, #b03000, #b03000); // Molasses
+
+#endregion
+
 var palette_surface = surface_create(1, 1);
 
 for (var i = 0; i < array_length(global.CharacterPalette); i++)

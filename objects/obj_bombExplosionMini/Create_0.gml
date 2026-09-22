@@ -1,3 +1,3 @@
 event_inherited();
-parentBaddieID = -4;
+parentBaddieID = noone;
 frog = false;

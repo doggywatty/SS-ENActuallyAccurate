@@ -21,4 +21,12 @@ use_interpolation = true;
 scr_confecti_init();
 sprite_index = spr_appear;
 mask_index = spr_crouchmask;
-state = PlayerState.titlescreen;
+state = confectistate.appear;
+
+enum confectistate
+{
+	normal,
+	taunt,
+	appear,
+	unlock
+}

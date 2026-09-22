@@ -5,28 +5,28 @@ enum ChefTaskCondition
 	endOfLevel=1,
 	onNotify=2
 }
-function ChefTask(arg0,arg1,arg2,arg3,arg4) constructor
+function ChefTask(_taskKey,_conditionType,_taskSprite,_taskIndex,_taskCondition) constructor
 {
-	static setPersistent=function(arg0)
+	static setPersistent=function(_persistent)
 	{
-		persistent=arg0;
+		persistent=_persistent;
 		return self;
 	};
-	taskKey=arg0;
-	conditionType=arg1;
-	taskSprite=arg2;
-	taskIndex=arg3;
-	taskCondition=arg4;
+	taskKey=_taskKey;
+	conditionType=_conditionType;
+	taskSprite=_taskSprite;
+	taskIndex=_taskIndex;
+	taskCondition=_taskCondition;
 	persistent=false;
 	return self;
 }
-function OutfitTask(arg0,arg1,arg2,arg3) : ChefTask(arg0,arg2,lang_get_sprite(spr_paletteUnlock),0,arg3) constructor
+function OutfitTask(_taskKey,_taskChar,_conditionType,_taskFunc) : ChefTask(_taskKey,_conditionType,lang_get_sprite(spr_paletteUnlock),0,_taskFunc) constructor
 {
-	taskCharacter=arg1;
+	taskCharacter=_taskChar;
 }
-function ExhibitionNightSecretTask(arg0,arg1,arg2) : OutfitTask(arg0,arg1,ChefTaskCondition.endOfLevel,-4) constructor
+function ExhibitionNightSecretTask(_taskKey,_taskChar,_secretsCount) : OutfitTask(_taskKey,_taskChar,ChefTaskCondition.endOfLevel,noone) constructor
 {
-	neededSecrets=arg2;
+	neededSecrets=_secretsCount;
 //PADDINGPADDINGPADD
 	taskCondition=function()
 	{
@@ -49,31 +49,31 @@ function ExhibitionNightSecretTask(arg0,arg1,arg2) : OutfitTask(arg0,arg1,ChefTa
 		return false;
 	};
 }
-function scr_award_chef_task(arg0,arg1,arg2)
+function scr_award_chef_task(_taskKey,_taskSprite,_taskIndex)
 {
 	ini_open(global.SaveFileName);
-	var prevUnlocked=ini_read_real("ChefTasks",arg0,false);
-	ini_write_real("ChefTasks",arg0,1);
+	var prevUnlocked=ini_read_real("ChefTasks",_taskKey,false);
+	ini_write_real("ChefTasks",_taskKey,1);
 	ini_close();
 	obj_hudManager.saveAlpha=10;
 	if (!prevUnlocked)
-		ds_queue_enqueue(obj_achievementTracker.chefUnlockQueue,[arg1,arg0,PlayerCharacter.PIZZELLE,arg2]);
-	show_debug_message($"Chef Task Unlocked: {arg0}");
+		ds_queue_enqueue(obj_achievementTracker.chefUnlockQueue,[_taskSprite,_taskKey,PlayerCharacter.PIZZELLE,_taskIndex]);
+	show_debug_message($"Chef Task Unlocked: {_taskKey}");
 }
-function scr_award_palette(arg0,arg1)
+function scr_award_palette(_taskKey,_taskChar)
 {
 	ini_open("optionData.ini");
-	var prevUnlocked=ini_read_real("Palettes",arg0,false);
-	ini_write_real("Palettes",arg0,1);
+	var prevUnlocked=ini_read_real("Palettes",_taskKey,false);
+	ini_write_real("Palettes",_taskKey,1);
 	ini_close();
 	obj_hudManager.saveAlpha=10;
 	if (!prevUnlocked)
 	{
-		ds_queue_enqueue(obj_achievementTracker.chefUnlockQueue,[lang_get_sprite(spr_paletteUnlock),arg0,arg1,0]);
+		ds_queue_enqueue(obj_achievementTracker.chefUnlockQueue,[lang_get_sprite(spr_paletteUnlock),_taskKey,_taskChar,0]);
 		with (obj_paletteChangerMirror)
 			event_perform(ev_create,0);
 	}
-	show_debug_message($"Chef Task Unlocked: {arg0}");
+	show_debug_message($"Chef Task Unlocked: {_taskKey}");
 }
 function scr_check_end_level_chef_tasks()
 {
@@ -112,7 +112,7 @@ function scr_reset_achievement_tracker()
 	with (obj_achievementTracker)
 		event_perform(ev_create,0);
 }
-function scr_task_notify(arg0,arg1=[])
+function scr_task_notify(_taskKey,_taskCond=[])
 {
 	var task=undefined;
 	var arrays=[obj_achievementTracker.activeChefTasks,obj_achievementTracker.activeExhibitionNightSecretTasks];
@@ -125,7 +125,7 @@ function scr_task_notify(arg0,arg1=[])
 		for (var i=0; i < array_length(arrays[a]); i++)
 		{
 			var t=arrays[a][i];
-			if (t.taskKey == arg0)
+			if (t.taskKey == _taskKey)
 			{
 				task=t;
 				check_array=arrays[a];
@@ -136,11 +136,11 @@ function scr_task_notify(arg0,arg1=[])
 	}
 	if (is_undefined(task))
 		exit;
-	trace($"Task Notified: {arg0}");
+	trace($"Task Notified: {_taskKey}");
 	with (obj_achievementTracker)
 	{
 		var ind=array_get_index(check_array,task);
-		if (ind >= 0 && task.conditionType == ChefTaskCondition.onNotify && task.taskCondition(arg1))
+		if (ind >= 0 && task.conditionType == ChefTaskCondition.onNotify && task.taskCondition(_taskCond))
 		{
 			if (palette)
 				scr_award_palette(task.taskKey,task.taskCharacter);
@@ -150,7 +150,7 @@ function scr_task_notify(arg0,arg1=[])
 		}
 	}
 }
-function scr_get_palettes(arg0=true)
+function scr_get_palettes(_statement=true)
 {
 //PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADD
 	var pals=[new ExhibitionNightSecretTask("palette_PZ_exhibitionred",PlayerCharacter.PIZZELLE,3),new ExhibitionNightSecretTask("palette_PZ_exhibitionblack",PlayerCharacter.PIZZELLE,6),new ExhibitionNightSecretTask("palette_PZ_exhibitionpurple",PlayerCharacter.PIZZELLE,9),new ExhibitionNightSecretTask("palette_PZ_noise",PlayerCharacter.PIZZELLE,12),new OutfitTask("palette_PZ_exhibitionbrain",PlayerCharacter.PIZZELLE,ChefTaskCondition.onNotify,function()
@@ -211,23 +211,23 @@ function scr_get_palettes(arg0=true)
 	{
 		return obj_achievementTracker.drownedEnemies >= 3;
 	})];
-	if (arg0)
+	if (_statement)
 	{
 		ini_open("optionData.ini");
 //PADDINGPADDINGPADDINGPAD
-		var _palettes=array_filter(pals,function(arg0,arg1)
+		var _palettes=array_filter(pals,function(_key,_val)
 		{
-			return !ini_read_real("Palettes",arg0.taskKey,false);
+			return !ini_read_real("Palettes",_key.taskKey,false);
 		});
 		ini_close();
 		obj_achievementTracker.activeExhibitionNightSecretTasks=_palettes;
 	}
 	return pals;
 }
-function scr_get_chef_tasks(arg0,arg1=true)
+function scr_get_chef_tasks(_level,_statement=true)
 {
 	var tasks=[];
-	switch (arg0)
+	switch (_level)
 	{
 		case "entryway":
 //PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDIN
@@ -354,7 +354,7 @@ function scr_get_chef_tasks(arg0,arg1=true)
 				return !obj_achievementTracker.hitInMinecart;
 			});
 //PADDINGP
-			tasks[2]=new ChefTask("task_sm_slug",ChefTaskCondition.onNotify,spr_bakertasks_mines,2,function(arg0)
+			tasks[2]=new ChefTask("task_sm_slug",ChefTaskCondition.onNotify,spr_bakertasks_mines,2,function(_val)
 			{
 				obj_achievementTracker.slugsWhacked++;
 				return obj_achievementTracker.slugsWhacked >= 5;
@@ -443,7 +443,7 @@ function scr_get_chef_tasks(arg0,arg1=true)
 			}).setPersistent(true);
 			break;
 	}
-	if (arg1)
+	if (_statement)
 	{
 		ini_open(global.SaveFileName);
 		for (var i=0; i < array_length(tasks); i++)

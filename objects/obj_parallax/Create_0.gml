@@ -6,7 +6,6 @@ lapDeco = ds_list_create();
 if (instance_number(obj_parallax) > 1)
 {
 	var _first = instance_find(obj_parallax, 0);
-	
 	if (id != _first)
 	{
 		instance_destroy();
@@ -30,13 +29,13 @@ target_time_id = 0;
 bgflash = 0;
 greyscalefade = 0;
 scroll1 = 0;
-RealSurface = -4;
+RealSurface = noone;
 use_war = false;
 
-safe_layer_set_depth = function(arg0, arg1)
+safe_layer_set_depth = function(_layer_id, _depth)
 {
-	if (layer_exists(arg0) && number_in_range(arg1, -16000, 16000))
-		layer_depth(arg0, arg1);
+	if (layer_exists(_layer_id) && number_in_range(_depth, -16000, 16000))
+		layer_depth(_layer_id, _depth);
 };
 
 //PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPAD
@@ -72,7 +71,7 @@ set_layer_depths = function()
 };
 
 //PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDI
-createLapDeco = function(arg0 = false)
+createLapDeco = function(_deco = false)
 {
 	if (array_length(lapDecoBag) <= 0)
 	{
@@ -80,7 +79,7 @@ createLapDeco = function(arg0 = false)
 		lapDecoBag = array_shuffle(lapDecoBag);
 	}
 	
-	with (instance_create(irandom(room_width), arg0 ? irandom(room_height) : (room_height + 276), obj_lappingdeco))
+	with (instance_create(irandom(room_width), _deco ? irandom(room_height) : (room_height + 276), obj_lappingdeco))
 	{
 		sprite_index = array_shift(other.lapDecoBag);
 		vspeed = random_range(-2, -2.5);
@@ -100,12 +99,12 @@ createLapDeco = function(arg0 = false)
 subLayerArray = [];
 
 //P
-defineSublayer = function(arg0, arg1)
+defineSublayer = function(_mainLayer, _subLayers)
 {
 	array_push(subLayerArray, 
 	{
-		mainLayer: arg0,
-		subLayers: arg1
+		mainLayer: _mainLayer,
+		subLayers: _subLayers
 	});
 };
 

@@ -19,7 +19,7 @@ function state_player_freefall()
 		{
 			if (!mach3effect--)
 			{
-				with (create_afterimage(choose(afterimagetypes.blue, afterimagetypes.pink), xscale, true))
+				with (create_afterimage(choose(afterimagetypes.mach3effect_1, afterimagetypes.mach3effect_2), xscale, true))
 					basicAfterimage = false;
 				
 				mach3effect = 5;
@@ -181,7 +181,7 @@ function state_player_freefall()
 	
 	if (afterimage_timer <= 0)
 	{
-		with (create_afterimage(afterimagetypes.basic, xscale, 0))
+		with (create_afterimage(afterimagetypes.plain, xscale, 0))
 		{
 			gonealpha = 0.8;
 			alarm[0] = 1;

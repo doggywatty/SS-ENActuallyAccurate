@@ -1,7 +1,7 @@
 count = 0;
 depth = 4;
 t = 0;
-drawSurface = -4;
+drawSurface = noone;
 minerPaletteColors = [[[248, 0, 0], [96, 0, 0]], [[200, 0, 144], [80, 32, 80]], [[152, 48, 0], [80, 24, 16]], [[0, 160, 32], [0, 56, 32]], [[48, 64, 88], [24, 32, 40]], [[136, 168, 200], [48, 64, 88]], [[248, 192, 0], [48, 120, 0]], [[255, 170, 131], [160, 56, 0]]];
 colorID = irandom_range(0, 5);
 gnome_sprite = [spr_minesElevatorCutscene, spr_minesElevatorCutscene_dark];

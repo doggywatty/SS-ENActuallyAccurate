@@ -1,10 +1,10 @@
 //PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGP
-function scr_secrettiles_add(arg0)
+function scr_secrettiles_add(_secret_tile)
 {
 	if (object_index != obj_secretwall)
 		return false;
 	
-	if (is_undefined(arg0))
+	if (is_undefined(_secret_tile))
 		return false;
 	
 	for (var i = 0; i < argument_count; i++)
@@ -15,16 +15,16 @@ function scr_secrettiles_add(arg0)
 		array_push(layerArray, layer_id);
 	}
 	
-	var func = function(arg0, arg1)
+	var func = function(_layer_id1, _layer_id2)
 	{
-		return layer_get_depth(arg1) - layer_get_depth(arg0);
+		return layer_get_depth(_layer_id2) - layer_get_depth(_layer_id1);
 	};
 	
 	array_sort(layerArray, func);
 	return true;
 }
 
-function add_secrettiles(arg0)
+function add_secrettiles(_secret_tile)
 {
 	global.secret_layers = [];
 	
@@ -48,9 +48,9 @@ function add_secrettiles(arg0)
 	}
 	
 ///PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDIN
-	var _f = function(arg0, arg1)
+	var _f = function(_layer_id1, _layer_id2)
 	{
-		return -(layer_get_depth(arg0.nm) - layer_get_depth(arg1.nm));
+		return -(layer_get_depth(_layer_id1.nm) - layer_get_depth(_layer_id2.nm));
 	};
 	
 	array_sort(global.secret_layers, _f);

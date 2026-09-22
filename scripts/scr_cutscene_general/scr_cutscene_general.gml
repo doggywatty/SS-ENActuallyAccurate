@@ -1,10 +1,10 @@
-function cutscene_wait(arg0)
+function cutscene_wait(_time)
 {
 	with (obj_cutsceneManager)
 	{
 		timer++;
 		
-		if (timer >= arg0)
+		if (timer >= _time)
 		{
 			timer = 0;
 			cutscene_event_end();
@@ -30,32 +30,32 @@ function cutscene_start_player()
 	cutscene_event_end();
 }
 
-function cutscene_create_instance(arg0, arg1, arg2)
+function cutscene_create_instance(_x, _y, obj)
 {
-	instance_create(arg0, arg1, arg2);
+	instance_create(_x, _y, obj);
 	cutscene_event_end();
 }
 
-function cutscene_do_func(arg0)
+function cutscene_do_func(_func)
 {
-	arg0();
+	_func();
 	cutscene_event_end();
 }
 
-function cutscene_with_actor(arg0, arg1)
+function cutscene_with_actor(_cutscene, _actor)
 {
 	cutscene_event_end();
 	
-	with (cutscene_get_actor(arg0))
-		return arg1();
+	with (cutscene_get_actor(_cutscene))
+		return _actor();
 }
 
-function cutscene_do_dialog(arg0, arg1 = false)
+function cutscene_do_dialog(_cutscene, _destroy = false)
 {
-	queue_dialogue(arg0, arg1);
+	queue_dialogue(_cutscene, _destroy);
 	
 	with (obj_dialogue)
-		instant_destroy = arg1;
+		instant_destroy = _destroy;
 	
 	cutscene_event_end();
 }
@@ -71,20 +71,20 @@ function cutscene_wait_dialog()
 		cutscene_event_end();
 }
 
-function cutscene_lerp_actor(arg0, arg1, arg2, arg3)
+function cutscene_lerp_actor(_destroy, _x, _y, arg3)
 {
 	var finished = false;
 	
-	with (cutscene_get_actor(arg0))
+	with (cutscene_get_actor(_destroy))
 	{
-		x = lerp(x, arg1, arg3);
-		y = lerp(y, arg2, arg3);
+		x = lerp(x, _x, arg3);
+		y = lerp(y, _y, arg3);
 		
-		if (distance_to_point(arg1, arg2) <= 4)
+		if (distance_to_point(_x, _y) <= 4)
 		{
 			finished = true;
-			x = arg1;
-			y = arg2;
+			x = _x;
+			y = _y;
 		}
 	}
 	
@@ -92,20 +92,20 @@ function cutscene_lerp_actor(arg0, arg1, arg2, arg3)
 		cutscene_event_end();
 }
 
-function cutscene_move_actor(arg0, arg1, arg2, arg3)
+function cutscene_move_actor(_cutscene, _x, _y, _len)
 {
 	var finished = false;
-	var real_actor = cutscene_get_actor(arg0);
+	var real_actor = cutscene_get_actor(_cutscene);
 	
 	with (real_actor)
 	{
-		var angle = point_direction(x, y, arg1, arg2);
+		var angle = point_direction(x, y, _x, _y);
 		var dir_x = lengthdir_x(arg3, angle);
 		var dir_y = lengthdir_y(arg3, angle);
-		x = approach(x, arg1, dir_x);
-		y = approach(y, arg2, dir_y);
+		x = approach(x, _x, dir_x);
+		y = approach(y, _y, dir_y);
 		
-		if (x == arg1 && y == arg2)
+		if (x == _x && y == _y)
 			finished = true;
 	}
 	
@@ -113,23 +113,23 @@ function cutscene_move_actor(arg0, arg1, arg2, arg3)
 		cutscene_event_end();
 }
 
-function cutscene_new_actor(arg0, arg1, arg2, arg3)
+function cutscene_new_actor(_x, _y, _spr_ind, _actor)
 {
-	var new_actor = instance_create(arg0, arg1, obj_actor);
-	new_actor.sprite_index = arg2;
+	var new_actor = instance_create(_x, _y, obj_actor);
+	new_actor.sprite_index = _spr_ind;
 	
 	with (new_actor)
-		cutscene_declare_actor(id, arg3);
+		cutscene_declare_actor(id, _actor);
 	
 	cutscene_event_end();
 	return new_actor;
 }
 
-function cutscene_actor_animend(arg0)
+function cutscene_actor_animend(_cutscene)
 {
 	var finished = false;
 	
-	with (cutscene_get_actor(arg0))
+	with (cutscene_get_actor(_cutscene))
 	{
 		if (sprite_animation_end())
 			finished = true;

@@ -1,4 +1,4 @@
-if (linkedWorm != -4)
+if (linkedWorm != noone)
 {
 	with (linkedWorm)
 		instance_destroy();

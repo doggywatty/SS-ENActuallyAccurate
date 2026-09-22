@@ -1,9 +1,9 @@
-function scr_escapetimes(arg0 = room)
+function scr_escapetimes(_room = room)
 {
 	var seconds = 0;
 	var minutes = 0;
 	
-	switch (arg0)
+	switch (_room)
 	{
 		case steamy_12:
 			minutes = 3;

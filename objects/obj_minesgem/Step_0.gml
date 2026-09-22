@@ -1,4 +1,4 @@
-if (playerID == -4)
+if (playerID == noone)
 {
 	instance_destroy();
 	exit;

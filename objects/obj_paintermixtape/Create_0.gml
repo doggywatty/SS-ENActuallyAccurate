@@ -1,6 +1,6 @@
 depth = -7;
 image_speed = 0.35;
-playerID = -4;
+playerID = noone;
 treasureEffect = new subSprite(spr_treasureeffect, 0, 0.35, true);
 bobsin = 0;
 time = 0;

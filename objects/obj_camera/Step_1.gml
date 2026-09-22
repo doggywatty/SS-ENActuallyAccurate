@@ -1,5 +1,5 @@
 var _is_region_active = false;
-var _region = -4;
+var _region = noone;
 var _debugZOOM = false;
 
 if (global.DebugMode == debugmode.debug && keyboard_check(ord("C")))

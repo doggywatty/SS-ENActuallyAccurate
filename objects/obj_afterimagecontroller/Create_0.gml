@@ -1,61 +1,61 @@
 enum afterimagetypes
 {
-	basic,
-	blue,
-	pink,
-	orange,
-	blueSolid,
-	pinkSolid,
-	orangeSolid,
-	red,
-	palette,
+	plain = 0,
+	mach3effect_1 = 1,
+	mach3effect_2 = 2,
+	fireass = 3,
+	pureblue = 4,
+	purepink = 5,
+	unknownorange = 6,
+	baddie = 7,
+	wallkick = 8
 }
 
 depth = 1;
-color_arr[afterimagetypes.basic] = 
+color_arr[afterimagetypes.plain] = 
 {
 	light: c_white,
-	dark: 0
+	dark: c_black
 };
-color_arr[afterimagetypes.blue] = 
+color_arr[afterimagetypes.mach3effect_1] = 
 {
-	light: 16295984,
-	dark: 7944463
+	light: #30a8f8,
+	dark: #0f3979
 };
-color_arr[afterimagetypes.pink] = 
+color_arr[afterimagetypes.mach3effect_2] = 
 {
-	light: 9982184,
-	dark: 2099551
+	light: #e85098,
+	dark: #5f0920
 };
-color_arr[afterimagetypes.orange] = 
+color_arr[afterimagetypes.fireass] = 
 {
-	light: 1601784,
-	dark: 16552
+	light: #f87018,
+	dark: #a84000
 };
-color_arr[afterimagetypes.blueSolid] = 
+color_arr[afterimagetypes.pureblue] = 
 {
-	light: 16295984,
-	dark: 16295984
+	light: #30a8f8,
+	dark: #30a8f8
 };
-color_arr[afterimagetypes.pinkSolid] = 
+color_arr[afterimagetypes.purepink] = 
 {
-	light: 9982184,
-	dark: 9982184
+	light: #e85098,
+	dark: #e85098
 };
-color_arr[afterimagetypes.palette] = 
+color_arr[afterimagetypes.wallkick] = 
 {
-	light: 13773959,
-	dark: 3736096
+	light: #872cd2,
+	dark: #200239
 };
-color_arr[afterimagetypes.orangeSolid] = 
+color_arr[afterimagetypes.unknownorange] = 
 {
-	light: 1601784,
-	dark: 1601784
+	light: #f87018,
+	dark: #f87018
 };
-color_arr[afterimagetypes.red] = 
+color_arr[afterimagetypes.baddie] = 
 {
-	light: 12512,
-	dark: 12512
+	light: #e03000,
+	dark: #e03000
 };
 global.BlinkTrail = false;
 blinkingBuffer = 3;

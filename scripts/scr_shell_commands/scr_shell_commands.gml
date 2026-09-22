@@ -4,32 +4,32 @@ for (var i = 0; room_exists(i); i++)
 for (var i = 0; object_exists(i); i++)
 	global.ObjectNameList[i] = object_get_name(i);
 
-function scr_parseBool(arg0, arg1)
+function scr_parseBool(_args, arg1)
 {
 	var true_strings = ["1", "y", "true", "yes", "t", "+"];
 	var false_strings = ["0", "n", "false", "no", "f", "-"];
-	arg0 = string_lower(arg0);
+	_args = string_lower(_args);
 	
-	if (array_contains(true_strings, arg0))
+	if (array_contains(true_strings, _args))
 	{
 		return true;
 	}
-	else if (array_contains(false_strings, arg0))
+	else if (array_contains(false_strings, _args))
 	{
 		return false;
 	}
 	else
 	{
-		show_debug_message($"SHELL WARNING: Couldn't parse {arg0} as a string, using default value of {arg1}.");
+		show_debug_message($"SHELL WARNING: Couldn't parse {_args} as a string, using default value of {arg1}.");
 		return arg1;
 	}
 }
 
-function sh_escape(arg0_)
+function sh_escape(_args)
 {
-	var arg0 = scr_parseBool(string(arg0_[1]), !global.panic);
-	var arg1 = arg0_[2];
-	var arg2 = arg0_[3];
+	var arg0 = scr_parseBool(string(_args[1]), !global.panic);
+	var arg1 = _args[2];
+	var arg2 = _args[3];
 	global.panic = arg0;
 	var minutes = real(string_digits(arg1));
 	var seconds = real(string_digits(arg2));
@@ -55,9 +55,9 @@ function meta_escape()
 	};
 }
 
-function sh_game_speed(arg0_)
+function sh_game_speed(_fps)
 {
-	var arg0 = arg0_[1];
+	var arg0 = _fps[1];
 	var new_game_speed = max(round(real(string_digits(arg0))), 1);
 	game_set_speed(new_game_speed, gamespeed_fps);
 }
@@ -73,14 +73,14 @@ function meta_game_speed()
 	};
 }
 
-function sh_character(arg0)
+function sh_character(_char)
 {
 	var choosen_character = PlayerCharacter.PIZZELLE;
 	
-	switch (arg0[1])
+	switch (_char[1])
 	{
 		default:
-			show_debug_message($"SHELL WARNING: [{arg0[1]}] is not a valid character. Defaulting to Pizzelle.");
+			show_debug_message($"SHELL WARNING: [{_char[1]}] is not a valid character. Defaulting to Pizzelle.");
 		case "Pizzelle":
 			choosen_character = PlayerCharacter.PIZZELLE;
 			break;
@@ -100,7 +100,7 @@ function meta_character()
 	};
 }
 
-function sh_roomcheck(arg0)
+function sh_roomcheck(_room)
 {
 	instance_create(0, 0, obj_roomCheck);
 }
@@ -116,9 +116,9 @@ function meta_roomcheck()
 	};
 }
 
-function sh_unlock(arg0)
+function sh_unlock(_level)
 {
-	var type = arg0[1];
+	var type = _level[1];
 	
 	if (type == "all" || type == "levels")
 	{
@@ -198,9 +198,9 @@ function meta_unlock()
 	};
 }
 
-function sh_toggle_collisions(arg0)
+function sh_toggle_collisions(_toggle)
 {
-	var arg1 = scr_parseBool(arg0[1], !global.showcollisions);
+	var arg1 = scr_parseBool(_toggle[1], !global.showcollisions);
 	global.showcollisions = arg1;
 	toggle_collision_function();
 }
@@ -216,11 +216,11 @@ function meta_toggle_collisions()
 	};
 }
 
-function sh_lock_camera(arg0)
+function sh_lock_camera(_toggle)
 {
 	with (obj_camera)
 	{
-		var arg1 = scr_parseBool(arg0[1], !cameraLock);
+		var arg1 = scr_parseBool(_toggle[1], !cameraLock);
 		cameraLock = arg1;
 	}
 }
@@ -263,9 +263,9 @@ function toggle_collision_function()
 	}
 }
 
-function sh_showtiles(arg0)
+function sh_showtiles(_toggle)
 {
-	var arg1 = scr_parseBool(arg0[1], !global.showtiles);
+	var arg1 = scr_parseBool(_toggle[1], !global.showtiles);
 	global.showtiles = arg1;
 	show_tiles_function();
 }
@@ -303,10 +303,10 @@ function scr_shell_inittiles()
 
 global.PlayerDebugView = undefined;
 
-function toggle_debugView(arg0)
+function toggle_debugView(_toggle)
 {
-	global.DebugVisuals = arg0;
-	show_debug_log(arg0);
+	global.DebugVisuals = _toggle;
+	show_debug_log(_toggle);
 	
 	if (global.DebugVisuals)
 	{
@@ -342,9 +342,9 @@ function toggle_debugView(arg0)
 	}
 }
 
-function sh_toggle_debugmode(arg0)
+function sh_toggle_debugmode(_toggle)
 {
-	var arg1 = scr_parseBool(arg0[1], !global.DebugVisuals);
+	var arg1 = scr_parseBool(_toggle[1], !global.DebugVisuals);
 	toggle_debugView(arg1);
 }
 
@@ -359,14 +359,14 @@ function meta_toggle_debugmode()
 	};
 }
 
-function sh_room_goto(arg0)
+function sh_room_goto(_room)
 {
-	var arg1 = asset_get_index(arg0[1]);
-	var arg2 = arg0[2];
+	var arg1 = asset_get_index(_room[1]);
+	var arg2 = _room[2];
 	
-	if (asset_get_type(arg0[1]) != 3)
+	if (asset_get_type(_room[1]) != 3)
 	{
-		return "Can't find room " + string(arg0[1]);
+		return "Can't find room " + string(_room[1]);
 	}
 	else
 	{
@@ -387,12 +387,12 @@ function meta_room_goto()
 	};
 }
 
-function sh_instance_create(arg0)
+function sh_instance_create(_inst)
 {
-	var _obj = asset_get_index(arg0[1]);
+	var _obj = asset_get_index(_inst[1]);
 	
 	if (_obj > -1)
-		instance_create(arg0[2] ?? get_mouse_x(), arg0[3] ?? get_mouse_y(), _obj);
+		instance_create(_inst[2] ?? get_mouse_x(), _inst[3] ?? get_mouse_y(), _obj);
 }
 
 function meta_instance_create()
@@ -444,7 +444,7 @@ function meta_freeflight()
 	};
 }
 
-function sh_give_all(arg0)
+function sh_give_all(args)
 {
 	var confecti_objs = [obj_confectimallow, obj_confectichoco, obj_confecticrack, obj_confectiworm, obj_confecticandy];
 	
@@ -467,7 +467,7 @@ function meta_give_all()
 	};
 }
 
-function sh_give_prank(arg0)
+function sh_give_prank(args)
 {
 	var confecti_objs = [obj_confectimallow, obj_confectichoco, obj_confecticrack, obj_confectiworm, obj_confecticandy];
 	
@@ -497,9 +497,9 @@ function meta_give_prank()
 	};
 }
 
-function sh_set_combo(arg0)
+function sh_set_combo(_combo)
 {
-	global.Combo = real(string_digits(arg0[1]));
+	global.Combo = real(string_digits(_combo[1]));
 	obj_parent_player.superTauntBuffer = global.Combo;
 	global.ComboTime = 60;
 	global.ComboFreeze = 15;
@@ -516,10 +516,10 @@ function meta_set_combo()
 	};
 }
 
-function sh_give_stat(arg0)
+function sh_give_stat(_stat)
 {
-	var arg1 = arg0[1];
-	var add = arg0[2];
+	var arg1 = _stat[1];
+	var add = _stat[2];
 	
 	switch (arg1)
 	{
@@ -547,7 +547,7 @@ function meta_give_stat()
 	};
 }
 
-function sh_lang_reload(arg0)
+function sh_lang_reload(_reload)
 {
 	scr_lang_reload();
 }

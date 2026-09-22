@@ -1,4 +1,4 @@
-if (playerID == -4 || !instance_exists(playerID))
+if (playerID == noone || !instance_exists(playerID))
 	exit;
 
 x = playerID.x;

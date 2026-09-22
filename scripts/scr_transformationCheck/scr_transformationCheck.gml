@@ -1,6 +1,6 @@
-function scr_setTransfoTip(arg0)
+function scr_setTransfoTip(_state)
 {
-	switch (arg0)
+	switch (_state)
 	{
 		case PlayerState.cotton:
 		case PlayerState.cottondrill:
@@ -25,18 +25,18 @@ function scr_setTransfoTip(arg0)
 			break;
 	}
 	
-	global.TransfoState = arg0;
+	global.TransfoState = _state;
 	return global.TransfoPrompt;
 }
 
-function scr_transformationCheck(arg0)
+function scr_transformationCheck(_state)
 {
 	var transfo = undefined;
 	
-	if (arg0 == PlayerState.oldtaunt)
-		arg0 = tauntStored.state;
+	if (_state == PlayerState.oldtaunt)
+		_state = tauntStored.state;
 	
-	switch (arg0)
+	switch (_state)
 	{
 		default:
 			transfo = undefined;

@@ -15,7 +15,7 @@ if (event > 0)
 	
 	draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, 1);
 	
-	if (rank_text_sprite != -4 && floor(image_index) == (image_number - 1))
+	if (rank_text_sprite != noone && floor(image_index) == (image_number - 1))
 		draw_sprite_ext(rank_text_sprite, 0, x, y, 1, 1, 0, c_white, 1);
 	
 	shader_reset();
@@ -24,7 +24,7 @@ else
 {
 	draw_player_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, 1);
 	
-	if (rank_text_sprite != -4 && floor(image_index) == (image_number - 1))
+	if (rank_text_sprite != noone && floor(image_index) == (image_number - 1))
 		draw_sprite_ext(rank_text_sprite, 0, x, y, 1, 1, 0, c_white, 1);
 }
 

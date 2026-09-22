@@ -1,4 +1,4 @@
-canCollide = function(arg0, arg1 = obj_parent_player)
+canCollide = function(stpl, _player = obj_parent_player)
 {
 	return false;
 };
@@ -12,5 +12,5 @@ spinspeed = 0;
 image_speed = 0;
 image_index = global.PainterTopperIndex;
 
-if (true && global.InternalLevelName == "none")
+if (isDemo && global.InternalLevelName == "none")
 	instance_destroy();

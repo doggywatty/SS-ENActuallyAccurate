@@ -1,6 +1,6 @@
-function scr_destroy_tile(arg0)
+function scr_destroy_tile(_layertileId)
 {
-	var lay_id = layer_get_id(arg0);
+	var lay_id = layer_get_id(_layertileId);
 	var map_id = layer_tilemap_get_id_fixed(lay_id);
 	
 	for (var i = 0; i < floor(sprite_width / tilemap_get_tile_width(map_id)); i++)
@@ -29,12 +29,12 @@ function scr_destroy_nearby_tiles()
 		alarm[0] = 1;
 }
 
-function manage_up_arrow(arg0)
+function manage_up_arrow(_uparrow)
 {
 	if (!variable_instance_exists(self, "script_UpArrow"))
-		script_UpArrow = -4;
+		script_UpArrow = noone;
 	
-	if (arg0)
+	if (_uparrow)
 	{
 		if (!instance_exists(script_UpArrow))
 		{
@@ -48,7 +48,7 @@ function manage_up_arrow(arg0)
 	}
 	
 	if (!instance_exists(script_UpArrow))
-		return -4;
+		return noone;
 	
 	return script_UpArrow;
 }

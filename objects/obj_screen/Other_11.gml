@@ -38,7 +38,6 @@ switch (global.Letterbox)
 				letterbox_ind = 5;
 				break;
 		}
-		
 		break;
 }
 

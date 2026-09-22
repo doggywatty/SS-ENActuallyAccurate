@@ -24,7 +24,7 @@ function state_player_superslam()
 		
 		if (!mach3effect--)
 		{
-			with (create_afterimage(choose(afterimagetypes.blue, afterimagetypes.pink), xscale, true))
+			with (create_afterimage(choose(afterimagetypes.mach3effect_1, afterimagetypes.mach3effect_2), xscale, true))
 				basicAfterimage = false;
 			
 			mach3effect = 5;
@@ -138,7 +138,7 @@ function state_player_superslam()
 				scr_instakillEnemy(id, other.id);
 			}
 			
-			baddieGrabbedID = -4;
+			baddieGrabbedID = noone;
 		}
 	}
 	

@@ -1,20 +1,20 @@
-function approach(arg0, arg1, arg2)
+function approach(value, target, amount)
 {
-	return arg0 + clamp(arg1 - arg0, -arg2, arg2);
+	return value + clamp(target - value, -amount, amount);
 }
 
-function instance_random(arg0)
+function instance_random(obj)
 {
-	return instance_find(arg0, irandom(instance_number(arg0) - 1));
+	return instance_find(obj, irandom(instance_number(obj) - 1));
 }
 
 function trace()
 {
 	var trace_string = "";
-	
+
 	for (var i = 0; i < argument_count; i++)
 		trace_string += string(argument[i]);
-	
+
 	show_debug_message(trace_string);
 	exit;
 }
@@ -24,151 +24,151 @@ function get_panic()
 	return (global.panic && !global.RoomIsSecret) || instance_exists(obj_sucroseTimer);
 }
 
-function chance(arg0)
+function chance(percent)
 {
-	return random(100) <= arg0;
+	return random(100) <= percent;
 }
 
-function wave(arg0, arg1, arg2, arg3, arg4 = global.CurrentTime)
+function wave(from, to, duration, offset, _current_time = global.CurrentTime)
 {
-	var a4 = (arg1 - arg0) / 2;
-	return arg0 + a4 + (sin((((arg4 * 0.001) + (arg2 * arg3)) / arg2) * 2 * pi) * a4);
+	var a4 = (to - from) / 2;
+	return from + a4 + (sin((((_current_time * 0.001) + (duration * offset)) / duration) * 2 * pi) * a4);
 }
 
-function wrap(arg0, arg1, arg2)
+function wrap(value, minute, maximum)
 {
-	var _min = min(arg1, arg2);
-	var _max = max(arg1, arg2);
+	var _min = min(minute, maximum);
+	var _max = max(minute, maximum);
 	var range = (_max - _min) + 1;
-	return ((((arg0 - _min) % range) + range) % range) + _min;
+	return ((((value - _min) % range) + range) % range) + _min;
 }
 
-function animation_end_old(arg0 = floor(image_index), arg1 = image_number - 1)
+function animation_end_old(current_frame = floor(image_index), last_frame = image_number - 1)
 {
-	return arg0 >= arg1;
+	return current_frame >= last_frame;
 }
 
-function sprite_animation_end(arg0 = sprite_index, arg1 = image_index, arg2 = sprite_get_number(arg0), arg3 = image_speed)
+function sprite_animation_end(spr = sprite_index, frame = image_index, total_frames = sprite_get_number(spr), speed = image_speed)
 {
-	return (arg1 + ((arg3 * sprite_get_speed(arg0)) / ((sprite_get_speed_type(arg0) == 1) ? 1 : game_get_speed(gamespeed_fps)))) >= arg2;
+	return (frame + ((speed * sprite_get_speed(spr)) / ((sprite_get_speed_type(spr) == 1) ? 1 : game_get_speed(gamespeed_fps)))) >= total_frames;
 }
 
-function absfloor(arg0)
+function absfloor(n)
 {
-	return (arg0 > 0) ? floor(arg0) : ceil(arg0);
+	return (n > 0) ? floor(n) : ceil(n);
 }
 
-function rank_checker(arg0 = global.rank)
+function rank_checker(_rank = global.rank)
 {
 	var ranks = ["d", "c", "b", "a", "s", "p"];
-	
+
 	for (var i = 0; i < array_length(ranks); i++)
 	{
-		if (arg0 == ranks[i])
+		if (_rank == ranks[i])
 			return i;
 	}
-	
-	return -4;
+
+	return noone;
 }
 
-function string_extract(arg0, arg1, arg2)
+function string_extract(str, delimiter, count)
 {
-	var len = string_length(arg1) - 1;
-	
-	repeat (arg2)
-		arg0 = string_delete(arg0, 1, string_pos(arg1, arg0) + len);
-	
-	arg0 = string_delete(arg0, string_pos(arg1, arg0), string_length(arg0));
-	return arg0;
+	var len = string_length(delimiter) - 1;
+
+	repeat (count)
+		str = string_delete(str, 1, string_pos(delimiter, str) + len);
+
+	str = string_delete(str, string_pos(delimiter, str), string_length(str));
+	return str;
 }
 
-function create_small_number(arg0, arg1, arg2, arg3 = c_white)
+function create_small_number(_x, _y, _num, _img_blend = c_white)
 {
-	return instance_create(arg0, arg1, obj_smallnumber, 
+	return instance_create(_x, _y, obj_smallnumber, 
 	{
-		image_blend: arg3,
-		number: string(arg2)
+		image_blend: _img_blend,
+		number: string(_num)
 	});
 }
 
-function array_get_any(arg0)
+function array_get_any(_arrs)
 {
-	return array_get(arg0, irandom_range(0, array_length(arg0) - 1));
+	return array_get(_arrs, irandom_range(0, array_length(_arrs) - 1));
 }
 
-function draw_sprite_ext_flash(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8)
+function draw_sprite_ext_flash(spr, subimg, _x, _y, xscale, yscale, rot, flash_col, alpha)
 {
-	gpu_set_fog(true, arg7, 0, 1);
-	draw_sprite_ext(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
+	gpu_set_fog(true, flash_col, 0, 1);
+	draw_sprite_ext(spr, subimg, _x, _y, xscale, yscale, rot, flash_col, alpha);
 	gpu_set_fog(false, c_black, 0, 0);
 }
 
-function draw_self_flash(arg0)
+function draw_self_flash(flash_col)
 {
-	draw_sprite_ext_flash(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, arg0, image_alpha);
+	draw_sprite_ext_flash(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, flash_col, image_alpha);
 }
 
-function draw_sprite_ext_duotone(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
+function draw_sprite_ext_duotone(spr, subimg, _x, _y, xscale, yscale, rot, color1, color2, alpha)
 {
 	shader_set(shd_afterimage);
 	var color_blend_1 = shader_get_uniform(shd_afterimage, "blendcolor1");
 	var color_blend_2 = shader_get_uniform(shd_afterimage, "blendcolor2");
-	shader_set_uniform_f(color_blend_1, color_get_red(arg7) / 255, color_get_green(arg7) / 255, color_get_blue(arg7) / 255);
-	shader_set_uniform_f(color_blend_2, color_get_red(arg8) / 255, color_get_green(arg8) / 255, color_get_blue(arg8) / 255);
-	draw_sprite_ext(arg0, arg1, arg2, arg3, arg4, arg5, arg6, c_white, arg9);
+	shader_set_uniform_f(color_blend_1, color_get_red(color1) / 255, color_get_green(color1) / 255, color_get_blue(color1) / 255);
+	shader_set_uniform_f(color_blend_2, color_get_red(color2) / 255, color_get_green(color2) / 255, color_get_blue(color2) / 255);
+	draw_sprite_ext(spr, subimg, _x, _y, xscale, yscale, rot, c_white, alpha);
 	shader_reset();
 }
 
-function draw_self_duotone(arg0, arg1)
+function draw_self_duotone(color1, color2)
 {
-	draw_sprite_ext_duotone(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, arg0, arg1, image_alpha);
+	draw_sprite_ext_duotone(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, color1, color2, image_alpha);
 }
 
-function time_in_frames(arg0, arg1)
+function time_in_frames(minutes, seconds)
 {
-	return ((arg0 * 60) + arg1) * 60;
+	return ((minutes * 60) + seconds) * 60;
 }
 
-function onBeat(arg0, arg1 = false)
+function onBeat(_beatspersec, _beatstate = false)
 {
-	var bps = arg0 / 60;
+	var bps = _beatspersec / 60;
 	var spb = 1 / bps;
 	var song_timer = audio_sound_get_track_position(global.music);
 	var game_fps = 60;
 	var beat2 = floor(song_timer) / (spb * game_fps);
-	
+
 	if (beat != beat2)
 	{
 		beat = beat2;
 		return true;
 	}
-	
+
 	return false;
 }
 
-function solid_in_line(arg0, arg1 = -4, arg2 = self)
+function solid_in_line(_x, _y = -4, _self = self)
 {
 	var _list = ds_list_create();
-	var set_list = collision_line_list(x, y, arg0.x, arg0.y, obj_parent_collision, true, true, _list, true);
-	
+	var set_list = collision_line_list(x, y, _x.x, _x.y, obj_parent_collision, true, true, _list, true);
+
 	if (set_list > 0)
 	{
 		for (var i = 0; i < set_list; i++)
 		{
 			var obj = ds_list_find_value(_list, i);
-			
-			if (arg1 != -4)
+
+			if (_y != -4)
 			{
 				var found_obj = false;
-				
-				for (var b = 0; b < array_length(arg1); b++)
+
+				for (var b = 0; b < array_length(_y); b++)
 				{
-					var arr = arg1[b];
-					
+					var arr = _y[b];
+
 					if (obj.object_index == arr)
 						found_obj = true;
 				}
-				
+
 				if (!found_obj)
 				{
 					ds_list_destroy(_list);
@@ -182,90 +182,90 @@ function solid_in_line(arg0, arg1 = -4, arg2 = self)
 			}
 		}
 	}
-	
+
 	ds_list_destroy(_list);
 	return false;
 }
 
-function angle_rotate(arg0, arg1, arg2)
+function angle_rotate(angle, target, _spd)
 {
-	var diff = wrap(arg1 - arg0, -180, 180);
-	
-	if (diff < -arg2)
-		return arg0 - arg2;
-	
-	if (diff > arg2)
-		return arg0 + arg2;
-	
-	return arg1;
+	var diff = wrap(target - angle, -180, 180);
+
+	if (diff < -_spd)
+		return angle - _spd;
+
+	if (diff > _spd)
+		return angle + _spd;
+
+	return target;
 }
 
-function getFacingDirection(arg0, arg1)
+function getFacingDirection(_x, _y)
 {
-	if (arg0 != arg1)
-		return -sign(arg0 - arg1);
-	
+	if (_x != _y)
+		return -sign(_x - _y);
+
 	return 1;
 }
 
-function number_in_range(arg0, arg1, arg2)
+function number_in_range(value, min_val, max_val)
 {
-	return arg0 >= arg1 && arg0 <= arg2;
+	return value >= min_val && value <= max_val;
 }
 
 function parameter_get_array()
 {
 	var p_num = parameter_count();
 	var p_string = [];
-	
+
 	if (p_num > 0)
 	{
 		for (var i = 0; i < p_num; i++)
 			p_string[i] = parameter_string(i);
 	}
-	
+
 	return p_string;
 }
 
-function round_nearest(arg0, arg1)
+function round_nearest(_x, _y)
 {
-	var val = abs(arg1[0] - arg0);
+	var val = abs(_y[0] - _x);
 	var ind = 0;
-	
-	for (var i = 1; i < array_length(arg1); i++)
+
+	for (var i = 1; i < array_length(_y); i++)
 	{
-		var dist = abs(arg1[i] - arg0);
-		
+		var dist = abs(_y[i] - _x);
+
 		if (dist < val)
 		{
 			ind = i;
 			val = dist;
 		}
 	}
-	
-	return arg1[ind];
+
+	return _y[ind];
 }
 
-function randomize_animations(arg0)
+function randomize_animations(_anim)
 {
 	if (!variable_instance_exists(self, "saved_rand_anim"))
 		saved_rand_anim = [];
-	
+
 	if (!variable_instance_exists(self, "rand_anim"))
 		rand_anim = [];
-	
-	if (saved_rand_anim != arg0 || array_length(rand_anim) <= 0)
+
+	if (saved_rand_anim != _anim || array_length(rand_anim) <= 0)
 	{
-		saved_rand_anim = arg0;
-		rand_anim = array_shuffle(arg0);
+		saved_rand_anim = _anim;
+		rand_anim = array_shuffle(_anim);
 	}
-	
+
 	return array_shift(rand_anim);
 }
 
-function array_clone(arg0)
+function array_clone(array)
 {
 	var temp_arr = [];
-	array_copy(temp_arr, 0, arg0, 0, array_length(arg0));
+	array_copy(temp_arr, 0, array, 0, array_length(array));
 	return temp_arr;
 }

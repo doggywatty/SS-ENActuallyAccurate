@@ -1,5 +1,5 @@
 image_speed = 0;
-playerID = -4;
+playerID = noone;
 count = 0;
 collectSpeed = 25;
 movespeed = 0;

@@ -1,19 +1,19 @@
 //PADDINGPADDINGPADDINGPADDI
 event_inherited();
 
-canCollide = function(arg0, arg1 = obj_parent_player)
+canCollide = function(_obj, _player = obj_parent_player)
 {
 	var in_object = false;
 	
-	with (arg1)
-		in_object = place_meeting(xprevious, yprevious, arg0);
+	with (_player)
+		in_object = place_meeting(xprevious, yprevious, _obj);
 	
-	switch (arg1.object_index)
+	switch (_player.object_index)
 	{
 		case obj_parent_player:
 		case obj_player1:
 		case obj_player2:
-			var _state = global.freezeframe ? arg1.frozenState : arg1.state;
+			var _state = global.freezeframe ? _player.frozenState : _player.state;
 			return !in_object || _state == PlayerState.climbwall || _state == PlayerState.machslide;
 			break;
 		case obj_escaperosette:

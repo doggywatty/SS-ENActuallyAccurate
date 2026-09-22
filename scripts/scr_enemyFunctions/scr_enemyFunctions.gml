@@ -1,22 +1,22 @@
-function scr_enemy_playerisnear(arg0 = 350, arg1 = 60, arg2 = arg0, arg3 = arg1, arg4 = obj_player1, arg5 = x, arg6 = y)
+function scr_enemy_playerisnear(dist_left = 350, dist_up = 60, dist_right = dist_left, dist_down = dist_up, _player = obj_player1, _x = x, _y = y)
 {
-	var rect_x1 = arg5 - arg0;
-	var rect_y1 = arg6 - arg1;
-	var rect_x2 = arg5 + arg2;
-	var rect_y2 = arg6 + arg3;
-	return point_in_rectangle(arg4.x, arg4.y, rect_x1, rect_y1, rect_x2, rect_y2);
+	var rect_x1 = _x - dist_left;
+	var rect_y1 = _y - dist_up;
+	var rect_x2 = _x + dist_right;
+	var rect_y2 = _y + dist_down;
+	return point_in_rectangle(_player.x, _player.y, rect_x1, rect_y1, rect_x2, rect_y2);
 }
 
-function scr_enemy_grabUpdatePosition(arg0)
+function scr_enemy_grabUpdatePosition(_pos)
 {
-	image_xscale = -arg0.xscale;
+	image_xscale = -_pos.xscale;
 	
 	if (baddieStunTimer < 200)
 		baddieStunTimer = 200;
 	
-	arg0.baddieGrabbedID = id;
+	_pos.baddieGrabbedID = id;
 	
-	with (arg0)
+	with (_pos)
 	{
 		if (!global.freezeframe && state != PlayerState.frozen && state != PlayerState.grab && state != PlayerState.finishingblow && state != PlayerState.charge && state != PlayerState.superslam)
 		{
@@ -27,116 +27,116 @@ function scr_enemy_grabUpdatePosition(arg0)
 		}
 	}
 	
-	var player_state = global.freezeframe ? arg0.frozenState : arg0.state;
+	var player_state = global.freezeframe ? _pos.frozenState : _pos.state;
 	
 	if (player_state == PlayerState.grab)
 	{
 		var walk_bobbingy = 0;
 		var walk_bobbingx = 0;
 		
-		if (arg0.sprite_index == arg0.spr_haulingWalk)
+		if (_pos.sprite_index == _pos.spr_haulingWalk)
 		{
 			var yoffsets = [0, 2, 3, 9, 12, 0, -7, -6, -5, -3, 6, 5, 2];
 			var xoffsets = [-4, -4, -3, -3, -2, -7, -10, -9, -8, -6, -3, -3, -3];
-			walk_bobbingy = yoffsets[floor(arg0.image_index)];
-			walk_bobbingx = xoffsets[floor(arg0.image_index)] * arg0.image_xscale;
+			walk_bobbingy = yoffsets[floor(_pos.image_index)];
+			walk_bobbingx = xoffsets[floor(_pos.image_index)] * _pos.image_xscale;
 		}
 		
 		var _yoff = -56 + walk_bobbingy;
 		
-		if (arg0.sprite_index == arg0.spr_haulingIntro)
+		if (_pos.sprite_index == _pos.spr_haulingIntro)
 		{
 			var yoffsets = [-13, -35, -60, -55, -56];
-			_yoff = yoffsets[floor(arg0.image_index)];
+			_yoff = yoffsets[floor(_pos.image_index)];
 		}
 		
-		if (arg0.sprite_index == arg0.spr_haulingLand)
+		if (_pos.sprite_index == _pos.spr_haulingLand)
 		{
 			var yoffsets = [-31, -49, -53, -55];
-			_yoff = yoffsets[floor(arg0.image_index)];
+			_yoff = yoffsets[floor(_pos.image_index)];
 		}
 		
-		if (arg0.sprite_index == arg0.spr_haulingJump)
+		if (_pos.sprite_index == _pos.spr_haulingJump)
 		{
 			var yoffsets = [-22, -41, -62, -58];
-			_yoff = yoffsets[floor(arg0.image_index)];
+			_yoff = yoffsets[floor(_pos.image_index)];
 		}
 		
-		if (arg0.sprite_index == arg0.spr_haulingFall)
+		if (_pos.sprite_index == _pos.spr_haulingFall)
 		{
 			var yoffsets = [-58, -58, -58];
-			_yoff = yoffsets[floor(arg0.image_index)];
+			_yoff = yoffsets[floor(_pos.image_index)];
 		}
 		
-		y = arg0.y + _yoff;
-		x = arg0.x + walk_bobbingx;
-		image_xscale = -arg0.xscale;
+		y = _pos.y + _yoff;
+		x = _pos.x + walk_bobbingx;
+		image_xscale = -_pos.xscale;
 	}
 	
 	if (player_state == PlayerState.charge)
 	{
-		x = arg0.x;
+		x = _pos.x;
 		
-		switch (floor(arg0.image_index))
+		switch (floor(_pos.image_index))
 		{
 			case 0:
 			case 8:
-				x += (arg0.xscale * 20);
+				x += (_pos.xscale * 20);
 				break;
 			case 1:
 			case 7:
-				x += (arg0.xscale * 10);
+				x += (_pos.xscale * 10);
 				break;
 			case 3:
 			case 5:
-				x += (arg0.xscale * -10);
+				x += (_pos.xscale * -10);
 				break;
 			case 4:
-				x += (arg0.xscale * -20);
+				x += (_pos.xscale * -20);
 				break;
 		}
 		
-		y = arg0.y;
+		y = _pos.y;
 	}
 	
 	yscale = (player_state == PlayerState.superslam) ? -1 : 1;
 	
 	if (player_state == PlayerState.superslam)
 	{
-		if (arg0.sprite_index != arg0.spr_piledriverland)
+		if (_pos.sprite_index != _pos.spr_piledriverland)
 		{
-			x = arg0.x - (arg0.xscale * 10);
-			y = arg0.y - 60;
+			x = _pos.x - (_pos.xscale * 10);
+			y = _pos.y - 60;
 		}
 		else
 		{
-			x = arg0.x;
-			y = arg0.y;
+			x = _pos.x;
+			y = _pos.y;
 		}
 	}
 	
 	if (player_state == PlayerState.finishingblow && state != PlayerState.climbwall)
 	{
-		x = arg0.x + (60 * arg0.xscale);
-		y = arg0.y;
-		scr_enemyFinishingBlowPos(arg0);
+		x = _pos.x + (60 * _pos.xscale);
+		y = _pos.y;
+		scr_enemyFinishingBlowPos(_pos);
 	}
 }
 
-function scr_enemyFinishingBlowPos(arg0)
+function scr_enemyFinishingBlowPos(_pos)
 {
-	var _dist = abs(x - arg0.x);
-	x = arg0.x;
+	var _dist = abs(x - _pos.x);
+	x = _pos.x;
 	var try_x = 0;
 	
-	while (!place_meeting_collision(x + arg0.xscale, y))
+	while (!place_meeting_collision(x + _pos.xscale, y))
 	{
 		try_x++;
 		
 		if (try_x > _dist)
 			break;
 		
-		x += arg0.xscale;
+		x += _pos.xscale;
 	}
 }
 
@@ -159,12 +159,12 @@ function scr_enemy_turn_trigger()
 	}
 }
 
-function scr_enemyDestroyableCheck(arg0 = xstart, arg1 = ystart)
+function scr_enemyDestroyableCheck(_xstart = xstart, _ystart = ystart)
 {
-	if (place_meeting(arg0, arg1, obj_bigdestructibles))
+	if (place_meeting(_xstart, _ystart, obj_bigdestructibles))
 	{
-		xstart = arg0;
-		ystart = arg1;
+		xstart = _xstart;
+		ystart = _ystart;
 		state = PlayerState.machtumble;
 		return true;
 	}
@@ -179,7 +179,7 @@ function scr_scareenemy()
 	
 	var player_object = get_nearestPlayer();
 	
-	if (!jumpedFromBlock && scr_enemy_playerisnear(400, 130, undefined, 90, player_object) && collision_line(x, y, player_object.x, player_object.y, obj_solid, false, true) == -4 && (player_object.state == PlayerState.mach3 || ((player_object.state == PlayerState.doughmount && object_index != obj_fancypancake) && abs(movespeed) >= 12) || player_object.state == PlayerState.doughmountspin || (player_object.movespeed >= 10 && player_object.state == PlayerState.minecart)))
+	if (!jumpedFromBlock && scr_enemy_playerisnear(400, 130, , 90, player_object) && collision_line(x, y, player_object.x, player_object.y, obj_solid, false, true) == noone && (player_object.state == PlayerState.mach3 || ((player_object.state == PlayerState.doughmount && object_index != obj_fancypancake) && abs(movespeed) >= 12) || player_object.state == PlayerState.doughmountspin || (player_object.movespeed >= 10 && player_object.state == PlayerState.minecart)))
 	{
 		if (state != PlayerState.run && state != PlayerState.climbwall && state != PlayerState.charge && state != PlayerState.stun)
 		{

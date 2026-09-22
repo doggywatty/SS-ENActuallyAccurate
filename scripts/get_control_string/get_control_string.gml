@@ -50,37 +50,37 @@ function get_control_string(_ctrl)
 		case vk_pause:
 			return "Pause";
 			break;
-		case 49:
+		case ord("1"):
 			return "[1]";
 			break;
-		case 50:
+		case ord("2"):
 			return "[2]";
 			break;
-		case 51:
+		case ord("3"):
 			return "[3]";
 			break;
-		case 52:
+		case ord("4"):
 			return "[4]";
 			break;
-		case 53:
+		case ord("5"):
 			return "[5]";
 			break;
-		case 54:
+		case ord("6"):
 			return "[6]";
 			break;
-		case 55:
+		case ord("7"):
 			return "[7]";
 			break;
-		case 56:
+		case ord("8"):
 			return "[8]";
 			break;
-		case 57:
+		case ord("9"):
 			return "[9]";
 			break;
-		case 48:
+		case ord("0"):
 			return "[0]";
 			break;
-		case 8:
+		case vk_backspace:
 			return "Backspace";
 			break;
 		case vk_insert:
@@ -92,37 +92,37 @@ function get_control_string(_ctrl)
 		case vk_pageup:
 			return "Page Up";
 			break;
-		case 9:
+		case vk_tab:
 			return "Tab";
 			break;
-		case 81:
+		case ord("Q"):
 			return "Q";
 			break;
-		case 87:
+		case ord("W"):
 			return "W";
 			break;
-		case 69:
+		case ord("E"):
 			return "E";
 			break;
-		case 82:
+		case ord("R"):
 			return "R";
 			break;
-		case 84:
+		case ord("T"):
 			return "T";
 			break;
-		case 89:
+		case ord("Y"):
 			return "Y";
 			break;
-		case 85:
+		case ord("U"):
 			return "U";
 			break;
-		case 73:
+		case ord("I"):
 			return "I";
 			break;
-		case 79:
+		case ord("O"):
 			return "O";
 			break;
-		case 80:
+		case ord("P"):
 			return "P";
 			break;
 		case vk_end:
@@ -140,34 +140,34 @@ function get_control_string(_ctrl)
 		case vk_numpad9:
 			return "Num 9";
 			break;
-		case 43:
+		case ord("+"):
 			return "[+]";
 			break;
-		case 65:
+		case ord("A"):
 			return "A";
 			break;
-		case 83:
+		case ord("S"):
 			return "S";
 			break;
-		case 68:
+		case ord("D"):
 			return "D";
 			break;
-		case 70:
+		case ord("F"):
 			return "F";
 			break;
-		case 71:
+		case ord("G"):
 			return "G";
 			break;
-		case 72:
+		case ord("H"):
 			return "H";
 			break;
-		case 74:
+		case ord("J"):
 			return "J";
 			break;
-		case 75:
+		case ord("K"):
 			return "K";
 			break;
-		case 76:
+		case ord("L"):
 			return "L";
 			break;
 		case vk_enter:
@@ -182,31 +182,31 @@ function get_control_string(_ctrl)
 		case vk_numpad6:
 			return "Num 6";
 			break;
-		case 16:
+		case vk_dollarsign:
 			return "$";
 			break;
-		case 90:
+		case ord("Z"):
 			return "Z";
 			break;
-		case 88:
+		case ord("X"):
 			return "X";
 			break;
-		case 67:
+		case ord("C"):
 			return "C";
 			break;
-		case 86:
+		case ord("V"):
 			return "V";
 			break;
-		case 66:
+		case ord("B"):
 			return "B";
 			break;
-		case 78:
+		case ord("N"):
 			return "N";
 			break;
-		case 77:
+		case ord("M"):
 			return "M";
 			break;
-		case 38:
+		case ord("&"):
 			return "&";
 			break;
 		case vk_numpad1:
@@ -218,22 +218,22 @@ function get_control_string(_ctrl)
 		case vk_numpad3:
 			return "Num 3";
 			break;
-		case 17:
+		case vk_forwardslash:
 			return "/";
 			break;
 		case vk_alt:
 			return "Alt";
 			break;
-		case 32:
+		case vk_percent:
 			return "%";
 			break;
-		case 37:
+		case vk_rightanglebracket:
 			return ")";
 			break;
-		case 39:
+		case vk_asterisk:
 			return "*";
 			break;
-		case 40:
+		case ord("("):
 			return "(";
 			break;
 		case vk_numpad0:
@@ -294,37 +294,37 @@ function get_control_string_npc(_ctrl)
 		case vk_pause:
 			return "Pause";
 			break;
-		case 49:
+		case ord("1"):
 			return "[1]";
 			break;
-		case 50:
+		case ord("2"):
 			return "[2]";
 			break;
-		case 51:
+		case ord("3"):
 			return "[3]";
 			break;
-		case 52:
+		case ord("4"):
 			return "[4]";
 			break;
-		case 53:
+		case ord("5"):
 			return "[5]";
 			break;
-		case 54:
+		case ord("6"):
 			return "[6]";
 			break;
-		case 55:
+		case ord("7"):
 			return "[7]";
 			break;
-		case 56:
+		case ord("8"):
 			return "[8]";
 			break;
-		case 57:
+		case ord("9"):
 			return "[9]";
 			break;
-		case 48:
+		case ord("0"):
 			return "[0]";
 			break;
-		case 8:
+		case vk_backspace:
 			return "Backspace";
 			break;
 		case vk_insert:
@@ -336,37 +336,37 @@ function get_control_string_npc(_ctrl)
 		case vk_pageup:
 			return "Page Up";
 			break;
-		case 9:
+		case vk_tab:
 			return "Tab";
 			break;
-		case 81:
+		case ord("Q"):
 			return "Q";
 			break;
-		case 87:
+		case ord("W"):
 			return "W";
 			break;
-		case 69:
+		case ord("E"):
 			return "E";
 			break;
-		case 82:
+		case ord("R"):
 			return "R";
 			break;
-		case 84:
+		case ord("T"):
 			return "T";
 			break;
-		case 89:
+		case ord("Y"):
 			return "Y";
 			break;
-		case 85:
+		case ord("U"):
 			return "U";
 			break;
-		case 73:
+		case ord("I"):
 			return "I";
 			break;
-		case 79:
+		case ord("O"):
 			return "O";
 			break;
-		case 80:
+		case ord("P"):
 			return "P";
 			break;
 		case vk_end:
@@ -384,34 +384,34 @@ function get_control_string_npc(_ctrl)
 		case vk_numpad9:
 			return "Num 9";
 			break;
-		case 43:
+		case ord("+"):
 			return "[+]";
 			break;
-		case 65:
+		case ord("A"):
 			return "A";
 			break;
-		case 83:
+		case ord("S"):
 			return "S";
 			break;
-		case 68:
+		case ord("D"):
 			return "D";
 			break;
-		case 70:
+		case ord("F"):
 			return "F";
 			break;
-		case 71:
+		case ord("G"):
 			return "G";
 			break;
-		case 72:
+		case ord("H"):
 			return "H";
 			break;
-		case 74:
+		case ord("J"):
 			return "J";
 			break;
-		case 75:
+		case ord("K"):
 			return "K";
 			break;
-		case 76:
+		case ord("L"):
 			return "L";
 			break;
 		case vk_enter:
@@ -429,25 +429,25 @@ function get_control_string_npc(_ctrl)
 		case vk_shift:
 			return "Shift";
 			break;
-		case 90:
+		case ord("Z"):
 			return "Z";
 			break;
-		case 88:
+		case ord("X"):
 			return "X";
 			break;
-		case 67:
+		case ord("C"):
 			return "C";
 			break;
-		case 86:
+		case ord("V"):
 			return "V";
 			break;
-		case 66:
+		case ord("B"):
 			return "B";
 			break;
-		case 78:
+		case ord("N"):
 			return "N";
 			break;
-		case 77:
+		case ord("M"):
 			return "M";
 			break;
 		case vk_up:

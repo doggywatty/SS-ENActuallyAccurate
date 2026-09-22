@@ -106,16 +106,16 @@ else
 {
 	otherjanspr = spr_null;
 }
-setcolors = function(arg0, arg1, arg2, arg3, arg4, arg5)
+setcolors = function(_r, _g, _b, _r2, _g2, _b2)
 {
 	realcol = 
 	{
-		r: arg0,
-		g: arg1,
-		b: arg2,
-		r2: arg3,
-		g2: arg4,
-		b2: arg5
+		r: _r,
+		g: _g,
+		b: _b,
+		r2: _r2,
+		g2: _g2,
+		b2: _b2
 	};
 };
 //PADDINGPADDINGP

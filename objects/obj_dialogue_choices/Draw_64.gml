@@ -12,7 +12,7 @@ draw_set_color(c_black);
 var _cx = 50;
 var _cy = 380;
 
-if (msg_text != -4)
+if (msg_text != noone)
 	draw_text(_cx, _cy + 30, msg_text);
 
 var i = totalChoices - 1;

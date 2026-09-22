@@ -1,13 +1,13 @@
 //PADDINGPADDINGPADDINGPADDINGPADDINGPA
 global.instancelist = ds_list_create();
 
-function check_and_destroy(arg0, arg1, arg2, arg3 = -4)
+function check_and_destroy(_x, _y, _obj, _checkfunc = noone)
 {
-	if (!place_meeting(arg0, arg1, arg2))
+	if (!place_meeting(_x, _y, _obj))
 		return false;
 	
 	var _result = false;
-	var _num = instance_place_list(arg0, arg1, arg2, global.instancelist, false);
+	var _num = instance_place_list(_x, _y, _obj, global.instancelist, false);
 	
 	if (_num > 0)
 	{
@@ -15,7 +15,7 @@ function check_and_destroy(arg0, arg1, arg2, arg3 = -4)
 		{
 			with (ds_list_find_value(global.instancelist, i))
 			{
-				if (arg3 == -4 || arg3(other.id, id))
+				if (_checkfunc == noone || _checkfunc(other.id, id))
 				{
 					DestroyedBy = other.id;
 					event_user(0);
@@ -32,9 +32,9 @@ function check_and_destroy(arg0, arg1, arg2, arg3 = -4)
 
 function scr_collide_destructibles()
 {
-	static dont_break_worms = function(arg0, arg1)
+	static dont_break_worms = function(_checkfunc, _obj)
 	{
-		return arg1.object_index != obj_gummyWormBump;
+		return _obj.object_index != obj_gummyWormBump;
 	};
 	
 	var old_mask = mask_index;

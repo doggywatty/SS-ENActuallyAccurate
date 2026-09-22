@@ -1,10 +1,10 @@
-function scr_ghostcollectible(arg0 = false, arg1 = undefined, arg2 = undefined)
+function scr_ghostcollectible(_candysona = false, _palspr = undefined, _palselect = undefined)
 {
 	if (!instance_exists(obj_secretfound) || createdGhost)
-		return -4;
+		return noone;
 	
 	createdGhost = true;
-	var q = -4;
+	var q = noone;
 	var b = id;
 	
 	with (obj_secretfound)
@@ -20,10 +20,10 @@ function scr_ghostcollectible(arg0 = false, arg1 = undefined, arg2 = undefined)
 			image_yscale: b.image_yscale,
 			image_alpha: 0.5,
 			image_index: 0,
-			candysona: arg0,
-			paletteSprite: arg1,
-			paletteSelect: arg2,
-			usePalette: !is_undefined(arg1),
+			candysona: _candysona,
+			paletteSprite: _palspr,
+			paletteSelect: _palselect,
+			usePalette: !is_undefined(_palspr),
 			platformIndex: 0
 		};
 		show_debug_message($"Ghost Collectable created: {q} (Struct)");

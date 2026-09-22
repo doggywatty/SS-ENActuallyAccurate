@@ -6,7 +6,6 @@ switch (state)
 		
 		if (staticdex >= (sprite_get_number(spr_static_tech) - 1))
 			state = 1;
-		
 		break;
 	case 2:
 		global.RespawnBlockMoving = false;
@@ -14,7 +13,6 @@ switch (state)
 		
 		if (staticdex <= 0)
 			instance_destroy();
-		
 		break;
 }
 

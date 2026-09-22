@@ -5,7 +5,7 @@ function scr_confecti_taunt()
 	
 	if (obj_parent_player.state != PlayerState.taunt)
 	{
-		state = PlayerState.frozen;
+		state = confectistate.normal;
 		image_speed = 0.35;
 	}
 	
@@ -16,7 +16,7 @@ function scr_confecti_taunt()
 		sprite_index = spr_supertaunt;
 		image_index = 0;
 		image_speed = 0.35;
-		state = PlayerState.titlescreen;
+		state = confectistate.appear;
 		
 		with (obj_confectitaunt)
 		{

@@ -1,5 +1,5 @@
 //PADDINGPADDINGPADDINGPADDINGPADDINGP
-canCollide = function(arg0, arg1 = obj_parent_player)
+canCollide = function(stpl, _player = obj_parent_player)
 {
 	return false;
 };
@@ -8,16 +8,16 @@ bumpRecessDistance = 10;
 artificialYOffset = 0;
 clone = false;
 depth = 105;
-DestroyedBy = -4;
-realBump = -4;
+DestroyedBy = noone;
+realBump = noone;
 bumpOffset = 0;
-linkedWorm = -4;
+linkedWorm = noone;
 bumpID = $"bump{id}";
 var x_component = -sign(image_xscale) * dcos(image_angle + ((sign(image_yscale) == -1) ? 270 : 90));
 var y_component = sign(image_yscale) * dsin(image_angle + ((sign(image_yscale) == -1) ? 270 : 90));
 linkedWorm = instance_place(x + x_component, y + y_component, obj_gummyWorm);
 
-if (linkedWorm == -4 || !instance_exists(linkedWorm) || ds_list_find_index(global.SaveRoom, linkedWorm) != -1)
+if (linkedWorm == noone || !instance_exists(linkedWorm) || ds_list_find_index(global.SaveRoom, linkedWorm) != -1)
 {
 	show_debug_message(x_component);
 	show_debug_message(y_component);
@@ -36,20 +36,20 @@ with (instance_copy(false))
 	linkedWorm = other.linkedWorm;
 	bumpID = other.bumpID;
 	
-	if (linkedWorm == -4 || !instance_exists(linkedWorm))
+	if (linkedWorm == noone || !instance_exists(linkedWorm))
 	{
 		x_component = -sign(image_xscale) * dcos(image_angle + ((sign(image_yscale) == -1) ? 270 : 90));
 		y_component = sign(image_yscale) * dsin(image_angle + ((sign(image_yscale) == -1) ? 270 : 90));
 		linkedWorm = instance_place(x + x_component, y + y_component, obj_gummyWorm);
 	}
 	
-	if (linkedWorm == -4 || !instance_exists(linkedWorm))
+	if (linkedWorm == noone || !instance_exists(linkedWorm))
 	{
 		instance_destroy(id, false);
 		exit;
 	}
 	
-	DestroyedBy = -4;
+	DestroyedBy = noone;
 	realBump = other.id;
 	var offset = round(linkedWorm.sprite_width);
 	var x_offset = offset * -linkedWorm.x_direction * sign(linkedWorm.image_xscale);

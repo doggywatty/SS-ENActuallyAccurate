@@ -7,9 +7,9 @@ function scr_saveinit()
 	global.HurtCounter = ini_read_real("Game", $"damage_{scr_getCharacterPrefix(PlayerCharacter.PIZZELLE)}", 0);
 	global.HurtMilestone = global.HurtCounter;
 	global.PlayerPaletteIndex = ini_read_real("Misc", $"playerPaletteIndex_{scr_getCharacterPrefix(PlayerCharacter.PIZZELLE)}", 2);
-	global.GLOBAL_FUN = ini_read_real("Game", "FUN", -4);
+	global.GLOBAL_FUN = ini_read_real("Game", "FUN", noone);
 	
-	if (global.GLOBAL_FUN <= -4)
+	if (global.GLOBAL_FUN <= noone)
 	{
 		global.GLOBAL_FUN = irandom_range(0, 100);
 		ini_write_real("Game", "FUN", global.GLOBAL_FUN);

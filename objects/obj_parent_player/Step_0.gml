@@ -1,5 +1,5 @@
 var a = instance_place(x, y, obj_secretwall);
-secretArray = (a != -4) ? a.layerArray : [];
+secretArray = (a != noone) ? a.layerArray : [];
 
 if (state != PlayerState.comingoutdoor)
 	image_blend = c_white;
@@ -76,7 +76,7 @@ if (!global.freezeframe && state != PlayerState.frozen)
 		state = PlayerState.normal;
 	
 	if (state != PlayerState.grab && state != PlayerState.charge && state != PlayerState.superslam && state != PlayerState.finishingblow)
-		baddieGrabbedID = -4;
+		baddieGrabbedID = noone;
 	
 	if (state != PlayerState.machroll && state != PlayerState.mach3)
 		mach3Roll = 0;
@@ -113,7 +113,7 @@ if (global.ComboTime <= 0 && global.Combo != 0)
 		scr_queueTVAnimation(global.TvSprPlayer_Happy, 200);
 	
 	event_play_oneshot("event:/SFX/ui/kashingcombo");
-	playComboVariable = -4;
+	playComboVariable = noone;
 	instance_destroy(obj_comboEndEffect);
 	
 	with (instance_create(832, 265, obj_comboEndEffect, 
@@ -198,7 +198,7 @@ if (state == PlayerState.mach3 || state == PlayerState.mach2 || state == PlayerS
 	
 	if (machAfterimage <= 0)
 	{
-		with (create_afterimage(choose(afterimagetypes.blue, afterimagetypes.pink), xscale, true))
+		with (create_afterimage(choose(afterimagetypes.mach3effect_1, afterimagetypes.mach3effect_2), xscale, true))
 			mach3Afterimage = true;
 		
 		machAfterimage = 6;
@@ -228,7 +228,7 @@ if (state == PlayerState.wallkick)
 	
 	if (blueAfterimage <= 0)
 	{
-		with (create_afterimage(afterimagetypes.palette, xscale, true))
+		with (create_afterimage(afterimagetypes.wallkick, xscale, true))
 			mach3Afterimage = true;
 		
 		blueAfterimage = 6;

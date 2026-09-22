@@ -77,7 +77,7 @@ if (DestroyedBy.object_index == obj_parent_player || DestroyedBy.object_index ==
 						scr_instakillEnemy(id, other.id);
 					}
 					
-					baddieGrabbedID = -4;
+					baddieGrabbedID = noone;
 				}
 			}
 		}

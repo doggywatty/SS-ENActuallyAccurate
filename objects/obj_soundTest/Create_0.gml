@@ -5,7 +5,7 @@ pauseStatus = false;
 specialToggle = false;
 musicPlaying = false;
 
-defineMusic = function(arg0, arg1, arg2, arg3 = "", arg4 = arg2) constructor
+defineMusic = function(_eventPath, _songDesc, _songComp, _hasSpecial = "", _specialComp = _songComp) constructor
 {
 ///PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPA
 	static add = function()
@@ -14,17 +14,17 @@ defineMusic = function(arg0, arg1, arg2, arg3 = "", arg4 = arg2) constructor
 		return self;
 	};
 	
-	eventPath = arg0;
+	eventPath = _eventPath;
 	eventInstance = undefined;
 	
 	if (!is_undefined(eventPath) && is_string(eventPath))
 		eventInstance = fmod_createEventInstance(eventPath);
 	
-	songDescription = arg1;
-	songComposer = arg2;
-	hasSpecial = arg3 != "";
-	specialDesc = arg3;
-	specialComposer = arg4;
+	songDescription = _songDesc;
+	songComposer = _songComp;
+	hasSpecial = _hasSpecial != "";
+	specialDesc = _hasSpecial;
+	specialComposer = _specialComp;
 	return self.add();
 };
 

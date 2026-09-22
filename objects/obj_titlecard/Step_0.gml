@@ -6,7 +6,7 @@ if (fadein)
 	{
 		doneJingle = true;
 		
-		if (info.music != -4)
+		if (info.music != noone)
 			event_play_oneshot(info.music);
 	}
 }

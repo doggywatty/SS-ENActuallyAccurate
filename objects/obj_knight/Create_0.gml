@@ -6,4 +6,4 @@ baddieSpriteScared = spr_knight_scared;
 baddieSpriteTurn = spr_knight_turn;
 baddieSpriteHit = undefined;
 baddieSpriteDead = spr_knight_dead;
-hurtboxID = -4;
+hurtboxID = noone;

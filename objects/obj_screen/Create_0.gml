@@ -1,7 +1,7 @@
 //PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDIN
 depth = -99;
 gameframe_init();
-__display_set_gui_size_hook(960, 540);
+display_set_gui_size(960, 540);
 global.gameframe_caption_text = "Sugary Spire";
 global.gameframe_caption_font = global.captionfont;
 global.gameframe_caption_icon = spr_gameframe_icon;
@@ -10,11 +10,11 @@ global.gameframe_border_width = 2;
 bgSprite = new subSprite(spr_letterboxBg_simple, 0, 0, false);
 bgSpriteOld = ds_list_create();
 
-updateLetterBox = function(arg0, arg1)
+updateLetterBox = function(_spr_ind, _img_ind)
 {
 	ds_list_add(bgSpriteOld, variable_clone(bgSprite, 1));
-	bgSprite.sprite_index = arg0;
-	bgSprite.image_index = arg1;
+	bgSprite.sprite_index = _spr_ind;
+	bgSprite.image_index = _img_ind;
 };
 
 event_user(1);
@@ -22,13 +22,13 @@ alarm[0] = 1;
 previousMouseX = get_mouse_x_screen(0);
 previousMouseY = get_mouse_y_screen(0);
 captionBuffer = 100;
-global.GameSurface = -4;
+global.GameSurface = noone;
 application_surface_draw_enable(false);
 
 //PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPA
-nextPowTwo = function(arg0)
+nextPowTwo = function(_x)
 {
-	return power(2, ceil(log2(arg0) / log2(2)));
+	return power(2, ceil(log2(_x) / log2(2)));
 };
 
 var surfW = 960;

@@ -98,19 +98,19 @@ function scr_getinput()
 	return true;
 }
 
-function input_check(arg0)
+function input_check(_inputkey)
 {
-	return input_get(arg0).held || input_get($"{arg0}C").held;
+	return input_get(_inputkey).held || input_get($"{_inputkey}C").held;
 }
 
-function input_check_pressed(arg0)
+function input_check_pressed(_inputkey)
 {
-	return input_get(arg0).pressed || input_get($"{arg0}C").pressed;
+	return input_get(_inputkey).pressed || input_get($"{_inputkey}C").pressed;
 }
 
-function input_check_released(arg0)
+function input_check_released(_inputkey)
 {
-	return input_get(arg0).released || input_get($"{arg0}C").released;
+	return input_get(_inputkey).released || input_get($"{_inputkey}C").released;
 }
 
 function any_input_check()
@@ -145,23 +145,23 @@ function any_input_pressed_check()
 	return keyboard_check_pressed(vk_anykey);
 }
 
-function scr_key_display(arg0)
+function scr_key_display(_inputkey)
 {
 }
 
-function scr_keyname(arg0)
+function scr_keyname(_inputkey)
 {
 	var key_name = "";
 	
-	if (ds_map_exists(global.SpecialKeyNameMap, arg0))
+	if (ds_map_exists(global.SpecialKeyNameMap, _inputkey))
 	{
-		key_name = ds_map_find_value(global.SpecialKeyNameMap, real(arg0));
+		key_name = ds_map_find_value(global.SpecialKeyNameMap, real(_inputkey));
 	}
 	else
 	{
 		var _f = draw_get_font();
 		draw_set_font(font_arial12);
-		key_name = chr(arg0);
+		key_name = chr(_inputkey);
 		draw_set_font(_f);
 	}
 	
@@ -173,88 +173,88 @@ function scr_initKeyNameMap()
 	if (!variable_global_exists("SpecialKeyNameMap"))
 		global.SpecialKeyNameMap = ds_map_create();
 	
-	ds_map_set(global.SpecialKeyNameMap, 37, lang_get("key_left"));
-	ds_map_set(global.SpecialKeyNameMap, 39, lang_get("key_right"));
-	ds_map_set(global.SpecialKeyNameMap, 38, lang_get("key_up"));
-	ds_map_set(global.SpecialKeyNameMap, 40, lang_get("key_down"));
-	ds_map_set(global.SpecialKeyNameMap, 13, lang_get("key_enter"));
-	ds_map_set(global.SpecialKeyNameMap, 27, lang_get("key_escape"));
-	ds_map_set(global.SpecialKeyNameMap, 32, lang_get("key_space"));
-	ds_map_set(global.SpecialKeyNameMap, 16, lang_get("key_shift"));
-	ds_map_set(global.SpecialKeyNameMap, 17, lang_get("key_control"));
-	ds_map_set(global.SpecialKeyNameMap, 18, lang_get("key_alt"));
-	ds_map_set(global.SpecialKeyNameMap, 8, lang_get("key_backspace"));
-	ds_map_set(global.SpecialKeyNameMap, 9, lang_get("key_tab"));
-	ds_map_set(global.SpecialKeyNameMap, 36, lang_get("key_home"));
-	ds_map_set(global.SpecialKeyNameMap, 35, lang_get("key_end"));
-	ds_map_set(global.SpecialKeyNameMap, 46, lang_get("key_delete"));
-	ds_map_set(global.SpecialKeyNameMap, 45, lang_get("key_insert"));
-	ds_map_set(global.SpecialKeyNameMap, 33, lang_get("key_pageup"));
-	ds_map_set(global.SpecialKeyNameMap, 34, lang_get("key_pagedown"));
-	ds_map_set(global.SpecialKeyNameMap, 19, lang_get("key_pause"));
-	ds_map_set(global.SpecialKeyNameMap, 44, lang_get("key_printscreen"));
-	ds_map_set(global.SpecialKeyNameMap, 112, "F1");
-	ds_map_set(global.SpecialKeyNameMap, 113, "F2");
-	ds_map_set(global.SpecialKeyNameMap, 114, "F3");
-	ds_map_set(global.SpecialKeyNameMap, 115, "F4");
-	ds_map_set(global.SpecialKeyNameMap, 116, "F5");
-	ds_map_set(global.SpecialKeyNameMap, 117, "F6");
-	ds_map_set(global.SpecialKeyNameMap, 118, "F7");
-	ds_map_set(global.SpecialKeyNameMap, 119, "F8");
-	ds_map_set(global.SpecialKeyNameMap, 120, "F9");
-	ds_map_set(global.SpecialKeyNameMap, 121, "F10");
-	ds_map_set(global.SpecialKeyNameMap, 122, "F11");
-	ds_map_set(global.SpecialKeyNameMap, 123, "F12");
-	ds_map_set(global.SpecialKeyNameMap, 96, lang_get("key_numpad0"));
-	ds_map_set(global.SpecialKeyNameMap, 97, lang_get("key_numpad1"));
-	ds_map_set(global.SpecialKeyNameMap, 98, lang_get("key_numpad2"));
-	ds_map_set(global.SpecialKeyNameMap, 99, lang_get("key_numpad3"));
-	ds_map_set(global.SpecialKeyNameMap, 100, lang_get("key_numpad4"));
-	ds_map_set(global.SpecialKeyNameMap, 101, lang_get("key_numpad5"));
-	ds_map_set(global.SpecialKeyNameMap, 102, lang_get("key_numpad6"));
-	ds_map_set(global.SpecialKeyNameMap, 103, lang_get("key_numpad7"));
-	ds_map_set(global.SpecialKeyNameMap, 104, lang_get("key_numpad8"));
-	ds_map_set(global.SpecialKeyNameMap, 105, lang_get("key_numpad9"));
-	ds_map_set(global.SpecialKeyNameMap, 106, lang_get("key_multiply"));
-	ds_map_set(global.SpecialKeyNameMap, 111, lang_get("key_divide"));
-	ds_map_set(global.SpecialKeyNameMap, 107, lang_get("key_add"));
-	ds_map_set(global.SpecialKeyNameMap, 109, lang_get("key_subtract"));
-	ds_map_set(global.SpecialKeyNameMap, 110, lang_get("key_decimal"));
-	ds_map_set(global.SpecialKeyNameMap, 32769, "A");
-	ds_map_set(global.SpecialKeyNameMap, 32770, "B");
-	ds_map_set(global.SpecialKeyNameMap, 32771, "X");
-	ds_map_set(global.SpecialKeyNameMap, 32772, "Y");
-	ds_map_set(global.SpecialKeyNameMap, 32785, "LH");
-	ds_map_set(global.SpecialKeyNameMap, 32786, "LV");
-	ds_map_set(global.SpecialKeyNameMap, 32787, "RH");
-	ds_map_set(global.SpecialKeyNameMap, 32788, "RV");
-	ds_map_set(global.SpecialKeyNameMap, 32773, "L");
-	ds_map_set(global.SpecialKeyNameMap, 32775, "ZL");
-	ds_map_set(global.SpecialKeyNameMap, 32774, "R");
-	ds_map_set(global.SpecialKeyNameMap, 32776, "ZR");
-	ds_map_set(global.SpecialKeyNameMap, 32777, lang_get("key_select"));
-	ds_map_set(global.SpecialKeyNameMap, 32778, lang_get("key_start"));
-	ds_map_set(global.SpecialKeyNameMap, 32779, lang_get("key_stickl"));
-	ds_map_set(global.SpecialKeyNameMap, 32780, lang_get("key_stickr"));
-	ds_map_set(global.SpecialKeyNameMap, 32781, lang_get("key_padup"));
-	ds_map_set(global.SpecialKeyNameMap, 32783, lang_get("key_padleft"));
-	ds_map_set(global.SpecialKeyNameMap, 32784, lang_get("key_padright"));
-	ds_map_set(global.SpecialKeyNameMap, 32782, lang_get("key_paddown"));
-	ds_map_set(global.SpecialKeyNameMap, 106, "*");
-	ds_map_set(global.SpecialKeyNameMap, 107, "+");
-	ds_map_set(global.SpecialKeyNameMap, 109, "-");
-	ds_map_set(global.SpecialKeyNameMap, 110, ".");
-	ds_map_set(global.SpecialKeyNameMap, 111, "/");
-	ds_map_set(global.SpecialKeyNameMap, 186, ";");
-	ds_map_set(global.SpecialKeyNameMap, 187, "=");
-	ds_map_set(global.SpecialKeyNameMap, 188, ",");
-	ds_map_set(global.SpecialKeyNameMap, 189, "-");
-	ds_map_set(global.SpecialKeyNameMap, 190, ".");
-	ds_map_set(global.SpecialKeyNameMap, 191, "/");
-	ds_map_set(global.SpecialKeyNameMap, 192, "`");
-	ds_map_set(global.SpecialKeyNameMap, 219, "{");
-	ds_map_set(global.SpecialKeyNameMap, 220, "\\");
-	ds_map_set(global.SpecialKeyNameMap, 221, "]");
-	ds_map_set(global.SpecialKeyNameMap, 222, "'");
+	ds_map_set(global.SpecialKeyNameMap, vk_left, lang_get("key_left"));
+	ds_map_set(global.SpecialKeyNameMap, vk_right, lang_get("key_right"));
+	ds_map_set(global.SpecialKeyNameMap, vk_up, lang_get("key_up"));
+	ds_map_set(global.SpecialKeyNameMap, vk_down, lang_get("key_down"));
+	ds_map_set(global.SpecialKeyNameMap, vk_enter, lang_get("key_enter"));
+	ds_map_set(global.SpecialKeyNameMap, vk_escape, lang_get("key_escape"));
+	ds_map_set(global.SpecialKeyNameMap, vk_space, lang_get("key_space"));
+	ds_map_set(global.SpecialKeyNameMap, vk_shift, lang_get("key_shift"));
+	ds_map_set(global.SpecialKeyNameMap, vk_control, lang_get("key_control"));
+	ds_map_set(global.SpecialKeyNameMap, vk_alt, lang_get("key_alt"));
+	ds_map_set(global.SpecialKeyNameMap, vk_backspace, lang_get("key_backspace"));
+	ds_map_set(global.SpecialKeyNameMap, vk_tab, lang_get("key_tab"));
+	ds_map_set(global.SpecialKeyNameMap, vk_home, lang_get("key_home"));
+	ds_map_set(global.SpecialKeyNameMap, vk_end, lang_get("key_end"));
+	ds_map_set(global.SpecialKeyNameMap, vk_delete, lang_get("key_delete"));
+	ds_map_set(global.SpecialKeyNameMap, vk_insert, lang_get("key_insert"));
+	ds_map_set(global.SpecialKeyNameMap, vk_pageup, lang_get("key_pageup"));
+	ds_map_set(global.SpecialKeyNameMap, vk_pagedown, lang_get("key_pagedown"));
+	ds_map_set(global.SpecialKeyNameMap, vk_pause, lang_get("key_pause"));
+	ds_map_set(global.SpecialKeyNameMap, vk_printscreen, lang_get("key_printscreen"));
+	ds_map_set(global.SpecialKeyNameMap, vk_f1, "F1");
+	ds_map_set(global.SpecialKeyNameMap, vk_f2, "F2");
+	ds_map_set(global.SpecialKeyNameMap, vk_f3, "F3");
+	ds_map_set(global.SpecialKeyNameMap, vk_f4, "F4");
+	ds_map_set(global.SpecialKeyNameMap, vk_f5, "F5");
+	ds_map_set(global.SpecialKeyNameMap, vk_f6, "F6");
+	ds_map_set(global.SpecialKeyNameMap, vk_f7, "F7");
+	ds_map_set(global.SpecialKeyNameMap, vk_f8, "F8");
+	ds_map_set(global.SpecialKeyNameMap, vk_f9, "F9");
+	ds_map_set(global.SpecialKeyNameMap, vk_f10, "F10");
+	ds_map_set(global.SpecialKeyNameMap, vk_f11, "F11");
+	ds_map_set(global.SpecialKeyNameMap, vk_f12, "F12");
+	ds_map_set(global.SpecialKeyNameMap, vk_numpad0, lang_get("key_numpad0"));
+	ds_map_set(global.SpecialKeyNameMap, vk_numpad1, lang_get("key_numpad1"));
+	ds_map_set(global.SpecialKeyNameMap, vk_numpad2, lang_get("key_numpad2"));
+	ds_map_set(global.SpecialKeyNameMap, vk_numpad3, lang_get("key_numpad3"));
+	ds_map_set(global.SpecialKeyNameMap, vk_numpad4, lang_get("key_numpad4"));
+	ds_map_set(global.SpecialKeyNameMap, vk_numpad5, lang_get("key_numpad5"));
+	ds_map_set(global.SpecialKeyNameMap, vk_numpad6, lang_get("key_numpad6"));
+	ds_map_set(global.SpecialKeyNameMap, vk_numpad7, lang_get("key_numpad7"));
+	ds_map_set(global.SpecialKeyNameMap, vk_numpad8, lang_get("key_numpad8"));
+	ds_map_set(global.SpecialKeyNameMap, vk_numpad9, lang_get("key_numpad9"));
+	ds_map_set(global.SpecialKeyNameMap, vk_multiply, lang_get("key_multiply"));
+	ds_map_set(global.SpecialKeyNameMap, vk_divide, lang_get("key_divide"));
+	ds_map_set(global.SpecialKeyNameMap, vk_add, lang_get("key_add"));
+	ds_map_set(global.SpecialKeyNameMap, vk_subtract, lang_get("key_subtract"));
+	ds_map_set(global.SpecialKeyNameMap, vk_decimal, lang_get("key_decimal"));
+	ds_map_set(global.SpecialKeyNameMap, gp_face1, "A");
+	ds_map_set(global.SpecialKeyNameMap, gp_face2, "B");
+	ds_map_set(global.SpecialKeyNameMap, gp_face3, "X");
+	ds_map_set(global.SpecialKeyNameMap, gp_face4, "Y");
+	ds_map_set(global.SpecialKeyNameMap, gp_axislh, "LH");
+	ds_map_set(global.SpecialKeyNameMap, gp_axislv, "LV");
+	ds_map_set(global.SpecialKeyNameMap, gp_axisrh, "RH");
+	ds_map_set(global.SpecialKeyNameMap, gp_axisrv, "RV");
+	ds_map_set(global.SpecialKeyNameMap, gp_shoulderl, "L");
+	ds_map_set(global.SpecialKeyNameMap, gp_shoulderlb, "ZL");
+	ds_map_set(global.SpecialKeyNameMap, gp_shoulderr, "R");
+	ds_map_set(global.SpecialKeyNameMap, gp_shoulderrb, "ZR");
+	ds_map_set(global.SpecialKeyNameMap, gp_select, lang_get("key_select"));
+	ds_map_set(global.SpecialKeyNameMap, gp_start, lang_get("key_start"));
+	ds_map_set(global.SpecialKeyNameMap, gp_stickl, lang_get("key_stickl"));
+	ds_map_set(global.SpecialKeyNameMap, gp_stickr, lang_get("key_stickr"));
+	ds_map_set(global.SpecialKeyNameMap, gp_padu, lang_get("key_padup"));
+	ds_map_set(global.SpecialKeyNameMap, gp_padl, lang_get("key_padleft"));
+	ds_map_set(global.SpecialKeyNameMap, gp_padr, lang_get("key_padright"));
+	ds_map_set(global.SpecialKeyNameMap, gp_padd, lang_get("key_paddown"));
+	ds_map_set(global.SpecialKeyNameMap, vk_multiply, "*");
+	ds_map_set(global.SpecialKeyNameMap, vk_add, "+");
+	ds_map_set(global.SpecialKeyNameMap, vk_subtract, "-");
+	ds_map_set(global.SpecialKeyNameMap, vk_decimal, ".");
+	ds_map_set(global.SpecialKeyNameMap, vk_divide, "/");
+	ds_map_set(global.SpecialKeyNameMap, vk_semicolon, ";");
+	ds_map_set(global.SpecialKeyNameMap, vk_equals, "=");
+	ds_map_set(global.SpecialKeyNameMap, vk_comma, ",");
+	ds_map_set(global.SpecialKeyNameMap, vk_dash, "-");
+	ds_map_set(global.SpecialKeyNameMap, vk_dot, ".");
+	ds_map_set(global.SpecialKeyNameMap, vk_rightslash, "/");
+	ds_map_set(global.SpecialKeyNameMap, vk_backtick, "`");
+	ds_map_set(global.SpecialKeyNameMap, vk_leftbrace, "{");
+	ds_map_set(global.SpecialKeyNameMap, vk_2leftslashes, "\\");
+	ds_map_set(global.SpecialKeyNameMap, vk_rightbracket, "]");
+	ds_map_set(global.SpecialKeyNameMap, vk_apostrophe, "'");
 	ds_map_set(global.SpecialKeyNameMap, -1, lang_get("key_presskey"));
 }

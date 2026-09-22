@@ -9,7 +9,7 @@ gamepad=false;
 depth=-500;
 prompt_changes=false;
 exiting=false;
-function inputDisplay(arg0,arg1) constructor
+function inputDisplay(_name,_icon_ind) constructor
 {
 	static create=function()
 	{
@@ -19,14 +19,14 @@ function inputDisplay(arg0,arg1) constructor
 		return self.update();
 	};
 //PADDINGPADDINGP
-	static draw=function(arg0,arg1,arg2)
+	static draw=function(_text,_off,_blend)
 	{
-		inputText.blend(arg2,1);
-		inputText.draw(arg0,arg1);
+		inputText.blend(_blend,1);
+		inputText.draw(_text,_off);
 		for (var i=0; i < array_length(keyname_arr); i++)
 		{
 			var offset=inputOffsets[i];
-			keyname_arr[i].draw(arg0 - offset.x,arg1 - offset.y);
+			keyname_arr[i].draw(_text - offset.x,_off - offset.y);
 		}
 	};
 //PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDING
@@ -69,14 +69,14 @@ function inputDisplay(arg0,arg1) constructor
 		inputText=scribble(txt).align(2,0).origin(0,16).line_height(lh,lh);
 		return self;
 	};
-	displayname=arg0;
-	name=arg0;
-	iconIndex=arg1;
-	text=string_upper(lang_get($"opt_keyconfig_{arg0}"));
+	displayname=_name;
+	name=_name;
+	iconIndex=_icon_ind;
+	text=string_upper(lang_get($"opt_keyconfig_{_name}"));
 	lineCount=1;
 	isGP=false;
 	inputText="";
-	parentInput=input_get(arg0);
+	parentInput=input_get(_name);
 	savedKeys=[];
 	savedGPs=[];
 	currentInputs=[];

@@ -1,4 +1,4 @@
-__display_set_gui_size_hook(960, 540);
+display_set_gui_size(960, 540);
 
 if (!surface_exists(global.GameSurface))
 	global.GameSurface = surface_create(960, 540);

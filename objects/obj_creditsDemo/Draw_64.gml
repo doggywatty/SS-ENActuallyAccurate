@@ -9,9 +9,9 @@ if (creditPhase == 1)
 		for (var i = 0; i < categoryCount; i++)
 		{
 			var _nameArr = creditEntries[i][1];
-			array_foreach(_nameArr, function(arg0, arg1)
+			array_foreach(_nameArr, function(_creditEntry, _cat)
 			{
-				arg0.draw();
+				_creditEntry.draw();
 			});
 		}
 		

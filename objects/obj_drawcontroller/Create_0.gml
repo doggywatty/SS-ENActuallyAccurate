@@ -3,22 +3,22 @@ depth = -25;
 sucrose_lighting = false;
 sucrose_color = 0;
 sucrose_color_array = [obj_parent_follower, obj_baddieSpawner, obj_parent_collect, obj_rocketdud, obj_dashpad, obj_chocofrog, obj_confectibox, obj_eyescreammine, obj_transportBox];
-sucroseSurface = -4;
+sucroseSurface = noone;
 
-drawPlayer = function(arg0 = id)
+drawPlayer = function(_id = id)
 {
-	with (arg0)
+	with (_id)
 	{
 		draw_player_sprite_ext(sprite_index, image_index, x, y, xscale * scale, yscale * scale, draw_angle, image_blend, image_alpha);
 		
 		if (wetTimer > 0)
-			draw_sprite_ext_duotone(sprite_index, -1, x, y, xscale * scale, yscale * scale, draw_angle, 1601784, 0, image_alpha * 0.75 * (wetTimer / wetTimerMax));
+			draw_sprite_ext_duotone(sprite_index, -1, x, y, xscale * scale, yscale * scale, draw_angle, #F87018, 0, image_alpha * 0.75 * (wetTimer / wetTimerMax));
 		
 		if (flash)
 			draw_sprite_ext_flash(sprite_index, image_index, x, y, xscale * scale, yscale * scale, draw_angle, c_white, image_alpha);
 		
 		if (isInSecretPortal)
-			draw_sprite_ext_flash(sprite_index, image_index, x, y, xscale * scale, yscale * scale, draw_angle, 9251145, image_alpha * (1.5 - scale));
+			draw_sprite_ext_flash(sprite_index, image_index, x, y, xscale * scale, yscale * scale, draw_angle, #49298D, image_alpha * (1.5 - scale));
 		
 		if (global.DebugVisuals)
 			draw_rectangle(bbox_left + 1, bbox_top + 1, bbox_right - 1, bbox_bottom - 1, true);
@@ -26,9 +26,9 @@ drawPlayer = function(arg0 = id)
 };
 
 //PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDING
-drawBaddieSprite = function(arg0 = id)
+drawBaddieSprite = function(_id = id)
 {
-	with (arg0)
+	with (_id)
 	{
 		var _drawx = x + (46 * squashValueY);
 		var _drawy = y + (46 * squashValueX);
@@ -63,7 +63,7 @@ drawBaddieSprite = function(arg0 = id)
 		}
 		
 		if (wetTimer > 0)
-			draw_sprite_ext_duotone(sprite_index, image_index, _drawx, _drawy, _xs, _ys, image_angle, 1601784, 0, image_alpha * 0.75 * (wetTimer / wetTimerMax));
+			draw_sprite_ext_duotone(sprite_index, image_index, _drawx, _drawy, _xs, _ys, image_angle, #F87018, 0, image_alpha * 0.75 * (wetTimer / wetTimerMax));
 		
 		if (flash)
 			draw_sprite_ext_flash(sprite_index, image_index, _drawx, _drawy, _xs, _ys, image_angle, c_white, image_alpha);

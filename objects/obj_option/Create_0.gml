@@ -15,16 +15,16 @@ handle_savedoption = function()
 	if (!is_struct(savedSliderOption))
 		exit;
 	
-	if (activeSFX != -4)
+	if (activeSFX != noone)
 		kill_sounds([activeSFX]);
 	
-	activeSFX = -4;
+	activeSFX = noone;
 	savedSliderOption.moving = false;
 	
 	if (!is_undefined(savedSliderOption.on_stop))
 		savedSliderOption.on_stop(savedSliderOption.value);
 	
-	savedSliderOption = -4;
+	savedSliderOption = noone;
 	trace("Stopped");
 };
 
@@ -34,12 +34,12 @@ alignCenter = true;
 scr_input_varinit();
 bg_alpha = [1, 0, 0, 0, 0, 0, 0];
 inputBuffer = 1;
-activeSFX = -4;
+activeSFX = noone;
 optionMenu = OptionMenu.main;
-backMenu = -4;
+backMenu = noone;
 backOption = 0;
 scrollbuffer = 0;
-savedSliderOption = -4;
+savedSliderOption = noone;
 sliderSprite = spr_optionslide_bar;
 sliderIcon = spr_optionslide_end;
 bgx = 0;
@@ -50,6 +50,6 @@ descfadeout = false;
 description = "";
 showdesc = false;
 descalp = 0;
-savedDesc = -4;
+savedDesc = noone;
 changedAnyOption = false;
 event_user(0);

@@ -1,4 +1,4 @@
-if (player == -4)
+if (player == noone)
 	exit;
 
 xscale = sign(image_xscale);

@@ -21,7 +21,7 @@ if (point_in_rectangle(obj_parent_player.x, obj_parent_player.y, x - 100, y - 50
 	{
 		image_index = 0;
 		flash = true;
-		create_heat_afterimage(afterimagetypes.basic);
+		create_heat_afterimage(afterimagetypes.plain);
 		state = enemystates.attack;
 		sprite_index = spr_golfburger_golf;
 		enemyAttackTimer = 200;

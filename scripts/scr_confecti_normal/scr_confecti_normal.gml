@@ -26,7 +26,7 @@ function scr_confecti_normal()
 	
 	confecti_dir = approach(confecti_dir, _dir, 0.2);
 	distance = confecti_dir * 25;
-	var leader = -4;
+	var leader = noone;
 	leader = !ds_list_find_index(global.FollowerList, id) ? obj_parent_player : ds_list_find_value(global.FollowerList, floor(ds_list_find_index(global.FollowerList, id) - 1));
 	
 	if (!instance_exists(leader))
@@ -73,13 +73,13 @@ function scr_confecti_normal()
 	y = round(y);
 	var supertaunts = [obj_parent_player.spr_supertaunt1, obj_parent_player.spr_supertaunt2, obj_parent_player.spr_supertaunt3, obj_parent_player.spr_supertaunt4];
 	
-	if (obj_parent_player.state == PlayerState.taunt && state != PlayerState.normal && state != PlayerState.titlescreen)
+	if (obj_parent_player.state == PlayerState.taunt && state != confectistate.taunt && state != PlayerState.titlescreen)
 	{
 		if (array_contains(supertaunts, obj_parent_player.sprite_index))
 		{
 			sprite_index = spr_supertaunt;
 			image_index = 0;
-			state = PlayerState.titlescreen;
+			state = confectistate.appear;
 			
 			with (obj_confectitaunt)
 			{
@@ -95,7 +95,7 @@ function scr_confecti_normal()
 				depth: depth + 1,
 				bigTaunt: bigTaunt
 			});
-			state = PlayerState.normal;
+			state = confectistate.taunt;
 			image_index = irandom_range(0, sprite_get_number(spr_taunt) - 1);
 		}
 	}

@@ -43,4 +43,4 @@ borderscale = 4;
 whitealpha = 0;
 pauseslidein = 500;
 shake = 0;
-screensprite = -4;
+screensprite = noone;

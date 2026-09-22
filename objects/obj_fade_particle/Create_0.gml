@@ -1,33 +1,33 @@
 //PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPAD
 depth = 0;
 image_speed = 0.35;
-playerID = -4;
-step_function = -4;
+playerID = noone;
+step_function = noone;
 followPlayer = false;
-particle_imgspd = function(arg0)
+particle_imgspd = function(_imgspd)
 {
-	image_speed = arg0;
+	image_speed = _imgspd;
 	return self;
 };
 //
-particle_depth = function(arg0)
+particle_depth = function(_depth)
 {
-	depth = arg0;
+	depth = _depth;
 	return self;
 };
 //P
-particle_scale = function(arg0, arg1)
+particle_scale = function(_img_xscale, _img_yscale)
 {
-	image_xscale = arg0;
-	image_yscale = arg1;
+	image_xscale = _img_xscale;
+	image_yscale = _img_yscale;
 	return self;
 };
 //PADDINGPA
-particle_followobj = function(arg0)
+particle_followobj = function(_playerID)
 {
-	if (instance_exists(arg0))
+	if (instance_exists(_playerID))
 	{
-		playerID = arg0;
+		playerID = _playerID;
 		followPlayer = true;
 		x = playerID.x;
 		y = playerID.y;

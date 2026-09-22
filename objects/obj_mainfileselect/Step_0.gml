@@ -188,7 +188,7 @@ if (abletomove && !blockedInputs && !activated)
 	lineWidth = round(clamp(lineWidth, 1, 20));
 }
 
-var _color = mouse_check_button(mb_right) ? c_white : 5183024;
+var _color = mouse_check_button(mb_right) ? c_white : #30164F;
 doodle_surface_manage();
 
 for (var i = 0; i < array_length(fileDoodleSurf); i++)

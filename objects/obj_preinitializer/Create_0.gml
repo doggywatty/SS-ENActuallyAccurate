@@ -205,3 +205,22 @@ enum GnomeColors
 	Peach = 4,
 	Purple = 5	
 }
+
+#macro isDemo true
+#macro vk_dollarsign 16
+#macro vk_forwardslash 17
+#macro vk_percent 32
+#macro vk_rightanglebracket 37
+#macro vk_asterisk 39
+#macro vk_semicolon 186
+#macro vk_equals 187
+#macro vk_comma 188
+#macro vk_dash 189
+#macro vk_dot 190
+#macro vk_rightslash 191
+#macro vk_backtick 192
+#macro vk_leftbrace 219
+#macro vk_2leftslashes 220
+#macro vk_rightbracket 221
+#macro vk_apostrophe 222
+#macro vk_capslock 20

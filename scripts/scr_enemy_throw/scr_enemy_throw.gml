@@ -67,7 +67,6 @@ function scr_enemy_throw()
 					hsp = -2;
 					grounded = 0;
 				}
-				
 				break;
 			case obj_cottonwitch:
 				enemyAttackTimer = 400;
@@ -77,7 +76,6 @@ function scr_enemy_throw()
 					with (instance_create(x, y, obj_cottonwitchprojectile))
 						image_xscale = other.image_xscale;
 				}
-				
 				break;
 			case obj_mintsplosion:
 				enemyAttackTimer = 200;
@@ -87,14 +85,12 @@ function scr_enemy_throw()
 					image_xscale = other.image_xscale;
 					movespeed = 12;
 				}
-				
 				break;
 			case obj_snowMint:
 				enemyAttackTimer = 400;
 				
 				with (instance_create(x, y, obj_snowMintProjectile))
 					image_xscale = other.image_xscale;
-				
 				break;
 			case obj_fizzCloud:
 				enemyAttackTimer = 300;
@@ -108,7 +104,6 @@ function scr_enemy_throw()
 				
 				with (instance_create(x, y - 8, obj_popice_sneezeparticle))
 					image_xscale = other.image_xscale;
-				
 				break;
 			case obj_cottonblimp:
 				enemyAttackTimer = 300;
@@ -120,7 +115,6 @@ function scr_enemy_throw()
 					baddieID: id
 				}))
 					baddieID = other.id;
-				
 				break;
 			case obj_crackerkicker:
 				instance_create(x + (image_xscale * 50), y, obj_crackerkicker_kickhitbox, 

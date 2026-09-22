@@ -15,7 +15,7 @@ else
 mytex = spr_icepopbg;
 mytex_x = 0;
 mytex_y = 0;
-mysurf = -4;
-mycut = -4;
+mysurf = noone;
+mycut = noone;
 propdex = 0;
 boxstate = 0;

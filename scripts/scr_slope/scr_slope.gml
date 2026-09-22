@@ -1,26 +1,26 @@
-function scr_slope(arg0 = false)
+function scr_slope(_checkSlope = false)
 {
-	return scr_slope_ext(x, y + 1, arg0);
+	return scr_slope_ext(x, y + 1, _checkSlope);
 }
 
-function scr_slope_ext(arg0, arg1, arg2 = false)
+function scr_slope_ext(_x, _y, _checkSlopeExt = false)
 {
-	return place_meeting_slope(arg0, arg1, !arg2);
+	return place_meeting_slope(_x, _y, !_checkSlopeExt);
 }
 
-function scr_solid_slope(arg0, arg1)
+function scr_solid_slope(_x, _y)
 {
-	place_meeting_slopeSolid(arg0, arg1);
+	place_meeting_slopeSolid(_x, _y);
 }
 
-function slopeCheck(arg0, arg1)
+function slopeCheck(_x, _y)
 {
-	return scr_slope_ext(arg0, arg1 + 1) && !scr_solid_slope(arg0, arg1 + 1) && !scr_solid_slope(arg0, arg1) && scr_slope_ext(arg0, (arg1 - bbox_top) + bbox_bottom);
+	return scr_slope_ext(_x, _y + 1) && !scr_solid_slope(_x, _y + 1) && !scr_solid_slope(_x, _y) && scr_slope_ext(_x, (_y - bbox_top) + bbox_bottom);
 }
 
-function scr_slopePlatform(arg0, arg1)
+function scr_slopePlatform(_x, _y)
 {
-	place_meeting_slopePlatform(arg0, arg1);
+	place_meeting_slopePlatform(_x, _y);
 }
 
 function slopeMomentum_acceleration()
@@ -69,21 +69,21 @@ function slopeMomentum_direction()
 	return -1;
 }
 
-function player_slopeMomentum(arg0, arg1 = 0)
+function player_slopeMomentum(_up, _down = 0)
 {
 	var inst = instance_place(x, y + 1, obj_slopePlatform);
 	
-	if (instance_place(x, y + 1, obj_slope) != -4)
+	if (instance_place(x, y + 1, obj_slope) != noone)
 		inst = instance_place(x, y + 1, obj_slope);
 	
-	if (groundedSlope && inst != -4)
+	if (groundedSlope && inst != noone)
 	{
 		var _xscale = sign(inst.image_xscale);
 		var slope_acceleration = abs(inst.image_yscale) / abs(inst.image_xscale);
 		
 		if (sign(image_xscale) == _xscale)
-			movespeed -= (arg1 * slope_acceleration);
+			movespeed -= (_down * slope_acceleration);
 		else
-			movespeed += (arg0 * slope_acceleration);
+			movespeed += (_up * slope_acceleration);
 	}
 }

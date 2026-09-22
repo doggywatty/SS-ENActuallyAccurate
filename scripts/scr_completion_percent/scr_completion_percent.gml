@@ -1,8 +1,8 @@
-function scr_completion_percent(arg0)
+function scr_completion_percent(_file)
 {
-	if (file_exists(arg0))
+	if (file_exists(_file))
 	{
-		ini_open(arg0);
+		ini_open(_file);
 		var levels = ["entryway", "steamy", "mineshaft", "molasses"];
 		var ranks = ["d", "c", "b", "a", "s"];
 		var levels_count = 0;
@@ -62,7 +62,7 @@ function scr_completion_percent(arg0)
 		completion += ((20 * treasure_count) / 4);
 		completion += ((10 * task_count) / 12);
 		completion += ((1 * p_rank_count) / 4);
-		show_debug_message($"File: {filename_name(arg0)}");
+		show_debug_message($"File: {filename_name(_file)}");
 		show_debug_message($"Completion of tutorial: {completed_tutorial}");
 		show_debug_message($"Number of levels: {levels_count}");
 		show_debug_message($"Completion of levels: {levels_count / 4}");
@@ -88,11 +88,11 @@ function scr_completion_percent(arg0)
 	}
 }
 
-function scr_check_completion(arg0 = global.SaveFileName)
+function scr_check_completion(_file = global.SaveFileName)
 {
 	var levels = ["entryway", "steamy", "mineshaft", "molasses"];
 	var count = 0;
-	ini_open(arg0);
+	ini_open(_file);
 	
 	for (var i = 0; i < array_length(levels); i++)
 	{

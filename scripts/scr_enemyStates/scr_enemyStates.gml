@@ -144,7 +144,7 @@ function state_enemyHit()
 	baddieStunTimer = 500;
 	image_speed = 0.35;
 	
-	with (create_afterimage(afterimagetypes.basic, image_xscale))
+	with (create_afterimage(afterimagetypes.plain, image_xscale))
 	{
 		image_alpha = 0.6;
 		vanish = true;
@@ -228,10 +228,10 @@ function state_enemyWaiting_Box()
 	}
 }
 
-function scr_enemyThrowDefault(arg0, arg1, arg2, arg3)
+function scr_enemyThrowDefault(_spr_ind, _frames, _img_spd, _func)
 {
-	image_speed = arg2;
-	sprite_index = arg0;
+	image_speed = _img_spd;
+	sprite_index = _spr_ind;
 	enemyAttackTimer = enemyAttackTimerMax;
 	
 	if (isFlyingEnemy)
@@ -244,10 +244,10 @@ function scr_enemyThrowDefault(arg0, arg1, arg2, arg3)
 	
 	scr_conveyorBeltKinematics();
 	
-	if (!hasAttacked && sprite_animation_end(sprite_index, image_index, arg1))
+	if (!hasAttacked && sprite_animation_end(sprite_index, image_index, _frames))
 	{
 		event_play_oneshot("event:/SFX/enemies/projectile", x, y);
-		arg3();
+		_func();
 		hasAttacked = true;
 	}
 	

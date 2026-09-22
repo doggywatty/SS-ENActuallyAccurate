@@ -16,7 +16,6 @@ switch (state)
 			x = xstart;
 			y = camera_get_view_y(view_camera[0]) - 100;
 		}
-		
 		break;
 	case 1:
 		visible = true;
@@ -32,6 +31,5 @@ switch (state)
 			sprite_index = pointspr;
 			image_index = 0;
 		}
-		
 		break;
 }

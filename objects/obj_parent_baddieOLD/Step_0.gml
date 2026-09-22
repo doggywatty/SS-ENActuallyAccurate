@@ -115,7 +115,7 @@ if (state == enemystates.stun && baddieStunTimer >= 50 && !birdCreated && object
 
 if (doRedAfterImage && redAfterImagebuffer-- < 0)
 {
-	with (create_afterimage(afterimagetypes.red, image_xscale))
+	with (create_afterimage(afterimagetypes.baddie, image_xscale))
 		image_alpha = 0.85;
 	
 	redAfterImagebuffer = redAfterImagebufferMax;
