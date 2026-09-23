@@ -30,8 +30,8 @@
   "nineSlice": null,
   "origin": 4,
   "parent": {
-    "name": "Sprites",
-    "path": "folders/Sprites.yy",
+    "name": "effectsGroup",
+    "path": "folders/Sprites/effectsGroup.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {
