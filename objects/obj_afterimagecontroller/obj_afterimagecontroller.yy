@@ -13,8 +13,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "effectsGroup",
+    "path": "folders/Objects/effectsGroup.yy",
   },
   "parentObjectId": null,
   "persistent": true,

@@ -15,8 +15,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "titleGroup",
+    "path": "folders/Objects/titleGroup.yy",
   },
   "parentObjectId": null,
   "persistent": false,

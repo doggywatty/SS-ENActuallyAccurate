@@ -10,8 +10,8 @@
   "isDnd": false,
   "layers": [],
   "parent": {
-    "name": "Rooms",
-    "path": "folders/Rooms.yy",
+    "name": "System",
+    "path": "folders/Rooms/System.yy",
   },
   "parentRoom": null,
   "physicsSettings": {
