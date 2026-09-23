@@ -5,7 +5,7 @@ If there's anything I missed, please make an issue or even better a PR!
 # Compilation
 ## Needed Materials
 - [GameMaker Studio v2023.11](https://gms.yoyogames.com/GameMaker-Installer-2023.11.1.129.exe), runtime 2023.11.1.160
-- [FMOD Engine 2.02+](https://www.fmod.com/download#fmodengine) (preferably 2.02.15)
+- [FMOD Engine 2.02](https://www.fmod.com/download#fmodengine) (preferably 2.02.15)
 	- You need to be logged in order to download.
 
 From there, just load the project as you would any other, and press F5 to build!
