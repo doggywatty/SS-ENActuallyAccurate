@@ -1,6 +1,6 @@
 signatureShow = 1;
 signatureScale = 1;
-var drawSignature = info.x != -4 && info.y != -4;
+var drawSignature = info.x != noone && info.y != noone;
 
 if (drawSignature)
 {

@@ -28,7 +28,7 @@ function reset_dialogue()
 	global.choiced = noone;
 }
 
-function create_dialogue(_x, _y = -4, _dialog = noone)
+function create_dialogue(_x, _y = noone, _dialog = noone)
 {
 	return [_x, _y, _dialog];
 }

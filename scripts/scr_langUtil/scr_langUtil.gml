@@ -737,7 +737,7 @@ function lang_sprite_check_persistence(_spr1, _spr2)
 	{
 		case spr_newpause_border:
 			with (obj_pause)
-				pauseBorder = spr2;
+				pauseBorder = _spr2;
 			break;
 	}
 }

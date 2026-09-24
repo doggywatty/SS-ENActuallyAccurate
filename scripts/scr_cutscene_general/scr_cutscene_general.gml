@@ -100,8 +100,8 @@ function cutscene_move_actor(_cutscene, _x, _y, _len)
 	with (real_actor)
 	{
 		var angle = point_direction(x, y, _x, _y);
-		var dir_x = lengthdir_x(arg3, angle);
-		var dir_y = lengthdir_y(arg3, angle);
+		var dir_x = lengthdir_x(_len, angle);
+		var dir_y = lengthdir_y(_len, angle);
 		x = approach(x, _x, dir_x);
 		y = approach(y, _y, dir_y);
 		

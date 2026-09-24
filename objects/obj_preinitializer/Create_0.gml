@@ -124,17 +124,6 @@ enum PlayerCharacter
 	PIZZELLE,
 }
 
-enum Exclude
-{
-	NONE = 0,
-	SLOPES = 1,
-	SOLIDS = 2,
-	MOVING = 4,
-	PLATFORMS = 8,
-	MOVINGANDPLATFORMS = 12,
-	ALL = 15	
-}
-
 enum enemystates
 {
 	normal,

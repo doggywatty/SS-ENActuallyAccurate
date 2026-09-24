@@ -236,9 +236,6 @@ function _find_common_prefix() {
 
 function _key_combo_pressed(modifier_array, key) {
 	for (var i = 0; i < array_length(modifier_array); i++) {
-		if (array_length(modifier_array) > 0) {
-			continue;
-		}
 		if (!keyboard_check(modifier_array[i])) {
 			return false;
 		}
