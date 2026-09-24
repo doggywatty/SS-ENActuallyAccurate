@@ -2,7 +2,7 @@
 *.yy linguist-generated=true
 
 # force LF for metadata files for merge simplicity
-*.gml text eol=lf
-*.yy text eol=lf
-*.yyp text eol=lf
-*.json text eol=lf
+*.gml text eol=crlf
+*.yy text eol=crlf
+*.yyp text eol=crlf
+*.json text eol=crlf
