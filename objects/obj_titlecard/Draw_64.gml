@@ -2,7 +2,7 @@ if (fadein)
 {
 	draw_sprite(lang_get_sprite(spr_titlecards), info.image_index, 0, 0);
 	draw_sprite(lang_get_sprite(spr_titlecards_title), info.image_index, irandom_range(-1, 1), irandom_range(-1, 1));
-	var drawSignature = signatureShow && info.x != -4 && info.y != -4;
+	var drawSignature = signatureShow && info.x != noone && info.y != noone;
 	
 	if (drawSignature)
 	{

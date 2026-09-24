@@ -23,7 +23,7 @@ function gate_createlayer(_spr, _img_ind, _hsp = 0, _vsp = 0, _img_spd = 0)
 		vspeed: _vsp,
 		readjust: false,
 		dbg: false,
-		func: noone
+		func: -4
 	};
 }
 
