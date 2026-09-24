@@ -11,6 +11,9 @@ You'll need the following:
 
 - [GameMaker Studio 2023.11.1.129](https://gms.yoyogames.com/GameMaker-Installer-2023.11.1.129.exe)
   - Runtime: **2023.11.1.160**
+- [FMOD Engine 2.02.xx](https://www.fmod.com/download#fmodengine)
+  - **2.02.26 is recommended.**
+  	- You will need to logged in order to download.
 
 ### Building
 Once you have everything installed:
