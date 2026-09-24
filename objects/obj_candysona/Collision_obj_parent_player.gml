@@ -11,7 +11,7 @@ if (!instance_exists(candyID))
 	flash = true;
 	alarm[1] = 0.15 * room_speed;
 	sprite_index = baddieSpriteDead;
-	create_particle((x - sprite_xoffset) + (sprite_width / 2), (y - sprite_yoffset) + (sprite_height / 2), spr_bangEffect);
+	create_particle(xorigin + (sprite_width / 2), yorigin + (sprite_height / 2), spr_bangEffect);
 	
 	repeat (3)
 	{

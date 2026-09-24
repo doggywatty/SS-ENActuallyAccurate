@@ -12,7 +12,7 @@ function cutscene_judgment_init()
 		image_xscale = 1;
 	}
 	
-	var cr = 100209;
+	var cr = inst_38E71B95;
 	cr.Region_active = true;
 	
 	with (obj_judgmentpainter)
@@ -196,7 +196,7 @@ function cutscene_mindpalacedoor_mid()
 		
 		if (!cloudEffect--)
 		{
-			create_particle(random_range(bbox_left, bbox_right), 1088, choose(spr_cloudEffect, spr_bigcloudeffect));
+			create_particle(bbox_xrange, 1088, choose(spr_cloudEffect, spr_bigcloudeffect));
 			cloudEffect = 8;
 		}
 		

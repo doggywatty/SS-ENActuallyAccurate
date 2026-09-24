@@ -103,7 +103,7 @@ function state_player_cottondig()
 			var rep = irandom_range(4, 6);
 			
 			repeat (rep)
-				create_debris(random_range(bbox_left, bbox_right), random_range(bbox_top, bbox_bottom), spr_cottondebris);
+				create_debris(bbox_xrange, bbox_yrange, spr_cottondebris);
 		}
 		
 		savedCottonSolid = true;
@@ -131,8 +131,8 @@ function state_player_cottondig()
 	if (!savedCottonSolid && scr_solid(x, y + sign(vsp), false) && !place_meeting(x, y + sign(vsp), obj_destructibles))
 	{
 		var _ledge = 0;
-		_ledge -= slope_check_left(x, y + sign(vsp), bbox_right - bbox_left);
-		_ledge += slope_check_right(x, y + sign(vsp), bbox_right - bbox_left);
+		_ledge -= slope_check_left(x, y + sign(vsp), bbox_width);
+		_ledge += slope_check_right(x, y + sign(vsp), bbox_width);
 		var check_ledge_slide = sprite_index != spr_player_PZ_werecotton_drill_ddown || sign(xscale) == sign(_ledge);
 		
 		if (_ledge != 0 && check_ledge_slide)
@@ -172,7 +172,7 @@ function state_player_cottondig()
 			var rep = irandom_range(4, 6);
 			
 			repeat (rep)
-				create_debris(random_range(bbox_left, bbox_right), random_range(bbox_top, bbox_bottom), spr_cottondebris);
+				create_debris(bbox_xrange, bbox_yrange, spr_cottondebris);
 			
 			savedCottonSolid = false;
 			cottonHasDashed = false;

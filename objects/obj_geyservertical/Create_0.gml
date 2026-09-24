@@ -7,7 +7,7 @@ geyserSolid=false;
 geyserPredeploy=false;
 image_speed=0.35;
 depth=11;
-sound=event_play_oneshot("event:/SFX/general/geyser",(x - sprite_xoffset) + (sprite_width / 2),bbox_top);
+sound=event_play_oneshot("event:/SFX/general/geyser",xorigin + (sprite_width / 2),bbox_top);
 ambianceSND=fmod_createEventInstance("event:/SFX/general/geyserambiance");
 fmod_studio_event_instance_start(ambianceSND);
 solidCollideFunc=function(_player=obj_parent_player)

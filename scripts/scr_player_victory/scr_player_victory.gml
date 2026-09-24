@@ -62,7 +62,7 @@ function state_player_victory()
 		sprite_index = spr_victory;
 		
 		with (instance_place(x, y, obj_parent_door))
-			other.x = approach(other.x, (x - sprite_xoffset) + (sprite_width / 2), 2);
+			other.x = approach(other.x, xorigin + (sprite_width / 2), 2);
 	}
 	
 	global.ComboFreeze = 2;

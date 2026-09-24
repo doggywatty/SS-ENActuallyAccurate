@@ -9,15 +9,15 @@ with (_slope)
 {
 	_xscl = sign(_slope.image_xscale);
 	_yscl = sign(_slope.image_yscale);
-	can_bumpX = _xscl ? (obj_player1.x >= ((x - sprite_xoffset) + (sprite_width / 2))) : (obj_player1.x <= ((x - sprite_xoffset) + (sprite_width / 2)));
-	can_bumpY = _yscl ? (obj_player1.y <= ((y - sprite_yoffset) + (sprite_height / 2))) : (obj_player1.y >= ((y - sprite_yoffset) + (sprite_height / 2)));
+	can_bumpX = _xscl ? (obj_player1.x >= (xorigin + (sprite_width / 2))) : (obj_player1.x <= (xorigin + (sprite_width / 2)));
+	can_bumpY = _yscl ? (obj_player1.y <= (yorigin + (sprite_height / 2))) : (obj_player1.y >= (yorigin + (sprite_height / 2)));
 	x_adj = !_xscl ? 0 : (sprite_width / 2);
 	y_adj = _yscl ? 0 : (sprite_height / 2);
 	
 	if (other.vertical)
 	{
-		can_bumpX = _xscl ? (obj_player1.x <= ((x - sprite_xoffset) + (sprite_width / 2))) : (obj_player1.x >= ((x - sprite_xoffset) + (sprite_width / 2)));
-		can_bumpY = _yscl ? (obj_player1.bbox_bottom >= ((y - sprite_yoffset) + (sprite_height / 2))) : (obj_player1.y <= ((y - sprite_yoffset) + (sprite_height / 2)));
+		can_bumpX = _xscl ? (obj_player1.x <= (xorigin + (sprite_width / 2))) : (obj_player1.x >= (xorigin + (sprite_width / 2)));
+		can_bumpY = _yscl ? (obj_player1.bbox_bottom >= (yorigin + (sprite_height / 2))) : (obj_player1.y <= (yorigin + (sprite_height / 2)));
 		x_adj = _xscl ? 0 : (sprite_width / 2);
 		y_adj = !_yscl ? 0 : (sprite_height / 2);
 	}

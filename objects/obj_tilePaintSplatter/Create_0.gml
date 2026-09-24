@@ -15,7 +15,7 @@ splatSurface = noone;
 
 if (createSplash)
 {
-	create_particle((x - sprite_xoffset) + (sprite_width / 2), (y - sprite_yoffset) + (sprite_height / 2), spr_paintSplash, undefined, undefined, undefined, 
+	create_particle(xorigin + (sprite_width / 2), yorigin + (sprite_height / 2), spr_paintSplash, undefined, undefined, undefined, 
 	{
 		image_blend: blendColor
 	});

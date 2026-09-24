@@ -45,7 +45,7 @@ if (DestroyedBy.object_index == obj_parent_player || DestroyedBy.object_index ==
 			hsp = 0;
 			vsp = 0;
 			bounce = 0;
-			create_particle((x - sprite_xoffset) + (sprite_width / 2), (y - sprite_yoffset) + (sprite_height / 2), spr_bangEffect, xscale, 1);
+			create_particle(xorigin + (sprite_width / 2), yorigin + (sprite_height / 2), spr_bangEffect, xscale, 1);
 			freefallstart = 0;
 			
 			with (obj_parent_enemy)

@@ -1,20 +1,20 @@
 if (ds_list_find_index(global.SaveRoom, id) == -1)
 {
-	create_particle(random_range(bbox_left, bbox_right), random_range(bbox_top, bbox_bottom), spr_parryeffect);
-	create_debris(random_range(bbox_left, bbox_right), random_range(bbox_top, bbox_bottom), spr_gummywormdebrishead);
-	create_debris(random_range(bbox_left, bbox_right), random_range(bbox_top, bbox_bottom), spr_gummywormdebristail);
+	create_particle(bbox_xrange, bbox_yrange, spr_parryeffect);
+	create_debris(bbox_xrange, bbox_yrange, spr_gummywormdebrishead);
+	create_debris(bbox_xrange, bbox_yrange, spr_gummywormdebristail);
 	var rep = 3 + round(sprite_width / 16);
 	
 	repeat (rep)
-		create_debris(random_range(bbox_left, bbox_right), random_range(bbox_top, bbox_bottom), spr_gummywormdebrisloop);
+		create_debris(bbox_xrange, bbox_yrange, spr_gummywormdebrisloop);
 	
 	repeat (3)
 	{
-		create_debris(random_range(bbox_left, bbox_right), random_range(bbox_top, bbox_bottom), spr_slapstar);
-		instance_create(random_range(bbox_left, bbox_right), random_range(bbox_top, bbox_bottom), obj_baddieGibs);
+		create_debris(bbox_xrange, bbox_yrange, spr_slapstar);
+		instance_create(bbox_xrange, bbox_yrange, obj_baddieGibs);
 	}
 	
-	create_particle(random_range(bbox_left, bbox_right), random_range(bbox_top, bbox_bottom), spr_bangEffect);
+	create_particle(bbox_xrange, bbox_yrange, spr_bangEffect);
 	event_play_oneshot("event:/SFX/player/punch", x, y);
 	event_play_oneshot("event:/SFX/general/wormKill", x, y);
 	event_play_oneshot("event:/SFX/enemies/kill", x, y);

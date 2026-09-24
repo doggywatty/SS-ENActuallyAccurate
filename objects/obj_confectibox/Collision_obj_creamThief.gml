@@ -14,7 +14,7 @@ if (other.state == PlayerState.titlescreen)
 	event_play_oneshot("event:/SFX/general/loserace");
 	
 	repeat (6)
-		create_debris(random_range(bbox_left, bbox_right), random_range(bbox_top, bbox_bottom), spr_confecticage_debris);
+		create_debris(bbox_xrange, bbox_yrange, spr_confecticage_debris);
 	
 	instance_destroy();
 	ds_list_add(global.SaveRoom, id);

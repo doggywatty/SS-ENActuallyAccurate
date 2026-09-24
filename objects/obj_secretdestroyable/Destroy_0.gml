@@ -6,12 +6,12 @@ if (ds_list_find_index(global.SaveRoom, id) == -1)
 	repeat (rep)
 	{
 		if (place_meeting(x, y, obj_secretPortal) || instance_exists(obj_secretfound))
-			create_debris(random_range(bbox_left, bbox_right), random_range(bbox_top, bbox_bottom), spr_secretGoopDebris);
+			create_debris(bbox_xrange, bbox_yrange, spr_secretGoopDebris);
 		else
-			create_debris(random_range(bbox_left, bbox_right), random_range(bbox_top, bbox_bottom), debrisSprite, 0.35);
+			create_debris(bbox_xrange, bbox_yrange, debrisSprite, 0.35);
 	}
 	
-	create_destroyable_smoke(random_range(bbox_left, bbox_right), random_range(bbox_top, bbox_bottom), array_get_any(smokeColor));
+	create_destroyable_smoke(bbox_xrange, bbox_yrange, array_get_any(smokeColor));
 	
 	if (room != hub_mindpalace)
 		event_play_multiple("event:/SFX/general/breakblock", x, y);

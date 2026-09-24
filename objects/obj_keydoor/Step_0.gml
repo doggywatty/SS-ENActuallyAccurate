@@ -26,8 +26,8 @@ with (obj_parent_player)
 		
 		if (ds_list_find_index(global.SaveRoom, other.id) == -1)
 		{
-			var target_x = (x - sprite_xoffset) + (sprite_width / 2);
-			var target_y = (y - sprite_yoffset) + (sprite_height / 2);
+			var target_x = xorigin + (sprite_width / 2);
+			var target_y = yorigin + (sprite_height / 2);
 			
 			with (ds_list_find_value(global.KeyFollowerList, 0))
 			{
@@ -41,7 +41,7 @@ with (obj_parent_player)
 			}
 			
 			ds_list_delete(global.KeyFollowerList, 0);
-			instance_create((x - sprite_xoffset) + (sprite_width / 2), (y - sprite_yoffset) + (sprite_height / 2), obj_lock, 
+			instance_create(xorigin + (sprite_width / 2), yorigin + (sprite_height / 2), obj_lock, 
 			{
 				sprite_index: other.spriteDoorLock
 			});

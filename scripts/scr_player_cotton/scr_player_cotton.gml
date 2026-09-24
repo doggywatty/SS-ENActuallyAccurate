@@ -214,7 +214,7 @@ function state_player_cotton()
 		var rep = irandom_range(4, 6);
 		
 		repeat (rep)
-			create_debris(random_range(bbox_left, bbox_right), random_range(bbox_top, bbox_bottom), spr_cottondebris);
+			create_debris(bbox_xrange, bbox_yrange, spr_cottondebris);
 		
 		cottonDashTimer = 30;
 		grav = 0.2;

@@ -2,7 +2,7 @@ if (ds_list_find_index(global.SaveRoom, id) == -1)
 {
 	for (var i = 0; i < sprite_get_number(spr_pickaxeDebris); i++)
 	{
-		var d = create_debris(random_range(bbox_left, bbox_right), random_range(bbox_top, bbox_bottom), spr_pickaxeDebris, 0);
+		var d = create_debris(bbox_xrange, bbox_yrange, spr_pickaxeDebris, 0);
 		d.image_index = i;
 	}
 	

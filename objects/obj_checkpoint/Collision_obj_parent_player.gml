@@ -6,5 +6,5 @@ if (!Checkpointactivated)
 	Checkpointactivated = true;
 	
 	if (visible)
-		event_play_multiple("event:/SFX/general/checkpoint", (x - sprite_xoffset) + (sprite_width / 2), (y - sprite_yoffset) + (sprite_height / 2));
+		event_play_multiple("event:/SFX/general/checkpoint", xorigin + (sprite_width / 2), yorigin + (sprite_height / 2));
 }

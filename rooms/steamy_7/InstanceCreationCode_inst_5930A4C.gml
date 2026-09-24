@@ -35,7 +35,7 @@ output = function()
 			image_index = i;
 	}
 	repeat (3)
-		create_debris((x - sprite_xoffset) + (sprite_width / 2) + random_range(-10, 10), y + random_range(-10, 10), spr_gclocktowerdebris);
+		create_debris(xorigin + (sprite_width / 2) + random_range(-10, 10), y + random_range(-10, 10), spr_gclocktowerdebris);
 	camera_shake_add(20, 40);
 	event_play_oneshot("event:/SFX/general/breakmetal");
 	var lay_id = layer_get_id("Assets_1");

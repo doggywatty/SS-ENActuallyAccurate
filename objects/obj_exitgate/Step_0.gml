@@ -5,7 +5,7 @@ if (place_meeting(x, y, obj_parent_player) && obj_parent_player.state != PlayerS
 {
 	ds_list_add(global.SaveRoom, id);
 	sprite_index = closingSpr;
-	event_play_oneshot("event:/SFX/player/groundpound", (x - sprite_xoffset) + (sprite_width / 2), bbox_bottom);
+	event_play_oneshot("event:/SFX/player/groundpound", xorigin + (sprite_width / 2), bbox_bottom);
 	camera_shake_add(3, 3);
 	obj_parent_player.state = PlayerState.comingoutdoor;
 	obj_parent_player.image_index = 0;
@@ -28,7 +28,7 @@ if (drop && drop_state == 0)
 		y = drop_y;
 		drop_state = 1;
 		ds_list_add(global.doorsave, id);
-		event_play_oneshot("event:/SFX/player/groundpound", (x - sprite_xoffset) + (sprite_width / 2), bbox_bottom);
+		event_play_oneshot("event:/SFX/player/groundpound", xorigin + (sprite_width / 2), bbox_bottom);
 		camera_shake_add(15, 30);
 	}
 }

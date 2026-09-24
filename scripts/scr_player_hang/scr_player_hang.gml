@@ -14,7 +14,7 @@ function state_player_hang()
 		hsp = xscale * -5;
 		vsp = 1;
 		instance_create(x + (10 * xscale), y + 10, obj_bumpEffect);
-		event_play_oneshot("event:/SFX/player/bumpwall", (x - sprite_xoffset) + (sprite_width / 2), (y - sprite_yoffset) + (sprite_height / 2));
+		event_play_oneshot("event:/SFX/player/bumpwall", xorigin + (sprite_width / 2), yorigin + (sprite_height / 2));
 	}
 	
 	if (inputBufferJump > 0 || !place_meeting(x, y - 1, obj_hangRail))

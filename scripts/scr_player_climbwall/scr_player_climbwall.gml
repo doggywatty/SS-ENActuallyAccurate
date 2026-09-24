@@ -162,7 +162,7 @@ function state_player_climbwall()
 			dir = xscale;
 			
 			repeat (5)
-				create_radiating_particle(random_range(bbox_left, bbox_right), random_range(bbox_top, bbox_bottom), spr_spinningFireParticle);
+				create_radiating_particle(bbox_xrange, bbox_yrange, spr_spinningFireParticle);
 			
 			with (instance_create(x, y, obj_jumpdust, 
 			{

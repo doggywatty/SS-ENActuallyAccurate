@@ -67,7 +67,7 @@ if (!global.freezeframe)
 }
 
 if (event_instance_isplaying(sound))
-	fmod_quick3D(sound, (x - sprite_xoffset) + (sprite_width / 2), bbox_top);
+	fmod_quick3D(sound, xorigin + (sprite_width / 2), bbox_top);
 
 if (event_instance_isplaying(ambianceSND))
 {

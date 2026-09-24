@@ -33,7 +33,7 @@ function state_player_door()
 				switch (sprite_index)
 				{
 					default:
-						other.x = approach(other.x, (x - sprite_xoffset) + (sprite_width / 2), 2);
+						other.x = approach(other.x, xorigin + (sprite_width / 2), 2);
 						break;
 					case spr_door_mindpalace:
 					case spr_door_mindpalace2:

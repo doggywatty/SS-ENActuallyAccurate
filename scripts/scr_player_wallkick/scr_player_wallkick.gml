@@ -74,7 +74,7 @@ function state_player_wallkick()
 		if (key_attack)
 		{
 			repeat (5)
-				create_radiating_particle(random_range(bbox_left, bbox_right), random_range(bbox_top, bbox_bottom), spr_spinningFireParticle);
+				create_radiating_particle(bbox_xrange, bbox_yrange, spr_spinningFireParticle);
 			
 			movespeed = 12;
 			hsp = movespeed * dir;

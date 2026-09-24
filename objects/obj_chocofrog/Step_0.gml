@@ -15,7 +15,7 @@ with (instance_nearest(x, y, obj_parent_player))
 		{
 			image_index = 0;
 			
-			if (obj_parent_player.x < ((x - sprite_xoffset) + (sprite_width / 2)))
+			if (obj_parent_player.x < (xorigin + (sprite_width / 2)))
 				sprite_index = spr_chocofrogbig_bumpL;
 			else
 				sprite_index = spr_chocofrogbig_bumpR;
