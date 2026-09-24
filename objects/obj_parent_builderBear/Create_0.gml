@@ -12,31 +12,31 @@ randomBuffer = randomBufferMin + irandom(randomBufferMax);
 
 switch (character)
 {
-	case buildercharacters.ted:
+	case BuilderCharacter.ted:
 		idleSprite = spr_builderBear_ted_idle;
 		walkSprite = spr_builderBear_ted_walk;
 		panicSprite = spr_builderBear_ted_panic;
 		tauntSprite = spr_builderBear_ted_taunt;
 		break;
-	case buildercharacters.tedAlt:
+	case BuilderCharacter.tedAlt:
 		idleSprite = spr_builderBear_tedAlt_idle;
 		walkSprite = spr_builderBear_tedAlt_walk;
 		panicSprite = spr_builderBear_ted_panic;
 		tauntSprite = spr_builderBear_tedAlt_taunt;
 		break;
-	case buildercharacters.sarah:
+	case BuilderCharacter.sarah:
 		idleSprite = spr_builderBear_sarah_idle;
 		walkSprite = spr_builderBear_sarah_walk;
 		panicSprite = spr_builderBear_sarah_panic;
 		tauntSprite = spr_builderBear_sarah_taunt;
 		break;
-	case buildercharacters.jack:
+	case BuilderCharacter.jack:
 		idleSprite = spr_builderBear_jack;
 		walkSprite = spr_builderBear_jack;
 		panicSprite = spr_builderBear_jack;
 		tauntSprite = spr_builderBear_jack;
 		break;
-	case buildercharacters.karen:
+	case BuilderCharacter.karen:
 		idleSprite = spr_builderBear_karen_idle;
 		walkSprite = spr_builderBear_karen_idle;
 		panicSprite = spr_builderBear_karen_panic;

@@ -249,7 +249,7 @@ function state_player_frostburnjump()
 		
 		if (blue_aft >= 6)
 		{
-			create_afterimage(afterimagetypes.mach3effect_1, xscale);
+			create_afterimage(AfterImageType.MACH3, xscale);
 			blue_aft = 0;
 		}
 		

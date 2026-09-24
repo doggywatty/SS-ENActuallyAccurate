@@ -1,4 +1,4 @@
-if (global.DebugMode == debugmode.off)
+if (global.DebugMode == DebugMode.off)
     exit;
 
 if (obj_parent_player.state != PlayerState.noclip)

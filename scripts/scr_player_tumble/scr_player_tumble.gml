@@ -48,7 +48,7 @@ function state_player_tumble()
 	
 	image_speed = 0.35;
 	
-	with (create_afterimage(afterimagetypes.plain, xscale))
+	with (create_afterimage(AfterImageType.DEFAULT, xscale))
 	{
 		gonealpha = 0.85;
 		alarm[0] = 1;

@@ -1,5 +1,5 @@
-if (point_in_circle(x, y, obj_parent_player.x + (75 * obj_parent_player.xscale), obj_parent_player.y, 125) && obj_parent_player.inhaling && state != enemystates.inhaled)
-	state = enemystates.inhaled;
+if (point_in_circle(x, y, obj_parent_player.x + (75 * obj_parent_player.xscale), obj_parent_player.y, 125) && obj_parent_player.inhaling && state != EnemyState.inhaled)
+	state = EnemyState.inhaled;
 
 if (flash && alarm[2] <= 0)
 {
@@ -8,28 +8,28 @@ if (flash && alarm[2] <= 0)
 if (state != PlayerState.stun)
 	depth = 0;
 
-if (state != enemystates.thrown && state != PlayerState.freezeframe)
+if (state != EnemyState.thrown && state != PlayerState.freezeframe)
 	thrown = 0;
 
 enemyAttackTimer = max(enemyAttackTimer - 1, 0);
 
-if (state == enemystates.thrown)
+if (state == EnemyState.thrown)
 	grav = 0.5;
 else
 	grav = 0;
 
-if (state == enemystates.normal)
-	state = enemystates.float;
+if (state == EnemyState.normal)
+	state = EnemyState.float;
 
 event_inherited();
 
-if (state != enemystates.float || substate == 0)
+if (state != EnemyState.float || substate == 0)
 	scr_scareenemy();
 
-if (state != enemystates.float)
+if (state != EnemyState.float)
 	substate = 0;
 
-if (state == enemystates.float && substate == 1 && sprite_index == spr_snowclouddiveboil)
+if (state == EnemyState.float && substate == 1 && sprite_index == spr_snowclouddiveboil)
 {
 	if (hitboxcreate == 0)
 	{

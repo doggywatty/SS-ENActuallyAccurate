@@ -9,7 +9,7 @@ canBeStomped = true;
 canBeKilled = true;
 canBeGrabbed = true;
 canBreakBlocks = false;
-state = enemystates.idle;
+state = EnemyState.idle;
 scr_collision_init();
 grav = 0.5;
 hitHsp = 0;

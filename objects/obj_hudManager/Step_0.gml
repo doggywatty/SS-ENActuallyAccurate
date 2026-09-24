@@ -148,30 +148,30 @@ with (HUDObject_comboMeter)
 		displayY = approach(displayY, displayYMax, 5);
 		comboTimeDisplay = 0;
 		combofillDisplay = lerp(combofillDisplay, comboTimeDisplay / 60, 0.5);
-		displayState = displaystates.entering;
+		displayState = DisplayState.entering;
 		break;
 	}
 	
 	switch (displayState)
 	{
-		case displaystates.entering:
+		case DisplayState.entering:
 			displayVSP += 0.5;
 			displayY = approach(displayY, 20, displayVSP);
 			
 			if (displayY >= 20)
-				displayState = displaystates.settling;
+				displayState = DisplayState.settling;
 			break;
-		case displaystates.settling:
+		case DisplayState.settling:
 			displayY = lerp(displayY, 0, 0.05);
 			
 			if (displayY < 1)
 			{
 				displayY = 0;
 				displayVSP = 0;
-				displayState = displaystates.active;
+				displayState = DisplayState.active;
 			}
 			break;
-		case displaystates.active:
+		case DisplayState.active:
 			var _setVSP = -1;
 			
 			if (global.ComboTime < 30)

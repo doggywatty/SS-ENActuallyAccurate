@@ -1,4 +1,4 @@
-if (global.DebugMode != debugmode.off)
+if (global.DebugMode != DebugMode.off)
 {
     global.showcollisions = !global.showcollisions;
     toggle_collision_function();

@@ -12,7 +12,7 @@ if (blurEffectTimer-- <= 0)
 {
 	blurEffectTimer = 1;
 	
-	with (create_afterimage(afterimagetypes.plain, image_xscale))
+	with (create_afterimage(AfterImageType.DEFAULT, image_xscale))
 	{
 		image_alpha = 0.6;
 		image_index = other.image_index - 1;

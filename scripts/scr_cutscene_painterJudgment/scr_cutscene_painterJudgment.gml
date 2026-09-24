@@ -111,7 +111,7 @@ function cutscene_judgment_flick()
 		
 		if (afterimage_timer <= 0)
 		{
-			with (create_afterimage(afterimagetypes.plain, xscale, 0))
+			with (create_afterimage(AfterImageType.DEFAULT, xscale, 0))
 			{
 				image_index = max(other.image_index - 1, 0);
 				vanish = true;

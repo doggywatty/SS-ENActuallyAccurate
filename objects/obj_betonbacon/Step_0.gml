@@ -1,21 +1,21 @@
 movespeed = 2.5;
 
-if (point_in_circle(x, y, obj_parent_player.x + (75 * obj_parent_player.xscale), obj_parent_player.y, 125) && obj_parent_player.inhaling && state != enemystates.inhaled)
-	state = enemystates.inhaled;
+if (point_in_circle(x, y, obj_parent_player.x + (75 * obj_parent_player.xscale), obj_parent_player.y, 125) && obj_parent_player.inhaling && state != EnemyState.inhaled)
+	state = EnemyState.inhaled;
 
 if (state != PlayerState.stun)
 	depth = 0;
 
-if (state != enemystates.thrown && state != PlayerState.freezeframe)
+if (state != EnemyState.thrown && state != PlayerState.freezeframe)
 	thrown = 0;
 
 ragereset = max(ragereset - 1, 0);
 
 if (point_in_rectangle(obj_parent_player.x, obj_parent_player.y, x - 200, y - 50, x + 200, y + 50) && obj_parent_player.state != PlayerState.door && obj_parent_player.state != PlayerState.comingoutdoor)
 {
-	if (state != enemystates.attack && state == enemystates.normal && ragereset <= 0)
+	if (state != EnemyState.attack && state == EnemyState.normal && ragereset <= 0)
 	{
-		state = enemystates.attack;
+		state = EnemyState.attack;
 		sprite_index = baddieSpriteRage;
 		
 		if (x != obj_parent_player.x)
@@ -26,11 +26,11 @@ if (point_in_rectangle(obj_parent_player.x, obj_parent_player.y, x - 200, y - 50
 		image_speed = 0.35;
 		flash = true;
 		alarm[4] = 5;
-		create_heat_afterimage(afterimagetypes.plain);
+		create_heat_afterimage(AfterImageType.DEFAULT);
 	}
 }
 
-if (hitboxcreate == 0 && animation_end_old(, 10) && state == enemystates.attack)
+if (hitboxcreate == 0 && animation_end_old(, 10) && state == EnemyState.attack)
 {
 	hitboxcreate = 1;
 	

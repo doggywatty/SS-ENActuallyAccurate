@@ -1,2 +1,2 @@
-if (global.DebugMode == debugmode.off)
+if (global.DebugMode == DebugMode.off)
 	instance_destroy();

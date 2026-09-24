@@ -19,7 +19,7 @@ switch (state)
 			baddieOnPlayerCollisions();
 		
 		break;
-	case enemystates.thrown:
+	case EnemyState.thrown:
 		if (markedForDeath)
 		{
 			movespeed = 16;
@@ -30,7 +30,7 @@ switch (state)
 			hsp = approach(hsp, 0, 0.5);
 			
 			if (hsp == 0)
-				state = enemystates.normal;
+				state = EnemyState.normal;
 			
 			if (p.sprite_index != p.spr_machslideboost3)
 				baddieOnPlayerCollisions();
@@ -42,7 +42,7 @@ switch (state)
 		
 		if (hsp == 0 && markedForDeath)
 		{
-			state = enemystates.cherryWait;
+			state = EnemyState.cherryWait;
 			visible = false;
 			
 			if (content != noone)
@@ -51,14 +51,14 @@ switch (state)
 				{
 					vsp = -10;
 					baddieStunTimer = 30;
-					state = enemystates.thrown;
+					state = EnemyState.thrown;
 					other.baddieID = id;
 					create_particle(x, y, spr_poofeffect);
 				}
 			}
 		}
 		break;
-	case enemystates.cherryWait:
+	case EnemyState.cherryWait:
 		if (baddieID != noone && !instance_exists(baddieID))
 		{
 			instance_destroy();

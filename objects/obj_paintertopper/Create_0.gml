@@ -12,5 +12,5 @@ spinspeed = 0;
 image_speed = 0;
 image_index = global.PainterTopperIndex;
 
-if (isDemo && global.InternalLevelName == "none")
+if (EXHIBITIONNIGHT && global.InternalLevelName == "none")
 	instance_destroy();

@@ -76,7 +76,7 @@ function state_player_fireass()
 	
 	if (fire_afterimagetimer <= 0 && sprite_index != spr_player_PZ_fireAss_ground)
 	{
-		create_afterimage(afterimagetypes.fireass, xscale);
+		create_afterimage(AfterImageType.FIRE, xscale);
 		fire_afterimagetimer = 7;
 	}
 }
@@ -120,7 +120,7 @@ function state_player_fireassdash()
 	
 	if (fire_afterimagetimer <= 0)
 	{
-		create_afterimage(afterimagetypes.fireass, xscale);
+		create_afterimage(AfterImageType.FIRE, xscale);
 		fire_afterimagetimer = 7;
 	}
 	

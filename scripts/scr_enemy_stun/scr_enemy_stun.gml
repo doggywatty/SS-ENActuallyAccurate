@@ -17,13 +17,13 @@ function scr_enemy_stun()
 		if (object_index == obj_fizzCloud || object_index == obj_frothCloud)
 		{
 			movespeed = 5;
-			state = enemystates.float;
+			state = EnemyState.float;
 			sprite_index = baddieSpriteWalk;
 			vsp -= 8;
 		}
 		else if (object_index == obj_charCherry)
 		{
-			state = enemystates.charcherry;
+			state = EnemyState.charcherry;
 			sprite_index = spr_charcherry_run;
 			movespeed = 8;
 			vsp = 0;
@@ -31,18 +31,18 @@ function scr_enemy_stun()
 		else if (object_index == obj_candyCorn)
 		{
 			sprite_index = spr_candyCornRun;
-			state = enemystates.attack;
+			state = EnemyState.attack;
 		}
 		else if (object_index != obj_bananaCharger && object_index != obj_swedishfish)
 		{
 			movespeed = 1;
-			state = enemystates.normal;
+			state = EnemyState.normal;
 			sprite_index = baddieSpriteWalk;
 		}
 		else
 		{
 			sprite_index = baddieSpriteIdle;
-			state = enemystates.normal;
+			state = EnemyState.normal;
 		}
 	}
 }

@@ -198,7 +198,7 @@ if (state == PlayerState.mach3 || state == PlayerState.mach2 || state == PlayerS
 	
 	if (machAfterimage <= 0)
 	{
-		with (create_afterimage(choose(afterimagetypes.mach3effect_1, afterimagetypes.mach3effect_2), xscale, true))
+		with (create_afterimage(choose(AfterImageType.MACH3, AfterImageType.MACH3ALT), xscale, true))
 			mach3Afterimage = true;
 		
 		machAfterimage = 6;
@@ -228,7 +228,7 @@ if (state == PlayerState.wallkick)
 	
 	if (blueAfterimage <= 0)
 	{
-		with (create_afterimage(afterimagetypes.wallkick, xscale, true))
+		with (create_afterimage(AfterImageType.WALLKICK, xscale, true))
 			mach3Afterimage = true;
 		
 		blueAfterimage = 6;

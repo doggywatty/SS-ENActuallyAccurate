@@ -1,4 +1,4 @@
-if (global.DebugMode == debugmode.debug || global.DebugMode == debugmode.playtest)
+if (global.DebugMode == DebugMode.debug || global.DebugMode == DebugMode.playtest)
 {
 	show_debug_message("NekoPresence init averted.");
 	instance_destroy();

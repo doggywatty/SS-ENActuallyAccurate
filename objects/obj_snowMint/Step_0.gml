@@ -1,5 +1,5 @@
-if (point_in_circle(x, y, obj_parent_player.x + ((75 * obj_parent_player.xscale) + inhaleStrength), obj_parent_player.y, 125) && obj_parent_player.inhaling && state != enemystates.inhaled)
-	state = enemystates.inhaled;
+if (point_in_circle(x, y, obj_parent_player.x + ((75 * obj_parent_player.xscale) + inhaleStrength), obj_parent_player.y, 125) && obj_parent_player.inhaling && state != EnemyState.inhaled)
+	state = EnemyState.inhaled;
 
 enemyAttackTimer = max(enemyAttackTimer - 1, 0);
 

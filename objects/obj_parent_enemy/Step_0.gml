@@ -157,7 +157,7 @@ if (state != PlayerState.run && state != PlayerState.freezeframe)
 
 if (doRedAfterImage && redAfterImagebuffer-- < 0)
 {
-	create_afterimage(afterimagetypes.baddie, image_xscale);
+	create_afterimage(AfterImageType.BADDIE, image_xscale);
 	redAfterImagebuffer = redAfterImagebufferMax;
 }
 

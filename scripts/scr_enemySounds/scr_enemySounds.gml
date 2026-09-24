@@ -22,7 +22,7 @@ function scr_enemySounds_update()
 {
 	var _state = global.freezeframe ? frozenState : state;
 	
-	if (_state != PlayerState.titlescreen && _state != PlayerState.burrow)
+	if (_state != PlayerState.titlescreen && _state != EnemyState_Cherry.WAIT)
 	{
 		if (event_instance_isplaying(sndCharge))
 			fmod_studio_event_instance_stop(sndCharge, false);

@@ -1,9 +1,9 @@
 //PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPAD
 global.scribble_saved_profile = "[pPrompt]";
 
-function scribble_quick_button(arg0)
+function scribble_quick_button(_spr)
 {
-	return $"[c_white]{get_control_sprite(arg0)}{global.scribble_saved_profile}";
+	return $"[c_white]{get_control_sprite(_spr)}{global.scribble_saved_profile}";
 }
 
 global.DefaultCursor = 0;
@@ -108,16 +108,16 @@ global.GLOBAL_FUN = 0;
 
 function scr_gameInit()
 {
-	var dbg_mode = debugmode.off;
+	var dbg_mode = DebugMode.off;
 	if (GM_build_type == "run")
-		dbg_mode = debugmode.debug;
+		dbg_mode = DebugMode.debug;
 
 	var p_i = 0;
 	var p_c = parameter_count();
 	
 	while (p_i <= p_c)
 	{
-		if (dbg_mode == debugmode.debug)
+		if (dbg_mode == DebugMode.debug)
 			break;
 		
 		var p_s = string_lower(parameter_string(p_i));
@@ -128,11 +128,11 @@ function scr_gameInit()
 			case "--dev":
 			case "-debug":
 			case "--debug":
-				dbg_mode = debugmode.debug;
+				dbg_mode = DebugMode.debug;
 				break;
 			case "-playtest":
 			case "--playtest":
-				dbg_mode = debugmode.playtest;
+				dbg_mode = DebugMode.playtest;
 				break;
 		}
 		
@@ -197,7 +197,7 @@ function scr_gameInit()
 	global.DebugVisuals = false;
 	global.fartcounter = 0;
 	
-	if (global.DebugMode == debugmode.debug || global.DebugMode == debugmode.playtest)
+	if (global.DebugMode == DebugMode.debug || global.DebugMode == DebugMode.playtest)
 		global.showcollisions = true;
 	
 	global.parallaxbg_surface = noone;

@@ -30,7 +30,7 @@ if (!global.gamePauseState && !instance_exists(obj_fadeoutTransition) && !instan
 		exit;
 	}
 	
-	if (global.DebugMode != debugmode.off)
+	if (global.DebugMode != DebugMode.off)
 	{
 		if (keyboard_check_pressed(vk_f11))
 		{

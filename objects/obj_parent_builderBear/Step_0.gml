@@ -11,7 +11,7 @@ switch (state)
 			image_xscale = choose(-1, 1);
 			movespeed = choose(1, 0);
 			
-			if (character == buildercharacters.karen && !global.panic && sprite_index != spr_builderBear_karen_idleAnim && choose(1, 0))
+			if (character == BuilderCharacter.karen && !global.panic && sprite_index != spr_builderBear_karen_idleAnim && choose(1, 0))
 			{
 				image_index = 0;
 				sprite_index = spr_builderBear_karen_idleAnim;
@@ -28,7 +28,7 @@ switch (state)
 			sprite_index = (movespeed >= 1) ? walkSprite : idleSprite;
 		}
 		
-		if (character == buildercharacters.jack || character == buildercharacters.karen || (character == buildercharacters.sarah && global.panic))
+		if (character == BuilderCharacter.jack || character == BuilderCharacter.karen || (character == BuilderCharacter.sarah && global.panic))
 			movespeed = 0;
 		
 		hsp = movespeed * image_xscale;
@@ -54,7 +54,7 @@ switch (state)
 			state = PlayerState.normal;
 			scr_taunt_storeVariables();
 			
-			if (character == buildercharacters.karen && obj_parent_player.x != x)
+			if (character == BuilderCharacter.karen && obj_parent_player.x != x)
 				image_xscale = sign(obj_parent_player.x - x);
 		}
 		

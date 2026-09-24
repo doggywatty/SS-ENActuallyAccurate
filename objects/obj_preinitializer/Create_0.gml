@@ -101,13 +101,15 @@ enum PlayerState
 	costumegrab = 78,
 	costumebreeze = 79,
 	costumechuck = 80,
+	
 	bottlerocket = 81,
-	unknown1 = 82,
-	unknown2 = 83,
-	unknown3 = 84,
+	bombgroundpound = 82,
+	bombrun = 83,
+	
+	donut = 84,
 	drown = 85,
-	unknownrun = 86,
-	unknown4 = 87,
+	climbceiling = 86,
+	seacream = 87,
 	frostburnnormal = 88,
 	frostburnslide = 89,
 	frostburnjump = 90,
@@ -115,8 +117,6 @@ enum PlayerState
 	supergrab = 92,
 	fling_launch = 93,
 	freeflight = 94,
-	burrow = 100,
-	charcherryrun = 101
 }
 
 enum PlayerCharacter
@@ -124,7 +124,7 @@ enum PlayerCharacter
 	PIZZELLE,
 }
 
-enum enemystates
+enum EnemyState
 {
 	normal,
 	attack = 2,
@@ -156,20 +156,20 @@ enum enemystates
 	inhaled = 881
 }
 
-enum debugmode
+enum DebugMode
 {
 	off,
 	playtest,
 	debug,
 }
 
-enum ropetypes
+enum RopeTypes
 {
 	top,
 	bottom,
 }
 
-enum buildercharacters
+enum BuilderCharacter
 {
 	ted,
 	tedAlt,
@@ -178,7 +178,7 @@ enum buildercharacters
 	karen,
 }
 
-enum displaystates
+enum DisplayState
 {
 	entering,
 	settling,
@@ -195,7 +195,7 @@ enum GnomeColors
 	Purple = 5	
 }
 
-#macro isDemo true
+#macro EXHIBITIONNIGHT true
 #macro vk_dollarsign 16
 #macro vk_forwardslash 17
 #macro vk_percent 32

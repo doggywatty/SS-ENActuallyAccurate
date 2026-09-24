@@ -13,11 +13,11 @@ function scr_enemy_eyescreamwait()
 	y += vsp;
 	
 	if (abs(_dist) < 400 && abs(_disttoplayer) < 400)
-		state = enemystates.eyescream;
+		state = EnemyState.eyescream;
 	
 	if (abs(_dist) <= 10)
 	{
-		state = enemystates.eyescreamInitial;
+		state = EnemyState.eyescreamInitial;
 		x = xstart;
 		y = ystart;
 		sprite_index = spr_eyescreamsandwich_wait;

@@ -101,7 +101,7 @@ function scr_roomStart_SetPosition_player(_player = obj_player1)
 		
 		if (!global.CompletedLevel)
 		{
-			if (isDemo && room != hub_demohallway)
+			if (EXHIBITIONNIGHT && room != hub_demohallway)
 				var _cutscene = cutscene_create([cutscene_backtohub_prestart, cutscene_backtohub_start, cutscene_backtohub_en_out, cutscene_backtohub_middle, cutscene_backtohub_end]);
 			else
 				var _cutscene = cutscene_create([cutscene_backtohub_prestart, cutscene_backtohub_start, cutscene_backtohub_middle, cutscene_backtohub_end]);
@@ -404,7 +404,7 @@ function cutscene_backtohub_start()
 		hsp = 0;
 		vsp = 0;
 		
-		if (isDemo && room != hub_demohallway)
+		if (EXHIBITIONNIGHT && room != hub_demohallway)
 		{
 			scale = 0;
 			sprite_index = spr_player_PZ_geyser;
@@ -437,7 +437,7 @@ function cutscene_backtohub_en_out()
 		
 		if (!afterimagebuffer--)
 		{
-			with (create_afterimage(afterimagetypes.plain, xscale * scale, false))
+			with (create_afterimage(AfterImageType.DEFAULT, xscale * scale, false))
 			{
 				image_xscale = other.xscale * other.scale;
 				image_yscale = other.yscale * other.scale;

@@ -1,6 +1,10 @@
 //PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPA
+enum EnemyState_Cherry {
+	WAIT = 100,
+	ACTIVE
+}
 event_inherited();
-state = PlayerState.burrow;
+state = EnemyState_Cherry.WAIT;
 canGetScared = false;
 baddieSpriteIdle = spr_charcherry_popout;
 baddieSpriteWalk = spr_charcherry_run;
@@ -10,25 +14,20 @@ baddieSpriteTurn = undefined;
 baddieSpriteHit = spr_charcherry_hit;
 baddieSpriteDead = spr_charcherry_dead;
 
-enemyDeath_SpawnBody = function()
-{
-	if (state == PlayerState.charcherryrun)
-	{
+// Death Debris/Particles.
+enemyDeath_SpawnBody = function() {
+	
+	if (state == EnemyState_Cherry.ACTIVE) {
 		instance_create(x, y, obj_bombExplosionMini);
-	}
-	else
-	{
-		instance_create(x, y, obj_bombExplosionMini, 
-		{
-			hurtPlayers: false
-		});
+	} else {
+		instance_create(x, y, obj_bombExplosionMini, {hurtPlayers: false});
 	}
 };
 
 //PADDINGPADDINGPADDIN
 enemyAttack_TriggerEvent = function()
 {
-	if (scr_enemy_playerisnear(400, 60) && grounded && state == PlayerState.burrow)
+	if (scr_enemy_playerisnear(400, 60) && grounded && state == EnemyState_Cherry.WAIT)
 	{
 		var _player = get_nearestPlayer();
 		image_xscale = -getFacingDirection(_player.x, x);
@@ -44,7 +43,7 @@ enemyCustomStates = function()
 {
 	switch (state)
 	{
-		case PlayerState.burrow:
+		case EnemyState_Cherry.WAIT:
 			scr_conveyorBeltKinematics();
 			var player_object = get_nearestPlayer(x, y);
 			image_speed = 0.35;
@@ -53,8 +52,7 @@ enemyCustomStates = function()
 			if (sprite_index == spr_charcherry_popout)
 			{
 				if (sprite_animation_end())
-					state = PlayerState.charcherryrun;
-				
+					state = EnemyState_Cherry.ACTIVE;
 				exit;
 			}
 			
@@ -65,7 +63,7 @@ enemyCustomStates = function()
 			
 			enemyAttack_TriggerEvent();
 			break;
-		case PlayerState.charcherryrun:
+		case EnemyState_Cherry.ACTIVE:
 			image_speed = 0.35;
 			sprite_index = spr_charcherry_run;
 			scr_conveyorBeltKinematics();
@@ -88,7 +86,6 @@ enemyCustomStates = function()
 			
 			if (place_meeting(x, y, targetplayer))
 				instance_destroy();
-			
 			break;
 	}
 };

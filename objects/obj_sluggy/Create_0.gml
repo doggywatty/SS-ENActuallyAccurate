@@ -17,7 +17,7 @@ jumpEvent = function(statement = true)
 {
 	if (event_instance_isplaying(sndSluggyDig))
 		fmod_studio_event_instance_stop(sndSluggyDig, false);
-	else if (state != PlayerState.burrow)
+	else if (state != EnemyState_Cherry.WAIT)
 		event_play_oneshot("event:/SFX/enemies/sluggyJump", x, y);
 	enemyAttackTimer = enemyAttackTimerMax;
 	if (statement)
@@ -25,7 +25,7 @@ jumpEvent = function(statement = true)
 		var _player = get_nearestPlayer();
 		image_xscale = face_obj(_player);
 	}
-	sprite_index = (state == PlayerState.burrow) ? spr_sluggy_undergroundjumpstart : spr_sluggy_jumpstart;
+	sprite_index = (state == EnemyState_Cherry.WAIT) ? spr_sluggy_undergroundjumpstart : spr_sluggy_jumpstart;
 	image_index = 0;
 	burrowTimer = 0;
 	state = PlayerState.titlescreen;
@@ -33,7 +33,7 @@ jumpEvent = function(statement = true)
 //PADDINGPADDINGPADDINGPADDINGPADDINGPADDING
 enemyAttack_TriggerEvent = function()
 {
-	if (enemyAttackTimer <= 0 && scr_enemy_playerisnear(200, 200, , 16) && grounded && (state == PlayerState.burrow || state == PlayerState.frozen))
+	if (enemyAttackTimer <= 0 && scr_enemy_playerisnear(200, 200, , 16) && grounded && (state == EnemyState_Cherry.WAIT || state == PlayerState.frozen))
 		jumpEvent();
 };
 //PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPA

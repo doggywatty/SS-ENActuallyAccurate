@@ -1,4 +1,4 @@
-if (state == enemystates.hit && (hsp != 0 || vsp != 0))
+if (state == EnemyState.hit && (hsp != 0 || vsp != 0))
 	particle_spawn_dustTrail();
 
 alarm[1] = 3;

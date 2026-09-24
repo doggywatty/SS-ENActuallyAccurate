@@ -19,11 +19,11 @@ function scr_enemy_throw()
 			case obj_fizzCloud:
 			case obj_frothCloud:
 			case obj_cottonblimp:
-				state = enemystates.float;
+				state = EnemyState.float;
 				sprite_index = baddieSpriteWalk;
 				break;
 			default:
-				state = enemystates.normal;
+				state = EnemyState.normal;
 				sprite_index = baddieSpriteWalk;
 				break;
 		}

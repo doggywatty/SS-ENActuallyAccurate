@@ -1,4 +1,4 @@
 if (!noConeballRoom)
-	create_afterimage(afterimagetypes.baddie);
+	create_afterimage(AfterImageType.BADDIE);
 
 alarm[0] = 10;

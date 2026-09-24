@@ -17,6 +17,10 @@ var catPlaytest = addCategory("credits_playtest");
 var catSpecial = addCategory("credits_thanks");
 var catPizza = addCategory("credits_tdp");
 var catYou = addCategory("credits_and");
+
+#region Credit Entries
+
+#region Directors and Soda
 addCredit(catSoda, "Sodamang", [spr_candysona_idle6, spr_candysona_dead6]);
 addCredit(catDirectors, "Fishibi", [spr_candysona_idle1, spr_candysona_dead1]);
 addCredit(catDirectors, "Glub", [spr_candysona_idle27, spr_candysona_dead27]);
@@ -24,6 +28,8 @@ addCredit(catDirectors, "Alejandro \"LOSTMAN\" Vargas", [spr_candysona_idle21, s
 addCredit(catDirectors, "MACKACHE", [spr_candysona_idle9, spr_candysona_dead9]);
 addCredit(catDirectors, "Mr. Unown", [spr_candysona_idle7, spr_candysona_dead7]);
 addCredit(catDirectors, "PierRoulette", [spr_candysona_idle25, spr_candysona_dead25]);
+#endregion
+
 addCredit(catProgrammers, "AwfulNasty", [spr_candysona_idle34, spr_candysona_dead34]);
 addCredit(catProgrammers, "Core", [spr_candysona_idle12, spr_candysona_dead12]).addPaintTopper([0, 58, 59]);
 addCredit(catProgrammers, "Alejandro \"LOSTMAN\" Vargas", [spr_candysona_idle21, spr_candysona_dead21]);
@@ -145,6 +151,8 @@ addCredit(catPizza, "ClascyJitto");
 addCredit(catPizza, "Mr. Sauceman");
 addCredit(catPizza, "Post Elvis");
 addCredit(catYou, lang_get("credits_you"), [spr_player_PZ_idleAnim_credits, spr_player_PZ_stun]).playerPalette = true;
+#endregion
+
 var cindex = 0;
 var unsetSprites = [[spr_grandpop, spr_grandpop_freed], [spr_icegrandson, spr_icegrandson_panic], [spr_grandpacone, spr_grandpacone_speak]];
 var set_last = array_length(unsetSprites) - 1;

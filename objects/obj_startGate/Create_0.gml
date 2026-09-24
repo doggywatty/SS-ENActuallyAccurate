@@ -15,7 +15,7 @@ gotoLevel = function(_level)
 	with (obj_parent_player)
 	{
 		image_index = 0;
-		if (isDemo && global.InternalLevelName != "tutorial")
+		if (EXHIBITIONNIGHT && global.InternalLevelName != "tutorial")
 		{
 			sprite_index = spr_enterpainting;
 			event_play_oneshot("event:/SFX/general/enterpainting");

@@ -1,70 +1,70 @@
 switch (state)
 {
-	case enemystates.idle:
+	case EnemyState.idle:
 		scr_enemy_idle();
 		break;
-	case enemystates.turn:
+	case EnemyState.turn:
 		scr_enemy_turn();
 		break;
-	case enemystates.walk:
+	case EnemyState.walk:
 		scr_enemy_walk();
 		break;
-	case enemystates.hit:
+	case EnemyState.hit:
 		scr_enemy_hit();
 		break;
-	case enemystates.charge:
+	case EnemyState.charge:
 		scr_enemy_charge();
 		break;
-	case enemystates.stun:
+	case EnemyState.stun:
 		scr_enemy_stun();
 		break;
-	case enemystates.frozen:
+	case EnemyState.frozen:
 		scr_enemy_frozen();
 		break;
-	case enemystates.unknownreset:
+	case EnemyState.unknownreset:
 		hsp = 0;
 		vsp = 0;
 		break;
-	case enemystates.float:
+	case EnemyState.float:
 		scr_enemy_float();
 		break;
-	case enemystates.thief:
+	case EnemyState.thief:
 		scr_enemy_thief();
 		break;
-	case enemystates.panicWait:
+	case EnemyState.panicWait:
 		scr_enemy_panicWait();
 		break;
-	case enemystates.secretWait:
+	case EnemyState.secretWait:
 		scr_enemy_secretWait();
 		break;
-	case enemystates.Throw:
+	case EnemyState.Throw:
 		scr_enemy_throw();
 		break;
-	case enemystates.grabbed:
+	case EnemyState.grabbed:
 		scr_enemy_grabbed();
 		break;
-	case enemystates.scared:
+	case EnemyState.scared:
 		scr_enemy_scared();
 		break;
-	case enemystates.cherryWait:
+	case EnemyState.cherryWait:
 		scr_enemy_cherrywait();
 		break;
-	case enemystates.charcherry:
+	case EnemyState.charcherry:
 		scr_enemy_charcherry();
 		break;
-	case enemystates.slugjump:
+	case EnemyState.slugjump:
 		scr_enemy_slugjump();
 		break;
-	case enemystates.slugparry:
+	case EnemyState.slugparry:
 		scr_enemy_slugparry();
 		break;
-	case enemystates.eyescreamWait:
+	case EnemyState.eyescreamWait:
 		scr_enemy_eyescreamwait();
 		break;
-	case enemystates.eyescream:
+	case EnemyState.eyescream:
 		scr_enemy_eyescream();
 		break;
-	case enemystates.rage:
+	case EnemyState.rage:
 		scr_enemy_rage();
 		break;
 }
@@ -75,7 +75,7 @@ if (baddieCollisionBoxEnabled)
 if (y > (room_height + 64))
 	instance_destroy();
 
-if (state != enemystates.scared && state != enemystates.frozen)
+if (state != EnemyState.scared && state != EnemyState.frozen)
 	baddieScareBuffer = 0;
 
 if (tauntBuffer)
@@ -91,7 +91,7 @@ if (tauntBuffer)
 	
 	if (!global.freezeframe)
 	{
-		if (obj_parent_player.state != PlayerState.taunt && obj_parent_player.state != PlayerState.parry && state != enemystates.Throw)
+		if (obj_parent_player.state != PlayerState.taunt && obj_parent_player.state != PlayerState.parry && state != EnemyState.Throw)
 		{
 			tauntBuffer = false;
 			enemyAttackTimer = 0;
@@ -104,7 +104,7 @@ if (tauntBuffer)
 	}
 }
 
-if (state == enemystates.stun && baddieStunTimer >= 50 && !birdCreated && object_index != obj_coneboyCutout && object_index != obj_cherrycardboard)
+if (state == EnemyState.stun && baddieStunTimer >= 50 && !birdCreated && object_index != obj_coneboyCutout && object_index != obj_cherrycardboard)
 {
 	birdCreated = true;
 	instance_create(x, y - 40, obj_enemyBirdEffect, 
@@ -115,7 +115,7 @@ if (state == enemystates.stun && baddieStunTimer >= 50 && !birdCreated && object
 
 if (doRedAfterImage && redAfterImagebuffer-- < 0)
 {
-	with (create_afterimage(afterimagetypes.baddie, image_xscale))
+	with (create_afterimage(AfterImageType.BADDIE, image_xscale))
 		image_alpha = 0.85;
 	
 	redAfterImagebuffer = redAfterImagebufferMax;
@@ -130,7 +130,7 @@ if (wetTimer > 0 && wetTimerEffect-- <= 0)
 if (baddieInvincibilityBuffer > 0 && !global.freezeframe)
 	baddieInvincibilityBuffer--;
 
-if (global.freezeframe && state != enemystates.frozen)
+if (global.freezeframe && state != EnemyState.frozen)
 {
 	frozenState = state;
 	frozenSpriteIndex = sprite_index;
@@ -140,7 +140,7 @@ if (global.freezeframe && state != enemystates.frozen)
 	frozenGrav = grav;
 	frozenHsp = hsp;
 	frozenVsp = vsp;
-	state = enemystates.frozen;
+	state = EnemyState.frozen;
 }
 
 if (markedForDeath && !global.freezeframe && object_index != obj_iceblock)
@@ -152,7 +152,7 @@ if (markedForDeath && !global.freezeframe && object_index != obj_iceblock)
 if (flash && alarm[2] <= 0)
 	alarm[2] = room_speed * 0.15;
 
-if (state != enemystates.grabbed)
+if (state != EnemyState.grabbed)
 	depth = 0;
 
 if (grounded && vsp > 0 && sprite_index == baddieSpriteWalk && sprite_animation_end() && sign(hsp) == sign(image_xscale))

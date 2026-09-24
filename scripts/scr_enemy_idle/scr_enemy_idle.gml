@@ -20,7 +20,7 @@ function scr_enemy_idle()
 	
 	if (object_index == obj_charCherry && sprite_animation_end())
 	{
-		state = enemystates.charcherry;
+		state = EnemyState.charcherry;
 		sprite_index = spr_charcherry_run;
 		movespeed = 8;
 		vsp = 0;
@@ -29,7 +29,7 @@ function scr_enemy_idle()
 	
 	if (sprite_animation_end() && grounded)
 	{
-		state = enemystates.normal;
+		state = EnemyState.normal;
 		image_index = 0;
 		exit;
 	}

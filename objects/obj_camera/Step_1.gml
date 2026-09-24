@@ -2,7 +2,7 @@ var _is_region_active = false;
 var _region = noone;
 var _debugZOOM = false;
 
-if (global.DebugMode == debugmode.debug && keyboard_check(ord("C")))
+if (global.DebugMode == DebugMode.debug && keyboard_check(ord("C")))
 	_debugZOOM = true;
 
 var region_active = false;

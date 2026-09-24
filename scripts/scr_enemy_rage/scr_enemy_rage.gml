@@ -23,7 +23,7 @@ function scr_enemy_rage()
 					
 					if (ragereset <= 0)
 					{
-						state = enemystates.eyescream;
+						state = EnemyState.eyescream;
 						ragereset = 200;
 					}
 					
@@ -289,7 +289,7 @@ function scr_enemy_rage()
 				
 				if (sprite_animation_end())
 				{
-					state = enemystates.slugjump;
+					state = EnemyState.slugjump;
 					sprite_index = spr_sluggy_jump;
 					vsp = -11;
 					grounded = false;

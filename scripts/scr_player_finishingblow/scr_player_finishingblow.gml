@@ -50,7 +50,7 @@ function state_player_finishingblow()
 	
 	if (afterimage_timer <= 0)
 	{
-		with (create_afterimage(choose(afterimagetypes.mach3effect_1, afterimagetypes.mach3effect_2), xscale, true))
+		with (create_afterimage(choose(AfterImageType.MACH3, AfterImageType.MACH3ALT), xscale, true))
 			basicAfterimage = false;
 		
 		afterimage_timer = 5;

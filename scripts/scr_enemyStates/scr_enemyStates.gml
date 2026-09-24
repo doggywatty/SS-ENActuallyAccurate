@@ -144,7 +144,7 @@ function state_enemyHit()
 	baddieStunTimer = 500;
 	image_speed = 0.35;
 	
-	with (create_afterimage(afterimagetypes.plain, image_xscale))
+	with (create_afterimage(AfterImageType.DEFAULT, image_xscale))
 	{
 		image_alpha = 0.6;
 		vanish = true;

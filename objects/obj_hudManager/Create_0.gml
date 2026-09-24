@@ -244,7 +244,7 @@ with (HUDObject_comboMeter)
 	displayY = displayYMax;
 	displayVSP = 0;
 	comboDisplay = 0;
-	displayState = displaystates.entering;
+	displayState = DisplayState.entering;
 	comboTimeDisplay = 0;
 	combofillDisplay = 0;
 	comboSurface = noone;

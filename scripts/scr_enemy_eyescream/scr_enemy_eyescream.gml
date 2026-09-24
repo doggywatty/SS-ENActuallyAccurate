@@ -24,13 +24,13 @@ function scr_enemy_eyescream()
 		
 		if (abs(point_distance(x, y, p.x, p.y)) < 100 && ragereset <= 0)
 		{
-			state = enemystates.attack;
+			state = EnemyState.attack;
 			sprite_index = spr_eyescreamsandwich_divestart;
 			image_index = 0;
 		}
 	}
 	else
 	{
-		state = enemystates.eyescreamWait;
+		state = EnemyState.eyescreamWait;
 	}
 }

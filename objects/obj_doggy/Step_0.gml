@@ -26,7 +26,7 @@ if (point_in_rectangle(obj_parent_player.x, obj_parent_player.y, x - 300, y - 50
 		image_index = 0;
 		flash = true;
 		fmod_studio_event_instance_start(sndCharge);
-		create_heat_afterimage(afterimagetypes.plain);
+		create_heat_afterimage(AfterImageType.DEFAULT);
 		state = PlayerState.titlescreen;
 		
 		if (x != obj_parent_player.x)

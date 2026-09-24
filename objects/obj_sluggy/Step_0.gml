@@ -5,7 +5,7 @@ if (!markedForDeath)
 }
 
 event_inherited();
-canGetScared = grounded && state != PlayerState.titlescreen && state != PlayerState.burrow;
+canGetScared = grounded && state != PlayerState.titlescreen && state != EnemyState_Cherry.WAIT;
 enemyAttack_TriggerEvent();
 burrowTimer = max(burrowTimer - 1, 0);
 
@@ -38,7 +38,7 @@ if (burrowTimer <= 0 && place_meeting(x, y + 1, obj_dirtpatch) && state == Playe
 	movespeed = 0;
 	image_index = 0;
 	sprite_index = spr_sluggy_burrow;
-	state = PlayerState.burrow;
+	state = EnemyState_Cherry.WAIT;
 	burrowTimer = burrowTimerMax;
 }
 

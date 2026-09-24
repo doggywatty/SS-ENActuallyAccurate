@@ -3,7 +3,7 @@ mybubble = spr_npcbubblepainter;
 myrope = spr_npcropepainter;
 bubblesubimg = -1;
 bubblesubimg2 = -1;
-ropetype = ropetypes.bottom;
+ropetype = RopeTypes.bottom;
 ini_open(global.SaveFileName);
 var has_judgment = ini_read_string("Game", "Judgment", "none") != "none";
 ini_close();

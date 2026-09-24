@@ -22,7 +22,7 @@ else
 	squashValueY = approach(squashValueY, 0, 0.05);
 }
 
-if (state == enemystates.grabbed)
+if (state == EnemyState.grabbed)
 {
 	vsp = 0;
 	hsp = 0;

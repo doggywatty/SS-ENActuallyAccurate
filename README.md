@@ -11,17 +11,13 @@ You'll need the following:
 
 - [GameMaker Studio 2023.11.1.129](https://gms.yoyogames.com/GameMaker-Installer-2023.11.1.129.exe)
   - Runtime: **2023.11.1.160**
-- [FMOD Engine 2.02.xx](https://www.fmod.com/download#fmodengine)
-  - **2.02.15 is recommended.**
-  	- You will need to logged in order to download.
 
 ### Building
 Once you have everything installed:
 
 1. Clone or download this repository.
 2. Open the project in **GameMaker Studio 2023.11**.
-3. Make sure the required FMOD version is installed and configured.
-4. Press **F5** to compile and run the project.
+3. Press **F5** to compile and run the project.
 
 That's it!
 

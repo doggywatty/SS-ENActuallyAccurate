@@ -24,7 +24,7 @@ function state_player_superslam()
 		
 		if (!mach3effect--)
 		{
-			with (create_afterimage(choose(afterimagetypes.mach3effect_1, afterimagetypes.mach3effect_2), xscale, true))
+			with (create_afterimage(choose(AfterImageType.MACH3, AfterImageType.MACH3ALT), xscale, true))
 				basicAfterimage = false;
 			
 			mach3effect = 5;

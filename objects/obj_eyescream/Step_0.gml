@@ -1,11 +1,11 @@
-doCollision = !(state == enemystates.eyescream || state == enemystates.eyescreamWait || scr_solid(x, y) || state == enemystates.attack);
+doCollision = !(state == EnemyState.eyescream || state == EnemyState.eyescreamWait || scr_solid(x, y) || state == EnemyState.attack);
 trace(doCollision);
-baddieCollisionBoxEnabled = state != enemystates.eyescreamInitial;
+baddieCollisionBoxEnabled = state != EnemyState.eyescreamInitial;
 
-if (state == enemystates.normal)
-	state = enemystates.eyescream;
+if (state == EnemyState.normal)
+	state = EnemyState.eyescream;
 
-if (state == enemystates.eyescreamInitial)
+if (state == EnemyState.eyescreamInitial)
 {
 	var p = get_nearestPlayer();
 	var _disttoplayer = point_distance(x, y, p.x, p.y);
@@ -23,7 +23,7 @@ if (state == enemystates.eyescreamInitial)
 	}
 	else if (sprite_animation_end())
 	{
-		state = enemystates.eyescream;
+		state = EnemyState.eyescream;
 		var dir = point_direction(x, y, p.x, p.y);
 		var _spd = 5;
 		hsp = lengthdir_x(_spd, dir);
@@ -43,5 +43,5 @@ event_inherited();
 if (state != PlayerState.stun)
 	depth = 0;
 
-if (state != enemystates.thrown && state != PlayerState.freezeframe)
+if (state != EnemyState.thrown && state != PlayerState.freezeframe)
 	thrown = 0;

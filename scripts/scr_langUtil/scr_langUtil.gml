@@ -1,29 +1,29 @@
 //PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPA
 //PADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDINGPADDI
-global.fontDefault = __scribble_font_add_sprite_ext(spr_font, "AÁÀÂÃBCÇDEÉÊFGHIÍJKLMNÑOÓÔÕPQRSTUÚVWXYZ!¡.,1234567890:?¿_-�", 1, 0);
-global.promptfont = __scribble_font_add_sprite_ext(spr_promptfont, "AÁÀÂÃBCÇDEÉÊFGHIÍJKLMNÑOÓÔÕPQRSTUÚVWXYZaáàâãbcçdeéêfghiíjklmnñoóôõpqrstuúvwxyz.,:!¡0123456789?¿'\"\\�_-[]▼()&#风雨廊桥전태양*яиБжидГзвбнль", 1, 0);
-global.smallfont = __scribble_font_add_sprite_ext(spr_smallfont, "AÁÀÂÃBCÇDEÉÊFGHIÍJKLMNÑOÓÔÕPQRSTUÚVWXYZ.?!¡1234567890\"-:_�", 1, 0);
-global.npcfont = __scribble_font_add_sprite_ext(spr_npcfont, "AÁÀÂÃBCÇDEÉÊFGHIÍJKLMNÑOÓÔÕPQRSTUÚVWXYZaáàâãbcçdeéêfghiíjklmnñoóôõpqrstuúvwxyz!¡,.:0123456789'?¿-()\"_/�", 1, 2);
-global.npcsmallfont = __scribble_font_add_sprite_ext(spr_npcsmallfont, "AÁÀÂÃBCÇDEÉÊFGHIÍJKLMNÑOÓÔÕPQRSTUÚVWXYZaáàâãbcçdeéêfghiíjklmnñoóôõpqrstuúvwxyz!¡.,:0123456789'?¿-\"()/_�", true, 1);
+global.fontDefault = font_add_sprite_ext(spr_font, "AÁÀÂÃBCÇDEÉÊFGHIÍJKLMNÑOÓÔÕPQRSTUÚVWXYZ!¡.,1234567890:?¿_-�", 1, 0);
+global.promptfont = font_add_sprite_ext(spr_promptfont, "AÁÀÂÃBCÇDEÉÊFGHIÍJKLMNÑOÓÔÕPQRSTUÚVWXYZaáàâãbcçdeéêfghiíjklmnñoóôõpqrstuúvwxyz.,:!¡0123456789?¿'\"\\�_-[]▼()&#风雨廊桥전태양*яиБжидГзвбнль", 1, 0);
+global.smallfont = font_add_sprite_ext(spr_smallfont, "AÁÀÂÃBCÇDEÉÊFGHIÍJKLMNÑOÓÔÕPQRSTUÚVWXYZ.?!¡1234567890\"-:_�", 1, 0);
+global.npcfont = font_add_sprite_ext(spr_npcfont, "AÁÀÂÃBCÇDEÉÊFGHIÍJKLMNÑOÓÔÕPQRSTUÚVWXYZaáàâãbcçdeéêfghiíjklmnñoóôõpqrstuúvwxyz!¡,.:0123456789'?¿-()\"_/�", 1, 2);
+global.npcsmallfont = font_add_sprite_ext(spr_npcsmallfont, "AÁÀÂÃBCÇDEÉÊFGHIÍJKLMNÑOÓÔÕPQRSTUÚVWXYZaáàâãbcçdeéêfghiíjklmnñoóôõpqrstuúvwxyz!¡.,:0123456789'?¿-\"()/_�", true, 1);
 global.SoundTestFont = global.npcfont;
-global.smalltimerfont = __scribble_font_add_sprite_ext(spr_smalltimerfont, ".1234567890:", 1, 0);
-global.creditsfont = __scribble_font_add_sprite_ext(spr_creditsfont, " ABCDEFGHIJKLMNOPQRSTUVWXYZ.!,abcdefghijklmnopqrstuvwxyz0123456789@#$%^&*(){}[]|:;'/`", 1, 0);
-global.collectfont = __scribble_font_add_sprite_ext(spr_fontcollect, "0123456789", 1, 0);
-global.candlefont = __scribble_font_add_sprite_ext(spr_fontcandle, "0123456789", 1, 0);
-global.candleBigFont = __scribble_font_add_sprite_ext(spr_fontBigCandle, "0123456789", 1, 0);
-global.rankcombofont = __scribble_font_add_sprite_ext(spr_fontrankcombo, "0123456789", 1, 0);
-global.bubblefont = __scribble_font_add_sprite_ext(spr_bubblefont, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.!<>'?()[]", 1, 0);
-global.timerfont = __scribble_font_add_sprite_ext(spr_timer_font, "1234567890", 0, 6);
-global.combofont = __scribble_font_add_sprite_ext(spr_tvHUD_comboFont, "0123456789", 1, 2);
-global.lapfont = __scribble_font_add_sprite_ext(spr_lap_font, "0123456789", 1, 2);
-global.dialogfont = __scribble_font_add_sprite_ext(spr_font_dialogue, "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz,.!¡?¿:;\"`'/-_+=1234567890@#$%^&*()[]ÁÉÍÓÚáéíóú", 1, 2);
-global.percentageFont = __scribble_font_add_sprite_ext(spr_fontPercentage, "1234567890%", 1, 2);
-global.buttonfont = __scribble_font_add_sprite_ext(spr_buttonfont, "ABCDEFGHIJKLMNOPQRSTUVWXYZ$%&*()/", 1, 0);
-global.cafefont = __scribble_font_add_sprite_ext(spr_cafefontbig, "0123456789:", 1, 0);
-global.cafefontsmall = __scribble_font_add_sprite_ext(spr_cafefontsmall, "0123456789:", 1, 0);
-global.keyDrawFont = __scribble_font_add_sprite_ext(spr_keyDrawFont, "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+=-*'`,./\\{];", true, 0);
-global.MoneyFont = __scribble_font_add_sprite_ext(spr_moneyFont, "0123456789$-", true, 0);
-global.smallnumberfont = __scribble_font_add_sprite_ext(spr_smallnumber, "1234567890-+", true, 0);
+global.smalltimerfont = font_add_sprite_ext(spr_smalltimerfont, ".1234567890:", 1, 0);
+global.creditsfont = font_add_sprite_ext(spr_creditsfont, " ABCDEFGHIJKLMNOPQRSTUVWXYZ.!,abcdefghijklmnopqrstuvwxyz0123456789@#$%^&*(){}[]|:;'/`", 1, 0);
+global.collectfont = font_add_sprite_ext(spr_fontcollect, "0123456789", 1, 0);
+global.candlefont = font_add_sprite_ext(spr_fontcandle, "0123456789", 1, 0);
+global.candleBigFont = font_add_sprite_ext(spr_fontBigCandle, "0123456789", 1, 0);
+global.rankcombofont = font_add_sprite_ext(spr_fontrankcombo, "0123456789", 1, 0);
+global.bubblefont = font_add_sprite_ext(spr_bubblefont, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.!<>'?()[]", 1, 0);
+global.timerfont = font_add_sprite_ext(spr_timer_font, "1234567890", 0, 6);
+global.combofont = font_add_sprite_ext(spr_tvHUD_comboFont, "0123456789", 1, 2);
+global.lapfont = font_add_sprite_ext(spr_lap_font, "0123456789", 1, 2);
+global.dialogfont = font_add_sprite_ext(spr_font_dialogue, "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz,.!¡?¿:;\"`'/-_+=1234567890@#$%^&*()[]ÁÉÍÓÚáéíóú", 1, 2);
+global.percentageFont = font_add_sprite_ext(spr_fontPercentage, "1234567890%", 1, 2);
+global.buttonfont = font_add_sprite_ext(spr_buttonfont, "ABCDEFGHIJKLMNOPQRSTUVWXYZ$%&*()/", 1, 0);
+global.cafefont = font_add_sprite_ext(spr_cafefontbig, "0123456789:", 1, 0);
+global.cafefontsmall = font_add_sprite_ext(spr_cafefontsmall, "0123456789:", 1, 0);
+global.keyDrawFont = font_add_sprite_ext(spr_keyDrawFont, "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+=-*'`,./\\{];", true, 0);
+global.MoneyFont = font_add_sprite_ext(spr_moneyFont, "0123456789$-", true, 0);
+global.smallnumberfont = font_add_sprite_ext(spr_smallnumber, "1234567890-+", true, 0);
 global.captionfont = font_tahoma;
 function directory_get_files(_path, _ext_pat)
 {
@@ -200,7 +200,7 @@ function scr_lang_dictionary_fonts_add(_file, _fonts)
 				}
 				var s = sprite_add(f, n, false, false, xo, yo);
 				sprite_collision_mask(s, true, 0, 0, 0, 0, 0, 0, 0);
-				var font = __scribble_font_add_sprite_ext(s, map, prop, sep);
+				var font = font_add_sprite_ext(s, map, prop, sep);
 				variable_struct_set(font_struct, nm, font);
 			}
 			catch (ex)
@@ -570,27 +570,31 @@ function scr_lang_init()
 	{
 		var os_lang = string_upper(os_get_language());
 		var os_region = string_upper(os_get_region());
-		switch (os_lang)
-		{
-			case "ES":
-				if (os_region == "ES" || os_region == "ESP")
-					os_lang = "ES";
-				else
-					os_lang = "LATAM";
+		switch (os_lang) { // Region Specific.
+			case "ES": // Spanish.
+					if (os_region == "ES" || os_region == "ESP") {
+						os_lang = "ES";
+					} else {
+						os_lang = "LATAM";
+					}
+					break;
+			case "PT": // Portuguese.
+			
+				if (os_region == "BR") {
+					os_lang = "PTBR"; // Português (BR).
+				} else {
+					os_lang = "PT"; // Portuguese.
+				}
 				break;
-			case "PT":
-				if (os_region == "BR")
-					os_lang = "PTBR";
-				else
-					os_lang = "PT";
-				break;
-			case "ZH":
-				if (os_region == "HK" || os_region == "MO" || os_region == "TW")
-					os_lang = "TC";
-				else
-					os_lang = "SC";
+			case "ZH": // Chinese.
+				if (os_region == "HK" || os_region == "MO" || os_region == "TW") {
+					os_lang = "TC"; // Tradicional.
+				} else {
+					os_lang = "SC"; // Simplified.
+				}
 				break;
 		}
+		
 		global.langName = os_lang;
 	}
 	var _dir = string_concat(working_directory, "lang/");
