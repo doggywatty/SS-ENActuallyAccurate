@@ -1,7 +1,7 @@
 global.GameLevelMap = ds_map_create();
 global.InternalLevelName = "none";
 
-function scr_defineTitleCard(_img_ind, _music = "event:/music/w1/entryway_titlecard", _x = -4, _y = -4) constructor
+function scr_defineTitleCard(_img_ind, _music = "event:/music/w1/entryway_titlecard", _x = noone, _y = noone) constructor
 {
 	image_index = _img_ind;
 	music = _music;
@@ -36,9 +36,9 @@ scr_defineLevel(1, "molasses", "Molasses Swamp", molasses_1, ["Molasses"]);
 scr_defineLevel(1, "cafe", "Chocoa Cafe", cafe_1, ["Cafe"]);
 scr_defineLevel(1, "boss_pizzabro", "Boss 2", rm_missing);
 
-function scr_gotoLevel(arg0)
+function scr_gotoLevel(_level_name)
 {
-	var level_info = ds_map_find_value(global.GameLevelMap, arg0);
+	var level_info = ds_map_find_value(global.GameLevelMap, _level_name);
 	var first_room = level_info.firstRoom;
 	global.texturesToLoad = array_concat(global.texturesToLoad, level_info.groupArr);
 	global.InternalLevelName = level_info.internalName;
